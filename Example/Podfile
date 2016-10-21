@@ -1,0 +1,14 @@
+use_frameworks!
+
+target 'EZGLKit_Example' do
+  pod 'EZGLKit', :path => '../'
+
+  target 'EZGLKit_Tests' do
+    inherit! :search_paths
+
+    pod 'Specta'
+  pod 'Expecta'
+  pod 'FBSnapshotTestCase'
+  pod 'Expecta+Snapshots'
+  end
+end
