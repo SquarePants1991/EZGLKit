@@ -9,5 +9,8 @@
 #ifndef EZGLKit_h
 #define EZGLKit_h
 
+#import "EZGLWorld.h"
+#import "EZGLPlaneGeometry.h"
+#import "EZGLWaveFrontGeometry.h"
 
 #endif /* EZGLKit_h */

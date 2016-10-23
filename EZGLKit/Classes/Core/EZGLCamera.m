@@ -10,4 +10,8 @@
 
 @implementation EZGLCamera
 
+- (GLKMatrix4)matrix {
+    return GLKMatrix4Identity;
+}
+
 @end

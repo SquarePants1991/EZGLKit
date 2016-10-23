@@ -8,6 +8,6 @@
 
 @import UIKit;
 
-@interface EZGLViewController : UIViewController
+@interface EZGLViewController : UITableViewController
 
 @end

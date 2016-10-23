@@ -19,8 +19,11 @@
 - (instancetype)initWithVertexShaderFileName:(NSString *)vsName fragmentShaderFileName:(NSString *)fsName {
     self = [super init];
     if (self) {
-        NSString *vsFilePath = [[NSBundle mainBundle]pathForResource:vsName ofType:@"vsh"];
-        NSString *fsFilePath = [[NSBundle mainBundle]pathForResource:fsName ofType:@"fsh"];
+        
+        NSBundle *bundle = [NSBundle bundleForClass:self];
+        
+        NSString *vsFilePath = [bundle pathForResource:vsName ofType:@"vsh"];
+        NSString *fsFilePath = [bundle pathForResource:fsName ofType:@"fsh"];
         self.value = [self createProgramWithVertexShaderFile:vsFilePath fragmentShaderFile:fsFilePath];
     }
     return self;
@@ -75,9 +78,6 @@
 
     // Attach fragment shader to program.
     glAttachShader(program, fragShader);
-
-    glBindAttribLocation(program, ATTRIB_VERTEX, "position");
-    glBindAttribLocation(program, ATTRIB_NORMAL, "normal");
 
     // Link program.
     if (![self linkProgram:program]) {

@@ -7,6 +7,7 @@
 //
 
 #import <GLKit/GLKit.h>
+#import "EZGLPerspectiveCamera.h"
 
 @interface EZGLLight : NSObject
 
@@ -15,5 +16,5 @@
 @property (assign, nonatomic) GLKVector3 position;
 
 - (void)update:(NSTimeInterval)interval;
-
+- (EZGLPerspectiveCamera *)lightCameraWithSize:(CGSize)size;
 @end

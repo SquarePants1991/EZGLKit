@@ -6,8 +6,14 @@
 //
 //
 
-#import <Foundation/Foundation.h>
+#import <GLKit/GLKit.h>
+
+#import "EZGLTransform.h"
 
 @interface EZGLCamera : NSObject
+
+@property (strong, nonatomic) EZGLTransform *transform;
+
+- (GLKMatrix4)matrix;
 
 @end

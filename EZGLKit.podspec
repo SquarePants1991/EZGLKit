@@ -32,11 +32,11 @@ TODO: Add long description of the pod here.
 
   s.source_files = 'EZGLKit/Classes/**/*'
   
-  # s.resource_bundles = {
-  #   'EZGLKit' => ['EZGLKit/Assets/*.png']
-  # }
+  s.resources = ['EZGLKit/Assets/**/*.*']
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
+  s.xcconfig = { 'USER_HEADER_SEARCH_PATHS' => '"${PODS_ROOT}/../../EZGLKit/Classes/Third Party/Bullet/"' ,
+  'ALWAYS_SEARCH_USER_PATHS' => 'YES',
+  'CLANG_CXX_LIBRARY' => 'libstdc++'}
   # s.frameworks = 'UIKit', 'MapKit'
   # s.dependency 'AFNetworking', '~> 2.3'
 end

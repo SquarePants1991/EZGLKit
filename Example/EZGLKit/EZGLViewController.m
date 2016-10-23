@@ -8,8 +8,8 @@
 
 #import "EZGLViewController.h"
 
-@interface EZGLViewController ()
-
+@interface EZGLViewController () <UITableViewDelegate>
+@property (strong, nonatomic) NSArray *viewControllersMap;
 @end
 
 @implementation EZGLViewController
@@ -17,13 +17,22 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+
+    self.tableView.delegate = self;
+    self.viewControllersMap = @[@"EZGLBasicViewController"];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row < self.viewControllersMap.count) {
+        NSString *vcName = self.viewControllersMap[indexPath.row];
+        Class cls = NSClassFromString(vcName);
+        if (cls) {
+            UIViewController *instance = [cls new];
+            if (instance) {
+                [self.navigationController pushViewController:instance animated:YES];
+            }
+        }
+    }
 }
 
 @end

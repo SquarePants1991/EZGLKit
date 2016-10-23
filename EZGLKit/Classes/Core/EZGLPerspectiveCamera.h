@@ -6,18 +6,26 @@
 //
 //
 
-#import <Foundation/Foundation.h>
-#import "EZGLTransform.h"
+#import "EZGLCamera.h"
 
-@interface EZGLPerspectiveCamera : NSObject
+@interface EZGLPerspectiveCamera : EZGLCamera
 
 @property (assign, nonatomic) GLfloat nearZ;
 @property (assign, nonatomic) GLfloat farZ;
 @property (assign, nonatomic) GLfloat fovyRadians;
 @property (assign, nonatomic) GLfloat aspect;
 
+@property (assign, nonatomic) GLKVector3 eye;
 @property (assign, nonatomic) GLKVector3 lookAt;
 @property (assign, nonatomic) GLKVector3 up;
-@property (strong, nonatomic) EZGLTransform *transform;
+@property (assign, nonatomic) GLKVector3 left;
+@property (assign, nonatomic) GLKVector3 forward;
+
++ (EZGLCamera *)cameraWithSize:(CGSize)size;
+
+- (void)rotateWithAngle:(GLfloat)radians axis:(GLKVector3)axis;
+- (void)translateForward:(GLfloat)distance;
+- (void)translateLeft:(GLfloat)distance;
+- (void)translateUp:(GLfloat)distance;
 
 @end

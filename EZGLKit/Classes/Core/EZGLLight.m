@@ -8,6 +8,12 @@
 
 #import "EZGLLight.h"
 
+@interface EZGLLight ()
+
+@property (strong, nonatomic) EZGLPerspectiveCamera *lightCamera;
+
+@end
+
 @implementation EZGLLight
 
 - (instancetype)init {
@@ -21,9 +27,19 @@
 }
 
 - (void)update:(NSTimeInterval)interval {
-    GLKQuaternion quaternion = GLKQuaternionMakeWithAngleAndAxis(-M_PI * interval / 10, 0, 1, 0);
-    self.position = GLKQuaternionRotateVector3(quaternion, self.position);
+    //GLKQuaternion quaternion = GLKQuaternionMakeWithAngleAndAxis(-M_PI * interval / 10, 0, 1, 0);
+    //self.position = GLKQuaternionRotateVector3(quaternion, self.position);
 //    self.position = GLKVector3Make(0, self.position.y + interval, self.position.z + interval);
+}
+
+- (EZGLPerspectiveCamera *)lightCameraWithSize:(CGSize)size {
+    if (self.lightCamera == nil) {
+        self.lightCamera = [EZGLPerspectiveCamera cameraWithSize:size];
+        self.lightCamera.transform.translateX = self.position.x;
+        self.lightCamera.transform.translateY = self.position.y;
+        self.lightCamera.transform.translateZ = self.position.z;
+    }
+    return self.lightCamera;
 }
 
 @end

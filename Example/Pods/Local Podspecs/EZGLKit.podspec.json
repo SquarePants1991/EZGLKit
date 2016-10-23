@@ -1,0 +1,30 @@
+{
+  "name": "EZGLKit",
+  "version": "0.1.0",
+  "summary": "A short description of EZGLKit.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/<GITHUB_USERNAME>/EZGLKit",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "ocean": "tomcat1991@126.com"
+  },
+  "source": {
+    "git": "https://github.com/<GITHUB_USERNAME>/EZGLKit.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "EZGLKit/Classes/**/*",
+  "resources": [
+    "EZGLKit/Assets/**/*.*"
+  ],
+  "xcconfig": {
+    "USER_HEADER_SEARCH_PATHS": "\"${PODS_ROOT}/../../EZGLKit/Classes/Third Party/Bullet/\"",
+    "ALWAYS_SEARCH_USER_PATHS": "YES",
+    "CLANG_CXX_LIBRARY": "libstdc++"
+  }
+}
