@@ -6,10 +6,10 @@
 //  Copyright © 2016年 ocean. All rights reserved.
 //
 
-#import "EZGLBasicViewController.h"
+#import "EZGLBasicCubeViewController.h"
 #import <EZGLKit/EZGLKit.h>
 
-@interface EZGLBasicViewController ()
+@interface EZGLBasicCubeViewController ()
 
 @property (strong, nonatomic) EZGLWorld *world;
 @property (strong, nonatomic) EZGLWaveFrontGeometry *geometry;
@@ -19,7 +19,7 @@
 
 @end
 
-@implementation EZGLBasicViewController
+@implementation EZGLBasicCubeViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -54,10 +54,10 @@
     CGPoint pt = [touches.anyObject locationInView:self.view];
     CGFloat dx = pt.x - self.lastTouchPoint.x;
     CGFloat dy = pt.y - self.lastTouchPoint.y;
-
-        EZGLPerspectiveCamera *perspectiveCamera = (EZGLPerspectiveCamera *)self.world.camera;
-        [perspectiveCamera rotateWithAngle:-dx / 40.0 axis:perspectiveCamera.up];
-        [perspectiveCamera rotateWithAngle:-dy / 40.0 axis:perspectiveCamera.left];
+    
+    EZGLPerspectiveCamera *perspectiveCamera = (EZGLPerspectiveCamera *)self.world.camera;
+    [perspectiveCamera rotateWithAngle:-dx / 40.0 axis:perspectiveCamera.up];
+    [perspectiveCamera rotateWithAngle:-dy / 40.0 axis:perspectiveCamera.left];
     
     self.lastTouchPoint = pt;
 }

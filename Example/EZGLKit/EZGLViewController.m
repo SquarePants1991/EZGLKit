@@ -8,8 +8,8 @@
 
 #import "EZGLViewController.h"
 
-@interface EZGLViewController () <UITableViewDelegate>
-@property (strong, nonatomic) NSArray *viewControllersMap;
+@interface EZGLViewController () <UITableViewDelegate,UITableViewDataSource>
+@property (strong, nonatomic) NSDictionary *viewControllersMap;
 @end
 
 @implementation EZGLViewController
@@ -19,12 +19,30 @@
     [super viewDidLoad];
 
     self.tableView.delegate = self;
-    self.viewControllersMap = @[@"EZGLBasicViewController"];
+    self.tableView.dataSource = self;
+    
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
+    
+    self.viewControllersMap = @{@"基本三角形":@"EZGLBasicViewController",
+                                @"正方体":@"EZGLBasicCubeViewController",
+                                @"带纹理的正方体":@"EZGLCubeWithTextureViewController"};
+}
+
+#pragma mark - Data Source
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.viewControllersMap.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    cell.textLabel.text = self.viewControllersMap.allKeys[indexPath.row];
+    return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row < self.viewControllersMap.count) {
-        NSString *vcName = self.viewControllersMap[indexPath.row];
+        NSString *vcName = self.viewControllersMap[self.viewControllersMap.allKeys[indexPath.row]];
         Class cls = NSClassFromString(vcName);
         if (cls) {
             UIViewController *instance = [cls new];

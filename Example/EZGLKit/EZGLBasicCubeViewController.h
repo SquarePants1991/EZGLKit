@@ -8,6 +8,6 @@
 
 #import <GLKit/GLKit.h>
 
-@interface EZGLBasicViewController : GLKViewController
+@interface EZGLBasicCubeViewController : GLKViewController
 
 @end

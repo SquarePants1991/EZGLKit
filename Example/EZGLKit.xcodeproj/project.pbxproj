@@ -21,8 +21,9 @@
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
+		8E0F30801DBDFFAA00F54680 /* EZGLBasicTriangleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E0F307F1DBDFFAA00F54680 /* EZGLBasicTriangleViewController.m */; };
 		91A411BC925146DB4B9D6537 /* libPods-EZGLKit_Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FE102A697C3C7FA9874D2744 /* libPods-EZGLKit_Example.a */; };
-		D30FF4F31DBA4260006A2A68 /* EZGLBasicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D30FF4F21DBA4260006A2A68 /* EZGLBasicViewController.m */; };
+		D30FF4F31DBA4260006A2A68 /* EZGLBasicCubeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D30FF4F21DBA4260006A2A68 /* EZGLBasicCubeViewController.m */; };
 		D32DF9981DBA818800EBED91 /* cube3.obj in Resources */ = {isa = PBXBuildFile; fileRef = D32DF9961DBA818800EBED91 /* cube3.obj */; };
 		D32DF9991DBA818800EBED91 /* cube3.mtl in Resources */ = {isa = PBXBuildFile; fileRef = D32DF9971DBA818800EBED91 /* cube3.mtl */; };
 		D381B3B91DBA647000FB0829 /* libstdc++.6.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D381B3B81DBA647000FB0829 /* libstdc++.6.tbd */; };
@@ -62,13 +63,15 @@
 		6003F5BB195388D20070C39A /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		8E0F307E1DBDFFAA00F54680 /* EZGLBasicTriangleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EZGLBasicTriangleViewController.h; sourceTree = "<group>"; };
+		8E0F307F1DBDFFAA00F54680 /* EZGLBasicTriangleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EZGLBasicTriangleViewController.m; sourceTree = "<group>"; };
 		ACB722C94CFF447CCFA4C7BA /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		B3F37E7B44058075289CA397 /* Pods-EZGLKit_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EZGLKit_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-EZGLKit_Example/Pods-EZGLKit_Example.release.xcconfig"; sourceTree = "<group>"; };
 		BF00AC56A3E31A9742AB668F /* Pods-EZGLKit_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EZGLKit_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EZGLKit_Tests/Pods-EZGLKit_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		CEF86E68B182B9A72A642328 /* EZGLKit.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = EZGLKit.podspec; path = ../EZGLKit.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		D07D7CF16BD0419E06B3E484 /* Pods-EZGLKit_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EZGLKit_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-EZGLKit_Tests/Pods-EZGLKit_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		D30FF4F11DBA4260006A2A68 /* EZGLBasicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EZGLBasicViewController.h; sourceTree = "<group>"; };
-		D30FF4F21DBA4260006A2A68 /* EZGLBasicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EZGLBasicViewController.m; sourceTree = "<group>"; };
+		D30FF4F11DBA4260006A2A68 /* EZGLBasicCubeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EZGLBasicCubeViewController.h; sourceTree = "<group>"; };
+		D30FF4F21DBA4260006A2A68 /* EZGLBasicCubeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EZGLBasicCubeViewController.m; sourceTree = "<group>"; };
 		D32DF9961DBA818800EBED91 /* cube3.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = cube3.obj; path = Resources/cube3.obj; sourceTree = "<group>"; };
 		D32DF9971DBA818800EBED91 /* cube3.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = cube3.mtl; path = Resources/cube3.mtl; sourceTree = "<group>"; };
 		D381B3B81DBA647000FB0829 /* libstdc++.6.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.tbd"; path = "usr/lib/libstdc++.6.tbd"; sourceTree = SDKROOT; };
@@ -152,8 +155,8 @@
 		6003F593195388D20070C39A /* Example for EZGLKit */ = {
 			isa = PBXGroup;
 			children = (
+				8E9507531DBDFEAE00244415 /* Examples */,
 				D32DF9951DBA816600EBED91 /* 3D Models */,
-				D30FF4F01DBA420B006A2A68 /* Basic */,
 				D30FF4EF1DBA41E9006A2A68 /* Foundation */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
@@ -202,6 +205,24 @@
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
 		};
+		8E9507531DBDFEAE00244415 /* Examples */ = {
+			isa = PBXGroup;
+			children = (
+				8E9507541DBDFEB700244415 /* Basic Triangle */,
+				D30FF4F01DBA420B006A2A68 /* Basic Cube */,
+			);
+			name = Examples;
+			sourceTree = "<group>";
+		};
+		8E9507541DBDFEB700244415 /* Basic Triangle */ = {
+			isa = PBXGroup;
+			children = (
+				8E0F307E1DBDFFAA00F54680 /* EZGLBasicTriangleViewController.h */,
+				8E0F307F1DBDFFAA00F54680 /* EZGLBasicTriangleViewController.m */,
+			);
+			name = "Basic Triangle";
+			sourceTree = "<group>";
+		};
 		D30FF4EF1DBA41E9006A2A68 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
@@ -214,13 +235,13 @@
 			name = Foundation;
 			sourceTree = "<group>";
 		};
-		D30FF4F01DBA420B006A2A68 /* Basic */ = {
+		D30FF4F01DBA420B006A2A68 /* Basic Cube */ = {
 			isa = PBXGroup;
 			children = (
-				D30FF4F11DBA4260006A2A68 /* EZGLBasicViewController.h */,
-				D30FF4F21DBA4260006A2A68 /* EZGLBasicViewController.m */,
+				D30FF4F11DBA4260006A2A68 /* EZGLBasicCubeViewController.h */,
+				D30FF4F21DBA4260006A2A68 /* EZGLBasicCubeViewController.m */,
 			);
-			name = Basic;
+			name = "Basic Cube";
 			sourceTree = "<group>";
 		};
 		D32DF9951DBA816600EBED91 /* 3D Models */ = {
@@ -436,9 +457,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				6003F59E195388D20070C39A /* EZGLAppDelegate.m in Sources */,
+				8E0F30801DBDFFAA00F54680 /* EZGLBasicTriangleViewController.m in Sources */,
 				6003F5A7195388D20070C39A /* EZGLViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
-				D30FF4F31DBA4260006A2A68 /* EZGLBasicViewController.m in Sources */,
+				D30FF4F31DBA4260006A2A68 /* EZGLBasicCubeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
