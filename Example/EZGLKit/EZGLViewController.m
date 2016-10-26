@@ -23,9 +23,10 @@
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
     
-    self.viewControllersMap = @{@"基本三角形":@"EZGLBasicViewController",
+    self.viewControllersMap = @{@"基本三角形":@"EZGLBasicTriangleViewController",
                                 @"正方体":@"EZGLBasicCubeViewController",
-                                @"带纹理的正方体":@"EZGLCubeWithTextureViewController"};
+                                @"带纹理的正方体":@"EZGLCubeWithTextureViewController",
+                                @"全景Sphere":@"EZGLSpherePanoramaViewController"};
 }
 
 #pragma mark - Data Source
