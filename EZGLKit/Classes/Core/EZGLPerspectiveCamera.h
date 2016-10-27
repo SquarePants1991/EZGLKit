@@ -23,7 +23,8 @@
 
 + (EZGLCamera *)cameraWithSize:(CGSize)size;
 
-- (void)rotateWithAngle:(GLfloat)radians axis:(GLKVector3)axis;
+- (void)rotateEyeWithAngle:(GLfloat)radians axis:(GLKVector3)axis;
+- (void)rotateLookAtWithAngle:(GLfloat)radians axis:(GLKVector3)axis;
 - (void)translateForward:(GLfloat)distance;
 - (void)translateLeft:(GLfloat)distance;
 - (void)translateUp:(GLfloat)distance;

@@ -8,6 +8,7 @@
 
 #import "UIImage+GL.h"
 #import <ImageIO/ImageIO.h>
+#import <GLKit/GLKit.h>
 
 @implementation UIImage (GL)
 
@@ -41,8 +42,11 @@
 }
 
 + (GLuint)textureFromCGImage:(CGImageRef)imageRef {
-    size_t width = 1024;//CGImageGetWidth(imageRef);
-    size_t height = 1024;//CGImageGetHeight(imageRef);
+    size_t width = CGImageGetWidth(imageRef);
+    size_t height = CGImageGetHeight(imageRef);
+    
+//    width = pow(2,(int)log2(width));
+//    height = pow(2,(int)log2(height));
     
     GLubyte *textureData = (GLubyte *)malloc(width * height * 4);
     
@@ -55,15 +59,19 @@
                                                  bitsPerComponent, bytesPerRow, colorSpace,
                                                  kCGImageAlphaPremultipliedLast | kCGBitmapByteOrder32Big);
     CGColorSpaceRelease(colorSpace);
-    CGContextDrawImage(context, CGRectMake(0, 0, width, height), imageRef);
+    if (context) {
+        CGAffineTransform flipVertical = CGAffineTransformMake(1, 0, 0, -1, 0, height);
+        CGContextConcatCTM(context, flipVertical);
+        CGContextDrawImage(context, CGRectMake(0, 0, width, height), imageRef);
+    }
     CGContextRelease(context);
     
     GLuint texture;
     glGenTextures(1, &texture);
     glBindTexture(GL_TEXTURE_2D, texture);
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, (GLsizei)width, (GLsizei)height, 0, GL_RGBA, GL_UNSIGNED_BYTE, textureData);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
     glBindTexture(GL_TEXTURE_2D, 0);
     return texture;
 }

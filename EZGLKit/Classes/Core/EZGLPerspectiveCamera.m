@@ -37,6 +37,18 @@
     return forward;
 }
 
+- (void)rotateEyeWithAngle:(GLfloat)radians axis:(GLKVector3)axis {
+    [self rotateWithAngle:radians axis:axis];
+}
+
+- (void)rotateLookAtWithAngle:(GLfloat)radians axis:(GLKVector3)axis {
+    GLKQuaternion quaternion = GLKQuaternionMakeWithAngleAndVector3Axis(radians, axis);
+    self.up = GLKQuaternionRotateVector3(quaternion,self.up);
+    GLKVector3 lookAtVec = GLKVector3Subtract(self.lookAt, self.eye);
+    GLKVector3 newLookAtVec = GLKQuaternionRotateVector3(quaternion, lookAtVec);
+    self.lookAt = GLKVector3Add(self.eye, newLookAtVec);
+}
+
 - (void)rotateWithAngle:(GLfloat)radians axis:(GLKVector3)axis {
     GLKQuaternion quaternion = GLKQuaternionMakeWithAngleAndVector3Axis(radians, axis);
     self.up = GLKQuaternionRotateVector3(quaternion,self.up);

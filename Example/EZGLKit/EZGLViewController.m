@@ -26,7 +26,8 @@
     self.viewControllersMap = @{@"基本三角形":@"EZGLBasicTriangleViewController",
                                 @"正方体":@"EZGLBasicCubeViewController",
                                 @"带纹理的正方体":@"EZGLCubeWithTextureViewController",
-                                @"全景Sphere":@"EZGLSpherePanoramaViewController"};
+                                @"全景Sphere":@"EZGLSpherePanoramaViewController",
+                                @"全景Cube":@"EZGLCubePanoramaViewController"};
 }
 
 #pragma mark - Data Source

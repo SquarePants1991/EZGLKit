@@ -1,25 +1,24 @@
 //
-//  EZGLSpherePanoramaViewController.m
+//  EZGLCubePanoramaViewController.m
 //  EZGLKit
 //
-//  Created by wang yang on 2016/10/26.
+//  Created by wangyang on 2016/10/27.
 //  Copyright © 2016年 ocean. All rights reserved.
 //
 
-#import "EZGLSpherePanoramaViewController.h"
+#import "EZGLCubePanoramaViewController.h"
 #import <EZGLKit/EZGLKit.h>
 
-@interface EZGLSpherePanoramaViewController ()
-
+@interface EZGLCubePanoramaViewController ()
 @property (strong, nonatomic) EZGLWorld *world;
 @property (strong, nonatomic) EZGLWaveFrontGeometry *geometry;
 
 @property (assign, nonatomic) CGPoint lastTouchPoint;
 @property (assign, nonatomic) CGFloat lastScale;
-
 @end
 
-@implementation EZGLSpherePanoramaViewController
+@implementation EZGLCubePanoramaViewController
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -31,9 +30,9 @@
     perspectiveCamera.lookAt = GLKVector3Make(0, 0, 1);
     perspectiveCamera.up = GLKVector3Make(0, 1,0);
     
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"ball3" ofType:@".obj"];
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"cube3" ofType:@".obj"];
     self.geometry = [[EZGLWaveFrontGeometry alloc] initWithWaveFrontFilePath:path];
-//    self.geometry.transform.quaternion = GLKQuaternionMakeWithAngleAndVector3Axis(-M_PI / 2, GLKVector3Make(1, 0, 0));
+    //    self.geometry.transform.quaternion = GLKQuaternionMakeWithAngleAndVector3Axis(-M_PI / 2, GLKVector3Make(1, 0, 0));
     [self.world addGeometry:self.geometry];
     
     
@@ -60,7 +59,7 @@
     
     EZGLPerspectiveCamera *perspectiveCamera = (EZGLPerspectiveCamera *)self.world.camera;
     [perspectiveCamera rotateLookAtWithAngle: -dx / 40.0 axis:perspectiveCamera.up];
-//    [perspectiveCamera rotateWithAngle:-dy / 40.0 axis:perspectiveCamera.left];
+    //    [perspectiveCamera rotateWithAngle:-dy / 40.0 axis:perspectiveCamera.left];
     
     self.lastTouchPoint = pt;
 }
@@ -77,4 +76,5 @@
         self.lastScale = gesture.scale;
     }
 }
+
 @end
