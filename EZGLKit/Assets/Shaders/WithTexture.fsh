@@ -8,9 +8,11 @@
 
 precision highp float;
 
-varying highp vec4 fragPosition;
+varying lowp vec2 fragTexcoord;
+
+uniform sampler2D diffuse;
 
 void main()
 {
-    gl_FragColor = normalize(fragPosition);
+    gl_FragColor = texture2D(diffuse,fragTexcoord);
 }

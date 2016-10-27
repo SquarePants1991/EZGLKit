@@ -15,9 +15,13 @@
 
 @interface EZGLWorld ()
 
-@property (strong, nonatomic) NSMutableArray *geometrys;
-@property (assign, nonatomic) GLKMatrix4 originViewProjection;
 @property (weak, nonatomic) GLKView *glkView;
+
+@property (strong, nonatomic) NSMutableArray *geometrys;
+
+@property (assign, nonatomic) GLKMatrix4 viewProjection;
+@property (assign, nonatomic) GLKMatrix4 lightViewProjection;
+@property (assign, nonatomic) GLKMatrix4 originViewProjection;
 
 @property (strong, nonatomic) EZGLPlaneGeometry *projector;
 @property (assign, nonatomic) GLuint shadowFramebuffer;
@@ -57,7 +61,7 @@
 //        self.viewProjection = self.camera.matrix;
 //        self.originViewProjection = self.viewProjection;
 
-        self.light = [EZGLLight new];
+//        self.light = [EZGLLight new];
 //        CGRect rect = self.glkView.bounds;
 //        self.lightViewProjection = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(65.0f), aspect, 0.1f, 100.0f);
 ////        self.lightViewProjection = GLKMatrix4MakeOrtho(-1, 1, -1, 1, 0.1, 100);
@@ -67,6 +71,7 @@
         [self createShadowFrameBuffer];
         self.geometrys = [NSMutableArray new];
         self.physicsWorld = [EZGLPhysicsWorld new];
+        self.effect = [EZGLEffect new];
     }
     return self;
 }
@@ -105,13 +110,14 @@
 
 - (void)addGeometry:(EZGLGeometry *)geometry {
     geometry.world = self;
+    [geometry prepare];
     [self.geometrys addObject:geometry];
     [self.physicsWorld createRigidbody:1.0f geometry:geometry];
 }
 
 - (void)render:(CGRect)rect {
     self.viewProjection = self.camera.matrix;
-    self.lightViewProjection = [self.light lightCameraWithSize:rect.size].matrix;
+//    self.lightViewProjection = [self.light lightCameraWithSize:rect.size].matrix;
 
     glBindFramebuffer(GL_FRAMEBUFFER, self.shadowFramebuffer);
     glViewport(0, 0, 1024, 1024);
@@ -120,9 +126,9 @@
     glCullFace(GL_FRONT);
     
     for (EZGLGeometry *geometry in self.geometrys) {
-        geometry.viewProjection = self.lightViewProjection;
-        geometry.lightViewProjection = self.lightViewProjection;
-        geometry.renderAsShadow = YES;
+//        geometry.viewProjection = self.lightViewProjection;
+//        geometry.lightViewProjection = self.lightViewProjection;
+//        geometry.renderAsShadow = YES;
         [geometry draw];
     }
 
@@ -131,10 +137,10 @@
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     for (EZGLGeometry *geometry in self.geometrys) {
-        geometry.viewProjection = self.viewProjection;
-        geometry.lightViewProjection = self.lightViewProjection;
-        geometry.renderAsShadow = NO;
-        geometry.material.shadowMap = self.shadowTexture;
+//        geometry.viewProjection = self.viewProjection;
+//        geometry.lightViewProjection = self.lightViewProjection;
+//        geometry.renderAsShadow = NO;
+//        geometry.material.shadowMap = self.shadowTexture;
         [geometry draw];
     }
 
@@ -150,7 +156,7 @@
 
 - (void)update:(NSTimeInterval)interval {
 //    [self.physicsWorld update:interval];
-    [self.light update:interval];
+//    [self.light update:interval];
     for (EZGLGeometry *geometry in self.geometrys) {
         [geometry update:interval];
     }

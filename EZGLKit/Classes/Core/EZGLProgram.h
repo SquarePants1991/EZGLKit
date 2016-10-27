@@ -13,6 +13,7 @@
 
 @interface EZGLProgram : NSObject
 
+@property (assign, nonatomic) BOOL isValid;
 @property (assign, nonatomic) GLuint value;
 
 - (instancetype)initWithVertexShaderFileName:(NSString *)vsName fragmentShaderFileName:(NSString *)fsName;

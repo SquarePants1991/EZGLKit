@@ -10,13 +10,13 @@ attribute vec4 position;
 attribute vec3 normal;      //法线向量，本shader尚未使用
 attribute vec2 texcoord;    //纹理坐标 uv，本shader尚未使用
 
-varying highp vec4 fragPosition;
+varying vec2 fragTexcoord;
 
 uniform mat4 viewProjection;
 uniform mat4 modelMatrix;
 
 void main()
 {
-    fragPosition = position;
+    fragTexcoord = texcoord;
     gl_Position = viewProjection * modelMatrix * position;
 }

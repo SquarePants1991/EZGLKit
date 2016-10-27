@@ -36,8 +36,6 @@
 {
     self = [super init];
     if (self) {
-        self.vertexShader = @"Default";
-        self.fragmentShader = @"Default";
         self.material = [EZGLMaterial defaultMaterial];
     }
     return self;
@@ -46,8 +44,6 @@
 - (instancetype)initWithMaterial:(EZGLMaterial *)material {
     self = [super init];
     if (self) {
-        self.vertexShader = @"Default";
-        self.fragmentShader = @"Default";
         self.material = material;
     }
     return self;
@@ -75,13 +71,12 @@
 
 - (void)setupWithData:(GLGeometryData)data {
     self.data = data;
-    if (self.vertexShader == nil) {
-        self.vertexShader = @"Default";
+    if (self.vertexShader && self.fragmentShader) {
+        self.glProgram = [[EZGLProgram alloc]initWithVertexShaderFileName:self.vertexShader fragmentShaderFileName:self.fragmentShader];
     }
-    if (self.fragmentShader == nil) {
-        self.fragmentShader = @"Default";
-    }
-    self.glProgram = [[EZGLProgram alloc]initWithVertexShaderFileName:self.vertexShader fragmentShaderFileName:self.fragmentShader];
+}
+
+- (void)prepare {
     [self createTexture];
     [self setupVAO];
     [self setupTransform];
@@ -101,7 +96,7 @@
     glEnableVertexAttribArray(normalLocation);
     glVertexAttribPointer(normalLocation, 3, GL_FLOAT, GL_FALSE, self.data.vertexStride, BUFFER_OFFSET(3 * sizeof(GLfloat)));
 
-    GLuint uvLocation = glGetAttribLocation(self.glProgram.value, "uv");
+    GLuint uvLocation = glGetAttribLocation(self.glProgram.value, "texcoord");
     glEnableVertexAttribArray(uvLocation);
     glVertexAttribPointer(uvLocation, 2, GL_FLOAT, GL_FALSE, self.data.vertexStride, BUFFER_OFFSET(6 * sizeof(GLfloat)));
 
@@ -134,9 +129,9 @@
     glUniform4fv([self.glProgram uniform:UNIFORM_DIFFUSE], 1, self.material.diffuse.v);
     glUniform4fv([self.glProgram uniform:UNIFORM_SPECULAR], 1, self.material.specular.v);
     glUniformMatrix4fv([self.glProgram uniform:UNIFORM_LIGHT_VIEWPROJECTION], 1,0, self.lightViewProjection.m);
-    glUniform4fv([self.glProgram uniform:UNIFORM_LIGHT_COLOR], 1, self.world.light.color.v);
-    glUniform1f([self.glProgram uniform:UNIFORM_LIGHT_BRIGHTNESS], self.world.light.brightness);
-    glUniform3fv([self.glProgram uniform:UNIFORM_LIGHT_POSITION], 1, self.world.light.position.v);
+//    glUniform4fv([self.glProgram uniform:UNIFORM_LIGHT_COLOR], 1, self.world.light.color.v);
+//    glUniform1f([self.glProgram uniform:UNIFORM_LIGHT_BRIGHTNESS], self.world.light.brightness);
+//    glUniform3fv([self.glProgram uniform:UNIFORM_LIGHT_POSITION], 1, self.world.light.position.v);
 
     glUniform1i([self.glProgram uniform:UNIFORM_DIFFUSE_MAP], 0);
     glActiveTexture(GL_TEXTURE0);
@@ -177,6 +172,18 @@
     GLKMatrix4 mvp = GLKMatrix4Multiply(self.viewProjection, self.modelMatrix);
     GLKMatrix3 normalMatrix = GLKMatrix3InvertAndTranspose(GLKMatrix4GetMatrix3(mvp), NULL);
     return normalMatrix;
+}
+
+- (EZGLProgram *)glProgram {
+    if (_glProgram != nil && _glProgram.isValid) {
+        return _glProgram;
+    }
+    return self.world.effect.program;
+}
+
+// Override this to use different View Projection
+- (GLKMatrix4)viewProjection {
+    return self.world.camera.matrix;
 }
 
 - (NSArray *)rigidBodys {

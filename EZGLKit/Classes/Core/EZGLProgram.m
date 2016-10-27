@@ -40,7 +40,7 @@
 - (instancetype)initWithVertexShader:(NSString *)vs fragmentShader:(NSString *)fs {
     self = [super init];
     if (self) {
-        self.value = [self createProgramWithVertexShader:vs fragmentShader:fs];
+        self.value = [self createProgramWithVertexShader:vs fragmentShader:fs result:&_isValid];
     }
     return self;
 }
@@ -52,10 +52,11 @@
 - (GLuint)createProgramWithVertexShaderFile:(NSString *)vsf fragmentShaderFile:(NSString *)fsf {
     NSString *vsContent = [NSString stringWithContentsOfFile:vsf encoding:NSUTF8StringEncoding error:nil];
     NSString *fsContent = [NSString stringWithContentsOfFile:fsf encoding:NSUTF8StringEncoding error:nil];
-    return [self createProgramWithVertexShader:vsContent fragmentShader:fsContent];
+    GLuint program = [self createProgramWithVertexShader:vsContent fragmentShader:fsContent result:&_isValid];
+    return program;
 }
 
-- (GLuint)createProgramWithVertexShader:(NSString *)vs fragmentShader:(NSString *)fs {
+- (GLuint)createProgramWithVertexShader:(NSString *)vs fragmentShader:(NSString *)fs result:(BOOL *)pResult{
     GLuint program, vertShader, fragShader;
     // Create shader program.
     program = glCreateProgram();
@@ -65,12 +66,14 @@
 
     if (![self compileShader:&vertShader type:GL_VERTEX_SHADER source:vssource]) {
         NSLog(@"Failed to compile vertex shader");
-        return NO;
+        *pResult = NO;
+        return 0;
     }
 
     if (![self compileShader:&fragShader type:GL_FRAGMENT_SHADER source:fssource]) {
         NSLog(@"Failed to compile fragment shader");
-        return NO;
+        *pResult = NO;
+        return 0;
     }
 
     // Attach vertex shader to program.
@@ -95,8 +98,8 @@
             glDeleteProgram(program);
             program = 0;
         }
-
-        return NO;
+        *pResult = NO;
+        return 0;
     }
 
     // Get uniform locations.
@@ -124,6 +127,7 @@
         glDeleteShader(fragShader);
     }
 
+    *pResult = YES;
     return program;
 }
 

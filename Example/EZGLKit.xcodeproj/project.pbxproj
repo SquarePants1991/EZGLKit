@@ -37,6 +37,7 @@
 		D3C9FD8E1DC0F149004E7AE1 /* ball2.mtl in Resources */ = {isa = PBXBuildFile; fileRef = D3C9FD8B1DC0F149004E7AE1 /* ball2.mtl */; };
 		D3C9FD8F1DC0F149004E7AE1 /* ball2.obj in Resources */ = {isa = PBXBuildFile; fileRef = D3C9FD8C1DC0F149004E7AE1 /* ball2.obj */; };
 		D3C9FD911DC0F6D4004E7AE1 /* sphere1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D3C9FD901DC0F6D4004E7AE1 /* sphere1.jpg */; };
+		D3C9FDA31DC25693004E7AE1 /* EZGLCubeWithTextureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3C9FDA21DC25693004E7AE1 /* EZGLCubeWithTextureViewController.m */; };
 		F28D411B08168914A80EFD08 /* libPods-EZGLKit_Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D5B31F65B17DF330A25AFDD /* libPods-EZGLKit_Tests.a */; };
 /* End PBXBuildFile section */
 
@@ -97,6 +98,8 @@
 		D3C9FD8B1DC0F149004E7AE1 /* ball2.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ball2.mtl; path = Resources/ball2.mtl; sourceTree = "<group>"; };
 		D3C9FD8C1DC0F149004E7AE1 /* ball2.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ball2.obj; path = Resources/ball2.obj; sourceTree = "<group>"; };
 		D3C9FD901DC0F6D4004E7AE1 /* sphere1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = sphere1.jpg; path = Resources/sphere1.jpg; sourceTree = "<group>"; };
+		D3C9FDA11DC25693004E7AE1 /* EZGLCubeWithTextureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EZGLCubeWithTextureViewController.h; sourceTree = "<group>"; };
+		D3C9FDA21DC25693004E7AE1 /* EZGLCubeWithTextureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EZGLCubeWithTextureViewController.m; sourceTree = "<group>"; };
 		D79FD1F25812C2F5CA6082CD /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		FE102A697C3C7FA9874D2744 /* libPods-EZGLKit_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EZGLKit_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -230,6 +233,7 @@
 		8E9507531DBDFEAE00244415 /* Examples */ = {
 			isa = PBXGroup;
 			children = (
+				D3C9FDA01DC25678004E7AE1 /* Basic Cube With Texture */,
 				8EA173681DC1E3E3002AC00E /* Cube Panorama */,
 				D3C9FD861DC0F006004E7AE1 /* Sphere Panorama */,
 				8E9507541DBDFEB700244415 /* Basic Triangle */,
@@ -301,6 +305,15 @@
 				D3C9FD881DC0F050004E7AE1 /* EZGLSpherePanoramaViewController.m */,
 			);
 			name = "Sphere Panorama";
+			sourceTree = "<group>";
+		};
+		D3C9FDA01DC25678004E7AE1 /* Basic Cube With Texture */ = {
+			isa = PBXGroup;
+			children = (
+				D3C9FDA11DC25693004E7AE1 /* EZGLCubeWithTextureViewController.h */,
+				D3C9FDA21DC25693004E7AE1 /* EZGLCubeWithTextureViewController.m */,
+			);
+			name = "Basic Cube With Texture";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -517,6 +530,7 @@
 				6003F59E195388D20070C39A /* EZGLAppDelegate.m in Sources */,
 				8E0F30801DBDFFAA00F54680 /* EZGLBasicTriangleViewController.m in Sources */,
 				D3C9FD891DC0F050004E7AE1 /* EZGLSpherePanoramaViewController.m in Sources */,
+				D3C9FDA31DC25693004E7AE1 /* EZGLCubeWithTextureViewController.m in Sources */,
 				6003F5A7195388D20070C39A /* EZGLViewController.m in Sources */,
 				8EA1736B1DC1E41B002AC00E /* EZGLCubePanoramaViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,

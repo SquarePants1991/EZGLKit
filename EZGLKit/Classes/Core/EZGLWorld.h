@@ -11,6 +11,8 @@
 #import <GLKit/GLKit.h>
 #import "EZGLPerspectiveCamera.h"
 #import "EZGLOrthoCamera.h"
+#import "EZGLProgram.h"
+#import "EZGLEffect.h"
 
 @class EZGLGeometry;
 @class EZGLLight;
@@ -20,17 +22,13 @@
 @interface EZGLWorld : NSObject
 
 @property (strong, nonatomic) EAGLContext *context;
-@property (assign, nonatomic) GLKMatrix4 viewProjection;
-@property (strong, nonatomic) EZGLLight *light;
-@property (assign, nonatomic) GLKMatrix4 lightViewProjection;
 @property (strong, nonatomic) EZGLPhysicsWorld *physicsWorld;
 
-@property (assign, nonatomic) CGFloat angleY;
-@property (assign, nonatomic) CGFloat angleX;
-
+@property (strong, nonatomic) EZGLEffect *effect;
 @property (strong, nonatomic) EZGLCamera *camera;
 
 - (instancetype)initWithGLKView:(GLKView *)glkView;
+
 - (void)addGeometry:(EZGLGeometry *)geometry;
 - (void)render:(CGRect)rect;
 - (void)update:(NSTimeInterval)interval;

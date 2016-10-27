@@ -1,24 +1,11 @@
-newmtl white
-Ka 0 0 0
-Kd 1 1 1
-Ks 0 0 0
+# Blender MTL File: 'None'
+# Material Count: 1
 
-newmtl red
-Ka 0 0 0
-Kd 1 0 0
-Ks 0 0 0
-
-newmtl green
-Ka 0 0 0
-Kd 0 1 0
-Ks 0 0 0
-
-newmtl blue
-Ka 0 0 0
-Kd 0 0 1
-Ks 0 0 0
-
-newmtl light
-Ka 20 20 20
-Kd 1 1 1
-Ks 0 0 0
+newmtl None
+Ns 0
+Ka 1.000000 1.000000 1.000000
+Kd 0.0 0.0 0.0
+Ks 0.8 0.8 0.8
+d 1
+illum 2
+map_Kd sphere4.jpg

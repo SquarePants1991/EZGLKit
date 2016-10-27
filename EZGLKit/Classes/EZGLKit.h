@@ -12,5 +12,6 @@
 #import "EZGLWorld.h"
 #import "EZGLPlaneGeometry.h"
 #import "EZGLWaveFrontGeometry.h"
+#import "EZGLEffect.h"
 
 #endif /* EZGLKit_h */
