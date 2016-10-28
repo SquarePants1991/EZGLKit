@@ -23,9 +23,9 @@
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
     
-    self.viewControllersMap = @{@"基本三角形":@"EZGLBasicTriangleViewController",
-                                @"正方体":@"EZGLBasicCubeViewController",
+    self.viewControllersMap = @{@"正方体":@"EZGLBasicCubeViewController",
                                 @"带纹理的正方体":@"EZGLCubeWithTextureViewController",
+                                @"带光照纹理的正方体":@"EZGLCubeWithTextureViewController",
                                 @"全景Sphere":@"EZGLSpherePanoramaViewController",
                                 @"全景Cube":@"EZGLCubePanoramaViewController"};
 }
