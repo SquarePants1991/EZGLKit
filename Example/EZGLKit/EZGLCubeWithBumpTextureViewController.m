@@ -26,7 +26,7 @@
     [super viewDidLoad];
     
     self.world = [[EZGLWorld alloc] initWithGLKView:(GLKView *)self.view];
-    EZGLProgram *program = [[EZGLProgram alloc]initWithVertexShaderFileName:@"OneLight" fragmentShaderFileName:@"OneLight"];
+    EZGLProgram *program = [[EZGLProgram alloc]initWithVertexShaderFileName:@"OneLightWithBump" fragmentShaderFileName:@"OneLightWithBump"];
     self.world.effect = [[EZGLEffect alloc] initWithProgram:program];
     [self.world.effect addLight:[EZGLLight new]];
     

@@ -56,9 +56,9 @@
     CGFloat dy = pt.y - self.lastTouchPoint.y;
     
     EZGLPerspectiveCamera *perspectiveCamera = (EZGLPerspectiveCamera *)self.world.camera;
-    [perspectiveCamera rotateWithAngle:-dx / 40.0 axis:perspectiveCamera.up];
-    [perspectiveCamera rotateWithAngle:-dy / 40.0 axis:perspectiveCamera.left];
-    
+//    [perspectiveCamera rotateWithAngle:-dx / 40.0 axis:perspectiveCamera.up];
+//    [perspectiveCamera rotateWithAngle:-dy / 40.0 axis:perspectiveCamera.left];
+//    
     self.lastTouchPoint = pt;
 }
 

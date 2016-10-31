@@ -99,6 +99,14 @@
     GLuint uvLocation = glGetAttribLocation(self.glProgram.value, "texcoord");
     glEnableVertexAttribArray(uvLocation);
     glVertexAttribPointer(uvLocation, 2, GL_FLOAT, GL_FALSE, self.data.vertexStride, BUFFER_OFFSET(6 * sizeof(GLfloat)));
+    
+    GLuint tangentLocation = glGetAttribLocation(self.glProgram.value, "tangent");
+    glEnableVertexAttribArray(tangentLocation);
+    glVertexAttribPointer(tangentLocation, 3, GL_FLOAT, GL_FALSE, self.data.vertexStride, BUFFER_OFFSET(8 * sizeof(GLfloat)));
+    
+    GLuint bitangentLocation = glGetAttribLocation(self.glProgram.value, "bitangent");
+    glEnableVertexAttribArray(bitangentLocation);
+    glVertexAttribPointer(bitangentLocation, 3, GL_FLOAT, GL_FALSE, self.data.vertexStride, BUFFER_OFFSET(11 * sizeof(GLfloat)));
 
     if (self.data.indiceVBO) {
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, self.data.indiceVBO);
