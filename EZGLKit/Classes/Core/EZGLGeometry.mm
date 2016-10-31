@@ -119,20 +119,20 @@
 - (void)draw {
     glUseProgram(self.glProgram.value);
 
+    [self.world.effect applyToProgram:self.glProgram];
+    
     GLint renderAsShadow = self.renderAsShadow ? 1 : 0;
     glUniform1i([self.glProgram uniform:UNIFORM_RENDERASSHADOW], renderAsShadow);
 
     glUniformMatrix4fv([self.glProgram uniform:UNIFORM_VIEWPROJECTION], 1, 0, self.viewProjection.m);
     glUniformMatrix4fv([self.glProgram uniform:UNIFORM_MODEL_MATRIX], 1, 0, self.modelMatrix.m);
     glUniformMatrix3fv([self.glProgram uniform:UNIFORM_NORMAL_MATRIX], 1, 0, self.normalMatrix.m);
-    glUniform4fv([self.glProgram uniform:UNIFORM_AMBIENT], 1, self.material.ambient.v);
-    glUniform4fv([self.glProgram uniform:UNIFORM_DIFFUSE], 1, self.material.diffuse.v);
-    glUniform4fv([self.glProgram uniform:UNIFORM_SPECULAR], 1, self.material.specular.v);
     glUniformMatrix4fv([self.glProgram uniform:UNIFORM_LIGHT_VIEWPROJECTION], 1,0, self.lightViewProjection.m);
-//    glUniform4fv([self.glProgram uniform:UNIFORM_LIGHT_COLOR], 1, self.world.light.color.v);
-//    glUniform1f([self.glProgram uniform:UNIFORM_LIGHT_BRIGHTNESS], self.world.light.brightness);
-//    glUniform3fv([self.glProgram uniform:UNIFORM_LIGHT_POSITION], 1, self.world.light.position.v);
-
+    
+    glUniform4fv([self.glProgram uniformWithStr:@"material.ambient"], 1, self.material.ambient.v);
+    glUniform4fv([self.glProgram uniformWithStr:@"material.diffuse"], 1, self.material.diffuse.v);
+    glUniform4fv([self.glProgram uniformWithStr:@"material.specular"], 1, self.material.specular.v);
+    
     glUniform1i([self.glProgram uniform:UNIFORM_DIFFUSE_MAP], 0);
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, self.material.diffuseMap);

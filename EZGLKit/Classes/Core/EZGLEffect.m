@@ -34,4 +34,17 @@
     self.lights = [self.lights arrayByAddingObject:light];
 }
 
+- (void)applyToProgram:(EZGLProgram *)program {
+    int index = 0;
+    for (EZGLLight *light in self.lights) {
+        NSString *name = [NSString stringWithFormat:@"lights[%d].color",index];
+        glUniform4fv([program uniformWithStr:name], 1, light.color.v);
+        name = [NSString stringWithFormat:@"lights[%d].position",index];
+        glUniform3fv([program uniformWithStr:name], 1, light.position.v);
+        name = [NSString stringWithFormat:@"lights[%d].intensity",index];
+        glUniform1f([program uniformWithStr:name], light.intensity);
+        index++;
+    }
+}
+
 @end

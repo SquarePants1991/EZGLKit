@@ -12,6 +12,8 @@
     int uniforms[NUM_UNIFORMS];
 }
 
+@property (strong, nonatomic) NSMutableDictionary *uniformCache;
+
 @end
 
 @implementation EZGLProgram
@@ -47,6 +49,20 @@
 
 - (int)uniform:(int)uniformName {
     return uniforms[uniformName];
+}
+
+- (GLuint)uniformWithStr:(NSString *)name {
+    if (self.uniformCache == nil) {
+        self.uniformCache = [NSMutableDictionary new];
+    }
+    
+    NSNumber *val = self.uniformCache[name];
+    if (val) {
+        return (GLuint)[val unsignedIntegerValue];
+    } else {
+        GLuint loc = glGetUniformLocation(self.value, name.UTF8String);
+        [self.uniformCache setObject:@(loc) forKey:name];
+    }
 }
 
 - (GLuint)createProgramWithVertexShaderFile:(NSString *)vsf fragmentShaderFile:(NSString *)fsf {
@@ -110,6 +126,8 @@
     uniforms[UNIFORM_AMBIENT] = glGetUniformLocation(program, "ambient");
     uniforms[UNIFORM_DIFFUSE] = glGetUniformLocation(program, "diffuse");
     uniforms[UNIFORM_SPECULAR] = glGetUniformLocation(program, "specular");
+    
+    uniforms[UNIFORM_Lights] = glGetUniformLocation(program, "lights");
     uniforms[UNIFORM_LIGHT_VIEWPROJECTION] = glGetUniformLocation(program, "lightViewProjection");
     uniforms[UNIFORM_LIGHT_POSITION] = glGetUniformLocation(program, "lightPosition");
     uniforms[UNIFORM_LIGHT_COLOR] = glGetUniformLocation(program, "lightColor");

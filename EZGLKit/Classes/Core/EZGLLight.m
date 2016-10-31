@@ -7,8 +7,11 @@
 //
 
 #import "EZGLLight.h"
+#import "EZGLProgram.h"
 
-@interface EZGLLight ()
+@interface EZGLLight () {
+    GLfloat _rawData[8];
+}
 
 @property (strong, nonatomic) EZGLPerspectiveCamera *lightCamera;
 
@@ -20,8 +23,8 @@
     self = [super init];
     if (self) {
         self.color = GLKVector4Make(1, 1, 1, 1);
-        self.brightness = 0.0; //0 ~ 1
-        self.position = GLKVector3Make(7, 7, 0);
+        self.intensity = 100; //0 ~ 1000
+        self.position = GLKVector3Make(0, 7, 0);
     }
     return self;
 }
@@ -40,6 +43,22 @@
         self.lightCamera.transform.translateZ = self.position.z;
     }
     return self.lightCamera;
+}
+
+- (GLfloat *)raw {
+    _rawData[0] = self.position.x;
+    _rawData[1] = self.position.y;
+    _rawData[2] = self.position.z;
+    _rawData[3] = self.color.r;
+    _rawData[4] = self.color.g;
+    _rawData[5] = self.color.b;
+    _rawData[6] = self.color.a;
+    _rawData[7] = self.intensity;
+    return _rawData;
+}
+
+- (GLsizei)rawLen {
+    return sizeof(_rawData) / sizeof(GLfloat);
 }
 
 @end

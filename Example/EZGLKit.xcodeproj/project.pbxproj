@@ -22,6 +22,8 @@
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
 		8E0F30801DBDFFAA00F54680 /* EZGLBasicTriangleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E0F307F1DBDFFAA00F54680 /* EZGLBasicTriangleViewController.m */; };
+		8E361FEF1DC7343900073685 /* EZGLCubeWithBumpTextureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E361FEE1DC7343900073685 /* EZGLCubeWithBumpTextureViewController.m */; };
+		8E5577031DC71A910096E198 /* EZGLCubeWithTextureLightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E5577021DC71A910096E198 /* EZGLCubeWithTextureLightViewController.m */; };
 		8EA1736B1DC1E41B002AC00E /* EZGLCubePanoramaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EA1736A1DC1E41B002AC00E /* EZGLCubePanoramaViewController.m */; };
 		8EA1736D1DC1E4B0002AC00E /* sphere3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8EA1736C1DC1E4B0002AC00E /* sphere3.jpg */; };
 		8EA1736F1DC1E642002AC00E /* sphere4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8EA1736E1DC1E642002AC00E /* sphere4.jpg */; };
@@ -76,6 +78,10 @@
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		8E0F307E1DBDFFAA00F54680 /* EZGLBasicTriangleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EZGLBasicTriangleViewController.h; sourceTree = "<group>"; };
 		8E0F307F1DBDFFAA00F54680 /* EZGLBasicTriangleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EZGLBasicTriangleViewController.m; sourceTree = "<group>"; };
+		8E361FED1DC7343900073685 /* EZGLCubeWithBumpTextureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EZGLCubeWithBumpTextureViewController.h; sourceTree = "<group>"; };
+		8E361FEE1DC7343900073685 /* EZGLCubeWithBumpTextureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EZGLCubeWithBumpTextureViewController.m; sourceTree = "<group>"; };
+		8E5577011DC71A910096E198 /* EZGLCubeWithTextureLightViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EZGLCubeWithTextureLightViewController.h; sourceTree = "<group>"; };
+		8E5577021DC71A910096E198 /* EZGLCubeWithTextureLightViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EZGLCubeWithTextureLightViewController.m; sourceTree = "<group>"; };
 		8EA173691DC1E41B002AC00E /* EZGLCubePanoramaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EZGLCubePanoramaViewController.h; sourceTree = "<group>"; };
 		8EA1736A1DC1E41B002AC00E /* EZGLCubePanoramaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EZGLCubePanoramaViewController.m; sourceTree = "<group>"; };
 		8EA1736C1DC1E4B0002AC00E /* sphere3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = sphere3.jpg; path = Resources/sphere3.jpg; sourceTree = "<group>"; };
@@ -230,9 +236,29 @@
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
 		};
+		8E361FEC1DC733F500073685 /* Cube With Bump Texture */ = {
+			isa = PBXGroup;
+			children = (
+				8E361FED1DC7343900073685 /* EZGLCubeWithBumpTextureViewController.h */,
+				8E361FEE1DC7343900073685 /* EZGLCubeWithBumpTextureViewController.m */,
+			);
+			name = "Cube With Bump Texture";
+			sourceTree = "<group>";
+		};
+		8E5577001DC71A750096E198 /* Cube WithTexture & Light */ = {
+			isa = PBXGroup;
+			children = (
+				8E5577011DC71A910096E198 /* EZGLCubeWithTextureLightViewController.h */,
+				8E5577021DC71A910096E198 /* EZGLCubeWithTextureLightViewController.m */,
+			);
+			name = "Cube WithTexture & Light";
+			sourceTree = "<group>";
+		};
 		8E9507531DBDFEAE00244415 /* Examples */ = {
 			isa = PBXGroup;
 			children = (
+				8E361FEC1DC733F500073685 /* Cube With Bump Texture */,
+				8E5577001DC71A750096E198 /* Cube WithTexture & Light */,
 				D3C9FDA01DC25678004E7AE1 /* Basic Cube With Texture */,
 				8EA173681DC1E3E3002AC00E /* Cube Panorama */,
 				D3C9FD861DC0F006004E7AE1 /* Sphere Panorama */,
@@ -528,10 +554,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				6003F59E195388D20070C39A /* EZGLAppDelegate.m in Sources */,
+				8E361FEF1DC7343900073685 /* EZGLCubeWithBumpTextureViewController.m in Sources */,
 				8E0F30801DBDFFAA00F54680 /* EZGLBasicTriangleViewController.m in Sources */,
 				D3C9FD891DC0F050004E7AE1 /* EZGLSpherePanoramaViewController.m in Sources */,
 				D3C9FDA31DC25693004E7AE1 /* EZGLCubeWithTextureViewController.m in Sources */,
 				6003F5A7195388D20070C39A /* EZGLViewController.m in Sources */,
+				8E5577031DC71A910096E198 /* EZGLCubeWithTextureLightViewController.m in Sources */,
 				8EA1736B1DC1E41B002AC00E /* EZGLCubePanoramaViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 				D30FF4F31DBA4260006A2A68 /* EZGLBasicCubeViewController.m in Sources */,

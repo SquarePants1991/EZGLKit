@@ -12,9 +12,12 @@
 @interface EZGLLight : NSObject
 
 @property (assign, nonatomic) GLKVector4 color;
-@property (assign, nonatomic) GLfloat brightness;
+@property (assign, nonatomic) GLfloat intensity;
 @property (assign, nonatomic) GLKVector3 position;
 
 - (void)update:(NSTimeInterval)interval;
 - (EZGLPerspectiveCamera *)lightCameraWithSize:(CGSize)size;
+- (GLfloat *)raw;
+- (GLsizei)rawLen;
+
 @end

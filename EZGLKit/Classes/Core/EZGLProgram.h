@@ -21,4 +21,6 @@
 - (instancetype)initWithVertexShader:(NSString *)vs fragmentShader:(NSString *)fs;
 
 - (int)uniform:(int)uniformName;
+- (GLuint)uniformWithStr:(NSString *)name;
+
 @end

@@ -72,6 +72,7 @@
         self.geometrys = [NSMutableArray new];
         self.physicsWorld = [EZGLPhysicsWorld new];
         self.effect = [EZGLEffect new];
+        [self.effect addLight:[EZGLLight new]];
     }
     return self;
 }

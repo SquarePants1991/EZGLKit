@@ -1,15 +1,15 @@
 //
-//  EZGLSpherePanoramaViewController.m
+//  EZGLCubeWithTextureViewController.m
 //  EZGLKit
 //
-//  Created by wang yang on 2016/10/26.
+//  Created by wang yang on 2016/10/27.
 //  Copyright © 2016年 ocean. All rights reserved.
 //
 
-#import "EZGLSpherePanoramaViewController.h"
+#import "EZGLCubeWithBumpTextureViewController.h"
 #import <EZGLKit/EZGLKit.h>
 
-@interface EZGLSpherePanoramaViewController ()
+@interface EZGLCubeWithBumpTextureViewController ()
 
 @property (strong, nonatomic) EZGLWorld *world;
 @property (strong, nonatomic) EZGLWaveFrontGeometry *geometry;
@@ -19,24 +19,20 @@
 
 @end
 
-@implementation EZGLSpherePanoramaViewController
+@implementation EZGLCubeWithBumpTextureViewController
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.world = [[EZGLWorld alloc] initWithGLKView:(GLKView *)self.view];
-    EZGLPerspectiveCamera *perspectiveCamera = (EZGLPerspectiveCamera *)self.world.camera;
-    perspectiveCamera.fovyRadians = 95;
-    perspectiveCamera.eye = GLKVector3Make(0, 0, 0);
-    perspectiveCamera.lookAt = GLKVector3Make(0, 0, 1);
-    perspectiveCamera.up = GLKVector3Make(0, 1,0);
-    
-    EZGLProgram *program = [[EZGLProgram alloc]initWithVertexShaderFileName:@"WithTexture" fragmentShaderFileName:@"WithTexture"];
+    EZGLProgram *program = [[EZGLProgram alloc]initWithVertexShaderFileName:@"OneLight" fragmentShaderFileName:@"OneLight"];
     self.world.effect = [[EZGLEffect alloc] initWithProgram:program];
+    [self.world.effect addLight:[EZGLLight new]];
     
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"ball3" ofType:@".obj"];
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"cube3" ofType:@".obj"];
     self.geometry = [[EZGLWaveFrontGeometry alloc] initWithWaveFrontFilePath:path];
-//    self.geometry.transform.quaternion = GLKQuaternionMakeWithAngleAndVector3Axis(-M_PI / 2, GLKVector3Make(1, 0, 0));
     [self.world addGeometry:self.geometry];
     
     
@@ -62,8 +58,8 @@
     CGFloat dy = pt.y - self.lastTouchPoint.y;
     
     EZGLPerspectiveCamera *perspectiveCamera = (EZGLPerspectiveCamera *)self.world.camera;
-    [perspectiveCamera rotateLookAtWithAngle: -dx / 40.0 axis:perspectiveCamera.up];
-//    [perspectiveCamera rotateWithAngle:-dy / 40.0 axis:perspectiveCamera.left];
+    [perspectiveCamera rotateEyeWithAngle:-dx / 40.0 axis:perspectiveCamera.up];
+    [perspectiveCamera rotateEyeWithAngle:-dy / 40.0 axis:perspectiveCamera.left];
     
     self.lastTouchPoint = pt;
 }
@@ -80,4 +76,5 @@
         self.lastScale = gesture.scale;
     }
 }
+
 @end
