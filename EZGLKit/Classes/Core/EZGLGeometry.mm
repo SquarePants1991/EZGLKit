@@ -148,6 +148,10 @@
     glActiveTexture(GL_TEXTURE1);
     glBindTexture(GL_TEXTURE_2D, self.material.shadowMap);
     glUniform1i([self.glProgram uniform:UNIFORM_SHADOW_MAP], 1);
+    
+    glActiveTexture(GL_TEXTURE2);
+    glBindTexture(GL_TEXTURE_2D, self.material.normalMap);
+    glUniform1i([self.glProgram uniformWithStr:@"normalMap"], 2);
 
     glBindVertexArrayOES(self.vao);
     if (self.data.supportIndiceVBO) {

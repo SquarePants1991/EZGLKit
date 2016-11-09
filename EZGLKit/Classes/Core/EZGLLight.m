@@ -23,15 +23,15 @@
     self = [super init];
     if (self) {
         self.color = GLKVector4Make(1, 1, 1, 1);
-        self.intensity = 100; //0 ~ 1000
-        self.position = GLKVector3Make(0, 7, 0);
+        self.intensity = 1.5; //0 ~ 1000
+        self.position = GLKVector3Make(0, 10, 10);
     }
     return self;
 }
 
 - (void)update:(NSTimeInterval)interval {
-    //GLKQuaternion quaternion = GLKQuaternionMakeWithAngleAndAxis(-M_PI * interval / 10, 0, 1, 0);
-    //self.position = GLKQuaternionRotateVector3(quaternion, self.position);
+//    GLKQuaternion quaternion = GLKQuaternionMakeWithAngleAndAxis(-M_PI * interval / 10, 0, 1, 0);
+//    self.position = GLKQuaternionRotateVector3(quaternion, self.position);
 //    self.position = GLKVector3Make(0, self.position.y + interval, self.position.z + interval);
 }
 

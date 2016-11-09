@@ -116,23 +116,39 @@
         GLfloat z = attrib.vertices[indice.vertex_index * 3 + 2];
         GLfloat u = attrib.texcoords[indice.texcoord_index * 2 + 0];
         GLfloat v = attrib.texcoords[indice.texcoord_index * 2 + 1];
+        GLfloat nx = attrib.texcoords[indice.normal_index * 3 + 0];
+        GLfloat ny = attrib.texcoords[indice.normal_index * 3 + 1];
+        GLfloat nz = attrib.texcoords[indice.normal_index * 3 + 2];
         
         positions.push_back(GLKVector3Make(x, y, z));
         uvs.push_back(GLKVector2Make(u, v));
-        if (positions.size() == 3) {
-            GLKVector3 tangent,bitangent;
-            [self caculateTangents:&tangent bitangents:&bitangent positions:positions uvs:uvs];
-            
-            for (int i=0; i < 3; i++) {
-                tangents.push_back(tangent.x);
-                tangents.push_back(tangent.y);
-                tangents.push_back(tangent.z);
-                bitangents.push_back(bitangent.x);
-                bitangents.push_back(bitangent.y);
-                bitangents.push_back(bitangent.z);
-            }
-            positions.clear();
-        }
+        GLKVector3 tangent,bitangent;
+        [self caculateTangents:&tangent bitangents:&bitangent position:GLKVector3Make(x, y, z) normal:GLKVector3Make(nx, ny, nz)];
+        tangents.push_back(tangent.x);
+        tangents.push_back(tangent.y);
+        tangents.push_back(tangent.z);
+        bitangents.push_back(bitangent.x);
+        bitangents.push_back(bitangent.y);
+        bitangents.push_back(bitangent.z);
+        
+        
+//        if (positions.size() == 3) {
+//            GLKVector3 tangent,bitangent;
+//            [self caculateTangents:&tangent bitangents:&bitangent position:GLKVector3Make(x, y, z) normal:GLKVector3Make(nx, ny, nz)];
+//            
+//            
+//            [self caculateTangents:&tangent bitangents:&bitangent positions:positions uvs:uvs];
+//            
+//            for (int i=0; i < 3; i++) {
+//                tangents.push_back(tangent.x);
+//                tangents.push_back(tangent.y);
+//                tangents.push_back(tangent.z);
+//                bitangents.push_back(bitangent.x);
+//                bitangents.push_back(bitangent.y);
+//                bitangents.push_back(bitangent.z);
+//            }
+//            positions.clear();
+//        }
     }
     
     
@@ -162,6 +178,35 @@
     
     
     return vertices;
+}
+
+- (void)caculateTangents:(GLKVector3 *)pTangent bitangents:(GLKVector3 *)pBitangent position:(GLKVector3)position normal:(GLKVector3)normal {
+    CGFloat x = position.x;
+    CGFloat y = position.y;
+    CGFloat z = position.z;
+    CGFloat nx = normal.x;
+    CGFloat ny = normal.y;
+    CGFloat nz = normal.z;
+
+    CGFloat x1 = x + 1;CGFloat z1 = z + 1;CGFloat y1 = (nz * (z - z1) + nx * (x - x1))/ny + y;
+    GLKVector3 resultY = GLKVector3Make(x1 - x, y1 - y, z1 - z);
+    
+    x1 = x + 1;y1 = y + 1;z1 = (ny * (y - y1) + nx * (x - x1))/nz + z;
+    GLKVector3 resultZ = GLKVector3Make(x1 - x, y1 - y, z1 - z);
+    
+    z1 = z + 1;y1 = y + 1;x1 = (ny * (y - y1) + nz * (z - z1))/nx + x;
+    GLKVector3 resultX = GLKVector3Make(x1 - x, y1 - y, z1 - z);
+
+    if (resultX.x < 50) {
+        *pTangent = resultX;
+        *pBitangent = GLKVector3CrossProduct(normal, resultX);
+    } else if (resultY.y < 50) {
+        *pTangent = resultY;
+        *pBitangent = GLKVector3CrossProduct(normal, resultY);
+    } else {
+        *pTangent = resultZ;
+        *pBitangent = GLKVector3CrossProduct(normal, resultZ);
+    }
 }
 
 - (void)caculateTangents:(GLKVector3 *)pTangent bitangents:(GLKVector3 *)pBitangent positions:(std::vector<GLKVector3>)positions uvs:(std::vector<GLKVector2>)uvs {

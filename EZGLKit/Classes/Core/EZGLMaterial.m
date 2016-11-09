@@ -11,6 +11,15 @@
 
 @implementation EZGLMaterial
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.normalMap = [UIImage textureFromCGImage:[UIImage imageNamed:@"normal.jpg"].CGImage];
+    }
+    return self;
+}
+
 + (EZGLMaterial *)defaultMaterial {
     EZGLMaterial *material = [EZGLMaterial new];
     material.ambient = GLKVector4Make(0.6, 0.6, 0.6, 1.0);
@@ -21,6 +30,7 @@
     NSArray *images = [[NSBundle bundleForClass:self] pathsForResourcesOfType:@".jpg" inDirectory:@"./"];
     int index = (int)floor(rand() / (float)RAND_MAX * (images.count - 1));
     NSString *image = images[index];
+    image = [[NSBundle bundleForClass:self] pathForResource:@"wood_02" ofType:@".jpg"];
     material.diffuseMap = [UIImage textureFromCGImage:[UIImage imageWithContentsOfFile:image].CGImage];
     return material;
 }

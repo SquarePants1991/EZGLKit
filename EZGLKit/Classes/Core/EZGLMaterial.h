@@ -14,6 +14,8 @@
 @property (assign, nonatomic) GLKVector4 diffuse;
 @property (assign, nonatomic) GLKVector4 specular;
 @property (assign, nonatomic) GLuint diffuseMap;
+@property (assign, nonatomic) GLuint normalMap;
+
 @property (assign, nonatomic) GLuint shadowMap;
 
 + (EZGLMaterial *)defaultMaterial;
