@@ -35,41 +35,76 @@ uniform light lights[1];
 uniform sampler2D diffuseMap;
 uniform sampler2D shadowMap;
 uniform sampler2D normalMap;
+uniform sampler2D specularMap;
 uniform material_struct material;
+
+void pointLight(
+                in vec3 normal,
+                out vec4 ambient,
+                out vec4 diffuse,
+                out vec4 specular,
+                in vec3 vp,
+                in vec3 eye,
+                in vec4 lightAmbient,
+                in vec4 lightDiffuse,
+                in vec4 lightSpecular
+                ) {
+    ambient = lightAmbient;
+    vec3 halfVector = normalize(vp + eye);
+    float shininess = 50.0;
+    float nDotViewPosition = max(0.0,dot(normal,vp));
+    diffuse = lightDiffuse * nDotViewPosition;
+    float nDotViewHalfVector = max(0.0,dot(normal,halfVector));
+    float powerFactor = max(0.0, pow(nDotViewHalfVector,shininess));
+    specular = lightSpecular * powerFactor;
+}
+
+void transformNormal(in vec3 position, in vec3 normal,out vec3 newNormal)
+{
+    highp vec3 normalTarget = position + normalize(normal);
+    highp vec3 mMatrixNormalTarget = (modelMatrix * vec4(normalTarget, 1.0)).xyz;
+    highp vec3 mMatrixPosition = (modelMatrix * vec4(position, 1.0)).xyz;
+    newNormal = normalize(mMatrixNormalTarget - mMatrixPosition);
+}
 
 void main()
 {
-    light defaultLight = lights[0];
-    
-    highp vec3 eyePosition = vec3(viewProjection * modelMatrix * fragPosition);
-    
-    highp vec3 tbnNormal = normalMatrix * normalize(fragNormal);
-    highp vec3 tbnTangent = normalMatrix * normalize(fragTangent);
-    highp vec3 tbnBitangent = normalMatrix * normalize(fragBitangent);
-    highp mat3 tbn = (mat3(tbnTangent,tbnBitangent,tbnNormal));
-    
-//    highp vec3 eyeLightVec = tbn * vec3(viewProjection * vec4(defaultLight.position,1.0) - vec3(eyePosition));
-    highp vec3 eyeLightVec = tbn * vec3(viewProjection * vec4(defaultLight.position,1.0)) - tbn * vec3(eyePosition);
-    highp float eyeLightDistance = distance(eyeLightVec,vec3(0,0,0));
-    
+    // 扰动法向量
     highp vec3 rgb = texture2D( normalMap, fragTexcoord ).rgb;
-    highp float tnx = rgb.r * 2.0 - 1.0;
-    highp float tny = rgb.g * 2.0 - 1.0;
-    highp float tnz = rgb.b * 2.0 - 1.0;
-    
+    highp float tnx = 2.0 * (rgb.r - 0.5);
+    highp float tny = 2.0 * (rgb.g - 0.5);
+    highp float tnz = 2.0 * (rgb.b - 0.5);
     highp vec3 textureNormal = normalize(vec3(tnx, tny, tnz));
+//    highp vec3 textureNormal;
+//    transformNormal(fragPosition.xyz, fragNormal, textureNormal);
     
-    highp float brightness = max(0.0, defaultLight.intensity * dot(textureNormal, normalize(eyeLightVec)));
+    // 计算TBN变换矩阵
+    highp vec3 tbnNormal, tbnTangent, tbnBitangent;
+    transformNormal(fragPosition.xyz, fragNormal, tbnNormal);
+    transformNormal(fragPosition.xyz, fragTangent, tbnTangent);
+//    transformNormal(fragPosition.xyz, fragBitangent, tbnBitangent);
+    tbnBitangent = normalize(cross(tbnTangent, tbnNormal));
+    highp mat3 tbn = mat3(tbnTangent.x, tbnBitangent.x, tbnNormal.x,
+                          tbnTangent.y, tbnBitangent.y, tbnNormal.y,
+                          tbnTangent.z, tbnBitangent.z, tbnNormal.z);
+    
+    // 计算表面点到光源的向量
+    light defaultLight = lights[0];
+    highp vec3 mMatrixPosition = (modelMatrix * fragPosition).xyz;
+    highp vec3 vp = normalize(defaultLight.position - mMatrixPosition);
+    vp = normalize(tbn * vp);
 
+    // 计算表面点到摄像机的向量
     
-    highp vec4 surfaceColor = texture2D(diffuseMap, fragTexcoord);// + material.diffuse;
-    highp vec3 ambientColor = material.ambient.rgb * surfaceColor.rgb;
-
-    highp vec3 eyeReverseVec = tbn * normalize(vec3(0.0,0.0,0.0) - eyePosition);
-    highp vec3 reflectLightVec = reflect(-normalize(eyeLightVec),textureNormal);
-    highp float cosAlpha = max(0.0 , dot( eyeReverseVec, reflectLightVec ));
-    highp vec3 specularColor = material.specular.rgb * defaultLight.color.rgb * pow(cosAlpha,2.0) / pow(eyeLightDistance, 2.0);
+    highp vec3 eye;
+    eye = normalize(vec3(0.0, 0.0, 10.0) - mMatrixPosition);
+    eye = normalize(tbn * eye);
     
-    highp vec3 finalColor = defaultLight.color.rgb * surfaceColor.rgb * brightness + ambientColor;// / pow(eyeLightDistance, 2.0);// + ambientColor + specularColor;
-    gl_FragColor = vec4(finalColor, surfaceColor.a);
+    // 计算光源
+    highp vec4 ambient, diffuse, specular;
+    highp vec4 specularColor = texture2D(specularMap, fragTexcoord);
+    pointLight(textureNormal,ambient,diffuse,specular,vp,eye,material.ambient,defaultLight.color,vec4(1.0,0.0,0.0,1.0));
+    
+    highp vec4 finalColor = texture2D(diffuseMap, fragTexcoord);
+    gl_FragColor = + finalColor * diffuse + finalColor * ambient + finalColor * specular;
 }

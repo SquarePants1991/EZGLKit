@@ -31,7 +31,7 @@
     [self.world.effect addLight:[EZGLLight new]];
     
     
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"cube3" ofType:@".obj"];
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"cube4" ofType:@".obj"];
     self.geometry = [[EZGLWaveFrontGeometry alloc] initWithWaveFrontFilePath:path];
     [self.world addGeometry:self.geometry];
     

@@ -152,6 +152,10 @@
     glActiveTexture(GL_TEXTURE2);
     glBindTexture(GL_TEXTURE_2D, self.material.normalMap);
     glUniform1i([self.glProgram uniformWithStr:@"normalMap"], 2);
+    
+    glActiveTexture(GL_TEXTURE3);
+    glBindTexture(GL_TEXTURE_2D, self.material.specularMap);
+    glUniform1i([self.glProgram uniformWithStr:@"specularMap"], 3);
 
     glBindVertexArrayOES(self.vao);
     if (self.data.supportIndiceVBO) {
@@ -164,7 +168,8 @@
 
 - (void)update:(NSTimeInterval)interval {
 
-    //rotation += interval * 0.8f;
+    self.transform.quaternion = GLKQuaternionMakeWithAngleAndAxis(rotation, 1, 1, 0);
+    rotation += interval * 0.8f;
 
     elapsedTime += interval;
     if (elapsedTime >= 1 / 30.0f) {
@@ -181,8 +186,7 @@
 }
 
 - (GLKMatrix3)normalMatrix {
-    GLKMatrix4 mvp = GLKMatrix4Multiply(self.viewProjection, self.modelMatrix);
-    GLKMatrix3 normalMatrix = GLKMatrix3InvertAndTranspose(GLKMatrix4GetMatrix3(mvp), NULL);
+    GLKMatrix3 normalMatrix = GLKMatrix3InvertAndTranspose(GLKMatrix4GetMatrix3(self.modelMatrix), NULL);
     return normalMatrix;
 }
 

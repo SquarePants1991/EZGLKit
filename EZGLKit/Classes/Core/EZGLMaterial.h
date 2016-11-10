@@ -15,6 +15,7 @@
 @property (assign, nonatomic) GLKVector4 specular;
 @property (assign, nonatomic) GLuint diffuseMap;
 @property (assign, nonatomic) GLuint normalMap;
+@property (assign, nonatomic) GLuint specularMap;
 
 @property (assign, nonatomic) GLuint shadowMap;
 

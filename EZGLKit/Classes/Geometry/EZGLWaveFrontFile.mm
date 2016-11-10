@@ -107,8 +107,6 @@
     std::vector<GLfloat> tangents;
     std::vector<GLfloat> bitangents;
     
-    std::vector<GLKVector3> positions;
-    std::vector<GLKVector2> uvs;
     for (size_t i = 0; i < indices.size(); i++) {
         tinyobj::index_t indice = indices[i];
         GLfloat x = attrib.vertices[indice.vertex_index * 3 + 0];
@@ -116,12 +114,10 @@
         GLfloat z = attrib.vertices[indice.vertex_index * 3 + 2];
         GLfloat u = attrib.texcoords[indice.texcoord_index * 2 + 0];
         GLfloat v = attrib.texcoords[indice.texcoord_index * 2 + 1];
-        GLfloat nx = attrib.texcoords[indice.normal_index * 3 + 0];
-        GLfloat ny = attrib.texcoords[indice.normal_index * 3 + 1];
-        GLfloat nz = attrib.texcoords[indice.normal_index * 3 + 2];
+        GLfloat nx = attrib.normals[indice.normal_index * 3 + 0];
+        GLfloat ny = attrib.normals[indice.normal_index * 3 + 1];
+        GLfloat nz = attrib.normals[indice.normal_index * 3 + 2];
         
-        positions.push_back(GLKVector3Make(x, y, z));
-        uvs.push_back(GLKVector2Make(u, v));
         GLKVector3 tangent,bitangent;
         [self caculateTangents:&tangent bitangents:&bitangent position:GLKVector3Make(x, y, z) normal:GLKVector3Make(nx, ny, nz)];
         tangents.push_back(tangent.x);
@@ -130,25 +126,6 @@
         bitangents.push_back(bitangent.x);
         bitangents.push_back(bitangent.y);
         bitangents.push_back(bitangent.z);
-        
-        
-//        if (positions.size() == 3) {
-//            GLKVector3 tangent,bitangent;
-//            [self caculateTangents:&tangent bitangents:&bitangent position:GLKVector3Make(x, y, z) normal:GLKVector3Make(nx, ny, nz)];
-//            
-//            
-//            [self caculateTangents:&tangent bitangents:&bitangent positions:positions uvs:uvs];
-//            
-//            for (int i=0; i < 3; i++) {
-//                tangents.push_back(tangent.x);
-//                tangents.push_back(tangent.y);
-//                tangents.push_back(tangent.z);
-//                bitangents.push_back(bitangent.x);
-//                bitangents.push_back(bitangent.y);
-//                bitangents.push_back(bitangent.z);
-//            }
-//            positions.clear();
-//        }
     }
     
     
@@ -199,13 +176,13 @@
 
     if (resultX.x < 50) {
         *pTangent = resultX;
-        *pBitangent = GLKVector3CrossProduct(normal, resultX);
+        *pBitangent = GLKVector3CrossProduct(resultX,normal);
     } else if (resultY.y < 50) {
         *pTangent = resultY;
-        *pBitangent = GLKVector3CrossProduct(normal, resultY);
+        *pBitangent = GLKVector3CrossProduct(resultY,normal);
     } else {
         *pTangent = resultZ;
-        *pBitangent = GLKVector3CrossProduct(normal, resultZ);
+        *pBitangent = GLKVector3CrossProduct(resultZ,normal);
     }
 }
 

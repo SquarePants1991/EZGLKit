@@ -15,7 +15,10 @@
 {
     self = [super init];
     if (self) {
-        self.normalMap = [UIImage textureFromCGImage:[UIImage imageNamed:@"normal.jpg"].CGImage];
+        self.normalMap = [UIImage textureFromCGImage:[UIImage imageNamed:@"default_normal.png"].CGImage];
+        NSString *image = [[NSBundle bundleForClass:self] pathForResource:@"wood_01" ofType:@".jpg"];
+        self.diffuseMap = [UIImage textureFromCGImage:[UIImage imageWithContentsOfFile:image].CGImage];
+        self.specularMap = [UIImage textureFromCGImage:[UIImage imageNamed:@"default_spec.png"].CGImage];
     }
     return self;
 }
@@ -30,7 +33,7 @@
     NSArray *images = [[NSBundle bundleForClass:self] pathsForResourcesOfType:@".jpg" inDirectory:@"./"];
     int index = (int)floor(rand() / (float)RAND_MAX * (images.count - 1));
     NSString *image = images[index];
-    image = [[NSBundle bundleForClass:self] pathForResource:@"wood_02" ofType:@".jpg"];
+    image = [[NSBundle bundleForClass:self] pathForResource:@"wood_01" ofType:@".jpg"];
     material.diffuseMap = [UIImage textureFromCGImage:[UIImage imageWithContentsOfFile:image].CGImage];
     return material;
 }
