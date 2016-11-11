@@ -74,7 +74,7 @@
         
         
                 [perspectiveCamera rotateLookAtWithAngleAroundUp:-dx / 40.0];
-                [perspectiveCamera rotateLookAtWithAngle:-dy / 40.0 axis:perspectiveCamera.left];
+                [perspectiveCamera rotateLookAtWithAngleAroundLeft:-dy / 40.0];
         
         self.lastTouchPoint = pt;
     }

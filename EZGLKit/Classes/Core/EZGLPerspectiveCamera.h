@@ -26,6 +26,7 @@
 - (void)rotateEyeWithAngle:(GLfloat)radians axis:(GLKVector3)axis;
 - (void)rotateLookAtWithAngle:(GLfloat)radians axis:(GLKVector3)axis;
 - (void)rotateLookAtWithAngleAroundUp:(GLfloat)radians;
+- (void)rotateLookAtWithAngleAroundLeft:(GLfloat)radians;
 - (void)translateForward:(GLfloat)distance;
 - (void)translateLeft:(GLfloat)distance;
 - (void)translateUp:(GLfloat)distance;
