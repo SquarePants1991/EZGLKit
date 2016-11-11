@@ -49,6 +49,21 @@
     self.lookAt = GLKVector3Add(self.eye, newLookAtVec);
 }
 
+- (void)rotateLookAtWithAngleAroundUp:(GLfloat)radians {
+    GLKQuaternion quaternion = GLKQuaternionMakeWithAngleAndVector3Axis(radians, self.up);
+    GLKVector3 lookAtVec = GLKVector3Subtract(self.lookAt, self.eye);
+    GLKVector3 newLookAtVec = GLKQuaternionRotateVector3(quaternion, lookAtVec);
+    self.lookAt = GLKVector3Add(self.eye, newLookAtVec);
+}
+
+- (void)rotateLookAtWithAngleAroundLeft:(GLfloat)radians {
+    GLKQuaternion quaternion = GLKQuaternionMakeWithAngleAndVector3Axis(radians, self.left);
+    self.up = GLKQuaternionRotateVector3(quaternion,self.up);
+    GLKVector3 lookAtVec = GLKVector3Subtract(self.lookAt, self.eye);
+    GLKVector3 newLookAtVec = GLKQuaternionRotateVector3(quaternion, lookAtVec);
+    self.lookAt = GLKVector3Add(self.eye, newLookAtVec);
+}
+
 - (void)rotateWithAngle:(GLfloat)radians axis:(GLKVector3)axis {
     GLKQuaternion quaternion = GLKQuaternionMakeWithAngleAndVector3Axis(radians, axis);
     self.up = GLKQuaternionRotateVector3(quaternion,self.up);
@@ -60,16 +75,19 @@
 - (void)translateForward:(GLfloat)distance {
     GLKVector3 translateVector = GLKVector3MultiplyScalar(self.forward, distance);
     self.eye = GLKVector3Add(self.eye, translateVector);
+    self.lookAt = GLKVector3Add(self.lookAt, translateVector);
 }
 
 - (void)translateLeft:(GLfloat)distance {
     GLKVector3 translateVector = GLKVector3MultiplyScalar(self.left, distance);
     self.eye = GLKVector3Add(self.eye, translateVector);
+    self.lookAt = GLKVector3Add(self.lookAt, translateVector);
 }
 
 - (void)translateUp:(GLfloat)distance {
     GLKVector3 translateVector = GLKVector3MultiplyScalar(self.up, distance);
     self.eye = GLKVector3Add(self.eye, translateVector);
+    self.lookAt = GLKVector3Add(self.lookAt, translateVector);
 }
 
 - (GLKMatrix4)matrix {

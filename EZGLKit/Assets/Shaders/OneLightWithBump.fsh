@@ -32,6 +32,7 @@ uniform highp mat3 normalMatrix;
 
 uniform light lights[1];
 
+uniform sampler2D ambientMap;
 uniform sampler2D diffuseMap;
 uniform sampler2D shadowMap;
 uniform sampler2D normalMap;
@@ -52,9 +53,9 @@ void pointLight(
     ambient = lightAmbient;
     vec3 halfVector = normalize(vp + eye);
     float shininess = 50.0;
-    float nDotViewPosition = max(0.0,dot(normal,vp));
+    float nDotViewPosition = clamp(dot(normal,vp),0.0,1.0);
     diffuse = lightDiffuse * nDotViewPosition;
-    float nDotViewHalfVector = max(0.0,dot(normal,halfVector));
+    float nDotViewHalfVector = clamp(dot(normal,halfVector),0.0,1.0);
     float powerFactor = max(0.0, pow(nDotViewHalfVector,shininess));
     specular = lightSpecular * powerFactor;
 }
@@ -75,19 +76,20 @@ void main()
     highp float tny = 2.0 * (rgb.g - 0.5);
     highp float tnz = 2.0 * (rgb.b - 0.5);
     highp vec3 textureNormal = normalize(vec3(tnx, tny, tnz));
-//    highp vec3 textureNormal;
+//highp vec3 textureNormal = normalize(vec3(0.0, 0.0, 1.0));
+    //    highp vec3 textureNormal;
 //    transformNormal(fragPosition.xyz, fragNormal, textureNormal);
     
     // 计算TBN变换矩阵
     highp vec3 tbnNormal, tbnTangent, tbnBitangent;
     transformNormal(fragPosition.xyz, fragNormal, tbnNormal);
     transformNormal(fragPosition.xyz, fragTangent, tbnTangent);
-//    transformNormal(fragPosition.xyz, fragBitangent, tbnBitangent);
-    tbnBitangent = normalize(cross(tbnTangent, tbnNormal));
+    transformNormal(fragPosition.xyz, fragBitangent, tbnBitangent);
+//    tbnBitangent = normalize(cross(tbnTangent, tbnNormal));
     highp mat3 tbn = mat3(tbnTangent.x, tbnBitangent.x, tbnNormal.x,
                           tbnTangent.y, tbnBitangent.y, tbnNormal.y,
                           tbnTangent.z, tbnBitangent.z, tbnNormal.z);
-    
+
     // 计算表面点到光源的向量
     light defaultLight = lights[0];
     highp vec3 mMatrixPosition = (modelMatrix * fragPosition).xyz;
@@ -103,8 +105,10 @@ void main()
     // 计算光源
     highp vec4 ambient, diffuse, specular;
     highp vec4 specularColor = texture2D(specularMap, fragTexcoord);
-    pointLight(textureNormal,ambient,diffuse,specular,vp,eye,material.ambient,defaultLight.color,vec4(1.0,0.0,0.0,1.0));
+    pointLight(textureNormal,ambient,diffuse,specular,vp,eye,material.ambient,defaultLight.color,vec4(1.0,1.0,1.0,1.0));
     
     highp vec4 finalColor = texture2D(diffuseMap, fragTexcoord);
-    gl_FragColor = + finalColor * diffuse + finalColor * ambient + finalColor * specular;
+    gl_FragColor = finalColor * diffuse + finalColor * ambient + finalColor * specular;
+    
+//    gl_FragColor = vec4(fragBitangent,1.0);
 }

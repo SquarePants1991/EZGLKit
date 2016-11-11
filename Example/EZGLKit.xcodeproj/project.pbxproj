@@ -35,6 +35,17 @@
 		8EA7A1C71DD444B100B2FEC9 /* default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8EA7A1C01DD444B100B2FEC9 /* default.jpg */; };
 		8EA7A1C81DD444B100B2FEC9 /* wood_02.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8EA7A1C11DD444B100B2FEC9 /* wood_02.jpg */; };
 		8EA7A1C91DD444B100B2FEC9 /* wood_03.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8EA7A1C21DD444B100B2FEC9 /* wood_03.jpg */; };
+		8EA7A1CD1DD567A200B2FEC9 /* metal_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EA7A1CA1DD567A200B2FEC9 /* metal_normal.png */; };
+		8EA7A1CE1DD567A200B2FEC9 /* metal_SPEC.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EA7A1CB1DD567A200B2FEC9 /* metal_SPEC.png */; };
+		8EA7A1CF1DD567A200B2FEC9 /* metal.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8EA7A1CC1DD567A200B2FEC9 /* metal.jpg */; };
+		8EA7A2131DD5BC0000B2FEC9 /* EZGLBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EA7A2121DD5BC0000B2FEC9 /* EZGLBaseViewController.m */; };
+		8EA7A21F1DD5CC9C00B2FEC9 /* box.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8EA7A21A1DD5CC9C00B2FEC9 /* box.jpg */; };
+		8EA7A2201DD5CC9C00B2FEC9 /* box_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EA7A21B1DD5CC9C00B2FEC9 /* box_normal.png */; };
+		8EA7A2211DD5CC9C00B2FEC9 /* box_spec.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EA7A21C1DD5CC9C00B2FEC9 /* box_spec.png */; };
+		8EA7A2221DD5CC9C00B2FEC9 /* demo1_000001.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 8EA7A21D1DD5CC9C00B2FEC9 /* demo1_000001.mtl */; };
+		8EA7A2231DD5CC9C00B2FEC9 /* demo1_000001.obj in Resources */ = {isa = PBXBuildFile; fileRef = 8EA7A21E1DD5CC9C00B2FEC9 /* demo1_000001.obj */; };
+		8EA7A2271DD5CCB900B2FEC9 /* EZGLLoadSceneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EA7A2261DD5CCB900B2FEC9 /* EZGLLoadSceneViewController.m */; };
+		8EA7A2291DD5CFB100B2FEC9 /* grass.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8EA7A2281DD5CFB100B2FEC9 /* grass.jpg */; };
 		8ED4732F1DC1CE100035F011 /* ball3.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 8ED4732D1DC1CE100035F011 /* ball3.mtl */; };
 		8ED473301DC1CE100035F011 /* ball3.obj in Resources */ = {isa = PBXBuildFile; fileRef = 8ED4732E1DC1CE100035F011 /* ball3.obj */; };
 		91A411BC925146DB4B9D6537 /* libPods-EZGLKit_Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FE102A697C3C7FA9874D2744 /* libPods-EZGLKit_Example.a */; };
@@ -102,6 +113,19 @@
 		8EA7A1C01DD444B100B2FEC9 /* default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = default.jpg; path = Resources/default.jpg; sourceTree = "<group>"; };
 		8EA7A1C11DD444B100B2FEC9 /* wood_02.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = wood_02.jpg; path = Resources/wood_02.jpg; sourceTree = "<group>"; };
 		8EA7A1C21DD444B100B2FEC9 /* wood_03.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = wood_03.jpg; path = Resources/wood_03.jpg; sourceTree = "<group>"; };
+		8EA7A1CA1DD567A200B2FEC9 /* metal_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = metal_normal.png; path = Resources/metal_normal.png; sourceTree = "<group>"; };
+		8EA7A1CB1DD567A200B2FEC9 /* metal_SPEC.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = metal_SPEC.png; path = Resources/metal_SPEC.png; sourceTree = "<group>"; };
+		8EA7A1CC1DD567A200B2FEC9 /* metal.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = metal.jpg; path = Resources/metal.jpg; sourceTree = "<group>"; };
+		8EA7A2111DD5BC0000B2FEC9 /* EZGLBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EZGLBaseViewController.h; sourceTree = "<group>"; };
+		8EA7A2121DD5BC0000B2FEC9 /* EZGLBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EZGLBaseViewController.m; sourceTree = "<group>"; };
+		8EA7A21A1DD5CC9C00B2FEC9 /* box.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = box.jpg; sourceTree = "<group>"; };
+		8EA7A21B1DD5CC9C00B2FEC9 /* box_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = box_normal.png; sourceTree = "<group>"; };
+		8EA7A21C1DD5CC9C00B2FEC9 /* box_spec.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = box_spec.png; sourceTree = "<group>"; };
+		8EA7A21D1DD5CC9C00B2FEC9 /* demo1_000001.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = demo1_000001.mtl; sourceTree = "<group>"; };
+		8EA7A21E1DD5CC9C00B2FEC9 /* demo1_000001.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = demo1_000001.obj; sourceTree = "<group>"; };
+		8EA7A2251DD5CCB900B2FEC9 /* EZGLLoadSceneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EZGLLoadSceneViewController.h; sourceTree = "<group>"; };
+		8EA7A2261DD5CCB900B2FEC9 /* EZGLLoadSceneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EZGLLoadSceneViewController.m; sourceTree = "<group>"; };
+		8EA7A2281DD5CFB100B2FEC9 /* grass.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = grass.jpg; sourceTree = "<group>"; };
 		8ED4732D1DC1CE100035F011 /* ball3.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ball3.mtl; path = Resources/ball3.mtl; sourceTree = "<group>"; };
 		8ED4732E1DC1CE100035F011 /* ball3.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ball3.obj; path = Resources/ball3.obj; sourceTree = "<group>"; };
 		ACB722C94CFF447CCFA4C7BA /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
@@ -273,6 +297,7 @@
 		8E9507531DBDFEAE00244415 /* Examples */ = {
 			isa = PBXGroup;
 			children = (
+				8EA7A2241DD5CCA300B2FEC9 /* Load Scene */,
 				8E361FEC1DC733F500073685 /* Cube With Bump Texture */,
 				8E5577001DC71A750096E198 /* Cube WithTexture & Light */,
 				D3C9FDA01DC25678004E7AE1 /* Basic Cube With Texture */,
@@ -280,6 +305,8 @@
 				D3C9FD861DC0F006004E7AE1 /* Sphere Panorama */,
 				8E9507541DBDFEB700244415 /* Basic Triangle */,
 				D30FF4F01DBA420B006A2A68 /* Basic Cube */,
+				8EA7A2111DD5BC0000B2FEC9 /* EZGLBaseViewController.h */,
+				8EA7A2121DD5BC0000B2FEC9 /* EZGLBaseViewController.m */,
 			);
 			name = Examples;
 			sourceTree = "<group>";
@@ -300,6 +327,37 @@
 				8EA1736A1DC1E41B002AC00E /* EZGLCubePanoramaViewController.m */,
 			);
 			name = "Cube Panorama";
+			sourceTree = "<group>";
+		};
+		8EA7A2181DD5CC9C00B2FEC9 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				8EA7A2191DD5CC9C00B2FEC9 /* demo1 */,
+			);
+			name = Scenes;
+			path = Resources/Scenes;
+			sourceTree = "<group>";
+		};
+		8EA7A2191DD5CC9C00B2FEC9 /* demo1 */ = {
+			isa = PBXGroup;
+			children = (
+				8EA7A2281DD5CFB100B2FEC9 /* grass.jpg */,
+				8EA7A21A1DD5CC9C00B2FEC9 /* box.jpg */,
+				8EA7A21B1DD5CC9C00B2FEC9 /* box_normal.png */,
+				8EA7A21C1DD5CC9C00B2FEC9 /* box_spec.png */,
+				8EA7A21D1DD5CC9C00B2FEC9 /* demo1_000001.mtl */,
+				8EA7A21E1DD5CC9C00B2FEC9 /* demo1_000001.obj */,
+			);
+			path = demo1;
+			sourceTree = "<group>";
+		};
+		8EA7A2241DD5CCA300B2FEC9 /* Load Scene */ = {
+			isa = PBXGroup;
+			children = (
+				8EA7A2251DD5CCB900B2FEC9 /* EZGLLoadSceneViewController.h */,
+				8EA7A2261DD5CCB900B2FEC9 /* EZGLLoadSceneViewController.m */,
+			);
+			name = "Load Scene";
 			sourceTree = "<group>";
 		};
 		D30FF4EF1DBA41E9006A2A68 /* Foundation */ = {
@@ -326,6 +384,10 @@
 		D32DF9951DBA816600EBED91 /* 3D Models */ = {
 			isa = PBXGroup;
 			children = (
+				8EA7A2181DD5CC9C00B2FEC9 /* Scenes */,
+				8EA7A1CA1DD567A200B2FEC9 /* metal_normal.png */,
+				8EA7A1CB1DD567A200B2FEC9 /* metal_SPEC.png */,
+				8EA7A1CC1DD567A200B2FEC9 /* metal.jpg */,
 				8EA7A1BC1DD444B100B2FEC9 /* normal.jpg */,
 				8EA7A1BE1DD444B100B2FEC9 /* default_normal.png */,
 				8EA7A1BF1DD444B100B2FEC9 /* default_spec.png */,
@@ -453,12 +515,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8EA7A1CD1DD567A200B2FEC9 /* metal_normal.png in Resources */,
 				8EA1736F1DC1E642002AC00E /* sphere4.jpg in Resources */,
+				8EA7A21F1DD5CC9C00B2FEC9 /* box.jpg in Resources */,
 				D32DF9981DBA818800EBED91 /* cube3.obj in Resources */,
+				8EA7A2201DD5CC9C00B2FEC9 /* box_normal.png in Resources */,
+				8EA7A1CF1DD567A200B2FEC9 /* metal.jpg in Resources */,
 				8EA7A1C51DD444B100B2FEC9 /* default_normal.png in Resources */,
+				8EA7A1CE1DD567A200B2FEC9 /* metal_SPEC.png in Resources */,
 				8EA7A1C31DD444B100B2FEC9 /* normal.jpg in Resources */,
+				8EA7A2221DD5CC9C00B2FEC9 /* demo1_000001.mtl in Resources */,
 				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
 				8ED4732F1DC1CE100035F011 /* ball3.mtl in Resources */,
+				8EA7A2291DD5CFB100B2FEC9 /* grass.jpg in Resources */,
 				8EA7A1C81DD444B100B2FEC9 /* wood_02.jpg in Resources */,
 				8EA7A1C71DD444B100B2FEC9 /* default.jpg in Resources */,
 				D3C9FD8E1DC0F149004E7AE1 /* ball2.mtl in Resources */,
@@ -467,12 +536,14 @@
 				8EA7A1BB1DD443BA00B2FEC9 /* cube4.obj in Resources */,
 				D3C9FD8D1DC0F149004E7AE1 /* sphere.jpg in Resources */,
 				8EA7A1C61DD444B100B2FEC9 /* default_spec.png in Resources */,
+				8EA7A2211DD5CC9C00B2FEC9 /* box_spec.png in Resources */,
 				8EA7A1BA1DD443BA00B2FEC9 /* cube4.mtl in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
 				8ED473301DC1CE100035F011 /* ball3.obj in Resources */,
 				D32DF9991DBA818800EBED91 /* cube3.mtl in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
 				D3C9FD911DC0F6D4004E7AE1 /* sphere1.jpg in Resources */,
+				8EA7A2231DD5CC9C00B2FEC9 /* demo1_000001.obj in Resources */,
 				D3C9FD8F1DC0F149004E7AE1 /* ball2.obj in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -587,6 +658,7 @@
 			files = (
 				6003F59E195388D20070C39A /* EZGLAppDelegate.m in Sources */,
 				8E361FEF1DC7343900073685 /* EZGLCubeWithBumpTextureViewController.m in Sources */,
+				8EA7A2131DD5BC0000B2FEC9 /* EZGLBaseViewController.m in Sources */,
 				8E0F30801DBDFFAA00F54680 /* EZGLBasicTriangleViewController.m in Sources */,
 				D3C9FD891DC0F050004E7AE1 /* EZGLSpherePanoramaViewController.m in Sources */,
 				D3C9FDA31DC25693004E7AE1 /* EZGLCubeWithTextureViewController.m in Sources */,
@@ -595,6 +667,7 @@
 				8EA1736B1DC1E41B002AC00E /* EZGLCubePanoramaViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 				D30FF4F31DBA4260006A2A68 /* EZGLBasicCubeViewController.m in Sources */,
+				8EA7A2271DD5CCB900B2FEC9 /* EZGLLoadSceneViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

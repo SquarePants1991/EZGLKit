@@ -85,7 +85,10 @@
         material.ambient = GLKVector4Make(material_t.ambient[0], material_t.ambient[1], material_t.ambient[2], 1.0);
         material.specular = GLKVector4Make(material_t.specular[0], material_t.specular[1], material_t.specular[2], 1.0);
         material.diffuse = GLKVector4Make(material_t.diffuse[0], material_t.diffuse[1], material_t.diffuse[2], 1.0);
+        material.ambientMap = [self loadTexture:material_t.ambient_texname];
         material.diffuseMap = [self loadTexture:material_t.diffuse_texname];
+        material.specularMap = [self loadTexture:material_t.specular_texname];
+        material.normalMap = [self loadTexture:material_t.bump_texname];
         [mats addObject:material];
     }
 
@@ -93,8 +96,11 @@
 }
 
 - (GLuint)loadTexture:(std::string)texName {
+    NSString *fileName = [NSString stringWithUTF8String:texName.c_str()];
+    fileName = [fileName stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceAndNewlineCharacterSet]]
+    ;
     NSString *resourcePath = [[NSBundle mainBundle] resourcePath];
-    NSString *diffuseMapFileName = [NSString stringWithFormat:@"%@/%@",resourcePath,[NSString stringWithUTF8String:texName.c_str()]];
+    NSString *diffuseMapFileName = [NSString stringWithFormat:@"%@/%@",resourcePath,fileName];
     UIImage *diffuseImage = [UIImage imageWithContentsOfFile:diffuseMapFileName];
     if (diffuseImage) {
         return [UIImage textureFromCGImage:diffuseImage.CGImage];
@@ -165,13 +171,13 @@
     CGFloat ny = normal.y;
     CGFloat nz = normal.z;
 
-    CGFloat x1 = x + 1;CGFloat z1 = z + 1;CGFloat y1 = (nz * (z - z1) + nx * (x - x1))/ny + y;
+    CGFloat x1 = x + 1;CGFloat z1 = z + 1;CGFloat y1 = ny == 0 ? y : (nz * (z - z1) + nx * (x - x1))/ny + y;
     GLKVector3 resultY = GLKVector3Make(x1 - x, y1 - y, z1 - z);
     
-    x1 = x + 1;y1 = y + 1;z1 = (ny * (y - y1) + nx * (x - x1))/nz + z;
+    x1 = x + 1;y1 = y + 1;z1 = nz == 0 ? z : (ny * (y - y1) + nx * (x - x1))/nz + z;
     GLKVector3 resultZ = GLKVector3Make(x1 - x, y1 - y, z1 - z);
     
-    z1 = z + 1;y1 = y + 1;x1 = (ny * (y - y1) + nz * (z - z1))/nx + x;
+    z1 = z + 1;y1 = y + 1;x1 = nx == 0 ? x : (ny * (y - y1) + nz * (z - z1))/nx + x;
     GLKVector3 resultX = GLKVector3Make(x1 - x, y1 - y, z1 - z);
 
     if (resultX.x < 50) {

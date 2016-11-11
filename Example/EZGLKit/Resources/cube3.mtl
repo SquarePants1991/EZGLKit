@@ -3,9 +3,12 @@
 
 newmtl None
 Ns 0
-Ka 1.000000 0.000000 1.000000
+Ka 0.1 0.1 0.1
 Kd 0.0 0.0 0.0
 Ks 0.8 0.8 0.8
 d 1
 illum 2
-map_Kd sphere4.jpg
+map_Ka sphere.jpg
+map_Kd default.jpg
+map_Ks default_spec.png
+bump default_normal.png

@@ -28,7 +28,8 @@
                                 @"带光照纹理的正方体":@"EZGLCubeWithTextureLightViewController",
                                 @"全景Sphere":@"EZGLSpherePanoramaViewController",
                                 @"全景Cube":@"EZGLCubePanoramaViewController",
-                                @"带凹凸贴图的Cube":@"EZGLCubeWithBumpTextureViewController"};
+                                @"带凹凸贴图的Cube":@"EZGLCubeWithBumpTextureViewController",
+                                @"复杂场景加载":@"EZGLLoadSceneViewController",};
 }
 
 #pragma mark - Data Source

@@ -6,8 +6,8 @@
 //  Copyright © 2016年 ocean. All rights reserved.
 //
 
-#import <GLKit/GLKit.h>
+#import "EZGLBaseViewController.h"
 
-@interface EZGLCubeWithBumpTextureViewController : GLKViewController
+@interface EZGLCubeWithBumpTextureViewController : EZGLBaseViewController
 
 @end

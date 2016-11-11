@@ -13,6 +13,8 @@
 @property (assign, nonatomic) GLKVector4 ambient;
 @property (assign, nonatomic) GLKVector4 diffuse;
 @property (assign, nonatomic) GLKVector4 specular;
+
+@property (assign, nonatomic) GLuint ambientMap;
 @property (assign, nonatomic) GLuint diffuseMap;
 @property (assign, nonatomic) GLuint normalMap;
 @property (assign, nonatomic) GLuint specularMap;
