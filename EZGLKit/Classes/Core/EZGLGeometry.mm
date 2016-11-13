@@ -37,6 +37,7 @@
     self = [super init];
     if (self) {
         self.material = [EZGLMaterial defaultMaterial];
+        [self setupTransform];
     }
     return self;
 }
@@ -79,7 +80,6 @@
 - (void)prepare {
     [self createTexture];
     [self setupVAO];
-    [self setupTransform];
 }
 
 - (void)setupVAO {

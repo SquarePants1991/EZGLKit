@@ -24,7 +24,7 @@
     self = [super init];
     if (self) {
         adjustOffset = btVector3(0,0,0);
-        btCollisionShape *shape = new btSphereShape(1.0);
+        btCollisionShape *shape = new btSphereShape(radius);
         shape->setUserPointer((__bridge void *)self);
         btTransform defaultTransform = [self btTransformFromGeometry:geometry];
         btDefaultMotionState *motionState = new btDefaultMotionState(defaultTransform);
@@ -43,7 +43,7 @@
 {
     self = [super init];
     if (self) {
-        btCollisionShape *shape = new btStaticPlaneShape(btVector3(0,1,0),1);
+        btCollisionShape *shape = new btStaticPlaneShape(btVector3(0,1,0),0);
         shape->setUserPointer((__bridge void *)self);
         adjustOffset = btVector3(0,0,0);
         

@@ -156,7 +156,7 @@
 }
 
 - (void)update:(NSTimeInterval)interval {
-//    [self.physicsWorld update:interval];
+    [self.physicsWorld update:interval];
 //    [self.light update:interval];
     for (EZGLGeometry *geometry in self.geometrys) {
         [geometry update:interval];

@@ -9,6 +9,16 @@
 #import "EZGLPerspectiveCamera.h"
 #import <GLKit/GLKit.h>
 
+@interface EZGLPerspectiveCamera ()
+
+@property (assign, nonatomic) CGFloat degreeAroundLeft;
+@property (assign, nonatomic) CGFloat degreeAroundUp;
+@property (assign, nonatomic) CGFloat degreeAroundForward;
+
+@property (assign, nonatomic) GLKVector3 translation;
+
+@end
+
 @implementation EZGLPerspectiveCamera
 
 + (EZGLCamera *)cameraWithSize:(CGSize)size {
@@ -26,6 +36,17 @@
     return camera;
 }
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.degreeAroundUp = 0.0;
+        self.degreeAroundLeft = 0.0;
+        self.degreeAroundForward = 0.0;
+    }
+    return self;
+}
+
 - (GLKVector3)left {
     GLKQuaternion quaternion = GLKQuaternionMakeWithAngleAndVector3Axis(M_PI / 2.0, self.forward);
     GLKVector3 left = GLKQuaternionRotateVector3(quaternion, self.up);
@@ -35,6 +56,13 @@
 - (GLKVector3)forward {
     GLKVector3 forward = GLKVector3Normalize(GLKVector3Subtract(self.lookAt, self.eye));
     return forward;
+}
+
+- (GLKQuaternion)quaternion {
+    GLKQuaternion forwardQuaternion = GLKQuaternionMakeWithAngleAndAxis(self.degreeAroundForward / 180.0 * M_PI, self.forward.x, self.forward.y, self.forward.z);
+    GLKQuaternion upQuaternion = GLKQuaternionMakeWithAngleAndAxis(self.degreeAroundUp / 180.0 * M_PI, self.up.x, self.up.y, self.up.z);
+    GLKQuaternion leftQuaternion = GLKQuaternionMakeWithAngleAndAxis(self.degreeAroundLeft / 180.0 * M_PI, self.left.x, self.left.y, self.left.z);
+    return GLKQuaternionMultiply(GLKQuaternionMultiply(forwardQuaternion, upQuaternion),leftQuaternion);
 }
 
 - (void)rotateEyeWithAngle:(GLfloat)radians axis:(GLKVector3)axis {
@@ -50,18 +78,11 @@
 }
 
 - (void)rotateLookAtWithAngleAroundUp:(GLfloat)radians {
-    GLKQuaternion quaternion = GLKQuaternionMakeWithAngleAndVector3Axis(radians, self.up);
-    GLKVector3 lookAtVec = GLKVector3Subtract(self.lookAt, self.eye);
-    GLKVector3 newLookAtVec = GLKQuaternionRotateVector3(quaternion, lookAtVec);
-    self.lookAt = GLKVector3Add(self.eye, newLookAtVec);
+    self.degreeAroundUp += radians * 180.0 / M_PI;
 }
 
 - (void)rotateLookAtWithAngleAroundLeft:(GLfloat)radians {
-    GLKQuaternion quaternion = GLKQuaternionMakeWithAngleAndVector3Axis(radians, self.left);
-    self.up = GLKQuaternionRotateVector3(quaternion,self.up);
-    GLKVector3 lookAtVec = GLKVector3Subtract(self.lookAt, self.eye);
-    GLKVector3 newLookAtVec = GLKQuaternionRotateVector3(quaternion, lookAtVec);
-    self.lookAt = GLKVector3Add(self.eye, newLookAtVec);
+    self.degreeAroundLeft += radians * 180.0 / M_PI;
 }
 
 - (void)rotateWithAngle:(GLfloat)radians axis:(GLKVector3)axis {
@@ -73,26 +94,31 @@
 }
 
 - (void)translateForward:(GLfloat)distance {
-    GLKVector3 translateVector = GLKVector3MultiplyScalar(self.forward, distance);
-    self.eye = GLKVector3Add(self.eye, translateVector);
-    self.lookAt = GLKVector3Add(self.lookAt, translateVector);
+    GLKQuaternion cameraQuaternion = [self quaternion];
+    GLKVector3 transformedForward = GLKQuaternionRotateVector3(cameraQuaternion, self.forward);
+    self.translation = GLKVector3Add(self.translation, GLKVector3Make(transformedForward.x * distance, transformedForward.y * distance, transformedForward.z * distance));
 }
 
 - (void)translateLeft:(GLfloat)distance {
-    GLKVector3 translateVector = GLKVector3MultiplyScalar(self.left, distance);
-    self.eye = GLKVector3Add(self.eye, translateVector);
-    self.lookAt = GLKVector3Add(self.lookAt, translateVector);
+    GLKQuaternion cameraQuaternion = [self quaternion];
+    GLKVector3 transformedLeft = GLKQuaternionRotateVector3(cameraQuaternion, self.left);
+    self.translation = GLKVector3Add(self.translation, GLKVector3Make(transformedLeft.x * distance, transformedLeft.y * distance, transformedLeft.z * distance));
 }
 
 - (void)translateUp:(GLfloat)distance {
-    GLKVector3 translateVector = GLKVector3MultiplyScalar(self.up, distance);
-    self.eye = GLKVector3Add(self.eye, translateVector);
-    self.lookAt = GLKVector3Add(self.lookAt, translateVector);
+    self.translation = GLKVector3Add(self.translation, GLKVector3Make(self.up.x * distance, self.up.y * distance, self.up.z * distance));
 }
 
 - (GLKMatrix4)matrix {
     GLKMatrix4 perspective = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(self.fovyRadians), self.aspect, self.nearZ, self.farZ);
-    GLKMatrix4 lookAt = GLKMatrix4MakeLookAt(self.eye.x,self.eye.y,self.eye.z,self.lookAt.x, self.lookAt.y, self.lookAt.z, self.up.x, self.up.y, self.up.z);
+    GLKQuaternion cameraQuaternion = [self quaternion];
+    GLKVector3 transformedUp = GLKQuaternionRotateVector3(cameraQuaternion, self.up);
+    GLKVector3 transformedForward = GLKQuaternionRotateVector3(cameraQuaternion, self.forward);
+    
+    GLKVector3 transformedEye = GLKVector3Add(self.eye, self.translation);
+    GLKVector3 transformedLookAt = GLKVector3Add(transformedEye, transformedForward);
+    
+    GLKMatrix4 lookAt = GLKMatrix4MakeLookAt(transformedEye.x,transformedEye.y,transformedEye.z,transformedLookAt.x, transformedLookAt.y, transformedLookAt.z, transformedUp.x, transformedUp.y, transformedUp.z);
     return GLKMatrix4Multiply(perspective, lookAt);
 }
 

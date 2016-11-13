@@ -7,15 +7,16 @@
 //
 
 #import "EZGLBaseViewController.h"
+#import "EZGLMoveJoySticker.h"
 
-@interface EZGLBaseViewController ()
+@interface EZGLBaseViewController () <EZGLMoveJoyStickerDelegate>
 
 @property (assign, nonatomic) CGPoint lastTouchPoint;
 @property (assign, nonatomic) CGPoint currentTouchPoint;
 @property (assign, nonatomic) CGFloat lastScale;
 
-@property (assign, nonatomic) BOOL isWalkMode;
-
+@property (strong, nonatomic) EZGLMoveJoySticker *moveSticker;
+@property (strong, nonatomic) EZGLMoveJoySticker *rotateSticker;
 @end
 
 @implementation EZGLBaseViewController
@@ -27,9 +28,16 @@
     EZGLProgram *program = [[EZGLProgram alloc]initWithVertexShaderFileName:[self shaderName] fragmentShaderFileName:[self shaderName]];
     self.world.effect = [[EZGLEffect alloc] initWithProgram:program];
     [self.world.effect addLight:[EZGLLight new]];
+
     
-    UIPinchGestureRecognizer *gesture = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(panned:)];
-    [self.view addGestureRecognizer:gesture];
+    CGRect bounds = self.view.bounds;
+    self.moveSticker = [[EZGLMoveJoySticker alloc]initWithFrame:CGRectMake(0, 0, bounds.size.width / 2, bounds.size.height)];
+    self.moveSticker.delegate = self;
+    [self.view addSubview:self.moveSticker];
+    
+    self.rotateSticker = [[EZGLMoveJoySticker alloc]initWithFrame:CGRectMake(bounds.size.width / 2, 0, bounds.size.width / 2,bounds.size.height)];
+    self.rotateSticker.delegate = self;
+    [self.view addSubview:self.rotateSticker];
 }
 
 - (NSString *)shaderName {
@@ -41,60 +49,38 @@
 }
 
 - (void)update {
-    EZGLPerspectiveCamera *perspectiveCamera = (EZGLPerspectiveCamera *)self.world.camera;
-    if (self.isWalkMode) {
-        if (self.currentTouchPoint.y < self.lastTouchPoint.y) {
-            [perspectiveCamera translateForward:self.timeSinceLastUpdate * 5];
-        } else {
-            [perspectiveCamera translateForward:-self.timeSinceLastUpdate * 5];
-        }
-    }
-    
+    [self updateCamera:self.timeSinceLastUpdate];
     [self.world update:self.timeSinceLastUpdate];
 }
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    self.lastTouchPoint = [touches.anyObject locationInView:self.view];
-    self.isWalkMode = self.lastTouchPoint.x < self.view.frame.size.width / 2;
-}
-
-- (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    CGPoint pt = [touches.anyObject locationInView:self.view];
-    EZGLPerspectiveCamera *perspectiveCamera = (EZGLPerspectiveCamera *)self.world.camera;
-    if (self.isWalkMode) {
-        self.currentTouchPoint = pt;
-    } else {
-        CGFloat dx = pt.x - self.lastTouchPoint.x;
-        CGFloat dy = pt.y - self.lastTouchPoint.y;
-        
-        
-//        [perspectiveCamera rotateEyeWithAngle:-dx / 40.0 axis:perspectiveCamera.up];
-//        [perspectiveCamera rotateEyeWithAngle:-dy / 40.0 axis:perspectiveCamera.left];
-        
-        
-        
-                [perspectiveCamera rotateLookAtWithAngleAroundUp:-dx / 40.0];
-                [perspectiveCamera rotateLookAtWithAngleAroundLeft:-dy / 40.0];
-        
-        self.lastTouchPoint = pt;
-    }
-}
-
-- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    self.isWalkMode = NO;
-}
-
-- (void)panned:(UIPinchGestureRecognizer *)gesture {
+- (void)joyStickerStateUpdated:(EZGLMoveJoyStickerState)state joySticker:(EZGLMoveJoySticker *)joySticker {
     
-    if (gesture.state == UIGestureRecognizerStateBegan) {
-        self.lastScale = gesture.scale;
-    } else {
-        CGFloat scaleDelta = gesture.scale - self.lastScale;
-        EZGLPerspectiveCamera *perspectiveCamera = (EZGLPerspectiveCamera *)self.world.camera;
-        [perspectiveCamera translateForward:scaleDelta * 1.6];
-        
-        self.lastScale = gesture.scale;
-    }
 }
+
+- (void)updateCamera:(NSTimeInterval)interval {
+    EZGLPerspectiveCamera *perspectiveCamera = (EZGLPerspectiveCamera *)self.world.camera;
+    
+    EZGLMoveJoyStickerState moveState = self.moveSticker.state;
+    [perspectiveCamera translateForward: -moveState.offsetY / 30.0 * interval];
+    [perspectiveCamera translateLeft: moveState.offsetX / 30.0 * interval];
+    
+    EZGLMoveJoyStickerState rotateState = self.rotateSticker.state;
+    [perspectiveCamera rotateLookAtWithAngleAroundUp:-rotateState.offsetX / 30.0 * interval];
+    [perspectiveCamera rotateLookAtWithAngleAroundLeft:-rotateState.offsetY / 30.0 * interval];
+    
+}
+
+//- (void)panned:(UIPinchGestureRecognizer *)gesture {
+//    
+//    if (gesture.state == UIGestureRecognizerStateBegan) {
+//        self.lastScale = gesture.scale;
+//    } else {
+//        CGFloat scaleDelta = gesture.scale - self.lastScale;
+//        EZGLPerspectiveCamera *perspectiveCamera = (EZGLPerspectiveCamera *)self.world.camera;
+//        [perspectiveCamera translateForward:scaleDelta * 1.6];
+//        
+//        self.lastScale = gesture.scale;
+//    }
+//}
 
 @end

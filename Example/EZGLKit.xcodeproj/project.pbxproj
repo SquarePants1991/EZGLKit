@@ -59,6 +59,9 @@
 		D3C9FD8F1DC0F149004E7AE1 /* ball2.obj in Resources */ = {isa = PBXBuildFile; fileRef = D3C9FD8C1DC0F149004E7AE1 /* ball2.obj */; };
 		D3C9FD911DC0F6D4004E7AE1 /* sphere1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D3C9FD901DC0F6D4004E7AE1 /* sphere1.jpg */; };
 		D3C9FDA31DC25693004E7AE1 /* EZGLCubeWithTextureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3C9FDA21DC25693004E7AE1 /* EZGLCubeWithTextureViewController.m */; };
+		D3EA001D1DD89E2C0039231D /* EZGLMoveJoySticker.m in Sources */ = {isa = PBXBuildFile; fileRef = D3EA001C1DD89E2C0039231D /* EZGLMoveJoySticker.m */; };
+		D3EA00221DD8ACA90039231D /* EZGLSimplePhysicsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3EA00211DD8ACA90039231D /* EZGLSimplePhysicsViewController.m */; };
+		D3EA00261DD8B7C40039231D /* EZGLBasicGeometriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3EA00251DD8B7C40039231D /* EZGLBasicGeometriesViewController.m */; };
 		F28D411B08168914A80EFD08 /* libPods-EZGLKit_Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D5B31F65B17DF330A25AFDD /* libPods-EZGLKit_Tests.a */; };
 /* End PBXBuildFile section */
 
@@ -146,6 +149,13 @@
 		D3C9FD901DC0F6D4004E7AE1 /* sphere1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = sphere1.jpg; path = Resources/sphere1.jpg; sourceTree = "<group>"; };
 		D3C9FDA11DC25693004E7AE1 /* EZGLCubeWithTextureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EZGLCubeWithTextureViewController.h; sourceTree = "<group>"; };
 		D3C9FDA21DC25693004E7AE1 /* EZGLCubeWithTextureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EZGLCubeWithTextureViewController.m; sourceTree = "<group>"; };
+		D3EA001B1DD89E2C0039231D /* EZGLMoveJoySticker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EZGLMoveJoySticker.h; sourceTree = "<group>"; };
+		D3EA001C1DD89E2C0039231D /* EZGLMoveJoySticker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EZGLMoveJoySticker.m; sourceTree = "<group>"; };
+		D3EA001E1DD89ED90039231D /* EZGLMoveJoyStickerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EZGLMoveJoyStickerDelegate.h; sourceTree = "<group>"; };
+		D3EA00201DD8ACA90039231D /* EZGLSimplePhysicsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EZGLSimplePhysicsViewController.h; sourceTree = "<group>"; };
+		D3EA00211DD8ACA90039231D /* EZGLSimplePhysicsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EZGLSimplePhysicsViewController.m; sourceTree = "<group>"; };
+		D3EA00241DD8B7C40039231D /* EZGLBasicGeometriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EZGLBasicGeometriesViewController.h; sourceTree = "<group>"; };
+		D3EA00251DD8B7C40039231D /* EZGLBasicGeometriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EZGLBasicGeometriesViewController.m; sourceTree = "<group>"; };
 		D79FD1F25812C2F5CA6082CD /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		FE102A697C3C7FA9874D2744 /* libPods-EZGLKit_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EZGLKit_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -297,6 +307,8 @@
 		8E9507531DBDFEAE00244415 /* Examples */ = {
 			isa = PBXGroup;
 			children = (
+				D3EA00231DD8B78F0039231D /* Basic Geometries */,
+				D3EA001F1DD8AC3B0039231D /* Physics With Bullet */,
 				8EA7A2241DD5CCA300B2FEC9 /* Load Scene */,
 				8E361FEC1DC733F500073685 /* Cube With Bump Texture */,
 				8E5577001DC71A750096E198 /* Cube WithTexture & Light */,
@@ -307,6 +319,9 @@
 				D30FF4F01DBA420B006A2A68 /* Basic Cube */,
 				8EA7A2111DD5BC0000B2FEC9 /* EZGLBaseViewController.h */,
 				8EA7A2121DD5BC0000B2FEC9 /* EZGLBaseViewController.m */,
+				D3EA001B1DD89E2C0039231D /* EZGLMoveJoySticker.h */,
+				D3EA001C1DD89E2C0039231D /* EZGLMoveJoySticker.m */,
+				D3EA001E1DD89ED90039231D /* EZGLMoveJoyStickerDelegate.h */,
 			);
 			name = Examples;
 			sourceTree = "<group>";
@@ -426,6 +441,24 @@
 				D3C9FDA21DC25693004E7AE1 /* EZGLCubeWithTextureViewController.m */,
 			);
 			name = "Basic Cube With Texture";
+			sourceTree = "<group>";
+		};
+		D3EA001F1DD8AC3B0039231D /* Physics With Bullet */ = {
+			isa = PBXGroup;
+			children = (
+				D3EA00201DD8ACA90039231D /* EZGLSimplePhysicsViewController.h */,
+				D3EA00211DD8ACA90039231D /* EZGLSimplePhysicsViewController.m */,
+			);
+			name = "Physics With Bullet";
+			sourceTree = "<group>";
+		};
+		D3EA00231DD8B78F0039231D /* Basic Geometries */ = {
+			isa = PBXGroup;
+			children = (
+				D3EA00241DD8B7C40039231D /* EZGLBasicGeometriesViewController.h */,
+				D3EA00251DD8B7C40039231D /* EZGLBasicGeometriesViewController.m */,
+			);
+			name = "Basic Geometries";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -662,12 +695,15 @@
 				8E0F30801DBDFFAA00F54680 /* EZGLBasicTriangleViewController.m in Sources */,
 				D3C9FD891DC0F050004E7AE1 /* EZGLSpherePanoramaViewController.m in Sources */,
 				D3C9FDA31DC25693004E7AE1 /* EZGLCubeWithTextureViewController.m in Sources */,
+				D3EA00261DD8B7C40039231D /* EZGLBasicGeometriesViewController.m in Sources */,
 				6003F5A7195388D20070C39A /* EZGLViewController.m in Sources */,
 				8E5577031DC71A910096E198 /* EZGLCubeWithTextureLightViewController.m in Sources */,
 				8EA1736B1DC1E41B002AC00E /* EZGLCubePanoramaViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
+				D3EA00221DD8ACA90039231D /* EZGLSimplePhysicsViewController.m in Sources */,
 				D30FF4F31DBA4260006A2A68 /* EZGLBasicCubeViewController.m in Sources */,
 				8EA7A2271DD5CCB900B2FEC9 /* EZGLLoadSceneViewController.m in Sources */,
+				D3EA001D1DD89E2C0039231D /* EZGLMoveJoySticker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

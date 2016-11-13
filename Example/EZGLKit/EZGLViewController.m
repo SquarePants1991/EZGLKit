@@ -29,7 +29,8 @@
                                 @"全景Sphere":@"EZGLSpherePanoramaViewController",
                                 @"全景Cube":@"EZGLCubePanoramaViewController",
                                 @"带凹凸贴图的Cube":@"EZGLCubeWithBumpTextureViewController",
-                                @"复杂场景加载":@"EZGLLoadSceneViewController",};
+                                @"复杂场景加载":@"EZGLLoadSceneViewController",
+                                @"简单物理效果":@"EZGLSimplePhysicsViewController"};
 }
 
 #pragma mark - Data Source
