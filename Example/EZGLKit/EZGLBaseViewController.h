@@ -15,5 +15,6 @@
 
 // override this
 - (NSString *)shaderName;
+- (void)update;
 
 @end

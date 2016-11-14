@@ -27,7 +27,7 @@
     
     material.ambientMap = [UIImage textureFromCGImage:[UIImage imageNamed:@"default_ambient.png"].CGImage];
     material.normalMap = [UIImage textureFromCGImage:[UIImage imageNamed:@"default_normal.png"].CGImage];
-    NSString *image = [[NSBundle bundleForClass:self] pathForResource:@"wood_01" ofType:@".jpg"];
+    NSString *image = [[NSBundle bundleForClass:self] pathForResource:@"default" ofType:@".png"];
     material.diffuseMap = [UIImage textureFromCGImage:[UIImage imageWithContentsOfFile:image].CGImage];
     material.specularMap = [UIImage textureFromCGImage:[UIImage imageNamed:@"default_spec.png"].CGImage];
     return material;

@@ -75,7 +75,8 @@ void main()
     highp float tnx = 2.0 * (rgb.r - 0.5);
     highp float tny = 2.0 * (rgb.g - 0.5);
     highp float tnz = 2.0 * (rgb.b - 0.5);
-    highp vec3 textureNormal = normalize(vec3(tnx, tny, tnz));
+//    highp vec3 textureNormal = normalize(vec3(tnx, tny, tnz));
+    highp vec3 textureNormal = normalize(vec3(0, 0, 1));
 //highp vec3 textureNormal = normalize(vec3(0.0, 0.0, 1.0));
     //    highp vec3 textureNormal;
 //    transformNormal(fragPosition.xyz, fragNormal, textureNormal);
