@@ -1,934 +1,2677 @@
-// !$*UTF8*$!
-{
-	archiveVersion = 1;
-	classes = {
-	};
-	objectVersion = 46;
-	objects = {
-
-/* Begin PBXBuildFile section */
-		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
-		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
-		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
-		6003F598195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F596195388D20070C39A /* InfoPlist.strings */; };
-		6003F59A195388D20070C39A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F599195388D20070C39A /* main.m */; };
-		6003F59E195388D20070C39A /* EZGLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F59D195388D20070C39A /* EZGLAppDelegate.m */; };
-		6003F5A7195388D20070C39A /* EZGLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5A6195388D20070C39A /* EZGLViewController.m */; };
-		6003F5A9195388D20070C39A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5A8195388D20070C39A /* Images.xcassets */; };
-		6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F5AF195388D20070C39A /* XCTest.framework */; };
-		6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
-		6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
-		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
-		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
-		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
-		8E0F30801DBDFFAA00F54680 /* EZGLBasicTriangleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E0F307F1DBDFFAA00F54680 /* EZGLBasicTriangleViewController.m */; };
-		8E361FEF1DC7343900073685 /* EZGLCubeWithBumpTextureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E361FEE1DC7343900073685 /* EZGLCubeWithBumpTextureViewController.m */; };
-		8E5577031DC71A910096E198 /* EZGLCubeWithTextureLightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E5577021DC71A910096E198 /* EZGLCubeWithTextureLightViewController.m */; };
-		8EA1736B1DC1E41B002AC00E /* EZGLCubePanoramaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EA1736A1DC1E41B002AC00E /* EZGLCubePanoramaViewController.m */; };
-		8EA1736D1DC1E4B0002AC00E /* sphere3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8EA1736C1DC1E4B0002AC00E /* sphere3.jpg */; };
-		8EA1736F1DC1E642002AC00E /* sphere4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8EA1736E1DC1E642002AC00E /* sphere4.jpg */; };
-		8EA7A1BA1DD443BA00B2FEC9 /* cube4.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 8EA7A1B81DD443BA00B2FEC9 /* cube4.mtl */; };
-		8EA7A1BB1DD443BA00B2FEC9 /* cube4.obj in Resources */ = {isa = PBXBuildFile; fileRef = 8EA7A1B91DD443BA00B2FEC9 /* cube4.obj */; };
-		8EA7A1C31DD444B100B2FEC9 /* normal.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8EA7A1BC1DD444B100B2FEC9 /* normal.jpg */; };
-		8EA7A1C51DD444B100B2FEC9 /* default_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EA7A1BE1DD444B100B2FEC9 /* default_normal.png */; };
-		8EA7A1C61DD444B100B2FEC9 /* default_spec.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EA7A1BF1DD444B100B2FEC9 /* default_spec.png */; };
-		8EA7A1C71DD444B100B2FEC9 /* default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8EA7A1C01DD444B100B2FEC9 /* default.jpg */; };
-		8EA7A1C81DD444B100B2FEC9 /* wood_02.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8EA7A1C11DD444B100B2FEC9 /* wood_02.jpg */; };
-		8EA7A1C91DD444B100B2FEC9 /* wood_03.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8EA7A1C21DD444B100B2FEC9 /* wood_03.jpg */; };
-		8EA7A1CD1DD567A200B2FEC9 /* metal_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EA7A1CA1DD567A200B2FEC9 /* metal_normal.png */; };
-		8EA7A1CE1DD567A200B2FEC9 /* metal_SPEC.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EA7A1CB1DD567A200B2FEC9 /* metal_SPEC.png */; };
-		8EA7A1CF1DD567A200B2FEC9 /* metal.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8EA7A1CC1DD567A200B2FEC9 /* metal.jpg */; };
-		8EA7A2131DD5BC0000B2FEC9 /* EZGLBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EA7A2121DD5BC0000B2FEC9 /* EZGLBaseViewController.m */; };
-		8EA7A21F1DD5CC9C00B2FEC9 /* box.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8EA7A21A1DD5CC9C00B2FEC9 /* box.jpg */; };
-		8EA7A2201DD5CC9C00B2FEC9 /* box_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EA7A21B1DD5CC9C00B2FEC9 /* box_normal.png */; };
-		8EA7A2211DD5CC9C00B2FEC9 /* box_spec.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EA7A21C1DD5CC9C00B2FEC9 /* box_spec.png */; };
-		8EA7A2221DD5CC9C00B2FEC9 /* demo1_000001.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 8EA7A21D1DD5CC9C00B2FEC9 /* demo1_000001.mtl */; };
-		8EA7A2231DD5CC9C00B2FEC9 /* demo1_000001.obj in Resources */ = {isa = PBXBuildFile; fileRef = 8EA7A21E1DD5CC9C00B2FEC9 /* demo1_000001.obj */; };
-		8EA7A2271DD5CCB900B2FEC9 /* EZGLLoadSceneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EA7A2261DD5CCB900B2FEC9 /* EZGLLoadSceneViewController.m */; };
-		8EA7A2291DD5CFB100B2FEC9 /* grass.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8EA7A2281DD5CFB100B2FEC9 /* grass.jpg */; };
-		8ED4732F1DC1CE100035F011 /* ball3.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 8ED4732D1DC1CE100035F011 /* ball3.mtl */; };
-		8ED473301DC1CE100035F011 /* ball3.obj in Resources */ = {isa = PBXBuildFile; fileRef = 8ED4732E1DC1CE100035F011 /* ball3.obj */; };
-		91A411BC925146DB4B9D6537 /* libPods-EZGLKit_Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FE102A697C3C7FA9874D2744 /* libPods-EZGLKit_Example.a */; };
-		D30FF4F31DBA4260006A2A68 /* EZGLBasicCubeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D30FF4F21DBA4260006A2A68 /* EZGLBasicCubeViewController.m */; };
-		D32DF9981DBA818800EBED91 /* cube3.obj in Resources */ = {isa = PBXBuildFile; fileRef = D32DF9961DBA818800EBED91 /* cube3.obj */; };
-		D32DF9991DBA818800EBED91 /* cube3.mtl in Resources */ = {isa = PBXBuildFile; fileRef = D32DF9971DBA818800EBED91 /* cube3.mtl */; };
-		D381B3B91DBA647000FB0829 /* libstdc++.6.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D381B3B81DBA647000FB0829 /* libstdc++.6.tbd */; };
-		D3C9FD891DC0F050004E7AE1 /* EZGLSpherePanoramaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3C9FD881DC0F050004E7AE1 /* EZGLSpherePanoramaViewController.m */; };
-		D3C9FD8D1DC0F149004E7AE1 /* sphere.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D3C9FD8A1DC0F149004E7AE1 /* sphere.jpg */; };
-		D3C9FD8E1DC0F149004E7AE1 /* ball2.mtl in Resources */ = {isa = PBXBuildFile; fileRef = D3C9FD8B1DC0F149004E7AE1 /* ball2.mtl */; };
-		D3C9FD8F1DC0F149004E7AE1 /* ball2.obj in Resources */ = {isa = PBXBuildFile; fileRef = D3C9FD8C1DC0F149004E7AE1 /* ball2.obj */; };
-		D3C9FD911DC0F6D4004E7AE1 /* sphere1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D3C9FD901DC0F6D4004E7AE1 /* sphere1.jpg */; };
-		D3C9FDA31DC25693004E7AE1 /* EZGLCubeWithTextureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3C9FDA21DC25693004E7AE1 /* EZGLCubeWithTextureViewController.m */; };
-		D3EA001D1DD89E2C0039231D /* EZGLMoveJoySticker.m in Sources */ = {isa = PBXBuildFile; fileRef = D3EA001C1DD89E2C0039231D /* EZGLMoveJoySticker.m */; };
-		D3EA00221DD8ACA90039231D /* EZGLSimplePhysicsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3EA00211DD8ACA90039231D /* EZGLSimplePhysicsViewController.m */; };
-		D3EA00261DD8B7C40039231D /* EZGLBasicGeometriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3EA00251DD8B7C40039231D /* EZGLBasicGeometriesViewController.m */; };
-		F28D411B08168914A80EFD08 /* libPods-EZGLKit_Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D5B31F65B17DF330A25AFDD /* libPods-EZGLKit_Tests.a */; };
-/* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		6003F5B3195388D20070C39A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6003F582195388D10070C39A /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 6003F589195388D20070C39A;
-			remoteInfo = EZGLKit;
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXFileReference section */
-		253E0DA851FB2A51B07C7BEC /* Pods-EZGLKit_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EZGLKit_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EZGLKit_Example/Pods-EZGLKit_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		5D5B31F65B17DF330A25AFDD /* libPods-EZGLKit_Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EZGLKit_Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		6003F58A195388D20070C39A /* EZGLKit_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EZGLKit_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		6003F591195388D20070C39A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		6003F595195388D20070C39A /* EZGLKit-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "EZGLKit-Info.plist"; sourceTree = "<group>"; };
-		6003F597195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		6003F599195388D20070C39A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		6003F59B195388D20070C39A /* EZGLKit-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EZGLKit-Prefix.pch"; sourceTree = "<group>"; };
-		6003F59C195388D20070C39A /* EZGLAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EZGLAppDelegate.h; sourceTree = "<group>"; };
-		6003F59D195388D20070C39A /* EZGLAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EZGLAppDelegate.m; sourceTree = "<group>"; };
-		6003F5A5195388D20070C39A /* EZGLViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EZGLViewController.h; sourceTree = "<group>"; };
-		6003F5A6195388D20070C39A /* EZGLViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EZGLViewController.m; sourceTree = "<group>"; };
-		6003F5A8195388D20070C39A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		6003F5AE195388D20070C39A /* EZGLKit_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EZGLKit_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		6003F5AF195388D20070C39A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		6003F5B7195388D20070C39A /* Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tests-Info.plist"; sourceTree = "<group>"; };
-		6003F5B9195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		6003F5BB195388D20070C39A /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
-		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
-		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		8E0F307E1DBDFFAA00F54680 /* EZGLBasicTriangleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EZGLBasicTriangleViewController.h; sourceTree = "<group>"; };
-		8E0F307F1DBDFFAA00F54680 /* EZGLBasicTriangleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EZGLBasicTriangleViewController.m; sourceTree = "<group>"; };
-		8E361FED1DC7343900073685 /* EZGLCubeWithBumpTextureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EZGLCubeWithBumpTextureViewController.h; sourceTree = "<group>"; };
-		8E361FEE1DC7343900073685 /* EZGLCubeWithBumpTextureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EZGLCubeWithBumpTextureViewController.m; sourceTree = "<group>"; };
-		8E5577011DC71A910096E198 /* EZGLCubeWithTextureLightViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EZGLCubeWithTextureLightViewController.h; sourceTree = "<group>"; };
-		8E5577021DC71A910096E198 /* EZGLCubeWithTextureLightViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EZGLCubeWithTextureLightViewController.m; sourceTree = "<group>"; };
-		8EA173691DC1E41B002AC00E /* EZGLCubePanoramaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EZGLCubePanoramaViewController.h; sourceTree = "<group>"; };
-		8EA1736A1DC1E41B002AC00E /* EZGLCubePanoramaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EZGLCubePanoramaViewController.m; sourceTree = "<group>"; };
-		8EA1736C1DC1E4B0002AC00E /* sphere3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = sphere3.jpg; path = Resources/sphere3.jpg; sourceTree = "<group>"; };
-		8EA1736E1DC1E642002AC00E /* sphere4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = sphere4.jpg; path = Resources/sphere4.jpg; sourceTree = "<group>"; };
-		8EA7A1B81DD443BA00B2FEC9 /* cube4.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = cube4.mtl; path = Resources/cube4.mtl; sourceTree = "<group>"; };
-		8EA7A1B91DD443BA00B2FEC9 /* cube4.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = cube4.obj; path = Resources/cube4.obj; sourceTree = "<group>"; };
-		8EA7A1BC1DD444B100B2FEC9 /* normal.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = normal.jpg; path = Resources/normal.jpg; sourceTree = "<group>"; };
-		8EA7A1BE1DD444B100B2FEC9 /* default_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = default_normal.png; path = Resources/default_normal.png; sourceTree = "<group>"; };
-		8EA7A1BF1DD444B100B2FEC9 /* default_spec.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = default_spec.png; path = Resources/default_spec.png; sourceTree = "<group>"; };
-		8EA7A1C01DD444B100B2FEC9 /* default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = default.jpg; path = Resources/default.jpg; sourceTree = "<group>"; };
-		8EA7A1C11DD444B100B2FEC9 /* wood_02.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = wood_02.jpg; path = Resources/wood_02.jpg; sourceTree = "<group>"; };
-		8EA7A1C21DD444B100B2FEC9 /* wood_03.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = wood_03.jpg; path = Resources/wood_03.jpg; sourceTree = "<group>"; };
-		8EA7A1CA1DD567A200B2FEC9 /* metal_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = metal_normal.png; path = Resources/metal_normal.png; sourceTree = "<group>"; };
-		8EA7A1CB1DD567A200B2FEC9 /* metal_SPEC.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = metal_SPEC.png; path = Resources/metal_SPEC.png; sourceTree = "<group>"; };
-		8EA7A1CC1DD567A200B2FEC9 /* metal.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = metal.jpg; path = Resources/metal.jpg; sourceTree = "<group>"; };
-		8EA7A2111DD5BC0000B2FEC9 /* EZGLBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EZGLBaseViewController.h; sourceTree = "<group>"; };
-		8EA7A2121DD5BC0000B2FEC9 /* EZGLBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EZGLBaseViewController.m; sourceTree = "<group>"; };
-		8EA7A21A1DD5CC9C00B2FEC9 /* box.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = box.jpg; sourceTree = "<group>"; };
-		8EA7A21B1DD5CC9C00B2FEC9 /* box_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = box_normal.png; sourceTree = "<group>"; };
-		8EA7A21C1DD5CC9C00B2FEC9 /* box_spec.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = box_spec.png; sourceTree = "<group>"; };
-		8EA7A21D1DD5CC9C00B2FEC9 /* demo1_000001.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = demo1_000001.mtl; sourceTree = "<group>"; };
-		8EA7A21E1DD5CC9C00B2FEC9 /* demo1_000001.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = demo1_000001.obj; sourceTree = "<group>"; };
-		8EA7A2251DD5CCB900B2FEC9 /* EZGLLoadSceneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EZGLLoadSceneViewController.h; sourceTree = "<group>"; };
-		8EA7A2261DD5CCB900B2FEC9 /* EZGLLoadSceneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EZGLLoadSceneViewController.m; sourceTree = "<group>"; };
-		8EA7A2281DD5CFB100B2FEC9 /* grass.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = grass.jpg; sourceTree = "<group>"; };
-		8ED4732D1DC1CE100035F011 /* ball3.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ball3.mtl; path = Resources/ball3.mtl; sourceTree = "<group>"; };
-		8ED4732E1DC1CE100035F011 /* ball3.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ball3.obj; path = Resources/ball3.obj; sourceTree = "<group>"; };
-		ACB722C94CFF447CCFA4C7BA /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		B3F37E7B44058075289CA397 /* Pods-EZGLKit_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EZGLKit_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-EZGLKit_Example/Pods-EZGLKit_Example.release.xcconfig"; sourceTree = "<group>"; };
-		BF00AC56A3E31A9742AB668F /* Pods-EZGLKit_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EZGLKit_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EZGLKit_Tests/Pods-EZGLKit_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		CEF86E68B182B9A72A642328 /* EZGLKit.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = EZGLKit.podspec; path = ../EZGLKit.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		D07D7CF16BD0419E06B3E484 /* Pods-EZGLKit_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EZGLKit_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-EZGLKit_Tests/Pods-EZGLKit_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		D30FF4F11DBA4260006A2A68 /* EZGLBasicCubeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EZGLBasicCubeViewController.h; sourceTree = "<group>"; };
-		D30FF4F21DBA4260006A2A68 /* EZGLBasicCubeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EZGLBasicCubeViewController.m; sourceTree = "<group>"; };
-		D32DF9961DBA818800EBED91 /* cube3.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = cube3.obj; path = Resources/cube3.obj; sourceTree = "<group>"; };
-		D32DF9971DBA818800EBED91 /* cube3.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = cube3.mtl; path = Resources/cube3.mtl; sourceTree = "<group>"; };
-		D381B3B81DBA647000FB0829 /* libstdc++.6.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.tbd"; path = "usr/lib/libstdc++.6.tbd"; sourceTree = SDKROOT; };
-		D3C9FD871DC0F050004E7AE1 /* EZGLSpherePanoramaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EZGLSpherePanoramaViewController.h; sourceTree = "<group>"; };
-		D3C9FD881DC0F050004E7AE1 /* EZGLSpherePanoramaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EZGLSpherePanoramaViewController.m; sourceTree = "<group>"; };
-		D3C9FD8A1DC0F149004E7AE1 /* sphere.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = sphere.jpg; path = Resources/sphere.jpg; sourceTree = "<group>"; };
-		D3C9FD8B1DC0F149004E7AE1 /* ball2.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ball2.mtl; path = Resources/ball2.mtl; sourceTree = "<group>"; };
-		D3C9FD8C1DC0F149004E7AE1 /* ball2.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ball2.obj; path = Resources/ball2.obj; sourceTree = "<group>"; };
-		D3C9FD901DC0F6D4004E7AE1 /* sphere1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = sphere1.jpg; path = Resources/sphere1.jpg; sourceTree = "<group>"; };
-		D3C9FDA11DC25693004E7AE1 /* EZGLCubeWithTextureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EZGLCubeWithTextureViewController.h; sourceTree = "<group>"; };
-		D3C9FDA21DC25693004E7AE1 /* EZGLCubeWithTextureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EZGLCubeWithTextureViewController.m; sourceTree = "<group>"; };
-		D3EA001B1DD89E2C0039231D /* EZGLMoveJoySticker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EZGLMoveJoySticker.h; sourceTree = "<group>"; };
-		D3EA001C1DD89E2C0039231D /* EZGLMoveJoySticker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EZGLMoveJoySticker.m; sourceTree = "<group>"; };
-		D3EA001E1DD89ED90039231D /* EZGLMoveJoyStickerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EZGLMoveJoyStickerDelegate.h; sourceTree = "<group>"; };
-		D3EA00201DD8ACA90039231D /* EZGLSimplePhysicsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EZGLSimplePhysicsViewController.h; sourceTree = "<group>"; };
-		D3EA00211DD8ACA90039231D /* EZGLSimplePhysicsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EZGLSimplePhysicsViewController.m; sourceTree = "<group>"; };
-		D3EA00241DD8B7C40039231D /* EZGLBasicGeometriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EZGLBasicGeometriesViewController.h; sourceTree = "<group>"; };
-		D3EA00251DD8B7C40039231D /* EZGLBasicGeometriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EZGLBasicGeometriesViewController.m; sourceTree = "<group>"; };
-		D79FD1F25812C2F5CA6082CD /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		FE102A697C3C7FA9874D2744 /* libPods-EZGLKit_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EZGLKit_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-/* End PBXFileReference section */
-
-/* Begin PBXFrameworksBuildPhase section */
-		6003F587195388D20070C39A /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D381B3B91DBA647000FB0829 /* libstdc++.6.tbd in Frameworks */,
-				6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */,
-				6003F592195388D20070C39A /* UIKit.framework in Frameworks */,
-				6003F58E195388D20070C39A /* Foundation.framework in Frameworks */,
-				91A411BC925146DB4B9D6537 /* libPods-EZGLKit_Example.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6003F5AB195388D20070C39A /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */,
-				6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */,
-				6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */,
-				F28D411B08168914A80EFD08 /* libPods-EZGLKit_Tests.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXFrameworksBuildPhase section */
-
-/* Begin PBXGroup section */
-		45AE8B194048100E36429ED4 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				253E0DA851FB2A51B07C7BEC /* Pods-EZGLKit_Example.debug.xcconfig */,
-				B3F37E7B44058075289CA397 /* Pods-EZGLKit_Example.release.xcconfig */,
-				BF00AC56A3E31A9742AB668F /* Pods-EZGLKit_Tests.debug.xcconfig */,
-				D07D7CF16BD0419E06B3E484 /* Pods-EZGLKit_Tests.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		6003F581195388D10070C39A = {
-			isa = PBXGroup;
-			children = (
-				60FF7A9C1954A5C5007DD14C /* Podspec Metadata */,
-				6003F593195388D20070C39A /* Example for EZGLKit */,
-				6003F5B5195388D20070C39A /* Tests */,
-				6003F58C195388D20070C39A /* Frameworks */,
-				6003F58B195388D20070C39A /* Products */,
-				45AE8B194048100E36429ED4 /* Pods */,
-			);
-			sourceTree = "<group>";
-		};
-		6003F58B195388D20070C39A /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				6003F58A195388D20070C39A /* EZGLKit_Example.app */,
-				6003F5AE195388D20070C39A /* EZGLKit_Tests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		6003F58C195388D20070C39A /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				D381B3B81DBA647000FB0829 /* libstdc++.6.tbd */,
-				6003F58D195388D20070C39A /* Foundation.framework */,
-				6003F58F195388D20070C39A /* CoreGraphics.framework */,
-				6003F591195388D20070C39A /* UIKit.framework */,
-				6003F5AF195388D20070C39A /* XCTest.framework */,
-				FE102A697C3C7FA9874D2744 /* libPods-EZGLKit_Example.a */,
-				5D5B31F65B17DF330A25AFDD /* libPods-EZGLKit_Tests.a */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		6003F593195388D20070C39A /* Example for EZGLKit */ = {
-			isa = PBXGroup;
-			children = (
-				8E9507531DBDFEAE00244415 /* Examples */,
-				D32DF9951DBA816600EBED91 /* 3D Models */,
-				D30FF4EF1DBA41E9006A2A68 /* Foundation */,
-				6003F5A8195388D20070C39A /* Images.xcassets */,
-				6003F594195388D20070C39A /* Supporting Files */,
-			);
-			name = "Example for EZGLKit";
-			path = EZGLKit;
-			sourceTree = "<group>";
-		};
-		6003F594195388D20070C39A /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				6003F595195388D20070C39A /* EZGLKit-Info.plist */,
-				6003F596195388D20070C39A /* InfoPlist.strings */,
-				6003F599195388D20070C39A /* main.m */,
-				6003F59B195388D20070C39A /* EZGLKit-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		6003F5B5195388D20070C39A /* Tests */ = {
-			isa = PBXGroup;
-			children = (
-				6003F5BB195388D20070C39A /* Tests.m */,
-				6003F5B6195388D20070C39A /* Supporting Files */,
-			);
-			path = Tests;
-			sourceTree = "<group>";
-		};
-		6003F5B6195388D20070C39A /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				6003F5B7195388D20070C39A /* Tests-Info.plist */,
-				6003F5B8195388D20070C39A /* InfoPlist.strings */,
-				606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		60FF7A9C1954A5C5007DD14C /* Podspec Metadata */ = {
-			isa = PBXGroup;
-			children = (
-				CEF86E68B182B9A72A642328 /* EZGLKit.podspec */,
-				ACB722C94CFF447CCFA4C7BA /* README.md */,
-				D79FD1F25812C2F5CA6082CD /* LICENSE */,
-			);
-			name = "Podspec Metadata";
-			sourceTree = "<group>";
-		};
-		8E361FEC1DC733F500073685 /* Cube With Bump Texture */ = {
-			isa = PBXGroup;
-			children = (
-				8E361FED1DC7343900073685 /* EZGLCubeWithBumpTextureViewController.h */,
-				8E361FEE1DC7343900073685 /* EZGLCubeWithBumpTextureViewController.m */,
-			);
-			name = "Cube With Bump Texture";
-			sourceTree = "<group>";
-		};
-		8E5577001DC71A750096E198 /* Cube WithTexture & Light */ = {
-			isa = PBXGroup;
-			children = (
-				8E5577011DC71A910096E198 /* EZGLCubeWithTextureLightViewController.h */,
-				8E5577021DC71A910096E198 /* EZGLCubeWithTextureLightViewController.m */,
-			);
-			name = "Cube WithTexture & Light";
-			sourceTree = "<group>";
-		};
-		8E9507531DBDFEAE00244415 /* Examples */ = {
-			isa = PBXGroup;
-			children = (
-				D3EA00231DD8B78F0039231D /* Basic Geometries */,
-				D3EA001F1DD8AC3B0039231D /* Physics With Bullet */,
-				8EA7A2241DD5CCA300B2FEC9 /* Load Scene */,
-				8E361FEC1DC733F500073685 /* Cube With Bump Texture */,
-				8E5577001DC71A750096E198 /* Cube WithTexture & Light */,
-				D3C9FDA01DC25678004E7AE1 /* Basic Cube With Texture */,
-				8EA173681DC1E3E3002AC00E /* Cube Panorama */,
-				D3C9FD861DC0F006004E7AE1 /* Sphere Panorama */,
-				8E9507541DBDFEB700244415 /* Basic Triangle */,
-				D30FF4F01DBA420B006A2A68 /* Basic Cube */,
-				8EA7A2111DD5BC0000B2FEC9 /* EZGLBaseViewController.h */,
-				8EA7A2121DD5BC0000B2FEC9 /* EZGLBaseViewController.m */,
-				D3EA001B1DD89E2C0039231D /* EZGLMoveJoySticker.h */,
-				D3EA001C1DD89E2C0039231D /* EZGLMoveJoySticker.m */,
-				D3EA001E1DD89ED90039231D /* EZGLMoveJoyStickerDelegate.h */,
-			);
-			name = Examples;
-			sourceTree = "<group>";
-		};
-		8E9507541DBDFEB700244415 /* Basic Triangle */ = {
-			isa = PBXGroup;
-			children = (
-				8E0F307E1DBDFFAA00F54680 /* EZGLBasicTriangleViewController.h */,
-				8E0F307F1DBDFFAA00F54680 /* EZGLBasicTriangleViewController.m */,
-			);
-			name = "Basic Triangle";
-			sourceTree = "<group>";
-		};
-		8EA173681DC1E3E3002AC00E /* Cube Panorama */ = {
-			isa = PBXGroup;
-			children = (
-				8EA173691DC1E41B002AC00E /* EZGLCubePanoramaViewController.h */,
-				8EA1736A1DC1E41B002AC00E /* EZGLCubePanoramaViewController.m */,
-			);
-			name = "Cube Panorama";
-			sourceTree = "<group>";
-		};
-		8EA7A2181DD5CC9C00B2FEC9 /* Scenes */ = {
-			isa = PBXGroup;
-			children = (
-				8EA7A2191DD5CC9C00B2FEC9 /* demo1 */,
-			);
-			name = Scenes;
-			path = Resources/Scenes;
-			sourceTree = "<group>";
-		};
-		8EA7A2191DD5CC9C00B2FEC9 /* demo1 */ = {
-			isa = PBXGroup;
-			children = (
-				8EA7A2281DD5CFB100B2FEC9 /* grass.jpg */,
-				8EA7A21A1DD5CC9C00B2FEC9 /* box.jpg */,
-				8EA7A21B1DD5CC9C00B2FEC9 /* box_normal.png */,
-				8EA7A21C1DD5CC9C00B2FEC9 /* box_spec.png */,
-				8EA7A21D1DD5CC9C00B2FEC9 /* demo1_000001.mtl */,
-				8EA7A21E1DD5CC9C00B2FEC9 /* demo1_000001.obj */,
-			);
-			path = demo1;
-			sourceTree = "<group>";
-		};
-		8EA7A2241DD5CCA300B2FEC9 /* Load Scene */ = {
-			isa = PBXGroup;
-			children = (
-				8EA7A2251DD5CCB900B2FEC9 /* EZGLLoadSceneViewController.h */,
-				8EA7A2261DD5CCB900B2FEC9 /* EZGLLoadSceneViewController.m */,
-			);
-			name = "Load Scene";
-			sourceTree = "<group>";
-		};
-		D30FF4EF1DBA41E9006A2A68 /* Foundation */ = {
-			isa = PBXGroup;
-			children = (
-				6003F59C195388D20070C39A /* EZGLAppDelegate.h */,
-				6003F59D195388D20070C39A /* EZGLAppDelegate.m */,
-				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
-				6003F5A5195388D20070C39A /* EZGLViewController.h */,
-				6003F5A6195388D20070C39A /* EZGLViewController.m */,
-			);
-			name = Foundation;
-			sourceTree = "<group>";
-		};
-		D30FF4F01DBA420B006A2A68 /* Basic Cube */ = {
-			isa = PBXGroup;
-			children = (
-				D30FF4F11DBA4260006A2A68 /* EZGLBasicCubeViewController.h */,
-				D30FF4F21DBA4260006A2A68 /* EZGLBasicCubeViewController.m */,
-			);
-			name = "Basic Cube";
-			sourceTree = "<group>";
-		};
-		D32DF9951DBA816600EBED91 /* 3D Models */ = {
-			isa = PBXGroup;
-			children = (
-				8EA7A2181DD5CC9C00B2FEC9 /* Scenes */,
-				8EA7A1CA1DD567A200B2FEC9 /* metal_normal.png */,
-				8EA7A1CB1DD567A200B2FEC9 /* metal_SPEC.png */,
-				8EA7A1CC1DD567A200B2FEC9 /* metal.jpg */,
-				8EA7A1BC1DD444B100B2FEC9 /* normal.jpg */,
-				8EA7A1BE1DD444B100B2FEC9 /* default_normal.png */,
-				8EA7A1BF1DD444B100B2FEC9 /* default_spec.png */,
-				8EA7A1C01DD444B100B2FEC9 /* default.jpg */,
-				8EA7A1C11DD444B100B2FEC9 /* wood_02.jpg */,
-				8EA7A1C21DD444B100B2FEC9 /* wood_03.jpg */,
-				8EA7A1B81DD443BA00B2FEC9 /* cube4.mtl */,
-				8EA7A1B91DD443BA00B2FEC9 /* cube4.obj */,
-				8EA1736E1DC1E642002AC00E /* sphere4.jpg */,
-				8EA1736C1DC1E4B0002AC00E /* sphere3.jpg */,
-				8ED4732D1DC1CE100035F011 /* ball3.mtl */,
-				8ED4732E1DC1CE100035F011 /* ball3.obj */,
-				D3C9FD901DC0F6D4004E7AE1 /* sphere1.jpg */,
-				D3C9FD8A1DC0F149004E7AE1 /* sphere.jpg */,
-				D3C9FD8B1DC0F149004E7AE1 /* ball2.mtl */,
-				D3C9FD8C1DC0F149004E7AE1 /* ball2.obj */,
-				D32DF9961DBA818800EBED91 /* cube3.obj */,
-				D32DF9971DBA818800EBED91 /* cube3.mtl */,
-			);
-			name = "3D Models";
-			sourceTree = "<group>";
-		};
-		D3C9FD861DC0F006004E7AE1 /* Sphere Panorama */ = {
-			isa = PBXGroup;
-			children = (
-				D3C9FD871DC0F050004E7AE1 /* EZGLSpherePanoramaViewController.h */,
-				D3C9FD881DC0F050004E7AE1 /* EZGLSpherePanoramaViewController.m */,
-			);
-			name = "Sphere Panorama";
-			sourceTree = "<group>";
-		};
-		D3C9FDA01DC25678004E7AE1 /* Basic Cube With Texture */ = {
-			isa = PBXGroup;
-			children = (
-				D3C9FDA11DC25693004E7AE1 /* EZGLCubeWithTextureViewController.h */,
-				D3C9FDA21DC25693004E7AE1 /* EZGLCubeWithTextureViewController.m */,
-			);
-			name = "Basic Cube With Texture";
-			sourceTree = "<group>";
-		};
-		D3EA001F1DD8AC3B0039231D /* Physics With Bullet */ = {
-			isa = PBXGroup;
-			children = (
-				D3EA00201DD8ACA90039231D /* EZGLSimplePhysicsViewController.h */,
-				D3EA00211DD8ACA90039231D /* EZGLSimplePhysicsViewController.m */,
-			);
-			name = "Physics With Bullet";
-			sourceTree = "<group>";
-		};
-		D3EA00231DD8B78F0039231D /* Basic Geometries */ = {
-			isa = PBXGroup;
-			children = (
-				D3EA00241DD8B7C40039231D /* EZGLBasicGeometriesViewController.h */,
-				D3EA00251DD8B7C40039231D /* EZGLBasicGeometriesViewController.m */,
-			);
-			name = "Basic Geometries";
-			sourceTree = "<group>";
-		};
-/* End PBXGroup section */
-
-/* Begin PBXNativeTarget section */
-		6003F589195388D20070C39A /* EZGLKit_Example */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 6003F5BF195388D20070C39A /* Build configuration list for PBXNativeTarget "EZGLKit_Example" */;
-			buildPhases = (
-				A81273D092777D4F81C85ECB /* [CP] Check Pods Manifest.lock */,
-				6003F586195388D20070C39A /* Sources */,
-				6003F587195388D20070C39A /* Frameworks */,
-				6003F588195388D20070C39A /* Resources */,
-				F21A388D246BBCD4DF162D76 /* [CP] Embed Pods Frameworks */,
-				912795037BACC0CFCCBDA95C /* [CP] Copy Pods Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = EZGLKit_Example;
-			productName = EZGLKit;
-			productReference = 6003F58A195388D20070C39A /* EZGLKit_Example.app */;
-			productType = "com.apple.product-type.application";
-		};
-		6003F5AD195388D20070C39A /* EZGLKit_Tests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 6003F5C2195388D20070C39A /* Build configuration list for PBXNativeTarget "EZGLKit_Tests" */;
-			buildPhases = (
-				260A25C61CB58CC833F97960 /* [CP] Check Pods Manifest.lock */,
-				6003F5AA195388D20070C39A /* Sources */,
-				6003F5AB195388D20070C39A /* Frameworks */,
-				6003F5AC195388D20070C39A /* Resources */,
-				CB134545FC81CC7F564C9D36 /* [CP] Embed Pods Frameworks */,
-				2E3CE0FFA78DD7109ADDE6A2 /* [CP] Copy Pods Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				6003F5B4195388D20070C39A /* PBXTargetDependency */,
-			);
-			name = EZGLKit_Tests;
-			productName = EZGLKitTests;
-			productReference = 6003F5AE195388D20070C39A /* EZGLKit_Tests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-/* End PBXNativeTarget section */
-
-/* Begin PBXProject section */
-		6003F582195388D10070C39A /* Project object */ = {
-			isa = PBXProject;
-			attributes = {
-				CLASSPREFIX = EZGL;
-				LastUpgradeCheck = 0720;
-				ORGANIZATIONNAME = ocean;
-				TargetAttributes = {
-					6003F589195388D20070C39A = {
-						DevelopmentTeam = P48344HVQL;
-					};
-					6003F5AD195388D20070C39A = {
-						LastSwiftMigration = 0800;
-						TestTargetID = 6003F589195388D20070C39A;
-					};
-				};
-			};
-			buildConfigurationList = 6003F585195388D10070C39A /* Build configuration list for PBXProject "EZGLKit" */;
-			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
-			hasScannedForEncodings = 0;
-			knownRegions = (
-				en,
-				Base,
-			);
-			mainGroup = 6003F581195388D10070C39A;
-			productRefGroup = 6003F58B195388D20070C39A /* Products */;
-			projectDirPath = "";
-			projectRoot = "";
-			targets = (
-				6003F589195388D20070C39A /* EZGLKit_Example */,
-				6003F5AD195388D20070C39A /* EZGLKit_Tests */,
-			);
-		};
-/* End PBXProject section */
-
-/* Begin PBXResourcesBuildPhase section */
-		6003F588195388D20070C39A /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8EA7A1CD1DD567A200B2FEC9 /* metal_normal.png in Resources */,
-				8EA1736F1DC1E642002AC00E /* sphere4.jpg in Resources */,
-				8EA7A21F1DD5CC9C00B2FEC9 /* box.jpg in Resources */,
-				D32DF9981DBA818800EBED91 /* cube3.obj in Resources */,
-				8EA7A2201DD5CC9C00B2FEC9 /* box_normal.png in Resources */,
-				8EA7A1CF1DD567A200B2FEC9 /* metal.jpg in Resources */,
-				8EA7A1C51DD444B100B2FEC9 /* default_normal.png in Resources */,
-				8EA7A1CE1DD567A200B2FEC9 /* metal_SPEC.png in Resources */,
-				8EA7A1C31DD444B100B2FEC9 /* normal.jpg in Resources */,
-				8EA7A2221DD5CC9C00B2FEC9 /* demo1_000001.mtl in Resources */,
-				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
-				8ED4732F1DC1CE100035F011 /* ball3.mtl in Resources */,
-				8EA7A2291DD5CFB100B2FEC9 /* grass.jpg in Resources */,
-				8EA7A1C81DD444B100B2FEC9 /* wood_02.jpg in Resources */,
-				8EA7A1C71DD444B100B2FEC9 /* default.jpg in Resources */,
-				D3C9FD8E1DC0F149004E7AE1 /* ball2.mtl in Resources */,
-				8EA1736D1DC1E4B0002AC00E /* sphere3.jpg in Resources */,
-				8EA7A1C91DD444B100B2FEC9 /* wood_03.jpg in Resources */,
-				8EA7A1BB1DD443BA00B2FEC9 /* cube4.obj in Resources */,
-				D3C9FD8D1DC0F149004E7AE1 /* sphere.jpg in Resources */,
-				8EA7A1C61DD444B100B2FEC9 /* default_spec.png in Resources */,
-				8EA7A2211DD5CC9C00B2FEC9 /* box_spec.png in Resources */,
-				8EA7A1BA1DD443BA00B2FEC9 /* cube4.mtl in Resources */,
-				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
-				8ED473301DC1CE100035F011 /* ball3.obj in Resources */,
-				D32DF9991DBA818800EBED91 /* cube3.mtl in Resources */,
-				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
-				D3C9FD911DC0F6D4004E7AE1 /* sphere1.jpg in Resources */,
-				8EA7A2231DD5CC9C00B2FEC9 /* demo1_000001.obj in Resources */,
-				D3C9FD8F1DC0F149004E7AE1 /* ball2.obj in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6003F5AC195388D20070C39A /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		260A25C61CB58CC833F97960 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		2E3CE0FFA78DD7109ADDE6A2 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EZGLKit_Tests/Pods-EZGLKit_Tests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		912795037BACC0CFCCBDA95C /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EZGLKit_Example/Pods-EZGLKit_Example-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A81273D092777D4F81C85ECB /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		CB134545FC81CC7F564C9D36 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EZGLKit_Tests/Pods-EZGLKit_Tests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F21A388D246BBCD4DF162D76 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EZGLKit_Example/Pods-EZGLKit_Example-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
-/* Begin PBXSourcesBuildPhase section */
-		6003F586195388D20070C39A /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6003F59E195388D20070C39A /* EZGLAppDelegate.m in Sources */,
-				8E361FEF1DC7343900073685 /* EZGLCubeWithBumpTextureViewController.m in Sources */,
-				8EA7A2131DD5BC0000B2FEC9 /* EZGLBaseViewController.m in Sources */,
-				8E0F30801DBDFFAA00F54680 /* EZGLBasicTriangleViewController.m in Sources */,
-				D3C9FD891DC0F050004E7AE1 /* EZGLSpherePanoramaViewController.m in Sources */,
-				D3C9FDA31DC25693004E7AE1 /* EZGLCubeWithTextureViewController.m in Sources */,
-				D3EA00261DD8B7C40039231D /* EZGLBasicGeometriesViewController.m in Sources */,
-				6003F5A7195388D20070C39A /* EZGLViewController.m in Sources */,
-				8E5577031DC71A910096E198 /* EZGLCubeWithTextureLightViewController.m in Sources */,
-				8EA1736B1DC1E41B002AC00E /* EZGLCubePanoramaViewController.m in Sources */,
-				6003F59A195388D20070C39A /* main.m in Sources */,
-				D3EA00221DD8ACA90039231D /* EZGLSimplePhysicsViewController.m in Sources */,
-				D30FF4F31DBA4260006A2A68 /* EZGLBasicCubeViewController.m in Sources */,
-				8EA7A2271DD5CCB900B2FEC9 /* EZGLLoadSceneViewController.m in Sources */,
-				D3EA001D1DD89E2C0039231D /* EZGLMoveJoySticker.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6003F5AA195388D20070C39A /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6003F5BC195388D20070C39A /* Tests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		6003F5B4195388D20070C39A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 6003F589195388D20070C39A /* EZGLKit_Example */;
-			targetProxy = 6003F5B3195388D20070C39A /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		6003F596195388D20070C39A /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6003F597195388D20070C39A /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		6003F5B8195388D20070C39A /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6003F5B9195388D20070C39A /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
-/* Begin XCBuildConfiguration section */
-		6003F5BD195388D20070C39A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		6003F5BE195388D20070C39A /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = YES;
-				ENABLE_NS_ASSERTIONS = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		6003F5C0195388D20070C39A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 253E0DA851FB2A51B07C7BEC /* Pods-EZGLKit_Example.debug.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				DEVELOPMENT_TEAM = P48344HVQL;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "EZGLKit/EZGLKit-Prefix.pch";
-				INFOPLIST_FILE = "EZGLKit/EZGLKit-Info.plist";
-				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = app;
-			};
-			name = Debug;
-		};
-		6003F5C1195388D20070C39A /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = B3F37E7B44058075289CA397 /* Pods-EZGLKit_Example.release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				DEVELOPMENT_TEAM = P48344HVQL;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "EZGLKit/EZGLKit-Prefix.pch";
-				INFOPLIST_FILE = "EZGLKit/EZGLKit-Info.plist";
-				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = app;
-			};
-			name = Release;
-		};
-		6003F5C3195388D20070C39A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = BF00AC56A3E31A9742AB668F /* Pods-EZGLKit_Tests.debug.xcconfig */;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Tests/Tests-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "Tests/Tests-Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EZGLKit_Example.app/EZGLKit_Example";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		6003F5C4195388D20070C39A /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = D07D7CF16BD0419E06B3E484 /* Pods-EZGLKit_Tests.release.xcconfig */;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Tests/Tests-Prefix.pch";
-				INFOPLIST_FILE = "Tests/Tests-Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EZGLKit_Example.app/EZGLKit_Example";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Release;
-		};
-/* End XCBuildConfiguration section */
-
-/* Begin XCConfigurationList section */
-		6003F585195388D10070C39A /* Build configuration list for PBXProject "EZGLKit" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				6003F5BD195388D20070C39A /* Debug */,
-				6003F5BE195388D20070C39A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		6003F5BF195388D20070C39A /* Build configuration list for PBXNativeTarget "EZGLKit_Example" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				6003F5C0195388D20070C39A /* Debug */,
-				6003F5C1195388D20070C39A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		6003F5C2195388D20070C39A /* Build configuration list for PBXNativeTarget "EZGLKit_Tests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				6003F5C3195388D20070C39A /* Debug */,
-				6003F5C4195388D20070C39A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-/* End XCConfigurationList section */
-	};
-	rootObject = 6003F582195388D10070C39A /* Project object */;
-}
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>archiveVersion</key>
+	<string>1</string>
+	<key>classes</key>
+	<dict/>
+	<key>objectVersion</key>
+	<string>46</string>
+	<key>objects</key>
+	<dict>
+		<key>253E0DA851FB2A51B07C7BEC</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>name</key>
+			<string>Pods-EZGLKit_Example.debug.xcconfig</string>
+			<key>path</key>
+			<string>Pods/Target Support Files/Pods-EZGLKit_Example/Pods-EZGLKit_Example.debug.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>260A25C61CB58CC833F97960</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>[CP] Check Pods Manifest.lock</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>diff "${PODS_ROOT}/../Podfile.lock" "${PODS_ROOT}/Manifest.lock" &gt; /dev/null
+if [[ $? != 0 ]] ; then
+    cat &lt;&lt; EOM
+error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.
+EOM
+    exit 1
+fi
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+		<key>2E3CE0FFA78DD7109ADDE6A2</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>[CP] Copy Pods Resources</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>"${SRCROOT}/Pods/Target Support Files/Pods-EZGLKit_Tests/Pods-EZGLKit_Tests-resources.sh"
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+		<key>45AE8B194048100E36429ED4</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>253E0DA851FB2A51B07C7BEC</string>
+				<string>B3F37E7B44058075289CA397</string>
+				<string>BF00AC56A3E31A9742AB668F</string>
+				<string>D07D7CF16BD0419E06B3E484</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Pods</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>5D5B31F65B17DF330A25AFDD</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>archive.ar</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>libPods-EZGLKit_Tests.a</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>6003F581195388D10070C39A</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>60FF7A9C1954A5C5007DD14C</string>
+				<string>6003F593195388D20070C39A</string>
+				<string>6003F5B5195388D20070C39A</string>
+				<string>6003F58C195388D20070C39A</string>
+				<string>6003F58B195388D20070C39A</string>
+				<string>45AE8B194048100E36429ED4</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6003F582195388D10070C39A</key>
+		<dict>
+			<key>attributes</key>
+			<dict>
+				<key>CLASSPREFIX</key>
+				<string>EZGL</string>
+				<key>LastUpgradeCheck</key>
+				<string>0720</string>
+				<key>ORGANIZATIONNAME</key>
+				<string>ocean</string>
+				<key>TargetAttributes</key>
+				<dict>
+					<key>6003F589195388D20070C39A</key>
+					<dict>
+						<key>DevelopmentTeam</key>
+						<string>P48344HVQL</string>
+					</dict>
+					<key>6003F5AD195388D20070C39A</key>
+					<dict>
+						<key>LastSwiftMigration</key>
+						<string>0800</string>
+						<key>TestTargetID</key>
+						<string>6003F589195388D20070C39A</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>buildConfigurationList</key>
+			<string>6003F585195388D10070C39A</string>
+			<key>compatibilityVersion</key>
+			<string>Xcode 3.2</string>
+			<key>developmentRegion</key>
+			<string>English</string>
+			<key>hasScannedForEncodings</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXProject</string>
+			<key>knownRegions</key>
+			<array>
+				<string>en</string>
+				<string>Base</string>
+			</array>
+			<key>mainGroup</key>
+			<string>6003F581195388D10070C39A</string>
+			<key>productRefGroup</key>
+			<string>6003F58B195388D20070C39A</string>
+			<key>projectDirPath</key>
+			<string></string>
+			<key>projectReferences</key>
+			<array/>
+			<key>projectRoot</key>
+			<string></string>
+			<key>targets</key>
+			<array>
+				<string>6003F589195388D20070C39A</string>
+				<string>6003F5AD195388D20070C39A</string>
+			</array>
+		</dict>
+		<key>6003F585195388D10070C39A</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>6003F5BD195388D20070C39A</string>
+				<string>6003F5BE195388D20070C39A</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>6003F586195388D20070C39A</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>6003F59E195388D20070C39A</string>
+				<string>8E361FEF1DC7343900073685</string>
+				<string>8EA7A2131DD5BC0000B2FEC9</string>
+				<string>8E0F30801DBDFFAA00F54680</string>
+				<string>D3C9FD891DC0F050004E7AE1</string>
+				<string>D3C9FDA31DC25693004E7AE1</string>
+				<string>D3EA00261DD8B7C40039231D</string>
+				<string>6003F5A7195388D20070C39A</string>
+				<string>8E5577031DC71A910096E198</string>
+				<string>8EA1736B1DC1E41B002AC00E</string>
+				<string>6003F59A195388D20070C39A</string>
+				<string>D3EA00221DD8ACA90039231D</string>
+				<string>D30FF4F31DBA4260006A2A68</string>
+				<string>8EA7A2271DD5CCB900B2FEC9</string>
+				<string>D3EA001D1DD89E2C0039231D</string>
+				<string>D3493D511DDA068300286F0A</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>6003F587195388D20070C39A</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>D381B3B91DBA647000FB0829</string>
+				<string>6003F590195388D20070C39A</string>
+				<string>6003F592195388D20070C39A</string>
+				<string>6003F58E195388D20070C39A</string>
+				<string>91A411BC925146DB4B9D6537</string>
+			</array>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>6003F588195388D20070C39A</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>8EA7A1CD1DD567A200B2FEC9</string>
+				<string>8EA1736F1DC1E642002AC00E</string>
+				<string>8EA7A21F1DD5CC9C00B2FEC9</string>
+				<string>D32DF9981DBA818800EBED91</string>
+				<string>8EA7A2201DD5CC9C00B2FEC9</string>
+				<string>8EA7A1CF1DD567A200B2FEC9</string>
+				<string>8EA7A1C51DD444B100B2FEC9</string>
+				<string>8EA7A1CE1DD567A200B2FEC9</string>
+				<string>8EA7A1C31DD444B100B2FEC9</string>
+				<string>8EA7A2221DD5CC9C00B2FEC9</string>
+				<string>873B8AEB1B1F5CCA007FD442</string>
+				<string>8ED4732F1DC1CE100035F011</string>
+				<string>8EA7A2291DD5CFB100B2FEC9</string>
+				<string>8EA7A1C81DD444B100B2FEC9</string>
+				<string>8EA7A1C71DD444B100B2FEC9</string>
+				<string>D3C9FD8E1DC0F149004E7AE1</string>
+				<string>8EA1736D1DC1E4B0002AC00E</string>
+				<string>8EA7A1C91DD444B100B2FEC9</string>
+				<string>8EA7A1BB1DD443BA00B2FEC9</string>
+				<string>D3C9FD8D1DC0F149004E7AE1</string>
+				<string>8EA7A1C61DD444B100B2FEC9</string>
+				<string>8EA7A2211DD5CC9C00B2FEC9</string>
+				<string>8EA7A1BA1DD443BA00B2FEC9</string>
+				<string>6003F5A9195388D20070C39A</string>
+				<string>8ED473301DC1CE100035F011</string>
+				<string>D32DF9991DBA818800EBED91</string>
+				<string>6003F598195388D20070C39A</string>
+				<string>D3C9FD911DC0F6D4004E7AE1</string>
+				<string>8EA7A2231DD5CC9C00B2FEC9</string>
+				<string>D3C9FD8F1DC0F149004E7AE1</string>
+			</array>
+			<key>isa</key>
+			<string>PBXResourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>6003F589195388D20070C39A</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>6003F5BF195388D20070C39A</string>
+			<key>buildPhases</key>
+			<array>
+				<string>A81273D092777D4F81C85ECB</string>
+				<string>6003F586195388D20070C39A</string>
+				<string>6003F587195388D20070C39A</string>
+				<string>6003F588195388D20070C39A</string>
+				<string>F21A388D246BBCD4DF162D76</string>
+				<string>912795037BACC0CFCCBDA95C</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>EZGLKit_Example</string>
+			<key>productName</key>
+			<string>EZGLKit</string>
+			<key>productReference</key>
+			<string>6003F58A195388D20070C39A</string>
+			<key>productType</key>
+			<string>com.apple.product-type.application</string>
+		</dict>
+		<key>6003F58A195388D20070C39A</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.application</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>EZGLKit_Example.app</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>6003F58B195388D20070C39A</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>6003F58A195388D20070C39A</string>
+				<string>6003F5AE195388D20070C39A</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Products</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6003F58C195388D20070C39A</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>D381B3B81DBA647000FB0829</string>
+				<string>6003F58D195388D20070C39A</string>
+				<string>6003F58F195388D20070C39A</string>
+				<string>6003F591195388D20070C39A</string>
+				<string>6003F5AF195388D20070C39A</string>
+				<string>FE102A697C3C7FA9874D2744</string>
+				<string>5D5B31F65B17DF330A25AFDD</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Frameworks</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6003F58D195388D20070C39A</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>Foundation.framework</string>
+			<key>path</key>
+			<string>System/Library/Frameworks/Foundation.framework</string>
+			<key>sourceTree</key>
+			<string>SDKROOT</string>
+		</dict>
+		<key>6003F58E195388D20070C39A</key>
+		<dict>
+			<key>fileRef</key>
+			<string>6003F58D195388D20070C39A</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>6003F58F195388D20070C39A</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>CoreGraphics.framework</string>
+			<key>path</key>
+			<string>System/Library/Frameworks/CoreGraphics.framework</string>
+			<key>sourceTree</key>
+			<string>SDKROOT</string>
+		</dict>
+		<key>6003F590195388D20070C39A</key>
+		<dict>
+			<key>fileRef</key>
+			<string>6003F58F195388D20070C39A</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>6003F591195388D20070C39A</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>UIKit.framework</string>
+			<key>path</key>
+			<string>System/Library/Frameworks/UIKit.framework</string>
+			<key>sourceTree</key>
+			<string>SDKROOT</string>
+		</dict>
+		<key>6003F592195388D20070C39A</key>
+		<dict>
+			<key>fileRef</key>
+			<string>6003F591195388D20070C39A</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>6003F593195388D20070C39A</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>8E9507531DBDFEAE00244415</string>
+				<string>D32DF9951DBA816600EBED91</string>
+				<string>D30FF4EF1DBA41E9006A2A68</string>
+				<string>6003F5A8195388D20070C39A</string>
+				<string>6003F594195388D20070C39A</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Example for EZGLKit</string>
+			<key>path</key>
+			<string>EZGLKit</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6003F594195388D20070C39A</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>6003F595195388D20070C39A</string>
+				<string>6003F596195388D20070C39A</string>
+				<string>6003F599195388D20070C39A</string>
+				<string>6003F59B195388D20070C39A</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Supporting Files</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6003F595195388D20070C39A</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>EZGLKit-Info.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6003F596195388D20070C39A</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>6003F597195388D20070C39A</string>
+			</array>
+			<key>isa</key>
+			<string>PBXVariantGroup</string>
+			<key>name</key>
+			<string>InfoPlist.strings</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6003F597195388D20070C39A</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.strings</string>
+			<key>name</key>
+			<string>en</string>
+			<key>path</key>
+			<string>en.lproj/InfoPlist.strings</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6003F598195388D20070C39A</key>
+		<dict>
+			<key>fileRef</key>
+			<string>6003F596195388D20070C39A</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>6003F599195388D20070C39A</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>main.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6003F59A195388D20070C39A</key>
+		<dict>
+			<key>fileRef</key>
+			<string>6003F599195388D20070C39A</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>6003F59B195388D20070C39A</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>EZGLKit-Prefix.pch</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6003F59C195388D20070C39A</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>EZGLAppDelegate.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6003F59D195388D20070C39A</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>EZGLAppDelegate.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6003F59E195388D20070C39A</key>
+		<dict>
+			<key>fileRef</key>
+			<string>6003F59D195388D20070C39A</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>6003F5A5195388D20070C39A</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>EZGLViewController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6003F5A6195388D20070C39A</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>EZGLViewController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6003F5A7195388D20070C39A</key>
+		<dict>
+			<key>fileRef</key>
+			<string>6003F5A6195388D20070C39A</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>6003F5A8195388D20070C39A</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>folder.assetcatalog</string>
+			<key>path</key>
+			<string>Images.xcassets</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6003F5A9195388D20070C39A</key>
+		<dict>
+			<key>fileRef</key>
+			<string>6003F5A8195388D20070C39A</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>6003F5AA195388D20070C39A</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>6003F5BC195388D20070C39A</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>6003F5AB195388D20070C39A</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>6003F5B0195388D20070C39A</string>
+				<string>6003F5B2195388D20070C39A</string>
+				<string>6003F5B1195388D20070C39A</string>
+				<string>F28D411B08168914A80EFD08</string>
+			</array>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>6003F5AC195388D20070C39A</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>6003F5BA195388D20070C39A</string>
+			</array>
+			<key>isa</key>
+			<string>PBXResourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>6003F5AD195388D20070C39A</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>6003F5C2195388D20070C39A</string>
+			<key>buildPhases</key>
+			<array>
+				<string>260A25C61CB58CC833F97960</string>
+				<string>6003F5AA195388D20070C39A</string>
+				<string>6003F5AB195388D20070C39A</string>
+				<string>6003F5AC195388D20070C39A</string>
+				<string>CB134545FC81CC7F564C9D36</string>
+				<string>2E3CE0FFA78DD7109ADDE6A2</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array>
+				<string>6003F5B4195388D20070C39A</string>
+			</array>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>EZGLKit_Tests</string>
+			<key>productName</key>
+			<string>EZGLKitTests</string>
+			<key>productReference</key>
+			<string>6003F5AE195388D20070C39A</string>
+			<key>productType</key>
+			<string>com.apple.product-type.bundle.unit-test</string>
+		</dict>
+		<key>6003F5AE195388D20070C39A</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.cfbundle</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>EZGLKit_Tests.xctest</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>6003F5AF195388D20070C39A</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>XCTest.framework</string>
+			<key>path</key>
+			<string>Library/Frameworks/XCTest.framework</string>
+			<key>sourceTree</key>
+			<string>DEVELOPER_DIR</string>
+		</dict>
+		<key>6003F5B0195388D20070C39A</key>
+		<dict>
+			<key>fileRef</key>
+			<string>6003F5AF195388D20070C39A</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>6003F5B1195388D20070C39A</key>
+		<dict>
+			<key>fileRef</key>
+			<string>6003F58D195388D20070C39A</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>6003F5B2195388D20070C39A</key>
+		<dict>
+			<key>fileRef</key>
+			<string>6003F591195388D20070C39A</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>6003F5B3195388D20070C39A</key>
+		<dict>
+			<key>containerPortal</key>
+			<string>6003F582195388D10070C39A</string>
+			<key>isa</key>
+			<string>PBXContainerItemProxy</string>
+			<key>proxyType</key>
+			<string>1</string>
+			<key>remoteGlobalIDString</key>
+			<string>6003F589195388D20070C39A</string>
+			<key>remoteInfo</key>
+			<string>EZGLKit</string>
+		</dict>
+		<key>6003F5B4195388D20070C39A</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXTargetDependency</string>
+			<key>target</key>
+			<string>6003F589195388D20070C39A</string>
+			<key>targetProxy</key>
+			<string>6003F5B3195388D20070C39A</string>
+		</dict>
+		<key>6003F5B5195388D20070C39A</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>6003F5BB195388D20070C39A</string>
+				<string>6003F5B6195388D20070C39A</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>Tests</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6003F5B6195388D20070C39A</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>6003F5B7195388D20070C39A</string>
+				<string>6003F5B8195388D20070C39A</string>
+				<string>606FC2411953D9B200FFA9A0</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Supporting Files</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6003F5B7195388D20070C39A</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>Tests-Info.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6003F5B8195388D20070C39A</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>6003F5B9195388D20070C39A</string>
+			</array>
+			<key>isa</key>
+			<string>PBXVariantGroup</string>
+			<key>name</key>
+			<string>InfoPlist.strings</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6003F5B9195388D20070C39A</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.strings</string>
+			<key>name</key>
+			<string>en</string>
+			<key>path</key>
+			<string>en.lproj/InfoPlist.strings</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6003F5BA195388D20070C39A</key>
+		<dict>
+			<key>fileRef</key>
+			<string>6003F5B8195388D20070C39A</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>6003F5BB195388D20070C39A</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>Tests.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6003F5BC195388D20070C39A</key>
+		<dict>
+			<key>fileRef</key>
+			<string>6003F5BB195388D20070C39A</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>6003F5BD195388D20070C39A</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
+				<string>gnu++0x</string>
+				<key>CLANG_CXX_LIBRARY</key>
+				<string>libc++</string>
+				<key>CLANG_ENABLE_MODULES</key>
+				<string>YES</string>
+				<key>CLANG_ENABLE_OBJC_ARC</key>
+				<string>YES</string>
+				<key>CLANG_WARN_BOOL_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN_EMPTY_BODY</key>
+				<string>YES</string>
+				<key>CLANG_WARN_ENUM_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_INT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
+				<string>YES</string>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>NO</string>
+				<key>ENABLE_TESTABILITY</key>
+				<string>YES</string>
+				<key>GCC_C_LANGUAGE_STANDARD</key>
+				<string>gnu99</string>
+				<key>GCC_DYNAMIC_NO_PIC</key>
+				<string>NO</string>
+				<key>GCC_OPTIMIZATION_LEVEL</key>
+				<string>0</string>
+				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
+				<array>
+					<string>DEBUG=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>GCC_SYMBOLS_PRIVATE_EXTERN</key>
+				<string>NO</string>
+				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
+				<string>YES</string>
+				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
+				<string>YES_ERROR</string>
+				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
+				<string>YES_AGGRESSIVE</string>
+				<key>GCC_WARN_UNUSED_FUNCTION</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_VARIABLE</key>
+				<string>YES</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>8.3</string>
+				<key>ONLY_ACTIVE_ARCH</key>
+				<string>YES</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>TARGETED_DEVICE_FAMILY</key>
+				<string>1,2</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>6003F5BE195388D20070C39A</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
+				<string>gnu++0x</string>
+				<key>CLANG_CXX_LIBRARY</key>
+				<string>libc++</string>
+				<key>CLANG_ENABLE_MODULES</key>
+				<string>YES</string>
+				<key>CLANG_ENABLE_OBJC_ARC</key>
+				<string>YES</string>
+				<key>CLANG_WARN_BOOL_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN_EMPTY_BODY</key>
+				<string>YES</string>
+				<key>CLANG_WARN_ENUM_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_INT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
+				<string>YES</string>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>YES</string>
+				<key>ENABLE_NS_ASSERTIONS</key>
+				<string>NO</string>
+				<key>GCC_C_LANGUAGE_STANDARD</key>
+				<string>gnu99</string>
+				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
+				<string>YES</string>
+				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
+				<string>YES_ERROR</string>
+				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
+				<string>YES_AGGRESSIVE</string>
+				<key>GCC_WARN_UNUSED_FUNCTION</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_VARIABLE</key>
+				<string>YES</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>8.3</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>TARGETED_DEVICE_FAMILY</key>
+				<string>1,2</string>
+				<key>VALIDATE_PRODUCT</key>
+				<string>YES</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>6003F5BF195388D20070C39A</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>6003F5C0195388D20070C39A</string>
+				<string>6003F5C1195388D20070C39A</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>6003F5C0195388D20070C39A</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>253E0DA851FB2A51B07C7BEC</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
+				<string>AppIcon</string>
+				<key>ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME</key>
+				<string>LaunchImage</string>
+				<key>DEVELOPMENT_TEAM</key>
+				<string>P48344HVQL</string>
+				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
+				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>EZGLKit/EZGLKit-Prefix.pch</string>
+				<key>INFOPLIST_FILE</key>
+				<string>EZGLKit/EZGLKit-Info.plist</string>
+				<key>MODULE_NAME</key>
+				<string>ExampleApp</string>
+				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
+				<string>org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>WRAPPER_EXTENSION</key>
+				<string>app</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>6003F5C1195388D20070C39A</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>B3F37E7B44058075289CA397</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
+				<string>AppIcon</string>
+				<key>ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME</key>
+				<string>LaunchImage</string>
+				<key>DEVELOPMENT_TEAM</key>
+				<string>P48344HVQL</string>
+				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
+				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>EZGLKit/EZGLKit-Prefix.pch</string>
+				<key>INFOPLIST_FILE</key>
+				<string>EZGLKit/EZGLKit-Info.plist</string>
+				<key>MODULE_NAME</key>
+				<string>ExampleApp</string>
+				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
+				<string>org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>WRAPPER_EXTENSION</key>
+				<string>app</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>6003F5C2195388D20070C39A</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>6003F5C3195388D20070C39A</string>
+				<string>6003F5C4195388D20070C39A</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>6003F5C3195388D20070C39A</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>BF00AC56A3E31A9742AB668F</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>BUNDLE_LOADER</key>
+				<string>$(TEST_HOST)</string>
+				<key>FRAMEWORK_SEARCH_PATHS</key>
+				<array>
+					<string>$(SDKROOT)/Developer/Library/Frameworks</string>
+					<string>$(inherited)</string>
+					<string>$(DEVELOPER_FRAMEWORKS_DIR)</string>
+				</array>
+				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
+				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>Tests/Tests-Prefix.pch</string>
+				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
+				<array>
+					<string>DEBUG=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>INFOPLIST_FILE</key>
+				<string>Tests/Tests-Info.plist</string>
+				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
+				<string>org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>SWIFT_VERSION</key>
+				<string>3.0</string>
+				<key>TEST_HOST</key>
+				<string>$(BUILT_PRODUCTS_DIR)/EZGLKit_Example.app/EZGLKit_Example</string>
+				<key>WRAPPER_EXTENSION</key>
+				<string>xctest</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>6003F5C4195388D20070C39A</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>D07D7CF16BD0419E06B3E484</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>BUNDLE_LOADER</key>
+				<string>$(TEST_HOST)</string>
+				<key>FRAMEWORK_SEARCH_PATHS</key>
+				<array>
+					<string>$(SDKROOT)/Developer/Library/Frameworks</string>
+					<string>$(inherited)</string>
+					<string>$(DEVELOPER_FRAMEWORKS_DIR)</string>
+				</array>
+				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
+				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>Tests/Tests-Prefix.pch</string>
+				<key>INFOPLIST_FILE</key>
+				<string>Tests/Tests-Info.plist</string>
+				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
+				<string>org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>SWIFT_VERSION</key>
+				<string>3.0</string>
+				<key>TEST_HOST</key>
+				<string>$(BUILT_PRODUCTS_DIR)/EZGLKit_Example.app/EZGLKit_Example</string>
+				<key>WRAPPER_EXTENSION</key>
+				<string>xctest</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>606FC2411953D9B200FFA9A0</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>Tests-Prefix.pch</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>60FF7A9C1954A5C5007DD14C</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>CEF86E68B182B9A72A642328</string>
+				<string>ACB722C94CFF447CCFA4C7BA</string>
+				<string>D79FD1F25812C2F5CA6082CD</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Podspec Metadata</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>873B8AEA1B1F5CCA007FD442</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file.storyboard</string>
+			<key>path</key>
+			<string>Main.storyboard</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>873B8AEB1B1F5CCA007FD442</key>
+		<dict>
+			<key>fileRef</key>
+			<string>873B8AEA1B1F5CCA007FD442</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8E0F307E1DBDFFAA00F54680</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>EZGLBasicTriangleViewController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8E0F307F1DBDFFAA00F54680</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>EZGLBasicTriangleViewController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8E0F30801DBDFFAA00F54680</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8E0F307F1DBDFFAA00F54680</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8E361FEC1DC733F500073685</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>8E361FED1DC7343900073685</string>
+				<string>8E361FEE1DC7343900073685</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Cube With Bump Texture</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8E361FED1DC7343900073685</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>EZGLCubeWithBumpTextureViewController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8E361FEE1DC7343900073685</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>EZGLCubeWithBumpTextureViewController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8E361FEF1DC7343900073685</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8E361FEE1DC7343900073685</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8E5577001DC71A750096E198</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>8E5577011DC71A910096E198</string>
+				<string>8E5577021DC71A910096E198</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Cube WithTexture &amp; Light</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8E5577011DC71A910096E198</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>EZGLCubeWithTextureLightViewController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8E5577021DC71A910096E198</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>EZGLCubeWithTextureLightViewController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8E5577031DC71A910096E198</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8E5577021DC71A910096E198</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8E9507531DBDFEAE00244415</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>D3EA00231DD8B78F0039231D</string>
+				<string>D3EA001F1DD8AC3B0039231D</string>
+				<string>8EA7A2241DD5CCA300B2FEC9</string>
+				<string>8E361FEC1DC733F500073685</string>
+				<string>8E5577001DC71A750096E198</string>
+				<string>D3C9FDA01DC25678004E7AE1</string>
+				<string>8EA173681DC1E3E3002AC00E</string>
+				<string>D3C9FD861DC0F006004E7AE1</string>
+				<string>8E9507541DBDFEB700244415</string>
+				<string>D30FF4F01DBA420B006A2A68</string>
+				<string>8EA7A2111DD5BC0000B2FEC9</string>
+				<string>8EA7A2121DD5BC0000B2FEC9</string>
+				<string>D3EA001B1DD89E2C0039231D</string>
+				<string>D3EA001C1DD89E2C0039231D</string>
+				<string>D3EA001E1DD89ED90039231D</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Examples</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8E9507541DBDFEB700244415</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>8E0F307E1DBDFFAA00F54680</string>
+				<string>8E0F307F1DBDFFAA00F54680</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Basic Triangle</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8EA173681DC1E3E3002AC00E</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>8EA173691DC1E41B002AC00E</string>
+				<string>8EA1736A1DC1E41B002AC00E</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Cube Panorama</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8EA173691DC1E41B002AC00E</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>EZGLCubePanoramaViewController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8EA1736A1DC1E41B002AC00E</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>EZGLCubePanoramaViewController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8EA1736B1DC1E41B002AC00E</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8EA1736A1DC1E41B002AC00E</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8EA1736C1DC1E4B0002AC00E</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.jpeg</string>
+			<key>name</key>
+			<string>sphere3.jpg</string>
+			<key>path</key>
+			<string>Resources/sphere3.jpg</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8EA1736D1DC1E4B0002AC00E</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8EA1736C1DC1E4B0002AC00E</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8EA1736E1DC1E642002AC00E</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.jpeg</string>
+			<key>name</key>
+			<string>sphere4.jpg</string>
+			<key>path</key>
+			<string>Resources/sphere4.jpg</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8EA1736F1DC1E642002AC00E</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8EA1736E1DC1E642002AC00E</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8EA7A1B81DD443BA00B2FEC9</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text</string>
+			<key>name</key>
+			<string>cube4.mtl</string>
+			<key>path</key>
+			<string>Resources/cube4.mtl</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8EA7A1B91DD443BA00B2FEC9</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text</string>
+			<key>name</key>
+			<string>cube4.obj</string>
+			<key>path</key>
+			<string>Resources/cube4.obj</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8EA7A1BA1DD443BA00B2FEC9</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8EA7A1B81DD443BA00B2FEC9</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8EA7A1BB1DD443BA00B2FEC9</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8EA7A1B91DD443BA00B2FEC9</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8EA7A1BC1DD444B100B2FEC9</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.jpeg</string>
+			<key>name</key>
+			<string>normal.jpg</string>
+			<key>path</key>
+			<string>Resources/normal.jpg</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8EA7A1BE1DD444B100B2FEC9</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.png</string>
+			<key>name</key>
+			<string>default_normal.png</string>
+			<key>path</key>
+			<string>Resources/default_normal.png</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8EA7A1BF1DD444B100B2FEC9</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.png</string>
+			<key>name</key>
+			<string>default_spec.png</string>
+			<key>path</key>
+			<string>Resources/default_spec.png</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8EA7A1C01DD444B100B2FEC9</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.jpeg</string>
+			<key>name</key>
+			<string>default.jpg</string>
+			<key>path</key>
+			<string>Resources/default.jpg</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8EA7A1C11DD444B100B2FEC9</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.jpeg</string>
+			<key>name</key>
+			<string>wood_02.jpg</string>
+			<key>path</key>
+			<string>Resources/wood_02.jpg</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8EA7A1C21DD444B100B2FEC9</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.jpeg</string>
+			<key>name</key>
+			<string>wood_03.jpg</string>
+			<key>path</key>
+			<string>Resources/wood_03.jpg</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8EA7A1C31DD444B100B2FEC9</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8EA7A1BC1DD444B100B2FEC9</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8EA7A1C51DD444B100B2FEC9</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8EA7A1BE1DD444B100B2FEC9</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8EA7A1C61DD444B100B2FEC9</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8EA7A1BF1DD444B100B2FEC9</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8EA7A1C71DD444B100B2FEC9</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8EA7A1C01DD444B100B2FEC9</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8EA7A1C81DD444B100B2FEC9</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8EA7A1C11DD444B100B2FEC9</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8EA7A1C91DD444B100B2FEC9</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8EA7A1C21DD444B100B2FEC9</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8EA7A1CA1DD567A200B2FEC9</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.png</string>
+			<key>name</key>
+			<string>metal_normal.png</string>
+			<key>path</key>
+			<string>Resources/metal_normal.png</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8EA7A1CB1DD567A200B2FEC9</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.png</string>
+			<key>name</key>
+			<string>metal_SPEC.png</string>
+			<key>path</key>
+			<string>Resources/metal_SPEC.png</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8EA7A1CC1DD567A200B2FEC9</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.jpeg</string>
+			<key>name</key>
+			<string>metal.jpg</string>
+			<key>path</key>
+			<string>Resources/metal.jpg</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8EA7A1CD1DD567A200B2FEC9</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8EA7A1CA1DD567A200B2FEC9</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8EA7A1CE1DD567A200B2FEC9</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8EA7A1CB1DD567A200B2FEC9</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8EA7A1CF1DD567A200B2FEC9</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8EA7A1CC1DD567A200B2FEC9</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8EA7A2111DD5BC0000B2FEC9</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>EZGLBaseViewController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8EA7A2121DD5BC0000B2FEC9</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>EZGLBaseViewController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8EA7A2131DD5BC0000B2FEC9</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8EA7A2121DD5BC0000B2FEC9</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8EA7A2181DD5CC9C00B2FEC9</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>8EA7A2191DD5CC9C00B2FEC9</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Scenes</string>
+			<key>path</key>
+			<string>Resources/Scenes</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8EA7A2191DD5CC9C00B2FEC9</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>8EA7A2281DD5CFB100B2FEC9</string>
+				<string>8EA7A21A1DD5CC9C00B2FEC9</string>
+				<string>8EA7A21B1DD5CC9C00B2FEC9</string>
+				<string>8EA7A21C1DD5CC9C00B2FEC9</string>
+				<string>8EA7A21D1DD5CC9C00B2FEC9</string>
+				<string>8EA7A21E1DD5CC9C00B2FEC9</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>demo1</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8EA7A21A1DD5CC9C00B2FEC9</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.jpeg</string>
+			<key>path</key>
+			<string>box.jpg</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8EA7A21B1DD5CC9C00B2FEC9</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.png</string>
+			<key>path</key>
+			<string>box_normal.png</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8EA7A21C1DD5CC9C00B2FEC9</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.png</string>
+			<key>path</key>
+			<string>box_spec.png</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8EA7A21D1DD5CC9C00B2FEC9</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text</string>
+			<key>path</key>
+			<string>demo1_000001.mtl</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8EA7A21E1DD5CC9C00B2FEC9</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text</string>
+			<key>path</key>
+			<string>demo1_000001.obj</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8EA7A21F1DD5CC9C00B2FEC9</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8EA7A21A1DD5CC9C00B2FEC9</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8EA7A2201DD5CC9C00B2FEC9</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8EA7A21B1DD5CC9C00B2FEC9</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8EA7A2211DD5CC9C00B2FEC9</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8EA7A21C1DD5CC9C00B2FEC9</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8EA7A2221DD5CC9C00B2FEC9</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8EA7A21D1DD5CC9C00B2FEC9</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8EA7A2231DD5CC9C00B2FEC9</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8EA7A21E1DD5CC9C00B2FEC9</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8EA7A2241DD5CCA300B2FEC9</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>8EA7A2251DD5CCB900B2FEC9</string>
+				<string>8EA7A2261DD5CCB900B2FEC9</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Load Scene</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8EA7A2251DD5CCB900B2FEC9</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>EZGLLoadSceneViewController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8EA7A2261DD5CCB900B2FEC9</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>EZGLLoadSceneViewController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8EA7A2271DD5CCB900B2FEC9</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8EA7A2261DD5CCB900B2FEC9</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8EA7A2281DD5CFB100B2FEC9</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.jpeg</string>
+			<key>path</key>
+			<string>grass.jpg</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8EA7A2291DD5CFB100B2FEC9</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8EA7A2281DD5CFB100B2FEC9</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8ED4732D1DC1CE100035F011</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text</string>
+			<key>name</key>
+			<string>ball3.mtl</string>
+			<key>path</key>
+			<string>Resources/ball3.mtl</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8ED4732E1DC1CE100035F011</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text</string>
+			<key>name</key>
+			<string>ball3.obj</string>
+			<key>path</key>
+			<string>Resources/ball3.obj</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8ED4732F1DC1CE100035F011</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8ED4732D1DC1CE100035F011</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8ED473301DC1CE100035F011</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8ED4732E1DC1CE100035F011</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>912795037BACC0CFCCBDA95C</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>[CP] Copy Pods Resources</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>"${SRCROOT}/Pods/Target Support Files/Pods-EZGLKit_Example/Pods-EZGLKit_Example-resources.sh"
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+		<key>91A411BC925146DB4B9D6537</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FE102A697C3C7FA9874D2744</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>A81273D092777D4F81C85ECB</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>[CP] Check Pods Manifest.lock</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>diff "${PODS_ROOT}/../Podfile.lock" "${PODS_ROOT}/Manifest.lock" &gt; /dev/null
+if [[ $? != 0 ]] ; then
+    cat &lt;&lt; EOM
+error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.
+EOM
+    exit 1
+fi
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+		<key>ACB722C94CFF447CCFA4C7BA</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>net.daringfireball.markdown</string>
+			<key>name</key>
+			<string>README.md</string>
+			<key>path</key>
+			<string>../README.md</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>B3F37E7B44058075289CA397</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>name</key>
+			<string>Pods-EZGLKit_Example.release.xcconfig</string>
+			<key>path</key>
+			<string>Pods/Target Support Files/Pods-EZGLKit_Example/Pods-EZGLKit_Example.release.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>BF00AC56A3E31A9742AB668F</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>name</key>
+			<string>Pods-EZGLKit_Tests.debug.xcconfig</string>
+			<key>path</key>
+			<string>Pods/Target Support Files/Pods-EZGLKit_Tests/Pods-EZGLKit_Tests.debug.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CB134545FC81CC7F564C9D36</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>[CP] Embed Pods Frameworks</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>"${SRCROOT}/Pods/Target Support Files/Pods-EZGLKit_Tests/Pods-EZGLKit_Tests-frameworks.sh"
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+		<key>CEF86E68B182B9A72A642328</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text</string>
+			<key>name</key>
+			<string>EZGLKit.podspec</string>
+			<key>path</key>
+			<string>../EZGLKit.podspec</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+			<key>xcLanguageSpecificationIdentifier</key>
+			<string>xcode.lang.ruby</string>
+		</dict>
+		<key>D07D7CF16BD0419E06B3E484</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>name</key>
+			<string>Pods-EZGLKit_Tests.release.xcconfig</string>
+			<key>path</key>
+			<string>Pods/Target Support Files/Pods-EZGLKit_Tests/Pods-EZGLKit_Tests.release.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D30FF4EF1DBA41E9006A2A68</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>6003F59C195388D20070C39A</string>
+				<string>6003F59D195388D20070C39A</string>
+				<string>873B8AEA1B1F5CCA007FD442</string>
+				<string>6003F5A5195388D20070C39A</string>
+				<string>6003F5A6195388D20070C39A</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Foundation</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D30FF4F01DBA420B006A2A68</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>D30FF4F11DBA4260006A2A68</string>
+				<string>D30FF4F21DBA4260006A2A68</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Basic Cube</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D30FF4F11DBA4260006A2A68</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>EZGLBasicCubeViewController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D30FF4F21DBA4260006A2A68</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>EZGLBasicCubeViewController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D30FF4F31DBA4260006A2A68</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D30FF4F21DBA4260006A2A68</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D32DF9951DBA816600EBED91</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>8EA7A2181DD5CC9C00B2FEC9</string>
+				<string>8EA7A1CA1DD567A200B2FEC9</string>
+				<string>8EA7A1CB1DD567A200B2FEC9</string>
+				<string>8EA7A1CC1DD567A200B2FEC9</string>
+				<string>8EA7A1BC1DD444B100B2FEC9</string>
+				<string>8EA7A1BE1DD444B100B2FEC9</string>
+				<string>8EA7A1BF1DD444B100B2FEC9</string>
+				<string>8EA7A1C01DD444B100B2FEC9</string>
+				<string>8EA7A1C11DD444B100B2FEC9</string>
+				<string>8EA7A1C21DD444B100B2FEC9</string>
+				<string>8EA7A1B81DD443BA00B2FEC9</string>
+				<string>8EA7A1B91DD443BA00B2FEC9</string>
+				<string>8EA1736E1DC1E642002AC00E</string>
+				<string>8EA1736C1DC1E4B0002AC00E</string>
+				<string>8ED4732D1DC1CE100035F011</string>
+				<string>8ED4732E1DC1CE100035F011</string>
+				<string>D3C9FD901DC0F6D4004E7AE1</string>
+				<string>D3C9FD8A1DC0F149004E7AE1</string>
+				<string>D3C9FD8B1DC0F149004E7AE1</string>
+				<string>D3C9FD8C1DC0F149004E7AE1</string>
+				<string>D32DF9961DBA818800EBED91</string>
+				<string>D32DF9971DBA818800EBED91</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>3D Models</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D32DF9961DBA818800EBED91</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text</string>
+			<key>name</key>
+			<string>cube3.obj</string>
+			<key>path</key>
+			<string>Resources/cube3.obj</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D32DF9971DBA818800EBED91</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text</string>
+			<key>name</key>
+			<string>cube3.mtl</string>
+			<key>path</key>
+			<string>Resources/cube3.mtl</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D32DF9981DBA818800EBED91</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D32DF9961DBA818800EBED91</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D32DF9991DBA818800EBED91</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D32DF9971DBA818800EBED91</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D3493D4F1DDA068300286F0A</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>EZGLSplineCylinderViewController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D3493D501DDA068300286F0A</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>EZGLSplineCylinderViewController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D3493D511DDA068300286F0A</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D3493D501DDA068300286F0A</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D381B3B81DBA647000FB0829</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.text-based-dylib-definition</string>
+			<key>name</key>
+			<string>libstdc++.6.tbd</string>
+			<key>path</key>
+			<string>usr/lib/libstdc++.6.tbd</string>
+			<key>sourceTree</key>
+			<string>SDKROOT</string>
+		</dict>
+		<key>D381B3B91DBA647000FB0829</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D381B3B81DBA647000FB0829</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D3C9FD861DC0F006004E7AE1</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>D3C9FD871DC0F050004E7AE1</string>
+				<string>D3C9FD881DC0F050004E7AE1</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Sphere Panorama</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D3C9FD871DC0F050004E7AE1</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>EZGLSpherePanoramaViewController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D3C9FD881DC0F050004E7AE1</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>EZGLSpherePanoramaViewController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D3C9FD891DC0F050004E7AE1</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D3C9FD881DC0F050004E7AE1</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D3C9FD8A1DC0F149004E7AE1</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.jpeg</string>
+			<key>name</key>
+			<string>sphere.jpg</string>
+			<key>path</key>
+			<string>Resources/sphere.jpg</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D3C9FD8B1DC0F149004E7AE1</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text</string>
+			<key>name</key>
+			<string>ball2.mtl</string>
+			<key>path</key>
+			<string>Resources/ball2.mtl</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D3C9FD8C1DC0F149004E7AE1</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text</string>
+			<key>name</key>
+			<string>ball2.obj</string>
+			<key>path</key>
+			<string>Resources/ball2.obj</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D3C9FD8D1DC0F149004E7AE1</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D3C9FD8A1DC0F149004E7AE1</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D3C9FD8E1DC0F149004E7AE1</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D3C9FD8B1DC0F149004E7AE1</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D3C9FD8F1DC0F149004E7AE1</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D3C9FD8C1DC0F149004E7AE1</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D3C9FD901DC0F6D4004E7AE1</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.jpeg</string>
+			<key>name</key>
+			<string>sphere1.jpg</string>
+			<key>path</key>
+			<string>Resources/sphere1.jpg</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D3C9FD911DC0F6D4004E7AE1</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D3C9FD901DC0F6D4004E7AE1</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D3C9FDA01DC25678004E7AE1</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>D3C9FDA11DC25693004E7AE1</string>
+				<string>D3C9FDA21DC25693004E7AE1</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Basic Cube With Texture</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D3C9FDA11DC25693004E7AE1</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>EZGLCubeWithTextureViewController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D3C9FDA21DC25693004E7AE1</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>EZGLCubeWithTextureViewController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D3C9FDA31DC25693004E7AE1</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D3C9FDA21DC25693004E7AE1</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D3EA001B1DD89E2C0039231D</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>EZGLMoveJoySticker.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D3EA001C1DD89E2C0039231D</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>EZGLMoveJoySticker.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D3EA001D1DD89E2C0039231D</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D3EA001C1DD89E2C0039231D</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D3EA001E1DD89ED90039231D</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>EZGLMoveJoyStickerDelegate.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D3EA001F1DD8AC3B0039231D</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>D3EA00201DD8ACA90039231D</string>
+				<string>D3EA00211DD8ACA90039231D</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Physics With Bullet</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D3EA00201DD8ACA90039231D</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>EZGLSimplePhysicsViewController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D3EA00211DD8ACA90039231D</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>EZGLSimplePhysicsViewController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D3EA00221DD8ACA90039231D</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D3EA00211DD8ACA90039231D</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D3EA00231DD8B78F0039231D</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>D3EA00241DD8B7C40039231D</string>
+				<string>D3EA00251DD8B7C40039231D</string>
+				<string>D3493D4F1DDA068300286F0A</string>
+				<string>D3493D501DDA068300286F0A</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Basic Geometries</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D3EA00241DD8B7C40039231D</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>EZGLBasicGeometriesViewController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D3EA00251DD8B7C40039231D</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>EZGLBasicGeometriesViewController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D3EA00261DD8B7C40039231D</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D3EA00251DD8B7C40039231D</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D79FD1F25812C2F5CA6082CD</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text</string>
+			<key>name</key>
+			<string>LICENSE</string>
+			<key>path</key>
+			<string>../LICENSE</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F21A388D246BBCD4DF162D76</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>[CP] Embed Pods Frameworks</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>"${SRCROOT}/Pods/Target Support Files/Pods-EZGLKit_Example/Pods-EZGLKit_Example-frameworks.sh"
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+		<key>F28D411B08168914A80EFD08</key>
+		<dict>
+			<key>fileRef</key>
+			<string>5D5B31F65B17DF330A25AFDD</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FE102A697C3C7FA9874D2744</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>archive.ar</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>libPods-EZGLKit_Example.a</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+	</dict>
+	<key>rootObject</key>
+	<string>6003F582195388D10070C39A</string>
+</dict>
+</plist>
