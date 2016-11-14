@@ -28,7 +28,7 @@
     EZGLProgram *program = [[EZGLProgram alloc]initWithVertexShaderFileName:[self shaderName] fragmentShaderFileName:[self shaderName]];
     self.world.effect = [[EZGLEffect alloc] initWithProgram:program];
     [self.world.effect addLight:[EZGLLight new]];
-
+    
     
     CGRect bounds = self.view.bounds;
     self.moveSticker = [[EZGLMoveJoySticker alloc]initWithFrame:CGRectMake(0, 0, bounds.size.width / 2, bounds.size.height)];
@@ -55,30 +55,32 @@
 
 - (void)joyStickerStateUpdated:(EZGLMoveJoyStickerState)state joySticker:(EZGLMoveJoySticker *)joySticker {
     
+    if (joySticker == self.rotateSticker) {
+        EZGLPerspectiveCamera *perspectiveCamera = (EZGLPerspectiveCamera *)self.world.camera;
+        [perspectiveCamera rotateLookAtWithAngleAroundUp:-state.deltaOffsetX / 35.0];
+        [perspectiveCamera rotateLookAtWithAngleAroundLeft:-state.deltaOffsetY / 35.0];
+    }
 }
 
 - (void)updateCamera:(NSTimeInterval)interval {
     EZGLPerspectiveCamera *perspectiveCamera = (EZGLPerspectiveCamera *)self.world.camera;
     
     EZGLMoveJoyStickerState moveState = self.moveSticker.state;
-    [perspectiveCamera translateForward: -moveState.offsetY / 30.0 * interval];
-    [perspectiveCamera translateLeft: moveState.offsetX / 30.0 * interval];
     
-    EZGLMoveJoyStickerState rotateState = self.rotateSticker.state;
-    [perspectiveCamera rotateLookAtWithAngleAroundUp:-rotateState.offsetX / 30.0 * interval];
-    [perspectiveCamera rotateLookAtWithAngleAroundLeft:-rotateState.offsetY / 30.0 * interval];
+    [perspectiveCamera translateForward: -moveState.offsetY / 10 * interval];
+    [perspectiveCamera translateLeft: moveState.offsetX / 10 * interval];
     
 }
 
 //- (void)panned:(UIPinchGestureRecognizer *)gesture {
-//    
+//
 //    if (gesture.state == UIGestureRecognizerStateBegan) {
 //        self.lastScale = gesture.scale;
 //    } else {
 //        CGFloat scaleDelta = gesture.scale - self.lastScale;
 //        EZGLPerspectiveCamera *perspectiveCamera = (EZGLPerspectiveCamera *)self.world.camera;
 //        [perspectiveCamera translateForward:scaleDelta * 1.6];
-//        
+//
 //        self.lastScale = gesture.scale;
 //    }
 //}

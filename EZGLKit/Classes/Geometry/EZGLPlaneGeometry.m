@@ -7,47 +7,55 @@
 //
 
 #import "EZGLPlaneGeometry.h"
+#import "EZGLGeometryUtil.h"
+
+@interface EZGLPlaneGeometry ()
+
+@property (assign, nonatomic) CGSize size;
+@property (strong, nonatomic) EZGLGeometryVertexBuffer *buffer;
+
+@end
 
 @implementation EZGLPlaneGeometry
-- (instancetype)init {
+- (instancetype)initWithSize:(CGSize)size {
     self = [super init];
     if (self) {
+        self.size = size;
         [self setupWithData:[self genGeometryData]];
     }
     return self;
 }
 
 - (GLGeometryData)genGeometryData {
-    GLGeometryData data;
-    size_t size = 10;
-    const GLfloat vertex[4][9] = {
-        { -0.5f * size, 0.0f, -0.5f * size,  0.0f, 0.0f, 1.0f,  0, 0 },
-        { -0.5f * size, 0.0f, 0.5f * size,  0.0f, 0.0f, 1.0f,  0, 1 },
-        { 0.5f * size, 0.0f, 0.5f * size,  0.0f, 0.0f, 1.0f,   1, 1 },
-        { 0.5f * size, 0.0f, -0.5f * size,  0.0f, 0.0f, 1.0f,  1, 0 }
+    self.buffer = [EZGLGeometryVertexBuffer new];
+    EZGeometryRect3 rect = {
+        {0.5f * self.size.width, 0.0f, -0.5f * self.size.height},
+        {0.5f * self.size.width, 0.0f, 0.5f * self.size.height},
+        {-0.5f * self.size.width, 0.0f, 0.5f * self.size.height},
+        {-0.5f * self.size.width, 0.0f, -0.5f * self.size.height},
+        {0, 0},
+        {0, 1},
+        {1, 1},
+        {1, 0}
     };
+    [EZGLGeometryUtil appendRect:rect toVertices:self.buffer];
+    
+    GLfloat *vertex = (GLfloat *)[self.buffer data];
+    
+    GLGeometryData data;
     glGenBuffers(1, &data.vertexVBO);
     glBindBuffer(GL_ARRAY_BUFFER, data.vertexVBO);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertex), vertex, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, [self.buffer rawLength], vertex, GL_STATIC_DRAW);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
-
-    const GLuint indice[2][3] = {
-        0, 1, 2,
-        2, 3, 0
-    };
-    glGenBuffers(1, &data.indiceVBO);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, data.indiceVBO);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indice), indice, GL_STATIC_DRAW);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-
-    data.indiceCount = sizeof(indice) / sizeof(GLuint);
-    data.vertexStride = sizeof(vertex[0]);
-    data.supportIndiceVBO = YES;
+    
+    data.vertexCount = [self.buffer rawLength] / sizeof(EZGLGeometryVertex);
+    data.vertexStride = sizeof(EZGLGeometryVertex);
+    data.supportIndiceVBO = NO;
     return data;
 }
 
 - (NSArray *)rigidBodys {
-    EZGLRigidBody *body = [[EZGLRigidBody alloc]initAsStaticPlane:100 geometry:self];
+    EZGLRigidBody *body = [[EZGLRigidBody alloc]initAsBox:GLKVector3Make(self.size.width / 2, 0, self.size.height / 2) mass:0 geometry:self];
     return @[body];
 }
 

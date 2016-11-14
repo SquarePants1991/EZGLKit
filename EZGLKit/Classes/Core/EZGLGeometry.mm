@@ -120,7 +120,6 @@
 }
 
 - (void)createTexture {
-    self.textures = [UIImage texturesFromGif:@"demo"];
     currentTexture = 0;
 }
 

@@ -47,4 +47,10 @@
     }
 }
 
+- (void)update:(NSTimeInterval)interval {
+    for (EZGLLight *light in self.lights) {
+        [light update:interval];
+    }
+}
+
 @end

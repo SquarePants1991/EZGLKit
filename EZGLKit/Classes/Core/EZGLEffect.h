@@ -19,4 +19,5 @@
 - (id)initWithProgram:(EZGLProgram *)program;
 - (void)addLight:(EZGLLight *)light;
 - (void)applyToProgram:(EZGLProgram *)program;
+- (void)update:(NSTimeInterval)interval;
 @end

@@ -109,6 +109,4 @@ void main()
     
     highp vec4 finalColor = texture2D(diffuseMap, fragTexcoord);
     gl_FragColor = finalColor * diffuse + finalColor * ambient + finalColor * specular;
-    
-//    gl_FragColor = vec4(fragBitangent,1.0);
 }

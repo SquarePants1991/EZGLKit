@@ -27,6 +27,8 @@
 @property (strong, nonatomic) EZGLEffect *effect;
 @property (strong, nonatomic) EZGLCamera *camera;
 
+@property (assign, nonatomic) BOOL physicsEnabled;
+
 - (instancetype)initWithGLKView:(GLKView *)glkView;
 
 - (void)addGeometry:(EZGLGeometry *)geometry;

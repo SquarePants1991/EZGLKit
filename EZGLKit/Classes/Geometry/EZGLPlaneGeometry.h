@@ -10,4 +10,6 @@
 
 @interface EZGLPlaneGeometry : EZGLGeometry
 
+- (instancetype)initWithSize:(CGSize)size;
+
 @end

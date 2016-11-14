@@ -13,6 +13,8 @@
 typedef struct _EZGLMoveJoyStickerState {
     CGFloat offsetX;
     CGFloat offsetY;
+    CGFloat deltaOffsetX;
+    CGFloat deltaOffsetY;
 }EZGLMoveJoyStickerState;
 
 @protocol EZGLMoveJoyStickerDelegate <NSObject>

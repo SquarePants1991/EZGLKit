@@ -124,7 +124,6 @@
     glViewport(0, 0, 1024, 1024);
     glClearColor(0.95f, 0.95f, 0.95f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    glCullFace(GL_FRONT);
     
     for (EZGLGeometry *geometry in self.geometrys) {
 //        geometry.viewProjection = self.lightViewProjection;
@@ -136,6 +135,8 @@
     [self.glkView bindDrawable];
     glClearColor(0.95f, 0.95f, 0.95f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glEnable(GL_CULL_FACE);
+    glCullFace(GL_BACK);
 
     for (EZGLGeometry *geometry in self.geometrys) {
 //        geometry.viewProjection = self.viewProjection;
@@ -151,13 +152,17 @@
 //    self.projector.renderAsShadow = NO;
 //    self.projector.material.diffuseMap = self.shadowTexture;
 //    [self.projector draw];
-//    
-    [self.physicsWorld render:rect];
+//
+    if (self.physicsEnabled) {
+        [self.physicsWorld render:rect];
+    }
 }
 
 - (void)update:(NSTimeInterval)interval {
-    [self.physicsWorld update:interval];
-//    [self.light update:interval];
+    if (self.physicsEnabled) {
+        [self.physicsWorld update:interval];
+    }
+    [self.effect update:interval];
     for (EZGLGeometry *geometry in self.geometrys) {
         [geometry update:interval];
     }

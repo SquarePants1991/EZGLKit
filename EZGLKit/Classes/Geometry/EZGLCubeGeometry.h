@@ -10,4 +10,6 @@
 
 @interface EZGLCubeGeometry : EZGLGeometry
 
+- (instancetype)initWithSize:(GLKVector3)size;
+
 @end

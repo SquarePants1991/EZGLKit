@@ -39,6 +39,46 @@
     return self;
 }
 
+- (instancetype)initAsBox:(GLKVector3)halfMargins mass:(float)mass geometry:(EZGLGeometry *)geometry
+{
+    self = [super init];
+    if (self) {
+        adjustOffset = btVector3(0,0,0);
+        btCollisionShape *shape = new btBoxShape(btVector3(halfMargins.x,halfMargins.y,halfMargins.z));
+        shape->setUserPointer((__bridge void *)self);
+        btTransform defaultTransform = [self btTransformFromGeometry:geometry];
+        btDefaultMotionState *motionState = new btDefaultMotionState(defaultTransform);
+        btVector3 fallInertia(0,0,0);
+        shape->calculateLocalInertia(mass, fallInertia);
+        
+        rigidBody = new btRigidBody(mass,motionState,shape,fallInertia);
+        rigidBody->setRestitution(.4);
+        
+        self.geometry = geometry;
+    }
+    return self;
+}
+
+- (instancetype)initAsCone:(GLfloat)radius height:(GLfloat)height mass:(float)mass geometry:(EZGLGeometry *)geometry
+{
+    self = [super init];
+    if (self) {
+        adjustOffset = btVector3(0,0,0);
+        btCollisionShape *shape = new btConeShape(radius,height);
+        shape->setUserPointer((__bridge void *)self);
+        btTransform defaultTransform = [self btTransformFromGeometry:geometry];
+        btDefaultMotionState *motionState = new btDefaultMotionState(defaultTransform);
+        btVector3 fallInertia(0,0,0);
+        shape->calculateLocalInertia(mass, fallInertia);
+        
+        rigidBody = new btRigidBody(mass,motionState,shape,fallInertia);
+        rigidBody->setRestitution(.4);
+        
+        self.geometry = geometry;
+    }
+    return self;
+}
+
 - (instancetype)initAsStaticPlane:(float)size geometry:(EZGLGeometry *)geometry
 {
     self = [super init];

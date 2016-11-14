@@ -11,6 +11,7 @@
 @interface EZGLMoveJoySticker ()
 
 @property (assign, nonatomic) CGPoint originTouchPoint;
+@property (assign, nonatomic) CGPoint lastTouchPoint;
 
 @end
 
@@ -18,6 +19,7 @@
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     self.originTouchPoint = [touches.anyObject locationInView:self];
+    self.lastTouchPoint = self.originTouchPoint;
 }
 
 - (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
@@ -34,16 +36,20 @@
         EZGLMoveJoyStickerState state;
         state.offsetX = dx;
         state.offsetY = dy;
+        state.deltaOffsetX = pt.x - self.lastTouchPoint.x;
+        state.deltaOffsetY = pt.y - self.lastTouchPoint.y;
         self.state = state;
         [self.delegate joyStickerStateUpdated:state joySticker:self];
     }
-    
+    self.lastTouchPoint = pt;
 }
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     EZGLMoveJoyStickerState state;
     state.offsetX = 0;
     state.offsetY = 0;
+    state.deltaOffsetX = 0;
+    state.deltaOffsetY = 0;
     self.state = state;
     [self.delegate joyStickerStateUpdated:state joySticker:self];
 }
