@@ -11,6 +11,7 @@
 
 @interface EZGLSplineCylinderGeometry ()
 
+@property (assign, nonatomic) int vbo;
 @property (assign, nonatomic) CGFloat height;
 @property (assign, nonatomic) CGFloat radius;
 @property (assign, nonatomic) CGFloat segments;
@@ -27,13 +28,23 @@
         self.ring = ring;
         self.radius = radius;
         self.segments = segments;
+        self.vbo = -1;
+        self.spline = [[EZGLSpline alloc] initWithLength:height segments:ring];
         [self setupWithData:[self genGeometryData]];
     }
     return self;
 }
 
+- (void)commitChanges {
+    [self setupWithData:[self genGeometryData]];
+}
+
 - (GLGeometryData)genGeometryData {
-    self.buffer = [EZGLGeometryVertexBuffer new];
+    if (self.buffer == nil) {
+        self.buffer = [EZGLGeometryVertexBuffer new];
+    } else {
+        [self.buffer clear];
+    }
     
     // 顶部原型面
     for (int i=0;i< self.segments ;i++) {
@@ -85,8 +96,8 @@
     for (int ringIndex = 0; ringIndex < self.ring; ringIndex++) {
         CGFloat baseY0 = ringIndex * ringSegHeight - self.height / 2;
         CGFloat baseY1 = (ringIndex + 1) * ringSegHeight - self.height / 2;
-        CGFloat radius = (cos(ringIndex / 4.0) + 2);
-        CGFloat radiusNext = (cos((ringIndex + 1) / 4.0) + 2);
+        CGFloat radius = self.radius + [self.spline offsetAtSegment:ringIndex];
+        CGFloat radiusNext = self.radius + [self.spline offsetAtSegment:ringIndex + 1];
         for (int i=0;i< self.segments ;i++) {
             CGFloat radian = i / self.segments * M_PI * 2;
             CGFloat radianNext = (i + 1) / self.segments * M_PI * 2;
@@ -119,9 +130,14 @@
     GLfloat *vertex = (GLfloat *)[self.buffer data];
     
     GLGeometryData data;
-    glGenBuffers(1, &data.vertexVBO);
+    if (self.vbo >= 0) {
+        data.vertexVBO = self.vbo;
+    } else {
+        glGenBuffers(1, &data.vertexVBO);
+        self.vbo = data.vertexVBO;
+    }
     glBindBuffer(GL_ARRAY_BUFFER, data.vertexVBO);
-    glBufferData(GL_ARRAY_BUFFER, [self.buffer rawLength], vertex, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, [self.buffer rawLength], vertex, GL_DYNAMIC_DRAW);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     
     data.vertexCount = [self.buffer rawLength] / sizeof(EZGLGeometryVertex);

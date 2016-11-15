@@ -39,12 +39,6 @@
     return self;
 }
 
-- (void)prepare {
-    for (EZGLGeometry *geometry in self.geometries) {
-        [geometry prepare];
-    }
-}
-
 - (void)setWorld:(EZGLWorld *)world {
     for (EZGLGeometry *geometry in self.geometries) {
         [geometry setWorld:world];

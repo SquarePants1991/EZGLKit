@@ -70,20 +70,29 @@
     return self;
 }
 
+- (void)commitChanges {
+    
+}
+
 - (void)setupWithData:(GLGeometryData)data {
     self.data = data;
     if (self.vertexShader && self.fragmentShader) {
         self.glProgram = [[EZGLProgram alloc]initWithVertexShaderFileName:self.vertexShader fragmentShaderFileName:self.fragmentShader];
     }
+    if (self.world) {
+        [self setupVAO];
+    }
 }
 
-- (void)prepare {
-    [self createTexture];
+- (void)setWorld:(EZGLWorld *)world {
+    _world = world;
     [self setupVAO];
 }
 
 - (void)setupVAO {
-    glGenVertexArraysOES(1, &_vao);
+    if (_vao == 0) {
+        glGenVertexArraysOES(1, &_vao);
+    }
     glBindVertexArrayOES(self.vao);
 
     glBindBuffer(GL_ARRAY_BUFFER, self.data.vertexVBO);

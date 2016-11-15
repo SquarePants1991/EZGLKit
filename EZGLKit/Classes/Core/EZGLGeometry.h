@@ -43,8 +43,9 @@ typedef struct {
 - (instancetype)initWithVertexShader:(NSString *)vertexShader fragmentShader:(NSString *)fragmentShader;
 - (instancetype)initWithVertexShader:(NSString *)vertexShader fragmentShader:(NSString *)fragmentShader material:(EZGLMaterial *)material;
 
+- (void)commitChanges;
+- (GLGeometryData)genData;
 - (void)setupWithData:(GLGeometryData)data;
-- (void)prepare;
 - (void)draw;
 - (void)update:(NSTimeInterval)interval;
 - (NSArray *)rigidBodys;

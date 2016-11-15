@@ -12,6 +12,8 @@
 @interface EZGLBaseViewController : GLKViewController
 
 @property (strong, nonatomic) EZGLWorld *world;
+@property (assign, nonatomic) BOOL isStickerEnabled;
+
 
 // override this
 - (NSString *)shaderName;

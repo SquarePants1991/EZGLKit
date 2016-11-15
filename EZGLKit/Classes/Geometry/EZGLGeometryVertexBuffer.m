@@ -47,6 +47,10 @@
     return (void *)vertices;
 }
 
+- (void)clear {
+    self.index = 0;
+}
+
 - (void)dealloc {
     free(vertices);
 }

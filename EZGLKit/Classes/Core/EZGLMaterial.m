@@ -21,7 +21,7 @@
 
 + (EZGLMaterial *)defaultMaterial {
     EZGLMaterial *material = [EZGLMaterial new];
-    material.ambient = GLKVector4Make(0.3, 0.3, 0.3, 1.0);
+    material.ambient = GLKVector4Make(0.1, 0.1, 0.1, 1.0);
     material.diffuse = GLKVector4Make(0.0, 0.0, 0.0, 1.0);
     material.specular = GLKVector4Make(1.0, 1.0, 1.0, 1.0);
     

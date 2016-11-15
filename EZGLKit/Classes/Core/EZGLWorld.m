@@ -111,7 +111,6 @@
 
 - (void)addGeometry:(EZGLGeometry *)geometry {
     geometry.world = self;
-    [geometry prepare];
     [self.geometrys addObject:geometry];
     [self.physicsWorld createRigidbody:1.0f geometry:geometry];
 }

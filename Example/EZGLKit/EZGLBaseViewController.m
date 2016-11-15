@@ -40,6 +40,14 @@
     [self.view addSubview:self.rotateSticker];
 }
 
+- (void)setIsStickerEnabled:(BOOL)isStickerEnabled {
+    _isStickerEnabled = isStickerEnabled;
+    if (_isStickerEnabled == NO) {
+        self.moveSticker.hidden = YES;
+        self.rotateSticker.hidden = YES;
+    }
+}
+
 - (NSString *)shaderName {
     return @"default";
 }
@@ -49,12 +57,17 @@
 }
 
 - (void)update {
-    [self updateCamera:self.timeSinceLastUpdate];
+    if (self.isStickerEnabled) {
+        [self updateCamera:self.timeSinceLastUpdate];
+    }
+
     [self.world update:self.timeSinceLastUpdate];
 }
 
 - (void)joyStickerStateUpdated:(EZGLMoveJoyStickerState)state joySticker:(EZGLMoveJoySticker *)joySticker {
-    
+    if (self.isStickerEnabled == NO) {
+        return;
+    }
     if (joySticker == self.rotateSticker) {
         EZGLPerspectiveCamera *perspectiveCamera = (EZGLPerspectiveCamera *)self.world.camera;
         [perspectiveCamera rotateLookAtWithAngleAroundUp:-state.deltaOffsetX / 35.0];
