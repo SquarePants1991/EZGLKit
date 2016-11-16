@@ -22,9 +22,9 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.color = GLKVector4Make(1, 1, 1, 1);
+        self.color = GLKVector4Make(1.0, 1.0, 1.0, 1);
         self.intensity = 1.5; //0 ~ 1000
-        self.position = GLKVector3Make(0, 0, 10);
+        self.position = GLKVector3Make(10, 0, 10);
     }
     return self;
 }

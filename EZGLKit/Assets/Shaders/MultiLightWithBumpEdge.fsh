@@ -30,7 +30,8 @@ uniform highp mat4 viewProjection;
 uniform highp mat4 modelMatrix;
 uniform highp mat3 normalMatrix;
 
-uniform light lights[1];
+uniform light lights[3];
+uniform mediump int lightNum;
 
 uniform sampler2D ambientMap;
 uniform sampler2D diffuseMap;
@@ -52,12 +53,12 @@ void pointLight(
                 ) {
     ambient = lightAmbient;
     vec3 halfVector = normalize(vp + eye);
-    float shininess = 90.0;
+    float shininess = 20.0;
     float nDotViewPosition = clamp(dot(normal,vp),0.0,1.0);
     diffuse = lightDiffuse * nDotViewPosition;
     float nDotViewHalfVector = clamp(dot(normal,halfVector),0.0,1.0);
     float powerFactor = max(0.0, pow(nDotViewHalfVector,shininess));
-    specular = lightSpecular * powerFactor;
+    specular = lightSpecular * powerFactor / 10.0;
 }
 
 void transformNormal(in vec3 position, in vec3 normal,out vec3 newNormal)
@@ -92,26 +93,43 @@ void main()
                           tbnTangent.y, tbnBitangent.y, tbnNormal.y,
                           tbnTangent.z, tbnBitangent.z, tbnNormal.z);
 
-    // 计算表面点到光源的向量
-    light defaultLight = lights[0];
     highp vec3 mMatrixPosition = (modelMatrix * fragPosition).xyz;
-    highp vec3 vp = normalize(defaultLight.position - mMatrixPosition);
-#ifdef Use_BumpMap
-    vp = normalize(tbn * vp);
-#endif
-    // 计算表面点到摄像机的向量
     
+    // 计算表面点到摄像机的向量
     highp vec3 eye;
     eye = normalize(vec3(0.0, 0.0, 10.0) - mMatrixPosition);
 #ifdef Use_BumpMap
     eye = normalize(tbn * eye);
 #endif
     
-    // 计算光源
-    highp vec4 ambient, diffuse, specular;
-    highp vec4 specularColor = texture2D(specularMap, fragTexcoord);
-    pointLight(textureNormal,ambient,diffuse,specular,vp,eye,material.ambient,defaultLight.color,vec4(1.0,1.0,1.0,1.0));
+    if (textureNormal.z < 0.1) {
+        gl_FragColor = vec4(0.0,0.0,0.0,0.0);
+        return;
+    }
+    
+    highp vec4 sum_ambient = vec4(0.0,0.0,0.0,0.0), sum_diffuse = vec4(0.0,0.0,0.0,0.0), sum_specular = vec4(0.0,0.0,0.0,0.0);
+    for (int i=0; i< lightNum; i++) {
+        // 计算表面点到光源的向量
+        light defaultLight = lights[i];
+        highp vec3 vp = normalize(defaultLight.position - mMatrixPosition);
+#ifdef Use_BumpMap
+        vp = normalize(tbn * vp);
+#endif
+        
+        // 计算光源
+        highp vec4 ambient, diffuse, specular;
+#ifdef Use_SpecularMap
+        highp vec4 specularColor = texture2D(specularMap, fragTexcoord);
+#else
+        highp vec4 specularColor = material.specular;
+#endif
+        pointLight(textureNormal,ambient,diffuse,specular,vp,eye,material.ambient,defaultLight.color,vec4(1.0,1.0,1.0,1.0));
+        
+        sum_ambient = material.ambient;
+        sum_diffuse = sum_diffuse + diffuse;
+        sum_specular = sum_specular + specular;
+    }
     
     highp vec4 finalColor = texture2D(diffuseMap, fragTexcoord);
-    gl_FragColor = finalColor * diffuse + finalColor * ambient + finalColor * specular;
+    gl_FragColor = finalColor * sum_diffuse + finalColor * sum_ambient + finalColor * sum_specular;
 }

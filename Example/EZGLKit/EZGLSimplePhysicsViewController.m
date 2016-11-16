@@ -52,6 +52,7 @@
     [self.world addGeometry:planeGeo];
     
     [self.world setPhysicsEnabled:YES];
+    self.isStickerEnabled = YES;
 }
 
 - (NSString *)shaderName {

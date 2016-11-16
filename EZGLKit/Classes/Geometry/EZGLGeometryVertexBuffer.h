@@ -12,6 +12,7 @@
 
 - (void)append:(EZGLGeometryVertex)vertex;
 - (GLsizei)rawLength;
+- (void)caculatePerVertexNormal;
 - (void *)data;
 - (void)clear;
 

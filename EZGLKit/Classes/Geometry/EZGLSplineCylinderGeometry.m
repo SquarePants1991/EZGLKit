@@ -47,15 +47,16 @@
     }
     
     // 顶部原型面
+    CGFloat topRadius = self.radius + [self.spline offsetAtSegment:0];
     for (int i=0;i< self.segments ;i++) {
         CGFloat radian = i / self.segments * M_PI * 2;
         CGFloat radianNext = (i + 1) / self.segments * M_PI * 2;
         
-        CGFloat x0 = cos(radian) * self.radius;
-        CGFloat z0 = sin(radian) * self.radius;
+        CGFloat x0 = cos(radian) * topRadius;
+        CGFloat z0 = sin(radian) * topRadius;
         
-        CGFloat x1 = cos(radianNext) * self.radius;
-        CGFloat z1 = sin(radianNext) * self.radius;
+        CGFloat x1 = cos(radianNext) * topRadius;
+        CGFloat z1 = sin(radianNext) * topRadius;
         
         EZGeometryTriangle triangle = {
             {0, self.height / 2, 0},
@@ -69,15 +70,16 @@
     }
     
     // 底部原型面
+    CGFloat bottomRadius = self.radius + [self.spline offsetAtSegment:self.ring - 1];
     for (int i=0;i< self.segments ;i++) {
         CGFloat radian = i / self.segments * M_PI * 2;
         CGFloat radianNext = (i + 1) / self.segments * M_PI * 2;
         
-        CGFloat x0 = cos(radian) * self.radius;
-        CGFloat z0 = sin(radian) * self.radius;
+        CGFloat x0 = cos(radian) * bottomRadius;
+        CGFloat z0 = sin(radian) * bottomRadius;
         
-        CGFloat x1 = cos(radianNext) * self.radius;
-        CGFloat z1 = sin(radianNext) * self.radius;
+        CGFloat x1 = cos(radianNext) * bottomRadius;
+        CGFloat z1 = sin(radianNext) * bottomRadius;
         
         EZGeometryTriangle triangle = {
             {0, -self.height / 2, 0},
@@ -101,6 +103,9 @@
         for (int i=0;i< self.segments ;i++) {
             CGFloat radian = i / self.segments * M_PI * 2;
             CGFloat radianNext = (i + 1) / self.segments * M_PI * 2;
+            if (i == self.segments - 1) {
+                radianNext = 0;
+            }
             
             CGFloat xb0 = cos(radian) * radius;
             CGFloat zb0 = sin(radian) * radius;
@@ -126,6 +131,7 @@
         }
     }
     
+    [self.buffer caculatePerVertexNormal];
     
     GLfloat *vertex = (GLfloat *)[self.buffer data];
     

@@ -45,6 +45,7 @@
         glUniform1f([program uniformWithStr:name], light.intensity);
         index++;
     }
+    glUniform1i([program uniformWithStr:@"lightNum"], self.lights.count);
 }
 
 - (void)update:(NSTimeInterval)interval {

@@ -34,6 +34,7 @@
     self.buffer = [EZGLGeometryVertexBuffer new];
     [self genHalfSphere:1 intoBuffer:self.buffer];
     [self genHalfSphere:-1 intoBuffer:self.buffer];
+    [self.buffer caculatePerVertexNormal];
     
     GLfloat *vertex = (GLfloat *)[self.buffer data];
     
