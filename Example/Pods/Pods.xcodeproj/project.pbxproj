@@ -198,17 +198,6 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>02F5336C239EEC4AD95AFB8B15056F0C</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>wood_03.jpg</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>0332B769B68F627FB40E00318CAEE18B</key>
 		<dict>
 			<key>includeInIndex</key>
@@ -281,30 +270,6 @@
 			<string>4977D12E6F6F1D7979B3158E6FEA03AC</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
-		</dict>
-		<key>0506F73FEE537D4FF1EB88FC34297C48</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>1F7EDA77C3188698DB68C61C700C707E</string>
-				<string>8A8CEDA91F0A2EAFED32813D309F6663</string>
-				<string>3399BFA325062CEB68B89FE446BDF6C9</string>
-				<string>776F0EB615DB8D154453C64FE15E0DB5</string>
-				<string>7AC0E2E3A37BC95FB5E797E7DE93BD0C</string>
-				<string>3A22ED0769246DCAD12144F2A15783D4</string>
-				<string>864D0112BECECED474F98662A6F17653</string>
-				<string>E80D6EAD3EB38BDEB73A57BADB41CE7E</string>
-				<string>A35BF6C6AE37978F7FA3725B62D31636</string>
-				<string>4EB84F8EEC5ECAF2B1DF8AEF0C82BC18</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Shaders</string>
-			<key>path</key>
-			<string>Shaders</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
 		</dict>
 		<key>05174819D8A2A5C4BA4C75D8352F26E6</key>
 		<dict>
@@ -1052,6 +1017,17 @@
 				</array>
 			</dict>
 		</dict>
+		<key>11A7F16D6957B40C9B24A86208713767</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>OneLight.fsh</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>11C4BAA3528D185D57259BE9BC691D34</key>
 		<dict>
 			<key>fileRef</key>
@@ -1596,17 +1572,6 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>1F7EDA77C3188698DB68C61C700C707E</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>Default.fsh</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>1F875EC5382CE0DDB121B2464D973147</key>
 		<dict>
 			<key>fileRef</key>
@@ -1852,17 +1817,6 @@
 					<string>Public</string>
 				</array>
 			</dict>
-		</dict>
-		<key>239C7082CD47F68EF50E8030BDD9D71B</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>default.png</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
 		</dict>
 		<key>2464EDD1DA5F1224A052FBF918C76280</key>
 		<dict>
@@ -2200,6 +2154,17 @@
 				</array>
 			</dict>
 		</dict>
+		<key>2D7946FF07F19BD4A10CA80920786BA6</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>MultiLightWithBump.vsh</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>2D8E8EC45A3A1A1D94AE762CB5028504</key>
 		<dict>
 			<key>buildConfigurations</key>
@@ -2395,6 +2360,17 @@
 				</array>
 			</dict>
 		</dict>
+		<key>31EA1B0A0F5C5DB38C07E001EB1D220B</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>WithTexture.fsh</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>31FEA30056DE442C14A53F0CA1722A41</key>
 		<dict>
 			<key>includeInIndex</key>
@@ -2492,17 +2468,6 @@
 			<string>8376AF7EF75F343346578A2A1A97F27C</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
-		</dict>
-		<key>3399BFA325062CEB68B89FE446BDF6C9</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>OneLight.fsh</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
 		</dict>
 		<key>33A5DBD3F56BA90DFCB364AF35B2542D</key>
 		<dict>
@@ -2779,17 +2744,6 @@
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>3A22ED0769246DCAD12144F2A15783D4</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>OneLightWithBump.vsh</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>3A8D762F9CE9E3E6D084C50531363AA1</key>
 		<dict>
 			<key>includeInIndex</key>
@@ -2989,6 +2943,17 @@
 			<string>PBXFileReference</string>
 			<key>path</key>
 			<string>btCompoundCompoundCollisionAlgorithm.cpp</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>3FA24E9B1975DA3D0D8E7E5FE34615FC</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>wood_01_normal.jpg</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -3246,7 +3211,7 @@
 		<dict>
 			<key>children</key>
 			<array>
-				<string>AAAD0E30BA1AA2F8EB69B8D4AFC654C1</string>
+				<string>D3D7314E864736F8D0AD26EABA0BE21F</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
@@ -3542,17 +3507,6 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>4EB84F8EEC5ECAF2B1DF8AEF0C82BC18</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>WithTexture.vsh</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>4F2B434F04EA179CA5735F9409D9C9E6</key>
 		<dict>
 			<key>includeInIndex</key>
@@ -3713,6 +3667,17 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
+		<key>539357C1DF14B475EEA896F2DD028519</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>Default.fsh</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>53E9A51B475BB222BF02A014F4E3C31E</key>
 		<dict>
 			<key>fileRef</key>
@@ -3759,17 +3724,6 @@
 					<string>Public</string>
 				</array>
 			</dict>
-		</dict>
-		<key>55286E9F8152723F1B8421496095F460</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>normal.jpg</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
 		</dict>
 		<key>555A283EDF16FF023E979E565C2501E2</key>
 		<dict>
@@ -3988,6 +3942,17 @@
 			<string>E4F36E58D9FE1C9AC9D9049BFEAFDD84</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
+		</dict>
+		<key>59F2D2C2085C7234FFDCBB2E687A0DDD</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>wood_03.jpg</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>59F3191C01BAB22D404B84C76A71D98A</key>
 		<dict>
@@ -4209,6 +4174,17 @@
 			<string>sourcecode.c.h</string>
 			<key>path</key>
 			<string>btCollisionConfiguration.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>5F35165C86A559BAC586D4F84C4E18F8</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>Default.vsh</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -4622,29 +4598,6 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>68013864383B8061C5FE691C5C0B28E2</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>87396F72FC1791C654428D6D7E678282</string>
-				<string>239C7082CD47F68EF50E8030BDD9D71B</string>
-				<string>55286E9F8152723F1B8421496095F460</string>
-				<string>8C7C6D1EEF0A2DB01C76D88A001451EB</string>
-				<string>EA29F8E1742393FE46B132DCB22E0948</string>
-				<string>8B7122A6017EA7657B5E56EB6977882B</string>
-				<string>EDFB8A945E80842D7E444CD79F5E11BD</string>
-				<string>BAE065F225CC469A7B9B8EA9261EC570</string>
-				<string>02F5336C239EEC4AD95AFB8B15056F0C</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Textures</string>
-			<key>path</key>
-			<string>Textures</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>6870BC76FA6DDD4158088716C583CD99</key>
 		<dict>
 			<key>fileRef</key>
@@ -4965,6 +4918,17 @@
 			<string>PBXGroup</string>
 			<key>name</key>
 			<string>Development Pods</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6F4E0B49471147F6B111263D348E4778</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>MultiLightWithBumpEdge.fsh</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -5424,17 +5388,6 @@
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>776F0EB615DB8D154453C64FE15E0DB5</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>OneLight.vsh</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>77801B144624003895C98F636D2BBC41</key>
 		<dict>
 			<key>includeInIndex</key>
@@ -5815,14 +5768,14 @@
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>7AC0E2E3A37BC95FB5E797E7DE93BD0C</key>
+		<key>7ADB12E8013076705C5312232CDAE9A6</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>path</key>
-			<string>OneLightWithBump.fsh</string>
+			<string>wood_02.jpg</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -6039,6 +5992,17 @@
 					<string>Public</string>
 				</array>
 			</dict>
+		</dict>
+		<key>7ECD5063870C6A7A918BCA3D76428AC4</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>OneLightWithBump.vsh</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>7F0AD8911040911526C618DB4098D5FD</key>
 		<dict>
@@ -6406,17 +6370,6 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>864D0112BECECED474F98662A6F17653</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>OneLightWithShadow.fsh</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>86691887C9160EC25C5448842DD612C1</key>
 		<dict>
 			<key>children</key>
@@ -6483,17 +6436,6 @@
 			<string>sourcecode.c.h</string>
 			<key>path</key>
 			<string>btMLCPSolver.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>87396F72FC1791C654428D6D7E678282</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>default.jpg</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -6673,17 +6615,6 @@
 				</array>
 			</dict>
 		</dict>
-		<key>8A8CEDA91F0A2EAFED32813D309F6663</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>Default.vsh</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>8AA754082293408AB0B264439D999CDE</key>
 		<dict>
 			<key>includeInIndex</key>
@@ -6707,17 +6638,6 @@
 			<string>sourcecode.c.h</string>
 			<key>path</key>
 			<string>btMinkowskiSumShape.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>8B7122A6017EA7657B5E56EB6977882B</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>wood_01_normal.png</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -6791,17 +6711,6 @@
 			<string>3FDD6E4B507551E51244D967BABD86EC</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
-		</dict>
-		<key>8C7C6D1EEF0A2DB01C76D88A001451EB</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>wood_01.jpg</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
 		</dict>
 		<key>8CD76D4C94088B1EB3CF38FA3AE774A9</key>
 		<dict>
@@ -7307,6 +7216,17 @@
 					<string>Public</string>
 				</array>
 			</dict>
+		</dict>
+		<key>9586E454CAEFC25A13F143A718C50F4A</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>default.jpg</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>95F83DB6684E87FC65501AA452693F9A</key>
 		<dict>
@@ -8067,17 +7987,6 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>A35BF6C6AE37978F7FA3725B62D31636</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>WithTexture.fsh</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>A36A48324559FEFD4092DEB5A96EC7D5</key>
 		<dict>
 			<key>includeInIndex</key>
@@ -8287,6 +8196,17 @@
 				</array>
 			</dict>
 		</dict>
+		<key>A83E76789315CD0885F37C85C0DFDAEA</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>default.jpeg</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>A8F64A4534B0F528F93763E76A1A677C</key>
 		<dict>
 			<key>fileRef</key>
@@ -8325,22 +8245,6 @@
 					<string>Public</string>
 				</array>
 			</dict>
-		</dict>
-		<key>AAAD0E30BA1AA2F8EB69B8D4AFC654C1</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>0506F73FEE537D4FF1EB88FC34297C48</string>
-				<string>68013864383B8061C5FE691C5C0B28E2</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Assets</string>
-			<key>path</key>
-			<string>Assets</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
 		</dict>
 		<key>AB12A144BB2C39BC16EA2E42090A2387</key>
 		<dict>
@@ -8945,6 +8849,17 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
+		<key>B540A9A79B4408B46F9B002D3F955EE9</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>default.png</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>B592AEFB658A6421A3EB0D6E35621DF2</key>
 		<dict>
 			<key>fileRef</key>
@@ -9029,6 +8944,17 @@
 			<string>sourcecode.c.h</string>
 			<key>path</key>
 			<string>btMLCPSolverInterface.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>B7255B0D6977723FEFBB82F541CED48C</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>OneLightWithShadow.vsh</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -9229,12 +9155,45 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
+		<key>BA0DFA33054A19FECA6A3E74AD9941BD</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>OneLight.vsh</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>BA417BAE3242F4A5F27D9BC5DA014847</key>
 		<dict>
 			<key>fileRef</key>
 			<string>F291B0C9F6B500F83B2C01A0EF32509F</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
+		</dict>
+		<key>BA6B31C4A04A553CE9F56FC672FF4E3C</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>WithTexture.vsh</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>BA8FB8944A6BC5EE792E437C9A2DD326</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>MultiLightWithBumpEdge.vsh</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>BA9E63AD8B69CFEE00BA53410104E21A</key>
 		<dict>
@@ -9257,17 +9216,6 @@
 			<string>PBXFileReference</string>
 			<key>path</key>
 			<string>btWheelInfo.cpp</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>BAE065F225CC469A7B9B8EA9261EC570</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>wood_02.jpg</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -9470,6 +9418,17 @@
 				</array>
 			</dict>
 		</dict>
+		<key>BEB332C838BD629A950663333256EA98</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>MultiLightWithBump.fsh</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>BFB636697735F1E644915FC5D24376C8</key>
 		<dict>
 			<key>fileRef</key>
@@ -9503,6 +9462,34 @@
 					<string>Public</string>
 				</array>
 			</dict>
+		</dict>
+		<key>C0EFEA75A3B3324FDAAB7171B13FF91D</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>539357C1DF14B475EEA896F2DD028519</string>
+				<string>5F35165C86A559BAC586D4F84C4E18F8</string>
+				<string>BEB332C838BD629A950663333256EA98</string>
+				<string>2D7946FF07F19BD4A10CA80920786BA6</string>
+				<string>6F4E0B49471147F6B111263D348E4778</string>
+				<string>BA8FB8944A6BC5EE792E437C9A2DD326</string>
+				<string>11A7F16D6957B40C9B24A86208713767</string>
+				<string>BA0DFA33054A19FECA6A3E74AD9941BD</string>
+				<string>C596007C6D5914ECF627B1552ACE1219</string>
+				<string>7ECD5063870C6A7A918BCA3D76428AC4</string>
+				<string>C48A86567B2120A19973CC91BE08E12B</string>
+				<string>B7255B0D6977723FEFBB82F541CED48C</string>
+				<string>31EA1B0A0F5C5DB38C07E001EB1D220B</string>
+				<string>BA6B31C4A04A553CE9F56FC672FF4E3C</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Shaders</string>
+			<key>path</key>
+			<string>Shaders</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>C1043613EB6815165D6C6E5262EE879C</key>
 		<dict>
@@ -9646,6 +9633,28 @@
 				</array>
 			</dict>
 		</dict>
+		<key>C48A86567B2120A19973CC91BE08E12B</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>OneLightWithShadow.fsh</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>C498CF4628F25C475849C0109D0945C5</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>normal.jpg</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>C4D273FAB258F4D3875CBAEFB0D5884C</key>
 		<dict>
 			<key>fileRef</key>
@@ -9677,6 +9686,41 @@
 			<string>sourcecode.c.h</string>
 			<key>path</key>
 			<string>btCollisionCreateFunc.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>C596007C6D5914ECF627B1552ACE1219</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>OneLightWithBump.fsh</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>C5C8600A316EA9048A2C521E0FC6C84C</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>A83E76789315CD0885F37C85C0DFDAEA</string>
+				<string>9586E454CAEFC25A13F143A718C50F4A</string>
+				<string>B540A9A79B4408B46F9B002D3F955EE9</string>
+				<string>C498CF4628F25C475849C0109D0945C5</string>
+				<string>C65CAD73E9B11026C4E6EDD632589CC2</string>
+				<string>3FA24E9B1975DA3D0D8E7E5FE34615FC</string>
+				<string>F1C716734F5A43C070396228AB93806A</string>
+				<string>F684206B4B009CDDB5EEB94F2A8FB1CC</string>
+				<string>7ADB12E8013076705C5312232CDAE9A6</string>
+				<string>59F2D2C2085C7234FFDCBB2E687A0DDD</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Textures</string>
+			<key>path</key>
+			<string>Textures</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -9712,6 +9756,17 @@
 					<string>Public</string>
 				</array>
 			</dict>
+		</dict>
+		<key>C65CAD73E9B11026C4E6EDD632589CC2</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>wood_01.jpg</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>C671F5D6BC4A6E867753C52F297D280C</key>
 		<dict>
@@ -10327,6 +10382,22 @@
 			<string>PBXFileReference</string>
 			<key>path</key>
 			<string>btMultiBodyFixedConstraint.cpp</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D3D7314E864736F8D0AD26EABA0BE21F</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>C0EFEA75A3B3324FDAAB7171B13FF91D</string>
+				<string>C5C8600A316EA9048A2C521E0FC6C84C</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Assets</string>
+			<key>path</key>
+			<string>Assets</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -11614,17 +11685,6 @@
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>E80D6EAD3EB38BDEB73A57BADB41CE7E</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>OneLightWithShadow.vsh</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>E83DD0C51088EBB234FC8DD743FB84BF</key>
 		<dict>
 			<key>includeInIndex</key>
@@ -11759,17 +11819,6 @@
 					<string>Public</string>
 				</array>
 			</dict>
-		</dict>
-		<key>EA29F8E1742393FE46B132DCB22E0948</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>wood_01_normal.jpg</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
 		</dict>
 		<key>EA625CCECE5BAB54DED11DA2DD4C78A7</key>
 		<dict>
@@ -11934,17 +11983,6 @@
 				</array>
 			</dict>
 		</dict>
-		<key>EDFB8A945E80842D7E444CD79F5E11BD</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>wood_01_spec.png</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>EEAB209D012EBA364C3D0A6462AFAA0E</key>
 		<dict>
 			<key>includeInIndex</key>
@@ -12082,6 +12120,17 @@
 					<string>Public</string>
 				</array>
 			</dict>
+		</dict>
+		<key>F1C716734F5A43C070396228AB93806A</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>wood_01_normal.png</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>F291B0C9F6B500F83B2C01A0EF32509F</key>
 		<dict>
@@ -12285,6 +12334,17 @@
 			<string>715B59C5C037F86097875EFB2BE2CEAF</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
+		</dict>
+		<key>F684206B4B009CDDB5EEB94F2A8FB1CC</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>wood_01_spec.png</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>F711D5C3F0E2A0F3F98EBFCA30E58362</key>
 		<dict>

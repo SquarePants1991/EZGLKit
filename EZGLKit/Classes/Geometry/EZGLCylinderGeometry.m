@@ -37,6 +37,9 @@
     for (int i=0;i< self.segments ;i++) {
         CGFloat radian = i / self.segments * M_PI * 2;
         CGFloat radianNext = (i + 1) / self.segments * M_PI * 2;
+        if (i == self.segments - 1) {
+            radianNext = 0;
+        }
         
         CGFloat x0 = cos(radian) * self.radius;
         CGFloat z0 = sin(radian) * self.radius;
@@ -59,6 +62,9 @@
     for (int i=0;i< self.segments ;i++) {
         CGFloat radian = i / self.segments * M_PI * 2;
         CGFloat radianNext = (i + 1) / self.segments * M_PI * 2;
+        if (i == self.segments - 1) {
+            radianNext = 0;
+        }
         
         CGFloat x0 = cos(radian) * self.radius;
         CGFloat z0 = sin(radian) * self.radius;
@@ -79,9 +85,12 @@
 
     
     // 柱子
-    for (int i=0;i< self.segments ;i++) {
+    for (int i=0;i < self.segments ;i++) {
         CGFloat radian = i / self.segments * M_PI * 2;
         CGFloat radianNext = (i + 1) / self.segments * M_PI * 2;
+        if (i == self.segments - 1) {
+            radianNext = 0;
+        }
         
         CGFloat x0 = cos(radian) * self.radius;
         CGFloat z0 = sin(radian) * self.radius;
@@ -101,6 +110,8 @@
         };
         [EZGLGeometryUtil appendRect:rect toVertices:self.buffer];
     }
+    
+    [self.buffer caculatePerVertexNormal];
     
     GLfloat *vertex = (GLfloat *)[self.buffer data];
     

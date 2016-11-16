@@ -27,7 +27,10 @@
     self.world = [[EZGLWorld alloc] initWithGLKView:(GLKView *)self.view];
     EZGLProgram *program = [[EZGLProgram alloc]initWithVertexShaderFileName:[self shaderName] fragmentShaderFileName:[self shaderName]];
     self.world.effect = [[EZGLEffect alloc] initWithProgram:program];
-    [self.world.effect addLight:[EZGLLight new]];
+    EZGLLight *defaultLight = [EZGLLight new];
+    defaultLight.color = GLKVector4Make(1.0, 1.0, 1.0, 1);
+    defaultLight.position = GLKVector3Make(10, 0, 10);
+    [self.world.effect addLight:defaultLight];
     
     
     CGRect bounds = self.view.bounds;
