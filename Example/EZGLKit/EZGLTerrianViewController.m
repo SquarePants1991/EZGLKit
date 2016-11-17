@@ -10,7 +10,9 @@
 #import <EZGLKit/EZGLTerrain.h>
 #import <EZGLKit/EZGLCylinderGeometry.h>
 
-@interface EZGLTerrianViewController ()
+@interface EZGLTerrianViewController () {
+    EZGLTerrain *terrian;
+}
 
 @end
 
@@ -21,7 +23,7 @@
     
     [((EZGLPerspectiveCamera *)self.world.camera) setEye:GLKVector3Make(0, 3, 10)];
     
-    EZGLTerrain *terrian = [[EZGLTerrain alloc] initWithImage:nil size:CGSizeMake(100, 100)];
+    terrian = [[EZGLTerrain alloc] initWithImage:nil size:CGSizeMake(40, 40)];
     [self.world addGeometry:terrian];
     
     EZGLCylinderGeometry *baseCylinder = [[EZGLCylinderGeometry alloc] initWithHeight:1 radius:5 segments:25];
@@ -34,6 +36,12 @@
 
 - (NSString *)shaderName {
     return @"MultiLightWithBump";
+}
+
+- (void)update {
+    [super update];
+    terrian.phase += 10 * self.timeSinceLastUpdate;
+    [terrian commitChanges];
 }
 
 @end

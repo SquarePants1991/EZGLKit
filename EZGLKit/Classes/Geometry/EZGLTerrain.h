@@ -10,6 +10,7 @@
 
 @interface EZGLTerrain : EZGLGeometry
 
+@property (assign, nonatomic) float phase;
 - (instancetype)initWithImage:(UIImage *)image size:(CGSize)size;
 
 @end

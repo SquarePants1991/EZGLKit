@@ -34,11 +34,19 @@
 }
 
 - (float)yLoc:(float)xLoc zLoc:(float)zLoc {
-    return (zLoc * sin(xLoc) + xLoc * cos(zLoc)) / 50;
+    return (zLoc * sin(xLoc + self.phase) + xLoc * cos(zLoc+ self.phase)) / 30;
+}
+
+- (void)commitChanges {
+    [self setupWithData:[self genGeometryData]];
 }
 
 - (GLGeometryData)genGeometryData {
-    self.buffer = [EZGLGeometryVertexBuffer new];
+    if (self.buffer == nil) {
+        self.buffer = [EZGLGeometryVertexBuffer new];
+    } else {
+        [self.buffer clear];
+    }
     
     int xCount = (int)(self.size.width / self.resolution);
     int yCount = (int)(self.size.height / self.resolution);
@@ -70,7 +78,7 @@
     GLGeometryData data;
     glGenBuffers(1, &data.vertexVBO);
     glBindBuffer(GL_ARRAY_BUFFER, data.vertexVBO);
-    glBufferData(GL_ARRAY_BUFFER, [self.buffer rawLength], vertex, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, [self.buffer rawLength], vertex, GL_DYNAMIC_DRAW);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     
     data.vertexCount = [self.buffer rawLength] / sizeof(EZGLGeometryVertex);
