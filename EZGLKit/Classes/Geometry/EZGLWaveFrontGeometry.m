@@ -67,7 +67,7 @@
     NSMutableArray *bodies = [NSMutableArray new];
     
     for (EZGLGeometry *geometry in self.geometries) {
-        EZGLRigidBody *body = [[EZGLRigidBody alloc]initAsBox:GLKVector3Make(1, 1, 1) mass:1 geometry:geometry];
+        EZGLRigidBody *body = [[EZGLRigidBody alloc]initAsBox:GLKVector3Make(4, 4, 4) mass:1 geometry:geometry];
 //        EZGLRigidBody *body = [[EZGLRigidBody alloc]initAsStaticPlane:100 geometry:geometry];
         [bodies addObject:body];
     }

@@ -111,8 +111,6 @@
         [EZGLGeometryUtil appendRect:rect toVertices:self.buffer];
     }
     
-    [self.buffer caculatePerVertexNormal];
-    
     GLfloat *vertex = (GLfloat *)[self.buffer data];
     
     GLGeometryData data;

@@ -10,6 +10,7 @@
 
 #import "tiny_obj_loader.h"
 #import "UIImage+GL.h"
+#import "EZGLGeometryVertexBuffer.h"
 
 @implementation EZGLWaveFrontShape
 
@@ -71,7 +72,8 @@
     if (shape.mesh.material_ids[0] >= 0 && shape.mesh.material_ids[0] < materials.count) {
         glShape.material = materials[shape.mesh.material_ids[0]];
     }
-    std::vector<GLfloat> buffer = [self generateVertexBuffer:attrib indices:indices];
+    EZGLGeometryVertexBuffer *buffer = [self generateVertexBuffer:attrib indices:indices];
+    [buffer caculatePerVertexNormal];
     [self generateVertexVBO:buffer shape:glShape];
     return glShape;
 }
@@ -108,7 +110,9 @@
     return 0;
 }
 
-- (std::vector<GLfloat>)generateVertexBuffer:(tinyobj::attrib_t)attrib indices:(std::vector<tinyobj::index_t>)indices {
+- (EZGLGeometryVertexBuffer *)generateVertexBuffer:(tinyobj::attrib_t)attrib indices:(std::vector<tinyobj::index_t>)indices {
+    EZGLGeometryVertexBuffer *buffer = [EZGLGeometryVertexBuffer new];
+    
     std::vector<GLfloat> vertices;
     std::vector<GLfloat> tangents;
     std::vector<GLfloat> bitangents;
@@ -123,44 +127,12 @@
         GLfloat nx = attrib.normals[indice.normal_index * 3 + 0];
         GLfloat ny = attrib.normals[indice.normal_index * 3 + 1];
         GLfloat nz = attrib.normals[indice.normal_index * 3 + 2];
-        
-        GLKVector3 tangent,bitangent;
-        [self caculateTangents:&tangent bitangents:&bitangent position:GLKVector3Make(x, y, z) normal:GLKVector3Make(nx, ny, nz)];
-        tangents.push_back(tangent.x);
-        tangents.push_back(tangent.y);
-        tangents.push_back(tangent.z);
-        bitangents.push_back(bitangent.x);
-        bitangents.push_back(bitangent.y);
-        bitangents.push_back(bitangent.z);
+
+        EZGLGeometryVertex vertex = {x,y,z,nx,ny,nz,u,v};
+        [buffer append:vertex];
     }
     
-    
-    for (size_t i = 0; i < indices.size(); i++) {
-        tinyobj::index_t indice = indices[i];
-        GLfloat x = attrib.vertices[indice.vertex_index * 3 + 0];
-        GLfloat y = attrib.vertices[indice.vertex_index * 3 + 1];
-        GLfloat z = attrib.vertices[indice.vertex_index * 3 + 2];
-        GLfloat u = attrib.texcoords[indice.texcoord_index * 2 + 0];
-        GLfloat v = attrib.texcoords[indice.texcoord_index * 2 + 1];
-        
-        vertices.push_back(x);
-        vertices.push_back(y);
-        vertices.push_back(z);
-        vertices.push_back(attrib.normals[indice.normal_index * 3 + 0]);
-        vertices.push_back(attrib.normals[indice.normal_index * 3 + 1]);
-        vertices.push_back(attrib.normals[indice.normal_index * 3 + 2]);
-        vertices.push_back(u);
-        vertices.push_back(v);
-        vertices.push_back(tangents[i * 3 + 0]);
-        vertices.push_back(tangents[i * 3 + 1]);
-        vertices.push_back(tangents[i * 3 + 2]);
-        vertices.push_back(bitangents[i * 3 + 0]);
-        vertices.push_back(bitangents[i * 3 + 1]);
-        vertices.push_back(bitangents[i * 3 + 2]);
-    }
-    
-    
-    return vertices;
+    return buffer;
 }
 
 - (void)caculateTangents:(GLKVector3 *)pTangent bitangents:(GLKVector3 *)pBitangent position:(GLKVector3)position normal:(GLKVector3)normal {
@@ -207,17 +179,17 @@
     *pBitangent = GLKVector3MultiplyScalar(bitangent,r);
 }
 
-- (void)generateVertexVBO:(std::vector<float>)vertices shape:(EZGLWaveFrontShape *)shape {
+- (void)generateVertexVBO:(EZGLGeometryVertexBuffer *)buffer shape:(EZGLWaveFrontShape *)shape {
     GLuint vertexVBO;
-    GLfloat *pVertices = vertices.data();
+    GLfloat *pVertices = (GLfloat *)[buffer data];
     glGenBuffers(1, &vertexVBO);
     glBindBuffer(GL_ARRAY_BUFFER, vertexVBO);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat) * vertices.size(), pVertices, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, [buffer rawLength], pVertices, GL_STATIC_DRAW);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
 
     shape.vertexVBO = vertexVBO;
     shape.vertexStride = sizeof(GLfloat) * 14;
-    shape.vertexCount = (GLsizei)(vertices.size() / 14);
+    shape.vertexCount = [buffer rawLength] / sizeof(EZGLGeometryVertex);
 }
 
 - (void)generateIndiceVBO:(std::vector<tinyobj::index_t>)indices shape:(EZGLWaveFrontShape *)shape {

@@ -7,8 +7,6 @@
 //
 
 #import "EZGLSplineCylinderViewController.h"
-#import <EZGLKit/EZGLSplineCylinderGeometry.h>
-#import <EZGLKit/EZGLCylinderGeometry.h>
 
 @interface EZGLSplineCylinderViewController () {
     CGFloat radian;
@@ -29,11 +27,13 @@
     adjustPercent = -1;
     adjustOffset = 0;
     
-    EZGLLight *secondLight = [[EZGLLight alloc] init];
-    secondLight.color = GLKVector4Make(1.0, 1.0, 1.0, 1.0);
-    secondLight.position = GLKVector3Make(-20, 0, 5);
+//    EZGLLight *secondLight = [[EZGLLight alloc] init];
+//    secondLight.color = GLKVector4Make(1.0, 1.0, 1.0, 1.0);
+//    secondLight.position = GLKVector3Make(-20, 0, 5);
+//    
+//    [self.world.effect addLight:secondLight];
     
-    [self.world.effect addLight:secondLight];
+    [((EZGLPerspectiveCamera *)self.world.camera) setEye:GLKVector3Make(0, 2, 10)];
 //
 //    EZGLLight *thirdLight = [[EZGLLight alloc] init];
 //    thirdLight.color = GLKVector4Make(1.0, 1.0, 1.0, 1.0);
@@ -47,6 +47,8 @@
     
     self.geometry = [[EZGLSplineCylinderGeometry alloc] initWithHeight:5 radius:2 segments:25 ring:25];
     [self.world addGeometry:self.geometry];
+    
+//    [self.world addGeometry:[[EZGLSphereGeometry alloc]initWithRadius:3 segments:30 ring:30]];
     
     self.baseCylinder = [[EZGLCylinderGeometry alloc] initWithHeight:1 radius:5 segments:25];
     self.baseCylinder.transform.translateY = -3;

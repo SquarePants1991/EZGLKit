@@ -1,1 +1,0 @@
-../../../../../EZGLKit/Classes/Third Party/Obj Loader/tiny_obj_loader.h

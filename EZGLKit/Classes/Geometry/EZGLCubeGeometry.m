@@ -107,8 +107,6 @@
     };
     [EZGLGeometryUtil appendRect:rectZFar toVertices:self.buffer];
     [EZGLGeometryUtil appendRect:rectZNear toVertices:self.buffer];
-
-    [self.buffer caculatePerVertexNormal];
     
     GLfloat *vertex = (GLfloat *)[self.buffer data];
     glGenBuffers(1, &data.vertexVBO);

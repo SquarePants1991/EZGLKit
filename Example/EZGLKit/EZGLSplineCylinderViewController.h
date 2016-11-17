@@ -7,6 +7,9 @@
 //
 
 #import "EZGLBaseViewController.h"
+#import <EZGLKit/EZGLSplineCylinderGeometry.h>
+#import <EZGLKit/EZGLCylinderGeometry.h>
+#import <EZGLKit/EZGLSphereGeometry.h>
 
 @interface EZGLSplineCylinderViewController : EZGLBaseViewController
 

@@ -31,7 +31,8 @@
                                 @"带凹凸贴图的Cube":@"EZGLCubeWithBumpTextureViewController",
                                 @"复杂场景加载":@"EZGLLoadSceneViewController",
                                 @"简单物理效果":@"EZGLSimplePhysicsViewController",
-                                @"样条线柱体":@"EZGLSplineCylinderViewController"};
+                                @"样条线柱体":@"EZGLSplineCylinderViewController",
+                                @"地形":@"EZGLTerrianViewController"};
 }
 
 #pragma mark - Data Source

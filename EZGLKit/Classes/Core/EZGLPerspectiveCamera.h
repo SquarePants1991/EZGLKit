@@ -16,6 +16,7 @@
 @property (assign, nonatomic) GLfloat aspect;
 
 @property (assign, nonatomic) GLKVector3 eye;
+    @property (assign, nonatomic) GLKVector3 transformedEye;
 @property (assign, nonatomic) GLKVector3 lookAt;
 @property (assign, nonatomic) GLKVector3 up;
 @property (assign, nonatomic) GLKVector3 left;

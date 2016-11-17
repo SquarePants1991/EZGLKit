@@ -22,9 +22,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"cube3" ofType:@".obj"];
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"monkey" ofType:@".obj"];
     EZGLWaveFrontGeometry *geometry = [[EZGLWaveFrontGeometry alloc] initWithWaveFrontFilePath:path];
     geometry.transform.translateY = 0;
+    geometry.transform.scaleX = 4;
+    geometry.transform.scaleY = 4;
+    geometry.transform.scaleZ = 4;
     [self.world addGeometry:geometry];
     
     EZGLCylinderGeometry *cylinder = [[EZGLCylinderGeometry alloc] initWithHeight:5 radius:2 segments:40];
@@ -56,7 +59,7 @@
 }
 
 - (NSString *)shaderName {
-    return @"OneLightWithBump";
+    return @"toon";
 }
 
 

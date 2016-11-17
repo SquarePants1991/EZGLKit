@@ -19,6 +19,27 @@
 @end
 
 @implementation EZGLRigidBody
+
+- (instancetype)initAsMesh:(float)radius mass:(float)mass geometry:(EZGLGeometry *)geometry {
+    self = [super init];
+    if (self) {
+        
+        adjustOffset = btVector3(0,0,0);
+        btCollisionShape *shape = new btSphereShape(radius);
+        shape->setUserPointer((__bridge void *)self);
+        btTransform defaultTransform = [self btTransformFromGeometry:geometry];
+        btDefaultMotionState *motionState = new btDefaultMotionState(defaultTransform);
+        btVector3 fallInertia(0,0,0);
+        shape->calculateLocalInertia(mass, fallInertia);
+        
+        rigidBody = new btRigidBody(mass,motionState,shape,fallInertia);
+        rigidBody->setRestitution(.4);
+        
+        self.geometry = geometry;
+    }
+    return self;
+}
+
 - (instancetype)initAsSphere:(float)radius mass:(float)mass geometry:(EZGLGeometry *)geometry
 {
     self = [super init];
