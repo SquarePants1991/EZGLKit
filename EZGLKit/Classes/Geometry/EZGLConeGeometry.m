@@ -33,7 +33,6 @@
 - (GLGeometryData)genGeometryData {
     self.buffer = [EZGLGeometryVertexBuffer new];
     [self genConeIntoBuffer:self.buffer];
-    [self.buffer caculatePerVertexNormal];
     
     GLfloat *vertex = (GLfloat *)[self.buffer data];
     

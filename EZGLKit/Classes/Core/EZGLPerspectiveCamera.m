@@ -108,6 +108,10 @@
 - (void)translateUp:(GLfloat)distance {
     self.translation = GLKVector3Add(self.translation, GLKVector3Make(self.up.x * distance, self.up.y * distance, self.up.z * distance));
 }
+    
+    - (GLKVector3)transformedEye {
+        return GLKVector3Add(self.eye, self.translation);
+    }
 
 - (GLKMatrix4)matrix {
     GLKMatrix4 perspective = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(self.fovyRadians), self.aspect, self.nearZ, self.farZ);

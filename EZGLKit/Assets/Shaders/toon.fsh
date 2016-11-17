@@ -33,12 +33,25 @@ uniform highp mat3 normalMatrix;
 uniform light lights[3];
 uniform mediump int lightNum;
 
+uniform highp vec3 cameraPosition;
+
 uniform sampler2D ambientMap;
 uniform sampler2D diffuseMap;
 uniform sampler2D shadowMap;
 uniform sampler2D normalMap;
 uniform sampler2D specularMap;
 uniform material_struct material;
+
+float toon(in float val) {
+    if (val < 0.1) {
+        return 0.0;
+    } else if (val < 0.9) {
+        return 0.5;
+    } else {
+        return 1.0;
+    }
+    return 0.0;
+}
 
 void pointLight(
                 in vec3 normal,
@@ -54,9 +67,9 @@ void pointLight(
     ambient = lightAmbient;
     vec3 halfVector = normalize(vp + eye);
     float shininess = 20.0;
-    float nDotViewPosition = clamp(dot(normal,vp),0.0,1.0);
+    float nDotViewPosition = toon(clamp(dot(normal,vp),0.0,1.0));
     diffuse = lightDiffuse * nDotViewPosition;
-    float nDotViewHalfVector = clamp(dot(normal,halfVector),0.0,1.0);
+    float nDotViewHalfVector = toon(clamp(dot(normal,halfVector),0.0,1.0));
     float powerFactor = max(0.0, pow(nDotViewHalfVector,shininess));
     specular = lightSpecular * powerFactor / 10.0;
 }
@@ -97,12 +110,12 @@ void main()
     
     // 计算表面点到摄像机的向量
     highp vec3 eye;
-    eye = normalize(vec3(0.0, 0.0, 10.0) - mMatrixPosition);
+    eye = normalize(cameraPosition - mMatrixPosition);
 #ifdef Use_BumpMap
     eye = normalize(tbn * eye);
 #endif
     
-    if (textureNormal.z < 0.1) {
+    if (dot(textureNormal, normalize(eye)) < 0.2) {
         gl_FragColor = vec4(0.0,0.0,0.0,0.0);
         return;
     }

@@ -12,6 +12,7 @@
 #import "EZGLDefines.h"
 #import "EZGLLight.h"
 #import "EZGLWorld.h"
+#import "EZGLPerspectiveCamera.h"
 
 @interface EZGLGeometry () {
     GLfloat rotation;
@@ -139,6 +140,8 @@
     
     GLint renderAsShadow = self.renderAsShadow ? 1 : 0;
     glUniform1i([self.glProgram uniform:UNIFORM_RENDERASSHADOW], renderAsShadow);
+    
+    glUniform3fv([self.glProgram uniformWithStr:@"cameraPosition"], 1, ((EZGLPerspectiveCamera *)self.world.camera).transformedEye.v);
 
     glUniformMatrix4fv([self.glProgram uniform:UNIFORM_VIEWPROJECTION], 1, 0, self.viewProjection.m);
     glUniformMatrix4fv([self.glProgram uniform:UNIFORM_MODEL_MATRIX], 1, 0, self.modelMatrix.m);
