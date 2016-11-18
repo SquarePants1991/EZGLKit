@@ -69,6 +69,8 @@ void transformNormal(in vec3 position, in vec3 normal,out vec3 newNormal)
     newNormal = normalize(mMatrixNormalTarget - mMatrixPosition);
 }
 
+//#define Use_BumpMap
+
 void main()
 {
     // 扰动法向量

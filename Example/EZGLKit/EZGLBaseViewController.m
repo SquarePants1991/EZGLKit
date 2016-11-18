@@ -29,7 +29,7 @@
     self.world.effect = [[EZGLEffect alloc] initWithProgram:program];
     EZGLLight *defaultLight = [EZGLLight new];
     defaultLight.color = GLKVector4Make(1.0, 1.0, 1.0, 1);
-    defaultLight.position = GLKVector3Make(3, 10, 4);
+    defaultLight.position = GLKVector3Make(33, 10, 4);
     [self.world.effect addLight:defaultLight];
     
     

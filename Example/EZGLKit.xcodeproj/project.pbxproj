@@ -48,6 +48,11 @@
 		8EA7A2291DD5CFB100B2FEC9 /* grass.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8EA7A2281DD5CFB100B2FEC9 /* grass.jpg */; };
 		8ED4732F1DC1CE100035F011 /* ball3.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 8ED4732D1DC1CE100035F011 /* ball3.mtl */; };
 		8ED473301DC1CE100035F011 /* ball3.obj in Resources */ = {isa = PBXBuildFile; fileRef = 8ED4732E1DC1CE100035F011 /* ball3.obj */; };
+		8ED879781DDEF175008B0F22 /* island.png in Resources */ = {isa = PBXBuildFile; fileRef = 8ED879771DDEF175008B0F22 /* island.png */; };
+		8ED8797B1DDF0297008B0F22 /* island2.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 8ED879791DDF0297008B0F22 /* island2.jpeg */; };
+		8ED8797C1DDF0297008B0F22 /* island3.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 8ED8797A1DDF0297008B0F22 /* island3.jpeg */; };
+		8ED8797E1DDF0306008B0F22 /* rock.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8ED8797D1DDF0306008B0F22 /* rock.jpg */; };
+		8ED879861DDF0E7A008B0F22 /* sky.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8ED879851DDF0E7A008B0F22 /* sky.jpg */; };
 		91A411BC925146DB4B9D6537 /* libPods-EZGLKit_Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FE102A697C3C7FA9874D2744 /* libPods-EZGLKit_Example.a */; };
 		D30FF4F31DBA4260006A2A68 /* EZGLBasicCubeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D30FF4F21DBA4260006A2A68 /* EZGLBasicCubeViewController.m */; };
 		D32DF9981DBA818800EBED91 /* cube3.obj in Resources */ = {isa = PBXBuildFile; fileRef = D32DF9961DBA818800EBED91 /* cube3.obj */; };
@@ -132,6 +137,11 @@
 		8EA7A2281DD5CFB100B2FEC9 /* grass.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = grass.jpg; sourceTree = "<group>"; };
 		8ED4732D1DC1CE100035F011 /* ball3.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ball3.mtl; path = Resources/ball3.mtl; sourceTree = "<group>"; };
 		8ED4732E1DC1CE100035F011 /* ball3.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ball3.obj; path = Resources/ball3.obj; sourceTree = "<group>"; };
+		8ED879771DDEF175008B0F22 /* island.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = island.png; path = Resources/island.png; sourceTree = "<group>"; };
+		8ED879791DDF0297008B0F22 /* island2.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = island2.jpeg; path = Resources/island2.jpeg; sourceTree = "<group>"; };
+		8ED8797A1DDF0297008B0F22 /* island3.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = island3.jpeg; path = Resources/island3.jpeg; sourceTree = "<group>"; };
+		8ED8797D1DDF0306008B0F22 /* rock.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = rock.jpg; path = Resources/rock.jpg; sourceTree = "<group>"; };
+		8ED879851DDF0E7A008B0F22 /* sky.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = sky.jpg; path = Resources/sky.jpg; sourceTree = "<group>"; };
 		ACB722C94CFF447CCFA4C7BA /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		B3F37E7B44058075289CA397 /* Pods-EZGLKit_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EZGLKit_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-EZGLKit_Example/Pods-EZGLKit_Example.release.xcconfig"; sourceTree = "<group>"; };
 		BF00AC56A3E31A9742AB668F /* Pods-EZGLKit_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EZGLKit_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EZGLKit_Tests/Pods-EZGLKit_Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -403,6 +413,11 @@
 		D32DF9951DBA816600EBED91 /* 3D Models */ = {
 			isa = PBXGroup;
 			children = (
+				8ED879851DDF0E7A008B0F22 /* sky.jpg */,
+				8ED8797D1DDF0306008B0F22 /* rock.jpg */,
+				8ED879791DDF0297008B0F22 /* island2.jpeg */,
+				8ED8797A1DDF0297008B0F22 /* island3.jpeg */,
+				8ED879771DDEF175008B0F22 /* island.png */,
 				8EA7A2181DD5CC9C00B2FEC9 /* Scenes */,
 				8EA7A1CA1DD567A200B2FEC9 /* metal_normal.png */,
 				8EA7A1CB1DD567A200B2FEC9 /* metal_SPEC.png */,
@@ -562,18 +577,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				8EA7A1CD1DD567A200B2FEC9 /* metal_normal.png in Resources */,
+				8ED8797C1DDF0297008B0F22 /* island3.jpeg in Resources */,
 				8EA1736F1DC1E642002AC00E /* sphere4.jpg in Resources */,
 				8EA7A21F1DD5CC9C00B2FEC9 /* box.jpg in Resources */,
 				D32DF9981DBA818800EBED91 /* cube3.obj in Resources */,
 				8EA7A2201DD5CC9C00B2FEC9 /* box_normal.png in Resources */,
 				8EA7A1CF1DD567A200B2FEC9 /* metal.jpg in Resources */,
 				8EA7A1C51DD444B100B2FEC9 /* default_normal.png in Resources */,
+				8ED8797E1DDF0306008B0F22 /* rock.jpg in Resources */,
 				8EA7A1CE1DD567A200B2FEC9 /* metal_SPEC.png in Resources */,
 				8EA7A1C31DD444B100B2FEC9 /* normal.jpg in Resources */,
 				8EA7A2221DD5CC9C00B2FEC9 /* demo1_000001.mtl in Resources */,
 				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
 				8ED4732F1DC1CE100035F011 /* ball3.mtl in Resources */,
 				8EA7A2291DD5CFB100B2FEC9 /* grass.jpg in Resources */,
+				8ED8797B1DDF0297008B0F22 /* island2.jpeg in Resources */,
 				8EA7A1C81DD444B100B2FEC9 /* wood_02.jpg in Resources */,
 				8EA7A1C71DD444B100B2FEC9 /* default.jpg in Resources */,
 				D3C9FD8E1DC0F149004E7AE1 /* ball2.mtl in Resources */,
@@ -584,8 +602,10 @@
 				8EA7A1C61DD444B100B2FEC9 /* default_spec.png in Resources */,
 				8EA7A2211DD5CC9C00B2FEC9 /* box_spec.png in Resources */,
 				8EA7A1BA1DD443BA00B2FEC9 /* cube4.mtl in Resources */,
+				8ED879861DDF0E7A008B0F22 /* sky.jpg in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
 				8ED473301DC1CE100035F011 /* ball3.obj in Resources */,
+				8ED879781DDEF175008B0F22 /* island.png in Resources */,
 				D32DF9991DBA818800EBED91 /* cube3.mtl in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
 				D3C9FD911DC0F6D4004E7AE1 /* sphere1.jpg in Resources */,
@@ -617,7 +637,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		2E3CE0FFA78DD7109ADDE6A2 /* [CP] Copy Pods Resources */ = {
@@ -662,7 +682,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		CB134545FC81CC7F564C9D36 /* [CP] Embed Pods Frameworks */ = {

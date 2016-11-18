@@ -26,7 +26,7 @@
     camera.aspect = fabs(size.width / size.height);
     camera.fovyRadians = 65.0f;
     camera.nearZ = 0.1;
-    camera.farZ = 100;
+    camera.farZ = 9999;
     camera.lookAt = GLKVector3Make(0, 0, 0);
     camera.up = GLKVector3Make(0, 1, 0);
     camera.eye = GLKVector3Make(0, 0, 10);

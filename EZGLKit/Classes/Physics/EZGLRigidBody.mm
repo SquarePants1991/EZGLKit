@@ -9,6 +9,7 @@
 #import "EZGLRigidBody.h"
 #import "btBulletDynamicsCommon.h"
 #import "btBulletCollisionCommon.h"
+#import "btHeightfieldTerrainShape.h"
 
 #import "EZGLGeometry.h"
 
@@ -20,19 +21,19 @@
 
 @implementation EZGLRigidBody
 
-- (instancetype)initAsMesh:(float)radius mass:(float)mass geometry:(EZGLGeometry *)geometry {
+- (instancetype)initAsTerrain:(float *)data size:(CGSize)size minHeight:(float)minHeight maxHeight:(float)maxHeight geometry:(EZGLGeometry *)geometry {
     self = [super init];
     if (self) {
-        
+    
         adjustOffset = btVector3(0,0,0);
-        btCollisionShape *shape = new btSphereShape(radius);
+        btCollisionShape *shape = new btHeightfieldTerrainShape(size.width, size.height, data, 1 , minHeight, maxHeight, 1, PHY_FLOAT, false);
         shape->setUserPointer((__bridge void *)self);
         btTransform defaultTransform = [self btTransformFromGeometry:geometry];
         btDefaultMotionState *motionState = new btDefaultMotionState(defaultTransform);
         btVector3 fallInertia(0,0,0);
-        shape->calculateLocalInertia(mass, fallInertia);
+        shape->calculateLocalInertia(0, fallInertia);
         
-        rigidBody = new btRigidBody(mass,motionState,shape,fallInertia);
+        rigidBody = new btRigidBody(0,motionState,shape,fallInertia);
         rigidBody->setRestitution(.4);
         
         self.geometry = geometry;

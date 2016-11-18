@@ -9,6 +9,8 @@
 #import "EZGLTerrianViewController.h"
 #import <EZGLKit/EZGLTerrain.h>
 #import <EZGLKit/EZGLCylinderGeometry.h>
+#import <EZGLKit/EZGLSphereGeometry.h>
+#import <EZGLKit/EZGLSkySphereGeometry.h>
 
 @interface EZGLTerrianViewController () {
     EZGLTerrain *terrian;
@@ -23,14 +25,26 @@
     
     [((EZGLPerspectiveCamera *)self.world.camera) setEye:GLKVector3Make(0, 3, 10)];
     
-    terrian = [[EZGLTerrain alloc] initWithImage:nil size:CGSizeMake(40, 40)];
+    terrian = [[EZGLTerrain alloc] initWithImage:[UIImage imageNamed:@"island2.jpeg"] size:CGSizeMake(200, 200)];
     [self.world addGeometry:terrian];
     
-    EZGLCylinderGeometry *baseCylinder = [[EZGLCylinderGeometry alloc] initWithHeight:1 radius:5 segments:25];
-    baseCylinder.transform.translateY = -3;
+    EZGLCylinderGeometry *baseCylinder = [[EZGLCylinderGeometry alloc] initWithHeight:1 radius:1 segments:25];
+    baseCylinder.transform.translateY = 5;
     [self.world addGeometry:baseCylinder];
     
-    [self.world setPhysicsEnabled:NO];
+    EZGLSkySphereGeometry *skySphere = [[EZGLSkySphereGeometry alloc] initWithRadius:128 segments:20 ring:20];
+    [self.world addGeometry:skySphere];
+    
+    
+    for (int i=0; i<4;i++) {
+    EZGLSphereGeometry *sphere = [[EZGLSphereGeometry alloc] initWithRadius:2 segments:20 ring:20];
+    sphere.transform.translateY = 10;
+    sphere.transform.translateX = 4 * i - 8;
+    sphere.transform.translateZ = 5;
+    [self.world addGeometry:sphere];
+    }
+    
+    [self.world setPhysicsEnabled:YES];
     self.isStickerEnabled = YES;
 }
 
@@ -40,8 +54,6 @@
 
 - (void)update {
     [super update];
-    terrian.phase += 10 * self.timeSinceLastUpdate;
-    [terrian commitChanges];
 }
 
 @end

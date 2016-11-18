@@ -26,8 +26,8 @@
     material.specular = GLKVector4Make(1.0, 1.0, 1.0, 1.0);
     
     material.ambientMap = [UIImage textureFromCGImage:[UIImage imageNamed:@"default_ambient.png"].CGImage];
-    material.normalMap = [UIImage textureFromCGImage:[UIImage imageNamed:@"default_normal.png"].CGImage];
-    NSString *image = [[NSBundle bundleForClass:self] pathForResource:@"default" ofType:@".png"];
+    material.normalMap = [UIImage textureFromCGImage:[UIImage imageNamed:@"rock_normal.png"].CGImage];
+    NSString *image = [[NSBundle bundleForClass:self] pathForResource:@"rock" ofType:@".jpg"];
     material.diffuseMap = [UIImage textureFromCGImage:[UIImage imageWithContentsOfFile:image].CGImage];
     material.specularMap = [UIImage textureFromCGImage:[UIImage imageNamed:@"default_spec.png"].CGImage];
     return material;
