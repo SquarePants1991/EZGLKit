@@ -7,13 +7,19 @@
 //
 
 #import "EZGLTerrianViewController.h"
+#import "EZGLMoveJoySticker.h"
+
 #import <EZGLKit/EZGLTerrain.h>
 #import <EZGLKit/EZGLCylinderGeometry.h>
 #import <EZGLKit/EZGLSphereGeometry.h>
 #import <EZGLKit/EZGLSkySphereGeometry.h>
 
+#import <EZGLKit/EZGLFirstPersonView.h>
+
 @interface EZGLTerrianViewController () {
     EZGLTerrain *terrian;
+    EZGLFirstPersonView *firstPersonView;
+    EZGLCylinderGeometry *person;
 }
 
 @end
@@ -26,14 +32,14 @@
     [((EZGLPerspectiveCamera *)self.world.camera) setEye:GLKVector3Make(0, 3, 10)];
     
     terrian = [[EZGLTerrain alloc] initWithImage:[UIImage imageNamed:@"island2.jpeg"] size:CGSizeMake(200, 200)];
-    [self.world addGeometry:terrian];
+    [self.world addNode:terrian];
     
-    EZGLCylinderGeometry *baseCylinder = [[EZGLCylinderGeometry alloc] initWithHeight:1 radius:1 segments:25];
-    baseCylinder.transform.translateY = 5;
-    [self.world addGeometry:baseCylinder];
+    person = [[EZGLCylinderGeometry alloc] initWithHeight:2 radius:2 segments:25];
+    person.transform.translateY = 5;
+    [self.world addNode:person];
     
     EZGLSkySphereGeometry *skySphere = [[EZGLSkySphereGeometry alloc] initWithRadius:128 segments:20 ring:20];
-    [self.world addGeometry:skySphere];
+    [self.world addNode:skySphere];
     
     
     for (int i=0; i<4;i++) {
@@ -41,11 +47,14 @@
     sphere.transform.translateY = 10;
     sphere.transform.translateX = 4 * i - 8;
     sphere.transform.translateZ = 5;
-    [self.world addGeometry:sphere];
+    [self.world addNode:sphere];
     }
     
     [self.world setPhysicsEnabled:YES];
     self.isStickerEnabled = YES;
+    
+    firstPersonView = [[EZGLFirstPersonView alloc]initWithCamera:((EZGLPerspectiveCamera *)self.world.camera) node:person];
+    [self.world addNode:firstPersonView];
 }
 
 - (NSString *)shaderName {
@@ -54,6 +63,27 @@
 
 - (void)update {
     [super update];
+}
+
+- (void)joyStickerStateUpdated:(EZGLMoveJoyStickerState)state joySticker:(EZGLMoveJoySticker *)joySticker {
+    if (self.isStickerEnabled == NO) {
+        return;
+    }
+    if (joySticker == self.rotateSticker) {
+        EZGLPerspectiveCamera *perspectiveCamera = (EZGLPerspectiveCamera *)self.world.camera;
+        [perspectiveCamera rotateLookAtWithAngleAroundUp:-state.deltaOffsetX / 35.0];
+        [perspectiveCamera rotateLookAtWithAngleAroundLeft:-state.deltaOffsetY / 35.0];
+    }
+}
+
+- (void)updateCamera:(NSTimeInterval)interval {
+    EZGLPerspectiveCamera *perspectiveCamera = (EZGLPerspectiveCamera *)self.world.camera;
+    
+    EZGLMoveJoyStickerState moveState = self.moveSticker.state;
+    
+    [perspectiveCamera translateForward: -moveState.offsetY / 10 * interval];
+    [perspectiveCamera translateLeft: moveState.offsetX / 10 * interval];
+    
 }
 
 @end

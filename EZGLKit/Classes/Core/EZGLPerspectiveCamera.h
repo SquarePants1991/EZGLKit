@@ -31,5 +31,6 @@
 - (void)translateForward:(GLfloat)distance;
 - (void)translateLeft:(GLfloat)distance;
 - (void)translateUp:(GLfloat)distance;
+- (void)translateTo:(GLKVector3)eye;
 
 @end

@@ -10,6 +10,8 @@
 #import <OpenGLES/ES2/glext.h>
 #import <GLKit/GLKit.h>
 
+#import "EZGLNode.h"
+
 #import "EZGLDefines.h"
 #import "EZGLProgram.h"
 #import "EZGLMaterial.h"
@@ -28,14 +30,13 @@ typedef struct {
     BOOL supportIndiceVBO;
 }GLGeometryData;
 
-@interface EZGLGeometry : NSObject
+@interface EZGLGeometry : EZGLNode
 @property (strong, nonatomic) EZGLProgram *glProgram;
 @property (weak, nonatomic) EZGLWorld *world;
 
 @property (assign, nonatomic) GLKMatrix4 viewProjection;
 @property (assign, nonatomic) GLKMatrix4 lightViewProjection;
 @property (strong, nonatomic) EZGLMaterial *material;
-@property (strong, nonatomic) EZGLTransform *transform;
 
 @property (assign, nonatomic) BOOL renderAsShadow;
 
@@ -47,6 +48,5 @@ typedef struct {
 - (GLGeometryData)genData;
 - (void)setupWithData:(GLGeometryData)data;
 - (void)draw;
-- (void)update:(NSTimeInterval)interval;
 - (NSArray *)rigidBodys;
 @end

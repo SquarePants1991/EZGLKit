@@ -20,7 +20,7 @@
     
     NSString *path = [[NSBundle mainBundle] pathForResource:@"demo1_000001" ofType:@".obj"];
     geometry = [[EZGLWaveFrontGeometry alloc] initWithWaveFrontFilePath:path];
-    [self.world addGeometry:geometry];
+    [self.world addNode:geometry];
 }
 
 - (NSString *)shaderName {

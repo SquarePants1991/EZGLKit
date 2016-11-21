@@ -46,13 +46,13 @@
     self.isStickerEnabled = NO;
     
     self.geometry = [[EZGLSplineCylinderGeometry alloc] initWithHeight:5 radius:2 segments:25 ring:25];
-    [self.world addGeometry:self.geometry];
+    [self.world addNode:self.geometry];
     
-//    [self.world addGeometry:[[EZGLSphereGeometry alloc]initWithRadius:3 segments:30 ring:30]];
+//    [self.world addNode:[[EZGLSphereGeometry alloc]initWithRadius:3 segments:30 ring:30]];
     
     self.baseCylinder = [[EZGLCylinderGeometry alloc] initWithHeight:1 radius:5 segments:25];
     self.baseCylinder.transform.translateY = -3;
-    [self.world addGeometry:self.baseCylinder];
+    [self.world addNode:self.baseCylinder];
 
     [self.geometry commitChanges];
     

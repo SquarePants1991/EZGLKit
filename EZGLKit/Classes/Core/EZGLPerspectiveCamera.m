@@ -46,6 +46,11 @@
     }
     return self;
 }
+- (void)translateTo:(GLKVector3)eye {
+    GLKVector3 eyeVec = GLKVector3Subtract(self.lookAt, self.eye);
+    self.lookAt = GLKVector3Add(eye, eyeVec);
+    self.eye = eye;
+}
 
 - (GLKVector3)left {
     GLKQuaternion quaternion = GLKQuaternionMakeWithAngleAndVector3Axis(M_PI / 2.0, self.forward);

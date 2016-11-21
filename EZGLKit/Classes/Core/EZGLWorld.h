@@ -30,8 +30,7 @@
 @property (assign, nonatomic) BOOL physicsEnabled;
 
 - (instancetype)initWithGLKView:(GLKView *)glkView;
-
-- (void)addGeometry:(EZGLGeometry *)geometry;
+- (void)addNode:(EZGLNode *)node;
 - (void)render:(CGRect)rect;
 - (void)update:(NSTimeInterval)interval;
 @end

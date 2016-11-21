@@ -18,6 +18,7 @@
 @property (weak, nonatomic) GLKView *glkView;
 
 @property (strong, nonatomic) NSMutableArray *geometrys;
+@property (strong, nonatomic) NSMutableArray *nodes;
 
 @property (assign, nonatomic) GLKMatrix4 viewProjection;
 @property (assign, nonatomic) GLKMatrix4 lightViewProjection;
@@ -70,6 +71,7 @@
 //        self.lightViewProjection = GLKMatrix4Multiply(self.lightViewProjection, lookAt);
         [self createShadowFrameBuffer];
         self.geometrys = [NSMutableArray new];
+        self.nodes = [NSMutableArray new];
         self.physicsWorld = [EZGLPhysicsWorld new];
         self.effect = [EZGLEffect new];
         [self.effect addLight:[EZGLLight new]];
@@ -107,6 +109,13 @@
     self.shadowFramebuffer = framebuffer;
     self.shadowTexture = shadowTexture;
     self.testTexture = [UIImage textureFromCGImage:[UIImage imageNamed:@"texture.png"].CGImage];
+}
+
+- (void)addNode:(EZGLNode *)node {
+    if ([node isKindOfClass:[EZGLGeometry class]]) {
+        [self addGeometry:node];
+    }
+    [self.nodes addObject:node];
 }
 
 - (void)addGeometry:(EZGLGeometry *)geometry {
@@ -162,8 +171,8 @@
         [self.physicsWorld update:interval];
     }
     [self.effect update:interval];
-    for (EZGLGeometry *geometry in self.geometrys) {
-        [geometry update:interval];
+    for (EZGLNode *node in self.nodes) {
+        [node update:interval];
     }
     [self.projector update:interval];
 }

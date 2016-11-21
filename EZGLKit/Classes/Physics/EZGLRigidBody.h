@@ -22,5 +22,5 @@
 - (instancetype)initAsStaticPlane:(float)size geometry:(EZGLGeometry *)geometry;
 - (void)sync;
 - (void *)rigidBody;
-
+- (void)setVelocity:(GLKVector3)velocity;
 @end

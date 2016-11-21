@@ -28,31 +28,31 @@
     geometry.transform.scaleX = 4;
     geometry.transform.scaleY = 4;
     geometry.transform.scaleZ = 4;
-    [self.world addGeometry:geometry];
+    [self.world addNode:geometry];
     
     EZGLCylinderGeometry *cylinder = [[EZGLCylinderGeometry alloc] initWithHeight:5 radius:2 segments:40];
     [cylinder.transform setTranslateX: 2];
     [cylinder.transform setQuaternion:GLKQuaternionMakeWithAngleAndAxis(M_PI / 2, 0, 0, 1)];
-    [self.world addGeometry:cylinder];
+    [self.world addNode:cylinder];
     
     EZGLSphereGeometry *sphere = [[EZGLSphereGeometry alloc] initWithRadius:3 segments:40 ring:30];
     [sphere.transform setTranslateX: -2];
     [sphere.transform setTranslateY: 10];
-    [self.world addGeometry:sphere];
+    [self.world addNode:sphere];
     
     EZGLConeGeometry *cone = [[EZGLConeGeometry alloc] initWithRadius:2 segments:40 height:5];
     [cone.transform setTranslateX: -2];
     [cone.transform setTranslateY: 6];
-    [self.world addGeometry:cone];
+    [self.world addNode:cone];
     
     EZGLCubeGeometry *cube = [[EZGLCubeGeometry alloc] initWithSize:GLKVector3Make(3, 2, 6)];
     [cube.transform setTranslateX: -5];
     [cube.transform setTranslateY: 6];
-    [self.world addGeometry:cube];
+    [self.world addNode:cube];
     
     EZGLPlaneGeometry *planeGeo = [[EZGLPlaneGeometry alloc] initWithSize:CGSizeMake(100, 100)];
     [planeGeo.transform setTranslateY: -5];
-    [self.world addGeometry:planeGeo];
+    [self.world addNode:planeGeo];
     
     [self.world setPhysicsEnabled:YES];
     self.isStickerEnabled = YES;

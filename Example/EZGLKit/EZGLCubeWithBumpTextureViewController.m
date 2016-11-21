@@ -23,7 +23,7 @@
     
     NSString *path = [[NSBundle mainBundle] pathForResource:@"cube3" ofType:@".obj"];
     self.geometry = [[EZGLWaveFrontGeometry alloc] initWithWaveFrontFilePath:path];
-    [self.world addGeometry:self.geometry];
+    [self.world addNode:self.geometry];
 }
 
 - (NSString *)shaderName {

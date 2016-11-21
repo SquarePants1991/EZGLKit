@@ -9,8 +9,9 @@
 #import <GLKit/GLKit.h>
 
 #import "EZGLTransform.h"
+#import "EZGLNode.h"
 
-@interface EZGLCamera : NSObject
+@interface EZGLCamera : EZGLNode
 
 @property (strong, nonatomic) EZGLTransform *transform;
 

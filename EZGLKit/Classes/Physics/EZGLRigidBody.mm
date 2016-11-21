@@ -145,4 +145,8 @@
     return transform;
 }
 
+- (void)setVelocity:(GLKVector3)velocity {
+    rigidBody->setLinearVelocity(btVector3(speed.x,speed.y,speed.z));
+}
+
 @end

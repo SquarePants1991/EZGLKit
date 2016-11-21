@@ -33,7 +33,7 @@
     NSString *path = [[NSBundle mainBundle] pathForResource:@"cube3" ofType:@".obj"];
     self.geometry = [[EZGLWaveFrontGeometry alloc] initWithWaveFrontFilePath:path];
     //    self.geometry.transform.quaternion = GLKQuaternionMakeWithAngleAndVector3Axis(-M_PI / 2, GLKVector3Make(1, 0, 0));
-    [self.world addGeometry:self.geometry];
+    [self.world addNode:self.geometry];
     
     
     UIPinchGestureRecognizer *gesture = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(panned:)];

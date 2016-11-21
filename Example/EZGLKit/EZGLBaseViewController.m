@@ -7,7 +7,6 @@
 //
 
 #import "EZGLBaseViewController.h"
-#import "EZGLMoveJoySticker.h"
 
 @interface EZGLBaseViewController () <EZGLMoveJoyStickerDelegate>
 
@@ -15,8 +14,6 @@
 @property (assign, nonatomic) CGPoint currentTouchPoint;
 @property (assign, nonatomic) CGFloat lastScale;
 
-@property (strong, nonatomic) EZGLMoveJoySticker *moveSticker;
-@property (strong, nonatomic) EZGLMoveJoySticker *rotateSticker;
 @end
 
 @implementation EZGLBaseViewController

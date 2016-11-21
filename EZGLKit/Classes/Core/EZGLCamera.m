@@ -8,6 +8,10 @@
 
 #import "EZGLCamera.h"
 
+@interface EZGLCamera ()
+
+@end
+
 @implementation EZGLCamera
 
 - (GLKMatrix4)matrix {

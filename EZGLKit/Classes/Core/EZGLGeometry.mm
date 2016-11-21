@@ -181,12 +181,12 @@
     glBindVertexArrayOES(0);
 }
 
-- (void)update:(NSTimeInterval)interval {
+- (void)update:(float)timeIntervalInSeconds {
 
     //self.transform.quaternion = GLKQuaternionMakeWithAngleAndAxis(rotation, 0, 1, 0);
-    rotation += interval * 0.8f;
+    rotation += timeIntervalInSeconds * 0.8f;
 
-    elapsedTime += interval;
+    elapsedTime += timeIntervalInSeconds;
     if (elapsedTime >= 1 / 30.0f) {
         currentTexture++;
         if (currentTexture > self.textures.count - 1) {
