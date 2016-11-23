@@ -11,6 +11,193 @@
 
 #include <math.h>
 
+const ELMatrix4 ELMatrix4Identity = {
+        1,0,0,0,
+        0,1,0,0,
+        0,0,1,0,
+        0,0,0,1
+};
+
+
+/*
+ m30, m31, and m32 correspond to the translation values tx, ty, tz, respectively.
+ */
+EL_INLINE ELMatrix4 ELMatrix4Make(ELFloat m00, ELFloat m01, ELFloat m02, ELFloat m03,
+                                     ELFloat m10, ELFloat m11, ELFloat m12, ELFloat m13,
+                                     ELFloat m20, ELFloat m21, ELFloat m22, ELFloat m23,
+                                     ELFloat m30, ELFloat m31, ELFloat m32, ELFloat m33);
+
+/*
+ m03, m13, and m23 correspond to the translation values tx, ty, tz, respectively.
+ */
+EL_INLINE ELMatrix4 ELMatrix4MakeAndTranspose(ELFloat m00, ELFloat m01, ELFloat m02, ELFloat m03,
+                                                 ELFloat m10, ELFloat m11, ELFloat m12, ELFloat m13,
+                                                 ELFloat m20, ELFloat m21, ELFloat m22, ELFloat m23,
+                                                 ELFloat m30, ELFloat m31, ELFloat m32, ELFloat m33);
+
+/*
+ m[12], m[13], and m[14] correspond to the translation values tx, ty, and tz, respectively.
+ */
+EL_INLINE ELMatrix4 ELMatrix4MakeWithArray(ELFloat values[16]);
+
+/*
+ m[3], m[7], and m[11] correspond to the translation values tx, ty, and tz, respectively.
+ */
+EL_INLINE ELMatrix4 ELMatrix4MakeWithArrayAndTranspose(ELFloat values[16]);
+
+/*
+ row0, row1, and row2's last component should correspond to the translation values tx, ty, and tz, respectively.
+ */
+EL_INLINE ELMatrix4 ELMatrix4MakeWithRows(ELVector4 row0,
+ELVector4 row1,
+        ELVector4 row2,
+ELVector4 row3);
+
+/*
+ column3's first three components should correspond to the translation values tx, ty, and tz.
+ */
+EL_INLINE ELMatrix4 ELMatrix4MakeWithColumns(ELVector4 column0,
+ELVector4 column1,
+        ELVector4 column2,
+ELVector4 column3);
+
+/*
+ The quaternion will be normalized before conversion.
+ */
+EL_INLINE ELMatrix4 ELMatrix4MakeWithQuaternion(ELQuaternion quaternion);
+
+EL_INLINE ELMatrix4 ELMatrix4MakeTranslation(ELFloat tx, ELFloat ty, ELFloat tz);
+EL_INLINE ELMatrix4 ELMatrix4MakeScale(ELFloat sx, ELFloat sy, ELFloat sz);
+EL_INLINE ELMatrix4 ELMatrix4MakeRotation(ELFloat radians, ELFloat x, ELFloat y, ELFloat z);
+
+EL_INLINE ELMatrix4 ELMatrix4MakeXRotation(ELFloat radians);
+EL_INLINE ELMatrix4 ELMatrix4MakeYRotation(ELFloat radians);
+EL_INLINE ELMatrix4 ELMatrix4MakeZRotation(ELFloat radians);
+
+/*
+ Equivalent to gluPerspective.
+ */
+EL_INLINE ELMatrix4 ELMatrix4MakePerspective(ELFloat fovyRadians, ELFloat aspect, ELFloat nearZ, ELFloat farZ);
+
+/*
+ Equivalent to glFrustum.
+ */
+EL_INLINE ELMatrix4 ELMatrix4MakeFrustum(ELFloat left, ELFloat right,
+                                            ELFloat bottom, ELFloat top,
+                                            ELFloat nearZ, ELFloat farZ);
+
+/*
+ Equivalent to glOrtho.
+ */
+EL_INLINE ELMatrix4 ELMatrix4MakeOrtho(ELFloat left, ELFloat right,
+                                          ELFloat bottom, ELFloat top,
+                                          ELFloat nearZ, ELFloat farZ);
+
+/*
+ Equivalent to gluLookAt.
+ */
+EL_INLINE ELMatrix4 ELMatrix4MakeLookAt(ELFloat eyeX, ELFloat eyeY, ELFloat eyeZ,
+                                           ELFloat centerX, ELFloat centerY, ELFloat centerZ,
+                                           ELFloat upX, ELFloat upY, ELFloat upZ);
+
+/*
+ Returns the upper left 3x3 portion of the 4x4 matrix.
+ */
+EL_INLINE ELMatrix3 ELMatrix4GetMatrix3(ELMatrix4 matrix);
+/*
+ Returns the upper left 2x2 portion of the 4x4 matrix.
+ */
+EL_INLINE ELMatrix2 ELMatrix4GetMatrix2(ELMatrix4 matrix);
+
+/*
+ ELMatrix4GetRow returns vectors for rows 0, 1, and 2 whose last component will be the translation value tx, ty, and tz, respectively.
+ Valid row values range from 0 to 3, inclusive.
+ */
+EL_INLINE ELVector4 ELMatrix4GetRow(ELMatrix4 matrix, int row);
+/*
+ ELMatrix4GetColumn returns a vector for column 3 whose first three components will be the translation values tx, ty, and tz.
+ Valid column values range from 0 to 3, inclusive.
+ */
+EL_INLINE ELVector4 ELMatrix4GetColumn(ELMatrix4 matrix, int column);
+
+/*
+ ELMatrix4SetRow expects that the vector for row 0, 1, and 2 will have a translation value as its last component.
+ Valid row values range from 0 to 3, inclusive.
+ */
+EL_INLINE ELMatrix4 ELMatrix4SetRow(ELMatrix4 matrix, int row, ELVector4 vector);
+/*
+ ELMatrix4SetColumn expects that the vector for column 3 will contain the translation values tx, ty, and tz as its first three components, respectively.
+ Valid column values range from 0 to 3, inclusive.
+ */
+EL_INLINE ELMatrix4 ELMatrix4SetColumn(ELMatrix4 matrix, int column, ELVector4 vector);
+
+EL_INLINE ELMatrix4 ELMatrix4Transpose(ELMatrix4 matrix);
+
+ELMatrix4 ELMatrix4Invert(ELMatrix4 matrix, bool * __nullable isInvertible);
+ELMatrix4 ELMatrix4InvertAndTranspose(ELMatrix4 matrix, bool * __nullable isInvertible);
+
+EL_INLINE ELMatrix4 ELMatrix4Multiply(ELMatrix4 matrixLeft, ELMatrix4 matrixRight);
+
+EL_INLINE ELMatrix4 ELMatrix4Add(ELMatrix4 matrixLeft, ELMatrix4 matrixRight);
+EL_INLINE ELMatrix4 ELMatrix4Subtract(ELMatrix4 matrixLeft, ELMatrix4 matrixRight);
+
+EL_INLINE ELMatrix4 ELMatrix4Translate(ELMatrix4 matrix, ELFloat tx, ELFloat ty, ELFloat tz);
+EL_INLINE ELMatrix4 ELMatrix4TranslateWithVector3(ELMatrix4 matrix, ELVector3 translationVector);
+/*
+ The last component of the ELVector4, translationVector, is ignored.
+ */
+EL_INLINE ELMatrix4 ELMatrix4TranslateWithVector4(ELMatrix4 matrix, ELVector4 translationVector);
+
+EL_INLINE ELMatrix4 ELMatrix4Scale(ELMatrix4 matrix, ELFloat sx, ELFloat sy, ELFloat sz);
+EL_INLINE ELMatrix4 ELMatrix4ScaleWithVector3(ELMatrix4 matrix, ELVector3 scaleVector);
+/*
+ The last component of the ELVector4, scaleVector, is ignored.
+ */
+EL_INLINE ELMatrix4 ELMatrix4ScaleWithVector4(ELMatrix4 matrix, ELVector4 scaleVector);
+
+EL_INLINE ELMatrix4 ELMatrix4Rotate(ELMatrix4 matrix, ELFloat radians, ELFloat x, ELFloat y, ELFloat z);
+EL_INLINE ELMatrix4 ELMatrix4RotateWithVector3(ELMatrix4 matrix, ELFloat radians, ELVector3 axisVector);
+/*
+ The last component of the ELVector4, axisVector, is ignored.
+ */
+EL_INLINE ELMatrix4 ELMatrix4RotateWithVector4(ELMatrix4 matrix, ELFloat radians, ELVector4 axisVector);
+
+EL_INLINE ELMatrix4 ELMatrix4RotateX(ELMatrix4 matrix, ELFloat radians);
+EL_INLINE ELMatrix4 ELMatrix4RotateY(ELMatrix4 matrix, ELFloat radians);
+EL_INLINE ELMatrix4 ELMatrix4RotateZ(ELMatrix4 matrix, ELFloat radians);
+
+/*
+ Assumes 0 in the w component.
+ */
+EL_INLINE ELVector3 ELMatrix4MultiplyVector3(ELMatrix4 matrixLeft, ELVector3 vectorRight);
+/*
+ Assumes 1 in the w component.
+ */
+EL_INLINE ELVector3 ELMatrix4MultiplyVector3WithTranslation(ELMatrix4 matrixLeft, ELVector3 vectorRight);
+/*
+ Assumes 1 in the w component and divides the resulting vector by w before returning.
+ */
+EL_INLINE ELVector3 ELMatrix4MultiplyAndProjectVector3(ELMatrix4 matrixLeft, ELVector3 vectorRight);
+
+/*
+ Assumes 0 in the w component.
+ */
+EL_INLINE void ELMatrix4MultiplyVector3Array(ELMatrix4 matrix, ELVector3 * vectors, ELSize vectorCount);
+/*
+ Assumes 1 in the w component.
+ */
+EL_INLINE void ELMatrix4MultiplyVector3ArrayWithTranslation(ELMatrix4 matrix, ELVector3 * vectors, ELSize vectorCount);
+/*
+ Assumes 1 in the w component and divides the resulting vector by w before returning.
+ */
+EL_INLINE void ELMatrix4MultiplyAndProjectVector3Array(ELMatrix4 matrix, ELVector3 * vectors, ELSize vectorCount);
+
+EL_INLINE ELVector4 ELMatrix4MultiplyVector4(ELMatrix4 matrixLeft, ELVector4 vectorRight);
+
+EL_INLINE void ELMatrix4MultiplyVector4Array(ELMatrix4 matrix, ELVector4 * vectors, ELSize vectorCount);
+
+
+
 EL_INLINE ELMatrix4 ELMatrix4Make(ELFloat m00, ELFloat m01, ELFloat m02, ELFloat m03,
                                      ELFloat m10, ELFloat m11, ELFloat m12, ELFloat m13,
                                      ELFloat m20, ELFloat m21, ELFloat m22, ELFloat m23,
@@ -738,21 +925,21 @@ ELVector4 v4 = ELMatrix4MultiplyVector4(matrixLeft, ELVector4Make(vectorRight.v[
 return ELVector3MultiplyScalar(ELVector3Make(v4.v[0], v4.v[1], v4.v[2]), 1.0f / v4.v[3]);
 }
 
-EL_INLINE void ELMatrix4MultiplyVector3Array(ELMatrix4 matrix, ELVector3 *__nonnull vectors, size_t vectorCount)
+EL_INLINE void ELMatrix4MultiplyVector3Array(ELMatrix4 matrix, ELVector3 * vectors, ELSize vectorCount)
 {
 int i;
 for (i=0; i < vectorCount; i++)
 vectors[i] = ELMatrix4MultiplyVector3(matrix, vectors[i]);
 }
 
-EL_INLINE void ELMatrix4MultiplyVector3ArrayWithTranslation(ELMatrix4 matrix, ELVector3 *__nonnull vectors, size_t vectorCount)
+EL_INLINE void ELMatrix4MultiplyVector3ArrayWithTranslation(ELMatrix4 matrix, ELVector3 * vectors, ELSize vectorCount)
 {
 int i;
 for (i=0; i < vectorCount; i++)
 vectors[i] = ELMatrix4MultiplyVector3WithTranslation(matrix, vectors[i]);
 }
 
-EL_INLINE void ELMatrix4MultiplyAndProjectVector3Array(ELMatrix4 matrix, ELVector3 *__nonnull vectors, size_t vectorCount)
+EL_INLINE void ELMatrix4MultiplyAndProjectVector3Array(ELMatrix4 matrix, ELVector3 * vectors, ELSize vectorCount)
 {
 int i;
 for (i=0; i < vectorCount; i++)
@@ -796,7 +983,7 @@ return v;
 #endif
 }
 
-EL_INLINE void ELMatrix4MultiplyVector4Array(ELMatrix4 matrix, ELVector4 *__nonnull vectors, size_t vectorCount)
+EL_INLINE void ELMatrix4MultiplyVector4Array(ELMatrix4 matrix, ELVector4 * vectors, ELSize vectorCount)
 {
 int i;
 for (i=0; i < vectorCount; i++)

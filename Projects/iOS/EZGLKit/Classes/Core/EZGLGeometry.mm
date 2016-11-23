@@ -134,6 +134,7 @@
 }
 
 - (void)draw {
+    GLKMatrix4 matrix3 = GLKMatrix4Identity;
     glUseProgram(self.glProgram.value);
 
     [self.world.effect applyToProgram:self.glProgram];

@@ -8,6 +8,77 @@
 #include "EZGLBasicTypes.h"
 #include "EZGLVectorTypes.h"
 
+EL_INLINE ELVector4 ELVector4Make(ELFloat x, ELFloat y, ELFloat z, ELFloat w);
+EL_INLINE ELVector4 ELVector4MakeWithArray(ELFloat values[4]);
+EL_INLINE ELVector4 ELVector4MakeWithVector3(ELVector3 vector, ELFloat w);
+
+EL_INLINE ELVector4 ELVector4Negate(ELVector4 vector);
+
+EL_INLINE ELVector4 ELVector4Add(ELVector4 vectorLeft, ELVector4 vectorRight);
+EL_INLINE ELVector4 ELVector4Subtract(ELVector4 vectorLeft, ELVector4 vectorRight);
+EL_INLINE ELVector4 ELVector4Multiply(ELVector4 vectorLeft, ELVector4 vectorRight);
+EL_INLINE ELVector4 ELVector4Divide(ELVector4 vectorLeft, ELVector4 vectorRight);
+
+EL_INLINE ELVector4 ELVector4AddScalar(ELVector4 vector, ELFloat value);
+EL_INLINE ELVector4 ELVector4SubtractScalar(ELVector4 vector, ELFloat value);
+EL_INLINE ELVector4 ELVector4MultiplyScalar(ELVector4 vector, ELFloat value);
+EL_INLINE ELVector4 ELVector4DivideScalar(ELVector4 vector, ELFloat value);
+
+/*
+ Returns a vector whose elements are the larger of the corresponding elements of the vector arguments.
+ */
+EL_INLINE ELVector4 ELVector4Maximum(ELVector4 vectorLeft, ELVector4 vectorRight);
+/*
+ Returns a vector whose elements are the smaller of the corresponding elements of the vector arguments.
+ */
+EL_INLINE ELVector4 ELVector4Minimum(ELVector4 vectorLeft, ELVector4 vectorRight);
+
+/*
+ Returns true if all of the first vector's elements are equal to all of the second vector's arguments.
+ */
+EL_INLINE bool ELVector4AllEqualToVector4(ELVector4 vectorLeft, ELVector4 vectorRight);
+/*
+ Returns true if all of the vector's elements are equal to the provided value.
+ */
+EL_INLINE bool ELVector4AllEqualToScalar(ELVector4 vector, ELFloat value);
+/*
+ Returns true if all of the first vector's elements are greater than all of the second vector's arguments.
+ */
+EL_INLINE bool ELVector4AllGreaterThanVector4(ELVector4 vectorLeft, ELVector4 vectorRight);
+/*
+ Returns true if all of the vector's elements are greater than the provided value.
+ */
+EL_INLINE bool ELVector4AllGreaterThanScalar(ELVector4 vector, ELFloat value);
+/*
+ Returns true if all of the first vector's elements are greater than or equal to all of the second vector's arguments.
+ */
+EL_INLINE bool ELVector4AllGreaterThanOrEqualToVector4(ELVector4 vectorLeft, ELVector4 vectorRight);
+/*
+ Returns true if all of the vector's elements are greater than or equal to the provided value.
+ */
+EL_INLINE bool ELVector4AllGreaterThanOrEqualToScalar(ELVector4 vector, ELFloat value);
+
+EL_INLINE ELVector4 ELVector4Normalize(ELVector4 vector);
+
+EL_INLINE ELFloat ELVector4DotProduct(ELVector4 vectorLeft, ELVector4 vectorRight);
+EL_INLINE ELFloat ELVector4Length(ELVector4 vector);
+EL_INLINE ELFloat ELVector4Distance(ELVector4 vectorStart, ELVector4 vectorEnd);
+
+EL_INLINE ELVector4 ELVector4Lerp(ELVector4 vectorStart, ELVector4 vectorEnd, ELFloat t);
+
+/*
+ Performs a 3D cross product. The last component of the resulting cross product will be zeroed out.
+ */
+EL_INLINE ELVector4 ELVector4CrossProduct(ELVector4 vectorLeft, ELVector4 vectorRight);
+
+/*
+ Project the vector, vectorToProject, onto the vector, projectionVector.
+ */
+EL_INLINE ELVector4 ELVector4Project(ELVector4 vectorToProject, ELVector4 projectionVector);
+
+
+
+// implements
 EL_INLINE ELVector4 ELVector4Make(ELFloat x, ELFloat y, ELFloat z, ELFloat w)
 {
     ELVector4 v = { x, y, z, w };

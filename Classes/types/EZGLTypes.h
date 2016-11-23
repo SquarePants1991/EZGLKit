@@ -10,11 +10,18 @@
 #define EZGLDefines_H_
 
 #include "EZGLBasicTypes.h"
-#include "EZGLVectorTypes.h"
-#include "EZGLQuaternion.h"
 
+// Vector
+#include "EZGLVectorTypes.h"
+#include "ELQuaternion.h"
+#include "ELVector2.h"
+#include "ELVector3.h"
+#include "ELVector4.h"
+
+//Matrix
 #include "EZGLMatrixTypes.h"
-#include "EZGLMatrix4.h"
+#include "ELMatrix3.h"
+#include "ELMatrix4.h"
 
 
 

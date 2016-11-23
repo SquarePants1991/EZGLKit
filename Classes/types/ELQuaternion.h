@@ -7,6 +7,10 @@
 
 #include "EZGLVectorTypes.h"
 
+#include "ELVector2.h"
+#include "ELVector3.h"
+#include "ELVector4.h"
+
 EL_INLINE ELQuaternion ELQuaternionMake(ELFloat x, ELFloat y, ELFloat z, ELFloat w)
 {
     ELQuaternion q = { x, y, z, w };

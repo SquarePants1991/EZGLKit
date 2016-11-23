@@ -8,6 +8,68 @@
 #include "EZGLBasicTypes.h"
 #include "EZGLVectorTypes.h"
 
+EL_INLINE ELVector2 ELVector2Make(ELFloat x, ELFloat y);
+EL_INLINE ELVector2 ELVector2MakeWithArray(ELFloat values[2]);
+
+EL_INLINE ELVector2 ELVector2Negate(ELVector2 vector);
+
+EL_INLINE ELVector2 ELVector2Add(ELVector2 vectorLeft, ELVector2 vectorRight);
+EL_INLINE ELVector2 ELVector2Subtract(ELVector2 vectorLeft, ELVector2 vectorRight);
+EL_INLINE ELVector2 ELVector2Multiply(ELVector2 vectorLeft, ELVector2 vectorRight);
+EL_INLINE ELVector2 ELVector2Divide(ELVector2 vectorLeft, ELVector2 vectorRight);
+
+EL_INLINE ELVector2 ELVector2AddScalar(ELVector2 vector, ELFloat value);
+EL_INLINE ELVector2 ELVector2SubtractScalar(ELVector2 vector, ELFloat value);
+EL_INLINE ELVector2 ELVector2MultiplyScalar(ELVector2 vector, ELFloat value);
+EL_INLINE ELVector2 ELVector2DivideScalar(ELVector2 vector, ELFloat value);
+
+/*
+ Returns a vector whose elements are the larger of the corresponding elements of the vector arguments.
+ */
+EL_INLINE ELVector2 ELVector2Maximum(ELVector2 vectorLeft, ELVector2 vectorRight);
+/*
+ Returns a vector whose elements are the smaller of the corresponding elements of the vector arguments.
+ */
+EL_INLINE ELVector2 ELVector2Minimum(ELVector2 vectorLeft, ELVector2 vectorRight);
+
+/*
+ Returns true if all of the first vector's elements are equal to all of the second vector's arguments.
+ */
+EL_INLINE bool ELVector2AllEqualToVector2(ELVector2 vectorLeft, ELVector2 vectorRight);
+/*
+ Returns true if all of the vector's elements are equal to the provided value.
+ */
+EL_INLINE bool ELVector2AllEqualToScalar(ELVector2 vector, ELFloat value);
+/*
+ Returns true if all of the first vector's elements are greater than all of the second vector's arguments.
+ */
+EL_INLINE bool ELVector2AllGreaterThanVector2(ELVector2 vectorLeft, ELVector2 vectorRight);
+/*
+ Returns true if all of the vector's elements are greater than the provided value.
+ */
+EL_INLINE bool ELVector2AllGreaterThanScalar(ELVector2 vector, ELFloat value);
+/*
+ Returns true if all of the first vector's elements are greater than or equal to all of the second vector's arguments.
+ */
+EL_INLINE bool ELVector2AllGreaterThanOrEqualToVector2(ELVector2 vectorLeft, ELVector2 vectorRight);
+/*
+ Returns true if all of the vector's elements are greater than or equal to the provided value.
+ */
+EL_INLINE bool ELVector2AllGreaterThanOrEqualToScalar(ELVector2 vector, ELFloat value);
+
+EL_INLINE ELVector2 ELVector2Normalize(ELVector2 vector);
+
+EL_INLINE ELFloat ELVector2DotProduct(ELVector2 vectorLeft, ELVector2 vectorRight);
+EL_INLINE ELFloat ELVector2Length(ELVector2 vector);
+EL_INLINE ELFloat ELVector2Distance(ELVector2 vectorStart, ELVector2 vectorEnd);
+
+EL_INLINE ELVector2 ELVector2Lerp(ELVector2 vectorStart, ELVector2 vectorEnd, ELFloat t);
+
+/*
+ Project the vector, vectorToProject, onto the vector, projectionVector.
+ */
+EL_INLINE ELVector2 ELVector2Project(ELVector2 vectorToProject, ELVector2 projectionVector);
+
 EL_INLINE ELVector2 ELVector2Make(ELFloat x, ELFloat y)
 {
     ELVector2 v = { x, y };

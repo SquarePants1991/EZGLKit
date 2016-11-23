@@ -10,6 +10,7 @@
 typedef float ELFloat;
 typedef int ELInt;
 typedef unsigned int ELUint;
+typedef unsigned int ELSize;
 
 #define EL_INLINE static __inline__
 
