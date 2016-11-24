@@ -23,11 +23,18 @@ if(NOT OPENGL_FOUND)
     message(ERROR " OPENGL not found!")
 endif(NOT OPENGL_FOUND)
 
+include_directories(/usr/local/Cellar/freeglut/3.0.0/include)
 
 include_directories(${PROJECT_SOURCE_DIR}/../../Classes/)
 add_subdirectory(${PROJECT_SOURCE_DIR}/../../Classes/ ${CMAKE_CURRENT_BINARY_DIR}/EZGLib)
 
-include_directories(/usr/local/Cellar/freeglut/3.0.0/include)
+macro(add_exe target prefix)
+    add_executable(${target} ${prefix}/main.cpp)
+    target_link_libraries(${target} EZGLib ${GLUT_LIBRARY} ${OPENGL_LIBRARIES})
+endmacro(add_exe)
 
-add_executable(EZGL main.cpp)
-target_link_libraries(EZGL EZGLib ${GLUT_LIBRARY} ${OPENGL_LIBRARIES})
+
+
+add_exe(EZGL .)
+add_exe(TestBaseWindow BaseWindow)
+add_exe(TestShader Shader)
