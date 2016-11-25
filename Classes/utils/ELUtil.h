@@ -6,5 +6,6 @@
 #define EZGL_EZUTIL_H
 
 #include "ELFileUtil.h"
+#include "ELGeometryVertexBuffer.h"
 
 #endif //EZGL_EZUTIL_H

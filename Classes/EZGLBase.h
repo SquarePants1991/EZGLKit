@@ -15,4 +15,9 @@
 #include <GL/glut.h>
 #endif
 
+#define glBindVertexArray(value) glBindVertexArrayAPPLE(value)
+#define glGenVertexArrays(num, value) glGenVertexArraysAPPLE(num, value)
+
+#define BUFFER_OFFSET(i) ((char *)NULL + (i))
+
 #endif //EZGL_EZGLBASE_H

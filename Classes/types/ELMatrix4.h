@@ -101,11 +101,11 @@ EL_INLINE ELMatrix4 ELMatrix4MakeLookAt(ELFloat eyeX, ELFloat eyeY, ELFloat eyeZ
                                            ELFloat upX, ELFloat upY, ELFloat upZ);
 
 /*
- Returns the upper left 3x3 portion of the 4x4 matrix.
+ Returns the upper leftVector 3x3 portion of the 4x4 matrix.
  */
 EL_INLINE ELMatrix3 ELMatrix4GetMatrix3(ELMatrix4 matrix);
 /*
- Returns the upper left 2x2 portion of the 4x4 matrix.
+ Returns the upper leftVector 2x2 portion of the 4x4 matrix.
  */
 EL_INLINE ELMatrix2 ELMatrix4GetMatrix2(ELMatrix4 matrix);
 

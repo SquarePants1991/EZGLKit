@@ -5,8 +5,13 @@
 #ifndef EZGL_ELTRANSFORM_H
 #define EZGL_ELTRANSFORM_H
 
-struct _ELTransform {
+#include "ELVector3.h"
 
+struct _ELTransform {
+    ELVector3 position;
+    ELQuaternion quaternion;
+    ELVector3 scale;
 };
+typedef _ELTransform ELTransform;
 
 #endif //EZGL_ELTRANSFORM_H

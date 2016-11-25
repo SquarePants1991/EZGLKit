@@ -11,6 +11,7 @@ typedef float ELFloat;
 typedef int ELInt;
 typedef unsigned int ELUint;
 typedef unsigned int ELSize;
+typedef bool ELBool;
 
 #define EL_INLINE static __inline__
 

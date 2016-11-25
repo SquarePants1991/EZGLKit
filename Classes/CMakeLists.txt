@@ -33,4 +33,18 @@ if(NOT OPENGL_FOUND)
     message(ERROR " OPENGL not found!")
 endif(NOT OPENGL_FOUND)
 
-add_library(EZGLib EZGL.h EZGL.cpp utils/ELFileUtil.cpp core/ELProgram.cpp)
+
+file(GLOB EL_SRC
+        "core/*.h"
+        "core/*.cpp"
+        "types/*.h"
+        "types/*.cpp"
+        "utils/*.h"
+        "utils/*.cpp"
+        "components/*.h"
+        "components/*.cpp"
+        "components/geometry/*.h"
+        "components/geometry/*.cpp"
+)
+
+add_library(EZGLib EZGL.h EZGL.cpp ${EL_SRC})

@@ -8,5 +8,6 @@
 #include "types/EZGLTypes.h"
 #include "core/ELCore.h"
 #include "utils/ELUtil.h"
+#include "components/ELComponents.h"
 
 #endif //EZGL_EZGL_H

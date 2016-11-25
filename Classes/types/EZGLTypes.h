@@ -23,6 +23,8 @@
 #include "ELMatrix3.h"
 #include "ELMatrix4.h"
 
+#include "ELTransform.h"
+
 
 
 #endif /* EZGLDefines_H_ */

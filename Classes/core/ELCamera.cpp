@@ -17,8 +17,8 @@ ELCamera::ELCamera(ELVector3 eye,ELVector3 lookAt,ELVector3 up,ELFloat fovyRadia
 }
 
 ELMatrix4 ELCamera::matrix() {
-    ELVector3 forward = forward();
-    ELVector3 left = left();
+    ELVector3 forward = forwardVector();
+    ELVector3 left = leftVector();
     ELMatrix4 perspective = ELMatrix4MakePerspective(fovyRadians / 180.0f * M_PI, aspect, nearZ, farZ);
     ELQuaternion cameraQuaternion = quaternion();
     ELVector3 transformedUp = ELQuaternionRotateVector3(cameraQuaternion, up);
@@ -53,7 +53,7 @@ void ELCamera::rotateLookAtAroundForward(ELFloat radians) {
 
 void ELCamera::translateForward(ELFloat distance) {
     ELQuaternion cameraQuaternion = quaternion();
-    ELVector3 transformedForward = ELQuaternionRotateVector3(cameraQuaternion, forward());
+    ELVector3 transformedForward = ELQuaternionRotateVector3(cameraQuaternion, forwardVector());
     translation = ELVector3Add(translation, ELVector3Make(transformedForward.x * distance, transformedForward.y * distance, transformedForward.z * distance));
 }
 
@@ -63,7 +63,7 @@ void ELCamera::translateUp(ELFloat distance) {
 
 void ELCamera::translateLeft(ELFloat distance) {
     ELQuaternion cameraQuaternion = quaternion();
-    ELVector3 transformedLeft = ELQuaternionRotateVector3(cameraQuaternion, left());
+    ELVector3 transformedLeft = ELQuaternionRotateVector3(cameraQuaternion, leftVector());
     translation = ELVector3Add(translation, ELVector3Make(transformedLeft.x * distance, transformedLeft.y * distance, transformedLeft.z * distance));
 }
 
@@ -75,20 +75,20 @@ void ELCamera::translateTo(ELVector3 loc) {
 
 
 // Private Methods
-ELVector3 ELCamera::left() {
-    ELQuaternion quaternion = ELQuaternionMakeWithAngleAndVector3Axis(M_PI / 2.0, forward());
+ELVector3 ELCamera::leftVector() {
+    ELQuaternion quaternion = ELQuaternionMakeWithAngleAndVector3Axis(M_PI / 2.0, forwardVector());
     ELVector3 left = ELQuaternionRotateVector3(quaternion, up);
     return left;
 }
 
-ELVector3 ELCamera::forward() {
+ELVector3 ELCamera::forwardVector() {
     ELVector3 forward = ELVector3Normalize(ELVector3Subtract(lookAt, eye));
     return forward;
 }
 
 ELQuaternion ELCamera::quaternion() {
-    ELVector3 forward = forward();
-    ELVector3 left = left();
+    ELVector3 forward = forwardVector();
+    ELVector3 left = leftVector();
     ELQuaternion forwardQuaternion = ELQuaternionMakeWithAngleAndAxis(radiansAroundForward, forward.x, forward.y, forward.z);
     ELQuaternion upQuaternion = ELQuaternionMakeWithAngleAndAxis(radiansAroundUp / 180.0 * M_PI, up.x, up.y, up.z);
     ELQuaternion leftQuaternion = ELQuaternionMakeWithAngleAndAxis(radiansAroundLeft / 180.0 * M_PI, left.x, left.y, left.z);

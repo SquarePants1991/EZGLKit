@@ -41,8 +41,8 @@ public:
     void translateTo(ELVector3 loc);
 
 private:
-    ELVector3 left();
-    ELVector3 forward();
+    ELVector3 leftVector();
+    ELVector3 forwardVector();
     ELQuaternion quaternion();
 };
 

@@ -48,7 +48,7 @@ EL_INLINE ELMatrix3 ELMatrix3MakeYRotation(ELFloat radians);
 EL_INLINE ELMatrix3 ELMatrix3MakeZRotation(ELFloat radians);
 
 /*
- Returns the upper left 2x2 portion of the 3x3 matrix.
+ Returns the upper leftVector 2x2 portion of the 3x3 matrix.
  */
 EL_INLINE ELMatrix2 ELMatrix3GetMatrix2(ELMatrix3 matrix);
 
