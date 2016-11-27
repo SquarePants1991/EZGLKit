@@ -6,6 +6,10 @@
 
 ELNode::ELNode() {
     transform = new ELTransform();
+    transform->position = ELVector3Make(0.0, 0.0, 0.0);
+    transform->quaternion = ELQuaternionMakeWithAngleAndAxis(0.3,0,1,0);
+    transform->scale = ELVector3Make(1, 1, 1);
+    identity = "default";
 }
 
 ELNode::~ELNode() {
@@ -36,10 +40,6 @@ std::string ELNode::kind() {
     return std::string("Node");
 }
 
-std::string ELNode::identity() {
-    return std::string("default");
-}
-
 std::vector<ELNode *> ELNode::findChildrenWithKind(std::string kind) {
     std::vector<ELNode *> components;
     for (int i = 0; i < children.size(); ++i) {
@@ -55,7 +55,7 @@ ELNode * ELNode::findChildWithIdentity(std::string identity) {
     std::vector<ELNode *> components;
     for (int i = 0; i < children.size(); ++i) {
         ELNode *component = dynamic_cast<ELNode *>(children.at(i));
-        if (component != NULL && component->identity() == identity) {
+        if (component != NULL && component->identity == identity) {
             return component;
         }
     }

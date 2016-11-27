@@ -2,14 +2,14 @@
 // Created by wangyang on 16/11/24.
 //
 
+#include <core/ELCamera.h>
 #include "ELGeometry.h"
 #include "ELEffect.h"
+#include "core/ELGameObject.h"
 
 ELGeometry::ELGeometry() : vao(-1) {
-
+    material = ELMaterialDefault;
 }
-
-
 
 void ELGeometry::prepare() {
     data = generateData();
@@ -40,16 +40,19 @@ void ELGeometry::render() {
 
     ELProgram *program = defaultEffect->program;
 
+    ELGameObject *gameObj = (ELGameObject *)gameObject();
+    ELCamera *camera = gameObj->mainCamera();
+
 //    glUniform3fv([self.glProgram uniformWithStr:@"cameraPosition"], 1, ((EZGLPerspectiveCamera *)self.world.camera).transformedEye.v);
 //
-//    glUniformMatrix4fv([self.glProgram uniform:UNIFORM_VIEWPROJECTION], 1, 0, self.viewProjection.m);
-//    glUniformMatrix4fv([self.glProgram uniform:UNIFORM_MODEL_MATRIX], 1, 0, self.modelMatrix.m);
+    glUniformMatrix4fv(program->uniform("viewProjection"), 1, 0, camera->matrix().m);
+    glUniformMatrix4fv(program->uniform("modelMatrix"), 1, 0, ELMatrix4FromTransform(gameObj->transform).m);
 //    glUniformMatrix3fv([self.glProgram uniform:UNIFORM_NORMAL_MATRIX], 1, 0, self.normalMatrix.m);
 //    glUniformMatrix4fv([self.glProgram uniform:UNIFORM_LIGHT_VIEWPROJECTION], 1,0, self.lightViewProjection.m);
 //
-//    glUniform4fv([self.glProgram uniformWithStr:@"material.ambient"], 1, self.material.ambient.v);
-//    glUniform4fv([self.glProgram uniformWithStr:@"material.diffuse"], 1, self.material.diffuse.v);
-//    glUniform4fv([self.glProgram uniformWithStr:@"material.specular"], 1, self.material.specular.v);
+    glUniform4fv(program->uniform("material.ambient"), 1, material.ambient.v);
+    glUniform4fv(program->uniform("material.diffuse"), 1, material.diffuse.v);
+    glUniform4fv(program-> uniform("material.specular"), 1, material.specular.v);
 //
 //    glUniform1i([self.glProgram uniform:UNIFORM_DIFFUSE_MAP], 0);
 //    glActiveTexture(GL_TEXTURE0);

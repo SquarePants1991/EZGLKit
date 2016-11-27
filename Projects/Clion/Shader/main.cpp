@@ -4,65 +4,128 @@
 
 #include "EZGL.h"
 
+void init();
 void render();
 void resize(int w,int h);
 void setupWindow(int argc,char **argv);
 
 ELWorld *world;
-int lastTime = 0;
+double lastTime = 0;
+const float WindowWidth = 800;
+const float WindowHeight = 600;
+
+#include <iostream>
+#include "EZGL.h"
+
+#include "glad/glad.h"
+#include <GLFW/glfw3.h>
+
+#define VERSION_MAJOR @VERSION_MAJOR@
+#define VERSION_MINOR @VERSION_MINOR@
+
+using namespace std;
 
 int main(int argc,char **argv) {
-    setupWindow(argc, argv);
 
-    // init game world
-    world = new ELWorld();
+    GLFWwindow* window;
 
-    std::string vertexShader = ELFileUtil::stringContentOfFile("/Users/ocean/Documents/Codes/On Git/EZGLKit/Projects/Clion/Shader/vertex.glsl");
-    std::string fragShader = ELFileUtil::stringContentOfFile("/Users/ocean/Documents/Codes/On Git/EZGLKit/Projects/Clion/Shader/frag.glsl");
-    ELEffect *effect = new ELEffect(vertexShader.c_str(), fragShader.c_str());
+    /* Initialize the library */
+    if (!glfwInit())
+        return -1;
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 
-    ELGameObject *gameObject = new ELGameObject(world);
-    world->addNode(gameObject);
+    /* Create a windowed mode window and its OpenGL context */
+    window = glfwCreateWindow(WindowWidth, WindowHeight, "Hello World", NULL, NULL);
+    if (!window)
+    {
+        glfwTerminate();
+        return -1;
+    }
 
-    ELPlanGeometry *plan = new ELPlanGeometry(ELVector2Make(100,100));
-    gameObject->addComponent(plan);
-    gameObject->addComponent(effect);
+    /* Make the window's context current */
+    glfwMakeContextCurrent(window);
 
-    glutMainLoop();
+    if (!gladLoadGLLoader((GLADloadproc) glfwGetProcAddress))
+    {
+        std::cout << "Failed to initialize OpenGL context" << std::endl;
+        return -1;
+    }
+
+    printf("OpenGL %d.%d\n", GLVersion.major, GLVersion.minor);
+    if (GLVersion.major < 2) {
+        printf("Your system doesn't support OpenGL >= 2!\n");
+        return -1;
+    }
+
+    printf("OpenGL %s, GLSL %s\n", glGetString(GL_VERSION),
+           glGetString(GL_SHADING_LANGUAGE_VERSION));
+
+    glfwSwapInterval(1);
+
+    init();
+
+    /* Loop until the user closes the window */
+    while (!glfwWindowShouldClose(window))
+    {
+        /* Render here */
+        glad_glClearColor(1.0, 1.0, 0.0, 1.0);
+        glad_glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+        render();
+        /* Swap front and back buffers */
+        glfwSwapBuffers(window);
+
+        /* Poll for and process events */
+        glfwPollEvents();
+    }
+
+    glfwTerminate();
+
     return 1;
 }
 
-void setupWindow(int argc,char **argv) {
+void init() {
+    // init game world
+    world = new ELWorld(WindowWidth / WindowHeight);
 
-    glutInitContextVersion(3,2);
-    glutInitContextFlags(GLUT_CORE_PROFILE);
+    std::string vertexShader = ELFileUtil::stringContentOfFile("/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/Shader/vertex.glsl");
+    std::string fragShader = ELFileUtil::stringContentOfFile("/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/Shader/frag.glsl");
+    ELEffect *effect = new ELEffect(vertexShader.c_str(), fragShader.c_str());
 
-    int windowWidth = 100;
-    int windowHeight = 100;
-    int centerX =  glutGet(GLUT_SCREEN_WIDTH) / 2 - windowWidth / 2;
-    int centerY =  glutGet(GLUT_SCREEN_HEIGHT) / 2 - windowHeight / 2;
-    glutInit(&argc, argv);
-    glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
-    glutInitWindowPosition(centerX,centerY);
-    glutInitWindowSize(windowWidth,windowHeight);
-    glutCreateWindow("Demo");
+    ELLight *defaultLight = new ELLight();
+    defaultLight->position = ELVector3Make(2,2,2);
+    defaultLight->color = ELVector4Make(1.0,1.0,1.0,1.0);
+    defaultLight->intensity = 1.0;
+    world->addNode(defaultLight);
 
-    glutDisplayFunc(render);
-    glutReshapeFunc(resize);
-    glutIdleFunc(render);
+    ELGameObject *gameObject = new ELGameObject(world);
+    world->addNode(gameObject);
+    gameObject->transform->position = ELVector3Make(0, 1, 0);
+    ELCubeGeometry *cube = new ELCubeGeometry(ELVector3Make(1,1,1));
+    gameObject->addComponent(cube);
+    gameObject->addComponent(effect);
 
-    glEnable(GL_DEPTH_TEST);
+    ELGameObject *gameObject2 = new ELGameObject(world);
+    world->addNode(gameObject2);
+    gameObject2->transform->position = ELVector3Make(0, 0, 0);
+    ELPlaneGeometry *plane = new ELPlaneGeometry(ELVector2Make(100,100));
+    gameObject2->addComponent(plane);
+    gameObject2->addComponent(effect);
+
+    glEnable(GL_CULL_FACE);
+    glad_glEnable(GL_DEPTH_TEST);
 }
 
 void render() {
-    int currentTimeInMs = glutGet(GLUT_ELAPSED_TIME);
-    int elapsedTime = currentTimeInMs - lastTime;
+    double currentTimeInMs = glfwGetTime();
+    double elapsedTime = currentTimeInMs - lastTime;
     lastTime = currentTimeInMs;
 
-    world->update(elapsedTime / 1000.0f);
+    world->update(elapsedTime);
     world->render();
-
-    glutSwapBuffers();
 }
 
 void resize(int w,int h) {

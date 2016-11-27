@@ -4,6 +4,8 @@
 
 #include "ELProgram.h"
 
+#include <stdlib.h>
+
 bool createProgram(const char *vertexShader, const char *fragmentShader, GLuint *pProgram);
 bool compileShader(GLuint *shader, GLenum type, const GLchar *source);
 bool validateProgram(GLuint prog);

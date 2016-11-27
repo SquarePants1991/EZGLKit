@@ -9,17 +9,6 @@
 #include "core/ELProgram.h"
 #include "core/ELComponent.h"
 
-struct _ELMaterial {
-    ELVector4 ambient;
-    ELVector4 diffuse;
-    ELVector4 specular;
-    ELUint ambientMap;
-    ELUint diffuseMap;
-    ELUint normalMap;
-    ELUint specularMap;
-};
-typedef _ELMaterial ELMaterial;
-
 class ELEffect : public ELComponent {
 public:
     ELProgram *program;

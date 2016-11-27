@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="EZGL"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="clang"/>
+		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\..\..\usr\;CMake Files\..\..\..\..\..\..\..\..\usr\local\;CMake Files\..\..\..\..\..\..\..\..\usr\local\lib\;CMake Files\..\..\..\..\..\..\..\..\usr\local\lib\cmake\;CMake Files\..\..\..\..\..\..\..\..\usr\local\lib\cmake\glfw3\;CMake Files\..\..\Classes\;CMake Files\..\..\libs\;CMake Files\..\..\libs\glad\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/Clion/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/Clion/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/Clion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/Clion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/Clion/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/Clion/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/Clion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/Clion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/Clion/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/Clion/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/Clion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/Clion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="TestShader">
+				<Option output="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/TestShader" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="clang"/>
+				<Compiler>
+					<Add directory="/usr/local"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes"/>
+					<Add directory="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../libs/glad/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/Clion/cmake-build-debug/Makefile&quot;  VERBOSE=1 TestShader"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/Clion/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/Clion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/Clion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="TestShader/fast">
+				<Option output="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/TestShader" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="clang"/>
+				<Compiler>
+					<Add directory="/usr/local"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes"/>
+					<Add directory="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../libs/glad/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/Clion/cmake-build-debug/Makefile&quot;  VERBOSE=1 TestShader/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/Clion/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/Clion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/Clion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="TestBaseWindow">
+				<Option output="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/TestBaseWindow" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="clang"/>
+				<Compiler>
+					<Add directory="/usr/local"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes"/>
+					<Add directory="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../libs/glad/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/Clion/cmake-build-debug/Makefile&quot;  VERBOSE=1 TestBaseWindow"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/Clion/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/Clion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/Clion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="TestBaseWindow/fast">
+				<Option output="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/TestBaseWindow" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="clang"/>
+				<Compiler>
+					<Add directory="/usr/local"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes"/>
+					<Add directory="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../libs/glad/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/Clion/cmake-build-debug/Makefile&quot;  VERBOSE=1 TestBaseWindow/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/Clion/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/Clion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/Clion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="EZGL">
+				<Option output="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/EZGL" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="clang"/>
+				<Compiler>
+					<Add directory="/usr/local"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes"/>
+					<Add directory="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../libs/glad/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/Clion/cmake-build-debug/Makefile&quot;  VERBOSE=1 EZGL"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/Clion/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/Clion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/Clion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="EZGL/fast">
+				<Option output="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/EZGL" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="clang"/>
+				<Compiler>
+					<Add directory="/usr/local"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes"/>
+					<Add directory="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../libs/glad/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/Clion/cmake-build-debug/Makefile&quot;  VERBOSE=1 EZGL/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/Clion/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/Clion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/Clion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="EZGLib">
+				<Option output="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/EZGLib/libEZGLib.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/EZGLib"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="clang"/>
+				<Compiler>
+					<Add directory="/usr/local"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes"/>
+					<Add directory="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../libs/glad/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/Clion/cmake-build-debug/EZGLib/Makefile&quot;  VERBOSE=1 EZGLib"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/Clion/cmake-build-debug/EZGLib/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/Clion/cmake-build-debug/EZGLib/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/Clion/cmake-build-debug/EZGLib/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="EZGLib/fast">
+				<Option output="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/EZGLib/libEZGLib.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/EZGLib"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="clang"/>
+				<Compiler>
+					<Add directory="/usr/local"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes"/>
+					<Add directory="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../libs/glad/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/Clion/cmake-build-debug/EZGLib/Makefile&quot;  VERBOSE=1 EZGLib/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/Clion/cmake-build-debug/EZGLib/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/Clion/cmake-build-debug/EZGLib/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/Clion/cmake-build-debug/EZGLib/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="glad">
+				<Option output="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/glad/libglad.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/glad"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="clang"/>
+				<Compiler>
+					<Add directory="/usr/local"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes"/>
+					<Add directory="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../libs/glad/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/Clion/cmake-build-debug/glad/Makefile&quot;  VERBOSE=1 glad"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/Clion/cmake-build-debug/glad/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/Clion/cmake-build-debug/glad/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/Clion/cmake-build-debug/glad/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="glad/fast">
+				<Option output="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/glad/libglad.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/glad"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="clang"/>
+				<Compiler>
+					<Add directory="/usr/local"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes"/>
+					<Add directory="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../libs/glad/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/Clion/cmake-build-debug/glad/Makefile&quot;  VERBOSE=1 glad/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/Clion/cmake-build-debug/glad/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/Clion/cmake-build-debug/glad/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/Clion/cmake-build-debug/glad/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/EZGL.cpp">
+			<Option target="EZGLib"/>
+		</Unit>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/EZGL.h">
+			<Option target="EZGLib"/>
+		</Unit>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELComponents.h">
+			<Option target="EZGLib"/>
+		</Unit>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELEffect.cpp">
+			<Option target="EZGLib"/>
+		</Unit>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELEffect.h">
+			<Option target="EZGLib"/>
+		</Unit>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELGeometry.cpp">
+			<Option target="EZGLib"/>
+		</Unit>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELGeometry.h">
+			<Option target="EZGLib"/>
+		</Unit>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/geometry/ELCubeGeometry.cpp">
+			<Option target="EZGLib"/>
+		</Unit>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/geometry/ELCubeGeometry.h">
+			<Option target="EZGLib"/>
+		</Unit>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/geometry/ELPlaneGeometry.cpp">
+			<Option target="EZGLib"/>
+		</Unit>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/geometry/ELPlaneGeometry.h">
+			<Option target="EZGLib"/>
+		</Unit>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/ELCamera.cpp">
+			<Option target="EZGLib"/>
+		</Unit>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/ELCamera.h">
+			<Option target="EZGLib"/>
+		</Unit>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/ELComponent.cpp">
+			<Option target="EZGLib"/>
+		</Unit>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/ELComponent.h">
+			<Option target="EZGLib"/>
+		</Unit>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/ELCore.h">
+			<Option target="EZGLib"/>
+		</Unit>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/ELGameObject.cpp">
+			<Option target="EZGLib"/>
+		</Unit>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/ELGameObject.h">
+			<Option target="EZGLib"/>
+		</Unit>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/ELLight.cpp">
+			<Option target="EZGLib"/>
+		</Unit>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/ELLight.h">
+			<Option target="EZGLib"/>
+		</Unit>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/ELNode.cpp">
+			<Option target="EZGLib"/>
+		</Unit>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/ELNode.h">
+			<Option target="EZGLib"/>
+		</Unit>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/ELProgram.cpp">
+			<Option target="EZGLib"/>
+		</Unit>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/ELProgram.h">
+			<Option target="EZGLib"/>
+		</Unit>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/ELWorld.cpp">
+			<Option target="EZGLib"/>
+		</Unit>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/ELWorld.h">
+			<Option target="EZGLib"/>
+		</Unit>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/types/ELGeometryTypes.h">
+			<Option target="EZGLib"/>
+		</Unit>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/types/ELMatrix3.h">
+			<Option target="EZGLib"/>
+		</Unit>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/types/ELMatrix4.h">
+			<Option target="EZGLib"/>
+		</Unit>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/types/ELQuaternion.h">
+			<Option target="EZGLib"/>
+		</Unit>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/types/ELTransform.h">
+			<Option target="EZGLib"/>
+		</Unit>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/types/ELVector2.h">
+			<Option target="EZGLib"/>
+		</Unit>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/types/ELVector3.h">
+			<Option target="EZGLib"/>
+		</Unit>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/types/ELVector4.h">
+			<Option target="EZGLib"/>
+		</Unit>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/types/EZGLBasicTypes.h">
+			<Option target="EZGLib"/>
+		</Unit>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/types/EZGLMatrixTypes.h">
+			<Option target="EZGLib"/>
+		</Unit>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/types/EZGLTypes.h">
+			<Option target="EZGLib"/>
+		</Unit>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/types/EZGLVectorTypes.h">
+			<Option target="EZGLib"/>
+		</Unit>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/utils/ELFileUtil.cpp">
+			<Option target="EZGLib"/>
+		</Unit>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/utils/ELFileUtil.h">
+			<Option target="EZGLib"/>
+		</Unit>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/utils/ELGeometryVertexBuffer.cpp">
+			<Option target="EZGLib"/>
+		</Unit>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/utils/ELGeometryVertexBuffer.h">
+			<Option target="EZGLib"/>
+		</Unit>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/utils/ELUtil.h">
+			<Option target="EZGLib"/>
+		</Unit>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/BaseWindow/main.cpp">
+			<Option target="TestBaseWindow"/>
+		</Unit>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/Shader/main.cpp">
+			<Option target="TestShader"/>
+		</Unit>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/main.cpp">
+			<Option target="EZGL"/>
+		</Unit>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/libs/glad/src/glad.cc">
+			<Option target="glad"/>
+		</Unit>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../../../../../../../usr/local/lib/cmake/glfw3/glfw3ConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\usr\local\lib\cmake\glfw3\"/>
+		</Unit>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../../../../../../../usr/local/lib/cmake/glfw3/glfw3Config.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\usr\local\lib\cmake\glfw3\"/>
+		</Unit>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../../../../../../../usr/local/lib/cmake/glfw3/glfw3Targets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\usr\local\lib\cmake\glfw3\"/>
+		</Unit>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../../../../../../../usr/local/lib/cmake/glfw3/glfw3Targets-noconfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\usr\local\lib\cmake\glfw3\"/>
+		</Unit>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\..\..\Classes\"/>
+		</Unit>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../libs/glad/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\..\..\libs\glad\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

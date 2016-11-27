@@ -12,11 +12,10 @@ class ELLight : public ELNode {
 public:
     ELVector4 color;
     ELFloat intensity;
-    ELVector4 position;
+    ELVector3 position;
 
 public:
     virtual std::string kind();
-    virtual std::string identity();
 };
 
 

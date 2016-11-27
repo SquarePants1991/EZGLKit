@@ -4,6 +4,10 @@
 
 #include "ELCamera.h"
 
+ELCamera::ELCamera() {
+
+}
+
 ELCamera::ELCamera(ELVector3 eye,ELVector3 lookAt,ELVector3 up,ELFloat fovyRadians,ELFloat aspect,ELFloat nearZ,ELFloat farZ) :
         eye(eye),
         lookAt(lookAt),
@@ -13,7 +17,10 @@ ELCamera::ELCamera(ELVector3 eye,ELVector3 lookAt,ELVector3 up,ELFloat fovyRadia
         nearZ(nearZ),
         farZ(farZ)
 {
-
+    translation = ELVector3Make(0, 0, 0);
+    radiansAroundForward = 0.0;
+    radiansAroundUp = 0.0;
+    radiansAroundLeft = 0.0;
 }
 
 ELMatrix4 ELCamera::matrix() {

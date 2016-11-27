@@ -20,13 +20,14 @@ public:
     std::vector<ELNode *> children;
     void addNode(ELNode *node);
 
+    std::string identity;
+
     // update node behavior
     virtual void update(ELFloat timeInSecs);
     // rerender node
     virtual void render();
 
     virtual std::string kind();
-    virtual std::string identity();
 
     std::vector<ELNode *> findChildrenWithKind(std::string kind);
     ELNode * findChildWithIdentity(std::string identity);

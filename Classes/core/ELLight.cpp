@@ -7,7 +7,3 @@
 std::string ELLight::kind() {
     return "light";
 }
-
-std::string ELLight::identity() {
-    return "light default";
-}

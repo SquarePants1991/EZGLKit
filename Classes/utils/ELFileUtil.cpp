@@ -14,8 +14,9 @@ std::string ELFileUtil::stringContentOfFile(char *filePath) {
         fileStream.seekg(0, std::ios::end);
         long fileSize = fileStream.tellg();
         fileStream.seekg(0, std::ios::beg);
-        char *content = new char[fileSize];
+        char *content = new char[fileSize + 1];
         fileStream.read(content,fileSize);
+        content[fileSize] = '\0';
         return std::string(content);
     }
     fileStream.close();

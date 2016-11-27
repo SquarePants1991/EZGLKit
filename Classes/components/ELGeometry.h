@@ -6,6 +6,7 @@
 #define EZGL_ELGEOMETRY_H
 
 #include "core/ELComponent.h"
+#include "types/ELGeometryTypes.h"
 
 typedef struct {
     ELUint vertexVBO;
@@ -19,6 +20,8 @@ typedef struct {
 class ELEffect;
 
 class ELGeometry : public ELComponent {
+public:
+    ELMaterial material;
 public:
     ELGeometry();
     void prepare();

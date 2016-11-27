@@ -13,6 +13,7 @@
 
 class ELComponent;
 class ELLight;
+class ELCamera;
 class ELGameObject : public ELNode {
 public:
     ELGameObject(ELWorld *world);
@@ -25,6 +26,7 @@ public:
 
     // for components
     std::vector<ELLight *> lights();
+    ELCamera *mainCamera();
 
 private:
     ELWorld *world;

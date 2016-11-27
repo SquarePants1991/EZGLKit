@@ -2,23 +2,22 @@
 // Created by wangyang on 16/11/25.
 //
 
-#include "ELPlanGeometry.h"
+#include "ELPlaneGeometry.h"
 
-ELPlanGeometry::ELPlanGeometry(ELVector2 size) : size(size) {
-
+ELPlaneGeometry::ELPlaneGeometry(ELVector2 size) : size(size) {
 }
 
-ELPlanGeometry::~ELPlanGeometry() {
+ELPlaneGeometry::~ELPlaneGeometry() {
     delete vertexBuffer;
 }
 
-ELGeometryData ELPlanGeometry::generateData() {
+ELGeometryData ELPlaneGeometry::generateData() {
     vertexBuffer = new ELGeometryVertexBuffer();
     ELGeometryRect rect = {
-            {0.5f * size.x, 0.0f, -0.5f * size.y},
-            {0.5f * size.x, 0.0f, 0.5f * size.y},
-            {-0.5f * size.x, 1.0f, 0.5f * size.y},
-            {-0.5f * size.x, 1.0f, -0.5f * size.y},
+            {0.5f * size.x , 0.0f ,  -0.5f * size.y  },
+            {0.5f * size.x , 0.0f ,  0.5f * size.y   },
+            {-0.5f * size.x, 0.0f , 0.5f * size.y   },
+            {-0.5f * size.x, 0.0f , -0.5f * size.y  },
             {0, 0},
             {0, 1},
             {1, 1},
@@ -39,12 +38,4 @@ ELGeometryData ELPlanGeometry::generateData() {
     data.supportIndiceVBO = false;
     return data;
 
-}
-
-void ELPlanGeometry::update(ELFloat timeInSecs) {
-
-}
-
-void ELPlanGeometry::render() {
-    ELGeometry::render();
 }

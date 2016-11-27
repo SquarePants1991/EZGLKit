@@ -8,13 +8,10 @@
 #include "../ELGeometry.h"
 #include "utils/ELGeometryVertexBuffer.h"
 
-class ELPlanGeometry : public ELGeometry {
+class ELPlaneGeometry : public ELGeometry {
 public:
-    ELPlanGeometry(ELVector2 size);
-    ~ELPlanGeometry();
-
-    virtual void update(ELFloat timeInSecs);
-    virtual void render();
+    ELPlaneGeometry(ELVector2 size);
+    ~ELPlaneGeometry();
 
     virtual ELGeometryData generateData();
 

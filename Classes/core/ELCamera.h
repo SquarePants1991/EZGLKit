@@ -26,6 +26,7 @@ private:
 
 public:
     // Perspective Camera
+    ELCamera();
     ELCamera(ELVector3 eye,ELVector3 lookAt,ELVector3 up,ELFloat fovyRadians,ELFloat aspect,ELFloat nearZ,ELFloat farZ);
 
     //TODO: Orth Camera Construct

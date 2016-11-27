@@ -12,11 +12,12 @@
 #include <map>
 
 #if Platform_OSX
-#include <GL/glut.h>
+#include "glad/glad.h"
+#include <GLFW/glfw3.h>
 #endif
 
-#define glBindVertexArray(value) glBindVertexArrayAPPLE(value)
-#define glGenVertexArrays(num, value) glGenVertexArraysAPPLE(num, value)
+#define glBindVertexArray(value) glad_glBindVertexArray(value)
+#define glGenVertexArrays(num, value) glad_glGenVertexArrays(num, value)
 
 #define BUFFER_OFFSET(i) ((char *)NULL + (i))
 

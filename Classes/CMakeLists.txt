@@ -33,6 +33,7 @@ if(NOT OPENGL_FOUND)
     message(ERROR " OPENGL not found!")
 endif(NOT OPENGL_FOUND)
 
+include_directories(${PROJECT_SOURCE_DIR}/../../libs/glad/include)
 
 file(GLOB EL_SRC
         "core/*.h"

@@ -6,6 +6,7 @@
 #define EZGL_ELTRANSFORM_H
 
 #include "ELVector3.h"
+#include "ELMatrix4.h"
 
 struct _ELTransform {
     ELVector3 position;
@@ -13,5 +14,13 @@ struct _ELTransform {
     ELVector3 scale;
 };
 typedef _ELTransform ELTransform;
+
+EL_INLINE ELMatrix4 ELMatrix4FromTransform(ELTransform *transform) {
+    ELMatrix4 matrix = ELMatrix4Identity;
+    matrix = ELMatrix4Translate(matrix,transform->position.x, transform->position.y, transform->position.z);
+    matrix = ELMatrix4Multiply(matrix,ELMatrix4MakeWithQuaternion(transform->quaternion));
+    matrix = ELMatrix4Scale(matrix, transform->scale.x, transform->scale.y, transform->scale.z);
+    return matrix;
+}
 
 #endif //EZGL_ELTRANSFORM_H

@@ -7,11 +7,15 @@
 
 #include "ELNode.h"
 #include <vector>
+#include "ELCamera.h"
 
 class ELWorld : public ELNode {
-private:
+public:
+    ELCamera *mainCamera;
 
 public:
+    ELWorld();
+    ELWorld(ELFloat aspect);
     virtual void update(ELFloat timeInSecs);
     virtual void render();
 };

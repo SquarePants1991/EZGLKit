@@ -9,6 +9,27 @@
 #include "ELVector2.h"
 #include "ELVector3.h"
 
+struct _ELMaterial {
+    ELVector4 ambient;
+    ELVector4 diffuse;
+    ELVector4 specular;
+    ELUint ambientMap;
+    ELUint diffuseMap;
+    ELUint normalMap;
+    ELUint specularMap;
+};
+typedef _ELMaterial ELMaterial;
+
+const ELMaterial ELMaterialDefault = {
+        {0.1, 0.0, 0.0, 1.0},
+        {0.6, 0.6, 0.6, 1.0},
+        {1.0, 1.0, 1.0, 1.0},
+        0,
+        0,
+        0,
+        0
+};
+
 typedef struct {
     ELVector3 point1;
     ELVector3 point2;
