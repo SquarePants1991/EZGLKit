@@ -23,9 +23,15 @@ add_subdirectory(${PROJECT_SOURCE_DIR}/../../Classes/ ${CMAKE_CURRENT_BINARY_DIR
 include_directories(${PROJECT_SOURCE_DIR}/../../libs/glad/include)
 add_subdirectory(${PROJECT_SOURCE_DIR}/../../libs/glad ${CMAKE_CURRENT_BINARY_DIR}/glad)
 
+include_directories(${PROJECT_SOURCE_DIR}/../../libs/soil)
+add_subdirectory(${PROJECT_SOURCE_DIR}/../../libs/soil ${CMAKE_CURRENT_BINARY_DIR}/soil)
+
+include_directories(${PROJECT_SOURCE_DIR}/../../libs/wavefront)
+add_subdirectory(${PROJECT_SOURCE_DIR}/../../libs/wavefront ${CMAKE_CURRENT_BINARY_DIR}/wavefront)
+
 macro(add_exe target prefix)
     add_executable(${target} ${prefix}/main.cpp)
-    target_link_libraries(${target} EZGLib ${GLUT_LIBRARY} ${OPENGL_LIBRARIES} glfw glad)
+    target_link_libraries(${target} EZGLib ${GLUT_LIBRARY} ${OPENGL_LIBRARIES} glfw glad soil wavefront)
 endmacro(add_exe)
 
 

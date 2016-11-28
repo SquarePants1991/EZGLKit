@@ -52,27 +52,23 @@ void ELGeometry::render() {
 //
     glUniform4fv(program->uniform("material.ambient"), 1, material.ambient.v);
     glUniform4fv(program->uniform("material.diffuse"), 1, material.diffuse.v);
-    glUniform4fv(program-> uniform("material.specular"), 1, material.specular.v);
+    glUniform4fv(program->uniform("material.specular"), 1, material.specular.v);
 //
-//    glUniform1i([self.glProgram uniform:UNIFORM_DIFFUSE_MAP], 0);
-//    glActiveTexture(GL_TEXTURE0);
-//    glBindTexture(GL_TEXTURE_2D, self.material.diffuseMap);
+    glUniform1i(program->uniform("diffuseMap"), 0);
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, material.diffuseMap);
 //
 //    glActiveTexture(GL_TEXTURE1);
 //    glBindTexture(GL_TEXTURE_2D, self.material.shadowMap);
 //    glUniform1i([self.glProgram uniform:UNIFORM_SHADOW_MAP], 1);
 //
-//    glActiveTexture(GL_TEXTURE2);
-//    glBindTexture(GL_TEXTURE_2D, self.material.normalMap);
-//    glUniform1i([self.glProgram uniformWithStr:@"normalMap"], 2);
-//
-//    glActiveTexture(GL_TEXTURE3);
-//    glBindTexture(GL_TEXTURE_2D, self.material.specularMap);
-//    glUniform1i([self.glProgram uniformWithStr:@"specularMap"], 3);
-//
-//    glActiveTexture(GL_TEXTURE4);
-//    glBindTexture(GL_TEXTURE_2D, self.material.ambientMap);
-//    glUniform1i([self.glProgram uniformWithStr:@"ambientMap"], 4);
+    glActiveTexture(GL_TEXTURE2);
+    glBindTexture(GL_TEXTURE_2D, material.normalMap);
+    glUniform1i(program->uniform("normalMap"), 2);
+
+    glActiveTexture(GL_TEXTURE3);
+    glBindTexture(GL_TEXTURE_2D, material.specularMap);
+    glUniform1i(program->uniform("specularMap"), 3);
 
     glBindVertexArray(vao);
     if (data.supportIndiceVBO) {

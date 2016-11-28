@@ -9,7 +9,7 @@
 #include "ELNode.h"
 
 class ELCamera : public ELNode {
-private:
+public:
     ELVector3 eye;
     ELVector3 lookAt;
     ELVector3 up;

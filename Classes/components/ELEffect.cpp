@@ -29,16 +29,16 @@ void ELEffect::prepare() {
     ELGameObject *gameObj = (ELGameObject *)gameObject();
     std::vector<ELLight *> lights = gameObj->lights();
 
-    char buffer[1024];
+    char buffer[128];
 
     for (int index = 0; index < lights.size(); ++index) {
         ELLight *light = lights[index];
         snprintf(buffer, 1024, "lights[%d].color",index);
-        glUniform4fv(program->uniform("lights[0].color"), 1, light->color.v);
+        glUniform4fv(program->uniform(buffer), 1, light->color.v);
         snprintf(buffer, 1024, "lights[%d].position",index);
-        glUniform3fv(program->uniform("lights[0].position"), 1, light->position.v);
+        glUniform3fv(program->uniform(buffer), 1, light->position.v);
         snprintf(buffer, 1024, "lights[%d].intensity",index);
-        glUniform1f(program->uniform("lights[0].intensity"), light->intensity);
+        glUniform1f(program->uniform(buffer), light->intensity);
     }
 
     glUniform1i(program->uniform("lightNum"), lights.size());

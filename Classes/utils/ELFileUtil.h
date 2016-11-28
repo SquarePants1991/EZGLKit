@@ -9,7 +9,7 @@
 
 class ELFileUtil {
 public:
-    static std::string stringContentOfFile(char *filePath);
+    static std::string stringContentOfFile(const char *filePath);
 };
 
 

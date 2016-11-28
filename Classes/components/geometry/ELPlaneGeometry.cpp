@@ -25,6 +25,8 @@ ELGeometryData ELPlaneGeometry::generateData() {
     };
     vertexBuffer->append(rect);
 
+    vertexBuffer->caculatePerVertexNormal();
+
     GLfloat *vertex = (GLfloat *)vertexBuffer->data();
 
     ELGeometryData data;

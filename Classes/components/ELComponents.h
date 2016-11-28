@@ -8,6 +8,7 @@
 #include "ELGeometry.h"
 #include "geometry/ELPlaneGeometry.h"
 #include "geometry/ELCubeGeometry.h"
+#include "geometry/ELMeshGeometry.h"
 
 
 #include "ELEffect.h"

@@ -80,7 +80,7 @@ void transformNormal(in vec3 position, in vec3 normal,out vec3 newNormal)
     newNormal = normalize(mMatrixNormalTarget - mMatrixPosition);
 }
 
-//#define Use_BumpMap
+#define Use_BumpMap
 
 void main()
 {
@@ -139,6 +139,6 @@ void main()
         sum_specular = sum_specular + specular;
     }
 
-    highp vec4 finalColor = vec4(1.0,0.0,0.0,1.0);//tex2D(diffuseMap, fragTexcoord);
+    highp vec4 finalColor = tex2D(diffuseMap, fragTexcoord) + material.diffuse;
     outColor = finalColor * sum_diffuse + finalColor * sum_ambient + finalColor * sum_specular;
 }

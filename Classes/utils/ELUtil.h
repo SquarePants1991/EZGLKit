@@ -7,5 +7,7 @@
 
 #include "ELFileUtil.h"
 #include "ELGeometryVertexBuffer.h"
+#include "ELAssets.h"
+#include "ELWaveFrontLoader.h"
 
 #endif //EZGL_EZUTIL_H

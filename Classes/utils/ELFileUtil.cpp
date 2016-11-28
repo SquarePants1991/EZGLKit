@@ -6,7 +6,7 @@
 
 #include <fstream>
 
-std::string ELFileUtil::stringContentOfFile(char *filePath) {
+std::string ELFileUtil::stringContentOfFile(const char *filePath) {
     std::ifstream fileStream(filePath);
     std::string fileContent;
     std::string line;

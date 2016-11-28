@@ -12,5 +12,6 @@
 #include "ELGameObject.h"
 #include "ELLight.h"
 #include "ELComponent.h"
+#include "ELTexture.h"
 
 #endif //EZGL_CORE_H

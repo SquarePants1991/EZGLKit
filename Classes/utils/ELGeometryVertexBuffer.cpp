@@ -4,6 +4,8 @@
 
 #include <stdlib.h>
 #include <string>
+#include <vector>
+#include <map>
 #include "ELGeometryVertexBuffer.h"
 
 ELGeometryVertexBuffer::ELGeometryVertexBuffer() {
@@ -13,6 +15,11 @@ ELGeometryVertexBuffer::ELGeometryVertexBuffer() {
 }
 
 void ELGeometryVertexBuffer::append(ELGeometryVertex vertex) {
+    ELVector3 tangent, bitangent;
+    caculateTangents(&tangent, &bitangent, ELVector3Make(vertex.x, vertex.y, vertex.z),ELVector3Make(vertex.nx, vertex.ny, vertex.nz));
+    vertex.tnx = tangent.x;     vertex.tny = tangent.y;       vertex.tnz = tangent.z;
+    vertex.btnx = bitangent.x;    vertex.btny = bitangent.y;      vertex.btnz = bitangent.z;
+
     *(vertices + index) = vertex;
     index++;
     if (index > bufferLen * 3 / 4.0) {
@@ -97,38 +104,38 @@ std::string idFromGeometryVertex(ELGeometryVertex vertex) {
     ELFloat x = floor(vertex.x * 100);
     ELFloat y = floor(vertex.y * 100);
     ELFloat z = floor(vertex.z * 100);
-//return [NSString stringWithFormat:@"%.2f-%.2f-%.2f",x,y,z];
-    return "asda";
+    char buffer[512];
+    snprintf(buffer, 512, "%.2f-%.2f-%.2f", x, y, z);
+    return std::string(buffer);
 }
 
 void ELGeometryVertexBuffer::caculatePerVertexNormal() {
-//    int sum = index;
-//    std::map<std::string, std::vector<ELGeometryVertex *>> collectMap;
-//    for (int i = 0; i< sum; i++) {
-//        ELGeometryVertex vertex = *(vertices + i);
-//        NSString *identity = [self idFromGeometryVertex:vertex];
-//        NSArray *points = collectMap[identity];
-//        if (points == nil) {
-//            points = [NSArray new];
-//        }
-//        points = [points arrayByAddingObject:[NSValue valueWithPointer:(vertices + i)]];
-//        collectMap[identity] = points;
-//    }
-//
-//    for (NSString *key in collectMap.keyEnumerator) {
-//        ELVector3 normals = ELVector3Make(0, 0, 0);
-//        for (NSValue *vertex in collectMap[key]) {
-//            ELGeometryVertex *pVertex = (ELGeometryVertex *)[vertex pointerValue];
-//            normals = ELVector3Add(normals, ELVector3Make(pVertex->nx, pVertex->ny, pVertex->nz));
-//        }
-//        normals = ELVector3Normalize(normals);
-//        for (NSValue *vertex in collectMap[key]) {
-//            ELGeometryVertex *pVertex = (ELGeometryVertex *)[vertex pointerValue];
-//            pVertex->nx = normals.x;
-//            pVertex->ny = normals.y;
-//            pVertex->nz = normals.z;
-//        }
-//    }
+    int sum = index;
+    std::map<std::string, std::vector<ELGeometryVertex *> > collectMap;
+    for (int i = 0; i< sum; i++) {
+        ELGeometryVertex vertex = *(vertices + i);
+        std::string identity = idFromGeometryVertex(vertex);
+        std::vector<ELGeometryVertex *> points = collectMap[identity];
+        points.push_back((ELGeometryVertex *)(vertices + i));
+        collectMap[identity] = points;
+    }
+    for(std::map<std::string, std::vector<ELGeometryVertex *> >::iterator iterator = collectMap.begin(); iterator != collectMap.end(); iterator++) {
+        std::string key = iterator->first;
+        std::vector<ELGeometryVertex *> vertices = iterator->second;
+
+        ELVector3 normals = ELVector3Make(0, 0, 0);
+        for (std::vector<ELGeometryVertex *>::iterator vertexIter = vertices.begin(); vertexIter != vertices.end(); vertexIter++) {
+            ELGeometryVertex *pVertex = *vertexIter;
+            normals = ELVector3Add(normals, ELVector3Make(pVertex->nx, pVertex->ny, pVertex->nz));
+        }
+        normals = ELVector3Normalize(normals);
+        for (std::vector<ELGeometryVertex *>::iterator vertexIter = vertices.begin(); vertexIter != vertices.end(); vertexIter++) {
+            ELGeometryVertex *pVertex = *vertexIter;
+            pVertex->nx = normals.x;
+            pVertex->ny = normals.y;
+            pVertex->nz = normals.z;
+        }
+    }
 }
 void * ELGeometryVertexBuffer::data() {
     return (void *)vertices;

@@ -16,8 +16,8 @@
 #include <GLFW/glfw3.h>
 #endif
 
-#define glBindVertexArray(value) glad_glBindVertexArray(value)
-#define glGenVertexArrays(num, value) glad_glGenVertexArrays(num, value)
+#define glBindVertexArrayEL(value) glad_glBindVertexArray(value)
+#define glGenVertexArraysEL(num, value) glad_glGenVertexArrays(num, value)
 
 #define BUFFER_OFFSET(i) ((char *)NULL + (i))
 
