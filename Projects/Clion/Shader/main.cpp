@@ -106,15 +106,15 @@ void init() {
     ELEffect *effect = new ELEffect(vertexShader.c_str(), fragShader.c_str());
 
     ELLight *defaultLight = new ELLight();
-    defaultLight->position = ELVector3Make(3,3,5);
+    defaultLight->position = ELVector3Make(-3,3,-5);
     defaultLight->color = ELVector4Make(1.0,1.0,1.0,1.0);
     defaultLight->intensity = 1.0;
     world->addNode(defaultLight);
 
     ELGameObject *gameObject = new ELGameObject(world);
     world->addNode(gameObject);
-    gameObject->transform->position = ELVector3Make(0, 3, 0);
-    ELCubeGeometry *cube = new ELCubeGeometry(ELVector3Make(1,1,1));
+    gameObject->transform->position = ELVector3Make(0, 6, 0);
+    ELCubeGeometry *cube = new ELCubeGeometry(ELVector3Make(3,3,3));
     gameObject->addComponent(cube);
     gameObject->addComponent(effect);
     cube->material.diffuseMap = ELTexture::texture(ELAssets::shared()->findFile("rock.png"))->value;
@@ -123,7 +123,7 @@ void init() {
     player = gameObject;
 
     ELCollisionShape *collisionShape = new ELCollisionShape();
-    collisionShape->asBox(ELVector3Make(0.5,0.5,0.5));
+    collisionShape->asBox(ELVector3Make(1.5,1.5,1.5));
     ELRigidBody *rigidBody = new ELRigidBody(collisionShape,1.0);
     gameObject->addComponent(rigidBody);
     rigidBody->setVelocity(ELVector3Make(0, 0, 0));

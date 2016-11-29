@@ -123,8 +123,8 @@ float shadowValue() {
     float shadow = 1.0;
     if (s >= 0.0 && s <=1.0 &&
         t >= 0.0 && t <=1.0 ) {
-        if ( distanceFromLight <= currentDistance - 2.8 ) {
-            shadow = 0.5;
+        if ( distanceFromLight <= currentDistance - 1.8 ) {
+            shadow = 0.2;
         }
     }
 
