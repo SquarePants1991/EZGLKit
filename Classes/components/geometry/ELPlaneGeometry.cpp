@@ -5,6 +5,7 @@
 #include "ELPlaneGeometry.h"
 
 ELPlaneGeometry::ELPlaneGeometry(ELVector2 size) : size(size) {
+
 }
 
 ELPlaneGeometry::~ELPlaneGeometry() {
@@ -25,7 +26,7 @@ ELGeometryData ELPlaneGeometry::generateData() {
     };
     vertexBuffer->append(rect);
 
-    vertexBuffer->caculatePerVertexNormal();
+//    vertexBuffer->caculatePerVertexNormal();
 
     GLfloat *vertex = (GLfloat *)vertexBuffer->data();
 
@@ -38,6 +39,7 @@ ELGeometryData ELPlaneGeometry::generateData() {
     data.vertexCount = vertexBuffer->rawLength() / sizeof(ELGeometryVertex);
     data.vertexStride = sizeof(ELGeometryVertex);
     data.supportIndiceVBO = false;
+
     return data;
 
 }

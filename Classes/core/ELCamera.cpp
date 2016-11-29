@@ -15,7 +15,8 @@ ELCamera::ELCamera(ELVector3 eye,ELVector3 lookAt,ELVector3 up,ELFloat fovyRadia
         fovyRadians(fovyRadians),
         aspect(aspect),
         nearZ(nearZ),
-        farZ(farZ)
+        farZ(farZ),
+        lockOnTransform(NULL)
 {
     translation = ELVector3Make(0, 0, 0);
     radiansAroundForward = 0.0;
@@ -76,10 +77,21 @@ void ELCamera::translateLeft(ELFloat distance) {
 
 void ELCamera::translateTo(ELVector3 loc) {
     ELVector3 eyeVec = ELVector3Subtract(lookAt, eye);
+    eye = loc;
     lookAt = ELVector3Add(eye, eyeVec);
-    eye = eye;
 }
 
+void ELCamera::lockOn(ELTransform *transform) {
+    lockOnTransform = transform;
+}
+
+void ELCamera::update(ELFloat timeInSecs) {
+    if (lockOnTransform != NULL) {
+        ELVector3 eyeVec = ELVector3Subtract(lookAt, eye);
+        lookAt = lockOnTransform->position;
+        eye = ELVector3Subtract(lookAt, eyeVec);
+    }
+}
 
 // Private Methods
 ELVector3 ELCamera::leftVector() {

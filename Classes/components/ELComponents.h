@@ -10,7 +10,9 @@
 #include "geometry/ELCubeGeometry.h"
 #include "geometry/ELMeshGeometry.h"
 
-
 #include "ELEffect.h"
+
+#include "ELRigidBody.h"
+#include "ELCollisionShape.h"
 
 #endif //EZGL_ELCOMPONENTS_H

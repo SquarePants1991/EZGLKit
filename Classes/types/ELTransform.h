@@ -15,6 +15,12 @@ struct _ELTransform {
 };
 typedef _ELTransform ELTransform;
 
+const ELTransform ELTransformIdentity = {
+        {0, 0, 0},
+        {0, 0, 0, 0},
+        {1, 1, 1}
+};
+
 EL_INLINE ELMatrix4 ELMatrix4FromTransform(ELTransform *transform) {
     ELMatrix4 matrix = ELMatrix4Identity;
     matrix = ELMatrix4Translate(matrix,transform->position.x, transform->position.y, transform->position.z);

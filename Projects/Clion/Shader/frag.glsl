@@ -38,6 +38,7 @@ OUT highp vec3 fragTangent;
 OUT highp vec3 fragBitangent;
 
 uniform highp mat4 viewProjection;
+uniform highp mat4 lightViewProjection;
 uniform highp mat4 modelMatrix;
 uniform highp mat3 normalMatrix;
 
@@ -50,6 +51,8 @@ uniform sampler2D shadowMap;
 uniform sampler2D normalMap;
 uniform sampler2D specularMap;
 uniform material_struct material;
+
+uniform int renderShadow;
 
 void pointLight(
                 in vec3 normal,
@@ -80,11 +83,58 @@ void transformNormal(in vec3 position, in vec3 normal,out vec3 newNormal)
     newNormal = normalize(mMatrixNormalTarget - mMatrixPosition);
 }
 
-#define Use_BumpMap
-
-void main()
+vec4 pack (float dis)
 {
-    // 扰动法向量
+    float zsbf = floor(dis);
+    float xsbf = fract(dis);
+    xsbf = floor(xsbf * 1024.0);
+    float hzsbf = floor(zsbf / 256.0);
+    float lzsbf = mod(zsbf,256.0);
+    float hxsbf = floor(xsbf/32.0);
+    float lxsbf = mod(xsbf,32.0);
+    float r = hzsbf / 256.0;
+    float g = lzsbf / 256.0;
+    float b = hxsbf / 32.0;
+    float a = lxsbf / 32.0;
+    return vec4(r,g,b,a);
+}
+
+float unpack (vec4 color)
+{
+    return color.r * 256.0 * 256.0 + color.g * 256.0 + color.b + color.a / 32.0;
+}
+
+vec4 renderAsShadow() {
+    highp vec4 v_v4TexCoord =  modelMatrix * fragPosition;
+    highp vec3 lightPosition = lights[0].position;
+    float normalizedDistance  = distance(fragPosition.xyz,lightPosition.xyz);
+    return pack(normalizedDistance);
+}
+
+float shadowValue() {
+    highp vec3 lightPosition = lights[0].position;
+    highp vec4 v_v4TexCoord = lightViewProjection * modelMatrix * fragPosition;
+    highp vec4 shadowMapPosition = v_v4TexCoord / v_v4TexCoord.w;
+    float s = (shadowMapPosition.s + 1.0) /2.0;
+    float t = (shadowMapPosition.t + 1.0) /2.0;
+    float distanceFromLight = unpack(tex2D(shadowMap, vec2(s,t)));
+    float currentDistance = distance(fragPosition.xyz,lightPosition.xyz);
+
+    float shadow = 1.0;
+    if (s >= 0.0 && s <=1.0 &&
+        t >= 0.0 && t <=1.0 ) {
+        if ( distanceFromLight <= currentDistance - 2.8 ) {
+            shadow = 0.5;
+        }
+    }
+
+    return shadow;
+}
+
+vec4 render() {
+
+    float shadow = shadowValue();
+ // 扰动法向量
     highp vec3 rgb = tex2D( normalMap, fragTexcoord ).rgb;
     highp float tnx = 2.0 * (rgb.r - 0.5);
     highp float tny = 2.0 * (rgb.g - 0.5);
@@ -140,5 +190,16 @@ void main()
     }
 
     highp vec4 finalColor = tex2D(diffuseMap, fragTexcoord) + material.diffuse;
-    outColor = finalColor * sum_diffuse + finalColor * sum_ambient + finalColor * sum_specular;
+    return (finalColor * sum_diffuse + finalColor * sum_ambient + finalColor * sum_specular) * shadow;
+}
+
+//#define Use_BumpMap
+
+void main()
+{
+    if (renderShadow == 1) {
+        outColor = renderAsShadow();
+    } else {
+        outColor = render();
+    }
 }

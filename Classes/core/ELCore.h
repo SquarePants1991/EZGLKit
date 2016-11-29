@@ -13,5 +13,6 @@
 #include "ELLight.h"
 #include "ELComponent.h"
 #include "ELTexture.h"
+#include "ELPhysicsWorld.h"
 
 #endif //EZGL_CORE_H

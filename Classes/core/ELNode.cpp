@@ -4,10 +4,10 @@
 
 #include "ELNode.h"
 
-ELNode::ELNode() {
+ELNode::ELNode() : renderShadow(false) {
     transform = new ELTransform();
     transform->position = ELVector3Make(0.0, 0.0, 0.0);
-    transform->quaternion = ELQuaternionMakeWithAngleAndAxis(0.3,0,1,0);
+    transform->quaternion = ELQuaternionMakeWithAngleAndAxis(0,0,1,0);
     transform->scale = ELVector3Make(1, 1, 1);
     identity = "default";
 }

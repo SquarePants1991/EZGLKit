@@ -8,11 +8,14 @@
 #include "EZGLBase.h"
 #include "ELNode.h"
 
+class ELGameObject;
+
 class ELComponent : public ELNode{
 public:
     ELComponent();
 
-    ELNode *gameObject();
+    ELGameObject *gameObject();
+    virtual void didAddedToGameObject(ELGameObject *gameObject) {}
 };
 
 

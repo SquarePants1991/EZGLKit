@@ -8,11 +8,14 @@ void init();
 void render();
 void resize(GLFWwindow *window ,int w,int h);
 void setupWindow(int argc,char **argv);
+void key_callback(GLFWwindow*,int,int,int,int);
 
 ELWorld *world;
 double lastTime = 0;
 const float WindowWidth = 400;
 const float WindowHeight = 220;
+ELGameObject *player;
+ELRigidBody *playerRigidBody;
 
 #include <iostream>
 #include "EZGL.h"
@@ -67,6 +70,7 @@ int main(int argc,char **argv) {
 
     glfwSwapInterval(1);
     glfwSetWindowSizeCallback(window,resize);
+    glfwSetKeyCallback(window, key_callback);
 
     init();
 
@@ -102,19 +106,29 @@ void init() {
     ELEffect *effect = new ELEffect(vertexShader.c_str(), fragShader.c_str());
 
     ELLight *defaultLight = new ELLight();
-    defaultLight->position = ELVector3Make(2,2,2);
+    defaultLight->position = ELVector3Make(3,3,5);
     defaultLight->color = ELVector4Make(1.0,1.0,1.0,1.0);
     defaultLight->intensity = 1.0;
     world->addNode(defaultLight);
 
     ELGameObject *gameObject = new ELGameObject(world);
     world->addNode(gameObject);
-    gameObject->transform->position = ELVector3Make(4, 1, 0);
+    gameObject->transform->position = ELVector3Make(0, 3, 0);
     ELCubeGeometry *cube = new ELCubeGeometry(ELVector3Make(1,1,1));
     gameObject->addComponent(cube);
     gameObject->addComponent(effect);
-    cube->material.diffuse = ELVector4Make(1.0,0.0,0.5,1.0);
+    cube->material.diffuseMap = ELTexture::texture(ELAssets::shared()->findFile("rock.png"))->value;
     cube->material.normalMap = ELTexture::texture(ELAssets::shared()->findFile("rock_NRM.png"))->value;
+
+    player = gameObject;
+
+    ELCollisionShape *collisionShape = new ELCollisionShape();
+    collisionShape->asBox(ELVector3Make(0.5,0.5,0.5));
+    ELRigidBody *rigidBody = new ELRigidBody(collisionShape,1.0);
+    gameObject->addComponent(rigidBody);
+    rigidBody->setVelocity(ELVector3Make(0, 0, 0));
+    playerRigidBody = rigidBody;
+
 
     ELGameObject *gameObject2 = new ELGameObject(world);
     world->addNode(gameObject2);
@@ -122,20 +136,28 @@ void init() {
     ELPlaneGeometry *plane = new ELPlaneGeometry(ELVector2Make(100,100));
     gameObject2->addComponent(plane);
     gameObject2->addComponent(effect);
+    plane->material.diffuse = ELVector4Make(0,0,0,1.0);
     plane->material.diffuseMap = ELTexture::texture(ELAssets::shared()->findFile("rock.png"))->value;
-    plane->material.normalMap = ELTexture::texture(ELAssets::shared()->findFile("rock_NRM.png"))->value;
+//    plane->material.normalMap = ELTexture::texture(ELAssets::shared()->findFile("rock_NRM.png"))->value;
 
-    std::vector<ELMeshGeometry *> geometries =  ELWaveFrontLoader::loadFile(ELAssets::shared()->findFile("monkey.obj"));
-    for (int i = 0; i < geometries.size(); ++i) {
-        ELGameObject *gameObjectMesh = new ELGameObject(world);
-        world->addNode(gameObjectMesh);
-        gameObjectMesh->addComponent(geometries.at(i));
-        gameObjectMesh->addComponent(effect);
-        gameObjectMesh->transform->position = ELVector3Make(0, 0.5, 0);
-        geometries.at(i)->material.diffuseMap = ELTexture::texture(ELAssets::shared()->findFile("rock.png"))->value;
-        geometries.at(i)->material.normalMap = ELTexture::texture(ELAssets::shared()->findFile("rock_NRM.png"))->value;
-    }
-    
+    ELCollisionShape *collisionShape2 = new ELCollisionShape();
+    collisionShape->asBox(ELVector3Make(50,0,50));
+    ELRigidBody *rigidBody2 = new ELRigidBody(collisionShape,0.0);
+    gameObject2->addComponent(rigidBody2);
+
+//    std::vector<ELMeshGeometry *> geometries =  ELWaveFrontLoader::loadFile(ELAssets::shared()->findFile("monkey.obj"));
+//    for (int i = 0; i < geometries.size(); ++i) {
+//        ELGameObject *gameObjectMesh = new ELGameObject(world);
+//        world->addNode(gameObjectMesh);
+//        gameObjectMesh->addComponent(geometries.at(i));
+//        gameObjectMesh->addComponent(effect);
+//        gameObjectMesh->transform->position = ELVector3Make(0, 0.5, 0);
+//        geometries.at(i)->material.diffuseMap = ELTexture::texture(ELAssets::shared()->findFile("rock.png"))->value;
+//        geometries.at(i)->material.normalMap = ELTexture::texture(ELAssets::shared()->findFile("rock_NRM.png"))->value;
+//    }
+
+    world->mainCamera->lockOn(gameObject->transform);
+
     glEnable(GL_CULL_FACE);
     glad_glEnable(GL_DEPTH_TEST);
 }
@@ -151,4 +173,37 @@ void render() {
 
 void resize(GLFWwindow *window ,int w,int h) {
     world->mainCamera->aspect = w / (float)h;
+}
+
+void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
+{
+    if (action == GLFW_PRESS) {
+        if (key == GLFW_KEY_UP) {
+            playerRigidBody->setVelocityZ(-5);
+        }
+        if (key == GLFW_KEY_DOWN) {
+            playerRigidBody->setVelocityZ(5);
+        }
+        if (key == GLFW_KEY_LEFT){
+            playerRigidBody->setVelocityX(-15);
+        }
+        if (key == GLFW_KEY_RIGHT){
+            playerRigidBody->setVelocityX(5);
+        }
+    }
+
+    if (action == GLFW_RELEASE) {
+        if (key == GLFW_KEY_UP) {
+            playerRigidBody->setVelocityZ(0);
+        }
+        if (key == GLFW_KEY_DOWN) {
+            playerRigidBody->setVelocityZ(0);
+        }
+        if (key == GLFW_KEY_LEFT){
+            playerRigidBody->setVelocityX(0);
+        }
+        if (key == GLFW_KEY_RIGHT){
+            playerRigidBody->setVelocityX(0);
+        }
+    }
 }

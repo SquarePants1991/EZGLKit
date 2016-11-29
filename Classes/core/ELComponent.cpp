@@ -3,12 +3,13 @@
 //
 
 #include "ELComponent.h"
+#include "ELGameObject.h"
 
 ELComponent::ELComponent() {
 
 }
 
-ELNode *ELComponent::gameObject() {
-    return parent;
+ELGameObject *ELComponent::gameObject() {
+    return dynamic_cast<ELGameObject *>(parent);
 }
 

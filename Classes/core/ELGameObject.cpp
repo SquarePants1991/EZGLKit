@@ -6,12 +6,12 @@
 #include "ELComponent.h"
 #include "ELLight.h"
 
-ELGameObject::ELGameObject(ELWorld *world) : world(world) {
-
+ELGameObject::ELGameObject(ELWorld *world) : ELNode(), world(world) {
 }
 
 void ELGameObject::addComponent(ELComponent *component) {
     ELNode::addNode(dynamic_cast<ELNode *>(component));
+    component->didAddedToGameObject(this);
 }
 
 void ELGameObject::render() {

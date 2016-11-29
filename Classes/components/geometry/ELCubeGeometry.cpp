@@ -96,7 +96,7 @@ ELGeometryData ELCubeGeometry::generateData() {
     vertexBuffer->append(rectZFar);
     vertexBuffer->append(rectZNear);
 
-    vertexBuffer->caculatePerVertexNormal();
+//    vertexBuffer->caculatePerVertexNormal();
 
     GLfloat *vertex = (GLfloat *)(vertexBuffer->data());
     glGenBuffers(1, &data.vertexVBO);
@@ -112,10 +112,4 @@ ELGeometryData ELCubeGeometry::generateData() {
 
 void ELCubeGeometry::update(ELFloat timeInSecs) {
     ELGeometry::update(timeInSecs);
-    static float angle = 0.0;
-
-    ELGameObject *gameObj = (ELGameObject *)gameObject();
-    gameObj->transform->quaternion = ELQuaternionMakeWithAngleAndAxis(angle,1,1,1);
-    angle += timeInSecs;
-//    printf("angle => %f \n", timeInSecs);
 }

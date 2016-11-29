@@ -99,6 +99,7 @@ bool createProgram(const char *vertexShader, const char *fragmentShader, GLuint 
     }
 
     *pProgram = program;
+    printf("Effect build success => %d \n", program);
     return true;
 }
 

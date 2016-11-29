@@ -11,8 +11,10 @@
 
 class ELNode {
 public:
-
     ELTransform *transform;
+    bool renderShadow;
+
+public:
     ELNode();
 
     ELNode * parent;

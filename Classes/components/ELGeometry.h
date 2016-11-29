@@ -18,10 +18,15 @@ typedef struct {
 }ELGeometryData;
 
 class ELEffect;
+class ELCamera;
 
 class ELGeometry : public ELComponent {
 public:
     ELMaterial material;
+
+    static bool renderShadow;
+    static ELUint shadowMap;
+    static ELCamera * lightCamera;
 public:
     ELGeometry();
     void prepare();

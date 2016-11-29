@@ -7,7 +7,11 @@
 #include "ELEffect.h"
 #include "core/ELGameObject.h"
 
-ELGeometry::ELGeometry() : vao(-1) {
+bool ELGeometry::renderShadow = false;
+ELUint ELGeometry::shadowMap = 0;
+ELCamera * ELGeometry::lightCamera = NULL;
+
+ELGeometry::ELGeometry() : vao(-1), isGeometryDataValid(false) {
     material = ELMaterialDefault;
 }
 
@@ -47,8 +51,15 @@ void ELGeometry::render() {
 //
     glUniformMatrix4fv(program->uniform("viewProjection"), 1, 0, camera->matrix().m);
     glUniformMatrix4fv(program->uniform("modelMatrix"), 1, 0, ELMatrix4FromTransform(gameObj->transform).m);
+    if (ELGeometry::renderShadow) {
+        glUniform1i(program->uniform("renderShadow"),1);
+    } else {
+        glUniform1i(program->uniform("renderShadow"),0);
+    }
 //    glUniformMatrix3fv([self.glProgram uniform:UNIFORM_NORMAL_MATRIX], 1, 0, self.normalMatrix.m);
-//    glUniformMatrix4fv([self.glProgram uniform:UNIFORM_LIGHT_VIEWPROJECTION], 1,0, self.lightViewProjection.m);
+    if (ELGeometry::lightCamera != NULL) {
+        glUniformMatrix4fv(program->uniform("lightViewProjection"), 1, 0, ELGeometry::lightCamera->matrix().m);
+    }
 //
     glUniform4fv(program->uniform("material.ambient"), 1, material.ambient.v);
     glUniform4fv(program->uniform("material.diffuse"), 1, material.diffuse.v);
@@ -57,11 +68,11 @@ void ELGeometry::render() {
     glUniform1i(program->uniform("diffuseMap"), 0);
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, material.diffuseMap);
-//
-//    glActiveTexture(GL_TEXTURE1);
-//    glBindTexture(GL_TEXTURE_2D, self.material.shadowMap);
-//    glUniform1i([self.glProgram uniform:UNIFORM_SHADOW_MAP], 1);
-//
+
+    glActiveTexture(GL_TEXTURE1);
+    glBindTexture(GL_TEXTURE_2D, ELGeometry::shadowMap);
+    glUniform1i(program->uniform("shadowMap"), 1);
+
     glActiveTexture(GL_TEXTURE2);
     glBindTexture(GL_TEXTURE_2D, material.normalMap);
     glUniform1i(program->uniform("normalMap"), 2);
@@ -80,7 +91,7 @@ void ELGeometry::render() {
 }
 
 void ELGeometry::setupVao() {
-
+    printf("VAO Setup \n");
     ELEffect * defaultEffect = effect();
     ELProgram *program = defaultEffect->program;
     if (vao < 0) {

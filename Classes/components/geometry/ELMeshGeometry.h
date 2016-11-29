@@ -13,7 +13,7 @@ public:
     ELMeshGeometry(ELGeometryData data);
 
     virtual ELGeometryData generateData();
-
+    void update(ELFloat timeInSecs);
 private:
     ELGeometryData _data;
 };

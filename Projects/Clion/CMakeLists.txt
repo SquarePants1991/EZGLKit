@@ -29,9 +29,12 @@ add_subdirectory(${PROJECT_SOURCE_DIR}/../../libs/soil ${CMAKE_CURRENT_BINARY_DI
 include_directories(${PROJECT_SOURCE_DIR}/../../libs/wavefront)
 add_subdirectory(${PROJECT_SOURCE_DIR}/../../libs/wavefront ${CMAKE_CURRENT_BINARY_DIR}/wavefront)
 
+include_directories(${PROJECT_SOURCE_DIR}/../../libs/bullet)
+add_subdirectory(${PROJECT_SOURCE_DIR}/../../libs/bullet ${CMAKE_CURRENT_BINARY_DIR}/bullet)
+
 macro(add_exe target prefix)
     add_executable(${target} ${prefix}/main.cpp)
-    target_link_libraries(${target} EZGLib ${GLUT_LIBRARY} ${OPENGL_LIBRARIES} glfw glad soil wavefront)
+    target_link_libraries(${target} EZGLib ${GLUT_LIBRARY} ${OPENGL_LIBRARIES} glfw glad soil wavefront bullet)
 endmacro(add_exe)
 
 

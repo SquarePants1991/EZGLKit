@@ -41,10 +41,16 @@ public:
     void translateLeft(ELFloat distance);
     void translateTo(ELVector3 loc);
 
+    void lockOn(ELTransform *transform);
+
+    virtual void update(ELFloat timeInSecs);
+
 private:
     ELVector3 leftVector();
     ELVector3 forwardVector();
     ELQuaternion quaternion();
+
+    ELTransform * lockOnTransform;
 };
 
 
