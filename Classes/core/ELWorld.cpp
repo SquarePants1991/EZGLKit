@@ -46,10 +46,10 @@ void ELWorld::render() {
         }
     }
 
-    ELGeometry::renderShadow = false;
+    ELGeometry::renderShadow =   false;
     ELGeometry::shadowMap = shadowTexture;
     glBindFramebuffer(GL_FRAMEBUFFER, drawFboId);
-    glViewport(0,0,400,220);
+    glViewport(0,0,fbWidth,fbHeight);
     glClearColor(0.95f, 0.95f, 0.95f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     mainCamera = originMainCamera;
@@ -59,11 +59,11 @@ void ELWorld::render() {
 void ELWorld::genShadowTextureFromLight(ELLight *light) {
     glBindFramebuffer(GL_FRAMEBUFFER, shadowFramebuffer);
     glViewport(0,0,1024,1024);
-    glClearColor(0.95f, 0.95f, 0.95f, 1.0f);
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glClear(GL_DEPTH_BUFFER_BIT);
     ELVector3 center = {0, 0, 0};
-    ELVector3 up = {0, 1, 0};
-    mainCamera = new ELCamera(light->position, center,up,60,mainCamera->aspect,mainCamera->nearZ,mainCamera->farZ);
+    ELVector3 up = {0, 0, 1};
+    mainCamera = new ELCamera(light->position, center,up,60,1,mainCamera->nearZ,mainCamera->farZ);
+    mainCamera->asOrtho(-10.0, 10.0, 10, -10, mainCamera->nearZ,mainCamera->farZ);
     ELNode::render();
     ELGeometry::lightCamera = mainCamera;
 }
@@ -77,19 +77,24 @@ void ELWorld::createShadowFramebuffer() {
     glGenTextures(1, &shadowTexture);
     glGenRenderbuffers(1, &renderbuffer);
 
-    glBindRenderbuffer(GL_RENDERBUFFER, renderbuffer);
-    glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT16, 1024, 1024);
+//    glBindRenderbuffer(GL_RENDERBUFFER, renderbuffer);
+//    glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT16, 1024, 1024);
 
     glBindTexture(GL_TEXTURE_2D, shadowTexture);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+//    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, 1024, 1024, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT, 1024, 1024, 0, GL_DEPTH_COMPONENT, GL_FLOAT, NULL);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, 1024, 1024, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
 
     glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);
-    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, shadowTexture, 0);
-    glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, renderbuffer);
+//    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, shadowTexture, 0);
+    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, shadowTexture, 0);
+//    glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, renderbuffer);
+
+    glDrawBuffer(GL_NONE);
+    glReadBuffer(GL_NONE);
 
     glBindTexture(GL_TEXTURE_2D, 0);
     glBindFramebuffer(GL_FRAMEBUFFER, 0);

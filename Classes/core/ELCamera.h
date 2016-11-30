@@ -24,10 +24,13 @@ public:
 
     ELVector3 translation;
 
+    ELVector4 orthoView;
+
 public:
     // Perspective Camera
     ELCamera();
     ELCamera(ELVector3 eye,ELVector3 lookAt,ELVector3 up,ELFloat fovyRadians,ELFloat aspect,ELFloat nearZ,ELFloat farZ);
+    void asOrtho(ELFloat left,ELFloat right,ELFloat top,ELFloat bottom,ELFloat nearZ,ELFloat farZ);
 
     //TODO: Orth Camera Construct
 
@@ -46,6 +49,7 @@ public:
     virtual void update(ELFloat timeInSecs);
 
 private:
+    bool isOrtho;
     ELVector3 leftVector();
     ELVector3 forwardVector();
     ELQuaternion quaternion();

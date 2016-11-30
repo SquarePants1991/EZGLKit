@@ -24,6 +24,7 @@ std::vector<ELLight *> ELGameObject::lights() {
 }
 
 ELCamera * ELGameObject::mainCamera() {
+    return world->mainCamera;
     std::vector<ELCamera *> cameras = getNodesFromWorld<ELCamera *>();
     if (cameras.size() > 0) {
         return cameras.at(0);

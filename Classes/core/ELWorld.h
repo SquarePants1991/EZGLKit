@@ -18,6 +18,9 @@ public:
     ELPhysicsWorld *physicsWorld;
     ELUint shadowTexture;
     ELUint originFramebuffer;
+
+    int fbWidth;
+    int fbHeight;
 public:
     ELWorld();
     ELWorld(ELFloat aspect);

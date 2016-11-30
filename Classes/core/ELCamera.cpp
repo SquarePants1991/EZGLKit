@@ -18,16 +18,25 @@ ELCamera::ELCamera(ELVector3 eye,ELVector3 lookAt,ELVector3 up,ELFloat fovyRadia
         farZ(farZ),
         lockOnTransform(NULL)
 {
+    isOrtho = false;
     translation = ELVector3Make(0, 0, 0);
     radiansAroundForward = 0.0;
     radiansAroundUp = 0.0;
     radiansAroundLeft = 0.0;
 }
 
+void ELCamera::asOrtho(ELFloat left,ELFloat right,ELFloat top,ELFloat bottom,ELFloat nearZ,ELFloat farZ) {
+    isOrtho = true;
+    orthoView = ELVector4Make(left,right,top,bottom);
+}
+
 ELMatrix4 ELCamera::matrix() {
     ELVector3 forward = forwardVector();
     ELVector3 left = leftVector();
-    ELMatrix4 perspective = ELMatrix4MakePerspective(fovyRadians / 180.0f * M_PI, aspect, nearZ, farZ);
+    ELMatrix4 projection = ELMatrix4MakePerspective(fovyRadians / 180.0f * M_PI, aspect, nearZ, farZ);
+    if (isOrtho) {
+        projection = ELMatrix4MakeOrtho(orthoView.x,orthoView.y,orthoView.w,orthoView.z,nearZ,farZ);
+    }
     ELQuaternion cameraQuaternion = quaternion();
     ELVector3 transformedUp = ELQuaternionRotateVector3(cameraQuaternion, up);
     ELVector3 transformedForward = ELQuaternionRotateVector3(cameraQuaternion, forward);
@@ -36,7 +45,7 @@ ELMatrix4 ELCamera::matrix() {
     ELVector3 transformedLookAt = ELVector3Add(transformedEye, transformedForward);
 
     ELMatrix4 lookAt = ELMatrix4MakeLookAt(transformedEye.x,transformedEye.y,transformedEye.z,transformedLookAt.x, transformedLookAt.y, transformedLookAt.z, transformedUp.x, transformedUp.y, transformedUp.z);
-    return ELMatrix4Multiply(perspective, lookAt);
+    return ELMatrix4Multiply(projection, lookAt);
 }
 
 void ELCamera::rotateEye(ELFloat radians, ELVector3 axis) {

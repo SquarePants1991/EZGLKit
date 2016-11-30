@@ -19,6 +19,8 @@ out vec4 fragColor;
 #define tex2D(map, uv) texture(map, uv)
 #endif
 
+out float fragmentdepth;
+
 struct light {
     vec3 position;
     vec4 color;
@@ -83,57 +85,58 @@ void transformNormal(in vec3 position, in vec3 normal,out vec3 newNormal)
     newNormal = normalize(mMatrixNormalTarget - mMatrixPosition);
 }
 
-vec4 pack (float dis)
+const float PackUpscale = 256. / 255.; // fraction -> 0..1 (including 1)
+const float UnpackDownscale = 255. / 256.; // 0..1 -> fraction (excluding 1)
+
+const vec3 PackFactors = vec3( 256. * 256. * 256., 256. * 256.,  256. );
+const vec4 UnpackFactors = UnpackDownscale / vec4( PackFactors, 1. );
+
+const float ShiftRight8 = 1. / 256.;
+
+vec4 pack (float v)
 {
-    float zsbf = floor(dis);
-    float xsbf = fract(dis);
-    xsbf = floor(xsbf * 1024.0);
-    float hzsbf = floor(zsbf / 256.0);
-    float lzsbf = mod(zsbf,256.0);
-    float hxsbf = floor(xsbf/32.0);
-    float lxsbf = mod(xsbf,32.0);
-    float r = hzsbf / 256.0;
-    float g = lzsbf / 256.0;
-    float b = hxsbf / 32.0;
-    float a = lxsbf / 32.0;
-    return vec4(r,g,b,a);
+    vec4 r = vec4( fract( v * PackFactors ), v );
+    r.yzw -= r.xyz * ShiftRight8; // tidy overflow
+    return r * PackUpscale;
 }
 
-float unpack (vec4 color)
+float unpack (vec4 v)
 {
-    return color.r * 256.0 * 256.0 + color.g * 256.0 + color.b + color.a / 32.0;
+    return dot( v, UnpackFactors );
 }
 
 vec4 renderAsShadow() {
-    highp vec4 v_v4TexCoord =  modelMatrix * fragPosition;
+    fragmentdepth = gl_FragCoord.z;
+    highp vec4 v_v4TexCoord = viewProjection * modelMatrix * fragPosition;
     highp vec3 lightPosition = lights[0].position;
-    float normalizedDistance  = distance(fragPosition.xyz,lightPosition.xyz);
-    return pack(normalizedDistance);
+    float normalizedDistance  = distance(v_v4TexCoord.xyz,lightPosition.xyz);
+    return pack(v_v4TexCoord.z);
 }
 
-float shadowValue() {
-    highp vec3 lightPosition = lights[0].position;
-    highp vec4 v_v4TexCoord = lightViewProjection * modelMatrix * fragPosition;
-    highp vec4 shadowMapPosition = v_v4TexCoord / v_v4TexCoord.w;
-    float s = (shadowMapPosition.s + 1.0) /2.0;
-    float t = (shadowMapPosition.t + 1.0) /2.0;
-    float distanceFromLight = unpack(tex2D(shadowMap, vec2(s,t)));
-    float currentDistance = distance(fragPosition.xyz,lightPosition.xyz);
-
+float shadowValue(float bias,out vec4 shadowColor) {
+    highp vec4 lightMVPPosition = lightViewProjection * modelMatrix * fragPosition;
+    lightMVPPosition = lightMVPPosition / lightMVPPosition.w;
+    lightMVPPosition = lightMVPPosition * 0.5 + 0.5;
+    float nearestDepth = tex2D(shadowMap, lightMVPPosition.st).x;
     float shadow = 1.0;
-    if (s >= 0.0 && s <=1.0 &&
-        t >= 0.0 && t <=1.0 ) {
-        if ( distanceFromLight <= currentDistance - 1.8 ) {
-            shadow = 0.2;
-        }
-    }
 
+    vec2 poissonDisk[4] = vec2[](
+      vec2( -0.94201624, -0.39906216 ),
+      vec2( 0.94558609, -0.76890725 ),
+      vec2( -0.094184101, -0.92938870 ),
+      vec2( 0.34495938, 0.29387760 )
+    );
+
+shadowColor = tex2D(shadowMap, fragTexcoord);//vec4(nearestDepth,nearestDepth,nearestDepth,1.0);
+    for (int i=0;i<4;i++){
+      if ( tex2D( shadowMap, lightMVPPosition.st  + poissonDisk[i]/20000.0).x  <  lightMVPPosition.z - bias) {
+        shadow -= 0.15;
+      }
+    }
     return shadow;
 }
 
 vec4 render() {
-
-    float shadow = shadowValue();
  // 扰动法向量
     highp vec3 rgb = tex2D( normalMap, fragTexcoord ).rgb;
     highp float tnx = 2.0 * (rgb.r - 0.5);
@@ -166,7 +169,6 @@ vec4 render() {
 #endif
 
     highp vec4 sum_ambient = vec4(0.0,0.0,0.0,0.0), sum_diffuse = vec4(0.0,0.0,0.0,0.0), sum_specular = vec4(0.0,0.0,0.0,0.0);
-    highp vec3 lightPosition = lights[0].position;
     for (int i=0; i< lightNum; i++) {
         // 计算表面点到光源的向量
         light defaultLight = lights[i];
@@ -189,8 +191,19 @@ vec4 render() {
         sum_specular = sum_specular + specular;
     }
 
+    highp vec3 lightPosition = lights[0].position;
+    highp vec3 vp = normalize(lightPosition - mMatrixPosition);
+    float cosTheta = clamp(dot(textureNormal, vp),0,1);
+    float bias = 0.005*tan(acos(cosTheta));
+    bias = clamp(bias, 0,0.01);
+
+    vec4 shadowColor;
+    float shadow = shadowValue(bias, shadowColor);
+    return shadowColor;
+
     highp vec4 finalColor = tex2D(diffuseMap, fragTexcoord) + material.diffuse;
     return (finalColor * sum_diffuse + finalColor * sum_ambient + finalColor * sum_specular) * shadow;
+
 }
 
 //#define Use_BumpMap
@@ -198,7 +211,7 @@ vec4 render() {
 void main()
 {
     if (renderShadow == 1) {
-        outColor = renderAsShadow();
+        renderAsShadow();
     } else {
         outColor = render();
     }

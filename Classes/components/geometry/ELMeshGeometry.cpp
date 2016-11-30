@@ -15,10 +15,10 @@ ELGeometryData ELMeshGeometry::generateData() {
 
 void ELMeshGeometry::update(ELFloat timeInSecs) {
     ELGeometry::update(timeInSecs);
-    static float angle = 0.0;
-
-    ELGameObject *gameObj = (ELGameObject *)gameObject();
-    gameObj->transform->quaternion = ELQuaternionMakeWithAngleAndAxis(angle,1,1,1);
-    angle += timeInSecs;
-//    printf("angle => %f \n", timeInSecs);
+//    static float angle = 0.0;
+//
+//    ELGameObject *gameObj = (ELGameObject *)gameObject();
+//    gameObj->transform->quaternion = ELQuaternionMakeWithAngleAndAxis(angle,1,1,1);
+//    angle += timeInSecs;
+////    printf("angle => %f \n", timeInSecs);
 }
