@@ -19,7 +19,6 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/Applications/CLion.app/Contents/bin/cmake/share/cmake-3.6/Modules/Compiler/AppleClang-CXX.cmake"
   "/Applications/CLion.app/Contents/bin/cmake/share/cmake-3.6/Modules/Compiler/Clang.cmake"
   "/Applications/CLion.app/Contents/bin/cmake/share/cmake-3.6/Modules/Compiler/GNU.cmake"
-  "/Applications/CLion.app/Contents/bin/cmake/share/cmake-3.6/Modules/FindGLUT.cmake"
   "/Applications/CLion.app/Contents/bin/cmake/share/cmake-3.6/Modules/FindOpenGL.cmake"
   "/Applications/CLion.app/Contents/bin/cmake/share/cmake-3.6/Modules/FindPackageHandleStandardArgs.cmake"
   "/Applications/CLion.app/Contents/bin/cmake/share/cmake-3.6/Modules/FindPackageMessage.cmake"
@@ -34,7 +33,10 @@ set(CMAKE_MAKEFILE_DEPENDS
   "../CMakeLists.txt"
   "CMakeFiles/3.6.2/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.6.2/CMakeSystem.cmake"
+  "/Users/wangyang/Documents/Projects/On Git/EZGLKit/libs/bullet/CMakeLists.txt"
   "/Users/wangyang/Documents/Projects/On Git/EZGLKit/libs/glad/CMakeLists.txt"
+  "/Users/wangyang/Documents/Projects/On Git/EZGLKit/libs/soil/CMakeLists.txt"
+  "/Users/wangyang/Documents/Projects/On Git/EZGLKit/libs/wavefront/CMakeLists.txt"
   "/usr/local/lib/cmake/glfw3/glfw3Config.cmake"
   "/usr/local/lib/cmake/glfw3/glfw3ConfigVersion.cmake"
   "/usr/local/lib/cmake/glfw3/glfw3Targets-noconfig.cmake"
@@ -52,6 +54,9 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "CMakeFiles/CMakeDirectoryInformation.cmake"
   "EZGLib/CMakeFiles/CMakeDirectoryInformation.cmake"
   "glad/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "soil/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "wavefront/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "bullet/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
@@ -61,4 +66,7 @@ set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/EZGL.dir/DependInfo.cmake"
   "EZGLib/CMakeFiles/EZGLib.dir/DependInfo.cmake"
   "glad/CMakeFiles/glad.dir/DependInfo.cmake"
+  "soil/CMakeFiles/soil.dir/DependInfo.cmake"
+  "wavefront/CMakeFiles/wavefront.dir/DependInfo.cmake"
+  "bullet/CMakeFiles/bullet.dir/DependInfo.cmake"
   )

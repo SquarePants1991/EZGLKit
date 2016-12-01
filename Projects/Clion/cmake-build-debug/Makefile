@@ -175,6 +175,45 @@ glad/fast:
 	$(MAKE) -f glad/CMakeFiles/glad.dir/build.make glad/CMakeFiles/glad.dir/build
 .PHONY : glad/fast
 
+#=============================================================================
+# Target rules for targets named soil
+
+# Build rule for target.
+soil: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 soil
+.PHONY : soil
+
+# fast build rule for target.
+soil/fast:
+	$(MAKE) -f soil/CMakeFiles/soil.dir/build.make soil/CMakeFiles/soil.dir/build
+.PHONY : soil/fast
+
+#=============================================================================
+# Target rules for targets named wavefront
+
+# Build rule for target.
+wavefront: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 wavefront
+.PHONY : wavefront
+
+# fast build rule for target.
+wavefront/fast:
+	$(MAKE) -f wavefront/CMakeFiles/wavefront.dir/build.make wavefront/CMakeFiles/wavefront.dir/build
+.PHONY : wavefront/fast
+
+#=============================================================================
+# Target rules for targets named bullet
+
+# Build rule for target.
+bullet: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 bullet
+.PHONY : bullet
+
+# fast build rule for target.
+bullet/fast:
+	$(MAKE) -f bullet/CMakeFiles/bullet.dir/build.make bullet/CMakeFiles/bullet.dir/build
+.PHONY : bullet/fast
+
 BaseWindow/main.o: BaseWindow/main.cpp.o
 
 .PHONY : BaseWindow/main.o
@@ -269,6 +308,9 @@ help:
 	@echo "... EZGL"
 	@echo "... EZGLib"
 	@echo "... glad"
+	@echo "... soil"
+	@echo "... wavefront"
+	@echo "... bullet"
 	@echo "... BaseWindow/main.o"
 	@echo "... BaseWindow/main.i"
 	@echo "... BaseWindow/main.s"

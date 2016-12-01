@@ -15,7 +15,7 @@ ELWorld::ELWorld() {
 }
 
 ELWorld::ELWorld(ELFloat aspect) {
-    ELVector3 eye = {0, 7, 8};
+    ELVector3 eye = {0, 3, 15};
     ELVector3 center = {0, 0, 0};
     ELVector3 up = {0, 1, 0};
     mainCamera = new ELCamera(eye, center, up, 60.0, aspect, 1, 1000);
@@ -34,10 +34,8 @@ void ELWorld::update(ELFloat timeInSecs) {
 void ELWorld::render() {
     ELCamera *originMainCamera = mainCamera;
 
-    GLint drawFboId = 0, readFboId = 0;
-    glad_glGetIntegerv(GL_DRAW_FRAMEBUFFER_BINDING, &drawFboId);
-    glad_glGetIntegerv(GL_READ_FRAMEBUFFER_BINDING, &readFboId);
 
+    activeEffect("default");
     ELGeometry::renderShadow = true;
     for (int i = 0; i < children.size(); ++i) {
         ELLight * light = dynamic_cast<ELLight *>(children.at(i));
@@ -48,11 +46,23 @@ void ELWorld::render() {
 
     ELGeometry::renderShadow =   false;
     ELGeometry::shadowMap = shadowTexture;
+
+    activeEffect("shadow");
     glad_glViewport(0,0,fbWidth,fbHeight);
     glad_glClearColor(0.95f, 0.95f, 0.95f, 1.0f);
     glad_glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     mainCamera = originMainCamera;
     ELNode::render();
+}
+
+void ELWorld::activeEffect(std::string effectName) {
+    for (int i = 0; i < children.size(); ++i) {
+        ELNode *node = children.at(i);
+        ELEffect *effect = dynamic_cast<ELEffect *>(node);
+        if (effect != NULL && effect->identity == effectName) {
+            activedEffect = effect;
+        }
+    }
 }
 
 void ELWorld::genShadowTextureFromLight(ELLight *light) {
@@ -65,7 +75,7 @@ void ELWorld::genShadowTextureFromLight(ELLight *light) {
     ELVector3 center = {0, 0, 0};
     ELVector3 up = {0, 0, 1};
     mainCamera = new ELCamera(light->position, center,up,60,1,mainCamera->nearZ,mainCamera->farZ);
-    mainCamera->asOrtho(-30.0, 30.0, 30, -30, -40,40);
+    mainCamera->asOrtho(-50.0, 50.0, 50, -50, -40,40);
     ELNode::render();
     ELGeometry::lightCamera = mainCamera;
     glad_glBindFramebuffer(GL_FRAMEBUFFER, 0);

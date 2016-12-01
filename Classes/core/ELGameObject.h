@@ -14,6 +14,7 @@
 class ELComponent;
 class ELLight;
 class ELCamera;
+class ELEffect;
 class ELGameObject : public ELNode {
 public:
     ELGameObject(ELWorld *world);
@@ -27,6 +28,7 @@ public:
     // for components
     std::vector<ELLight *> lights();
     ELCamera *mainCamera();
+    ELEffect *activeEffect();
 
 private:
     ELWorld *world;

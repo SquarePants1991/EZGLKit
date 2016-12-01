@@ -93,6 +93,9 @@ TestShader: CMakeFiles/TestShader.dir/build.make
 TestShader: EZGLib/libEZGLib.a
 TestShader: /usr/local/lib/libglfw3.a
 TestShader: glad/libglad.a
+TestShader: soil/libsoil.a
+TestShader: wavefront/libwavefront.a
+TestShader: bullet/libbullet.a
 TestShader: CMakeFiles/TestShader.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable TestShader"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/TestShader.dir/link.txt --verbose=$(VERBOSE)

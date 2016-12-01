@@ -6,5 +6,5 @@ CXX_FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/Ma
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/usr/local -I/usr/local/include -I"/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes" -I"/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../libs/glad/include" 
+CXX_INCLUDES = -I/usr/local -I/usr/local/include -I"/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes" -I"/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../libs/glad/include" -I"/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../libs/soil" -I"/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../libs/wavefront" -I"/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../libs/bullet" 
 

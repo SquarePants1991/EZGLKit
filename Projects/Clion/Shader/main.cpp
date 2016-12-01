@@ -12,10 +12,11 @@ void key_callback(GLFWwindow*,int,int,int,int);
 
 ELWorld *world;
 double lastTime = 0;
-const float WindowWidth = 400;
-const float WindowHeight = 220;
+const float WindowWidth = 800;
+const float WindowHeight = 600;
 ELGameObject *player;
 ELRigidBody *playerRigidBody;
+ELLight * defaultLight;
 
 #include <iostream>
 #include "EZGL.h"
@@ -52,7 +53,8 @@ int main(int argc,char **argv) {
     /* Make the window's context current */
     glfwMakeContextCurrent(window);
 
-    glfwSetWindowPos(window,0,1920 - WindowHeight);
+//    glfwSetWindowPos(window,0,1920 - WindowHeight);
+        glfwSetWindowPos(window,0,0);
 
     if (!gladLoadGLLoader((GLADloadproc) glfwGetProcAddress))
     {
@@ -106,23 +108,31 @@ void init() {
 
     ELAssets::shared()->addSearchPath("/Users/ocean/Documents/Codes/On Git/EZGLKit/Projects/Clion/");
     ELAssets::shared()->addSearchPath("/Users/ocean/Documents/Codes/On Git/EZGLKit/Projects/Clion/Shader/");
+    ELAssets::shared()->addSearchPath("/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/");
+    ELAssets::shared()->addSearchPath("/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/Shader/");
 
     std::string vertexShader = ELFileUtil::stringContentOfFile(ELAssets::shared()->findFile("vertex.glsl").c_str());
     std::string fragShader = ELFileUtil::stringContentOfFile(ELAssets::shared()->findFile("frag.glsl").c_str());
-    ELEffect *effect = new ELEffect(vertexShader.c_str(), fragShader.c_str());
+    std::string shadowFragShader = ELFileUtil::stringContentOfFile(ELAssets::shared()->findFile("shadow_frag.glsl").c_str());
+    ELEffect * activeEffect = new ELEffect(vertexShader.c_str(), fragShader.c_str());
+    ELEffect * shadowEffect = new ELEffect(vertexShader.c_str(), shadowFragShader.c_str());
 
-    ELLight *defaultLight = new ELLight();
-    defaultLight->position = ELVector3Make(8,8,-8);
+    activeEffect->identity = "default";
+    activeEffect->identity = "shadow";
+    world->addNode(activeEffect);
+    world->addNode(shadowEffect);
+
+    defaultLight = new ELLight();
+    defaultLight->position = ELVector3Make(0,8,0);
     defaultLight->color = ELVector4Make(1.0,1.0,1.0,1.0);
     defaultLight->intensity = 1.0;
     world->addNode(defaultLight);
 
     ELGameObject *gameObject = new ELGameObject(world);
-    world->addNode(gameObject);
+//    world->addNode(gameObject);
     gameObject->transform->position = ELVector3Make(0, 4.5, 0);
     ELCubeGeometry *cube = new ELCubeGeometry(ELVector3Make(1,1,1));
     gameObject->addComponent(cube);
-    gameObject->addComponent(effect);
     cube->material.diffuse = ELVector4Make(1.0,0.0,0.0,1.0);
 //    cube->material.diffuseMap = ELTexture::texture(ELAssets::shared()->findFile("rock.png"))->value;
 //    cube->material.normalMap = ELTexture::texture(ELAssets::shared()->findFile("rock_NRM.png"))->value;
@@ -142,7 +152,6 @@ void init() {
     gameObject2->transform->position = ELVector3Make(0, 0, 0);
     ELCubeGeometry *plane = new ELCubeGeometry(ELVector3Make(80,1,80));
     gameObject2->addComponent(plane);
-    gameObject2->addComponent(effect);
     plane->material.diffuse = ELVector4Make(1.0,1.0,1.0,1.0);
 //   plane->material.diffuseMap = ELTexture::texture(ELAssets::shared()->findFile("rock.png"))->value;
    plane->material.normalMap = ELTexture::texture(ELAssets::shared()->findFile("rock_NRM.png"))->value;
@@ -161,16 +170,16 @@ void init() {
 //    gameObject3->addComponent(effect);
 //    plane2->material.diffuse = ELVector4Make(1.0,0.0,0.0,1.0);
 
-//    std::vector<ELMeshGeometry *> geometries =  ELWaveFrontLoader::loadFile(ELAssets::shared()->findFile("scene1.obj"));
-//    for (int i = 0; i < geometries.size(); ++i) {
-//        ELGameObject *gameObjectMesh = new ELGameObject(world);
-//        world->addNode(gameObjectMesh);
-//        gameObjectMesh->addComponent(geometries.at(i));
+    std::vector<ELMeshGeometry *> geometries =  ELWaveFrontLoader::loadFile(ELAssets::shared()->findFile("scene3.obj"));
+    for (int i = 0; i < geometries.size(); ++i) {
+        ELGameObject *gameObjectMesh = new ELGameObject(world);
+        world->addNode(gameObjectMesh);
+        gameObjectMesh->addComponent(geometries.at(i));
 //        gameObjectMesh->addComponent(effect);
-//        gameObjectMesh->transform->position = ELVector3Make( 0 , 0 , 0);
-//        geometries.at(i)->material.diffuseMap = ELTexture::texture(ELAssets::shared()->findFile("rock.png"))->value;
-//        geometries.at(i)->material.normalMap = ELTexture::texture(ELAssets::shared()->findFile("rock_NRM.png"))->value;
-//    }
+        gameObjectMesh->transform->position = ELVector3Make( 0 , 0 , 0);
+        geometries.at(i)->material.diffuseMap = ELTexture::texture(ELAssets::shared()->findFile("rock.png"))->value;
+        geometries.at(i)->material.normalMap = ELTexture::texture(ELAssets::shared()->findFile("rock_NRM.png"))->value;
+    }
 
     world->mainCamera->lockOn(gameObject->transform);
 
@@ -184,6 +193,8 @@ void render() {
     double currentTimeInMs = glfwGetTime();
     double elapsedTime = currentTimeInMs - lastTime;
     lastTime = currentTimeInMs;
+
+    defaultLight->position = ELVector3Make(defaultLight->position.x + elapsedTime,defaultLight->position.y,defaultLight->position.z + elapsedTime);
 
     world->update(elapsedTime);
     world->render();

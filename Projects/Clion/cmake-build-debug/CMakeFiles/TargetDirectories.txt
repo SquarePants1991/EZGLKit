@@ -9,3 +9,12 @@
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/glad/CMakeFiles/edit_cache.dir
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/glad/CMakeFiles/rebuild_cache.dir
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/glad/CMakeFiles/glad.dir
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/soil/CMakeFiles/edit_cache.dir
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/soil/CMakeFiles/rebuild_cache.dir
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/soil/CMakeFiles/soil.dir
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/wavefront/CMakeFiles/edit_cache.dir
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/wavefront/CMakeFiles/rebuild_cache.dir
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/wavefront/CMakeFiles/wavefront.dir
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/bullet/CMakeFiles/edit_cache.dir
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/bullet/CMakeFiles/rebuild_cache.dir
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/bullet/CMakeFiles/bullet.dir

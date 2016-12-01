@@ -192,8 +192,8 @@ vec4 render() {
     highp vec3 lightPosition = lights[0].position;
     highp vec3 vp = normalize(lightPosition - mMatrixPosition);
     float cosTheta = clamp(dot(textureNormal, vp),0,1);
-    float bias = 0.001*tan(acos(cosTheta));
-    bias = clamp(bias, 0,0.005);
+    float bias = 0.005*tan(acos(cosTheta));
+    bias = clamp(bias, 0,0.01);
 
     vec4 shadowColor;
     float shadow = shadowValue(bias, shadowColor);

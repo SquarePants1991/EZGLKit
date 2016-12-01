@@ -9,6 +9,7 @@
 #include <vector>
 #include "ELCamera.h"
 #include "ELPhysicsWorld.h"
+#include "ELEffect.h"
 
 class ELLight;
 
@@ -21,11 +22,15 @@ public:
 
     int fbWidth;
     int fbHeight;
+
+    ELEffect *activedEffect;
 public:
     ELWorld();
     ELWorld(ELFloat aspect);
     virtual void update(ELFloat timeInSecs);
     virtual void render();
+
+    void activeEffect(std::string effectName);
 
 private:
     ELUint shadowFramebuffer;

@@ -152,32 +152,32 @@ EZGL.cpp.s:
 	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug" && $(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/EZGL.cpp.s
 .PHONY : EZGL.cpp.s
 
-components/ELEffect.o: components/ELEffect.cpp.o
+components/ELCollisionShape.o: components/ELCollisionShape.cpp.o
 
-.PHONY : components/ELEffect.o
+.PHONY : components/ELCollisionShape.o
 
 # target to build an object file
-components/ELEffect.cpp.o:
-	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug" && $(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/components/ELEffect.cpp.o
-.PHONY : components/ELEffect.cpp.o
+components/ELCollisionShape.cpp.o:
+	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug" && $(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/components/ELCollisionShape.cpp.o
+.PHONY : components/ELCollisionShape.cpp.o
 
-components/ELEffect.i: components/ELEffect.cpp.i
+components/ELCollisionShape.i: components/ELCollisionShape.cpp.i
 
-.PHONY : components/ELEffect.i
+.PHONY : components/ELCollisionShape.i
 
 # target to preprocess a source file
-components/ELEffect.cpp.i:
-	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug" && $(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/components/ELEffect.cpp.i
-.PHONY : components/ELEffect.cpp.i
+components/ELCollisionShape.cpp.i:
+	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug" && $(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/components/ELCollisionShape.cpp.i
+.PHONY : components/ELCollisionShape.cpp.i
 
-components/ELEffect.s: components/ELEffect.cpp.s
+components/ELCollisionShape.s: components/ELCollisionShape.cpp.s
 
-.PHONY : components/ELEffect.s
+.PHONY : components/ELCollisionShape.s
 
 # target to generate assembly for a file
-components/ELEffect.cpp.s:
-	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug" && $(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/components/ELEffect.cpp.s
-.PHONY : components/ELEffect.cpp.s
+components/ELCollisionShape.cpp.s:
+	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug" && $(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/components/ELCollisionShape.cpp.s
+.PHONY : components/ELCollisionShape.cpp.s
 
 components/ELGeometry.o: components/ELGeometry.cpp.o
 
@@ -206,6 +206,33 @@ components/ELGeometry.cpp.s:
 	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug" && $(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/components/ELGeometry.cpp.s
 .PHONY : components/ELGeometry.cpp.s
 
+components/ELRigidBody.o: components/ELRigidBody.cpp.o
+
+.PHONY : components/ELRigidBody.o
+
+# target to build an object file
+components/ELRigidBody.cpp.o:
+	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug" && $(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/components/ELRigidBody.cpp.o
+.PHONY : components/ELRigidBody.cpp.o
+
+components/ELRigidBody.i: components/ELRigidBody.cpp.i
+
+.PHONY : components/ELRigidBody.i
+
+# target to preprocess a source file
+components/ELRigidBody.cpp.i:
+	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug" && $(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/components/ELRigidBody.cpp.i
+.PHONY : components/ELRigidBody.cpp.i
+
+components/ELRigidBody.s: components/ELRigidBody.cpp.s
+
+.PHONY : components/ELRigidBody.s
+
+# target to generate assembly for a file
+components/ELRigidBody.cpp.s:
+	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug" && $(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/components/ELRigidBody.cpp.s
+.PHONY : components/ELRigidBody.cpp.s
+
 components/geometry/ELCubeGeometry.o: components/geometry/ELCubeGeometry.cpp.o
 
 .PHONY : components/geometry/ELCubeGeometry.o
@@ -232,6 +259,33 @@ components/geometry/ELCubeGeometry.s: components/geometry/ELCubeGeometry.cpp.s
 components/geometry/ELCubeGeometry.cpp.s:
 	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug" && $(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/components/geometry/ELCubeGeometry.cpp.s
 .PHONY : components/geometry/ELCubeGeometry.cpp.s
+
+components/geometry/ELMeshGeometry.o: components/geometry/ELMeshGeometry.cpp.o
+
+.PHONY : components/geometry/ELMeshGeometry.o
+
+# target to build an object file
+components/geometry/ELMeshGeometry.cpp.o:
+	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug" && $(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/components/geometry/ELMeshGeometry.cpp.o
+.PHONY : components/geometry/ELMeshGeometry.cpp.o
+
+components/geometry/ELMeshGeometry.i: components/geometry/ELMeshGeometry.cpp.i
+
+.PHONY : components/geometry/ELMeshGeometry.i
+
+# target to preprocess a source file
+components/geometry/ELMeshGeometry.cpp.i:
+	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug" && $(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/components/geometry/ELMeshGeometry.cpp.i
+.PHONY : components/geometry/ELMeshGeometry.cpp.i
+
+components/geometry/ELMeshGeometry.s: components/geometry/ELMeshGeometry.cpp.s
+
+.PHONY : components/geometry/ELMeshGeometry.s
+
+# target to generate assembly for a file
+components/geometry/ELMeshGeometry.cpp.s:
+	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug" && $(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/components/geometry/ELMeshGeometry.cpp.s
+.PHONY : components/geometry/ELMeshGeometry.cpp.s
 
 components/geometry/ELPlaneGeometry.o: components/geometry/ELPlaneGeometry.cpp.o
 
@@ -314,6 +368,33 @@ core/ELComponent.cpp.s:
 	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug" && $(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/core/ELComponent.cpp.s
 .PHONY : core/ELComponent.cpp.s
 
+core/ELEffect.o: core/ELEffect.cpp.o
+
+.PHONY : core/ELEffect.o
+
+# target to build an object file
+core/ELEffect.cpp.o:
+	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug" && $(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/core/ELEffect.cpp.o
+.PHONY : core/ELEffect.cpp.o
+
+core/ELEffect.i: core/ELEffect.cpp.i
+
+.PHONY : core/ELEffect.i
+
+# target to preprocess a source file
+core/ELEffect.cpp.i:
+	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug" && $(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/core/ELEffect.cpp.i
+.PHONY : core/ELEffect.cpp.i
+
+core/ELEffect.s: core/ELEffect.cpp.s
+
+.PHONY : core/ELEffect.s
+
+# target to generate assembly for a file
+core/ELEffect.cpp.s:
+	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug" && $(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/core/ELEffect.cpp.s
+.PHONY : core/ELEffect.cpp.s
+
 core/ELGameObject.o: core/ELGameObject.cpp.o
 
 .PHONY : core/ELGameObject.o
@@ -395,6 +476,33 @@ core/ELNode.cpp.s:
 	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug" && $(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/core/ELNode.cpp.s
 .PHONY : core/ELNode.cpp.s
 
+core/ELPhysicsWorld.o: core/ELPhysicsWorld.cpp.o
+
+.PHONY : core/ELPhysicsWorld.o
+
+# target to build an object file
+core/ELPhysicsWorld.cpp.o:
+	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug" && $(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/core/ELPhysicsWorld.cpp.o
+.PHONY : core/ELPhysicsWorld.cpp.o
+
+core/ELPhysicsWorld.i: core/ELPhysicsWorld.cpp.i
+
+.PHONY : core/ELPhysicsWorld.i
+
+# target to preprocess a source file
+core/ELPhysicsWorld.cpp.i:
+	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug" && $(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/core/ELPhysicsWorld.cpp.i
+.PHONY : core/ELPhysicsWorld.cpp.i
+
+core/ELPhysicsWorld.s: core/ELPhysicsWorld.cpp.s
+
+.PHONY : core/ELPhysicsWorld.s
+
+# target to generate assembly for a file
+core/ELPhysicsWorld.cpp.s:
+	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug" && $(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/core/ELPhysicsWorld.cpp.s
+.PHONY : core/ELPhysicsWorld.cpp.s
+
 core/ELProgram.o: core/ELProgram.cpp.o
 
 .PHONY : core/ELProgram.o
@@ -422,6 +530,33 @@ core/ELProgram.cpp.s:
 	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug" && $(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/core/ELProgram.cpp.s
 .PHONY : core/ELProgram.cpp.s
 
+core/ELTexture.o: core/ELTexture.cpp.o
+
+.PHONY : core/ELTexture.o
+
+# target to build an object file
+core/ELTexture.cpp.o:
+	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug" && $(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/core/ELTexture.cpp.o
+.PHONY : core/ELTexture.cpp.o
+
+core/ELTexture.i: core/ELTexture.cpp.i
+
+.PHONY : core/ELTexture.i
+
+# target to preprocess a source file
+core/ELTexture.cpp.i:
+	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug" && $(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/core/ELTexture.cpp.i
+.PHONY : core/ELTexture.cpp.i
+
+core/ELTexture.s: core/ELTexture.cpp.s
+
+.PHONY : core/ELTexture.s
+
+# target to generate assembly for a file
+core/ELTexture.cpp.s:
+	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug" && $(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/core/ELTexture.cpp.s
+.PHONY : core/ELTexture.cpp.s
+
 core/ELWorld.o: core/ELWorld.cpp.o
 
 .PHONY : core/ELWorld.o
@@ -448,6 +583,33 @@ core/ELWorld.s: core/ELWorld.cpp.s
 core/ELWorld.cpp.s:
 	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug" && $(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/core/ELWorld.cpp.s
 .PHONY : core/ELWorld.cpp.s
+
+utils/ELAssets.o: utils/ELAssets.cpp.o
+
+.PHONY : utils/ELAssets.o
+
+# target to build an object file
+utils/ELAssets.cpp.o:
+	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug" && $(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/utils/ELAssets.cpp.o
+.PHONY : utils/ELAssets.cpp.o
+
+utils/ELAssets.i: utils/ELAssets.cpp.i
+
+.PHONY : utils/ELAssets.i
+
+# target to preprocess a source file
+utils/ELAssets.cpp.i:
+	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug" && $(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/utils/ELAssets.cpp.i
+.PHONY : utils/ELAssets.cpp.i
+
+utils/ELAssets.s: utils/ELAssets.cpp.s
+
+.PHONY : utils/ELAssets.s
+
+# target to generate assembly for a file
+utils/ELAssets.cpp.s:
+	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug" && $(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/utils/ELAssets.cpp.s
+.PHONY : utils/ELAssets.cpp.s
 
 utils/ELFileUtil.o: utils/ELFileUtil.cpp.o
 
@@ -503,6 +665,33 @@ utils/ELGeometryVertexBuffer.cpp.s:
 	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug" && $(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/utils/ELGeometryVertexBuffer.cpp.s
 .PHONY : utils/ELGeometryVertexBuffer.cpp.s
 
+utils/ELWaveFrontLoader.o: utils/ELWaveFrontLoader.cpp.o
+
+.PHONY : utils/ELWaveFrontLoader.o
+
+# target to build an object file
+utils/ELWaveFrontLoader.cpp.o:
+	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug" && $(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/utils/ELWaveFrontLoader.cpp.o
+.PHONY : utils/ELWaveFrontLoader.cpp.o
+
+utils/ELWaveFrontLoader.i: utils/ELWaveFrontLoader.cpp.i
+
+.PHONY : utils/ELWaveFrontLoader.i
+
+# target to preprocess a source file
+utils/ELWaveFrontLoader.cpp.i:
+	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug" && $(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/utils/ELWaveFrontLoader.cpp.i
+.PHONY : utils/ELWaveFrontLoader.cpp.i
+
+utils/ELWaveFrontLoader.s: utils/ELWaveFrontLoader.cpp.s
+
+.PHONY : utils/ELWaveFrontLoader.s
+
+# target to generate assembly for a file
+utils/ELWaveFrontLoader.cpp.s:
+	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug" && $(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/utils/ELWaveFrontLoader.cpp.s
+.PHONY : utils/ELWaveFrontLoader.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -515,15 +704,21 @@ help:
 	@echo "... EZGL.o"
 	@echo "... EZGL.i"
 	@echo "... EZGL.s"
-	@echo "... components/ELEffect.o"
-	@echo "... components/ELEffect.i"
-	@echo "... components/ELEffect.s"
+	@echo "... components/ELCollisionShape.o"
+	@echo "... components/ELCollisionShape.i"
+	@echo "... components/ELCollisionShape.s"
 	@echo "... components/ELGeometry.o"
 	@echo "... components/ELGeometry.i"
 	@echo "... components/ELGeometry.s"
+	@echo "... components/ELRigidBody.o"
+	@echo "... components/ELRigidBody.i"
+	@echo "... components/ELRigidBody.s"
 	@echo "... components/geometry/ELCubeGeometry.o"
 	@echo "... components/geometry/ELCubeGeometry.i"
 	@echo "... components/geometry/ELCubeGeometry.s"
+	@echo "... components/geometry/ELMeshGeometry.o"
+	@echo "... components/geometry/ELMeshGeometry.i"
+	@echo "... components/geometry/ELMeshGeometry.s"
 	@echo "... components/geometry/ELPlaneGeometry.o"
 	@echo "... components/geometry/ELPlaneGeometry.i"
 	@echo "... components/geometry/ELPlaneGeometry.s"
@@ -533,6 +728,9 @@ help:
 	@echo "... core/ELComponent.o"
 	@echo "... core/ELComponent.i"
 	@echo "... core/ELComponent.s"
+	@echo "... core/ELEffect.o"
+	@echo "... core/ELEffect.i"
+	@echo "... core/ELEffect.s"
 	@echo "... core/ELGameObject.o"
 	@echo "... core/ELGameObject.i"
 	@echo "... core/ELGameObject.s"
@@ -542,18 +740,30 @@ help:
 	@echo "... core/ELNode.o"
 	@echo "... core/ELNode.i"
 	@echo "... core/ELNode.s"
+	@echo "... core/ELPhysicsWorld.o"
+	@echo "... core/ELPhysicsWorld.i"
+	@echo "... core/ELPhysicsWorld.s"
 	@echo "... core/ELProgram.o"
 	@echo "... core/ELProgram.i"
 	@echo "... core/ELProgram.s"
+	@echo "... core/ELTexture.o"
+	@echo "... core/ELTexture.i"
+	@echo "... core/ELTexture.s"
 	@echo "... core/ELWorld.o"
 	@echo "... core/ELWorld.i"
 	@echo "... core/ELWorld.s"
+	@echo "... utils/ELAssets.o"
+	@echo "... utils/ELAssets.i"
+	@echo "... utils/ELAssets.s"
 	@echo "... utils/ELFileUtil.o"
 	@echo "... utils/ELFileUtil.i"
 	@echo "... utils/ELFileUtil.s"
 	@echo "... utils/ELGeometryVertexBuffer.o"
 	@echo "... utils/ELGeometryVertexBuffer.i"
 	@echo "... utils/ELGeometryVertexBuffer.s"
+	@echo "... utils/ELWaveFrontLoader.o"
+	@echo "... utils/ELWaveFrontLoader.i"
+	@echo "... utils/ELWaveFrontLoader.s"
 .PHONY : help
 
 

@@ -1,5 +1,4 @@
 /Applications/CLion.app/Contents/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion"
--- Now is Apple systens.
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug

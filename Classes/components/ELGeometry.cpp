@@ -4,7 +4,7 @@
 
 #include <core/ELCamera.h>
 #include "ELGeometry.h"
-#include "ELEffect.h"
+#include "core/ELEffect.h"
 #include "core/ELGameObject.h"
 
 bool ELGeometry::renderShadow = false;
@@ -130,10 +130,5 @@ void ELGeometry::setupVao() {
 }
 
 ELEffect * ELGeometry::effect() {
-    std::vector<ELNode *> effects = gameObject()->findChildrenWithKind("effect");
-    if (effects.size() == 0) {
-        return ELEffect::defaultEffect();
-    }
-    ELEffect *effect = dynamic_cast<ELEffect *>(effects.at(0));
-    return effect;
+    return gameObject()->activeEffect();
 }

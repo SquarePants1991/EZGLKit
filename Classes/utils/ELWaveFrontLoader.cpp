@@ -62,7 +62,7 @@ ELMeshGeometry * ELWaveFrontLoader::buildGeometry(tinyobj::shape_t shape, tinyob
     }
     ELGeometryData geometryData;
     ELGeometryVertexBuffer *buffer = generateVertexBuffer(attrib, indices);
-//    [buffer caculatePerVertexNormal]; //TODO: add func
+    buffer->caculatePerVertexNormal();
     generateVertexVBO(buffer, &geometryData);
     ELMeshGeometry * geometry = new ELMeshGeometry(geometryData);
     if (shape.mesh.material_ids[0] >= 0 && shape.mesh.material_ids[0] < materials.size()) {
