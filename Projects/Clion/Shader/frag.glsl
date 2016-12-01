@@ -19,7 +19,7 @@ out vec4 fragColor;
 #define tex2D(map, uv) texture(map, uv)
 #endif
 
-out float fragmentdepth;
+out float outDepth;
 
 struct light {
     vec3 position;
@@ -106,7 +106,6 @@ float unpack (vec4 v)
 }
 
 vec4 renderAsShadow() {
-    fragmentdepth = gl_FragCoord.z;
     highp vec4 v_v4TexCoord = viewProjection * modelMatrix * fragPosition;
     highp vec3 lightPosition = lights[0].position;
     float normalizedDistance  = distance(v_v4TexCoord.xyz,lightPosition.xyz);
@@ -119,21 +118,20 @@ float shadowValue(float bias,out vec4 shadowColor) {
     lightMVPPosition = lightMVPPosition * 0.5 + 0.5;
     float nearestDepth = tex2D(shadowMap, lightMVPPosition.st).x;
     float shadow = 1.0;
-
-    vec2 poissonDisk[4] = vec2[](
-      vec2( -0.94201624, -0.39906216 ),
-      vec2( 0.94558609, -0.76890725 ),
-      vec2( -0.094184101, -0.92938870 ),
-      vec2( 0.34495938, 0.29387760 )
-    );
-
-shadowColor = tex2D(shadowMap, fragTexcoord);//vec4(nearestDepth,nearestDepth,nearestDepth,1.0);
-    for (int i=0;i<4;i++){
-      if ( tex2D( shadowMap, lightMVPPosition.st  + poissonDisk[i]/20000.0).x  <  lightMVPPosition.z - bias) {
-        shadow -= 0.15;
-      }
+    vec2 texelSize = 1.0 / textureSize(shadowMap, 0);
+    int blurSize = 1;
+    for(int x = -blurSize; x <= blurSize; ++x)
+    {
+        for(int y = -blurSize; y <= blurSize; ++y)
+        {
+            float pcfDepth = tex2D(shadowMap, lightMVPPosition.xy + vec2(x, y) * texelSize).r;
+            shadow += lightMVPPosition.z - bias > pcfDepth ? 1.0 : 0.0;
+        }
     }
-    return shadow;
+    shadow /= 9.0;
+
+    shadowColor = vec4(vec3(nearestDepth),1.0);
+    return 1 - shadow;
 }
 
 vec4 render() {
@@ -194,12 +192,12 @@ vec4 render() {
     highp vec3 lightPosition = lights[0].position;
     highp vec3 vp = normalize(lightPosition - mMatrixPosition);
     float cosTheta = clamp(dot(textureNormal, vp),0,1);
-    float bias = 0.005*tan(acos(cosTheta));
-    bias = clamp(bias, 0,0.01);
+    float bias = 0.001*tan(acos(cosTheta));
+    bias = clamp(bias, 0,0.005);
 
     vec4 shadowColor;
     float shadow = shadowValue(bias, shadowColor);
-    return shadowColor;
+//    return shadowColor;
 
     highp vec4 finalColor = tex2D(diffuseMap, fragTexcoord) + material.diffuse;
     return (finalColor * sum_diffuse + finalColor * sum_ambient + finalColor * sum_specular) * shadow;
@@ -212,6 +210,7 @@ void main()
 {
     if (renderShadow == 1) {
         renderAsShadow();
+        outDepth = gl_FragCoord.z;
     } else {
         outColor = render();
     }

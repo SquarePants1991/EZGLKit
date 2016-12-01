@@ -39,6 +39,7 @@ int main(int argc,char **argv) {
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+    glfwWindowHint(GLFW_SAMPLES, 3);
 
     /* Create a windowed mode window and its OpenGL context */
     window = glfwCreateWindow(WindowWidth, WindowHeight, "Hello World", NULL, NULL);
@@ -111,14 +112,14 @@ void init() {
     ELEffect *effect = new ELEffect(vertexShader.c_str(), fragShader.c_str());
 
     ELLight *defaultLight = new ELLight();
-    defaultLight->position = ELVector3Make(0,8,-8);
+    defaultLight->position = ELVector3Make(8,8,-8);
     defaultLight->color = ELVector4Make(1.0,1.0,1.0,1.0);
     defaultLight->intensity = 1.0;
     world->addNode(defaultLight);
 
     ELGameObject *gameObject = new ELGameObject(world);
     world->addNode(gameObject);
-    gameObject->transform->position = ELVector3Make(0, 0.5, 0);
+    gameObject->transform->position = ELVector3Make(0, 4.5, 0);
     ELCubeGeometry *cube = new ELCubeGeometry(ELVector3Make(1,1,1));
     gameObject->addComponent(cube);
     gameObject->addComponent(effect);
@@ -132,22 +133,22 @@ void init() {
     collisionShape->asBox(ELVector3Make(0.5,0.5,0.5));
     ELRigidBody *rigidBody = new ELRigidBody(collisionShape,1.0);
     gameObject->addComponent(rigidBody);
-    rigidBody->setVelocity(ELVector3Make(0, 0, 0));
+    rigidBody->setVelocity(ELVector3Make(0, 0, 10));
     playerRigidBody = rigidBody;
 
 
     ELGameObject *gameObject2 = new ELGameObject(world);
     world->addNode(gameObject2);
     gameObject2->transform->position = ELVector3Make(0, 0, 0);
-    ELCubeGeometry *plane = new ELCubeGeometry(ELVector3Make(8,2,8));
+    ELCubeGeometry *plane = new ELCubeGeometry(ELVector3Make(80,1,80));
     gameObject2->addComponent(plane);
     gameObject2->addComponent(effect);
-    plane->material.diffuse = ELVector4Make(0.0,0.0,0.0,1.0);
-   plane->material.diffuseMap = ELTexture::texture(ELAssets::shared()->findFile("rock.png"))->value;
-//   plane->material.normalMap = 0;//ELTexture::texture(ELAssets::shared()->findFile("rock_NRM.png"))->value;
+    plane->material.diffuse = ELVector4Make(1.0,1.0,1.0,1.0);
+//   plane->material.diffuseMap = ELTexture::texture(ELAssets::shared()->findFile("rock.png"))->value;
+   plane->material.normalMap = ELTexture::texture(ELAssets::shared()->findFile("rock_NRM.png"))->value;
 
     ELCollisionShape *collisionShape2 = new ELCollisionShape();
-    collisionShape2->asBox(ELVector3Make(4,1,4));
+    collisionShape2->asBox(ELVector3Make(40,0.5,40));
     ELRigidBody *rigidBody2 = new ELRigidBody(collisionShape2,0.0);
     gameObject2->addComponent(rigidBody2);
 
@@ -160,20 +161,22 @@ void init() {
 //    gameObject3->addComponent(effect);
 //    plane2->material.diffuse = ELVector4Make(1.0,0.0,0.0,1.0);
 
-//    std::vector<ELMeshGeometry *> geometries =  ELWaveFrontLoader::loadFile(ELAssets::shared()->findFile("monkey.obj"));
+//    std::vector<ELMeshGeometry *> geometries =  ELWaveFrontLoader::loadFile(ELAssets::shared()->findFile("scene1.obj"));
 //    for (int i = 0; i < geometries.size(); ++i) {
 //        ELGameObject *gameObjectMesh = new ELGameObject(world);
 //        world->addNode(gameObjectMesh);
 //        gameObjectMesh->addComponent(geometries.at(i));
 //        gameObjectMesh->addComponent(effect);
-//        gameObjectMesh->transform->position = ELVector3Make( 0 , 1.5, 0);
+//        gameObjectMesh->transform->position = ELVector3Make( 0 , 0 , 0);
 //        geometries.at(i)->material.diffuseMap = ELTexture::texture(ELAssets::shared()->findFile("rock.png"))->value;
 //        geometries.at(i)->material.normalMap = ELTexture::texture(ELAssets::shared()->findFile("rock_NRM.png"))->value;
 //    }
 
-//    world->mainCamera->lockOn(gameObject->transform);
+    world->mainCamera->lockOn(gameObject->transform);
 
-    glEnable(GL_CULL_FACE);
+    glad_glEnable(GL_CULL_FACE);
+    glad_glDepthMask(GL_TRUE);
+    glad_glDepthFunc(GL_LESS);
     glad_glEnable(GL_DEPTH_TEST);
 }
 
@@ -199,7 +202,7 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 {
     if (action == GLFW_PRESS) {
         if (key == GLFW_KEY_UP) {
-            playerRigidBody->setVelocityZ(-5);
+            playerRigidBody->setVelocityZ(-15);
         }
         if (key == GLFW_KEY_DOWN) {
             playerRigidBody->setVelocityZ(5);

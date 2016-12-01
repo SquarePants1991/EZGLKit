@@ -30,7 +30,7 @@ void main()
 {
     fragTexcoord = texcoord;
     fragNormal = normal;
-    fragPosition = position;
+    fragPosition = position + vec4(normalize(fragNormal) * 0.1, 0.0);
     fragTangent = tangent;
     fragBitangent = bitangent;
 

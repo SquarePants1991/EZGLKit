@@ -28,6 +28,8 @@ ELCamera::ELCamera(ELVector3 eye,ELVector3 lookAt,ELVector3 up,ELFloat fovyRadia
 void ELCamera::asOrtho(ELFloat left,ELFloat right,ELFloat top,ELFloat bottom,ELFloat nearZ,ELFloat farZ) {
     isOrtho = true;
     orthoView = ELVector4Make(left,right,top,bottom);
+    this->nearZ = nearZ;
+    this->farZ = farZ;
 }
 
 ELMatrix4 ELCamera::matrix() {
