@@ -24,7 +24,7 @@ std::vector<ELLight *> ELGameObject::lights() {
 }
 
 ELCamera * ELGameObject::mainCamera() {
-    return world->mainCamera;
+    return world->activedCamera;
 }
 
 ELEffect * ELGameObject::activeEffect() {

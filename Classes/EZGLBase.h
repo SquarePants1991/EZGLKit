@@ -11,8 +11,9 @@
 #include <vector>
 #include <map>
 
-#if Platform_OSX
 #include "glad/glad.h"
+
+#if Platform_OSX
 #include <GLFW/glfw3.h>
 #endif
 

@@ -9,11 +9,12 @@ void render();
 void resize(GLFWwindow *window ,int w,int h);
 void setupWindow(int argc,char **argv);
 void key_callback(GLFWwindow*,int,int,int,int);
+void focus_callback(GLFWwindow*,int);
 
 ELWorld *world;
 double lastTime = 0;
-const float WindowWidth = 800;
-const float WindowHeight = 600;
+const float WindowWidth = 400;
+const float WindowHeight = 200;
 ELGameObject *player;
 ELRigidBody *playerRigidBody;
 ELLight * defaultLight;
@@ -53,8 +54,8 @@ int main(int argc,char **argv) {
     /* Make the window's context current */
     glfwMakeContextCurrent(window);
 
-//    glfwSetWindowPos(window,0,1920 - WindowHeight);
-        glfwSetWindowPos(window,0,0);
+    glfwSetWindowPos(window,0,1920 - WindowHeight);
+//        glfwSetWindowPos(window,0,0);
 
     if (!gladLoadGLLoader((GLADloadproc) glfwGetProcAddress))
     {
@@ -74,6 +75,7 @@ int main(int argc,char **argv) {
     glfwSwapInterval(1);
     glfwSetWindowSizeCallback(window,resize);
     glfwSetKeyCallback(window, key_callback);
+    glfwSetWindowFocusCallback(window,focus_callback);
 
     init();
 
@@ -117,19 +119,21 @@ void init() {
     ELEffect * activeEffect = new ELEffect(vertexShader.c_str(), fragShader.c_str());
     ELEffect * shadowEffect = new ELEffect(vertexShader.c_str(), shadowFragShader.c_str());
 
-    activeEffect->identity = "default";
-    activeEffect->identity = "shadow";
+    activeEffect->identity = "render_scene";
+    shadowEffect->identity = "gen_shadow";
     world->addNode(activeEffect);
     world->addNode(shadowEffect);
 
     defaultLight = new ELLight();
-    defaultLight->position = ELVector3Make(0,8,0);
+    defaultLight->position = ELVector3Make(8,8,8);
     defaultLight->color = ELVector4Make(1.0,1.0,1.0,1.0);
     defaultLight->intensity = 1.0;
+    defaultLight->identity = "main-light";
+    defaultLight->enableShadow();
     world->addNode(defaultLight);
 
     ELGameObject *gameObject = new ELGameObject(world);
-//    world->addNode(gameObject);
+    world->addNode(gameObject);
     gameObject->transform->position = ELVector3Make(0, 4.5, 0);
     ELCubeGeometry *cube = new ELCubeGeometry(ELVector3Make(1,1,1));
     gameObject->addComponent(cube);
@@ -143,7 +147,7 @@ void init() {
     collisionShape->asBox(ELVector3Make(0.5,0.5,0.5));
     ELRigidBody *rigidBody = new ELRigidBody(collisionShape,1.0);
     gameObject->addComponent(rigidBody);
-    rigidBody->setVelocity(ELVector3Make(0, 0, 10));
+    rigidBody->setVelocity(ELVector3Make(0, 0, 0));
     playerRigidBody = rigidBody;
 
 
@@ -170,18 +174,18 @@ void init() {
 //    gameObject3->addComponent(effect);
 //    plane2->material.diffuse = ELVector4Make(1.0,0.0,0.0,1.0);
 
-    std::vector<ELMeshGeometry *> geometries =  ELWaveFrontLoader::loadFile(ELAssets::shared()->findFile("scene3.obj"));
-    for (int i = 0; i < geometries.size(); ++i) {
-        ELGameObject *gameObjectMesh = new ELGameObject(world);
-        world->addNode(gameObjectMesh);
-        gameObjectMesh->addComponent(geometries.at(i));
-//        gameObjectMesh->addComponent(effect);
-        gameObjectMesh->transform->position = ELVector3Make( 0 , 0 , 0);
-        geometries.at(i)->material.diffuseMap = ELTexture::texture(ELAssets::shared()->findFile("rock.png"))->value;
-        geometries.at(i)->material.normalMap = ELTexture::texture(ELAssets::shared()->findFile("rock_NRM.png"))->value;
-    }
+//    std::vector<ELMeshGeometry *> geometries =  ELWaveFrontLoader::loadFile(ELAssets::shared()->findFile("scene3.obj"));
+//    for (int i = 0; i < geometries.size(); ++i) {
+//        ELGameObject *gameObjectMesh = new ELGameObject(world);
+//        world->addNode(gameObjectMesh);
+//        gameObjectMesh->addComponent(geometries.at(i));
+////        gameObjectMesh->addComponent(effect);
+//        gameObjectMesh->transform->position = ELVector3Make( 0 , 0 , 0);
+//        geometries.at(i)->material.diffuseMap = ELTexture::texture(ELAssets::shared()->findFile("rock.png"))->value;
+//        geometries.at(i)->material.normalMap = ELTexture::texture(ELAssets::shared()->findFile("rock_NRM.png"))->value;
+//    }
 
-    world->mainCamera->lockOn(gameObject->transform);
+    world->activedCamera->lockOn(gameObject->transform);
 
     glad_glEnable(GL_CULL_FACE);
     glad_glDepthMask(GL_TRUE);
@@ -194,14 +198,14 @@ void render() {
     double elapsedTime = currentTimeInMs - lastTime;
     lastTime = currentTimeInMs;
 
-    defaultLight->position = ELVector3Make(defaultLight->position.x + elapsedTime,defaultLight->position.y,defaultLight->position.z + elapsedTime);
+//    defaultLight->position = ELVector3Make(defaultLight->position.x + elapsedTime,defaultLight->position.y,defaultLight->position.z + elapsedTime);
 
     world->update(elapsedTime);
     world->render();
 }
 
 void resize(GLFWwindow *window ,int w,int h) {
-    world->mainCamera->aspect = w / (float)h;
+    world->activedCamera->aspect = w / (float)h;
 
     int fbWidth,fbHeight;
     glfwGetFramebufferSize(window, &fbWidth, &fbHeight);
@@ -213,25 +217,25 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 {
     if (action == GLFW_PRESS) {
         if (key == GLFW_KEY_UP) {
-            playerRigidBody->setVelocityZ(-15);
+            playerRigidBody->setVelocityY(-40);
         }
         if (key == GLFW_KEY_DOWN) {
-            playerRigidBody->setVelocityZ(5);
+            playerRigidBody->setVelocityY(40);
         }
         if (key == GLFW_KEY_LEFT){
-            playerRigidBody->setVelocityX(-15);
+            playerRigidBody->setVelocityX(-40);
         }
         if (key == GLFW_KEY_RIGHT){
-            playerRigidBody->setVelocityX(5);
+            playerRigidBody->setVelocityX(40);
         }
     }
 
     if (action == GLFW_RELEASE) {
         if (key == GLFW_KEY_UP) {
-            playerRigidBody->setVelocityZ(0);
+            playerRigidBody->setVelocityY(0);
         }
         if (key == GLFW_KEY_DOWN) {
-            playerRigidBody->setVelocityZ(0);
+            playerRigidBody->setVelocityY(0);
         }
         if (key == GLFW_KEY_LEFT){
             playerRigidBody->setVelocityX(0);
@@ -240,4 +244,8 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
             playerRigidBody->setVelocityX(0);
         }
     }
+}
+
+void focus_callback(GLFWwindow *window, int focus) {
+
 }

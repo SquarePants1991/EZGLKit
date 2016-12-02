@@ -46,6 +46,10 @@ public:
 
     void lockOn(ELTransform *transform);
 
+    ELVector3 forward();
+//    ELVector3 left();
+//    ELVector3 up();
+
     virtual void update(ELFloat timeInSecs);
 
 private:

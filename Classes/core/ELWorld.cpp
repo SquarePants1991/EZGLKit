@@ -7,24 +7,25 @@
 #include "ELLight.h"
 #include "components/ELGeometry.h"
 
+#define UseDepthFramebuffer 1
+
 ELWorld::ELWorld() {
     physicsWorld = ELPhysicsWorld::shared();
     addNode(physicsWorld);
-
-    createShadowFramebuffer();
 }
 
 ELWorld::ELWorld(ELFloat aspect) {
-    ELVector3 eye = {0, 3, 15};
-    ELVector3 center = {0, 0, 0};
+    ELVector3 eye = {0, 1.7, 0};
+    ELVector3 center = {0, 0, -10};
     ELVector3 up = {0, 1, 0};
-    mainCamera = new ELCamera(eye, center, up, 60.0, aspect, 1, 1000);
-    addNode(mainCamera);
+    ELCamera * defaultCamera = new ELCamera(eye, center, up, 70.0, aspect, 0.1, 1000);
+    defaultCamera->identity = "main";
+    addNode(defaultCamera);
 
     physicsWorld = ELPhysicsWorld::shared();
     addNode(physicsWorld);
 
-    createShadowFramebuffer();
+    activeCamera("main");
 }
 
 void ELWorld::update(ELFloat timeInSecs) {
@@ -32,26 +33,48 @@ void ELWorld::update(ELFloat timeInSecs) {
 }
 
 void ELWorld::render() {
-    ELCamera *originMainCamera = mainCamera;
+    renderShadowMaps();
+    renderScene();
+}
 
-
-    activeEffect("default");
-    ELGeometry::renderShadow = true;
+void ELWorld::renderShadowMaps() {
+    activeEffect("gen_shadow");
+    activedEffect->prepare();
     for (int i = 0; i < children.size(); ++i) {
         ELLight * light = dynamic_cast<ELLight *>(children.at(i));
         if (light != NULL) {
-            genShadowTextureFromLight(light);
+            light->beginGenShadowMap();
+            activeCamera(light->identity + "-shadow-camera", light->shadowMapGenCamera());
+            ELNode::render();
+            light->endGenShadowMap();
         }
     }
+}
 
-    ELGeometry::renderShadow =   false;
-    ELGeometry::shadowMap = shadowTexture;
-
-    activeEffect("shadow");
+void ELWorld::renderScene() {
+    activeEffect("render_scene");
+    activeCamera("main");
     glad_glViewport(0,0,fbWidth,fbHeight);
     glad_glClearColor(0.95f, 0.95f, 0.95f, 1.0f);
     glad_glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    mainCamera = originMainCamera;
+
+    activedEffect->prepare();
+    //bind shadow texture to 6 ~ 10
+    int lightIndex = 0;
+    char shadowMapUniformName[512];
+    for (int i = 0; i < children.size(); ++i) {
+        ELLight * light = dynamic_cast<ELLight *>(children.at(i));
+        if (light != NULL && light->isShadowEnabled) {
+            GLuint channel = GL_TEXTURE6 + lightIndex;
+            glad_glActiveTexture(channel);
+            glad_glBindTexture(GL_TEXTURE_2D, light->shadowTexture);
+            snprintf(shadowMapUniformName,512,"shadowMap[%d]",lightIndex);
+            glad_glUniform1i(activedEffect->program->uniform(shadowMapUniformName), channel - GL_TEXTURE0);
+            snprintf(shadowMapUniformName,512,"lightViewProjection[%d]",lightIndex);
+            glad_glUniformMatrix4fv(activedEffect->program->uniform(shadowMapUniformName), 1, 0, light->shadowMapGenCamera()->matrix().m);
+        }
+    }
+
     ELNode::render();
 }
 
@@ -65,54 +88,18 @@ void ELWorld::activeEffect(std::string effectName) {
     }
 }
 
-void ELWorld::genShadowTextureFromLight(ELLight *light) {
-    glad_glViewport(0,0,1024,1024);
-    glad_glBindFramebuffer(GL_FRAMEBUFFER, shadowFramebuffer);
-    glad_glDepthMask(GL_TRUE);
-    glad_glDepthFunc(GL_LESS);
-    glad_glEnable(GL_DEPTH_TEST);
-    glad_glClear(GL_DEPTH_BUFFER_BIT);
-    ELVector3 center = {0, 0, 0};
-    ELVector3 up = {0, 0, 1};
-    mainCamera = new ELCamera(light->position, center,up,60,1,mainCamera->nearZ,mainCamera->farZ);
-    mainCamera->asOrtho(-50.0, 50.0, 50, -50, -40,40);
-    ELNode::render();
-    ELGeometry::lightCamera = mainCamera;
-    glad_glBindFramebuffer(GL_FRAMEBUFFER, 0);
-}
-
-void ELWorld::createShadowFramebuffer() {
-    GLuint framebuffer;
-    GLuint renderbuffer;
-    GLuint shadowTexture;
-
-    glad_glGenFramebuffers(1, &framebuffer);
-    glad_glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);
-
-    glGenRenderbuffers(1, &renderbuffer);
-
-    glBindRenderbuffer(GL_RENDERBUFFER, renderbuffer);
-    glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT, 1024, 1024);
-    glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, renderbuffer);
-
-    glad_glGenTextures(1, &shadowTexture);
-    glad_glBindTexture(GL_TEXTURE_2D, shadowTexture);
-//    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, 1024, 1024, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
-    glad_glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT24, 1024, 1024, 0, GL_DEPTH_COMPONENT, GL_FLOAT, 0);
-    glad_glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-    glad_glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-    glad_glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-    glad_glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-
-
-//    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, shadowTexture, 0);
-    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, shadowTexture, 0);
-
-//    glad_glDrawBuffer(GL_NONE);
-//    glad_glReadBuffer(GL_NONE);
-
-    glad_glBindFramebuffer(GL_FRAMEBUFFER, 0);
-
-    this->shadowFramebuffer = framebuffer;
-    this->shadowTexture = shadowTexture;
+void ELWorld::activeCamera(std::string cameraName, ELCamera *camera) {
+    bool cameraFound = false;
+    for (int i = 0; i < children.size(); ++i) {
+        ELNode *node = children.at(i);
+        ELCamera *camera = dynamic_cast<ELCamera *>(node);
+        if (camera != NULL && camera->identity == cameraName) {
+            activedCamera = camera;
+            cameraFound = true;
+        }
+    }
+    if (cameraFound == false && camera != NULL) {
+        addNode(camera);
+        activedCamera = camera;
+    }
 }

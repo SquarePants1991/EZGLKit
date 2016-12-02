@@ -15,15 +15,12 @@ class ELLight;
 
 class ELWorld : public ELNode {
 public:
-    ELCamera *mainCamera;
+    ELCamera *activedCamera;
+    ELEffect *activedEffect;
     ELPhysicsWorld *physicsWorld;
-    ELUint shadowTexture;
-    ELUint originFramebuffer;
 
     int fbWidth;
     int fbHeight;
-
-    ELEffect *activedEffect;
 public:
     ELWorld();
     ELWorld(ELFloat aspect);
@@ -31,11 +28,11 @@ public:
     virtual void render();
 
     void activeEffect(std::string effectName);
-
+    void activeCamera(std::string cameraName, ELCamera *camera = NULL);
 private:
-    ELUint shadowFramebuffer;
-    void genShadowTextureFromLight(ELLight *light);
-    void createShadowFramebuffer();
+
+    void renderShadowMaps();
+    void renderScene();
 };
 
 

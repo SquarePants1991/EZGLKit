@@ -7,15 +7,32 @@
 
 #include "EZGLBase.h"
 #include "ELNode.h"
+#include "ELCamera.h"
 
 class ELLight : public ELNode {
 public:
     ELVector4 color;
     ELFloat intensity;
     ELVector3 position;
-
+    bool isShadowEnabled;
+    ELInt shadowTexture;
 public:
+    ELLight();
+    void enableShadow();
+    void disableShadow();
+    ELCamera *shadowMapGenCamera();
+
+    void beginGenShadowMap();
+    void endGenShadowMap();
+
     virtual std::string kind();
+    virtual void update(ELFloat timeInSecs);
+private:
+    ELUint shadowFramebuffer;
+    ELCamera * cameraForShadowMap;
+    void createShadowFramebuffer();
+    void genDepthFramebuffer();
+    void genColorFramebuffer();
 };
 
 

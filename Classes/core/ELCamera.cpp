@@ -98,11 +98,24 @@ void ELCamera::lockOn(ELTransform *transform) {
 
 void ELCamera::update(ELFloat timeInSecs) {
     if (lockOnTransform != NULL) {
+//        ELVector3 eyeVec = ELVector3Subtract(lookAt, eye);
+//        lookAt = lockOnTransform->position;
+//        eye = ELVector3Subtract(lookAt, eyeVec);
+
         ELVector3 eyeVec = ELVector3Subtract(lookAt, eye);
-        lookAt = lockOnTransform->position;
-        eye = ELVector3Subtract(lookAt, eyeVec);
+        eye = lockOnTransform->position;
+        lookAt = ELVector3Add(eye, eyeVec);
     }
 }
+
+// caculated direction
+ELVector3 ELCamera::forward() {
+    ELVector3 forward = forwardVector();
+    ELQuaternion cameraQuaternion = quaternion();
+    ELVector3 transformedForward = ELQuaternionRotateVector3(cameraQuaternion, forward);
+    return transformedForward;
+}
+
 
 // Private Methods
 ELVector3 ELCamera::leftVector() {

@@ -13,22 +13,35 @@ ELRigidBody::ELRigidBody(ELCollisionShape *shape, ELFloat mass) :
 {
 }
 
+void ELRigidBody::applyForce(ELVector3 force,ELVector3 pos) {
+    rigidBody->setActivationState(ACTIVE_TAG);
+    rigidBody->applyCentralForce(btVector3(force.x,force.y,force.z));
+}
+
+void ELRigidBody::applyDamping(ELFloat timeStep) {
+    rigidBody->applyDamping(timeStep);
+}
+
 void ELRigidBody::setVelocity(ELVector3 velocity) {
+    rigidBody->setActivationState(ACTIVE_TAG);
     rigidBody->setLinearVelocity(btVector3(velocity.x, velocity.y, velocity.z));
     this->velocity = velocity;
 }
 
 void ELRigidBody::setVelocityX(ELFloat velocityX) {
+    rigidBody->setActivationState(ACTIVE_TAG);
     rigidBody->setLinearVelocity(btVector3(velocityX, velocity.y, velocity.z));
     this->velocity = ELVector3Make(velocityX, velocity.y, velocity.z);
 }
 
 void ELRigidBody::setVelocityY(ELFloat velocityY) {
+    rigidBody->setActivationState(ACTIVE_TAG);
     rigidBody->setLinearVelocity(btVector3(velocity.x, velocityY, velocity.z));
     this->velocity = ELVector3Make(velocity.x, velocityY, velocity.z);
 }
 
 void ELRigidBody::setVelocityZ(ELFloat velocityZ) {
+    rigidBody->setActivationState(ACTIVE_TAG);
     rigidBody->setLinearVelocity(btVector3(velocity.x, velocity.y, velocityZ));
     this->velocity = ELVector3Make(velocity.x, velocity.y, velocityZ);
 }
@@ -41,6 +54,10 @@ void ELRigidBody::didAddedToGameObject(ELGameObject *gameObject) {
     rigidBody = new btRigidBody(mass,motionState,collisionShape->collisionShape,fallInertia);
     rigidBody->setRestitution(0.2);
     rigidBody->setFriction(0);
+
+    // TODO: Configable
+    rigidBody->setDamping(0.2,0);
+    rigidBody->setAngularFactor(btVector3(0,0,0));
     ELPhysicsWorld::shared()->addRigidBody(rigidBody);
 }
 

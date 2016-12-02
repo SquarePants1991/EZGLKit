@@ -21,7 +21,7 @@ struct _ELMaterial {
 typedef _ELMaterial ELMaterial;
 
 const ELMaterial ELMaterialDefault = {
-        {0.1, 0.0, 0.0, 1.0},
+        {0.0, 0.0, 0.0, 1.0},
         {0.6, 0.6, 0.6, 1.0},
         {1.0, 1.0, 1.0, 1.0},
         0,

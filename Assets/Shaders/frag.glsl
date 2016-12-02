@@ -126,7 +126,7 @@ float shadowValue(float bias,out vec4 shadowColor) {
         for(int y = -blurSize; y <= blurSize; ++y)
         {
             float pcfDepth = tex2D(shadowMap[0], lightMVPPosition.xy + vec2(x, y) * texelSize).r;
-            shadow += lightMVPPosition.z - bias > pcfDepth ? 0.5 : 0.0;
+            shadow += lightMVPPosition.z - bias > pcfDepth ? 1.0 : 0.0;
         }
     }
     shadow /= 9.0;
@@ -199,12 +199,12 @@ vec4 render() {
     vec4 shadowColor;
     float shadow = shadowValue(bias, shadowColor);
 
-    highp vec4 finalColor = tex2D(diffuseMap, fragTexcoord);// + material.diffuse;
+    highp vec4 finalColor = tex2D(diffuseMap, fragTexcoord) + material.diffuse;
     return (finalColor * sum_diffuse + finalColor * sum_ambient + finalColor * sum_specular) * shadow;
 
 }
 
-#define Use_BumpMap
+//#define Use_BumpMap
 
 void main()
 {

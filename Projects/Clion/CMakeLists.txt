@@ -33,7 +33,13 @@ include_directories(${PROJECT_SOURCE_DIR}/../../libs/bullet)
 add_subdirectory(${PROJECT_SOURCE_DIR}/../../libs/bullet ${CMAKE_CURRENT_BINARY_DIR}/bullet)
 
 macro(add_exe target prefix)
-    add_executable(${target} ${prefix}/main.cpp)
+    file(GLOB TARGET_SRC
+            "${prefix}/*.h"
+            "${prefix}/*.cpp"
+            "${prefix}/**/*.h"
+            "${prefix}/**/*.cpp"
+    )
+    add_executable(${target} ${prefix}/main.cpp ${TARGET_SRC})
     target_link_libraries(${target} EZGLib ${GLUT_LIBRARY} ${OPENGL_LIBRARIES} glfw glad soil wavefront bullet)
 endmacro(add_exe)
 
@@ -42,3 +48,4 @@ endmacro(add_exe)
 add_exe(EZGL .)
 add_exe(TestBaseWindow BaseWindow)
 add_exe(TestShader Shader)
+add_exe(FPSGame "FPS Game")

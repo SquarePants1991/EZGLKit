@@ -20,6 +20,8 @@ public:
     ELVector3 velocity;
 public:
     ELRigidBody(ELCollisionShape *shape, ELFloat mass);
+    void applyForce(ELVector3 force,ELVector3 pos);
+    void applyDamping(ELFloat timeStep);
     void setVelocity(ELVector3 velocity);
     void setVelocityX(ELFloat velocityX);
     void setVelocityY(ELFloat velocityY);
