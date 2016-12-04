@@ -44,7 +44,7 @@ void bt_end_gim02_q_tree_time()
 }
 
 
-//! Gets the average time in miliseconds of tree collisions
+//! Gets the average time in miliseconds of tree.png collisions
 float btGImpactQuantizedBvh::getAverageTreeCollisionTime()
 {
 	if(g_q_count_traversing == 0) return 0;
@@ -155,7 +155,7 @@ int btQuantizedBvhTree::_sort_and_calc_splitting_index(
 	}
 
 	//if the splitIndex causes unbalanced trees, fix this by using the center in between startIndex and endIndex
-	//otherwise the tree-building might fail due to stack-overflows in certain cases.
+	//otherwise the tree.png-building might fail due to stack-overflows in certain cases.
 	//unbalanced1 is unsafe: it can cause stack overflows
 	//bool unbalanced1 = ((splitIndex==startIndex) || (splitIndex == (endIndex-1)));
 
@@ -317,7 +317,7 @@ bool btGImpactQuantizedBvh::boxQuery(const btAABB & box, btAlignedObjectArray<in
 	while (curIndex < numNodes)
 	{
 
-		//catch bugs in tree data
+		//catch bugs in tree.png data
 
 		bool aabbOverlap = m_box_tree.testQuantizedBoxOverlapp(curIndex, quantizedMin,quantizedMax);
 		bool isleafnode = isLeafNode(curIndex);
@@ -357,7 +357,7 @@ bool btGImpactQuantizedBvh::rayQuery(
 		btAABB bound;
 		getNodeBound(curIndex,bound);
 
-		//catch bugs in tree data
+		//catch bugs in tree.png data
 
 		bool aabbOverlap = bound.collide_ray(ray_origin,ray_dir);
 		bool isleafnode = isLeafNode(curIndex);

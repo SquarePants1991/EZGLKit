@@ -54,17 +54,17 @@ struct	btSoftBodyHelpers
 		bool masses,
 		bool areas,
 		bool stress);
-	/* Draw node tree														*/ 
+	/* Draw node tree.png														*/
 	static void				DrawNodeTree(	btSoftBody* psb,
 		btIDebugDraw* idraw,
 		int mindepth=0,
 		int maxdepth=-1);
-	/* Draw face tree														*/ 
+	/* Draw face tree.png														*/
 	static void				DrawFaceTree(	btSoftBody* psb,
 		btIDebugDraw* idraw,
 		int mindepth=0,
 		int maxdepth=-1);
-	/* Draw cluster tree													*/ 
+	/* Draw cluster tree.png													*/
 	static void				DrawClusterTree(btSoftBody* psb,
 		btIDebugDraw* idraw,
 		int mindepth=0,

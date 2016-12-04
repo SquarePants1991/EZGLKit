@@ -635,7 +635,7 @@ void btDbvtBroadphase::resetPool(btDispatcher* dispatcher)
 	int totalObjects = m_sets[0].m_leaves + m_sets[1].m_leaves;
 	if (!totalObjects)
 	{
-		//reset internal dynamic tree data structures
+		//reset internal dynamic tree.png data structures
 		m_sets[0].clear();
 		m_sets[1].clear();
 		

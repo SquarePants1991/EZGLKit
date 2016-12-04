@@ -11,6 +11,7 @@ ELRigidBody::ELRigidBody(ELCollisionShape *shape, ELFloat mass) :
         collisionShape(shape),
         mass(mass)
 {
+
 }
 
 void ELRigidBody::applyForce(ELVector3 force,ELVector3 pos) {
@@ -30,19 +31,22 @@ void ELRigidBody::setVelocity(ELVector3 velocity) {
 
 void ELRigidBody::setVelocityX(ELFloat velocityX) {
     rigidBody->setActivationState(ACTIVE_TAG);
-    rigidBody->setLinearVelocity(btVector3(velocityX, velocity.y, velocity.z));
+    btVector3 velocityOrigin = rigidBody->getLinearVelocity();
+    rigidBody->setLinearVelocity(btVector3(velocityX, velocityOrigin.y(), velocityOrigin.z()));
     this->velocity = ELVector3Make(velocityX, velocity.y, velocity.z);
 }
 
 void ELRigidBody::setVelocityY(ELFloat velocityY) {
     rigidBody->setActivationState(ACTIVE_TAG);
-    rigidBody->setLinearVelocity(btVector3(velocity.x, velocityY, velocity.z));
+    btVector3 velocityOrigin = rigidBody->getLinearVelocity();
+    rigidBody->setLinearVelocity(btVector3(velocityOrigin.x(), velocityY, velocityOrigin.z()));
     this->velocity = ELVector3Make(velocity.x, velocityY, velocity.z);
 }
 
 void ELRigidBody::setVelocityZ(ELFloat velocityZ) {
     rigidBody->setActivationState(ACTIVE_TAG);
-    rigidBody->setLinearVelocity(btVector3(velocity.x, velocity.y, velocityZ));
+    btVector3 velocityOrigin = rigidBody->getLinearVelocity();
+    rigidBody->setLinearVelocity(btVector3(velocityOrigin.x(), velocityOrigin.y(), velocityZ));
     this->velocity = ELVector3Make(velocity.x, velocity.y, velocityZ);
 }
 
@@ -53,10 +57,10 @@ void ELRigidBody::didAddedToGameObject(ELGameObject *gameObject) {
     collisionShape->collisionShape->calculateLocalInertia(mass,fallInertia);
     rigidBody = new btRigidBody(mass,motionState,collisionShape->collisionShape,fallInertia);
     rigidBody->setRestitution(0.2);
-    rigidBody->setFriction(0);
+    rigidBody->setFriction(0.6);
 
     // TODO: Configable
-    rigidBody->setDamping(0.2,0);
+//    rigidBody->setDamping(1,0);
     rigidBody->setAngularFactor(btVector3(0,0,0));
     ELPhysicsWorld::shared()->addRigidBody(rigidBody);
 }

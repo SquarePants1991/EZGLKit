@@ -16,10 +16,11 @@ private:
     ELWorld *world;
     void createScene();
 
-    void createBoundWall(ELVector3 offset,ELFloat width,ELFloat height);
+    void createBoundWall(ELVector3 offset,ELFloat width,ELFloat height,ELFloat wallHeight = 3.5);
     void createFloor();
     void createMiddleWalls(ELVector3 offset,ELFloat width,ELFloat height);
     void createCubeGameObject(ELVector3 size,ELVector3 pos,ELFloat mass,GLuint diffuseMap,GLuint normalMap);
+    void createBoardGameObject(ELVector2 size,ELVector3 pos,ELFloat mass,GLuint diffuseMap,GLuint normalMap);
 };
 
 

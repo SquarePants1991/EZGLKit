@@ -228,7 +228,7 @@ void	btBvhTriangleMeshShape::performConvexcast (btTriangleCallback* callback, co
 	m_bvh->reportBoxCastOverlappingNodex (&myNodeCallback, raySource, rayTarget, aabbMin, aabbMax);
 }
 
-//perform bvh tree traversal and report overlapping triangles to 'callback'
+//perform bvh tree.png traversal and report overlapping triangles to 'callback'
 void	btBvhTriangleMeshShape::processAllTriangles(btTriangleCallback* callback,const btVector3& aabbMin,const btVector3& aabbMax) const
 {
 

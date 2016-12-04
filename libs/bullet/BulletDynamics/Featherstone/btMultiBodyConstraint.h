@@ -28,7 +28,7 @@ struct btSolverInfo;
 struct btMultiBodyJacobianData
 {
 	btAlignedObjectArray<btScalar>		m_jacobians;
-	btAlignedObjectArray<btScalar>		m_deltaVelocitiesUnitImpulse;	//holds the joint-space response of the corresp. tree to the test impulse in each constraint space dimension
+	btAlignedObjectArray<btScalar>		m_deltaVelocitiesUnitImpulse;	//holds the joint-space response of the corresp. tree.png to the test impulse in each constraint space dimension
 	btAlignedObjectArray<btScalar>		m_deltaVelocities;				//holds joint-space vectors of all the constrained trees accumulating the effect of corrective impulses applied in SI
 	btAlignedObjectArray<btScalar>		scratch_r;
 	btAlignedObjectArray<btVector3>		scratch_v;

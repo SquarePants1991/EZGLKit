@@ -380,11 +380,11 @@ void			btSoftBodyHelpers::Draw(	btSoftBody* psb,
 			idraw->draw3dText(p,n.m_text);
 		}
 	}
-	/* Node tree	*/ 
+	/* Node tree.png	*/
 	if(0!=(drawflags&fDrawFlags::NodeTree))		DrawNodeTree(psb,idraw);
-	/* Face tree	*/ 
+	/* Face tree.png	*/
 	if(0!=(drawflags&fDrawFlags::FaceTree))		DrawFaceTree(psb,idraw);
-	/* Cluster tree	*/ 
+	/* Cluster tree.png	*/
 	if(0!=(drawflags&fDrawFlags::ClusterTree))	DrawClusterTree(psb,idraw);
 	/* Joints		*/ 
 	if(0!=(drawflags&fDrawFlags::Joints))

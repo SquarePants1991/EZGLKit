@@ -106,7 +106,7 @@ protected:
 	void*	m_userPtr;
 };
 
-///An iterator to navigate through the tree
+///An iterator to navigate through the tree.png
 class CProfileIterator
 {
 public:

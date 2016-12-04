@@ -42,7 +42,7 @@ void bt_end_gim02_tree_time()
 	g_count_traversing++;
 }
 
-//! Gets the average time in miliseconds of tree collisions
+//! Gets the average time in miliseconds of tree.png collisions
 float btGImpactBvh::getAverageTreeCollisionTime()
 {
 	if(g_count_traversing == 0) return 0;
@@ -134,7 +134,7 @@ int btBvhTree::_sort_and_calc_splitting_index(
 	}
 
 	//if the splitIndex causes unbalanced trees, fix this by using the center in between startIndex and endIndex
-	//otherwise the tree-building might fail due to stack-overflows in certain cases.
+	//otherwise the tree.png-building might fail due to stack-overflows in certain cases.
 	//unbalanced1 is unsafe: it can cause stack overflows
 	//bool unbalanced1 = ((splitIndex==startIndex) || (splitIndex == (endIndex-1)));
 
@@ -288,7 +288,7 @@ bool btGImpactBvh::boxQuery(const btAABB & box, btAlignedObjectArray<int> & coll
 		btAABB bound;
 		getNodeBound(curIndex,bound);
 
-		//catch bugs in tree data
+		//catch bugs in tree.png data
 
 		bool aabbOverlap = bound.has_collision(box);
 		bool isleafnode = isLeafNode(curIndex);
@@ -328,7 +328,7 @@ bool btGImpactBvh::rayQuery(
 		btAABB bound;
 		getNodeBound(curIndex,bound);
 
-		//catch bugs in tree data
+		//catch bugs in tree.png data
 
 		bool aabbOverlap = bound.collide_ray(ray_origin,ray_dir);
 		bool isleafnode = isLeafNode(curIndex);

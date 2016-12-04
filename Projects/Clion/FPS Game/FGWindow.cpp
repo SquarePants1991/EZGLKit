@@ -12,8 +12,8 @@ FGScene *g_scene;
 double lastTime = 0;
 float rotateUpFactor = 0;
 float walkingFactor = 0;
-const float WindowWidth = 400;
-const float WindowHeight = 200;
+const float WindowWidth = 1024;
+const float WindowHeight = 768;
 ELGameObject *player;
 ELRigidBody *playerRigidBody;
 ELLight * defaultLight;
@@ -53,8 +53,8 @@ FGWindow::FGWindow() {
     /* Make the window's context current */
     glfwMakeContextCurrent(glfwWindow);
 
-    glfwSetWindowPos(glfwWindow,0,1920 - WindowHeight);
-//        glfwSetWindowPos(window,0,0);
+//    glfwSetWindowPos(glfwWindow,0,1920 - WindowHeight);
+        glfwSetWindowPos(glfwWindow,0,0);
 
     if (!gladLoadGLLoader((GLADloadproc) glfwGetProcAddress))
     {
@@ -86,6 +86,7 @@ FGWindow::FGWindow() {
     ELAssets::shared()->addSearchPath("/Users/ocean/Documents/Codes/On Git/EZGLKit/Projects/Clion/Shader/");
     ELAssets::shared()->addSearchPath("/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/");
     ELAssets::shared()->addSearchPath("/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/Shader/");
+    ELAssets::shared()->addSearchPath("/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/FPS Game/Textures/");
 
     std::string vertexShader = ELFileUtil::stringContentOfFile(ELAssets::shared()->findFile("vertex.glsl").c_str());
     std::string fragShader = ELFileUtil::stringContentOfFile(ELAssets::shared()->findFile("frag.glsl").c_str());
@@ -134,10 +135,10 @@ void render(ELWorld *world) {
     lastTime = currentTimeInMs;
 
     g_world->activedCamera->rotateLookAtAroundUp(elapsedTime * rotateUpFactor);
-    g_scene->playerRigidBody->applyForce(ELVector3MultiplyScalar(g_world->activedCamera->forward(), walkingFactor),ELVector3Make(0,0,0));
-//    ELVector3 speed = ELVector3MultiplyScalar(g_world->activedCamera->forward(), walkingFactor);
-//    g_scene->playerRigidBody->setVelocityX(speed.x);
-//    g_scene->playerRigidBody->setVelocityZ(speed.z);
+    ELVector3 direction = g_world->activedCamera->forward();
+    direction = ELVector3MultiplyScalar(direction,walkingFactor);
+    g_scene->playerRigidBody->setVelocityX(direction.x);
+    g_scene->playerRigidBody->setVelocityZ(direction.z);
 
     world->update(elapsedTime);
     world->render();
@@ -156,16 +157,22 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 {
     if (action == GLFW_PRESS) {
         if (key == GLFW_KEY_UP) {
-            walkingFactor = 7.0;
+            walkingFactor = 8;
         }
         if (key == GLFW_KEY_DOWN) {
-            walkingFactor = -7.0;
+            walkingFactor = -8;
         }
         if (key == GLFW_KEY_LEFT){
             rotateUpFactor = 70;
         }
         if (key == GLFW_KEY_RIGHT){
             rotateUpFactor = -70;
+        }
+        if (key == GLFW_KEY_SPACE) {
+            g_scene->playerRigidBody->setVelocityY(5);
+        }
+        if (key == GLFW_KEY_ESCAPE) {
+            exit(0);
         }
     }
 

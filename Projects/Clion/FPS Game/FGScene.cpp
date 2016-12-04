@@ -22,14 +22,23 @@ void FGScene::createScene() {
     float size = 14;
     for (int i=0;i<3;i++) {
         for (int j=0;j<3;j++) {
-            createMiddleWalls(ELVector3Make(i * size + 5,0,j * size + 5),5,5);
-            createMiddleWalls(ELVector3Make(i * size,0,j * size),10,10);
+            //createMiddleWalls(ELVector3Make(i * size + 5- 14*3/2.0,0,j * size + 5- 14*3/2.0),5,5);
+            createMiddleWalls(ELVector3Make(i * size - 14*3/2.0,0,j * size- 14*3/2.0),10,10);
         }
     }
 
-    createBoundWall(ELVector3Make(0,0,0),17 * 3,17 * 3);
+    createBoundWall(ELVector3Make(0,0,0),17 * 3,17 * 3,100);
 
     createFloor();
+
+    GLuint diffuseMap = ELTexture::texture(ELAssets::shared()->findFile("tree.png"))->value;
+    GLuint normalMap = ELTexture::texture(ELAssets::shared()->findFile("tree.png"))->value;
+//    createCubeGameObject(ELVector3Make(0.2,5,2.5),ELVector3Make(-1,2.5,0),0,diffuseMap,normalMap);
+    for (int i=0;i<20;i++) {
+        for (int j=0;j<20;j++) {
+            createBoardGameObject(ELVector2Make(2.5,5),ELVector3Make(i * 4 - 14*3/2.0,2.5,j * 4- 14*3/2.0),0,diffuseMap,normalMap);
+        }
+    }
 
     ELGameObject *gameObject = new ELGameObject(world);
     world->addNode(gameObject);
@@ -37,10 +46,7 @@ void FGScene::createScene() {
     ELCubeGeometry *cube = new ELCubeGeometry(ELVector3Make(0.4,2,0.4));
     gameObject->addComponent(cube);
     cube->material.diffuse = ELVector4Make(1.0,0.0,0.0,1.0);
-//    cube->material.diffuseMap = ELTexture::texture(ELAssets::shared()->findFile("rock.png"))->value;
-//    cube->material.normalMap = ELTexture::texture(ELAssets::shared()->findFile("rock_NRM.png"))->value;
 
-//    player = gameObject;
 
     ELCollisionShape *collisionShape = new ELCollisionShape();
     collisionShape->asBox(ELVector3Make(0.2,2,0.2));
@@ -48,42 +54,6 @@ void FGScene::createScene() {
     gameObject->addComponent(rigidBody);
     rigidBody->setVelocity(ELVector3Make(0, 0, 0));
     playerRigidBody = rigidBody;
-//
-//
-//    ELGameObject *gameObject2 = new ELGameObject(world);
-//    world->addNode(gameObject2);
-//    gameObject2->transform->position = ELVector3Make(0, 0, 0);
-//    ELCubeGeometry *plane = new ELCubeGeometry(ELVector3Make(80,1,80));
-//    gameObject2->addComponent(plane);
-//    plane->material.diffuse = ELVector4Make(1.0,1.0,1.0,1.0);
-////   plane->material.diffuseMap = ELTexture::texture(ELAssets::shared()->findFile("rock.png"))->value;
-//    plane->material.normalMap = ELTexture::texture(ELAssets::shared()->findFile("rock_NRM.png"))->value;
-//
-//    ELCollisionShape *collisionShape2 = new ELCollisionShape();
-//    collisionShape2->asBox(ELVector3Make(40,0.5,40));
-//    ELRigidBody *rigidBody2 = new ELRigidBody(collisionShape2,0.0);
-//    gameObject2->addComponent(rigidBody2);
-//
-////    ELGameObject *gameObject3 = new ELGameObject(world);
-////    world->addNode(gameObject3);
-////    gameObject3->transform->position = ELVector3Make(0, 0, -4);
-////    gameObject3->transform->quaternion = ELQuaternionMakeWithAngleAndAxis(M_PI / 2,1,0,0);
-////    ELPlaneGeometry *plane2 = new ELPlaneGeometry(ELVector2Make(50,50));
-////    gameObject3->addComponent(plane);
-////    gameObject3->addComponent(effect);
-////    plane2->material.diffuse = ELVector4Make(1.0,0.0,0.0,1.0);
-//
-////    std::vector<ELMeshGeometry *> geometries =  ELWaveFrontLoader::loadFile(ELAssets::shared()->findFile("scene3.obj"));
-////    for (int i = 0; i < geometries.size(); ++i) {
-////        ELGameObject *gameObjectMesh = new ELGameObject(world);
-////        world->addNode(gameObjectMesh);
-////        gameObjectMesh->addComponent(geometries.at(i));
-//////        gameObjectMesh->addComponent(effect);
-////        gameObjectMesh->transform->position = ELVector3Make( 0 , 0 , 0);
-////        geometries.at(i)->material.diffuseMap = ELTexture::texture(ELAssets::shared()->findFile("rock.png"))->value;
-////        geometries.at(i)->material.normalMap = ELTexture::texture(ELAssets::shared()->findFile("rock_NRM.png"))->value;
-////    }
-//
     world->activedCamera->lockOn(gameObject->transform);
 }
 
@@ -92,8 +62,7 @@ void FGScene::createScene() {
 // 墙高 =>  3.5 => 3.5m
 // 地面长宽  =>  10 X 10 => 10m x 10m
 
-void FGScene::createBoundWall(ELVector3 offset, ELFloat width,ELFloat height) {
-    ELFloat wallHeight = 3.5;
+void FGScene::createBoundWall(ELVector3 offset, ELFloat width,ELFloat height,ELFloat wallHeight) {
     ELVector3 xWallsSize = ELVector3Make(0.5,wallHeight,height);
     ELVector3 zWallsSize = ELVector3Make(width,wallHeight,0.5);
     GLuint diffuseMap,normalMap;
@@ -138,6 +107,7 @@ void FGScene::createCubeGameObject(ELVector3 size,ELVector3 pos,ELFloat mass,GLu
     ELCubeGeometry *cube = new ELCubeGeometry(size);
     gameObject->addComponent(cube);
     cube->material.diffuse = ELVector4Make(0.0,0.0,0.0,1.0);
+    cube->material.ambient = ELVector4Make(0.4,0.4,0.4,1.0);
     cube->material.diffuseMap = diffuseMap;//ELTexture::texture(ELAssets::shared()->findFile("rock.png"))->value;
     cube->material.normalMap = normalMap;//ELTexture::texture(ELAssets::shared()->findFile("rock_NRM.png"))->value;
 
@@ -145,4 +115,23 @@ void FGScene::createCubeGameObject(ELVector3 size,ELVector3 pos,ELFloat mass,GLu
     collisionShape->asBox(ELVector3Make(size.x / 2,size.y / 2,size.z / 2));
     ELRigidBody *rigidBody = new ELRigidBody(collisionShape,mass);
     gameObject->addComponent(rigidBody);
+}
+
+void FGScene::createBoardGameObject(ELVector2 size,ELVector3 pos,ELFloat mass,GLuint diffuseMap,GLuint normalMap) {
+
+    ELGameObject *gameObject = new ELGameObject(world);
+    world->addNode(gameObject);
+    gameObject->transform->position = pos;
+    gameObject->transform->quaternion = ELQuaternionMakeWithAngleAndAxis(3.14/2,0,1,0);
+    ELBoard *cube = new ELBoard(size);
+    gameObject->addComponent(cube);
+    cube->material.diffuse = ELVector4Make(0.0,0.0,0.0,1.0);
+    cube->material.ambient = ELVector4Make(0.4,0.4,0.4,1.0);
+    cube->material.diffuseMap = diffuseMap;
+    cube->material.normalMap = normalMap;
+
+//    ELCollisionShape *collisionShape = new ELCollisionShape();
+//    collisionShape->asBox(ELVector3Make(size.x / 2,size.y / 2,size.x / 2));
+//    ELRigidBody *rigidBody = new ELRigidBody(collisionShape,mass);
+//    gameObject->addComponent(rigidBody);
 }

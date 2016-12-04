@@ -116,6 +116,11 @@ ELVector3 ELCamera::forward() {
     return transformedForward;
 }
 
+ELVector3 ELCamera::position() {
+    ELVector3 transformedEye = ELVector3Add(eye, translation);
+    return transformedEye;
+}
+
 
 // Private Methods
 ELVector3 ELCamera::leftVector() {

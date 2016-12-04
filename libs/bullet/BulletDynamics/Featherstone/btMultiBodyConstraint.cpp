@@ -128,7 +128,7 @@ btScalar btMultiBodyConstraint::fillMultiBodyConstraint(	btMultiBodySolverConstr
         
         //determine the velocity response of multibodyA to reaction impulses of this constraint (i.e. A[i,i] for i=1,...n_con: multibody's inverse inertia with respect to this 1D constraint)
         //resize..
-        data.m_deltaVelocitiesUnitImpulse.resize(data.m_deltaVelocitiesUnitImpulse.size()+ndofA);		//=> each constraint row has the constrained tree dofs allocated in m_deltaVelocitiesUnitImpulse
+        data.m_deltaVelocitiesUnitImpulse.resize(data.m_deltaVelocitiesUnitImpulse.size()+ndofA);		//=> each constraint row has the constrained tree.png dofs allocated in m_deltaVelocitiesUnitImpulse
         btAssert(data.m_jacobians.size() == data.m_deltaVelocitiesUnitImpulse.size());
         btScalar* delta = &data.m_deltaVelocitiesUnitImpulse[solverConstraint.m_jacAindex];
         //determine..

@@ -183,11 +183,11 @@ void	btQuantizedBvh::buildTree	(int startIndex,int endIndex)
 	
 	int leftChildNodexIndex = m_curNodeIndex;
 
-	//build left child tree
+	//build left child tree.png
 	buildTree(startIndex,splitIndex);
 
 	int rightChildNodexIndex = m_curNodeIndex;
-	//build right child tree
+	//build right child tree.png
 	buildTree(splitIndex,endIndex);
 
 #ifdef DEBUG_TREE_BUILDING
@@ -277,7 +277,7 @@ int	btQuantizedBvh::sortAndCalcSplittingIndex(int startIndex,int endIndex,int sp
 	}
 
 	//if the splitIndex causes unbalanced trees, fix this by using the center in between startIndex and endIndex
-	//otherwise the tree-building might fail due to stack-overflows in certain cases.
+	//otherwise the tree.png-building might fail due to stack-overflows in certain cases.
 	//unbalanced1 is unsafe: it can cause stack overflows
 	//bool unbalanced1 = ((splitIndex==startIndex) || (splitIndex == (endIndex-1)));
 
@@ -383,7 +383,7 @@ void	btQuantizedBvh::walkStacklessTree(btNodeOverlapCallback* nodeCallback,const
 
 	while (curIndex < m_curNodeIndex)
 	{
-		//catch bugs in tree data
+		//catch bugs in tree.png data
 		btAssert (walkIterations < m_curNodeIndex);
 
 		walkIterations++;
@@ -506,7 +506,7 @@ void	btQuantizedBvh::walkStacklessTreeAgainstRay(btNodeOverlapCallback* nodeCall
 	while (curIndex < m_curNodeIndex)
 	{
 		btScalar param = 1.0;
-		//catch bugs in tree data
+		//catch bugs in tree.png data
 		btAssert (walkIterations < m_curNodeIndex);
 
 		walkIterations++;
@@ -622,7 +622,7 @@ void	btQuantizedBvh::walkStacklessQuantizedTreeAgainstRay(btNodeOverlapCallback*
 		}
 #endif//VISUALLY_ANALYZE_BVH
 
-		//catch bugs in tree data
+		//catch bugs in tree.png data
 		btAssert (walkIterations < subTreeSize);
 
 		walkIterations++;
@@ -719,7 +719,7 @@ void	btQuantizedBvh::walkStacklessQuantizedTree(btNodeOverlapCallback* nodeCallb
 		}
 #endif//VISUALLY_ANALYZE_BVH
 
-		//catch bugs in tree data
+		//catch bugs in tree.png data
 		btAssert (walkIterations < subTreeSize);
 
 		walkIterations++;

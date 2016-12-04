@@ -10,7 +10,7 @@
 #include "geometry/ELCubeGeometry.h"
 #include "geometry/ELMeshGeometry.h"
 
-#include "core/ELEffect.h"
+#include "ELBoard.h"
 
 #include "ELRigidBody.h"
 #include "ELCollisionShape.h"

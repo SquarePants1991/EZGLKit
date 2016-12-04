@@ -310,7 +310,7 @@ public:
 			GIM_AABB bound;
 			getNodeBound(curIndex,bound);
 
-			//catch bugs in tree data
+			//catch bugs in tree.png data
 
 			bool aabbOverlap = bound.has_collision(box);
 			bool isleafnode = isLeafNode(curIndex);
@@ -357,7 +357,7 @@ public:
 			GIM_AABB bound;
 			getNodeBound(curIndex,bound);
 
-			//catch bugs in tree data
+			//catch bugs in tree.png data
 
 			bool aabbOverlap = bound.collide_ray(ray_origin,ray_dir);
 			bool isleafnode = isLeafNode(curIndex);

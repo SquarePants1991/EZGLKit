@@ -106,6 +106,17 @@ float unpack (vec4 v)
     return dot( v, UnpackFactors );
 }
 
+float frogFactor() {
+    float start = 1;
+    float end = 25;
+    highp vec4 pos = viewProjection * modelMatrix * fragPosition;
+    float distanceToCamera = distance(pos.xyz,vec3(0,0,0));
+    float factor = clamp((end - distanceToCamera) / (end - start),0.0,1.0);
+    factor = 1.0 - smoothstep(start,end,distanceToCamera);
+    //factor = sin(factor * 3.14 / 2.0);
+    return factor;
+}
+
 vec4 renderAsShadow() {
     highp vec4 v_v4TexCoord = viewProjection * modelMatrix * fragPosition;
     highp vec3 lightPosition = lights[0].position;
@@ -200,11 +211,22 @@ vec4 render() {
     float shadow = shadowValue(bias, shadowColor);
 
     highp vec4 finalColor = tex2D(diffuseMap, fragTexcoord);// + material.diffuse;
-    return (finalColor * sum_diffuse + finalColor * sum_ambient + finalColor * sum_specular) * shadow;
+    if (finalColor.a == 0.0) {
+        discard;
+    } else {
+        highp vec4 outputColor = (finalColor * sum_diffuse + finalColor * sum_ambient + finalColor * sum_specular) * shadow;
 
+        highp vec4 frogColor = vec4(0.5,0.5,0.5,1.0);
+        float frogFact = frogFactor();
+        if (frogFact == 0.0) {
+            return frogColor;
+        } else {
+            return outputColor * frogFact + frogColor * (1 - frogFact);
+        }
+    }
 }
 
-#define Use_BumpMap
+//#define Use_BumpMap
 
 void main()
 {

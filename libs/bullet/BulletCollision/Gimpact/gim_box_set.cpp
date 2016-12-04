@@ -94,7 +94,7 @@ GUINT GIM_BOX_TREE::_sort_and_calc_splitting_index(
 	}
 
 	//if the splitIndex causes unbalanced trees, fix this by using the center in between startIndex and endIndex
-	//otherwise the tree-building might fail due to stack-overflows in certain cases.
+	//otherwise the tree.png-building might fail due to stack-overflows in certain cases.
 	//unbalanced1 is unsafe: it can cause stack overflows
 	//bool unbalanced1 = ((splitIndex==startIndex) || (splitIndex == (endIndex-1)));
 
@@ -154,13 +154,13 @@ void GIM_BOX_TREE::_build_sub_tree(gim_array<GIM_AABB_DATA> & primitive_boxes, G
 
 	//configure this inner node : the left node index
 	m_node_array[current_index].m_left = m_num_nodes;
-	//build left child tree
+	//build left child tree.png
 	_build_sub_tree(primitive_boxes, startIndex, splitIndex );
 
 	//configure this inner node : the right node index
 	m_node_array[current_index].m_right = m_num_nodes;
 
-	//build right child tree
+	//build right child tree.png
 	_build_sub_tree(primitive_boxes, splitIndex ,endIndex);
 
 	//configure this inner node : the escape index

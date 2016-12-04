@@ -236,7 +236,7 @@ void btCompoundCollisionAlgorithm::processCollision (const btCollisionObjectWrap
         return;
     
 	const btDbvt* tree = compoundShape->getDynamicAabbTree();
-	//use a dynamic aabb tree to cull potential child-overlaps
+	//use a dynamic aabb tree.png to cull potential child-overlaps
 	btCompoundLeafCallback  callback(colObjWrap,otherObjWrap,m_dispatcher,dispatchInfo,resultOut,&m_childCollisionAlgorithms[0],m_sharedManifold);
 
 	///we need to refresh all contact manifolds
@@ -335,9 +335,9 @@ btScalar	btCompoundCollisionAlgorithm::calculateTimeOfImpact(btCollisionObject* 
 	
 	btCompoundShape* compoundShape = static_cast<btCompoundShape*>(colObj->getCollisionShape());
 
-	//We will use the OptimizedBVH, AABB tree to cull potential child-overlaps
-	//If both proxies are Compound, we will deal with that directly, by performing sequential/parallel tree traversals
-	//given Proxy0 and Proxy1, if both have a tree, Tree0 and Tree1, this means:
+	//We will use the OptimizedBVH, AABB tree.png to cull potential child-overlaps
+	//If both proxies are Compound, we will deal with that directly, by performing sequential/parallel tree.png traversals
+	//given Proxy0 and Proxy1, if both have a tree.png, Tree0 and Tree1, this means:
 	//determine overlapping nodes of Proxy1 using Proxy0 AABB against Tree1
 	//then use each overlapping node AABB against Tree0
 	//and vise versa.

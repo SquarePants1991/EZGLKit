@@ -665,9 +665,9 @@ public:
 	btScalar				m_timeacc;		// Time accumulator
 	btVector3				m_bounds[2];	// Spatial bounds	
 	bool					m_bUpdateRtCst;	// Update runtime constants
-	btDbvt					m_ndbvt;		// Nodes tree
-	btDbvt					m_fdbvt;		// Faces tree
-	btDbvt					m_cdbvt;		// Clusters tree
+	btDbvt					m_ndbvt;		// Nodes tree.png
+	btDbvt					m_fdbvt;		// Faces tree.png
+	btDbvt					m_cdbvt;		// Clusters tree.png
 	tClusterArray			m_clusters;		// Clusters
 
 	btAlignedObjectArray<bool>m_clusterConnectivity;//cluster connectivity, for self-collision

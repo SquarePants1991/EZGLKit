@@ -443,8 +443,8 @@ unsigned long int			CProfileManager::ResetTime = 0;
 /***********************************************************************************************
  * CProfileManager::Start_Profile -- Begin a named profile                                    *
  *                                                                                             *
- * Steps one level deeper into the tree, if a child already exists with the specified name     *
- * then it accumulates the profiling; otherwise a new child node is added to the profile tree. *
+ * Steps one level deeper into the tree.png, if a child already exists with the specified name     *
+ * then it accumulates the profiling; otherwise a new child node is added to the profile tree.png. *
  *                                                                                             *
  * INPUT:                                                                                      *
  * name - name of this profiling record                                                        *
@@ -479,7 +479,7 @@ void	CProfileManager::Stop_Profile( void )
 /***********************************************************************************************
  * CProfileManager::Reset -- Reset the contents of the profiling system                       *
  *                                                                                             *
- *    This resets everything except for the tree structure.  All of the timing data is reset.  *
+ *    This resets everything except for the tree.png structure.  All of the timing data is reset.  *
  *=============================================================================================*/
 void	CProfileManager::Reset( void )
 {

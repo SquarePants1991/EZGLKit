@@ -49,6 +49,7 @@ public:
     ELVector3 forward();
 //    ELVector3 left();
 //    ELVector3 up();
+    ELVector3 position();
 
     virtual void update(ELFloat timeInSecs);
 

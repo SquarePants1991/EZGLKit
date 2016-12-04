@@ -18,7 +18,7 @@ subject to the following restrictions:
 3. This notice may not be removed or altered from any source distribution.
 */
 /*
-Author: Francisco Len Nßjera
+Author: Francisco Len Nï¿½jera
 Concave-Concave Collision
 
 */
@@ -168,7 +168,7 @@ public:
 
 #ifdef TRI_COLLISION_PROFILING
 
-//! Gets the average time in miliseconds of tree collisions
+//! Gets the average time in miliseconds of tree.png collisions
 float btGImpactCollisionAlgorithm::getAverageTreeCollisionTime()
 {
 	return btGImpactBoxSet::getAverageTreeCollisionTime();
