@@ -63,6 +63,8 @@ void ELRigidBody::didAddedToGameObject(ELGameObject *gameObject) {
 //    rigidBody->setDamping(1,0);
     rigidBody->setAngularFactor(btVector3(0,0,0));
     ELPhysicsWorld::shared()->addRigidBody(rigidBody);
+    rigidBody->setUserPointer(this->gameObject());
+    collisionShape->collisionShape->setUserPointer(this->gameObject());
 }
 
 void ELRigidBody::update(ELFloat timeInSecs) {

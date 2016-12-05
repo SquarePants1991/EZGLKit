@@ -50,6 +50,7 @@ public:
 //    ELVector3 left();
 //    ELVector3 up();
     ELVector3 position();
+    ELVector3 lookAtPosition();
 
     virtual void update(ELFloat timeInSecs);
 

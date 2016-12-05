@@ -25,6 +25,8 @@ OUT vec3 fragBitangent;
 
 uniform mat4 viewProjection;
 uniform mat4 modelMatrix;
+uniform int renderBorder;
+uniform float borderWidth;
 
 void main()
 {
@@ -34,5 +36,11 @@ void main()
     fragTangent = tangent;
     fragBitangent = bitangent;
 
-    gl_Position = viewProjection * modelMatrix * position;
+    if (renderBorder == 1) {
+        vec4 adjustPosition = position + vec4(normalize(fragNormal) * borderWidth, 0.0);
+        vec4 finalPos = viewProjection * modelMatrix * adjustPosition;
+        gl_Position = finalPos;
+    } else {
+        gl_Position = viewProjection * modelMatrix * position;
+    }
 }

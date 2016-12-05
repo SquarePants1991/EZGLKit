@@ -24,15 +24,16 @@ class ELGeometry : public ELComponent {
 public:
     ELMaterial material;
 
-    static bool renderShadow;
-    static ELUint shadowMap;
-    static ELCamera * lightCamera;
+    bool enableBorder;
+    ELVector4 borderColor;
+    ELFloat borderWidth;
 public:
     ELGeometry();
     void prepare();
 
     virtual void update(ELFloat timeInSecs);
     virtual void render();
+    virtual std::string kind();
 
 protected:
     ELGeometryData data;

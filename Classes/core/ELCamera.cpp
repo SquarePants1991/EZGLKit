@@ -104,6 +104,7 @@ void ELCamera::update(ELFloat timeInSecs) {
 
         ELVector3 eyeVec = ELVector3Subtract(lookAt, eye);
         eye = lockOnTransform->position;
+        eye.y += 2;
         lookAt = ELVector3Add(eye, eyeVec);
     }
 }
@@ -119,6 +120,15 @@ ELVector3 ELCamera::forward() {
 ELVector3 ELCamera::position() {
     ELVector3 transformedEye = ELVector3Add(eye, translation);
     return transformedEye;
+}
+
+ELVector3 ELCamera::lookAtPosition() {
+    ELQuaternion cameraQuaternion = quaternion();
+    ELVector3 transformedForward = ELQuaternionRotateVector3(cameraQuaternion, forward());
+
+    ELVector3 transformedEye = ELVector3Add(eye, translation);
+    ELVector3 transformedLookAt = ELVector3Add(transformedEye, transformedForward);
+    return transformedLookAt;
 }
 
 

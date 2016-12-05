@@ -7,11 +7,11 @@
 #include "core/ELEffect.h"
 #include "core/ELGameObject.h"
 
-bool ELGeometry::renderShadow = false;
-ELUint ELGeometry::shadowMap = 0;
-ELCamera * ELGeometry::lightCamera = NULL;
-
-ELGeometry::ELGeometry() : vao(-1), isGeometryDataValid(false) {
+ELGeometry::ELGeometry() : vao(-1),
+                           isGeometryDataValid(false),
+                           borderWidth(0.1),
+                           borderColor(ELVector4Make(1.0,1.0,1.0,1.0))
+{
     material = ELMaterialDefault;
 }
 
@@ -26,7 +26,12 @@ void ELGeometry::setNeedRegenData() {
 }
 
 void ELGeometry::update(ELFloat timeInSecs) {
+    ELNode::update(timeInSecs);
+    enableBorder = false;
+}
 
+std::string ELGeometry::kind() {
+    return "geometry";
 }
 
 void ELGeometry::render() {
@@ -35,25 +40,13 @@ void ELGeometry::render() {
     }
 
     ELEffect *defaultEffect = effect();
-    ELMatrix4 matrix3 = ELMatrix4Identity;
-//    glUseProgram(effect->program->value);
-//
-//    [self.world.effect applyToProgram:self.glProgram];
-
-//    defaultEffect->prepare();
-
     ELProgram *program = defaultEffect->program;
+    ELCamera *camera = gameObject()->mainCamera();
 
-    ELGameObject *gameObj = (ELGameObject *)gameObject();
-    ELCamera *camera = gameObj->mainCamera();
+    glUniform3fv(program->uniform("cameraPosition"), 1, camera->position().v);
 
-//    glUniform3fv([self.glProgram uniformWithStr:@"cameraPosition"], 1, ((EZGLPerspectiveCamera *)self.world.camera).transformedEye.v);
-//
     glUniformMatrix4fv(program->uniform("viewProjection"), 1, 0, camera->matrix().m);
-    glUniformMatrix4fv(program->uniform("modelMatrix"), 1, 0, ELMatrix4FromTransform(gameObj->transform).m);
-    if (ELGeometry::lightCamera != NULL) {
-
-    }
+    glUniformMatrix4fv(program->uniform("modelMatrix"), 1, 0, ELMatrix4FromTransform(gameObject()->transform).m);
     glUniform4fv(program->uniform("material.ambient"), 1, material.ambient.v);
     glUniform4fv(program->uniform("material.diffuse"), 1, material.diffuse.v);
     glUniform4fv(program->uniform("material.specular"), 1, material.specular.v);
@@ -71,6 +64,20 @@ void ELGeometry::render() {
     glUniform1i(program->uniform("specularMap"), 3);
 
     glBindVertexArray(vao);
+    if (enableBorder) {
+        glCullFace(GL_FRONT);
+        glUniform1i(program->uniform("renderBorder"), 1);
+        glUniform1f(program->uniform("borderWidth"), borderWidth);
+        glUniform4fv(program->uniform("borderColor"), 1, borderColor.v);
+        if (data.supportIndiceVBO) {
+            glDrawElements(GL_TRIANGLES, data.indiceCount, GL_UNSIGNED_INT, 0);
+        } else {
+            glDrawArrays(GL_TRIANGLES, 0, data.vertexCount);
+        }
+        glCullFace(GL_BACK);
+    }
+
+    glUniform1i(program->uniform("renderBorder"), 0);
     if (data.supportIndiceVBO) {
         glDrawElements(GL_TRIANGLES, data.indiceCount, GL_UNSIGNED_INT, 0);
     } else {

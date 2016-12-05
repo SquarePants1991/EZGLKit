@@ -9,12 +9,14 @@
 #include "btBulletDynamicsCommon.h"
 #include "ELNode.h"
 
-class ELRigidBody;
+class ELGameObject;
 
 class ELPhysicsWorld : public ELNode{
 public:
     static ELPhysicsWorld *shared();
     void addRigidBody(btRigidBody *rigidBody);
+
+    std::vector<ELGameObject *> raycast(ELVector3 start,ELVector3 end);
 
     virtual void update(ELFloat timeInSecs);
 private:

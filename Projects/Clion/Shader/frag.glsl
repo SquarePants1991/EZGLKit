@@ -56,6 +56,8 @@ uniform sampler2D specularMap;
 uniform material_struct material;
 
 uniform int renderShadow;
+uniform int renderBorder;
+uniform vec4 borderColor;
 
 void pointLight(
                 in vec3 normal,
@@ -230,5 +232,9 @@ vec4 render() {
 
 void main()
 {
-    outColor = render();
+    if (renderBorder == 1) {
+        outColor = borderColor;
+    } else {
+        outColor = render();
+    }
 }

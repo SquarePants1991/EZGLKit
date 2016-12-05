@@ -12,8 +12,8 @@ FGScene *g_scene;
 double lastTime = 0;
 float rotateUpFactor = 0;
 float walkingFactor = 0;
-const float WindowWidth = 1024;
-const float WindowHeight = 768;
+const float WindowWidth = 400;
+const float WindowHeight = 218;
 ELGameObject *player;
 ELRigidBody *playerRigidBody;
 ELLight * defaultLight;
@@ -53,8 +53,8 @@ FGWindow::FGWindow() {
     /* Make the window's context current */
     glfwMakeContextCurrent(glfwWindow);
 
-//    glfwSetWindowPos(glfwWindow,0,1920 - WindowHeight);
-        glfwSetWindowPos(glfwWindow,0,0);
+    glfwSetWindowPos(glfwWindow,0,1920 - WindowHeight);
+//        glfwSetWindowPos(glfwWindow,0,0);
 
     if (!gladLoadGLLoader((GLADloadproc) glfwGetProcAddress))
     {
@@ -84,6 +84,7 @@ FGWindow::FGWindow() {
 
     ELAssets::shared()->addSearchPath("/Users/ocean/Documents/Codes/On Git/EZGLKit/Projects/Clion/");
     ELAssets::shared()->addSearchPath("/Users/ocean/Documents/Codes/On Git/EZGLKit/Projects/Clion/Shader/");
+    ELAssets::shared()->addSearchPath("/Users/ocean/Documents/Codes/On Git/EZGLKit/Projects/Clion/FPS Game/Textures/");
     ELAssets::shared()->addSearchPath("/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/");
     ELAssets::shared()->addSearchPath("/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/Shader/");
     ELAssets::shared()->addSearchPath("/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/FPS Game/Textures/");
@@ -141,6 +142,18 @@ void render(ELWorld *world) {
     g_scene->playerRigidBody->setVelocityZ(direction.z);
 
     world->update(elapsedTime);
+
+    ELVector3 start = g_world->activedCamera->position();
+    ELVector3 end = ELVector3Add(start,ELVector3MultiplyScalar(g_world->activedCamera->forward(),100));
+    std::vector<ELGameObject *> objs = ELPhysicsWorld::shared()->raycast(start,end);
+    for (int i = 0; i < objs.size(); ++i) {
+        ELGameObject *obj = objs.at(i);
+        std::vector<ELNode *> nodes = obj->findChildrenWithKind("geometry");
+        for (int j = 0; j < nodes.size(); ++j) {
+            ELGeometry *geo = (ELGeometry *)nodes.at(j);
+            geo->enableBorder = true;
+        }
+    }
     world->render();
 }
 

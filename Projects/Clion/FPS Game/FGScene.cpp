@@ -40,16 +40,21 @@ void FGScene::createScene() {
         }
     }
 
+    diffuseMap = ELTexture::texture(ELAssets::shared()->findFile("rock.png"))->value;
+    normalMap = ELTexture::texture(ELAssets::shared()->findFile("rock_NRM.png"))->value;
+
+    createCubeGameObject(ELVector3Make(1,1,1),ELVector3Make(0,5,0),10.0,diffuseMap,normalMap);
+
     ELGameObject *gameObject = new ELGameObject(world);
     world->addNode(gameObject);
     gameObject->transform->position = ELVector3Make(0, 4.5, 0);
-    ELCubeGeometry *cube = new ELCubeGeometry(ELVector3Make(0.4,2,0.4));
+    ELCubeGeometry *cube = new ELCubeGeometry(ELVector3Make(0.4,1,0.4));
     gameObject->addComponent(cube);
     cube->material.diffuse = ELVector4Make(1.0,0.0,0.0,1.0);
 
 
     ELCollisionShape *collisionShape = new ELCollisionShape();
-    collisionShape->asBox(ELVector3Make(0.2,2,0.2));
+    collisionShape->asBox(ELVector3Make(0.2,1,0.2));
     ELRigidBody *rigidBody = new ELRigidBody(collisionShape,1.0);
     gameObject->addComponent(rigidBody);
     rigidBody->setVelocity(ELVector3Make(0, 0, 0));
