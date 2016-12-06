@@ -21,6 +21,7 @@ private:
     void createMiddleWalls(ELVector3 offset,ELFloat width,ELFloat height);
     void createCubeGameObject(ELVector3 size,ELVector3 pos,ELFloat mass,GLuint diffuseMap,GLuint normalMap);
     void createBoardGameObject(ELVector2 size,ELVector3 pos,ELFloat mass,GLuint diffuseMap,GLuint normalMap);
+    void createParticalGameObject(ELVector2 size,ELVector3 pos,ELFloat mass,GLuint diffuseMap,GLuint normalMap);
 };
 
 

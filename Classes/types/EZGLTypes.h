@@ -25,6 +25,6 @@
 
 #include "ELTransform.h"
 
-
+#include "ELGeometryTypes.h"
 
 #endif /* EZGLDefines_H_ */

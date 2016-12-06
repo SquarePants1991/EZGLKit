@@ -19,31 +19,32 @@ void FGScene::createScene() {
     defaultLight->enableShadow();
     world->addNode(defaultLight);
 
-    float size = 14;
-    for (int i=0;i<3;i++) {
-        for (int j=0;j<3;j++) {
-            //createMiddleWalls(ELVector3Make(i * size + 5- 14*3/2.0,0,j * size + 5- 14*3/2.0),5,5);
-            createMiddleWalls(ELVector3Make(i * size - 14*3/2.0,0,j * size- 14*3/2.0),10,10);
-        }
-    }
-
+//    float size = 14;
+//    for (int i=0;i<3;i++) {
+//        for (int j=0;j<3;j++) {
+//            //createMiddleWalls(ELVector3Make(i * size + 5- 14*3/2.0,0,j * size + 5- 14*3/2.0),5,5);
+//            createMiddleWalls(ELVector3Make(i * size - 14*3/2.0,0,j * size- 14*3/2.0),10,10);
+//        }
+//    }
+//
     createBoundWall(ELVector3Make(0,0,0),17 * 3,17 * 3,100);
-
+//
     createFloor();
-
+//
     GLuint diffuseMap = ELTexture::texture(ELAssets::shared()->findFile("tree.png"))->value;
     GLuint normalMap = ELTexture::texture(ELAssets::shared()->findFile("tree.png"))->value;
-//    createCubeGameObject(ELVector3Make(0.2,5,2.5),ELVector3Make(-1,2.5,0),0,diffuseMap,normalMap);
-    for (int i=0;i<20;i++) {
-        for (int j=0;j<20;j++) {
-            createBoardGameObject(ELVector2Make(2.5,5),ELVector3Make(i * 4 - 14*3/2.0,2.5,j * 4- 14*3/2.0),0,diffuseMap,normalMap);
-        }
-    }
-
+////    createCubeGameObject(ELVector3Make(0.2,5,2.5),ELVector3Make(-1,2.5,0),0,diffuseMap,normalMap);
+//    for (int i=0;i<20;i++) {
+//        for (int j=0;j<20;j++) {
+//            createBoardGameObject(ELVector2Make(2.5,5),ELVector3Make(i * 4 - 14*3/2.0,2.5,j * 4- 14*3/2.0),0,diffuseMap,normalMap);
+//        }
+//    }
+//
     diffuseMap = ELTexture::texture(ELAssets::shared()->findFile("rock.png"))->value;
     normalMap = ELTexture::texture(ELAssets::shared()->findFile("rock_NRM.png"))->value;
 
     createCubeGameObject(ELVector3Make(1,1,1),ELVector3Make(0,5,0),10.0,diffuseMap,normalMap);
+    createParticalGameObject(ELVector2Make(1,1),ELVector3Make(0,5,0),10.0,diffuseMap,normalMap);
 
     ELGameObject *gameObject = new ELGameObject(world);
     world->addNode(gameObject);
@@ -139,4 +140,16 @@ void FGScene::createBoardGameObject(ELVector2 size,ELVector3 pos,ELFloat mass,GL
 //    collisionShape->asBox(ELVector3Make(size.x / 2,size.y / 2,size.x / 2));
 //    ELRigidBody *rigidBody = new ELRigidBody(collisionShape,mass);
 //    gameObject->addComponent(rigidBody);
+}
+
+void FGScene::createParticalGameObject(ELVector2 size,ELVector3 pos,ELFloat mass,GLuint diffuseMap,GLuint normalMap) {
+    ELGameObject *gameObject = new ELGameObject(world);
+    world->addNode(gameObject);
+    gameObject->transform->position = pos;
+    ELParticalSystem *cube = new ELParticalSystem();
+    gameObject->addComponent(cube);
+    cube->material.diffuse = ELVector4Make(0.0,0.0,0.0,1.0);
+    cube->material.ambient = ELVector4Make(0.4,0.4,0.4,1.0);
+    cube->material.diffuseMap = diffuseMap;
+    cube->material.normalMap = normalMap;
 }

@@ -87,7 +87,6 @@ void ELGeometry::render() {
 }
 
 void ELGeometry::setupVao() {
-    printf("VAO Setup \n");
     ELEffect * defaultEffect = effect();
     ELProgram *program = defaultEffect->program;
     if (vao < 0) {

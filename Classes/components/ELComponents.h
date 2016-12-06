@@ -11,6 +11,7 @@
 #include "geometry/ELMeshGeometry.h"
 
 #include "ELBoard.h"
+#include "ELParticalSystem.h"
 
 #include "ELRigidBody.h"
 #include "ELCollisionShape.h"
