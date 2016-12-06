@@ -18,6 +18,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/EZGLib.dir/components/ELBoard.cpp.o"
   "CMakeFiles/EZGLib.dir/components/ELCollisionShape.cpp.o"
   "CMakeFiles/EZGLib.dir/components/ELGeometry.cpp.o"
+  "CMakeFiles/EZGLib.dir/components/ELPartical.cpp.o"
+  "CMakeFiles/EZGLib.dir/components/ELParticleSystem.cpp.o"
   "CMakeFiles/EZGLib.dir/components/ELRigidBody.cpp.o"
   "CMakeFiles/EZGLib.dir/components/geometry/ELCubeGeometry.cpp.o"
   "CMakeFiles/EZGLib.dir/components/geometry/ELMeshGeometry.cpp.o"

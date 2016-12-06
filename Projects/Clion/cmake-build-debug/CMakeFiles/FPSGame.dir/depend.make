@@ -7,6 +7,7 @@ CMakeFiles/FPSGame.dir/FPS_Game/FGScene.cpp.o: ../../../Classes/components/ELBoa
 CMakeFiles/FPSGame.dir/FPS_Game/FGScene.cpp.o: ../../../Classes/components/ELCollisionShape.h
 CMakeFiles/FPSGame.dir/FPS_Game/FGScene.cpp.o: ../../../Classes/components/ELComponents.h
 CMakeFiles/FPSGame.dir/FPS_Game/FGScene.cpp.o: ../../../Classes/components/ELGeometry.h
+CMakeFiles/FPSGame.dir/FPS_Game/FGScene.cpp.o: ../../../Classes/components/ELParticalSystem.h
 CMakeFiles/FPSGame.dir/FPS_Game/FGScene.cpp.o: ../../../Classes/components/ELRigidBody.h
 CMakeFiles/FPSGame.dir/FPS_Game/FGScene.cpp.o: ../../../Classes/components/geometry/ELCubeGeometry.h
 CMakeFiles/FPSGame.dir/FPS_Game/FGScene.cpp.o: ../../../Classes/components/geometry/ELMeshGeometry.h
@@ -150,6 +151,7 @@ CMakeFiles/FPSGame.dir/FPS_Game/FGWindow.cpp.o: ../../../Classes/components/ELBo
 CMakeFiles/FPSGame.dir/FPS_Game/FGWindow.cpp.o: ../../../Classes/components/ELCollisionShape.h
 CMakeFiles/FPSGame.dir/FPS_Game/FGWindow.cpp.o: ../../../Classes/components/ELComponents.h
 CMakeFiles/FPSGame.dir/FPS_Game/FGWindow.cpp.o: ../../../Classes/components/ELGeometry.h
+CMakeFiles/FPSGame.dir/FPS_Game/FGWindow.cpp.o: ../../../Classes/components/ELParticalSystem.h
 CMakeFiles/FPSGame.dir/FPS_Game/FGWindow.cpp.o: ../../../Classes/components/ELRigidBody.h
 CMakeFiles/FPSGame.dir/FPS_Game/FGWindow.cpp.o: ../../../Classes/components/geometry/ELCubeGeometry.h
 CMakeFiles/FPSGame.dir/FPS_Game/FGWindow.cpp.o: ../../../Classes/components/geometry/ELMeshGeometry.h
@@ -294,6 +296,7 @@ CMakeFiles/FPSGame.dir/FPS_Game/main.cpp.o: ../../../Classes/components/ELBoard.
 CMakeFiles/FPSGame.dir/FPS_Game/main.cpp.o: ../../../Classes/components/ELCollisionShape.h
 CMakeFiles/FPSGame.dir/FPS_Game/main.cpp.o: ../../../Classes/components/ELComponents.h
 CMakeFiles/FPSGame.dir/FPS_Game/main.cpp.o: ../../../Classes/components/ELGeometry.h
+CMakeFiles/FPSGame.dir/FPS_Game/main.cpp.o: ../../../Classes/components/ELParticalSystem.h
 CMakeFiles/FPSGame.dir/FPS_Game/main.cpp.o: ../../../Classes/components/ELRigidBody.h
 CMakeFiles/FPSGame.dir/FPS_Game/main.cpp.o: ../../../Classes/components/geometry/ELCubeGeometry.h
 CMakeFiles/FPSGame.dir/FPS_Game/main.cpp.o: ../../../Classes/components/geometry/ELMeshGeometry.h

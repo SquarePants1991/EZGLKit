@@ -8,6 +8,7 @@ CMakeFiles/FPSGame.dir/FPS_Game/FGScene.cpp.o
  ../../../Classes/components/ELCollisionShape.h
  ../../../Classes/components/ELComponents.h
  ../../../Classes/components/ELGeometry.h
+ ../../../Classes/components/ELParticalSystem.h
  ../../../Classes/components/ELRigidBody.h
  ../../../Classes/components/geometry/ELCubeGeometry.h
  ../../../Classes/components/geometry/ELMeshGeometry.h
@@ -151,6 +152,7 @@ CMakeFiles/FPSGame.dir/FPS_Game/FGWindow.cpp.o
  ../../../Classes/components/ELCollisionShape.h
  ../../../Classes/components/ELComponents.h
  ../../../Classes/components/ELGeometry.h
+ ../../../Classes/components/ELParticalSystem.h
  ../../../Classes/components/ELRigidBody.h
  ../../../Classes/components/geometry/ELCubeGeometry.h
  ../../../Classes/components/geometry/ELMeshGeometry.h
@@ -295,6 +297,7 @@ CMakeFiles/FPSGame.dir/FPS_Game/main.cpp.o
  ../../../Classes/components/ELCollisionShape.h
  ../../../Classes/components/ELComponents.h
  ../../../Classes/components/ELGeometry.h
+ ../../../Classes/components/ELParticalSystem.h
  ../../../Classes/components/ELRigidBody.h
  ../../../Classes/components/geometry/ELCubeGeometry.h
  ../../../Classes/components/geometry/ELMeshGeometry.h

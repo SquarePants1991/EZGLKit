@@ -22,6 +22,8 @@ public:
     ELVector4 colorStart;
     ELVector4 colorEnd;
 
+    ELFloat age;
+
     ELGeometryRect quadRect;
     void update(ELVector3 cameraPosition,ELFloat timeInSecs,ELVector3 force);
 };

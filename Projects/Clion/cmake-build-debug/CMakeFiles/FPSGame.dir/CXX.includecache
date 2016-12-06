@@ -53,6 +53,8 @@ geometry/ELMeshGeometry.h
 ../../../Classes/components/geometry/ELMeshGeometry.h
 ELBoard.h
 ../../../Classes/components/ELBoard.h
+ELParticalSystem.h
+../../../Classes/components/ELParticalSystem.h
 ELRigidBody.h
 ../../../Classes/components/ELRigidBody.h
 ELCollisionShape.h
@@ -63,6 +65,14 @@ core/ELComponent.h
 ../../../Classes/components/core/ELComponent.h
 types/ELGeometryTypes.h
 ../../../Classes/components/types/ELGeometryTypes.h
+
+../../../Classes/components/ELParticalSystem.h
+EZGLBase.h
+../../../Classes/components/EZGLBase.h
+ELGeometry.h
+../../../Classes/components/ELGeometry.h
+utils/ELGeometryVertexBuffer.h
+../../../Classes/components/utils/ELGeometryVertexBuffer.h
 
 ../../../Classes/components/ELRigidBody.h
 types/EZGLTypes.h
@@ -279,6 +289,8 @@ ELMatrix4.h
 ../../../Classes/types/ELMatrix4.h
 ELTransform.h
 ../../../Classes/types/ELTransform.h
+ELGeometryTypes.h
+../../../Classes/types/ELGeometryTypes.h
 
 ../../../Classes/types/EZGLVectorTypes.h
 EZGLBasicTypes.h

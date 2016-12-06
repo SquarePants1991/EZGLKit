@@ -55,6 +55,8 @@ geometry/ELMeshGeometry.h
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/geometry/ELMeshGeometry.h
 ELBoard.h
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELBoard.h
+ELParticalSystem.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELParticalSystem.h
 ELRigidBody.h
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELRigidBody.h
 ELCollisionShape.h
@@ -75,6 +77,36 @@ core/ELComponent.h
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/core/ELComponent.h
 types/ELGeometryTypes.h
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/types/ELGeometryTypes.h
+
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELPartical.cpp
+ELPartical.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELPartical.h
+types/ELGeometryTypes.h
+-
+
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELPartical.h
+EZGLBase.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/EZGLBase.h
+types/EZGLTypes.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/types/EZGLTypes.h
+
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELParticalSystem.h
+EZGLBase.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/EZGLBase.h
+ELGeometry.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELGeometry.h
+utils/ELGeometryVertexBuffer.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/utils/ELGeometryVertexBuffer.h
+
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELParticleSystem.cpp
+ELParticalSystem.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELParticalSystem.h
+ELPartical.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELPartical.h
+core/ELGameObject.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/core/ELGameObject.h
+ELGeometry.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELGeometry.h
 
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELRigidBody.cpp
 ELRigidBody.h
@@ -251,6 +283,8 @@ string
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/ELPhysicsWorld.cpp
 ELPhysicsWorld.h
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/ELPhysicsWorld.h
+ELGameObject.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/ELGameObject.h
 
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/ELPhysicsWorld.h
 btBulletCollisionCommon.h
@@ -305,6 +339,14 @@ ELPhysicsWorld.h
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/ELPhysicsWorld.h
 ELEffect.h
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/ELEffect.h
+
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/types/ELGeometryTypes.h
+EZGLBasicTypes.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/types/EZGLBasicTypes.h
+ELVector2.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/types/ELVector2.h
+ELVector3.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/types/ELVector3.h
 
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/types/ELMatrix3.h
 EZGLBasicTypes.h
@@ -387,6 +429,8 @@ ELMatrix4.h
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/types/ELMatrix4.h
 ELTransform.h
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/types/ELTransform.h
+ELGeometryTypes.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/types/ELGeometryTypes.h
 
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/types/EZGLVectorTypes.h
 EZGLBasicTypes.h
@@ -657,6 +701,8 @@ ELMatrix4.h
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes/types/ELMatrix4.h
 ELTransform.h
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes/types/ELTransform.h
+ELGeometryTypes.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes/types/ELGeometryTypes.h
 
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes/types/EZGLVectorTypes.h
 EZGLBasicTypes.h

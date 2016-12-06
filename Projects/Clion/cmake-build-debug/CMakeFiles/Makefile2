@@ -70,7 +70,7 @@ CMakeFiles/FPSGame.dir/all: wavefront/CMakeFiles/wavefront.dir/all
 CMakeFiles/FPSGame.dir/all: bullet/CMakeFiles/bullet.dir/all
 	$(MAKE) -f CMakeFiles/FPSGame.dir/build.make CMakeFiles/FPSGame.dir/depend
 	$(MAKE) -f CMakeFiles/FPSGame.dir/build.make CMakeFiles/FPSGame.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/CMakeFiles" --progress-num=16,17,18 "Built target FPSGame"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/CMakeFiles" --progress-num=17,18 "Built target FPSGame"
 .PHONY : CMakeFiles/FPSGame.dir/all
 
 # Include target in all.
@@ -121,7 +121,7 @@ all: CMakeFiles/TestShader.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/TestShader.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/CMakeFiles" 93
+	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/CMakeFiles" 94
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/TestShader.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/CMakeFiles" 0
 .PHONY : CMakeFiles/TestShader.dir/rule
@@ -162,7 +162,7 @@ all: CMakeFiles/TestBaseWindow.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/TestBaseWindow.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/CMakeFiles" 93
+	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/CMakeFiles" 94
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/TestBaseWindow.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/CMakeFiles" 0
 .PHONY : CMakeFiles/TestBaseWindow.dir/rule
@@ -203,7 +203,7 @@ all: CMakeFiles/EZGL.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/EZGL.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/CMakeFiles" 95
+	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/CMakeFiles" 96
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/EZGL.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/CMakeFiles" 0
 .PHONY : CMakeFiles/EZGL.dir/rule
@@ -248,7 +248,7 @@ EZGLib/preinstall:
 EZGLib/CMakeFiles/EZGLib.dir/all:
 	$(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/depend
 	$(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/CMakeFiles" --progress-num=4,5,6,7,8,9,10,11,12,13,14,15 "Built target EZGLib"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/CMakeFiles" --progress-num=4,5,6,7,8,9,10,11,12,13,14,15,16 "Built target EZGLib"
 .PHONY : EZGLib/CMakeFiles/EZGLib.dir/all
 
 # Include target in all.
@@ -258,7 +258,7 @@ all: EZGLib/CMakeFiles/EZGLib.dir/all
 
 # Build rule for subdir invocation for target.
 EZGLib/CMakeFiles/EZGLib.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/CMakeFiles" 12
+	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/CMakeFiles" 13
 	$(MAKE) -f CMakeFiles/Makefile2 EZGLib/CMakeFiles/EZGLib.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/CMakeFiles" 0
 .PHONY : EZGLib/CMakeFiles/EZGLib.dir/rule

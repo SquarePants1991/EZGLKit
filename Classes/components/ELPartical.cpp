@@ -19,9 +19,11 @@ void ELPartical::update(ELVector3 cameraPosition,ELFloat timeInSecs,ELVector3 fo
     ELVector3 currentNormal = {cx,cy,cz};
     currentNormal = ELVector3Normalize(currentNormal);
 
-    ELVector3 axis = ELVector3CrossProduct(originNormal,currentNormal);
-    ELFloat half = ELVector3DotProduct(originNormal,currentNormal);
-    newTransform.quaternion = ELQuaternionMake(axis.x, axis.y, axis.z , half);
+    ELVector3 halfVec = ELVector3Normalize(ELVector3Add(originNormal,currentNormal));
+    ELFloat half = ELVector3DotProduct(originNormal,halfVec);
+    ELVector3 axis = ELVector3CrossProduct(originNormal,halfVec);
+
+    newTransform.quaternion = ELQuaternionMake(axis.x , axis.y, axis.z, half);
 
     //caculate quad points
     ELGeometryRect rect = {
@@ -36,12 +38,13 @@ void ELPartical::update(ELVector3 cameraPosition,ELFloat timeInSecs,ELVector3 fo
     };
 
     ELMatrix4 modelMatrix = ELMatrix4MakeWithQuaternion(newTransform.quaternion);
-//    modelMatrix = ELMatrix4Multiply(modelMatrix, ELMatrix4MakeTranslation(newTransform.position.x,newTransform.position.y,newTransform.position.z));
+    modelMatrix = ELMatrix4Multiply(modelMatrix, ELMatrix4MakeTranslation(newTransform.position.x,newTransform.position.y,newTransform.position.z));
 
     rect.point1 = ELMatrix4MultiplyVector3(modelMatrix, rect.point1);
     rect.point2 = ELMatrix4MultiplyVector3(modelMatrix, rect.point2);
     rect.point3 = ELMatrix4MultiplyVector3(modelMatrix, rect.point3);
     rect.point4 = ELMatrix4MultiplyVector3(modelMatrix, rect.point4);
 
+    transform = newTransform;
     quadRect = rect;
 }

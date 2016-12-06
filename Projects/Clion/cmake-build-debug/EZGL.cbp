@@ -539,6 +539,18 @@
 		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELGeometry.h">
 			<Option target="EZGLib"/>
 		</Unit>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELPartical.cpp">
+			<Option target="EZGLib"/>
+		</Unit>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELPartical.h">
+			<Option target="EZGLib"/>
+		</Unit>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELParticalSystem.h">
+			<Option target="EZGLib"/>
+		</Unit>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELParticleSystem.cpp">
+			<Option target="EZGLib"/>
+		</Unit>
 		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELRigidBody.cpp">
 			<Option target="EZGLib"/>
 		</Unit>

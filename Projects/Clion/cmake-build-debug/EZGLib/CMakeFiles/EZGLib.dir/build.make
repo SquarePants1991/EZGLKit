@@ -513,9 +513,57 @@ EZGLib/CMakeFiles/EZGLib.dir/components/ELGeometry.cpp.o.provides: EZGLib/CMakeF
 EZGLib/CMakeFiles/EZGLib.dir/components/ELGeometry.cpp.o.provides.build: EZGLib/CMakeFiles/EZGLib.dir/components/ELGeometry.cpp.o
 
 
+EZGLib/CMakeFiles/EZGLib.dir/components/ELPartical.cpp.o: EZGLib/CMakeFiles/EZGLib.dir/flags.make
+EZGLib/CMakeFiles/EZGLib.dir/components/ELPartical.cpp.o: /Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Classes/components/ELPartical.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object EZGLib/CMakeFiles/EZGLib.dir/components/ELPartical.cpp.o"
+	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/EZGLib" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/EZGLib.dir/components/ELPartical.cpp.o -c "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELPartical.cpp"
+
+EZGLib/CMakeFiles/EZGLib.dir/components/ELPartical.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/EZGLib.dir/components/ELPartical.cpp.i"
+	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/EZGLib" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELPartical.cpp" > CMakeFiles/EZGLib.dir/components/ELPartical.cpp.i
+
+EZGLib/CMakeFiles/EZGLib.dir/components/ELPartical.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/EZGLib.dir/components/ELPartical.cpp.s"
+	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/EZGLib" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELPartical.cpp" -o CMakeFiles/EZGLib.dir/components/ELPartical.cpp.s
+
+EZGLib/CMakeFiles/EZGLib.dir/components/ELPartical.cpp.o.requires:
+
+.PHONY : EZGLib/CMakeFiles/EZGLib.dir/components/ELPartical.cpp.o.requires
+
+EZGLib/CMakeFiles/EZGLib.dir/components/ELPartical.cpp.o.provides: EZGLib/CMakeFiles/EZGLib.dir/components/ELPartical.cpp.o.requires
+	$(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/components/ELPartical.cpp.o.provides.build
+.PHONY : EZGLib/CMakeFiles/EZGLib.dir/components/ELPartical.cpp.o.provides
+
+EZGLib/CMakeFiles/EZGLib.dir/components/ELPartical.cpp.o.provides.build: EZGLib/CMakeFiles/EZGLib.dir/components/ELPartical.cpp.o
+
+
+EZGLib/CMakeFiles/EZGLib.dir/components/ELParticleSystem.cpp.o: EZGLib/CMakeFiles/EZGLib.dir/flags.make
+EZGLib/CMakeFiles/EZGLib.dir/components/ELParticleSystem.cpp.o: /Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Classes/components/ELParticleSystem.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object EZGLib/CMakeFiles/EZGLib.dir/components/ELParticleSystem.cpp.o"
+	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/EZGLib" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/EZGLib.dir/components/ELParticleSystem.cpp.o -c "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELParticleSystem.cpp"
+
+EZGLib/CMakeFiles/EZGLib.dir/components/ELParticleSystem.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/EZGLib.dir/components/ELParticleSystem.cpp.i"
+	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/EZGLib" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELParticleSystem.cpp" > CMakeFiles/EZGLib.dir/components/ELParticleSystem.cpp.i
+
+EZGLib/CMakeFiles/EZGLib.dir/components/ELParticleSystem.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/EZGLib.dir/components/ELParticleSystem.cpp.s"
+	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/EZGLib" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELParticleSystem.cpp" -o CMakeFiles/EZGLib.dir/components/ELParticleSystem.cpp.s
+
+EZGLib/CMakeFiles/EZGLib.dir/components/ELParticleSystem.cpp.o.requires:
+
+.PHONY : EZGLib/CMakeFiles/EZGLib.dir/components/ELParticleSystem.cpp.o.requires
+
+EZGLib/CMakeFiles/EZGLib.dir/components/ELParticleSystem.cpp.o.provides: EZGLib/CMakeFiles/EZGLib.dir/components/ELParticleSystem.cpp.o.requires
+	$(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/components/ELParticleSystem.cpp.o.provides.build
+.PHONY : EZGLib/CMakeFiles/EZGLib.dir/components/ELParticleSystem.cpp.o.provides
+
+EZGLib/CMakeFiles/EZGLib.dir/components/ELParticleSystem.cpp.o.provides.build: EZGLib/CMakeFiles/EZGLib.dir/components/ELParticleSystem.cpp.o
+
+
 EZGLib/CMakeFiles/EZGLib.dir/components/ELRigidBody.cpp.o: EZGLib/CMakeFiles/EZGLib.dir/flags.make
 EZGLib/CMakeFiles/EZGLib.dir/components/ELRigidBody.cpp.o: /Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Classes/components/ELRigidBody.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object EZGLib/CMakeFiles/EZGLib.dir/components/ELRigidBody.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object EZGLib/CMakeFiles/EZGLib.dir/components/ELRigidBody.cpp.o"
 	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/EZGLib" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/EZGLib.dir/components/ELRigidBody.cpp.o -c "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELRigidBody.cpp"
 
 EZGLib/CMakeFiles/EZGLib.dir/components/ELRigidBody.cpp.i: cmake_force
@@ -539,7 +587,7 @@ EZGLib/CMakeFiles/EZGLib.dir/components/ELRigidBody.cpp.o.provides.build: EZGLib
 
 EZGLib/CMakeFiles/EZGLib.dir/components/geometry/ELCubeGeometry.cpp.o: EZGLib/CMakeFiles/EZGLib.dir/flags.make
 EZGLib/CMakeFiles/EZGLib.dir/components/geometry/ELCubeGeometry.cpp.o: /Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Classes/components/geometry/ELCubeGeometry.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object EZGLib/CMakeFiles/EZGLib.dir/components/geometry/ELCubeGeometry.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object EZGLib/CMakeFiles/EZGLib.dir/components/geometry/ELCubeGeometry.cpp.o"
 	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/EZGLib" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/EZGLib.dir/components/geometry/ELCubeGeometry.cpp.o -c "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/geometry/ELCubeGeometry.cpp"
 
 EZGLib/CMakeFiles/EZGLib.dir/components/geometry/ELCubeGeometry.cpp.i: cmake_force
@@ -563,7 +611,7 @@ EZGLib/CMakeFiles/EZGLib.dir/components/geometry/ELCubeGeometry.cpp.o.provides.b
 
 EZGLib/CMakeFiles/EZGLib.dir/components/geometry/ELMeshGeometry.cpp.o: EZGLib/CMakeFiles/EZGLib.dir/flags.make
 EZGLib/CMakeFiles/EZGLib.dir/components/geometry/ELMeshGeometry.cpp.o: /Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Classes/components/geometry/ELMeshGeometry.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object EZGLib/CMakeFiles/EZGLib.dir/components/geometry/ELMeshGeometry.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object EZGLib/CMakeFiles/EZGLib.dir/components/geometry/ELMeshGeometry.cpp.o"
 	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/EZGLib" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/EZGLib.dir/components/geometry/ELMeshGeometry.cpp.o -c "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/geometry/ELMeshGeometry.cpp"
 
 EZGLib/CMakeFiles/EZGLib.dir/components/geometry/ELMeshGeometry.cpp.i: cmake_force
@@ -587,7 +635,7 @@ EZGLib/CMakeFiles/EZGLib.dir/components/geometry/ELMeshGeometry.cpp.o.provides.b
 
 EZGLib/CMakeFiles/EZGLib.dir/components/geometry/ELPlaneGeometry.cpp.o: EZGLib/CMakeFiles/EZGLib.dir/flags.make
 EZGLib/CMakeFiles/EZGLib.dir/components/geometry/ELPlaneGeometry.cpp.o: /Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Classes/components/geometry/ELPlaneGeometry.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object EZGLib/CMakeFiles/EZGLib.dir/components/geometry/ELPlaneGeometry.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object EZGLib/CMakeFiles/EZGLib.dir/components/geometry/ELPlaneGeometry.cpp.o"
 	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/EZGLib" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/EZGLib.dir/components/geometry/ELPlaneGeometry.cpp.o -c "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/geometry/ELPlaneGeometry.cpp"
 
 EZGLib/CMakeFiles/EZGLib.dir/components/geometry/ELPlaneGeometry.cpp.i: cmake_force
@@ -630,6 +678,8 @@ EZGLib_OBJECTS = \
 "CMakeFiles/EZGLib.dir/components/ELBoard.cpp.o" \
 "CMakeFiles/EZGLib.dir/components/ELCollisionShape.cpp.o" \
 "CMakeFiles/EZGLib.dir/components/ELGeometry.cpp.o" \
+"CMakeFiles/EZGLib.dir/components/ELPartical.cpp.o" \
+"CMakeFiles/EZGLib.dir/components/ELParticleSystem.cpp.o" \
 "CMakeFiles/EZGLib.dir/components/ELRigidBody.cpp.o" \
 "CMakeFiles/EZGLib.dir/components/geometry/ELCubeGeometry.cpp.o" \
 "CMakeFiles/EZGLib.dir/components/geometry/ELMeshGeometry.cpp.o" \
@@ -657,13 +707,15 @@ EZGLib/libEZGLib.a: EZGLib/CMakeFiles/EZGLib.dir/utils/ELWaveFrontLoader.cpp.o
 EZGLib/libEZGLib.a: EZGLib/CMakeFiles/EZGLib.dir/components/ELBoard.cpp.o
 EZGLib/libEZGLib.a: EZGLib/CMakeFiles/EZGLib.dir/components/ELCollisionShape.cpp.o
 EZGLib/libEZGLib.a: EZGLib/CMakeFiles/EZGLib.dir/components/ELGeometry.cpp.o
+EZGLib/libEZGLib.a: EZGLib/CMakeFiles/EZGLib.dir/components/ELPartical.cpp.o
+EZGLib/libEZGLib.a: EZGLib/CMakeFiles/EZGLib.dir/components/ELParticleSystem.cpp.o
 EZGLib/libEZGLib.a: EZGLib/CMakeFiles/EZGLib.dir/components/ELRigidBody.cpp.o
 EZGLib/libEZGLib.a: EZGLib/CMakeFiles/EZGLib.dir/components/geometry/ELCubeGeometry.cpp.o
 EZGLib/libEZGLib.a: EZGLib/CMakeFiles/EZGLib.dir/components/geometry/ELMeshGeometry.cpp.o
 EZGLib/libEZGLib.a: EZGLib/CMakeFiles/EZGLib.dir/components/geometry/ELPlaneGeometry.cpp.o
 EZGLib/libEZGLib.a: EZGLib/CMakeFiles/EZGLib.dir/build.make
 EZGLib/libEZGLib.a: EZGLib/CMakeFiles/EZGLib.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_24) "Linking CXX static library libEZGLib.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_26) "Linking CXX static library libEZGLib.a"
 	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/EZGLib" && $(CMAKE_COMMAND) -P CMakeFiles/EZGLib.dir/cmake_clean_target.cmake
 	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/EZGLib" && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/EZGLib.dir/link.txt --verbose=$(VERBOSE)
 
@@ -691,6 +743,8 @@ EZGLib/CMakeFiles/EZGLib.dir/requires: EZGLib/CMakeFiles/EZGLib.dir/utils/ELWave
 EZGLib/CMakeFiles/EZGLib.dir/requires: EZGLib/CMakeFiles/EZGLib.dir/components/ELBoard.cpp.o.requires
 EZGLib/CMakeFiles/EZGLib.dir/requires: EZGLib/CMakeFiles/EZGLib.dir/components/ELCollisionShape.cpp.o.requires
 EZGLib/CMakeFiles/EZGLib.dir/requires: EZGLib/CMakeFiles/EZGLib.dir/components/ELGeometry.cpp.o.requires
+EZGLib/CMakeFiles/EZGLib.dir/requires: EZGLib/CMakeFiles/EZGLib.dir/components/ELPartical.cpp.o.requires
+EZGLib/CMakeFiles/EZGLib.dir/requires: EZGLib/CMakeFiles/EZGLib.dir/components/ELParticleSystem.cpp.o.requires
 EZGLib/CMakeFiles/EZGLib.dir/requires: EZGLib/CMakeFiles/EZGLib.dir/components/ELRigidBody.cpp.o.requires
 EZGLib/CMakeFiles/EZGLib.dir/requires: EZGLib/CMakeFiles/EZGLib.dir/components/geometry/ELCubeGeometry.cpp.o.requires
 EZGLib/CMakeFiles/EZGLib.dir/requires: EZGLib/CMakeFiles/EZGLib.dir/components/geometry/ELMeshGeometry.cpp.o.requires

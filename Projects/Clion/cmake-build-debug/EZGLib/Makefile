@@ -233,6 +233,60 @@ components/ELGeometry.cpp.s:
 	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug" && $(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/components/ELGeometry.cpp.s
 .PHONY : components/ELGeometry.cpp.s
 
+components/ELPartical.o: components/ELPartical.cpp.o
+
+.PHONY : components/ELPartical.o
+
+# target to build an object file
+components/ELPartical.cpp.o:
+	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug" && $(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/components/ELPartical.cpp.o
+.PHONY : components/ELPartical.cpp.o
+
+components/ELPartical.i: components/ELPartical.cpp.i
+
+.PHONY : components/ELPartical.i
+
+# target to preprocess a source file
+components/ELPartical.cpp.i:
+	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug" && $(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/components/ELPartical.cpp.i
+.PHONY : components/ELPartical.cpp.i
+
+components/ELPartical.s: components/ELPartical.cpp.s
+
+.PHONY : components/ELPartical.s
+
+# target to generate assembly for a file
+components/ELPartical.cpp.s:
+	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug" && $(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/components/ELPartical.cpp.s
+.PHONY : components/ELPartical.cpp.s
+
+components/ELParticleSystem.o: components/ELParticleSystem.cpp.o
+
+.PHONY : components/ELParticleSystem.o
+
+# target to build an object file
+components/ELParticleSystem.cpp.o:
+	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug" && $(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/components/ELParticleSystem.cpp.o
+.PHONY : components/ELParticleSystem.cpp.o
+
+components/ELParticleSystem.i: components/ELParticleSystem.cpp.i
+
+.PHONY : components/ELParticleSystem.i
+
+# target to preprocess a source file
+components/ELParticleSystem.cpp.i:
+	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug" && $(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/components/ELParticleSystem.cpp.i
+.PHONY : components/ELParticleSystem.cpp.i
+
+components/ELParticleSystem.s: components/ELParticleSystem.cpp.s
+
+.PHONY : components/ELParticleSystem.s
+
+# target to generate assembly for a file
+components/ELParticleSystem.cpp.s:
+	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug" && $(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/components/ELParticleSystem.cpp.s
+.PHONY : components/ELParticleSystem.cpp.s
+
 components/ELRigidBody.o: components/ELRigidBody.cpp.o
 
 .PHONY : components/ELRigidBody.o
@@ -767,6 +821,12 @@ help:
 	@echo "... components/ELGeometry.o"
 	@echo "... components/ELGeometry.i"
 	@echo "... components/ELGeometry.s"
+	@echo "... components/ELPartical.o"
+	@echo "... components/ELPartical.i"
+	@echo "... components/ELPartical.s"
+	@echo "... components/ELParticleSystem.o"
+	@echo "... components/ELParticleSystem.i"
+	@echo "... components/ELParticleSystem.s"
 	@echo "... components/ELRigidBody.o"
 	@echo "... components/ELRigidBody.i"
 	@echo "... components/ELRigidBody.s"
