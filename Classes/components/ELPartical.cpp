@@ -36,7 +36,7 @@ void ELPartical::update(ELVector3 cameraPosition,ELFloat timeInSecs,ELVector3 fo
     };
 
     ELMatrix4 modelMatrix = ELMatrix4MakeWithQuaternion(newTransform.quaternion);
-    modelMatrix = ELMatrix4Multiply(modelMatrix, ELMatrix4MakeTranslation(newTransform.position.x,newTransform.position.y,newTransform.position.z));
+//    modelMatrix = ELMatrix4Multiply(modelMatrix, ELMatrix4MakeTranslation(newTransform.position.x,newTransform.position.y,newTransform.position.z));
 
     rect.point1 = ELMatrix4MultiplyVector3(modelMatrix, rect.point1);
     rect.point2 = ELMatrix4MultiplyVector3(modelMatrix, rect.point2);

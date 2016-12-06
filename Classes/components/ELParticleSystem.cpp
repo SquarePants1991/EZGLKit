@@ -39,10 +39,10 @@ ELGeometryData ELParticalSystem::generateData() {
 }
 
 void ELParticalSystem::update(ELFloat timeInSecs) {
-    this->setNeedRegenData();
     ELGeometry::update(timeInSecs);
 }
 
 void ELParticalSystem::render() {
+    this->setNeedRegenData();
     ELGeometry::render();
 }
