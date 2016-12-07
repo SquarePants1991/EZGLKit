@@ -13,6 +13,7 @@ class ELNode {
 public:
     ELTransform *transform;
     bool renderShadow;
+    bool isTransparency;
 
 public:
     ELNode();
@@ -33,7 +34,7 @@ public:
 
     std::vector<ELNode *> findChildrenWithKind(std::string kind);
     ELNode * findChildWithIdentity(std::string identity);
-
+    bool containTransparencyNode();
 protected:
     ~ELNode();
 };

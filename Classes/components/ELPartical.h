@@ -24,8 +24,16 @@ public:
 
     ELFloat age;
 
-    ELGeometryRect quadRect;
+    ELGeometryColorRect quadRect;
+
+    ELPartical();
+
     void update(ELVector3 cameraPosition,ELFloat timeInSecs,ELVector3 force);
+    void reset();
+    bool isAlive();
+private:
+    ELFloat currentAge;
+
 };
 
 

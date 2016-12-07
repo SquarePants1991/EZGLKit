@@ -10,7 +10,8 @@
 ELGeometry::ELGeometry() : vao(-1),
                            isGeometryDataValid(false),
                            borderWidth(0.1),
-                           borderColor(ELVector4Make(1.0,1.0,1.0,1.0))
+                           borderColor(ELVector4Make(1.0,1.0,1.0,1.0)),
+                           onlyUseColorAttrib(false)
 {
     material = ELMaterialDefault;
 }
@@ -62,6 +63,8 @@ void ELGeometry::render() {
     glActiveTexture(GL_TEXTURE3);
     glBindTexture(GL_TEXTURE_2D, material.specularMap);
     glUniform1i(program->uniform("specularMap"), 3);
+
+    glUniform1i(program->uniform("onlyUseColorAttrib"), onlyUseColorAttrib? 1 : 0);
 
     glBindVertexArray(vao);
     if (enableBorder) {
@@ -115,6 +118,12 @@ void ELGeometry::setupVao() {
     GLuint bitangentLocation = glGetAttribLocation(program->value, "bitangent");
     glEnableVertexAttribArray(bitangentLocation);
     glVertexAttribPointer(bitangentLocation, 3, GL_FLOAT, GL_FALSE, data.vertexStride, BUFFER_OFFSET(11 * sizeof(GLfloat)));
+
+    if (data.supportColorAttrib) {
+        GLuint colorLocation = glGetAttribLocation(program->value, "color");
+        glEnableVertexAttribArray(colorLocation);
+        glVertexAttribPointer(colorLocation, 4, GL_FLOAT, GL_FALSE, data.vertexStride, BUFFER_OFFSET(14 * sizeof(GLfloat)));
+    }
 
     if (data.indiceVBO) {
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, data.indiceVBO);

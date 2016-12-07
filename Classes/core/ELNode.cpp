@@ -4,6 +4,13 @@
 
 #include "ELNode.h"
 
+class ELNodeTransparencyCompare {
+public:
+    bool operator()(ELNode *left,ELNode *right) {
+        return left->containTransparencyNode();
+    }
+};
+
 ELNode::ELNode() : renderShadow(false) {
     transform = new ELTransform();
     transform->position = ELVector3Make(0.0, 0.0, 0.0);
@@ -25,6 +32,7 @@ void ELNode::addNode(ELNode *node) {
 }
 
 void ELNode::update(ELFloat timeInSecs) {
+    std::sort(children.begin(),children.end(),ELNodeTransparencyCompare());
     for (int i = 0; i < children.size(); ++i) {
         children.at(i)->update(timeInSecs);
     }
@@ -60,4 +68,16 @@ ELNode * ELNode::findChildWithIdentity(std::string identity) {
         }
     }
     return NULL;
+}
+
+bool ELNode::containTransparencyNode() {
+    if (isTransparency) {
+        return true;
+    }
+    for (int i = 0; i < children.size(); ++i) {
+        if (children.at(i)->containTransparencyNode()) {
+            return true;
+        }
+    }
+    return false;
 }

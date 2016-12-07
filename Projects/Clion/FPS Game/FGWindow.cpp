@@ -12,8 +12,8 @@ FGScene *g_scene;
 double lastTime = 0;
 float rotateUpFactor = 0;
 float walkingFactor = 0;
-const float WindowWidth = 800;
-const float WindowHeight = 600;
+const float WindowWidth = 400;
+const float WindowHeight = 200;
 ELGameObject *player;
 ELRigidBody *playerRigidBody;
 ELLight * defaultLight;
@@ -39,7 +39,7 @@ FGWindow::FGWindow() {
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
-    glfwWindowHint(GLFW_SAMPLES, 3);
+//    glfwWindowHint(GLFW_SAMPLES, 3);
 
     /* Create a windowed mode window and its OpenGL context */
     glfwWindow = glfwCreateWindow(WindowWidth, WindowHeight, "Hello World", NULL, NULL);
@@ -53,8 +53,8 @@ FGWindow::FGWindow() {
     /* Make the window's context current */
     glfwMakeContextCurrent(glfwWindow);
 
-//    glfwSetWindowPos(glfwWindow,0,1920 - WindowHeight);
-        glfwSetWindowPos(glfwWindow,0,0);
+    glfwSetWindowPos(glfwWindow,0,1920 - WindowHeight);
+//        glfwSetWindowPos(glfwWindow,0,0);
 
     if (!gladLoadGLLoader((GLADloadproc) glfwGetProcAddress))
     {
@@ -104,6 +104,8 @@ FGWindow::FGWindow() {
     glad_glDepthMask(GL_TRUE);
     glad_glDepthFunc(GL_LESS);
     glad_glEnable(GL_DEPTH_TEST);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     mainScene = new FGScene(world);
 

@@ -6,6 +6,10 @@
 
 #include <types/ELGeometryTypes.h>
 
+ELPartical::ELPartical() : currentAge(0) {
+
+}
+
 void ELPartical::update(ELVector3 cameraPosition,ELFloat timeInSecs,ELVector3 force) {
     velocity = ELVector3Add(velocity, ELVector3MultiplyScalar(force, timeInSecs));
     ELTransform newTransform;
@@ -25,26 +29,55 @@ void ELPartical::update(ELVector3 cameraPosition,ELFloat timeInSecs,ELVector3 fo
 
     newTransform.quaternion = ELQuaternionMake(axis.x , axis.y, axis.z, half);
 
+    size.x = sizeStart.x + (sizeEnd.x - sizeStart.x) / age * currentAge;
+    size.y = sizeStart.y + (sizeEnd.y - sizeStart.y) / age * currentAge;
+
+    color.r = colorStart.x + (colorEnd.x - colorStart.x) / age * currentAge;
+    color.g = colorStart.y + (colorEnd.y - colorStart.y) / age * currentAge;
+    color.b = colorStart.z + (colorEnd.z - colorStart.z) / age * currentAge;
+    color.a = colorStart.w + (colorEnd.w - colorStart.w) / age * currentAge;
+
     //caculate quad points
-    ELGeometryRect rect = {
-            {0.5f * size.x , 0.0f ,  -0.5f * size.y  },
-            {0.5f * size.x , 0.0f ,  0.5f * size.y   },
-            {-0.5f * size.x, 0.0f , 0.5f * size.y   },
-            {-0.5f * size.x, 0.0f , -0.5f * size.y  },
-            {0, 0},
-            {0, 1},
-            {1, 1},
-            {1, 0}
+    ELGeometryColorRect rect = {
+            {
+                    {0.5f * size.x, 0.0f, -0.5f * size.y},
+                    {0.5f * size.x, 0.0f, 0.5f * size.y},
+                    {-0.5f * size.x, 0.0f, 0.5f * size.y},
+                    {-0.5f * size.x, 0.0f, -0.5f * size.y},
+                    {0, 0},
+                    {0, 1},
+                    {1, 1},
+                    {1, 0}
+            },
+            {1.0, 1.0, 0.0, 1.0},
+            {1.0, 1.0, 0.0, 1.0},
+            {1.0, 1.0, 0.0, 1.0},
+            {1.0, 1.0, 0.0, 1.0}
     };
 
-    ELMatrix4 modelMatrix = ELMatrix4MakeWithQuaternion(newTransform.quaternion);
-    modelMatrix = ELMatrix4Multiply(modelMatrix, ELMatrix4MakeTranslation(newTransform.position.x,newTransform.position.y,newTransform.position.z));
+    ELMatrix4 modelMatrix = ELMatrix4MakeTranslation(newTransform.position.x,newTransform.position.y,newTransform.position.z);
+    modelMatrix = ELMatrix4Multiply(modelMatrix, ELMatrix4MakeWithQuaternion(newTransform.quaternion));
 
-    rect.point1 = ELMatrix4MultiplyVector3(modelMatrix, rect.point1);
-    rect.point2 = ELMatrix4MultiplyVector3(modelMatrix, rect.point2);
-    rect.point3 = ELMatrix4MultiplyVector3(modelMatrix, rect.point3);
-    rect.point4 = ELMatrix4MultiplyVector3(modelMatrix, rect.point4);
+    rect.geometryRect.point1 = ELMatrix4MultiplyVector4(modelMatrix, ELVector4MakeWithVector3(rect.geometryRect.point1,1)).xyz;
+    rect.geometryRect.point2 = ELMatrix4MultiplyVector4(modelMatrix, ELVector4MakeWithVector3(rect.geometryRect.point2,1)).xyz;
+    rect.geometryRect.point3 = ELMatrix4MultiplyVector4(modelMatrix, ELVector4MakeWithVector3(rect.geometryRect.point3,1)).xyz;
+    rect.geometryRect.point4 = ELMatrix4MultiplyVector4(modelMatrix, ELVector4MakeWithVector3(rect.geometryRect.point4,1)).xyz;
+
+    rect.color1 = color;
+    rect.color2 = color;
+    rect.color3 = color;
+    rect.color4 = color;
 
     transform = newTransform;
     quadRect = rect;
+
+    currentAge += timeInSecs;
+}
+
+bool ELPartical::isAlive() {
+    return age > currentAge;
+}
+
+void ELPartical::reset() {
+    currentAge = 0;
 }

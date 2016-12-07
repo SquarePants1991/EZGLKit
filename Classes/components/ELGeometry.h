@@ -15,6 +15,7 @@ typedef struct {
     ELUint vertexStride;
     ELUint vertexCount;
     ELBool supportIndiceVBO;
+    ELBool supportColorAttrib;
 }ELGeometryData;
 
 class ELEffect;
@@ -27,6 +28,8 @@ public:
     bool enableBorder;
     ELVector4 borderColor;
     ELFloat borderWidth;
+
+    bool onlyUseColorAttrib;
 public:
     ELGeometry();
     void prepare();

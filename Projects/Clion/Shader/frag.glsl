@@ -14,8 +14,8 @@ precision highp float;
 #define tex2D(map, uv) texture2D(map, uv)
 #else
 #define OUT in
-out vec4 fragColor;
-#define outColor fragColor
+out vec4 GLfragColor;
+#define outColor GLfragColor
 #define tex2D(map, uv) texture(map, uv)
 #endif
 
@@ -38,6 +38,7 @@ OUT lowp vec2 fragTexcoord;
 OUT highp vec3 fragNormal;
 OUT highp vec3 fragTangent;
 OUT highp vec3 fragBitangent;
+OUT highp vec4 fragColor;
 
 uniform highp mat4 viewProjection;
 uniform highp mat4 modelMatrix;
@@ -58,6 +59,8 @@ uniform material_struct material;
 uniform int renderShadow;
 uniform int renderBorder;
 uniform vec4 borderColor;
+
+uniform int onlyUseColorAttrib;
 
 void pointLight(
                 in vec3 normal,
@@ -223,7 +226,7 @@ vec4 render() {
         if (frogFact == 0.0) {
             return frogColor;
         } else {
-            return outputColor * frogFact + frogColor * (1 - frogFact);
+            return vec4((outputColor * frogFact + frogColor * (1 - frogFact)).rgb,1.0);
         }
     }
 }
@@ -235,6 +238,13 @@ void main()
     if (renderBorder == 1) {
         outColor = borderColor;
     } else {
-        outColor = render();
+        if (onlyUseColorAttrib == 1) {
+//            float r = sqrt(pow(fragTexcoord.x - 0.5, 2.0) + pow(fragTexcoord.y- 0.5, 2.0));
+//            outColor = vec4(fragColor.rgb, fragColor.a * cos(r * 3.14));
+            highp vec4 finalColor = tex2D(diffuseMap, fragTexcoord);
+            outColor = finalColor * fragColor;
+        } else {
+            outColor = render();
+        }
     }
 }
