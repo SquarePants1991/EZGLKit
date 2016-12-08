@@ -86,10 +86,11 @@ void pointLight(
 
     //if (lightDistance > 5.0)
     {
-        float percent = (5.0 - lightDistance) / 5.0;
+    float total = 10.0;
+        float percent = (total - lightDistance) / total;
         percent = percent < 0?0:percent;
         diffuse = vec4(0,0,0,0);
-        ambient = vec4(percent,percent,percent,percent);
+        ambient = vec4(percent,percent / 2.0,0.0,1.0);
         specular = vec4(0,0,0,0);
     }
 }
