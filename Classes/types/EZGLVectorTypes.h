@@ -23,6 +23,18 @@ typedef union _ELVector2 ELVector2;
 union _ELVector3 {
     ELFloat v[3];
     struct {
+        ELVector2 xy;
+        ELFloat zVal;
+    };
+    struct {
+        ELVector2 xz;
+        ELFloat yVal;
+    };
+    struct {
+        ELVector2 yz;
+        ELFloat xVal;
+    };
+    struct {
         ELFloat x;
         ELFloat y;
         ELFloat z;

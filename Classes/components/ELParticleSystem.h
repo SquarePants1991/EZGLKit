@@ -40,6 +40,14 @@ struct _ELParticleSystemData {
     ELVector4 colorEndRandomRangeBegin;
     ELVector4 colorEndRandomRangeEnd;
 
+    ELFloat rotationBegin;
+    ELFloat rotationBeginRandomRangeBegin;
+    ELFloat rotationBeginRandomRangeEnd;
+
+    ELFloat rotationEnd;
+    ELFloat rotationEndRandomRangeBegin;
+    ELFloat rotationEndRandomRangeEnd;
+
     ELFloat age;
     ELFloat ageRandomBegin;
     ELFloat ageRandomEnd;

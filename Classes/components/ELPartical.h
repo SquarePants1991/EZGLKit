@@ -22,6 +22,10 @@ public:
     ELVector4 colorStart;
     ELVector4 colorEnd;
 
+    ELFloat rotation;
+    ELFloat rotationStart;
+    ELFloat rotationEnd;
+
     ELFloat age;
 
     ELGeometryColorRect quadRect;

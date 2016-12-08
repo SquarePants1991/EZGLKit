@@ -14,6 +14,7 @@ public:
     ELVector4 color;
     ELFloat intensity;
     ELVector3 position;
+    ELFloat intensityFallOff;
     bool isShadowEnabled;
     ELInt shadowTexture;
 public:

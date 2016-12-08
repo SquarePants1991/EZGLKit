@@ -19,7 +19,7 @@ void ELPartical::update(ELVector3 cameraPosition,ELFloat timeInSecs,ELVector3 fo
     ELFloat cy = cameraPosition.y - transform.position.y;
     ELFloat cz = cameraPosition.z - transform.position.z;
 
-    ELVector3 originNormal = {0,1,0};
+    ELVector3 originNormal = {0,0,1};
     ELVector3 currentNormal = {cx,cy,cz};
     currentNormal = ELVector3Normalize(currentNormal);
 
@@ -29,6 +29,17 @@ void ELPartical::update(ELVector3 cameraPosition,ELFloat timeInSecs,ELVector3 fo
 
     newTransform.quaternion = ELQuaternionMake(axis.x , axis.y, axis.z, half);
 
+//    ELFloat angle = 0;
+//    if (cz == 0) {
+//        angle = 0;
+//    } else {
+//        ELFloat tanVal = cx / cz;
+//        angle = atan(tanVal);
+//    }
+//    newTransform.quaternion = ELQuaternionMakeWithAngleAndAxis(angle,0,1,0);
+
+
+
     size.x = sizeStart.x + (sizeEnd.x - sizeStart.x) / age * currentAge;
     size.y = sizeStart.y + (sizeEnd.y - sizeStart.y) / age * currentAge;
 
@@ -37,23 +48,32 @@ void ELPartical::update(ELVector3 cameraPosition,ELFloat timeInSecs,ELVector3 fo
     color.b = colorStart.z + (colorEnd.z - colorStart.z) / age * currentAge;
     color.a = colorStart.w + (colorEnd.w - colorStart.w) / age * currentAge;
 
+    rotation = rotationStart + (rotationStart - rotationEnd) / age * currentAge;
+
     //caculate quad points
     ELGeometryColorRect rect = {
             {
-                    {0.5f * size.x, 0.0f, -0.5f * size.y},
-                    {0.5f * size.x, 0.0f, 0.5f * size.y},
-                    {-0.5f * size.x, 0.0f, 0.5f * size.y},
-                    {-0.5f * size.x, 0.0f, -0.5f * size.y},
-                    {0, 0},
-                    {0, 1},
-                    {1, 1},
-                    {1, 0}
+                {0.5f * size.x  ,  0.5f * size.y  , 0.0f  },
+                {0.5f * size.x  ,  -0.5f * size.y , 0.0f  },
+                {-0.5f * size.x , -0.5f * size.y  , 0.0f },
+                {-0.5f * size.x , 0.5f * size.y   , 0.0f },
+                {1, 0},
+                {1, 1},
+                {0, 1},
+                {0, 0},
             },
             {1.0, 1.0, 0.0, 1.0},
             {1.0, 1.0, 0.0, 1.0},
             {1.0, 1.0, 0.0, 1.0},
             {1.0, 1.0, 0.0, 1.0}
     };
+
+    ELQuaternion rotateQuaternion = ELQuaternionMakeWithAngleAndAxis(rotation / 180.0 * M_PI, 0,0,1);
+    ELMatrix4 rotateMatrix = ELMatrix4MakeWithQuaternion(rotateQuaternion);
+    rect.geometryRect.point1 = ELMatrix4MultiplyVector4(rotateMatrix, ELVector4MakeWithVector3(rect.geometryRect.point1,1)).xyz;
+    rect.geometryRect.point2 = ELMatrix4MultiplyVector4(rotateMatrix, ELVector4MakeWithVector3(rect.geometryRect.point2,1)).xyz;
+    rect.geometryRect.point3 = ELMatrix4MultiplyVector4(rotateMatrix, ELVector4MakeWithVector3(rect.geometryRect.point3,1)).xyz;
+    rect.geometryRect.point4 = ELMatrix4MultiplyVector4(rotateMatrix, ELVector4MakeWithVector3(rect.geometryRect.point4,1)).xyz;
 
     ELMatrix4 modelMatrix = ELMatrix4MakeTranslation(newTransform.position.x,newTransform.position.y,newTransform.position.z);
     modelMatrix = ELMatrix4Multiply(modelMatrix, ELMatrix4MakeWithQuaternion(newTransform.quaternion));

@@ -39,6 +39,8 @@ void ELEffect::prepare() {
         glUniform3fv(program->uniform(buffer), 1, light->position.v);
         snprintf(buffer, 1024, "lights[%d].intensity",index);
         glUniform1f(program->uniform(buffer), light->intensity);
+        snprintf(buffer, 1024, "lights[%d].intensityFallOff",index);
+        glUniform1f(program->uniform(buffer), light->intensityFallOff);
     }
 
     glUniform1i(program->uniform("lightNum"), lights.size());

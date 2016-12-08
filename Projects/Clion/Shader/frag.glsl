@@ -25,6 +25,7 @@ struct light {
     vec3 position;
     vec4 color;
     float intensity;
+    float intensityFallOff;
 };
 
 struct material_struct {
@@ -69,6 +70,7 @@ void pointLight(
                 out vec4 specular,
                 in vec3 vp,
                 in vec3 eye,
+                in float lightDistance,
                 in vec4 lightAmbient,
                 in vec4 lightDiffuse,
                 in vec4 lightSpecular
@@ -81,6 +83,15 @@ void pointLight(
     float nDotViewHalfVector = clamp(dot(normal,halfVector),0.0,1.0);
     float powerFactor = max(0.0, pow(nDotViewHalfVector,shininess));
     specular = lightSpecular * powerFactor / 10.0;
+
+    //if (lightDistance > 5.0)
+    {
+        float percent = (5.0 - lightDistance) / 5.0;
+        percent = percent < 0?0:percent;
+        diffuse = vec4(0,0,0,0);
+        ambient = vec4(percent,percent,percent,percent);
+        specular = vec4(0,0,0,0);
+    }
 }
 
 void transformNormal(in vec3 position, in vec3 normal,out vec3 newNormal)
@@ -192,6 +203,9 @@ vec4 render() {
         vp = normalize(tbn * vp);
 #endif
 
+        // 计算表面到光源的位置
+        float lightDistance = distance(defaultLight.position,mMatrixPosition);
+
         // 计算光源
         highp vec4 ambient, diffuse, specular;
 #ifdef Use_SpecularMap
@@ -199,9 +213,9 @@ vec4 render() {
 #else
         highp vec4 specularColor = material.specular;
 #endif
-        pointLight(textureNormal,ambient,diffuse,specular,vp,eye,material.ambient,defaultLight.color,vec4(1.0,1.0,1.0,1.0));
+        pointLight(textureNormal,ambient,diffuse,specular,vp,eye,lightDistance,material.ambient,defaultLight.color,vec4(1.0,1.0,1.0,1.0));
 
-        sum_ambient = material.ambient;
+        sum_ambient = ambient;
         sum_diffuse = sum_diffuse + diffuse;
         sum_specular = sum_specular + specular;
     }
@@ -221,7 +235,7 @@ vec4 render() {
     } else {
         highp vec4 outputColor = (finalColor * sum_diffuse + finalColor * sum_ambient + finalColor * sum_specular) * shadow;
 
-        highp vec4 frogColor = vec4(0.5,0.5,0.5,1.0);
+        highp vec4 frogColor = vec4(0.0,0.0,0.0,1.0);
         float frogFact = frogFactor();
         if (frogFact == 0.0) {
             return frogColor;
@@ -242,7 +256,7 @@ void main()
 //            float r = sqrt(pow(fragTexcoord.x - 0.5, 2.0) + pow(fragTexcoord.y- 0.5, 2.0));
 //            outColor = vec4(fragColor.rgb, fragColor.a * cos(r * 3.14));
             highp vec4 finalColor = tex2D(diffuseMap, fragTexcoord);
-            outColor = finalColor * fragColor;
+            outColor = fragColor * finalColor.a;//vec4(().rgb,finalColor.a);
         } else {
             outColor = render();
         }

@@ -18,8 +18,8 @@ public:
     }
     bool operator()(ELPartical *obj1,ELPartical *obj2)
     {
-        ELFloat distance1 = ELVector3Distance(obj1->transform.position,this->system->gameObject()->mainCamera()->position());
-        ELFloat distance2 = ELVector3Distance(obj2->transform.position,this->system->gameObject()->mainCamera()->position());
+        ELFloat distance1 = ELVector2Distance(obj1->transform.position.xz,this->system->gameObject()->mainCamera()->position().xz);
+        ELFloat distance2 = ELVector2Distance(obj2->transform.position.xz,this->system->gameObject()->mainCamera()->position().xz);
         return distance1 > distance2;
     }
 };
@@ -65,7 +65,7 @@ void ELParticleSystem::update(ELFloat timeInSecs) {
     // emit new particals
     emitTimeInterval -= timeInSecs;
     if (emitTimeInterval <= 0) {
-        emitTimeInterval = 0.2;
+        emitTimeInterval = 0.04;
         int birthAmount = data.birthRate * data.maxParticleAmount;
         for (int i = 0; i < birthAmount; ++i) {
             if (inactiveParticals.size() > 0) {
@@ -95,6 +95,12 @@ void ELParticleSystem::setData(ELParticleSystemData data) {
         ELPartical *partical = new ELPartical();
         inactiveParticals.push_back(partical);
     }
+}
+
+ELFloat randomFloat(ELFloat initial,ELFloat rangeBegin,ELFloat rangeEnd) {
+    srand(rand());
+    ELFloat val = initial + rangeBegin + (rangeEnd - rangeBegin) * (rand() / (ELFloat)RAND_MAX);
+    return val;
 }
 
 ELVector2 randomVec2(ELVector2 initial,ELVector2 rangeBegin,ELVector2 rangeEnd) {
@@ -140,15 +146,22 @@ void ELParticleSystem::restartPartical(ELPartical *partical) {
     partical->sizeEnd = randomVec2Lock(ELVector2Make(data.sizeEnd,data.sizeEnd),data.sizeEndRandomRangeBegin,data.sizeEndRandomRangeEnd);
     partical->colorStart = randomVec4(data.colorBegin,data.colorBeginRandomRangeBegin,data.colorBeginRandomRangeEnd);
     partical->colorEnd = randomVec4(data.colorEnd,data.colorEndRandomRangeBegin,data.colorEndRandomRangeEnd);
+    partical->rotationStart = randomFloat(data.rotationBegin,data.rotationBeginRandomRangeBegin,data.rotationBeginRandomRangeEnd);
+    partical->rotationEnd = randomFloat(data.rotationEnd,data.rotationEndRandomRangeBegin,data.rotationEndRandomRangeEnd);
     partical->age = data.age + data.ageRandomBegin + ( data.ageRandomEnd -  data.ageRandomBegin) * (rand() / (ELFloat)RAND_MAX);
     partical->reset();
 }
 
 void ELParticleSystem::render() {
-    ELParticalSystemCompare compare(this);
-    std::sort(activeParticals.begin(),activeParticals.end(),compare);
+//    ELParticalSystemCompare compare(this);
+//    std::sort(activeParticals.begin(),activeParticals.end(),compare);
     this->setNeedRegenData();
     glDisable(GL_CULL_FACE);
+    glEnable(GL_BLEND);
+    glDepthMask(GL_FALSE);
+    glBlendFunc(GL_ONE_MINUS_SRC_ALPHA, GL_DST_ALPHA);
     ELGeometry::render();
+    glDepthMask(GL_TRUE);
+    glDisable(GL_BLEND);
     glEnable(GL_CULL_FACE);
 }
