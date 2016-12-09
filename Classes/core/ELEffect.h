@@ -20,6 +20,7 @@ public:
     ~ELEffect();
 
     void prepare();
+    void active();
 
     virtual std::string kind();
 };

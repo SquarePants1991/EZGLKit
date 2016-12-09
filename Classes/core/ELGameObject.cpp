@@ -7,6 +7,7 @@
 #include "ELLight.h"
 
 ELGameObject::ELGameObject(ELWorld *world) : ELNode(), world(world) {
+    specificEffectName = "";
 }
 
 void ELGameObject::addComponent(ELComponent *component) {
@@ -28,6 +29,12 @@ ELCamera * ELGameObject::mainCamera() {
 }
 
 ELEffect * ELGameObject::activeEffect() {
+    if (specificEffectName != "") {
+        ELEffect * effect = (ELEffect *)world->findChildWithIdentity(specificEffectName);
+        if (effect != NULL) {
+            return effect;
+        }
+    }
     return world->activedEffect;
 }
 

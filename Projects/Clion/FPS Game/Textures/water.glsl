@@ -6,6 +6,8 @@
 //  Copyright © 2016年 wangyang. All rights reserved.
 #version 330 core
 
+#define Use_BumpMap
+
 precision highp float;
 
 #ifdef ES
@@ -61,6 +63,8 @@ uniform sampler2D specularMap;
 
 uniform material_struct material;
 
+
+uniform float time;
 uniform int renderShadow;
 uniform int renderBorder;
 uniform vec4 borderColor;
@@ -83,6 +87,40 @@ vec4 project(projector_struct projector) {
         projectColor = vec4(0.0,0.0,0.0,0.0);
     }
     return projectColor;
+}
+
+vec4 waterColor(
+                in vec3 normalVec,
+                in vec3 vp,
+                in vec3 eye,
+                in float lightDistance,
+                in vec4 lightAmbient,
+                in vec4 lightDiffuse,
+                in vec4 lightSpecular
+                ) {
+    float kDistortion = 0.015;
+    float kReflection = 0.01;
+    vec4 lightTanSpace = normalize(vec4(vp,1.0));
+    vec4 distOffset = tex2D(diffuseMap,fragTexcoord + vec2(time)) * kDistortion;
+
+    vec4 normal = vec4(normalVec,0.81);
+    vec4 lightReflection = normalize(reflect(-1 * lightTanSpace, normal));
+    vec4 invertedFresnel = vec4(dot(normal, lightReflection));
+    vec4 fresnelTerm = 1.0 - invertedFresnel;
+
+
+    vec4 dudvColor = tex2D(diffuseMap, vec2(fragTexcoord + distOffset.xy));
+    dudvColor = normalize(dudvColor * 2.0 - 1.0) * kReflection;
+
+    highp vec4 projCoord = viewProjection * modelMatrix * fragPosition;
+    projCoord = projCoord / projCoord.w;
+    projCoord += dudvColor;
+    projCoord = clamp(projCoord,0.001,0.999);
+
+    vec4 reflectionColor = mix(tex2D(ambientMap,projCoord.xy),vec4(0.6,0.6,0.6,1.0),0.3);
+    reflectionColor *= fresnelTerm;
+
+    return reflectionColor;
 }
 
 void pointLight(
@@ -146,8 +184,8 @@ float unpack (vec4 v)
 }
 
 float frogFactor() {
-    float start = 1000;
-    float end = 1025;
+    float start = 1;
+    float end = 25;
     highp vec4 pos = viewProjection * modelMatrix * fragPosition;
     float distanceToCamera = distance(pos.xyz,vec3(0,0,0));
     float factor = clamp((end - distanceToCamera) / (end - start),0.0,1.0);
@@ -243,9 +281,9 @@ vec4 render() {
         sum_specular = sum_specular + specular;
     }
 
-    for(int i=0;i<projectorNum;i++) {
-        sum_ambient += project(projectors[i]);
-    }
+//    for(int i=0;i<projectorNum;i++) {
+//        sum_ambient += project(projectors[i]);
+//    }
 
     highp vec3 lightPosition = lights[0].position;
     highp vec3 vp = normalize(lightPosition - mMatrixPosition);
@@ -256,7 +294,10 @@ vec4 render() {
     vec4 shadowColor;
     float shadow = shadowValue(bias, shadowColor);
 
-    highp vec4 finalColor = tex2D(diffuseMap, fragTexcoord);// + material.diffuse;
+    highp vec4 finalColor = material.diffuse;
+    highp vec4 outputColor = (finalColor * sum_diffuse + finalColor * sum_ambient + finalColor * sum_specular) * shadow;
+    return waterColor(textureNormal,vp,eye,0,material.ambient,lights[0].color,vec4(1.0,1.0,1.0,1.0));
+
     if (finalColor.a == 0.0) {
         discard;
     } else {
@@ -271,8 +312,6 @@ vec4 render() {
         }
     }
 }
-
-//#define Use_BumpMap
 
 void main()
 {

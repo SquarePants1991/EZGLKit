@@ -41,6 +41,7 @@ void ELGeometry::render() {
     }
 
     ELEffect *defaultEffect = effect();
+    defaultEffect->prepare();
     ELProgram *program = defaultEffect->program;
     ELCamera *camera = gameObject()->mainCamera();
 

@@ -47,7 +47,11 @@ ELMatrix4 ELCamera::matrix() {
     ELVector3 transformedLookAt = ELVector3Add(transformedEye, transformedForward);
 
     ELMatrix4 lookAt = ELMatrix4MakeLookAt(transformedEye.x,transformedEye.y,transformedEye.z,transformedLookAt.x, transformedLookAt.y, transformedLookAt.z, transformedUp.x, transformedUp.y, transformedUp.z);
-    return ELMatrix4Multiply(projection, lookAt);
+    ELMatrix4 finalMatrix = ELMatrix4Multiply(projection, lookAt);
+    if (needFlip) {
+        finalMatrix = ELMatrix4Multiply(ELMatrix4MakeScale(1,-1,1), finalMatrix);
+    }
+    return finalMatrix;
 }
 
 void ELCamera::rotateEye(ELFloat radians, ELVector3 axis) {
@@ -131,6 +135,9 @@ ELVector3 ELCamera::lookAtPosition() {
     return transformedLookAt;
 }
 
+void ELCamera::flip(bool flip) {
+    needFlip = flip;
+}
 
 // Private Methods
 ELVector3 ELCamera::leftVector() {

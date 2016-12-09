@@ -11,7 +11,7 @@ public:
     }
 };
 
-ELNode::ELNode() : renderShadow(false) {
+ELNode::ELNode() : renderShadow(false), elapsedSeconds(0) {
     transform = new ELTransform();
     transform->position = ELVector3Make(0.0, 0.0, 0.0);
     transform->quaternion = ELQuaternionMakeWithAngleAndAxis(0,0,1,0);
@@ -32,6 +32,7 @@ void ELNode::addNode(ELNode *node) {
 }
 
 void ELNode::update(ELFloat timeInSecs) {
+    elapsedSeconds += timeInSecs;
     std::sort(children.begin(),children.end(),ELNodeTransparencyCompare());
     for (int i = 0; i < children.size(); ++i) {
         children.at(i)->update(timeInSecs);

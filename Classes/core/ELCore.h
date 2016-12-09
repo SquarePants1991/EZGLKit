@@ -14,5 +14,6 @@
 #include "ELComponent.h"
 #include "ELTexture.h"
 #include "ELPhysicsWorld.h"
+#include "ELProjector.h"
 
 #endif //EZGL_CORE_H

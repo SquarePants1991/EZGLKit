@@ -11,22 +11,26 @@ FGScene::FGScene(ELWorld *world) : world(world){
 void FGScene::createScene() {
     // init game world
 
-//    ELLight * defaultLight = new ELLight();
-//    defaultLight->position = ELVector3Make(-8,8,0);
-//    defaultLight->color = ELVector4Make(1.0,1.0,1.0,1.0);
-//    defaultLight->intensity = 1.0;
-//    defaultLight->intensityFallOff = 0.0;
-//    defaultLight->identity = "main-light";
+    ELLight * defaultLight = new ELLight();
+    defaultLight->position = ELVector3Make(8,8,0);
+    defaultLight->color = ELVector4Make(1.0,1.0,1.0,1.0);
+    defaultLight->intensity = 1.0;
+    defaultLight->intensityFallOff = 0.0;
+    defaultLight->identity = "main-light";
 //    defaultLight->enableShadow();
-//    world->addNode(defaultLight);
+    world->addNode(defaultLight);
 
-    ELLight * fireLight = new ELLight();
-    fireLight->position = ELVector3Make(0,0.8,0);
-    fireLight->color = ELVector4Make(1.0,0.0,0.0,1.0);
-    fireLight->intensity = 1.0;
-    fireLight->intensityFallOff = 0.1;
-    fireLight->identity = "fire-light";
-    world->addNode(fireLight);
+//    ELLight * fireLight = new ELLight();
+//    fireLight->position = ELVector3Make(0,0.8,0);
+//    fireLight->color = ELVector4Make(1.0,0.0,0.0,1.0);
+//    fireLight->intensity = 1.0;
+//    fireLight->intensityFallOff = 0.1;
+//    fireLight->identity = "fire-light";
+//    world->addNode(fireLight);
+
+    world->addNode(new ELProjector());
+
+//    createWater();
 
 
 //    float size = 14;
@@ -52,18 +56,18 @@ void FGScene::createScene() {
         }
     }
 
-//    createCubeGameObject(ELVector3Make(1,1,1),ELVector3Make(0,5,0),10.0,diffuseMap,normalMap);
-//    createBoardGameObject(ELVector2Make(2.5,5),ELVector3Make(0,2.5,0),10.0,diffuseMap,normalMap);
-
     diffuseMap = ELTexture::texture(ELAssets::shared()->findFile("rock.png"))->value;
     normalMap = ELTexture::texture(ELAssets::shared()->findFile("rock_NRM.png"))->value;
 
+    createCubeGameObject(ELVector3Make(1,1,1),ELVector3Make(0,5,0),10.0,diffuseMap,normalMap);
+//    createBoardGameObject(ELVector2Make(2.5,5),ELVector3Make(0,2.5,0),10.0,diffuseMap,normalMap);
+
     diffuseMap = ELTexture::texture(ELAssets::shared()->findFile("particleTexture.png"))->value;
-    createParticalGameObject(ELVector2Make(1,1),ELVector3Make(0,0.0,0),10.0,diffuseMap,normalMap);
+//    createParticalGameObject(ELVector2Make(1,1),ELVector3Make(0,0.0,0),10.0,diffuseMap,normalMap);
 
     ELGameObject *gameObject = new ELGameObject(world);
     world->addNode(gameObject);
-    gameObject->transform->position = ELVector3Make(0, 4.5, 0);
+    gameObject->transform->position = ELVector3Make(0, 14.5, 0);
     ELCubeGeometry *cube = new ELCubeGeometry(ELVector3Make(0.4,1,0.4));
     gameObject->addComponent(cube);
     cube->material.diffuse = ELVector4Make(1.0,0.0,0.0,1.0);
@@ -230,6 +234,21 @@ void FGScene::createParticalGameObject(ELVector2 size,ELVector3 pos,ELFloat mass
 //    data.rotationEndRandomRangeEnd = 180;
 
     ps->setData(data);
+}
 
+void FGScene::createWater() {
+    ELGameObject *gameObject = new ELGameObject(world);
+    world->addNode(gameObject);
+    gameObject->transform->position = ELVector3Make(0,1,0);
+    ELPlaneGeometry *planeGeometry = new ELPlaneGeometry(ELVector2Make(50,50));
+    gameObject->addComponent(planeGeometry);
 
+    gameObject->specificEffectName = "water";
+    GLuint diffuseMap = ELTexture::texture(ELAssets::shared()->findFile("rock.png"))->value;
+    GLuint normalMap = ELTexture::texture(ELAssets::shared()->findFile("water_normal.png"))->value;
+    GLuint dudvNormalMap = ELTexture::texture(ELAssets::shared()->findFile("water_normal_dvdu.png"))->value;
+    planeGeometry->material.diffuse = ELVector4Make(0.0,0.0,1.0,1.0);
+    planeGeometry->material.diffuseMap = dudvNormalMap;
+    planeGeometry->material.normalMap = normalMap;
+    planeGeometry->material.ambientMap = diffuseMap;
 }

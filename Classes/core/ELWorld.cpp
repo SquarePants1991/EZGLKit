@@ -5,7 +5,7 @@
 #include "ELWorld.h"
 #include "EZGLBase.h"
 #include "ELLight.h"
-#include "components/ELGeometry.h"
+#include "ELWaterPlane.h"
 
 #define UseDepthFramebuffer 1
 
@@ -34,6 +34,7 @@ void ELWorld::update(ELFloat timeInSecs) {
 
 void ELWorld::render() {
     renderShadowMaps();
+    renderReflectionMaps();
     renderScene();
 }
 
@@ -51,9 +52,28 @@ void ELWorld::renderShadowMaps() {
     }
 }
 
+void ELWorld::renderReflectionMaps() {
+    activeEffect("render_scene");
+    activedEffect->prepare();
+    activeCamera("main");
+//    for (int i = 0; i < children.size(); ++i) {
+//        ELWaterPlane * waterPlane = dynamic_cast<ELWaterPlane *>(children.at(i));
+//        if (light != NULL) {
+//            light->beginGenShadowMap();
+//            activeCamera(light->identity + "-shadow-camera", light->shadowMapGenCamera());
+//            ELNode::render();
+//            light->endGenShadowMap();
+//        }
+//    }
+}
+
 void ELWorld::renderScene() {
     activeEffect("render_scene");
     activeCamera("main");
+    activedCamera->flip(true);
+    glad_glEnable(GL_CLIP_PLANE0);
+    double plane[4] = {0.0, 1.0, 0.0, 1.0};
+    glClipPlane(GL_CLIP_PLANE0,plane);
     glad_glViewport(0,0,fbWidth,fbHeight);
     glad_glClearColor(0.95f, 0.95f, 0.95f, 1.0f);
     glad_glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -76,6 +96,8 @@ void ELWorld::renderScene() {
     }
 
     ELNode::render();
+
+    glad_glDisable(GL_CLIP_PLANE0);
 }
 
 void ELWorld::activeEffect(std::string effectName) {

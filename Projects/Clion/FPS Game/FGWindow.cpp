@@ -92,13 +92,17 @@ FGWindow::FGWindow() {
     std::string vertexShader = ELFileUtil::stringContentOfFile(ELAssets::shared()->findFile("vertex.glsl").c_str());
     std::string fragShader = ELFileUtil::stringContentOfFile(ELAssets::shared()->findFile("frag.glsl").c_str());
     std::string shadowFragShader = ELFileUtil::stringContentOfFile(ELAssets::shared()->findFile("shadow_frag.glsl").c_str());
+    std::string waterFragShader = ELFileUtil::stringContentOfFile(ELAssets::shared()->findFile("water.glsl").c_str());
     ELEffect * activeEffect = new ELEffect(vertexShader.c_str(), fragShader.c_str());
     ELEffect * shadowEffect = new ELEffect(vertexShader.c_str(), shadowFragShader.c_str());
+    ELEffect * waterEffect = new ELEffect(vertexShader.c_str(), waterFragShader.c_str());
 
     activeEffect->identity = "render_scene";
     shadowEffect->identity = "gen_shadow";
+    waterEffect->identity = "water";
     world->addNode(activeEffect);
     world->addNode(shadowEffect);
+    world->addNode(waterEffect);
 
     glad_glEnable(GL_CULL_FACE);
     glad_glDepthMask(GL_TRUE);

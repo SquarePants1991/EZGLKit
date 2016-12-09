@@ -15,6 +15,7 @@ public:
     bool renderShadow;
     bool isTransparency;
 
+    ELFloat elapsedSeconds;
 public:
     ELNode();
 

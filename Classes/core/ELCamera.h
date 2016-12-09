@@ -32,8 +32,6 @@ public:
     ELCamera(ELVector3 eye,ELVector3 lookAt,ELVector3 up,ELFloat fovyRadians,ELFloat aspect,ELFloat nearZ,ELFloat farZ);
     void asOrtho(ELFloat left,ELFloat right,ELFloat top,ELFloat bottom,ELFloat nearZ,ELFloat farZ);
 
-    //TODO: Orth Camera Construct
-
     ELMatrix4 matrix();
     void rotateEye(ELFloat radians, ELVector3 axis);
     void rotateLookAtAroundUp(ELFloat radians);
@@ -52,10 +50,13 @@ public:
     ELVector3 position();
     ELVector3 lookAtPosition();
 
+    void flip(bool flip);
+
     virtual void update(ELFloat timeInSecs);
 
 private:
     bool isOrtho;
+    bool needFlip;
     ELVector3 leftVector();
     ELVector3 forwardVector();
     ELQuaternion quaternion();

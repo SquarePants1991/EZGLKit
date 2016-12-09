@@ -32,6 +32,7 @@ public:
 private:
 
     void renderShadowMaps();
+    void renderReflectionMaps();
     void renderScene();
 };
 

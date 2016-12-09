@@ -7,6 +7,7 @@
 #include "core/ELProgram.h"
 #include "core/ELGameObject.h"
 #include "ELWorld.h"
+#include "ELProjector.h"
 
 ELEffect::ELEffect() {
 
@@ -28,6 +29,7 @@ void ELEffect::prepare() {
     glUseProgram(program->value);
 
     std::vector<ELNode *> lights = ((ELWorld *)parent)->findChildrenWithKind("light");
+    std::vector<ELNode *> projectors = ((ELWorld *)parent)->findChildrenWithKind("projector");
 
     char buffer[128];
 
@@ -42,8 +44,24 @@ void ELEffect::prepare() {
         snprintf(buffer, 1024, "lights[%d].intensityFallOff",index);
         glUniform1f(program->uniform(buffer), light->intensityFallOff);
     }
-
     glUniform1i(program->uniform("lightNum"), lights.size());
+
+    for (int index = 0; index < projectors.size(); ++index) {
+        ELProjector *projector = (ELProjector *)projectors[index];
+        snprintf(buffer, 1024, "projectors[%d].viewProjection",index);
+        glUniformMatrix4fv(program->uniform(buffer), 1, 0,projector->camera->matrix().m);
+        glActiveTexture(GL_TEXTURE11);
+        glBindTexture(GL_TEXTURE_2D, projector->projectorMap);
+        glUniform1i(program->uniform("projectorMap"), 11);
+    }
+
+    glUniform1i(program->uniform("projectorNum"), projectors.size());
+
+    glUniform1f(program->uniform("time"), elapsedSeconds);
+}
+
+void ELEffect::active() {
+    glUseProgram(program->value);
 }
 
 std::string ELEffect::kind() {

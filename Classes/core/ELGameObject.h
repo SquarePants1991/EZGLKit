@@ -19,7 +19,6 @@ class ELGameObject : public ELNode {
 public:
     ELGameObject(ELWorld *world);
     void addComponent(ELComponent *component);
-
     virtual void render();
 
     template <typename T>
@@ -30,6 +29,7 @@ public:
     ELCamera *mainCamera();
     ELEffect *activeEffect();
 
+    std::string specificEffectName;
 private:
     ELWorld *world;
 };

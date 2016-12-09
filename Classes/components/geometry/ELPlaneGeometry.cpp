@@ -20,13 +20,13 @@ ELGeometryData ELPlaneGeometry::generateData() {
             {-0.5f * size.x, 0.0f , 0.5f * size.y   },
             {-0.5f * size.x, 0.0f , -0.5f * size.y  },
             {0, 0},
-            {0, 1},
-            {1, 1},
-            {1, 0}
+            {0, size.y / 8},
+            {size.x / 8, size.y / 8},
+            {size.x / 8, 0}
     };
     vertexBuffer->append(rect);
 
-//    vertexBuffer->caculatePerVertexNormal();
+    vertexBuffer->caculatePerVertexNormal();
 
     GLfloat *vertex = (GLfloat *)vertexBuffer->data();
 
