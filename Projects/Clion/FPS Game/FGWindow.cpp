@@ -12,8 +12,8 @@ FGScene *g_scene;
 double lastTime = 0;
 float rotateUpFactor = 0;
 float walkingFactor = 0;
-const float WindowWidth = 400;
-const float WindowHeight = 200;
+const float WindowWidth = 1024;
+const float WindowHeight = 768;
 ELGameObject *player;
 ELRigidBody *playerRigidBody;
 ELLight * defaultLight;
@@ -54,7 +54,7 @@ FGWindow::FGWindow() {
     glfwMakeContextCurrent(glfwWindow);
 
     glfwSetWindowPos(glfwWindow,0,1920 - WindowHeight);
-//        glfwSetWindowPos(glfwWindow,0,0);
+        glfwSetWindowPos(glfwWindow,0,0);
 
     if (!gladLoadGLLoader((GLADloadproc) glfwGetProcAddress))
     {

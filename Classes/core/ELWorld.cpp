@@ -5,7 +5,7 @@
 #include "ELWorld.h"
 #include "EZGLBase.h"
 #include "ELLight.h"
-#include "ELWaterPlane.h"
+#include "components/ELWaterPlane.h"
 
 #define UseDepthFramebuffer 1
 
@@ -56,24 +56,22 @@ void ELWorld::renderReflectionMaps() {
     activeEffect("render_scene");
     activedEffect->prepare();
     activeCamera("main");
-//    for (int i = 0; i < children.size(); ++i) {
-//        ELWaterPlane * waterPlane = dynamic_cast<ELWaterPlane *>(children.at(i));
-//        if (light != NULL) {
-//            light->beginGenShadowMap();
-//            activeCamera(light->identity + "-shadow-camera", light->shadowMapGenCamera());
-//            ELNode::render();
-//            light->endGenShadowMap();
-//        }
-//    }
+    std::vector<ELNode *> waterPlanes = findChildrenWithKind("water_plane", true);
+    for (int i = 0; i < waterPlanes.size(); ++i) {
+        ELWaterPlane * waterPlane = dynamic_cast<ELWaterPlane *>(waterPlanes.at(i));
+        if (waterPlane != NULL) {
+            waterPlane->beginGenReflectionMap();
+            activedCamera->flip(true);
+            ELNode::render();
+            waterPlane->endGenReflectionMap();
+            activedCamera->flip(false);
+        }
+    }
 }
 
 void ELWorld::renderScene() {
     activeEffect("render_scene");
     activeCamera("main");
-    activedCamera->flip(true);
-    glad_glEnable(GL_CLIP_PLANE0);
-    double plane[4] = {0.0, 1.0, 0.0, 1.0};
-    glClipPlane(GL_CLIP_PLANE0,plane);
     glad_glViewport(0,0,fbWidth,fbHeight);
     glad_glClearColor(0.95f, 0.95f, 0.95f, 1.0f);
     glad_glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);

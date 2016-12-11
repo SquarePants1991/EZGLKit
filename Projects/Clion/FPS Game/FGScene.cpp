@@ -30,7 +30,7 @@ void FGScene::createScene() {
 
     world->addNode(new ELProjector());
 
-//    createWater();
+    createWater();
 
 
 //    float size = 14;
@@ -59,7 +59,7 @@ void FGScene::createScene() {
     diffuseMap = ELTexture::texture(ELAssets::shared()->findFile("rock.png"))->value;
     normalMap = ELTexture::texture(ELAssets::shared()->findFile("rock_NRM.png"))->value;
 
-    createCubeGameObject(ELVector3Make(1,1,1),ELVector3Make(0,5,0),10.0,diffuseMap,normalMap);
+    createCubeGameObject(ELVector3Make(1,1,1),ELVector3Make(0,5,0),0.0,diffuseMap,normalMap);
 //    createBoardGameObject(ELVector2Make(2.5,5),ELVector3Make(0,2.5,0),10.0,diffuseMap,normalMap);
 
     diffuseMap = ELTexture::texture(ELAssets::shared()->findFile("particleTexture.png"))->value;
@@ -91,13 +91,13 @@ void FGScene::createBoundWall(ELVector3 offset, ELFloat width,ELFloat height,ELF
     ELVector3 xWallsSize = ELVector3Make(0.5,wallHeight,height);
     ELVector3 zWallsSize = ELVector3Make(width,wallHeight,0.5);
     GLuint diffuseMap,normalMap;
-    diffuseMap = ELTexture::texture(ELAssets::shared()->findFile("rock.png"))->value;
+    diffuseMap = ELTexture::texture(ELAssets::shared()->findFile("1.jpg"))->value;
     normalMap = ELTexture::texture(ELAssets::shared()->findFile("rock_NRM.png"))->value;
 
-    createCubeGameObject(xWallsSize,ELVector3Make(-width / 2 + offset.x,wallHeight / 2.0,0.0+ offset.z),0.0,diffuseMap,normalMap);
-    createCubeGameObject(xWallsSize,ELVector3Make(width / 2 + offset.x,wallHeight / 2.0,0.0+ offset.z),0.0,diffuseMap,normalMap);
-    createCubeGameObject(zWallsSize,ELVector3Make(0+ offset.x,wallHeight / 2.0,-height / 2+ offset.z),0.0,diffuseMap,normalMap);
-    createCubeGameObject(zWallsSize,ELVector3Make(0+ offset.x,wallHeight / 2.0,height / 2+ offset.z),0.0,diffuseMap,normalMap);
+    createCubeGameObject(xWallsSize,ELVector3Make(-width / 2 + offset.x,wallHeight / 2.0-2,0.0+ offset.z),0.0,diffuseMap,normalMap);
+    createCubeGameObject(xWallsSize,ELVector3Make(width / 2 + offset.x,wallHeight / 2.0-2,0.0+ offset.z),0.0,diffuseMap,normalMap);
+    createCubeGameObject(zWallsSize,ELVector3Make(0+ offset.x,wallHeight / 2.0-2,-height / 2+ offset.z),0.0,diffuseMap,normalMap);
+    createCubeGameObject(zWallsSize,ELVector3Make(0+ offset.x,wallHeight / 2.0-2,height / 2+ offset.z),0.0,diffuseMap,normalMap);
 }
 
 void FGScene::createFloor() {
@@ -108,7 +108,7 @@ void FGScene::createFloor() {
     GLuint diffuseMap,normalMap;
     normalMap = ELTexture::texture(ELAssets::shared()->findFile("rock_NRM.png"))->value;
     diffuseMap = ELTexture::texture(ELAssets::shared()->findFile("rock.png"))->value;
-    createCubeGameObject(floorSize,ELVector3Make(0,0,0),0.0,diffuseMap,normalMap);
+    createCubeGameObject(floorSize,ELVector3Make(0,-2,0),0.0,diffuseMap,normalMap);
 }
 
 void FGScene::createMiddleWalls(ELVector3 offset,ELFloat width,ELFloat height) {
@@ -239,16 +239,16 @@ void FGScene::createParticalGameObject(ELVector2 size,ELVector3 pos,ELFloat mass
 void FGScene::createWater() {
     ELGameObject *gameObject = new ELGameObject(world);
     world->addNode(gameObject);
-    gameObject->transform->position = ELVector3Make(0,1,0);
-    ELPlaneGeometry *planeGeometry = new ELPlaneGeometry(ELVector2Make(50,50));
-    gameObject->addComponent(planeGeometry);
+    gameObject->transform->position = ELVector3Make(0,0,0);
+    ELWaterPlane *waterPlane = new ELWaterPlane(ELVector2Make(50,50));
+    gameObject->addComponent(waterPlane);
 
     gameObject->specificEffectName = "water";
     GLuint diffuseMap = ELTexture::texture(ELAssets::shared()->findFile("rock.png"))->value;
     GLuint normalMap = ELTexture::texture(ELAssets::shared()->findFile("water_normal.png"))->value;
     GLuint dudvNormalMap = ELTexture::texture(ELAssets::shared()->findFile("water_normal_dvdu.png"))->value;
-    planeGeometry->material.diffuse = ELVector4Make(0.0,0.0,1.0,1.0);
-    planeGeometry->material.diffuseMap = dudvNormalMap;
-    planeGeometry->material.normalMap = normalMap;
-    planeGeometry->material.ambientMap = diffuseMap;
+    waterPlane->material.diffuse = ELVector4Make(0.0,0.0,1.0,1.0);
+//    waterPlane->material.diffuseMap = dudvNormalMap;
+//    waterPlane->material.normalMap = normalMap;
+//    waterPlane->material.ambientMap = diffuseMap;
 }

@@ -545,16 +545,22 @@
 		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELPartical.h">
 			<Option target="EZGLib"/>
 		</Unit>
-		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELParticalSystem.h">
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELParticleSystem.cpp">
 			<Option target="EZGLib"/>
 		</Unit>
-		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELParticleSystem.cpp">
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELParticleSystem.h">
 			<Option target="EZGLib"/>
 		</Unit>
 		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELRigidBody.cpp">
 			<Option target="EZGLib"/>
 		</Unit>
 		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELRigidBody.h">
+			<Option target="EZGLib"/>
+		</Unit>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELWaterPlane.cpp">
+			<Option target="EZGLib"/>
+		</Unit>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELWaterPlane.h">
 			<Option target="EZGLib"/>
 		</Unit>
 		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/geometry/ELCubeGeometry.cpp">
@@ -630,6 +636,12 @@
 			<Option target="EZGLib"/>
 		</Unit>
 		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/ELProgram.h">
+			<Option target="EZGLib"/>
+		</Unit>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/ELProjector.cpp">
+			<Option target="EZGLib"/>
+		</Unit>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/ELProjector.h">
 			<Option target="EZGLib"/>
 		</Unit>
 		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/ELTexture.cpp">

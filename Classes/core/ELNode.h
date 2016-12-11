@@ -33,6 +33,9 @@ public:
 
     virtual std::string kind();
 
+
+    std::vector<ELNode *> findChildrenWithKind(std::string kind, bool deepSearch);
+    void findChildrenWithKind(std::string kind, std::vector<ELNode *> &collector);
     std::vector<ELNode *> findChildrenWithKind(std::string kind);
     ELNode * findChildWithIdentity(std::string identity);
     bool containTransparencyNode();

@@ -53,8 +53,10 @@ geometry/ELMeshGeometry.h
 ../../../Classes/components/geometry/ELMeshGeometry.h
 ELBoard.h
 ../../../Classes/components/ELBoard.h
-ELParticalSystem.h
-../../../Classes/components/ELParticalSystem.h
+ELParticleSystem.h
+../../../Classes/components/ELParticleSystem.h
+ELWaterPlane.h
+../../../Classes/components/ELWaterPlane.h
 ELRigidBody.h
 ../../../Classes/components/ELRigidBody.h
 ELCollisionShape.h
@@ -66,13 +68,21 @@ core/ELComponent.h
 types/ELGeometryTypes.h
 ../../../Classes/components/types/ELGeometryTypes.h
 
-../../../Classes/components/ELParticalSystem.h
+../../../Classes/components/ELPartical.h
+EZGLBase.h
+../../../Classes/components/EZGLBase.h
+types/EZGLTypes.h
+../../../Classes/components/types/EZGLTypes.h
+
+../../../Classes/components/ELParticleSystem.h
 EZGLBase.h
 ../../../Classes/components/EZGLBase.h
 ELGeometry.h
 ../../../Classes/components/ELGeometry.h
 utils/ELGeometryVertexBuffer.h
 ../../../Classes/components/utils/ELGeometryVertexBuffer.h
+ELPartical.h
+../../../Classes/components/ELPartical.h
 
 ../../../Classes/components/ELRigidBody.h
 types/EZGLTypes.h
@@ -83,6 +93,16 @@ btBulletCollisionCommon.h
 ../../../Classes/components/btBulletCollisionCommon.h
 btBulletDynamicsCommon.h
 ../../../Classes/components/btBulletDynamicsCommon.h
+
+../../../Classes/components/ELWaterPlane.h
+EZGLBase.h
+../../../Classes/components/EZGLBase.h
+ELGeometry.h
+../../../Classes/components/ELGeometry.h
+core/ELCamera.h
+../../../Classes/components/core/ELCamera.h
+utils/ELGeometryVertexBuffer.h
+../../../Classes/components/utils/ELGeometryVertexBuffer.h
 
 ../../../Classes/components/geometry/ELCubeGeometry.h
 ../ELGeometry.h
@@ -133,6 +153,8 @@ ELTexture.h
 ../../../Classes/core/ELTexture.h
 ELPhysicsWorld.h
 ../../../Classes/core/ELPhysicsWorld.h
+ELProjector.h
+../../../Classes/core/ELProjector.h
 
 ../../../Classes/core/ELEffect.h
 EZGLBase.h
@@ -181,6 +203,10 @@ ELNode.h
 ../../../Classes/core/ELProgram.h
 EZGLBase.h
 ../../../Classes/core/EZGLBase.h
+
+../../../Classes/core/ELProjector.h
+ELNode.h
+../../../Classes/core/ELNode.h
 
 ../../../Classes/core/ELTexture.h
 string

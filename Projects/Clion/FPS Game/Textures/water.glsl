@@ -98,6 +98,14 @@ vec4 waterColor(
                 in vec4 lightDiffuse,
                 in vec4 lightSpecular
                 ) {
+//                    highp vec4 projCoord = viewProjection * modelMatrix * fragPosition;
+//                    projCoord = projCoord / projCoord.w;
+//                    projCoord = (projCoord + 1.0) / 2.0;
+////                    projCoord.x = (projCoord.x - 1.0) * -1.0;
+////                    projCoord += dudvColor;
+////                    projCoord = clamp(projCoord,0.001,0.999);
+//
+//    return tex2D(diffuseMap, fragTexcoord);
     float kDistortion = 0.015;
     float kReflection = 0.01;
     vec4 lightTanSpace = normalize(vec4(vp,1.0));
@@ -114,6 +122,7 @@ vec4 waterColor(
 
     highp vec4 projCoord = viewProjection * modelMatrix * fragPosition;
     projCoord = projCoord / projCoord.w;
+    projCoord = (projCoord + 1.0) / 2.0;
     projCoord += dudvColor;
     projCoord = clamp(projCoord,0.001,0.999);
 

@@ -314,6 +314,33 @@ components/ELRigidBody.cpp.s:
 	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug" && $(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/components/ELRigidBody.cpp.s
 .PHONY : components/ELRigidBody.cpp.s
 
+components/ELWaterPlane.o: components/ELWaterPlane.cpp.o
+
+.PHONY : components/ELWaterPlane.o
+
+# target to build an object file
+components/ELWaterPlane.cpp.o:
+	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug" && $(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/components/ELWaterPlane.cpp.o
+.PHONY : components/ELWaterPlane.cpp.o
+
+components/ELWaterPlane.i: components/ELWaterPlane.cpp.i
+
+.PHONY : components/ELWaterPlane.i
+
+# target to preprocess a source file
+components/ELWaterPlane.cpp.i:
+	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug" && $(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/components/ELWaterPlane.cpp.i
+.PHONY : components/ELWaterPlane.cpp.i
+
+components/ELWaterPlane.s: components/ELWaterPlane.cpp.s
+
+.PHONY : components/ELWaterPlane.s
+
+# target to generate assembly for a file
+components/ELWaterPlane.cpp.s:
+	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug" && $(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/components/ELWaterPlane.cpp.s
+.PHONY : components/ELWaterPlane.cpp.s
+
 components/geometry/ELCubeGeometry.o: components/geometry/ELCubeGeometry.cpp.o
 
 .PHONY : components/geometry/ELCubeGeometry.o
@@ -638,6 +665,33 @@ core/ELProgram.cpp.s:
 	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug" && $(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/core/ELProgram.cpp.s
 .PHONY : core/ELProgram.cpp.s
 
+core/ELProjector.o: core/ELProjector.cpp.o
+
+.PHONY : core/ELProjector.o
+
+# target to build an object file
+core/ELProjector.cpp.o:
+	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug" && $(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/core/ELProjector.cpp.o
+.PHONY : core/ELProjector.cpp.o
+
+core/ELProjector.i: core/ELProjector.cpp.i
+
+.PHONY : core/ELProjector.i
+
+# target to preprocess a source file
+core/ELProjector.cpp.i:
+	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug" && $(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/core/ELProjector.cpp.i
+.PHONY : core/ELProjector.cpp.i
+
+core/ELProjector.s: core/ELProjector.cpp.s
+
+.PHONY : core/ELProjector.s
+
+# target to generate assembly for a file
+core/ELProjector.cpp.s:
+	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug" && $(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/core/ELProjector.cpp.s
+.PHONY : core/ELProjector.cpp.s
+
 core/ELTexture.o: core/ELTexture.cpp.o
 
 .PHONY : core/ELTexture.o
@@ -830,6 +884,9 @@ help:
 	@echo "... components/ELRigidBody.o"
 	@echo "... components/ELRigidBody.i"
 	@echo "... components/ELRigidBody.s"
+	@echo "... components/ELWaterPlane.o"
+	@echo "... components/ELWaterPlane.i"
+	@echo "... components/ELWaterPlane.s"
 	@echo "... components/geometry/ELCubeGeometry.o"
 	@echo "... components/geometry/ELCubeGeometry.i"
 	@echo "... components/geometry/ELCubeGeometry.s"
@@ -866,6 +923,9 @@ help:
 	@echo "... core/ELProgram.o"
 	@echo "... core/ELProgram.i"
 	@echo "... core/ELProgram.s"
+	@echo "... core/ELProjector.o"
+	@echo "... core/ELProjector.i"
+	@echo "... core/ELProjector.s"
 	@echo "... core/ELTexture.o"
 	@echo "... core/ELTexture.i"
 	@echo "... core/ELTexture.s"

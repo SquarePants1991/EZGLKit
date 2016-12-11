@@ -49,6 +49,26 @@ std::string ELNode::kind() {
     return std::string("Node");
 }
 
+std::vector<ELNode *> ELNode::findChildrenWithKind(std::string kind, bool deepSearch) {
+    std::vector<ELNode *> components;
+    if (deepSearch) {
+        findChildrenWithKind(kind, components);
+        return components;
+    } else {
+        return findChildrenWithKind(kind);
+    }
+}
+
+void ELNode::findChildrenWithKind(std::string kind, std::vector<ELNode *> &collector) {
+    for (int i = 0; i < children.size(); ++i) {
+        children.at(i)->findChildrenWithKind(kind, collector);
+        ELNode *component = dynamic_cast<ELNode *>(children.at(i));
+        if (component != NULL && component->kind() == kind) {
+            collector.push_back(component);
+        }
+    }
+}
+
 std::vector<ELNode *> ELNode::findChildrenWithKind(std::string kind) {
     std::vector<ELNode *> components;
     for (int i = 0; i < children.size(); ++i) {

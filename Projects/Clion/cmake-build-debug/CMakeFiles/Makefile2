@@ -70,7 +70,7 @@ CMakeFiles/FPSGame.dir/all: wavefront/CMakeFiles/wavefront.dir/all
 CMakeFiles/FPSGame.dir/all: bullet/CMakeFiles/bullet.dir/all
 	$(MAKE) -f CMakeFiles/FPSGame.dir/build.make CMakeFiles/FPSGame.dir/depend
 	$(MAKE) -f CMakeFiles/FPSGame.dir/build.make CMakeFiles/FPSGame.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/CMakeFiles" --progress-num=17,18 "Built target FPSGame"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/CMakeFiles" --progress-num=18,19 "Built target FPSGame"
 .PHONY : CMakeFiles/FPSGame.dir/all
 
 # Include target in all.
@@ -111,7 +111,7 @@ CMakeFiles/TestShader.dir/all: wavefront/CMakeFiles/wavefront.dir/all
 CMakeFiles/TestShader.dir/all: bullet/CMakeFiles/bullet.dir/all
 	$(MAKE) -f CMakeFiles/TestShader.dir/build.make CMakeFiles/TestShader.dir/depend
 	$(MAKE) -f CMakeFiles/TestShader.dir/build.make CMakeFiles/TestShader.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/CMakeFiles" --progress-num=20 "Built target TestShader"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/CMakeFiles" --progress-num=21 "Built target TestShader"
 .PHONY : CMakeFiles/TestShader.dir/all
 
 # Include target in all.
@@ -152,7 +152,7 @@ CMakeFiles/TestBaseWindow.dir/all: wavefront/CMakeFiles/wavefront.dir/all
 CMakeFiles/TestBaseWindow.dir/all: bullet/CMakeFiles/bullet.dir/all
 	$(MAKE) -f CMakeFiles/TestBaseWindow.dir/build.make CMakeFiles/TestBaseWindow.dir/depend
 	$(MAKE) -f CMakeFiles/TestBaseWindow.dir/build.make CMakeFiles/TestBaseWindow.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/CMakeFiles" --progress-num=19 "Built target TestBaseWindow"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/CMakeFiles" --progress-num=20 "Built target TestBaseWindow"
 .PHONY : CMakeFiles/TestBaseWindow.dir/all
 
 # Include target in all.
@@ -248,7 +248,7 @@ EZGLib/preinstall:
 EZGLib/CMakeFiles/EZGLib.dir/all:
 	$(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/depend
 	$(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/CMakeFiles" --progress-num=4,5,6,7,8,9,10,11,12,13,14,15,16 "Built target EZGLib"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/CMakeFiles" --progress-num=4,5,6,7,8,9,10,11,12,13,14,15,16,17 "Built target EZGLib"
 .PHONY : EZGLib/CMakeFiles/EZGLib.dir/all
 
 # Include target in all.
@@ -258,7 +258,7 @@ all: EZGLib/CMakeFiles/EZGLib.dir/all
 
 # Build rule for subdir invocation for target.
 EZGLib/CMakeFiles/EZGLib.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/CMakeFiles" 13
+	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/CMakeFiles" 14
 	$(MAKE) -f CMakeFiles/Makefile2 EZGLib/CMakeFiles/EZGLib.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/CMakeFiles" 0
 .PHONY : EZGLib/CMakeFiles/EZGLib.dir/rule
@@ -468,7 +468,7 @@ bullet/preinstall:
 bullet/CMakeFiles/bullet.dir/all:
 	$(MAKE) -f bullet/CMakeFiles/bullet.dir/build.make bullet/CMakeFiles/bullet.dir/depend
 	$(MAKE) -f bullet/CMakeFiles/bullet.dir/build.make bullet/CMakeFiles/bullet.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/CMakeFiles" --progress-num=21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95 "Built target bullet"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/CMakeFiles" --progress-num=22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95 "Built target bullet"
 .PHONY : bullet/CMakeFiles/bullet.dir/all
 
 # Include target in all.
@@ -478,7 +478,7 @@ all: bullet/CMakeFiles/bullet.dir/all
 
 # Build rule for subdir invocation for target.
 bullet/CMakeFiles/bullet.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/CMakeFiles" 75
+	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/CMakeFiles" 74
 	$(MAKE) -f CMakeFiles/Makefile2 bullet/CMakeFiles/bullet.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/cmake-build-debug/CMakeFiles" 0
 .PHONY : bullet/CMakeFiles/bullet.dir/rule

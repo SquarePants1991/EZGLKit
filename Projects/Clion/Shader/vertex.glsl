@@ -22,10 +22,15 @@ OUT vec3 fragTangent;
 OUT vec3 fragBitangent;
 OUT vec4 fragColor;
 
+
 uniform mat4 viewProjection;
 uniform mat4 modelMatrix;
 uniform int renderBorder;
 uniform float borderWidth;
+uniform int enableClipPlane0;
+uniform vec4 clipPlane0;
+
+float gl_ClipDistance[1];
 
 void main()
 {
@@ -35,6 +40,11 @@ void main()
     fragTangent = tangent;
     fragBitangent = bitangent;
     fragColor = color;
+
+    //if (enableClipPlane0 == 1)
+    {
+        gl_ClipDistance[0] = dot(modelMatrix * position, vec4(0.0,1.0,0.0,0.0));
+    }
 
     if (renderBorder == 1) {
         vec4 adjustPosition = position + vec4(normalize(fragNormal) * borderWidth, 0.0);

@@ -8,8 +8,10 @@ EZGLib/CMakeFiles/EZGLib.dir/EZGL.cpp.o
  /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELCollisionShape.h
  /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELComponents.h
  /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELGeometry.h
- /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELParticalSystem.h
+ /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELPartical.h
+ /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELParticleSystem.h
  /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELRigidBody.h
+ /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELWaterPlane.h
  /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/geometry/ELCubeGeometry.h
  /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/geometry/ELMeshGeometry.h
  /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/geometry/ELPlaneGeometry.h
@@ -22,6 +24,7 @@ EZGLib/CMakeFiles/EZGLib.dir/EZGL.cpp.o
  /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/ELNode.h
  /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/ELPhysicsWorld.h
  /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/ELProgram.h
+ /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/ELProjector.h
  /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/ELTexture.h
  /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/ELWorld.h
  /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/types/ELGeometryTypes.h
@@ -43,6 +46,7 @@ EZGLib/CMakeFiles/EZGLib.dir/EZGL.cpp.o
  /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/utils/ELWaveFrontLoader.h
  /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes/EZGLBase.h
  /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes/components/ELGeometry.h
+ /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes/core/ELCamera.h
  /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes/core/ELComponent.h
  /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes/core/ELNode.h
  /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes/core/ELProgram.h
@@ -537,7 +541,6 @@ EZGLib/CMakeFiles/EZGLib.dir/components/ELPartical.cpp.o
 EZGLib/CMakeFiles/EZGLib.dir/components/ELParticleSystem.cpp.o
  /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELGeometry.h
  /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELPartical.h
- /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELParticalSystem.h
  /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELParticleSystem.cpp
  /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes/EZGLBase.h
  /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes/core/ELCamera.h
@@ -560,7 +563,6 @@ EZGLib/CMakeFiles/EZGLib.dir/components/ELParticleSystem.cpp.o
  /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes/types/EZGLMatrixTypes.h
  /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes/types/EZGLTypes.h
  /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes/types/EZGLVectorTypes.h
- /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes/utils/ELGeometryVertexBuffer.h
  /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../libs/bullet/BulletCollision/BroadphaseCollision/btAxisSweep3.h
  /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../libs/bullet/BulletCollision/BroadphaseCollision/btBroadphaseInterface.h
  /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../libs/bullet/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h
@@ -785,6 +787,31 @@ EZGLib/CMakeFiles/EZGLib.dir/components/ELRigidBody.cpp.o
  /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../libs/bullet/LinearMath/btVector3.h
  /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../libs/bullet/btBulletCollisionCommon.h
  /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../libs/bullet/btBulletDynamicsCommon.h
+ /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../libs/glad/include/KHR/khrplatform.h
+ /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../libs/glad/include/glad/glad.h
+ /usr/local/include/GLFW/glfw3.h
+EZGLib/CMakeFiles/EZGLib.dir/components/ELWaterPlane.cpp.o
+ /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELGeometry.h
+ /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELWaterPlane.cpp
+ /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELWaterPlane.h
+ /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes/EZGLBase.h
+ /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes/core/ELCamera.h
+ /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes/core/ELComponent.h
+ /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes/core/ELConfig.h
+ /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes/core/ELNode.h
+ /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes/types/ELGeometryTypes.h
+ /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes/types/ELMatrix3.h
+ /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes/types/ELMatrix4.h
+ /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes/types/ELQuaternion.h
+ /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes/types/ELTransform.h
+ /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes/types/ELVector2.h
+ /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes/types/ELVector3.h
+ /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes/types/ELVector4.h
+ /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes/types/EZGLBasicTypes.h
+ /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes/types/EZGLMatrixTypes.h
+ /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes/types/EZGLTypes.h
+ /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes/types/EZGLVectorTypes.h
+ /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes/utils/ELGeometryVertexBuffer.h
  /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../libs/glad/include/KHR/khrplatform.h
  /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../libs/glad/include/glad/glad.h
  /usr/local/include/GLFW/glfw3.h
@@ -1218,6 +1245,7 @@ EZGLib/CMakeFiles/EZGLib.dir/core/ELEffect.cpp.o
  /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/ELEffect.cpp
  /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/ELEffect.h
  /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/ELPhysicsWorld.h
+ /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/ELProjector.h
  /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/ELWorld.h
  /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes/EZGLBase.h
  /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes/core/ELCamera.h
@@ -1634,6 +1662,29 @@ EZGLib/CMakeFiles/EZGLib.dir/core/ELProgram.cpp.o
  /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../libs/glad/include/KHR/khrplatform.h
  /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../libs/glad/include/glad/glad.h
  /usr/local/include/GLFW/glfw3.h
+EZGLib/CMakeFiles/EZGLib.dir/core/ELProjector.cpp.o
+ /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/ELCamera.h
+ /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/ELNode.h
+ /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/ELProjector.cpp
+ /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/ELProjector.h
+ /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/ELTexture.h
+ /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes/EZGLBase.h
+ /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes/types/ELGeometryTypes.h
+ /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes/types/ELMatrix3.h
+ /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes/types/ELMatrix4.h
+ /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes/types/ELQuaternion.h
+ /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes/types/ELTransform.h
+ /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes/types/ELVector2.h
+ /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes/types/ELVector3.h
+ /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes/types/ELVector4.h
+ /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes/types/EZGLBasicTypes.h
+ /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes/types/EZGLMatrixTypes.h
+ /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes/types/EZGLTypes.h
+ /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes/types/EZGLVectorTypes.h
+ /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes/utils/ELAssets.h
+ /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../libs/glad/include/KHR/khrplatform.h
+ /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../libs/glad/include/glad/glad.h
+ /usr/local/include/GLFW/glfw3.h
 EZGLib/CMakeFiles/EZGLib.dir/core/ELTexture.cpp.o
  /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/ELTexture.cpp
  /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/ELTexture.h
@@ -1652,6 +1703,8 @@ EZGLib/CMakeFiles/EZGLib.dir/core/ELWorld.cpp.o
  /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/ELWorld.h
  /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes/EZGLBase.h
  /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes/components/ELGeometry.h
+ /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes/components/ELWaterPlane.h
+ /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes/core/ELCamera.h
  /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes/core/ELComponent.h
  /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes/core/ELNode.h
  /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes/core/ELProgram.h
@@ -1667,6 +1720,7 @@ EZGLib/CMakeFiles/EZGLib.dir/core/ELWorld.cpp.o
  /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes/types/EZGLMatrixTypes.h
  /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes/types/EZGLTypes.h
  /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes/types/EZGLVectorTypes.h
+ /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../Classes/utils/ELGeometryVertexBuffer.h
  /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../libs/bullet/BulletCollision/BroadphaseCollision/btAxisSweep3.h
  /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../libs/bullet/BulletCollision/BroadphaseCollision/btBroadphaseInterface.h
  /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/../../libs/bullet/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h

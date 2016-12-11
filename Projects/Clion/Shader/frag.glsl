@@ -245,6 +245,7 @@ vec4 render() {
 
     for(int i=0;i<projectorNum;i++) {
         sum_ambient += project(projectors[i]);
+        sum_diffuse += project(projectors[i]);
     }
 
     highp vec3 lightPosition = lights[0].position;
