@@ -33,6 +33,7 @@ private:
 
     void renderShadowMaps();
     void renderReflectionMaps();
+    void renderRefractionMaps();
     void renderScene();
 };
 

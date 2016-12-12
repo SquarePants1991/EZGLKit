@@ -13,6 +13,7 @@
 #include "ELBoard.h"
 #include "ELParticleSystem.h"
 #include "ELWaterPlane.h"
+#include "ELTerrain.h"
 
 #include "ELRigidBody.h"
 #include "ELCollisionShape.h"

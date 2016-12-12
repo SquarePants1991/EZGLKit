@@ -18,7 +18,7 @@ public:
     void asBox(ELVector3 boxMargin);
     void asCone(ELFloat radius, ELFloat height);
     void asStaticPlane();
-//    void asTerrian();
+    void asTerrian(ELFloat *data,ELVector2 size,ELFloat minHeight,ELFloat maxHeight);
 
     btCollisionShape *collisionShape;
 };

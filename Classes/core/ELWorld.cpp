@@ -5,6 +5,7 @@
 #include "ELWorld.h"
 #include "EZGLBase.h"
 #include "ELLight.h"
+#include "ELGameObject.h"
 #include "components/ELWaterPlane.h"
 
 #define UseDepthFramebuffer 1
@@ -35,6 +36,7 @@ void ELWorld::update(ELFloat timeInSecs) {
 void ELWorld::render() {
     renderShadowMaps();
     renderReflectionMaps();
+    renderRefractionMaps();
     renderScene();
 }
 
@@ -60,11 +62,39 @@ void ELWorld::renderReflectionMaps() {
     for (int i = 0; i < waterPlanes.size(); ++i) {
         ELWaterPlane * waterPlane = dynamic_cast<ELWaterPlane *>(waterPlanes.at(i));
         if (waterPlane != NULL) {
+            glUniform1i(activedEffect->program->uniform("useAdditionMatrix"),1);
+            ELMatrix4 additionMatrix = ELMatrix4MakeScale(1,-1,1);
+            additionMatrix = ELMatrix4Multiply(additionMatrix,ELMatrix4MakeTranslation(0,waterPlane->gameObject()->transform->position.y,0));
+            glUniformMatrix4fv(activedEffect->program->uniform("additionMatrix"), 1, 0, additionMatrix.m);
+            glCullFace(GL_FRONT);
+            glUniform1i(activedEffect->program->uniform("enableClipPlane0"), 1);
+            glUniform4fv(activedEffect->program->uniform("clipPlane0"), 1,waterPlane->plane().v);
             waterPlane->beginGenReflectionMap();
-            activedCamera->flip(true);
             ELNode::render();
             waterPlane->endGenReflectionMap();
-            activedCamera->flip(false);
+            glUniform1i(activedEffect->program->uniform("enableClipPlane0"), 0);
+        }
+    }
+    glCullFace(GL_BACK);
+    glUniform1i(activedEffect->program->uniform("useAdditionMatrix"),0);
+    glUniformMatrix4fv(activedEffect->program->uniform("additionMatrix"), 1, 0, ELMatrix4Identity.m);
+}
+
+void ELWorld::renderRefractionMaps() {
+    activeEffect("render_scene");
+    activedEffect->prepare();
+    activeCamera("main");
+    std::vector<ELNode *> waterPlanes = findChildrenWithKind("water_plane", true);
+    for (int i = 0; i < waterPlanes.size(); ++i) {
+        ELWaterPlane * waterPlane = dynamic_cast<ELWaterPlane *>(waterPlanes.at(i));
+        if (waterPlane != NULL) {
+            glUniform1i(activedEffect->program->uniform("enableClipPlane0"), 1);
+            glUniform4fv(activedEffect->program->uniform("clipPlane0"), 1,waterPlane->inversePlane().v);
+            glUniform1i(activedEffect->program->uniform("useAdditionMatrix"),0);
+            waterPlane->beginGenRefractionMap();
+            ELNode::render();
+            waterPlane->endGenRefractionMap();
+            glUniform1i(activedEffect->program->uniform("enableClipPlane0"), 0);
         }
     }
 }
@@ -73,10 +103,12 @@ void ELWorld::renderScene() {
     activeEffect("render_scene");
     activeCamera("main");
     glad_glViewport(0,0,fbWidth,fbHeight);
-    glad_glClearColor(0.95f, 0.95f, 0.95f, 1.0f);
+    glad_glClearColor(0.15f, 0.15f, 0.15f, 1.0f);
     glad_glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     activedEffect->prepare();
+    glUniform1i(activedEffect->program->uniform("useAdditionMatrix"),0);
+    glUniform1i(activedEffect->program->uniform("enableClipPlane0"), 0);
     //bind shadow texture to 6 ~ 10
     int lightIndex = 0;
     char shadowMapUniformName[512];
@@ -94,8 +126,6 @@ void ELWorld::renderScene() {
     }
 
     ELNode::render();
-
-    glad_glDisable(GL_CLIP_PLANE0);
 }
 
 void ELWorld::activeEffect(std::string effectName) {

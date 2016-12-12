@@ -12,65 +12,19 @@ void FGScene::createScene() {
     // init game world
 
     ELLight * defaultLight = new ELLight();
-    defaultLight->position = ELVector3Make(0,8,0);
+    defaultLight->position = ELVector3Make(0,40,0);
     defaultLight->color = ELVector4Make(1.0,1.0,1.0,1.0);
     defaultLight->intensity = 1.0;
     defaultLight->intensityFallOff = 0.0;
     defaultLight->identity = "main-light";
 //    defaultLight->enableShadow();
     world->addNode(defaultLight);
-
-//    ELLight * fireLight = new ELLight();
-//    fireLight->position = ELVector3Make(0,0.8,0);
-//    fireLight->color = ELVector4Make(1.0,0.0,0.0,1.0);
-//    fireLight->intensity = 1.0;
-//    fireLight->intensityFallOff = 0.1;
-//    fireLight->identity = "fire-light";
-//    world->addNode(fireLight);
-
-    world->addNode(new ELProjector());
-
+createTerrain();
     createWater();
-
-    createMonkey();
-
-
-//    float size = 14;
-//    for (int i=0;i<3;i++) {
-//        for (int j=0;j<3;j++) {
-//            //createMiddleWalls(ELVector3Make(i * size + 5- 14*3/2.0,0,j * size + 5- 14*3/2.0),5,5);
-//            createMiddleWalls(ELVector3Make(i * size - 14*3/2.0,0,j * size- 14*3/2.0),10,10);
-//        }
-//    }
-//
-    createBoundWall(ELVector3Make(0,0,0),17 * 3,17 * 3,100);
-//
-    createFloor();
-//
-    GLuint diffuseMap = ELTexture::texture(ELAssets::shared()->findFile("tree.png"))->value;
-    GLuint normalMap = ELTexture::texture(ELAssets::shared()->findFile("tree.png"))->value;
-    for (int i=0;i<20;i++) {
-        for (int j=0;j<20;j++) {
-            srand(rand());
-            if (rand() > RAND_MAX / 2.0) {
-              //  createBoardGameObject(ELVector2Make(2.5,5),ELVector3Make(i * 4 - 14*3/2.0,2.5,j * 4- 14*3/2.0),0,diffuseMap,normalMap);
-            }
-        }
-    }
-
-    diffuseMap = ELTexture::texture(ELAssets::shared()->findFile("rock.png"))->value;
-    normalMap = ELTexture::texture(ELAssets::shared()->findFile("rock_NRM.png"))->value;
-
-    createCubeGameObject(ELVector3Make(1,1,1),ELVector3Make(0,5,0),10.0,diffuseMap,normalMap);
-    createCubeGameObject(ELVector3Make(1,1,1),ELVector3Make(2,5,2),0.0,diffuseMap,normalMap);
-//    createBoardGameObject(ELVector2Make(2.5,5),ELVector3Make(0,2.5,0),10.0,diffuseMap,normalMap);
-
-    diffuseMap = ELTexture::texture(ELAssets::shared()->findFile("particleTexture.png"))->value;
-//    createParticalGameObject(ELVector2Make(1,1),ELVector3Make(0,0.0,0),10.0,diffuseMap,normalMap);
 
     ELGameObject *gameObject = new ELGameObject(world);
     world->addNode(gameObject);
-    gameObject->transform->position = ELVector3Make(0, 14.5, 0);
+    gameObject->transform->position = ELVector3Make(20, 54.5, 0);
     ELCubeGeometry *cube = new ELCubeGeometry(ELVector3Make(0.4,1,0.4));
     gameObject->addComponent(cube);
     cube->material.diffuse = ELVector4Make(1.0,0.0,0.0,1.0);
@@ -277,7 +231,7 @@ void FGScene::createWater() {
     ELGameObject *gameObject = new ELGameObject(world);
     world->addNode(gameObject);
     gameObject->transform->position = ELVector3Make(0,0,0);
-    ELWaterPlane *waterPlane = new ELWaterPlane(ELVector2Make(50,50));
+    ELWaterPlane *waterPlane = new ELWaterPlane(ELVector2Make(200,200));
     gameObject->addComponent(waterPlane);
 
     gameObject->specificEffectName = "water";
@@ -289,5 +243,19 @@ void FGScene::createWater() {
 }
 
 void FGScene::createTerrain() {
-
+    ELGameObject *gameObject = new ELGameObject(world);
+    world->addNode(gameObject);
+    gameObject->transform->position = ELVector3Make(0,0,0);
+    ELTerrain *terrain = new ELTerrain(ELVector2Make(200,200),ELAssets::shared()->findFile("island.png"),30);
+    gameObject->addComponent(terrain);
+    GLuint diffuseMap = ELTexture::texture(ELAssets::shared()->findFile("rock.png"))->value;
+    GLuint normalMap = ELTexture::texture(ELAssets::shared()->findFile("water_normal.png"))->value;
+    GLuint dudvNormalMap = ELTexture::texture(ELAssets::shared()->findFile("water_normal_dvdu.png"))->value;
+    terrain->material.diffuseMap = diffuseMap;
+    gameObject->transform->position = ELVector3Make(0,0,0);
+    terrain->genMap();
+    ELCollisionShape *collisionShape = new ELCollisionShape();
+    collisionShape->asTerrian(terrain->mapData,terrain->mapDataSize,0,30);
+    ELRigidBody *rigidBody = new ELRigidBody(collisionShape,0);
+    gameObject->addComponent(rigidBody);
 }

@@ -36,6 +36,7 @@ public:
 
     virtual void update(ELFloat timeInSecs);
     virtual void render();
+    virtual void effectDidActive(ELEffect * effect) {}
     virtual std::string kind();
 
 protected:

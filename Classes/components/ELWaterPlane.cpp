@@ -4,6 +4,7 @@
 
 #include "ELWaterPlane.h"
 #include "core/ELConfig.h"
+#include "core/ELGameObject.h"
 
 ELWaterPlane::ELWaterPlane() {
     createReflectionFramebuffer();
@@ -13,12 +14,30 @@ ELWaterPlane::ELWaterPlane(ELVector2 size) : size(size) {
     createReflectionFramebuffer();
 }
 
-ELVector3 ELWaterPlane::plane() {
-    return ELVector3Make(0,1,0);
+ELVector4 ELWaterPlane::plane() {
+    return ELVector4Make(0,1,0,gameObject()->transform->position.y);
+}
+
+ELVector4 ELWaterPlane::inversePlane() {
+    return ELVector4Make(0,-1,0,gameObject()->transform->position.y);
 }
 
 void ELWaterPlane::render() {
     ELGeometry::render();
+}
+
+void ELWaterPlane::effectDidActive(ELEffect * effect) {
+    glUniform1i(effect->program->uniform("dudvMap"), 13);
+    glActiveTexture(GL_TEXTURE13);
+    glBindTexture(GL_TEXTURE_2D, dudvMap);
+
+    glUniform1i(effect->program->uniform("reflectionMap"), 14);
+    glActiveTexture(GL_TEXTURE14);
+    glBindTexture(GL_TEXTURE_2D, reflectionMap);
+
+    glUniform1i(effect->program->uniform("refractionMap"), 15);
+    glActiveTexture(GL_TEXTURE15);
+    glBindTexture(GL_TEXTURE_2D, refractionMap);
 }
 
 ELGeometryData ELWaterPlane::generateData() {
@@ -61,18 +80,34 @@ void ELWaterPlane::beginGenReflectionMap() {
     glad_glDepthFunc(GL_LESS);
     glad_glEnable(GL_DEPTH_TEST);
     glEnable(GL_CLIP_PLANE0);
+    glad_glClearColor(1.0,1.0,1.0,1.0);
     glad_glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
 void ELWaterPlane::endGenReflectionMap() {
     glad_glBindFramebuffer(GL_FRAMEBUFFER, 0);
     glDisable(GL_CLIP_PLANE0);
-    material.diffuseMap = reflectionMap;
-    material.ambientMap = reflectionMap;
+}
+
+void ELWaterPlane::beginGenRefractionMap() {
+    glad_glViewport(0,0,ELConfig::shadowMapWidth,ELConfig::shadowMapHeight);
+    glad_glBindFramebuffer(GL_FRAMEBUFFER, refractionFramebuffer);
+    glad_glDepthMask(GL_TRUE);
+    glad_glDepthFunc(GL_LESS);
+    glad_glEnable(GL_DEPTH_TEST);
+    glEnable(GL_CLIP_PLANE0);
+    glad_glClearColor(1.0,1.0,1.0,1.0);
+    glad_glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+}
+
+void ELWaterPlane::endGenRefractionMap() {
+    glad_glBindFramebuffer(GL_FRAMEBUFFER, 0);
+    glDisable(GL_CLIP_PLANE0);
 }
 
 void ELWaterPlane::createReflectionFramebuffer() {
-    genColorFramebuffer();
+    genColorFramebuffer(reflectionFramebuffer, reflectionMap);
+    genColorFramebuffer(refractionFramebuffer, refractionMap);
 }
 
 void ELWaterPlane::genDepthFramebuffer() {
@@ -100,7 +135,7 @@ void ELWaterPlane::genDepthFramebuffer() {
     this->reflectionMap = reflectTexture;
 }
 
-void ELWaterPlane::genColorFramebuffer() {
+void ELWaterPlane::genColorFramebuffer(GLuint &outFramebuffer, GLuint &outTexture) {
     GLuint framebuffer;
     GLuint shadowTexture;
 
@@ -119,6 +154,6 @@ void ELWaterPlane::genColorFramebuffer() {
 
     glad_glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
-    this->reflectionFramebuffer = framebuffer;
-    this->reflectionMap = shadowTexture;
+    outFramebuffer = framebuffer;
+    outTexture = shadowTexture;
 }

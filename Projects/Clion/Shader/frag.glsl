@@ -45,6 +45,7 @@ OUT highp vec3 fragTangent;
 OUT highp vec3 fragBitangent;
 OUT highp vec4 fragColor;
 
+uniform highp vec3 cameraPosition;
 uniform highp mat4 viewProjection;
 uniform highp mat4 modelMatrix;
 uniform highp mat3 normalMatrix;
@@ -212,7 +213,7 @@ vec4 render() {
 
     // 计算表面点到摄像机的向量
     highp vec3 eye;
-    eye = normalize(vec3(0.0, 0.0, 10.0) - mMatrixPosition);
+    eye = normalize(cameraPosition - mMatrixPosition);
 #ifdef Use_BumpMap
     eye = normalize(tbn * eye);
 #endif

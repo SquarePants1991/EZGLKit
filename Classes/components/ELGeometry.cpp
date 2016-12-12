@@ -45,8 +45,9 @@ void ELGeometry::render() {
     ELProgram *program = defaultEffect->program;
     ELCamera *camera = gameObject()->mainCamera();
 
-    glUniform3fv(program->uniform("cameraPosition"), 1, camera->position().v);
+    effectDidActive(defaultEffect);
 
+    glUniform3fv(program->uniform("cameraPosition"), 1, camera->position().v);
     glUniformMatrix4fv(program->uniform("viewProjection"), 1, 0, camera->matrix().m);
     glUniformMatrix4fv(program->uniform("modelMatrix"), 1, 0, ELMatrix4FromTransform(gameObject()->transform).m);
     glUniform4fv(program->uniform("material.ambient"), 1, material.ambient.v);
@@ -69,16 +70,17 @@ void ELGeometry::render() {
 
     glBindVertexArray(vao);
     if (enableBorder) {
-        glCullFace(GL_FRONT);
-        glUniform1i(program->uniform("renderBorder"), 1);
-        glUniform1f(program->uniform("borderWidth"), borderWidth);
-        glUniform4fv(program->uniform("borderColor"), 1, borderColor.v);
-        if (data.supportIndiceVBO) {
-            glDrawElements(GL_TRIANGLES, data.indiceCount, GL_UNSIGNED_INT, 0);
-        } else {
-            glDrawArrays(GL_TRIANGLES, 0, data.vertexCount);
-        }
-        glCullFace(GL_BACK);
+        // TODO: 增加管理Cull Face状态类，使Cull Face能够restore回去，暂时禁用边缘渲染
+//        glCullFace(GL_FRONT);
+//        glUniform1i(program->uniform("renderBorder"), 1);
+//        glUniform1f(program->uniform("borderWidth"), borderWidth);
+//        glUniform4fv(program->uniform("borderColor"), 1, borderColor.v);
+//        if (data.supportIndiceVBO) {
+//            glDrawElements(GL_TRIANGLES, data.indiceCount, GL_UNSIGNED_INT, 0);
+//        } else {
+//            glDrawArrays(GL_TRIANGLES, 0, data.vertexCount);
+//        }
+//        glCullFace(GL_BACK);
     }
 
     glUniform1i(program->uniform("renderBorder"), 0);

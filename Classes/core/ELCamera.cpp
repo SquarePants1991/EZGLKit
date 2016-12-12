@@ -34,9 +34,6 @@ void ELCamera::asOrtho(ELFloat left,ELFloat right,ELFloat top,ELFloat bottom,ELF
 
 ELMatrix4 ELCamera::matrix() {
     ELVector3 _up = up;
-    if (needFlip) {
-        _up = ELMatrix4MultiplyVector4(ELMatrix4MakeScale(1,-1,1), ELVector4Make(_up.x,_up.y,_up.z,1)).xyz;
-    }
     ELVector3 forward = forwardVector();
     ELVector3 left = leftVector();
     ELMatrix4 projection = ELMatrix4MakePerspective(fovyRadians / 180.0f * M_PI, aspect, nearZ, farZ);
@@ -48,16 +45,10 @@ ELMatrix4 ELCamera::matrix() {
     ELVector3 transformedForward = ELQuaternionRotateVector3(cameraQuaternion, forward);
 
     ELVector3 transformedEye = ELVector3Add(eye, translation);
-    if (needFlip) {
-        transformedEye = ELMatrix4MultiplyVector4(ELMatrix4MakeScale(1,-1,1), ELVector4Make(transformedEye.x,transformedEye.y,transformedEye.z,1)).xyz;
-    }
     ELVector3 transformedLookAt = ELVector3Add(transformedEye, transformedForward);
 
     ELMatrix4 lookAt = ELMatrix4MakeLookAt(transformedEye.x,transformedEye.y,transformedEye.z,transformedLookAt.x, transformedLookAt.y, transformedLookAt.z, transformedUp.x, transformedUp.y, transformedUp.z);
     ELMatrix4 finalMatrix = ELMatrix4Multiply(projection, lookAt);
-    if (needFlip) {
-       // finalMatrix = ELMatrix4Multiply(ELMatrix4MakeScale(1,-1,1),finalMatrix);
-    }
     return finalMatrix;
 }
 
