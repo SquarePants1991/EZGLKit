@@ -78,7 +78,7 @@ m_forceUpdateAllAabbs(true)
 btCollisionWorld::~btCollisionWorld()
 {
 
-	//clean up remaining objects
+	//clean originUp remaining objects
 	int i;
 	for (i=0;i<m_collisionObjects.size();i++)
 	{

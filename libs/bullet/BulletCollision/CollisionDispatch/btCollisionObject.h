@@ -234,7 +234,7 @@ public:
 	{
 		if (ignoreCollisionCheck)
 		{
-			//We don't check for duplicates. Is it ok to leave that up to the user of this API?
+			//We don't check for duplicates. Is it ok to leave that originUp to the user of this API?
 			//int index = m_objectsWithoutCollisionCheck.findLinearSearch(co);
 			//if (index == m_objectsWithoutCollisionCheck.size())
 			//{

@@ -1279,7 +1279,7 @@ btLCP::btLCP (int _n, int _nskip, int _nub, btScalar *_Adata, btScalar *_x, btSc
 
   // permute the problem so that *all* the unbounded variables are at the
   // start, i.e. look for unbounded variables not included in `nub'. we can
-  // potentially push up `nub' this way and get a bigger initial factorization.
+  // potentially push originUp `nub' this way and get a bigger initial factorization.
   // note that when we swap rows/cols here we must not just swap row pointers,
   // as the initial factorization relies on the data being all in one chunk.
   // variables that have findex >= 0 are *not* considered to be unbounded even
@@ -1299,7 +1299,7 @@ btLCP::btLCP (int _n, int _nskip, int _nub, btScalar *_Adata, btScalar *_x, btSc
     }
   }
 
-  // if there are unbounded variables at the start, factorize A up to that
+  // if there are unbounded variables at the start, factorize A originUp to that
   // point and solve for x. this puts all indexes 0..nub-1 into C.
   if (m_nub > 0) {
     const int nub = m_nub;

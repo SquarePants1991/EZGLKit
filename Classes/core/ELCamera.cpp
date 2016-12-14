@@ -4,28 +4,39 @@
 
 #include "ELCamera.h"
 
-ELCamera::ELCamera() {
+ELCamera::ELCamera()
+{
 
 }
 
 ELCamera::ELCamera(ELVector3 eye,ELVector3 lookAt,ELVector3 up,ELFloat fovyRadians,ELFloat aspect,ELFloat nearZ,ELFloat farZ) :
-        eye(eye),
-        lookAt(lookAt),
-        up(up),
+        originEye(eye),
+        originLookAt(lookAt),
+        originUp(up),
         fovyRadians(fovyRadians),
         aspect(aspect),
         nearZ(nearZ),
         farZ(farZ),
-        lockOnTransform(NULL)
+        isOrtho(false),
+        lockOnTransform(NULL),
+        translation(ELVector3Make(0, 0, 0))
 {
-    isOrtho = false;
-    translation = ELVector3Make(0, 0, 0);
     radiansAroundForward = 0.0;
     radiansAroundUp = 0.0;
     radiansAroundLeft = 0.0;
 }
 
-void ELCamera::asOrtho(ELFloat left,ELFloat right,ELFloat top,ELFloat bottom,ELFloat nearZ,ELFloat farZ) {
+ELCamera::ELCamera(ELFloat left, ELFloat right, ELFloat top, ELFloat bottom, ELFloat nearZ, ELFloat farZ) :
+        lockOnTransform(NULL),
+        translation(ELVector3Make(0, 0, 0))
+{
+    radiansAroundForward = 0.0;
+    radiansAroundUp = 0.0;
+    radiansAroundLeft = 0.0;
+    ortho(left, right, top, bottom, nearZ, farZ);
+}
+
+void ELCamera::ortho(ELFloat left, ELFloat right, ELFloat top, ELFloat bottom, ELFloat nearZ, ELFloat farZ) {
     isOrtho = true;
     orthoView = ELVector4Make(left,right,top,bottom);
     this->nearZ = nearZ;
@@ -33,31 +44,25 @@ void ELCamera::asOrtho(ELFloat left,ELFloat right,ELFloat top,ELFloat bottom,ELF
 }
 
 ELMatrix4 ELCamera::matrix() {
-    ELVector3 _up = up;
-    ELVector3 forward = forwardVector();
-    ELVector3 left = leftVector();
+    ELVector3 up = upVector();
     ELMatrix4 projection = ELMatrix4MakePerspective(fovyRadians / 180.0f * M_PI, aspect, nearZ, farZ);
     if (isOrtho) {
         projection = ELMatrix4MakeOrtho(orthoView.x,orthoView.y,orthoView.w,orthoView.z,nearZ,farZ);
     }
-    ELQuaternion cameraQuaternion = quaternion();
-    ELVector3 transformedUp = ELQuaternionRotateVector3(cameraQuaternion, _up);
-    ELVector3 transformedForward = ELQuaternionRotateVector3(cameraQuaternion, forward);
+    ELVector3 eyePosition = position();
+    ELVector3 desPosition = lookAtPosition();
 
-    ELVector3 transformedEye = ELVector3Add(eye, translation);
-    ELVector3 transformedLookAt = ELVector3Add(transformedEye, transformedForward);
-
-    ELMatrix4 lookAt = ELMatrix4MakeLookAt(transformedEye.x,transformedEye.y,transformedEye.z,transformedLookAt.x, transformedLookAt.y, transformedLookAt.z, transformedUp.x, transformedUp.y, transformedUp.z);
+    ELMatrix4 lookAt = ELMatrix4MakeLookAt(eyePosition.x,eyePosition.y,eyePosition.z,desPosition.x, desPosition.y, desPosition.z, up.x, up.y, up.z);
     ELMatrix4 finalMatrix = ELMatrix4Multiply(projection, lookAt);
     return finalMatrix;
 }
 
 void ELCamera::rotateEye(ELFloat radians, ELVector3 axis) {
     ELQuaternion quaternion = ELQuaternionMakeWithAngleAndVector3Axis(radians, axis);
-    up = ELQuaternionRotateVector3(quaternion,up);
-    ELVector3 eyeVec = ELVector3Subtract(eye, lookAt);
+    originUp = ELQuaternionRotateVector3(quaternion, originUp);
+    ELVector3 eyeVec = ELVector3Subtract(originEye, originLookAt);
     ELVector3 newEyeVec = ELQuaternionRotateVector3(quaternion, eyeVec);
-    eye = ELVector3Add(lookAt, newEyeVec);
+    originEye = ELVector3Add(originLookAt, newEyeVec);
 }
 
 void ELCamera::rotateLookAtAroundUp(ELFloat radians) {
@@ -79,7 +84,8 @@ void ELCamera::translateForward(ELFloat distance) {
 }
 
 void ELCamera::translateUp(ELFloat distance) {
-    translation = ELVector3Add(translation, ELVector3Make(up.x * distance, up.y * distance, up.z * distance));
+    translation = ELVector3Add(translation, ELVector3Make(
+            originUp.x * distance, originUp.y * distance, originUp.z * distance));
 }
 
 void ELCamera::translateLeft(ELFloat distance) {
@@ -89,9 +95,9 @@ void ELCamera::translateLeft(ELFloat distance) {
 }
 
 void ELCamera::translateTo(ELVector3 loc) {
-    ELVector3 eyeVec = ELVector3Subtract(lookAt, eye);
-    eye = loc;
-    lookAt = ELVector3Add(eye, eyeVec);
+    ELVector3 eyeVec = ELVector3Subtract(originLookAt, originEye);
+    originEye = loc;
+    originLookAt = ELVector3Add(originEye, eyeVec);
 }
 
 void ELCamera::lockOn(ELTransform *transform) {
@@ -100,64 +106,56 @@ void ELCamera::lockOn(ELTransform *transform) {
 
 void ELCamera::update(ELFloat timeInSecs) {
     if (lockOnTransform != NULL) {
-//        ELVector3 eyeVec = ELVector3Subtract(lookAt, eye);
-//        lookAt = lockOnTransform->position;
-//        eye = ELVector3Subtract(lookAt, eyeVec);
+//        ELVector3 eyeVec = ELVector3Subtract(originLookAt, originEye);
+//        originLookAt = lockOnTransform->position;
+//        originEye = ELVector3Subtract(originLookAt, eyeVec);
 
-        ELVector3 eyeVec = ELVector3Subtract(lookAt, eye);
-        eye = lockOnTransform->position;
-        eye.y += 2;
-        lookAt = ELVector3Add(eye, eyeVec);
+        ELVector3 eyeVec = ELVector3Subtract(originLookAt, originEye);
+        originEye = lockOnTransform->position;
+        originEye.y += 2;
+        originLookAt = ELVector3Add(originEye, eyeVec);
     }
 }
 
-// caculated direction
-ELVector3 ELCamera::forward() {
-    ELVector3 forward = forwardVector();
+ELVector3 ELCamera::leftVector() {
+    float rotateAngle = M_PI / 2.0;
+    ELQuaternion quaternion = ELQuaternionMakeWithAngleAndVector3Axis(rotateAngle, forwardVector());
+    ELVector3 left = ELQuaternionRotateVector3(quaternion, originUp);
+    return ELVector3Normalize(left);
+}
+
+ELVector3 ELCamera::forwardVector() {
+    ELVector3 forward = ELVector3Normalize(ELVector3Subtract(originLookAt, originEye));
     ELQuaternion cameraQuaternion = quaternion();
     ELVector3 transformedForward = ELQuaternionRotateVector3(cameraQuaternion, forward);
-    return transformedForward;
+    return ELVector3Normalize(transformedForward);
+}
+
+ELVector3 ELCamera::upVector() {
+    ELQuaternion cameraQuaternion = quaternion();
+    ELVector3 transformedUp = ELQuaternionRotateVector3(cameraQuaternion, originUp);
+    return ELVector3Normalize(transformedUp);
 }
 
 ELVector3 ELCamera::position() {
-    ELVector3 transformedEye = ELVector3Add(eye, translation);
+    ELVector3 transformedEye = ELVector3Add(originEye, translation);
     return transformedEye;
 }
 
 ELVector3 ELCamera::lookAtPosition() {
-    ELQuaternion cameraQuaternion = quaternion();
-    ELVector3 transformedForward = ELQuaternionRotateVector3(cameraQuaternion, forward());
-
-    ELVector3 transformedEye = ELVector3Add(eye, translation);
+    ELVector3 transformedForward = forwardVector();
+    ELVector3 transformedEye = position();
     ELVector3 transformedLookAt = ELVector3Add(transformedEye, transformedForward);
     return transformedLookAt;
 }
 
-void ELCamera::flip(bool flip) {
-    needFlip = flip;
-}
-
-// Private Methods
-ELVector3 ELCamera::leftVector() {
-    float rotateAngle = M_PI / 2.0;
-    if (needFlip) {
-        rotateAngle = -M_PI / 2.0;
-    }
-    ELQuaternion quaternion = ELQuaternionMakeWithAngleAndVector3Axis(rotateAngle, forwardVector());
-    ELVector3 left = ELQuaternionRotateVector3(quaternion, up);
-    return left;
-}
-
-ELVector3 ELCamera::forwardVector() {
-    ELVector3 forward = ELVector3Normalize(ELVector3Subtract(lookAt, eye));
-    return forward;
-}
-
 ELQuaternion ELCamera::quaternion() {
-    ELVector3 forward = forwardVector();
-    ELVector3 left = leftVector();
+    float rotateAngle = M_PI / 2.0;
+    ELVector3 forward = ELVector3Normalize(ELVector3Subtract(originLookAt, originEye));
+    ELVector3 left = ELQuaternionRotateVector3(ELQuaternionMakeWithAngleAndVector3Axis(rotateAngle, forward), originUp);
+    left = ELVector3Normalize(left);
     ELQuaternion forwardQuaternion = ELQuaternionMakeWithAngleAndAxis(radiansAroundForward, forward.x, forward.y, forward.z);
-    ELQuaternion upQuaternion = ELQuaternionMakeWithAngleAndAxis(radiansAroundUp / 180.0 * M_PI, up.x, up.y, up.z);
+    ELQuaternion upQuaternion = ELQuaternionMakeWithAngleAndAxis(radiansAroundUp / 180.0 * M_PI, originUp.x, originUp.y, originUp.z);
     ELQuaternion leftQuaternion = ELQuaternionMakeWithAngleAndAxis(radiansAroundLeft / 180.0 * M_PI, left.x, left.y, left.z);
     return ELQuaternionMultiply(ELQuaternionMultiply(forwardQuaternion, upQuaternion),leftQuaternion);
 }

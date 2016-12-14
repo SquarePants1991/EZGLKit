@@ -19,7 +19,7 @@ ELWorld::ELWorld(ELFloat aspect) {
     ELVector3 eye = {0, 1.7, 0};
     ELVector3 center = {0, 0, -10};
     ELVector3 up = {0, 1, 0};
-    ELCamera * defaultCamera = new ELCamera(eye, center, up, 70.0, aspect, 0.1, 1000);
+    ELCamera * defaultCamera = new ELCamera(eye, center, up, 70.0, aspect, 0.1, 450);
     defaultCamera->identity = "main";
     addNode(defaultCamera);
 
@@ -41,11 +41,11 @@ void ELWorld::render() {
 }
 
 void ELWorld::renderShadowMaps() {
-    activeEffect("gen_shadow");
-    activedEffect->prepare();
     for (int i = 0; i < children.size(); ++i) {
         ELLight * light = dynamic_cast<ELLight *>(children.at(i));
-        if (light != NULL) {
+        if (light != NULL && light->isShadowEnabled) {
+            activeEffect("gen_shadow");
+            activedEffect->prepare();
             light->beginGenShadowMap();
             activeCamera(light->identity + "-shadow-camera", light->shadowMapGenCamera());
             ELNode::render();

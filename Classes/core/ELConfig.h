@@ -12,6 +12,10 @@ class ELConfig {
 public:
     static ELInt shadowMapWidth;
     static ELInt shadowMapHeight;
+    static ELInt reflectionMapWidth;
+    static ELInt reflectionMapHeight;
+    static ELInt refractionMapWidth;
+    static ELInt refractionMapHeight;
 };
 
 

@@ -9,6 +9,7 @@
 #include "ELGeometry.h"
 
 #include <functional>
+#include <stdlib.h>
 
 class ELParticalSystemCompare {
 public:

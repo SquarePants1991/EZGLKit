@@ -4,6 +4,8 @@
 
 #include "ELPhysicsWorld.h"
 #include "ELGameObject.h"
+#include "btBulletCollisionCommon.h"
+#include "btBulletDynamicsCommon.h"
 
 ELPhysicsWorld * ELPhysicsWorld::_shared = NULL;
 
@@ -21,11 +23,15 @@ ELPhysicsWorld::ELPhysicsWorld() {
     broadphase = new btDbvtBroadphase();
 
     world = new btDiscreteDynamicsWorld(dispatcher,broadphase,solver,configration);
-    world->setGravity(btVector3(0,-10,0));
+    world->setGravity(btVector3(0,-25,0));
 }
 
 void ELPhysicsWorld::addRigidBody(btRigidBody *rigidBody) {
     world->addRigidBody(rigidBody);
+}
+
+void ELPhysicsWorld::removeRigidBody(btRigidBody *rigidBody) {
+    world->removeRigidBody(rigidBody);
 }
 
 std::vector<ELGameObject *> ELPhysicsWorld::raycast(ELVector3 start,ELVector3 end) {

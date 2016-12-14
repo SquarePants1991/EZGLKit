@@ -5,16 +5,21 @@
 #ifndef EZGL_ELPHYSICSWORLD_H
 #define EZGL_ELPHYSICSWORLD_H
 
-#include "btBulletCollisionCommon.h"
-#include "btBulletDynamicsCommon.h"
 #include "ELNode.h"
 
 class ELGameObject;
+class btRigidBody;
+class btDiscreteDynamicsWorld;
+class btCollisionConfiguration;
+class btCollisionDispatcher;
+class btSequentialImpulseConstraintSolver;
+class btBroadphaseInterface;
 
 class ELPhysicsWorld : public ELNode{
 public:
     static ELPhysicsWorld *shared();
     void addRigidBody(btRigidBody *rigidBody);
+    void removeRigidBody(btRigidBody *rigidBody);
 
     std::vector<ELGameObject *> raycast(ELVector3 start,ELVector3 end);
 

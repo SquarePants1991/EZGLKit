@@ -44,7 +44,6 @@ protected:
     bool isGeometryDataValid;
     virtual ELGeometryData generateData() = 0;
     void setNeedRegenData();
-
 private:
     ELInt vao;
     void setupVao();

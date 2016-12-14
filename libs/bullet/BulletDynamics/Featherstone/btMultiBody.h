@@ -330,7 +330,7 @@ void addJointTorque(int i, btScalar Q);
     //
 
     // timestep the velocities (given the external forces/torques set using addBaseForce etc).
-    // also sets up caches for calcAccelerationDeltas.
+    // also sets originUp caches for calcAccelerationDeltas.
     //
     // Note: the caller must provide three vectors which are used as
     // temporary scratch space. The idea here is to reduce dynamic

@@ -468,7 +468,7 @@ void	CProfileManager::Start_Profile( const char * name )
  *=============================================================================================*/
 void	CProfileManager::Stop_Profile( void )
 {
-	// Return will indicate whether we should back up to our parent (we may
+	// Return will indicate whether we should back originUp to our parent (we may
 	// be profiling a recursive function)
 	if (CurrentNode->Return()) {
 		CurrentNode = CurrentNode->Get_Parent();

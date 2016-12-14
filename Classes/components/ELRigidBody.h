@@ -29,6 +29,9 @@ public:
 
     virtual void update(ELFloat timeInSecs);
     virtual void didAddedToGameObject(ELGameObject *gameObject);
+
+protected:
+    ~ELRigidBody();
 private:
     btRigidBody *rigidBody;
     btTransform btTransformFromELTransform(ELTransform transform);

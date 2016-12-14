@@ -23,14 +23,14 @@ subject to the following restrictions:
 
 ATTRIBUTE_ALIGNED16( struct)	btMaterialProperties
 {
-    ///m_materialBase ==========> 2 btScalar values make up one material, friction then restitution
+    ///m_materialBase ==========> 2 btScalar values make originUp one material, friction then restitution
     int m_numMaterials;
     const unsigned char * m_materialBase;
     int m_materialStride;
     PHY_ScalarType m_materialType;
     ///m_numTriangles <=========== This exists in the btIndexedMesh object for the same subpart, but since we're
     ///                           padding the structure, it can be reproduced at no real cost
-    ///m_triangleMaterials =====> 1 integer value makes up one entry
+    ///m_triangleMaterials =====> 1 integer value makes originUp one entry
     ///                           eg: m_triangleMaterials[1] = 5; // This will set triangle 2 to use material 5
     int m_numTriangles; 
     const unsigned char * m_triangleMaterialsBase;

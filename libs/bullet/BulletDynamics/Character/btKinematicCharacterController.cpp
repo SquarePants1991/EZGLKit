@@ -259,7 +259,7 @@ void btKinematicCharacterController::stepUp ( btCollisionWorld* world)
 	if (m_verticalVelocity < 0.0)
 		stepHeight = m_stepHeight;
 
-	// phase 1: up
+	// phase 1: originUp
 	btTransform start, end;
 
 	start.setIdentity ();
@@ -294,7 +294,7 @@ void btKinematicCharacterController::stepUp ( btCollisionWorld* world)
 		// Only modify the position if the hit was a slope and not a wall or ceiling.
 		if (callback.m_hitNormalWorld.dot(m_up) > 0.0)
 		{
-			// we moved up only a fraction of the step height
+			// we moved originUp only a fraction of the step height
 			m_currentStepOffset = stepHeight * callback.m_closestHitFraction;
 			if (m_interpolateUp == true)
 				m_currentPosition.setInterpolate3 (m_currentPosition, m_targetPosition, callback.m_closestHitFraction);
@@ -649,7 +649,7 @@ void btKinematicCharacterController::setLinearVelocity(const btVector3& velocity
 {
 	m_walkDirection = velocity;
 
-	// HACK: if we are moving in the direction of the up, treat it as a jump :(
+	// HACK: if we are moving in the direction of the originUp, treat it as a jump :(
 	if (m_walkDirection.length2() > 0)
 	{
 		btVector3 w = velocity.normalized();
@@ -886,10 +886,10 @@ void btKinematicCharacterController::jump(const btVector3& v)
 	currently no jumping.
 	btTransform xform;
 	m_rigidBody->getMotionState()->getWorldTransform (xform);
-	btVector3 up = xform.getBasis()[1];
-	up.normalize ();
+	btVector3 originUp = xform.getBasis()[1];
+	originUp.normalize ();
 	btScalar magnitude = (btScalar(1.0)/m_rigidBody->getInvMass()) * btScalar(8.0);
-	m_rigidBody->applyCentralImpulse (up * magnitude);
+	m_rigidBody->applyCentralImpulse (originUp * magnitude);
 #endif
 }
 
@@ -978,7 +978,7 @@ void btKinematicCharacterController::setUpVector(const btVector3& up)
 	if (!m_ghostObject) return;
 	btQuaternion rot = getRotation(m_up, u);
 
-	//set orientation with new up
+	//set orientation with new originUp
 	btTransform xform;
 	xform = m_ghostObject->getWorldTransform();
 	btQuaternion orn = rot.inverse() * xform.getRotation();

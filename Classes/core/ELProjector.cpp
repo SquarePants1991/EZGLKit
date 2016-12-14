@@ -13,7 +13,7 @@ ELProjector::ELProjector() {
     ELVector3 up = {0, 0, 1};
     camera = new ELCamera(eye, center, up, 70.0, 1.0, 0.1, 1000);
     camera->identity = "p1";
-    camera->asOrtho(-4, 4, 4, -4, -20,20);
+    camera->ortho(-4, 4, 4, -4, -20, 20);
     this->projectorMap = ELTexture::texture(ELAssets::shared()->findFile("1.jpg"))->value;
 }
 

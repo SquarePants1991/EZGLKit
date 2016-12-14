@@ -10,9 +10,9 @@
 
 class ELCamera : public ELNode {
 public:
-    ELVector3 eye;
-    ELVector3 lookAt;
-    ELVector3 up;
+    ELVector3 originEye;
+    ELVector3 originLookAt;
+    ELVector3 originUp;
     ELFloat nearZ;
     ELFloat farZ;
     ELFloat fovyRadians;
@@ -27,10 +27,13 @@ public:
     ELVector4 orthoView;
 
 public:
-    // Perspective Camera
     ELCamera();
+    // Perspective Camera
     ELCamera(ELVector3 eye,ELVector3 lookAt,ELVector3 up,ELFloat fovyRadians,ELFloat aspect,ELFloat nearZ,ELFloat farZ);
-    void asOrtho(ELFloat left,ELFloat right,ELFloat top,ELFloat bottom,ELFloat nearZ,ELFloat farZ);
+    void perspective(ELVector3 eye,ELVector3 lookAt,ELVector3 up,ELFloat fovyRadians,ELFloat aspect,ELFloat nearZ,ELFloat farZ);
+    // Perspective Camera
+    ELCamera(ELFloat left, ELFloat right, ELFloat top, ELFloat bottom, ELFloat nearZ, ELFloat farZ);
+    void ortho(ELFloat left, ELFloat right, ELFloat top, ELFloat bottom, ELFloat nearZ, ELFloat farZ);
 
     ELMatrix4 matrix();
     void rotateEye(ELFloat radians, ELVector3 axis);
@@ -44,21 +47,19 @@ public:
 
     void lockOn(ELTransform *transform);
 
-    ELVector3 forward();
-//    ELVector3 left();
-//    ELVector3 up();
+    ELVector3 leftVector();
+    ELVector3 forwardVector();
+    ELVector3 upVector();
+
     ELVector3 position();
     ELVector3 lookAtPosition();
-
-    void flip(bool flip);
 
     virtual void update(ELFloat timeInSecs);
 
 private:
     bool isOrtho;
     bool needFlip;
-    ELVector3 leftVector();
-    ELVector3 forwardVector();
+
     ELQuaternion quaternion();
 
     ELTransform * lockOnTransform;

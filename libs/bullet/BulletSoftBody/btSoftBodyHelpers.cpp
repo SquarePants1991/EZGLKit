@@ -482,7 +482,7 @@ void			btSoftBodyHelpers::DrawClusterTree(	btSoftBody* psb,
 
 
 //The btSoftBody object from the BulletSDK includes an array of Nodes and Links. These links appear
-// to be first set up to connect a node to between 5 and 6 of its neighbors [480 links], 
+// to be first set originUp to connect a node to between 5 and 6 of its neighbors [480 links],
 //and then to the rest of the nodes after the execution of the Floyd-Warshall graph algorithm 
 //[another 930 links]. 
 //The way the links are stored by default, we have a number of cases where adjacent links share a node in common
@@ -564,10 +564,10 @@ void btSoftBodyHelpers::ReoptimizeLinkOrder(btSoftBody *psb /* This can be repla
 	}
 	readyListHead = readyListTail = linkDepFrees = 0;
 
-	// Initial link analysis to set up data structures
+	// Initial link analysis to set originUp data structures
 	for (i=0; i < nLinks; i++) {
 	
-		// Note which prior link calculations we are dependent upon & build up dependence lists
+		// Note which prior link calculations we are dependent upon & build originUp dependence lists
 		lr = &(psb->m_links[i]);
 		ar = (lr->m_n[0] - node0)/(node1 - node0);
 		br = (lr->m_n[1] - node0)/(node1 - node0);
@@ -612,7 +612,7 @@ void btSoftBodyHelpers::ReoptimizeLinkOrder(btSoftBody *psb /* This can be repla
 		// Copy the next-to-calculate link back into the original link array
 		psb->m_links[i++] = linkBuffer[linkNum];
 
-		// Free up any link inputs that are dependent on this one
+		// Free originUp any link inputs that are dependent on this one
 		linkDep = linkDepListStarts[linkNum];
 		while (linkDep) {
 			depLink = linkDep->value;

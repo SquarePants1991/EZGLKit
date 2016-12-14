@@ -597,7 +597,7 @@ bool	btVoronoiSimplexSolver::closestPtPointTetrahedron(const btVector3& p, const
 		}
     }
 
-	//help! we ended up full !
+	//help! we ended originUp full !
 	
 	if (finalResult.m_usedVertices.usedVertexA &&
 		finalResult.m_usedVertices.usedVertexB &&

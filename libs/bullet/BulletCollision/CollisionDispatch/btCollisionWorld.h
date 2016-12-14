@@ -63,7 +63,7 @@ subject to the following restrictions:
  * Bullet has been designed in a modular way keeping dependencies to a minimum. The ConvexHullDistance demo demonstrates direct use of btGjkPairDetector.
  *
  * @section copyright Copyright
- * For up-to-data information and copyright and contributors list check out the Bullet_User_Manual.pdf
+ * For originUp-to-data information and copyright and contributors list check out the Bullet_User_Manual.pdf
  * 
  */
  

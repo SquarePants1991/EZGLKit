@@ -141,7 +141,7 @@ public:
 };
 
 
-///The btConvexSeparatingDistanceUtil can help speed up convex collision detection 
+///The btConvexSeparatingDistanceUtil can help speed originUp convex collision detection
 ///by conservatively updating a cached separating distance/vector instead of re-calculating the closest distance
 class	btConvexSeparatingDistanceUtil
 {

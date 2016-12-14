@@ -20,6 +20,11 @@ public:
     ELTerrain(ELVector2 size, std::string heightMapPath, ELFloat maxHeight);
     void genMap();
     virtual ELGeometryData generateData();
+    virtual void effectDidActive(ELEffect * effect);
+    virtual void render();
+
+protected:
+    ~ELTerrain();
 
 private:
     ELGeometryVertexBuffer *vertexBuffer;
@@ -27,7 +32,6 @@ private:
     int mapHeight;
     unsigned char *imageData;
 
-    ~ELTerrain();
     ELFloat heightWithLocation(ELFloat x,ELFloat y);
 };
 

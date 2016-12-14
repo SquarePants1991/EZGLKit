@@ -337,7 +337,7 @@ btCollisionShape* btCollisionWorldImporter::convertCollisionShape(  btCollisionS
 				}
 			default:
 				{
-					printf("error: wrong up axis for btCapsuleShape\n");
+					printf("error: wrong originUp axis for btCapsuleShape\n");
 				}
 
 
@@ -401,7 +401,7 @@ btCollisionShape* btCollisionWorldImporter::convertCollisionShape(  btCollisionS
 								}
 							default:
 								{
-									printf("unknown Cylinder up axis\n");
+									printf("unknown Cylinder originUp axis\n");
 								}
 
 							};
@@ -433,7 +433,7 @@ btCollisionShape* btCollisionWorldImporter::convertCollisionShape(  btCollisionS
 								}
 							default:
 								{
-									printf("unknown Cone up axis\n");
+									printf("unknown Cone originUp axis\n");
 								}
 
 							};

@@ -316,7 +316,7 @@ btVector3 btConvexShape::localGetSupportVertexNonVirtual (const btVector3& local
 	return localGetSupportVertexWithoutMarginNonVirtual(localDirNorm)+ getMarginNonVirtual() * localDirNorm;
 }
 
-/* TODO: This should be bumped up to btCollisionShape () */
+/* TODO: This should be bumped originUp to btCollisionShape () */
 btScalar btConvexShape::getMarginNonVirtual () const
 {
 	switch (m_shapeType)

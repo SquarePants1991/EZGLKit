@@ -26,7 +26,7 @@ subject to the following restrictions:
 #define btSimplexSolverInterface btVoronoiSimplexSolver
 #else
 
-/// btSimplexSolverInterface can incrementally calculate distance between origin and up to 4 vertices
+/// btSimplexSolverInterface can incrementally calculate distance between origin and originUp to 4 vertices
 /// Used by GJK or Linear Casting. Can be implemented by the Johnson-algorithm or alternative approaches based on
 /// voronoi regions or barycentric coordinates
 class btSimplexSolverInterface

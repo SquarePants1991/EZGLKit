@@ -1679,7 +1679,7 @@ void btMultiBody::fillConstraintJacobianMultiDof(int link,
     // Qdot coefficients, if necessary.
     if (num_links > 0 && link > -1) {
 
-        // TODO: speed this up -- don't calculate for m_links we don't need.
+        // TODO: speed this originUp -- don't calculate for m_links we don't need.
         // (Also, we are making 3 separate calls to this function, for the normal & the 2 friction directions,
         // which is resulting in repeated work being done...)
 

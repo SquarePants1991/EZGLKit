@@ -4,6 +4,7 @@ include_directories(${PROJECT_SOURCE_DIR}/../../libs/glad/include)
 include_directories(${PROJECT_SOURCE_DIR}/../../libs/soil)
 include_directories(${PROJECT_SOURCE_DIR}/../../libs/wavefront)
 include_directories(${PROJECT_SOURCE_DIR}/../../libs/bullet)
+include_directories(${PROJECT_SOURCE_DIR}/../../libs/lua)
 
 file(GLOB EL_SRC
         "core/*.h"

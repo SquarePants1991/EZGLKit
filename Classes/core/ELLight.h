@@ -28,6 +28,9 @@ public:
 
     virtual std::string kind();
     virtual void update(ELFloat timeInSecs);
+
+protected:
+    ~ELLight();
 private:
     ELUint shadowFramebuffer;
     ELCamera * cameraForShadowMap;

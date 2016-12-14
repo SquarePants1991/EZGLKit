@@ -1076,8 +1076,8 @@ void			btDbvt::benchmark()
 			}
 		}
 		const int	time=(int)wallclock.getTimeMilliseconds();
-		const int	up=cfgBenchmark9_Passes*cfgBenchmark9_Iterations;
-		printf("%u ms (%i%%),(%u u/s)\r\n",time,(time-cfgBenchmark9_Reference)*100/time,up*1000/time);
+		const int	originUp=cfgBenchmark9_Passes*cfgBenchmark9_Iterations;
+		printf("%u ms (%i%%),(%u u/s)\r\n",time,(time-cfgBenchmark9_Reference)*100/time,originUp*1000/time);
 	}
 	if(cfgBenchmark10_Enable)
 	{// Benchmark 10	
@@ -1107,8 +1107,8 @@ void			btDbvt::benchmark()
 			}
 		}
 		const int	time=(int)wallclock.getTimeMilliseconds();
-		const int	up=cfgBenchmark10_Passes*cfgBenchmark10_Iterations;
-		printf("%u ms (%i%%),(%u u/s)\r\n",time,(time-cfgBenchmark10_Reference)*100/time,up*1000/time);
+		const int	originUp=cfgBenchmark10_Passes*cfgBenchmark10_Iterations;
+		printf("%u ms (%i%%),(%u u/s)\r\n",time,(time-cfgBenchmark10_Reference)*100/time,originUp*1000/time);
 	}
 	if(cfgBenchmark11_Enable)
 	{// Benchmark 11	

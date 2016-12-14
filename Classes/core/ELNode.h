@@ -9,38 +9,47 @@
 #include <vector>
 #include <string>
 
+/**
+ * 所有的node的生命周期由parent管理，parent销毁时会销毁所有子node对象。主动销毁Node请使用release方法，禁止手动delete node;
+**/
+
 class ELNode {
 public:
-    ELTransform *transform;
-    bool renderShadow;
-    bool isTransparency;
-
-    ELFloat elapsedSeconds;
-public:
-    ELNode();
-
     ELNode * parent;
     // children nodes
     std::vector<ELNode *> children;
-    void addNode(ELNode *node);
-
+    ELTransform *transform;
+    bool renderShadow;
+    bool isTransparency;
+    ELFloat elapsedSeconds;
     std::string identity;
 
+public:
+    ELNode();
+    void release();
+
+    void addNode(ELNode *node);
     // update node behavior
     virtual void update(ELFloat timeInSecs);
     // rerender node
     virtual void render();
-
+    // 字符串描述的Node种类
     virtual std::string kind();
 
+    // Node树的查找功能
+    std::vector<ELNode *> findChildrenWithKind(std::string kind, bool deepSearch = false);
+    ELNode * findChildWithIdentity(std::string identity, bool deepSearch = false);
 
-    std::vector<ELNode *> findChildrenWithKind(std::string kind, bool deepSearch);
-    void findChildrenWithKind(std::string kind, std::vector<ELNode *> &collector);
-    std::vector<ELNode *> findChildrenWithKind(std::string kind);
-    ELNode * findChildWithIdentity(std::string identity);
+    // Node Summary
+    ELInt nodeSumCount();
+    virtual std::string description();
+
     bool containTransparencyNode();
 protected:
-    ~ELNode();
+    bool objReleased;
+    virtual ~ELNode();
+    void findChildrenWithKind(std::string kind, std::vector<ELNode *> &collector, bool furtherSearch = true);
+    void findChildWithIdentity(std::string kind, std::vector<ELNode *> &collector, bool furtherSearch = true);
 };
 
 

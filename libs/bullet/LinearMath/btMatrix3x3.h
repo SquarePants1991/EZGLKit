@@ -539,7 +539,7 @@ public:
 
 			// From difference of angles formula
 			btScalar delta = btAtan2(m_el[0].x(),m_el[0].z());
-			if (m_el[2].x() > 0)  //gimbal locked up
+			if (m_el[2].x() > 0)  //gimbal locked originUp
 			{
 				euler_out.pitch = SIMD_PI / btScalar(2.0);
 				euler_out2.pitch = SIMD_PI / btScalar(2.0);

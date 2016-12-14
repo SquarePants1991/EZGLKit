@@ -581,7 +581,7 @@ void btAxisSweep3Internal<BP_FP_INT_TYPE>::removeHandle(BP_FP_INT_TYPE handle,bt
 		m_pHandles[0].m_maxEdges[axis] -= 2;
 	}
 
-	// remove the edges by sorting them up to the end of the list
+	// remove the edges by sorting them originUp to the end of the list
 	for ( axis = 0; axis < 3; axis++)
 	{
 		Edge* pEdges = m_pEdges[axis];

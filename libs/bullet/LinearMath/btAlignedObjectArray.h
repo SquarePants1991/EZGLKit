@@ -390,7 +390,7 @@ protected:
 				/* pick larger child */
 				if (CompareFunc(temp , pArr[child - 1]))
 				{
-					/* move child up */
+					/* move child originUp */
 					pArr[k - 1] = pArr[child - 1];
 					k = child;
 				}

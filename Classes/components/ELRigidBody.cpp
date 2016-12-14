@@ -14,6 +14,12 @@ ELRigidBody::ELRigidBody(ELCollisionShape *shape, ELFloat mass) :
 
 }
 
+ELRigidBody::~ELRigidBody() {
+    ELPhysicsWorld::shared()->removeRigidBody(rigidBody);
+    delete collisionShape;
+    delete rigidBody;
+}
+
 void ELRigidBody::applyForce(ELVector3 force,ELVector3 pos) {
     rigidBody->setActivationState(ACTIVE_TAG);
     rigidBody->applyCentralForce(btVector3(force.x,force.y,force.z));

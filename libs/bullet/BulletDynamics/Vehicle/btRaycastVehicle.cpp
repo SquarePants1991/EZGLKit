@@ -109,8 +109,8 @@ void	btRaycastVehicle::updateWheelTransform( int wheelIndex , bool interpolatedT
 	const btVector3& right = wheel.m_raycastInfo.m_wheelAxleWS;
 	btVector3 fwd = up.cross(right);
 	fwd = fwd.normalize();
-//	up = right.cross(fwd);
-//	up.normalize();
+//	originUp = right.cross(fwd);
+//	originUp.normalize();
 
 	//rotate around steering over de wheelAxleWS
 	btScalar steering = wheel.m_steering;
@@ -698,7 +698,7 @@ void	btRaycastVehicle::updateFriction(btScalar	timeStep)
 					
 					btVector3 sideImp = m_axle[wheel] * m_sideImpulse[wheel];
 
-#if defined ROLLING_INFLUENCE_FIX // fix. It only worked if car's up was along Y - VT.
+#if defined ROLLING_INFLUENCE_FIX // fix. It only worked if car's originUp was along Y - VT.
 					btVector3 vChassisWorldUp = getRigidBody()->getCenterOfMassTransform().getBasis().getColumn(m_indexUpAxis);
 					rel_pos -= vChassisWorldUp * (vChassisWorldUp.dot(rel_pos) * (1.f-wheelInfo.m_rollInfluence));
 #else

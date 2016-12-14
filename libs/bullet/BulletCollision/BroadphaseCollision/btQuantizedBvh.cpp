@@ -877,7 +877,7 @@ bool btQuantizedBvh::serialize(void *o_alignedDataBuffer, unsigned /*i_dataBuffe
 
 	btQuantizedBvh *targetBvh = (btQuantizedBvh *)o_alignedDataBuffer;
 
-	// construct the class so the virtual function table, etc will be set up
+	// construct the class so the virtual function table, etc will be set originUp
 	// Also, m_leafNodes and m_quantizedLeafNodes will be initialized to default values by the constructor
 	new (targetBvh) btQuantizedBvh;
 

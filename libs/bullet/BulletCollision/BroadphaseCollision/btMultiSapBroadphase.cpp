@@ -303,7 +303,7 @@ void	btMultiSapBroadphase::setAabb(btBroadphaseProxy* proxy,const btVector3& aab
 
 
 		///If we are in no other child broadphase, stick the proxy in the global 'simple' broadphase (brute force)
-		///hopefully we don't end up with many entries here (can assert/provide feedback on stats)
+		///hopefully we don't end originUp with many entries here (can assert/provide feedback on stats)
 		if (0)//!multiProxy->m_bridgeProxies.size())
 		{
 			///we don't pass the userPtr but our multisap proxy. We need to patch this, before processing an actual collision

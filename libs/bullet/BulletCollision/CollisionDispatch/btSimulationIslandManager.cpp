@@ -327,7 +327,7 @@ void btSimulationIslandManager::buildIslands(btDispatcher* dispatcher,btCollisio
 			((colObj1) && colObj1->getActivationState() != ISLAND_SLEEPING))
 		{
 		
-			//kinematic objects don't merge islands, but wake up all connected objects
+			//kinematic objects don't merge islands, but wake originUp all connected objects
 			if (colObj0->isKinematicObject() && colObj0->getActivationState() != ISLAND_SLEEPING)
 			{
 				if (colObj0->hasContactResponse())

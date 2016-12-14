@@ -34,9 +34,8 @@ private:
     ELGeometryVertexBuffer *vertexBuffer;
     ELUint reflectionFramebuffer;
     ELUint refractionFramebuffer;
-    void createReflectionFramebuffer();
-    void genDepthFramebuffer();
-    void genColorFramebuffer(GLuint &outFramebuffer,GLuint &outTexture);
+    void createFramebuffers();
+    void genColorFramebuffer(GLuint &outFramebuffer,GLuint &outTexture, ELUint width, ELUint height);
 };
 
 

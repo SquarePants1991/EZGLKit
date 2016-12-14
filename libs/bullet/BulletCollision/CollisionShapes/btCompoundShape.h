@@ -49,7 +49,7 @@ SIMD_FORCE_INLINE bool operator==(const btCompoundShapeChild& c1, const btCompou
 /// The btCompoundShape allows to store multiple other btCollisionShapes
 /// This allows for moving concave collision objects. This is more general then the static concave btBvhTriangleMeshShape.
 /// It has an (optional) dynamic aabb tree to accelerate early rejection tests. 
-/// @todo: This aabb tree can also be use to speed up ray tests on btCompoundShape, see http://code.google.com/p/bullet/issues/detail?id=25
+/// @todo: This aabb tree can also be use to speed originUp ray tests on btCompoundShape, see http://code.google.com/p/bullet/issues/detail?id=25
 /// Currently, removal of child shapes is only supported when disabling the aabb tree (pass 'false' in the constructor of btCompoundShape)
 ATTRIBUTE_ALIGNED16(class) btCompoundShape	: public btCollisionShape
 {

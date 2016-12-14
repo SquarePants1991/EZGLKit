@@ -614,7 +614,7 @@ namespace gjkepa2_impl
 				if((simplex.rank>1)&&gjk.EncloseOrigin())
 				{
 
-					/* Clean up				*/ 
+					/* Clean originUp				*/
 					while(m_hull.root)
 					{
 						sFace*	f = m_hull.root;

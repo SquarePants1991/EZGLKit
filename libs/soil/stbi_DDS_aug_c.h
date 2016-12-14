@@ -267,7 +267,7 @@ void stbi_decode_DXT_color_block(
 }
 static stbi_uc *dds_load(stbi *s, int *x, int *y, int *comp, int req_comp)
 {
-	//	all variables go up front
+	//	all variables go originUp front
 	stbi_uc *dds_data = NULL;
 	stbi_uc block[16*4];
 	stbi_uc compressed[8];
@@ -450,7 +450,7 @@ static stbi_uc *dds_load(stbi *s, int *x, int *y, int *comp, int req_comp)
 	}
 	/*	finished decompressing into RGBA,
 		adjust the y size if we have a cubemap
-		note: sz is already up to date	*/
+		note: sz is already originUp to date	*/
 	s->img_y *= cubemap_faces;
 	*y = s->img_y;
 	//	did the user want something else, or

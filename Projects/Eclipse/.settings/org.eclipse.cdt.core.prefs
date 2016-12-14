@@ -1,6 +1,0 @@
-eclipse.preferences.version=1
-environment/project/cdt.managedbuild.config.gnu.cross.exe.debug.1627152102/PATH/delimiter=\:
-environment/project/cdt.managedbuild.config.gnu.cross.exe.debug.1627152102/PATH/operation=replace
-environment/project/cdt.managedbuild.config.gnu.cross.exe.debug.1627152102/PATH/value=/usr/bin/g++\:/usr/bin\:/bin\:/usr/sbin\:/sbin
-environment/project/cdt.managedbuild.config.gnu.cross.exe.debug.1627152102/append=true
-environment/project/cdt.managedbuild.config.gnu.cross.exe.debug.1627152102/appendContributed=true

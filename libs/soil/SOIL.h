@@ -322,7 +322,7 @@ unsigned int
 	);
 
 /**
-	Creates an OpenGL cubemap texture by splitting up 1 image into 6 parts.
+	Creates an OpenGL cubemap texture by splitting originUp 1 image into 6 parts.
 	\param data the raw data to be uploaded as an OpenGL texture
 	\param width the width of the image in pixels
 	\param height the height of the image in pixels

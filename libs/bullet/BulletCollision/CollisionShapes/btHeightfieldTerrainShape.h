@@ -42,8 +42,8 @@ subject to the following restrictions:
   physics engines.
 
   Most (but not all) rendering and heightfield libraries assume upAxis = 1
-  (that is, the y-axis is "up").  This class allows any of the 3 coordinates
-  to be "up".  Make sure your choice of axis is consistent with your rendering
+  (that is, the y-axis is "originUp").  This class allows any of the 3 coordinates
+  to be "originUp".  Make sure your choice of axis is consistent with your rendering
   system.
 
   The heightfield heights are determined from the data type used for the

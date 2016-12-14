@@ -4,6 +4,8 @@
 
 #include <stdlib.h>
 #include <SOIL.h>
+#include <core/ELEffect.h>
+#include "core/ELGameObject.h"
 
 #include "ELTerrain.h"
 #include "utils/ELGeometryVertexBuffer.h"
@@ -93,7 +95,7 @@ void ELTerrain::genMap() {
         }
     }
     mapDataSize = ELVector2Make(xCount,yCount);
-//    vertexBuffer->caculatePerVertexNormal();
+    vertexBuffer->caculatePerVertexNormal();
     printf("map data gen => 0x%x, size %f, %f",mapData,size.x,size.y);
 }
 
@@ -114,5 +116,13 @@ ELGeometryData ELTerrain::generateData() {
     data.vertexStride = sizeof(ELGeometryVertex);
     data.supportIndiceVBO = false;
     return data;
+}
 
+void ELTerrain::effectDidActive(ELEffect * effect) {
+  glUniform1i(effect->program->uniform("enableTerrainMix"),1);
+}
+
+void ELTerrain::render() {
+    ELGeometry::render();
+    glUniform1i(gameObject()->activeEffect()->program->uniform("enableTerrainMix"),0);
 }

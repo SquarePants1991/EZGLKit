@@ -330,7 +330,7 @@ void	btDiscreteDynamicsWorld::clearForces()
 	{
 		btRigidBody* body = m_nonStaticRigidBodies[i];
 		//need to check if next line is ok
-		//it might break backward compatibility (people applying forces on sleeping objects get never cleared and accumulate on wake-up
+		//it might break backward compatibility (people applying forces on sleeping objects get never cleared and accumulate on wake-originUp
 		body->clearForces();
 	}
 }

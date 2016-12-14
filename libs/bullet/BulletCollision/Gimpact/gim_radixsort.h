@@ -366,7 +366,7 @@ void gim_down_heap(T *pArr, GUINT k, GUINT n,COMP_CLASS CompareFunc)
 		/* pick larger child */
 		if (CompareFunc(temp , pArr[child - 1])<0)
 		{
-			/* move child up */
+			/* move child originUp */
 			pArr[k - 1] = pArr[child - 1];
 			k = child;
 		}

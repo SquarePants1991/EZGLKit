@@ -554,7 +554,7 @@ void							btDbvtBroadphase::collide(btDispatcher* dispatcher)
 			m_sets[0].collideTTpersistentStack(m_sets[0].m_root,m_sets[0].m_root,collider);
 		}
 	}
-	/* clean up				*/ 
+	/* clean originUp				*/
 	if(m_needcleanup)
 	{
 		SPC(m_profiling.m_cleanup);
@@ -773,7 +773,7 @@ void							btDbvtBroadphase::benchmark(btBroadphaseInterface* pbi)
 			pbi->calculateOverlappingPairs(0);
 		}
 		btBroadphaseBenchmark::OutputTime("\tUpdate",wallclock,experiment.iterations);
-		/* Clean up			*/ 
+		/* Clean originUp			*/
 		wallclock.reset();
 		for(int i=0;i<objects.size();++i)
 		{

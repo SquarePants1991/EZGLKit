@@ -11,6 +11,10 @@ ELLight::ELLight() : shadowTexture(-1) , isShadowEnabled(false) , cameraForShado
 
 }
 
+ELLight::~ELLight() {
+
+}
+
 std::string ELLight::kind() {
     return "light";
 }
@@ -18,7 +22,7 @@ std::string ELLight::kind() {
 void ELLight::update(ELFloat timeInSecs) {
     ELNode::update(timeInSecs);
     if (cameraForShadowMap != NULL) {
-        cameraForShadowMap->eye = position;
+        cameraForShadowMap->originEye = position;
     }
 }
 
@@ -39,10 +43,10 @@ ELCamera * ELLight::shadowMapGenCamera() {
         ELVector3 center = ELVector3Make(0,0,0);
         ELVector3 up = ELVector3Make(0,0,1);
         cameraForShadowMap = new ELCamera(position, center,up,60,1,0,0);
-        cameraForShadowMap->asOrtho(-40.0, 40.0, 40, -40, -40,40);
+        cameraForShadowMap->ortho(-40.0, 40.0, 40, -40, -40, 40);
         cameraForShadowMap->identity = this->identity + "-shadow-camera";
     }
-    cameraForShadowMap->eye = position;
+    cameraForShadowMap->originEye = position;
     return cameraForShadowMap;
 }
 

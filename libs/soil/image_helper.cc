@@ -170,7 +170,7 @@ int
 		/*	nothing to do	*/
 		return 0;
 	}
-	/*	set up the scaling Look Up Table	*/
+	/*	set originUp the scaling Look Up Table	*/
 	for( i = 0; i < 256; ++i )
 	{
 		scale_LUT[i] = (unsigned char)((scale_hi - scale_lo) * i / 255.0f + scale_lo);

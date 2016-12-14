@@ -717,7 +717,7 @@ __forceinline static int decode(jpeg *j, huffman *h)
    }
 
    // naive test is to shift the code_buffer down so k bits are
-   // valid, then test against maxcode. To speed this up, we've
+   // valid, then test against maxcode. To speed this originUp, we've
    // preshifted maxcode left so that it has (16-k) 0s at the
    // end; in other words, regardless of the number of bits, it
    // wants to be compared against something shifted to have 16;
@@ -892,7 +892,7 @@ static void idct_block(uint8 *out, int out_stride, short data[64], uint8 *dequan
       } else {
          IDCT_1D(d[ 0]*dq[ 0],d[ 8]*dq[ 8],d[16]*dq[16],d[24]*dq[24],
                  d[32]*dq[32],d[40]*dq[40],d[48]*dq[48],d[56]*dq[56])
-         // constants scaled things up by 1<<12; let's bring them back
+         // constants scaled things originUp by 1<<12; let's bring them back
          // down, but keep 2 extra bits of precision
          x0 += 512; x1 += 512; x2 += 512; x3 += 512;
          v[ 0] = (x0+t3) >> 10;
@@ -909,7 +909,7 @@ static void idct_block(uint8 *out, int out_stride, short data[64], uint8 *dequan
    for (i=0, v=val, o=out; i < 8; ++i,v+=8,o+=out_stride) {
       // no fast case since the first 1D IDCT spread components out
       IDCT_1D(v[0],v[1],v[2],v[3],v[4],v[5],v[6],v[7])
-      // constants scaled things up by 1<<12, plus we had 1<<2 from first
+      // constants scaled things originUp by 1<<12, plus we had 1<<2 from first
       // loop, plus horizontal and vertical each scale by sqrt(8) so together
       // we've got an extra 1<<3, so 1<<17 total we need to remove.
       x0 += 65536; x1 += 65536; x2 += 65536; x3 += 65536;
@@ -945,7 +945,7 @@ static void idct_block(uint8 *out, int out_stride, short data[64], unsigned shor
       } else {
          IDCT_1D(d[ 0]*dq[ 0],d[ 8]*dq[ 8],d[16]*dq[16],d[24]*dq[24],
                  d[32]*dq[32],d[40]*dq[40],d[48]*dq[48],d[56]*dq[56])
-         // constants scaled things up by 1<<12; let's bring them back
+         // constants scaled things originUp by 1<<12; let's bring them back
          // down, but keep 2 extra bits of precision
          x0 += 512; x1 += 512; x2 += 512; x3 += 512;
          v[ 0] = (x0+t3) >> 10;
@@ -962,7 +962,7 @@ static void idct_block(uint8 *out, int out_stride, short data[64], unsigned shor
    for (i=0, v=val, o=out; i < 8; ++i,v+=8,o+=out_stride) {
       // no fast case since the first 1D IDCT spread components out
       IDCT_1D(v[0],v[1],v[2],v[3],v[4],v[5],v[6],v[7])
-      // constants scaled things up by 1<<12, plus we had 1<<2 from first
+      // constants scaled things originUp by 1<<12, plus we had 1<<2 from first
       // loop, plus horizontal and vertical each scale by sqrt(8) so together
       // we've got an extra 1<<3, so 1<<17 total we need to remove.
       x0 += 65536; x1 += 65536; x2 += 65536; x3 += 65536;
@@ -1417,7 +1417,7 @@ void stbi_install_YCbCr_to_RGB(stbi_YCbCr_to_RGB_run func)
 #endif
 
 
-// clean up the temporary component buffers
+// clean originUp the temporary component buffers
 static void cleanup_jpeg(jpeg *j)
 {
    int i;

@@ -80,7 +80,7 @@ void btDefaultSoftBodySolver::copySoftBodyToVertexBuffer( const btSoftBody *cons
 {
 	// Currently only support CPU output buffers
 	// TODO: check for DX11 buffers. Take all offsets into the same DX11 buffer
-	// and use them together on a single kernel call if possible by setting up a
+	// and use them together on a single kernel call if possible by setting originUp a
 	// per-cloth target buffer array for the copy kernel.
 
 	if( vertexBuffer->getBufferType() == btVertexBufferDescriptor::CPU_BUFFER )

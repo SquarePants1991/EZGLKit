@@ -7,11 +7,11 @@
 #include "core/ELGameObject.h"
 
 ELWaterPlane::ELWaterPlane() {
-    createReflectionFramebuffer();
+    createFramebuffers();
 }
 
 ELWaterPlane::ELWaterPlane(ELVector2 size) : size(size) {
-    createReflectionFramebuffer();
+    createFramebuffers();
 }
 
 ELVector4 ELWaterPlane::plane() {
@@ -74,7 +74,7 @@ std::string ELWaterPlane::kind() {
 }
 
 void ELWaterPlane::beginGenReflectionMap() {
-    glad_glViewport(0,0,ELConfig::shadowMapWidth,ELConfig::shadowMapHeight);
+    glad_glViewport(0,0,ELConfig::reflectionMapWidth,ELConfig::reflectionMapHeight);
     glad_glBindFramebuffer(GL_FRAMEBUFFER, reflectionFramebuffer);
     glad_glDepthMask(GL_TRUE);
     glad_glDepthFunc(GL_LESS);
@@ -90,7 +90,7 @@ void ELWaterPlane::endGenReflectionMap() {
 }
 
 void ELWaterPlane::beginGenRefractionMap() {
-    glad_glViewport(0,0,ELConfig::shadowMapWidth,ELConfig::shadowMapHeight);
+    glad_glViewport(0,0,ELConfig::refractionMapWidth,ELConfig::refractionMapHeight);
     glad_glBindFramebuffer(GL_FRAMEBUFFER, refractionFramebuffer);
     glad_glDepthMask(GL_TRUE);
     glad_glDepthFunc(GL_LESS);
@@ -105,37 +105,12 @@ void ELWaterPlane::endGenRefractionMap() {
     glDisable(GL_CLIP_PLANE0);
 }
 
-void ELWaterPlane::createReflectionFramebuffer() {
-    genColorFramebuffer(reflectionFramebuffer, reflectionMap);
-    genColorFramebuffer(refractionFramebuffer, refractionMap);
+void ELWaterPlane::createFramebuffers() {
+    genColorFramebuffer(reflectionFramebuffer, reflectionMap, ELConfig::reflectionMapWidth, ELConfig::reflectionMapHeight);
+    genColorFramebuffer(refractionFramebuffer, refractionMap, ELConfig::refractionMapWidth, ELConfig::refractionMapHeight);
 }
 
-void ELWaterPlane::genDepthFramebuffer() {
-    GLuint framebuffer;
-    GLuint reflectTexture;
-
-    glad_glGenFramebuffers(1, &framebuffer);
-    glad_glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);
-
-    glad_glGenTextures(1, &reflectTexture);
-    glad_glBindTexture(GL_TEXTURE_2D, reflectTexture);
-    glad_glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT24, ELConfig::shadowMapWidth, ELConfig::shadowMapHeight, 0, GL_DEPTH_COMPONENT, GL_FLOAT, 0);
-    glad_glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-    glad_glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-    glad_glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-    glad_glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-
-
-    glad_glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, reflectTexture, 0);
-    glad_glDrawBuffer(GL_NONE);
-    glad_glReadBuffer(GL_NONE);
-    glad_glBindFramebuffer(GL_FRAMEBUFFER, 0);
-
-    this->reflectionFramebuffer = framebuffer;
-    this->reflectionMap = reflectTexture;
-}
-
-void ELWaterPlane::genColorFramebuffer(GLuint &outFramebuffer, GLuint &outTexture) {
+void ELWaterPlane::genColorFramebuffer(GLuint &outFramebuffer, GLuint &outTexture, ELUint width, ELUint height) {
     GLuint framebuffer;
     GLuint shadowTexture;
 
@@ -144,7 +119,7 @@ void ELWaterPlane::genColorFramebuffer(GLuint &outFramebuffer, GLuint &outTextur
 
     glad_glGenTextures(1, &shadowTexture);
     glad_glBindTexture(GL_TEXTURE_2D, shadowTexture);
-    glad_glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, ELConfig::shadowMapWidth, ELConfig::shadowMapHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
+    glad_glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
     glad_glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
     glad_glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
     glad_glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
