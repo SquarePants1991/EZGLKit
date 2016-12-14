@@ -102,7 +102,7 @@ void pointLight(
                 ) {
     ambient = lightAmbient;
     vec3 halfVector = normalize(vp + eye);
-    float shininess = 20.0;
+    float shininess = 70.0;
     float nDotViewPosition = clamp(dot(normal,vp),0.0,1.0);
     diffuse = lightDiffuse * nDotViewPosition;
     float nDotViewHalfVector = clamp(dot(normal,halfVector),0.0,1.0);
@@ -210,7 +210,7 @@ vec4 surfaceColor() {
         percent2 = percent2 > 1.0 ? 1.0 : percent2;
         percent2 = percent2 < 0.0 ? 0.0 : percent2;
 
-        return color1 * percent1 + color2 * percent2;
+        return vec4((color1 * percent1 + color2 * percent2).rgb,1.0);
     }
 }
 
@@ -267,7 +267,7 @@ vec4 render() {
 #endif
         pointLight(textureNormal,ambient,diffuse,specular,vp,eye,lightDistance,material.ambient,defaultLight.color,vec4(1.0,1.0,1.0,1.0));
 
-        sum_ambient = ambient;
+        sum_ambient = sum_ambient + ambient;
         sum_diffuse = sum_diffuse + diffuse;
         sum_specular = sum_specular + specular;
     }

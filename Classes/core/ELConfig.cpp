@@ -6,7 +6,7 @@
 
 ELInt ELConfig::shadowMapWidth = 1024;
 ELInt ELConfig::shadowMapHeight = 1024;
-ELInt ELConfig::reflectionMapWidth = 256;
-ELInt ELConfig::reflectionMapHeight = 256;
-ELInt ELConfig::refractionMapWidth = 256;
-ELInt ELConfig::refractionMapHeight = 256;
+ELInt ELConfig::reflectionMapWidth = 1024;
+ELInt ELConfig::reflectionMapHeight = 1024;
+ELInt ELConfig::refractionMapWidth = 1024;
+ELInt ELConfig::refractionMapHeight = 1024;

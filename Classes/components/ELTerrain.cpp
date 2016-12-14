@@ -47,6 +47,12 @@ ELFloat ELTerrain::heightWithLocation(ELFloat xLoc,ELFloat zLoc) {
     if (imageData != NULL) {
         int imageX = (int)(mapWidth * (xLoc + size.x / 2) / size.x);
         int imageY = (int)(mapHeight * (zLoc + size.y / 2) / size.y);
+        if (imageX > mapWidth - 1) {
+            imageX = mapWidth - 1;
+        }
+        if (imageY > mapHeight - 1) {
+            imageY = mapHeight - 1;
+        }
         int bytesPerPixel = 4;// R G B A  4 bytes
         int bytesPerRow = mapWidth * bytesPerPixel;
         int loc = imageY * bytesPerRow + imageX * bytesPerPixel;
