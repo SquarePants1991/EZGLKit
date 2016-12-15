@@ -14,6 +14,9 @@ public:
     ELProgram *program;
     static ELEffect *defaultEffect();
 
+    ELFloat frogStart;
+    ELFloat frogEnd;
+    ELVector4 frogColor;
 public:
     ELEffect();
     ELEffect(const char *vertexShader,const char *fragmentShader);

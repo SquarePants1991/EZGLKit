@@ -108,7 +108,7 @@ void ELWorld::renderScene() {
     activeEffect("render_scene");
     activeCamera("main");
     glad_glViewport(0,0,fbWidth,fbHeight);
-    glad_glClearColor(0.15f, 0.15f, 0.15f, 1.0f);
+    glad_glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
     glad_glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     activedEffect->prepare();

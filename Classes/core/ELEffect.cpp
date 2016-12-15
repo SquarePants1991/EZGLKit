@@ -57,6 +57,9 @@ void ELEffect::prepare() {
 
     glUniform1i(program->uniform("projectorNum"), projectors.size());
 
+    glUniform1f(program->uniform("frogStart"),frogStart);
+    glUniform1f(program->uniform("frogEnd"),frogEnd);
+    glUniform4fv(program->uniform("frogColor"), 1, frogColor.v);
     glUniform1f(program->uniform("time"), elapsedSeconds);
 }
 

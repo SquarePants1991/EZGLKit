@@ -976,6 +976,7 @@ EZGLib/CMakeFiles/EZGLib.dir/core/ELWorld.cpp.o: /Users/wangyang/Documents/Proje
 EZGLib/CMakeFiles/EZGLib.dir/core/ELWorld.cpp.o: /Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/ClionProj/../../Classes/types/EZGLMatrixTypes.h
 EZGLib/CMakeFiles/EZGLib.dir/core/ELWorld.cpp.o: /Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/ClionProj/../../Classes/types/EZGLTypes.h
 EZGLib/CMakeFiles/EZGLib.dir/core/ELWorld.cpp.o: /Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/ClionProj/../../Classes/types/EZGLVectorTypes.h
+EZGLib/CMakeFiles/EZGLib.dir/core/ELWorld.cpp.o: /Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/ClionProj/../../Classes/utils/ELAssets.h
 EZGLib/CMakeFiles/EZGLib.dir/core/ELWorld.cpp.o: /Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/ClionProj/../../Classes/utils/ELGeometryVertexBuffer.h
 EZGLib/CMakeFiles/EZGLib.dir/core/ELWorld.cpp.o: /Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/ClionProj/../../libs/glad/include/KHR/khrplatform.h
 EZGLib/CMakeFiles/EZGLib.dir/core/ELWorld.cpp.o: /Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/ClionProj/../../libs/glad/include/glad/glad.h
@@ -984,6 +985,7 @@ EZGLib/CMakeFiles/EZGLib.dir/core/ELWorld.cpp.o: /usr/local/include/GLFW/glfw3.h
 EZGLib/CMakeFiles/EZGLib.dir/utils/ELAssets.cpp.o: /Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Classes/utils/ELAssets.cpp
 EZGLib/CMakeFiles/EZGLib.dir/utils/ELAssets.cpp.o: /Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Classes/utils/ELAssets.h
 
+EZGLib/CMakeFiles/EZGLib.dir/utils/ELFileUtil.cpp.o: /Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Classes/utils/ELAssets.h
 EZGLib/CMakeFiles/EZGLib.dir/utils/ELFileUtil.cpp.o: /Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Classes/utils/ELFileUtil.cpp
 EZGLib/CMakeFiles/EZGLib.dir/utils/ELFileUtil.cpp.o: /Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Classes/utils/ELFileUtil.h
 EZGLib/CMakeFiles/EZGLib.dir/utils/ELFileUtil.cpp.o: /Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/ClionProj/../../Classes/EZGLBase.h

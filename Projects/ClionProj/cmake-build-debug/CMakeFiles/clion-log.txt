@@ -1,4 +1,24 @@
 /Applications/CLion.app/Contents/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj"
+Copying /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/assets/shaders/common
+Copying /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/assets/shaders/frg_phong.glsl
+Copying /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/assets/shaders/frg_shadowmap.glsl
+Copying /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/assets/shaders/vtx_phong.glsl
+Copying /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/assets/shaders/common/cm_depth_pack.glsl
+Copying /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/assets/shaders/common/cm_uniforms.glsl
+Copying /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/assets/shaders/common/defines.glsl
+Copying /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/assets/shaders/common/frg_base.glsl
+Copying /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/assets/shaders/common/frg_fog.glsl
+Copying /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/assets/shaders/common/frg_light.glsl
+Copying /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/assets/shaders/common/frg_normal.glsl
+Copying /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/assets/shaders/common/frg_projector.glsl
+Copying /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/assets/shaders/common/frg_shadow.glsl
+Copying /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/assets/shaders/common/frg_terrain.glsl
+Copying /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/assets/shaders/common/vtx_base.glsl
+Copying /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/assets/shaders/common/vtx_border_pass.glsl
+Copying /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/assets/shaders/common/vtx_clip_plane.glsl
+Copying /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/assets/shaders/common/vtx_in_out.glsl
+Copying /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/assets/shaders/common/vtx_simple_pass.glsl
+Copying /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/assets/shaders/common/vtx_uniforms.glsl
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug

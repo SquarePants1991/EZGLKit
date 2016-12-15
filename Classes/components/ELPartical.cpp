@@ -29,14 +29,14 @@ void ELPartical::update(ELVector3 cameraPosition,ELFloat timeInSecs,ELVector3 fo
 
     newTransform.quaternion = ELQuaternionMake(axis.x , axis.y, axis.z, half);
 
-//    ELFloat angle = 0;
-//    if (cz == 0) {
-//        angle = 0;
-//    } else {
-//        ELFloat tanVal = cx / cz;
-//        angle = atan(tanVal);
-//    }
-//    newTransform.quaternion = ELQuaternionMakeWithAngleAndAxis(angle,0,1,0);
+    ELFloat angle = 0;
+    if (cz == 0) {
+        angle = 0;
+    } else {
+        ELFloat tanVal = cx / cz;
+        angle = atan(tanVal);
+    }
+    newTransform.quaternion = ELQuaternionMakeWithAngleAndAxis(angle,0,1,0);
 
 
 

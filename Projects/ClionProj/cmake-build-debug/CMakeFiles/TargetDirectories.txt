@@ -8,6 +8,7 @@
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/CMakeFiles/EZGL.dir
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/EZGLib/CMakeFiles/edit_cache.dir
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/EZGLib/CMakeFiles/rebuild_cache.dir
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/EZGLib/CMakeFiles/CopyShaders.dir
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/EZGLib/CMakeFiles/EZGLib.dir
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/glad/CMakeFiles/edit_cache.dir
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/glad/CMakeFiles/rebuild_cache.dir

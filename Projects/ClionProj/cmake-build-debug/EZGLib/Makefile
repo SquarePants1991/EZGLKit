@@ -111,6 +111,21 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
+EZGLib/CMakeFiles/CopyShaders.dir/rule:
+	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug" && $(MAKE) -f CMakeFiles/Makefile2 EZGLib/CMakeFiles/CopyShaders.dir/rule
+.PHONY : EZGLib/CMakeFiles/CopyShaders.dir/rule
+
+# Convenience name for target.
+CopyShaders: EZGLib/CMakeFiles/CopyShaders.dir/rule
+
+.PHONY : CopyShaders
+
+# fast build rule for target.
+CopyShaders/fast:
+	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug" && $(MAKE) -f EZGLib/CMakeFiles/CopyShaders.dir/build.make EZGLib/CMakeFiles/CopyShaders.dir/build
+.PHONY : CopyShaders/fast
+
+# Convenience name for target.
 EZGLib/CMakeFiles/EZGLib.dir/rule:
 	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug" && $(MAKE) -f CMakeFiles/Makefile2 EZGLib/CMakeFiles/EZGLib.dir/rule
 .PHONY : EZGLib/CMakeFiles/EZGLib.dir/rule
@@ -889,6 +904,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... CopyShaders"
 	@echo "... EZGLib"
 	@echo "... EZGL.o"
 	@echo "... EZGL.i"

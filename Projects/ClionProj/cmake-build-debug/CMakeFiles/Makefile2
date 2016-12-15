@@ -315,11 +315,13 @@ clean: CMakeFiles/EZGL.dir/clean
 # Directory level rules for directory EZGLib
 
 # Convenience name for "all" pass in the directory.
+EZGLib/all: EZGLib/CMakeFiles/CopyShaders.dir/all
 EZGLib/all: EZGLib/CMakeFiles/EZGLib.dir/all
 
 .PHONY : EZGLib/all
 
 # Convenience name for "clean" pass in the directory.
+EZGLib/clean: EZGLib/CMakeFiles/CopyShaders.dir/clean
 EZGLib/clean: EZGLib/CMakeFiles/EZGLib.dir/clean
 
 .PHONY : EZGLib/clean
@@ -330,10 +332,47 @@ EZGLib/preinstall:
 .PHONY : EZGLib/preinstall
 
 #=============================================================================
+# Target rules for target EZGLib/CMakeFiles/CopyShaders.dir
+
+# All Build rule for target.
+EZGLib/CMakeFiles/CopyShaders.dir/all:
+	$(MAKE) -f EZGLib/CMakeFiles/CopyShaders.dir/build.make EZGLib/CMakeFiles/CopyShaders.dir/depend
+	$(MAKE) -f EZGLib/CMakeFiles/CopyShaders.dir/build.make EZGLib/CMakeFiles/CopyShaders.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/CMakeFiles" --progress-num= "Built target CopyShaders"
+.PHONY : EZGLib/CMakeFiles/CopyShaders.dir/all
+
+# Include target in all.
+all: EZGLib/CMakeFiles/CopyShaders.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+EZGLib/CMakeFiles/CopyShaders.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/CMakeFiles" 0
+	$(MAKE) -f CMakeFiles/Makefile2 EZGLib/CMakeFiles/CopyShaders.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/CMakeFiles" 0
+.PHONY : EZGLib/CMakeFiles/CopyShaders.dir/rule
+
+# Convenience name for target.
+CopyShaders: EZGLib/CMakeFiles/CopyShaders.dir/rule
+
+.PHONY : CopyShaders
+
+# clean rule for target.
+EZGLib/CMakeFiles/CopyShaders.dir/clean:
+	$(MAKE) -f EZGLib/CMakeFiles/CopyShaders.dir/build.make EZGLib/CMakeFiles/CopyShaders.dir/clean
+.PHONY : EZGLib/CMakeFiles/CopyShaders.dir/clean
+
+# clean rule for target.
+clean: EZGLib/CMakeFiles/CopyShaders.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
 # Target rules for target EZGLib/CMakeFiles/EZGLib.dir
 
 # All Build rule for target.
-EZGLib/CMakeFiles/EZGLib.dir/all:
+EZGLib/CMakeFiles/EZGLib.dir/all: EZGLib/CMakeFiles/CopyShaders.dir/all
 	$(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/depend
 	$(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/CMakeFiles" --progress-num=5,6,7,8,9,10,11,12,13,14,15,16 "Built target EZGLib"

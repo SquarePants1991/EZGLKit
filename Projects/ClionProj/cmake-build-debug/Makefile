@@ -189,6 +189,19 @@ EZGL/fast:
 .PHONY : EZGL/fast
 
 #=============================================================================
+# Target rules for targets named CopyShaders
+
+# Build rule for target.
+CopyShaders: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 CopyShaders
+.PHONY : CopyShaders
+
+# fast build rule for target.
+CopyShaders/fast:
+	$(MAKE) -f EZGLib/CMakeFiles/CopyShaders.dir/build.make EZGLib/CMakeFiles/CopyShaders.dir/build
+.PHONY : CopyShaders/fast
+
+#=============================================================================
 # Target rules for targets named EZGLib
 
 # Build rule for target.
@@ -577,6 +590,7 @@ help:
 	@echo "... TestBaseWindow"
 	@echo "... LuaTest"
 	@echo "... EZGL"
+	@echo "... CopyShaders"
 	@echo "... EZGLib"
 	@echo "... glad"
 	@echo "... soil"

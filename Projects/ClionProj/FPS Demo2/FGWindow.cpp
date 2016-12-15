@@ -15,8 +15,8 @@ double lastFpsTime = 0;
 double frames = 0;
 float rotateUpFactor = 0;
 float walkingFactor = 0;
-const float WindowWidth = 400;
-const float WindowHeight = 228;
+const float WindowWidth = 800;
+const float WindowHeight = 600;
 ELGameObject *player;
 ELRigidBody *playerRigidBody;
 ELLight * defaultLight;
@@ -59,7 +59,7 @@ FGWindow::FGWindow() {
     glfwMakeContextCurrent(glfwWindow);
 
     glfwSetWindowPos(glfwWindow,0,1920 - WindowHeight);
-//        glfwSetWindowPos(glfwWindow,0,0);
+        glfwSetWindowPos(glfwWindow,0,0);
 
     if (!gladLoadGLLoader((GLADloadproc) glfwGetProcAddress))
     {
@@ -110,6 +110,10 @@ FGWindow::FGWindow() {
     world->addNode(activeEffect);
     world->addNode(shadowEffect);
     world->addNode(waterEffect);
+
+    activeEffect->frogColor = ELVector4Make(0.1,0.1,0.1,1.0);
+    activeEffect->frogStart = 50;
+    activeEffect->frogEnd = 70;
 
     glad_glEnable(GL_CULL_FACE);
     glad_glDepthMask(GL_TRUE);

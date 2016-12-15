@@ -20,7 +20,10 @@ void FGScene::createScene() {
 //    defaultLight->enableShadow();
     world->addNode(defaultLight);
     createTerrain();
-//    createWater();
+    createFloor();
+    createWater();
+    createParticalGameObject(ELVector2Make(1,1),ELVector3Make(0,2,0),0,0,0);
+    world->addNode(new ELProjector());
 
     ELGameObject *gameObject = new ELGameObject(world);
     world->addNode(gameObject);
@@ -38,19 +41,16 @@ void FGScene::createScene() {
     playerRigidBody = rigidBody;
     world->activedCamera->lockOn(gameObject->transform);
 
-    GLuint diffuseMap = ELTexture::texture(ELAssets::shared()->findFile("dirt_01.jpg"))->value;
-    GLuint normalMap = ELTexture::texture(ELAssets::shared()->findFile("water_normal.png"))->value;
-
-    for (int i = 0; i < 20; ++i) {
-        srand(rand());
-        float x = rand() / (float)RAND_MAX * 6 - 3;
-        float z = rand() / (float)RAND_MAX * 16 - 3;
-        float y = rand() / (float)RAND_MAX * 6 - 3 + 230;
-        createCubeGameObject(ELVector3Make(3,3,3),ELVector3Make(x,y,z),2.0,diffuseMap,normalMap);
-    }
-    
-
-//    createFloor();
+//    GLuint diffuseMap = ELTexture::texture(ELAssets::shared()->findFile("dirt_01.jpg"))->value;
+//    GLuint normalMap = ELTexture::texture(ELAssets::shared()->findFile("water_normal.png"))->value;
+//
+//    for (int i = 0; i < 20; ++i) {
+//        srand(rand());
+//        float x = rand() / (float)RAND_MAX * 6 - 3;
+//        float z = rand() / (float)RAND_MAX * 16 - 3;
+//        float y = rand() / (float)RAND_MAX * 6 - 3 + 230;
+//        createCubeGameObject(ELVector3Make(3,3,3),ELVector3Make(x,y,z),2.0,diffuseMap,normalMap);
+//    }
 }
 
 // 比例关系  1 => 1m
@@ -167,6 +167,8 @@ void FGScene::createBoardGameObject(ELVector2 size,ELVector3 pos,ELFloat mass,GL
 }
 
 void FGScene::createParticalGameObject(ELVector2 size,ELVector3 pos,ELFloat mass,GLuint diffuseMap,GLuint normalMap) {
+    diffuseMap = ELTexture::texture(ELAssets::shared()->findFile("particleTexture.png"))->value;
+    normalMap = ELTexture::texture(ELAssets::shared()->findFile("water_normal.png"))->value;
     ELGameObject *gameObject = new ELGameObject(world);
     world->addNode(gameObject);
     gameObject->transform->position = pos;

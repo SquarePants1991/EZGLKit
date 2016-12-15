@@ -397,6 +397,8 @@ ELGameObject.h
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/ELGameObject.h
 components/ELWaterPlane.h
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/components/ELWaterPlane.h
+utils/ELAssets.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/utils/ELAssets.h
 
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/ELWorld.h
 ELNode.h
@@ -521,7 +523,11 @@ string
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/utils/ELFileUtil.cpp
 ELFileUtil.h
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/utils/ELFileUtil.h
+ELAssets.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/utils/ELAssets.h
 fstream
+-
+regex
 -
 
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/utils/ELFileUtil.h

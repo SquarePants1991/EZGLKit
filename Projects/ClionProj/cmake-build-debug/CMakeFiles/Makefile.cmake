@@ -69,6 +69,7 @@ set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/TestBaseWindow.dir/DependInfo.cmake"
   "CMakeFiles/LuaTest.dir/DependInfo.cmake"
   "CMakeFiles/EZGL.dir/DependInfo.cmake"
+  "EZGLib/CMakeFiles/CopyShaders.dir/DependInfo.cmake"
   "EZGLib/CMakeFiles/EZGLib.dir/DependInfo.cmake"
   "glad/CMakeFiles/glad.dir/DependInfo.cmake"
   "soil/CMakeFiles/soil.dir/DependInfo.cmake"
