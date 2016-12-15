@@ -20,3 +20,27 @@ file(GLOB EL_SRC
 )
 
 add_library(EZGLib EZGL.h EZGL.cpp ${EL_SRC})
+
+macro(copy_files target GLOBPAT DESTINATION)
+    file(GLOB COPY_FILES
+            RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
+            ${GLOBPAT}/*
+            ${GLOBPAT}/**/*)
+    make_directory(${DESTINATION})
+    add_custom_target(${target} ALL
+            COMMENT "Copying files: ${GLOBPAT}")
+    foreach(FILENAME ${COPY_FILES})
+        message("Copying ${CMAKE_CURRENT_SOURCE_DIR}/${FILENAME}")
+        set(SRC "${CMAKE_CURRENT_SOURCE_DIR}/${FILENAME}")
+        get_filename_component(fileName ${FILENAME} NAME)
+        set(DST "${DESTINATION}/${fileName}")
+
+        add_custom_command(
+                TARGET ${target}
+                COMMAND ${CMAKE_COMMAND} -E copy ${SRC} ${DST}
+        )
+    endforeach(FILENAME)
+endmacro(copy_files)
+copy_files(CopyShaders assets/shaders ${CMAKE_BINARY_DIR})
+
+add_dependencies(EZGLib CopyShaders)

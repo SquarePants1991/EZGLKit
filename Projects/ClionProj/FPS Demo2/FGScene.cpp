@@ -11,16 +11,16 @@ FGScene::FGScene(ELWorld *world) : world(world){
 void FGScene::createScene() {
     // init game world
 
-    ELLight * defaultLight = new ELLight();
-    defaultLight->position = ELVector3Make(20,40,0);
+    defaultLight = new ELLight();
+    defaultLight->position = ELVector3Make(100,100,100);
     defaultLight->color = ELVector4Make(1.0,1.0,1.0,1.0);
     defaultLight->intensity = 1.0;
     defaultLight->intensityFallOff = 0.0;
     defaultLight->identity = "main-light";
 //    defaultLight->enableShadow();
     world->addNode(defaultLight);
-createTerrain();
-    createWater();
+    createTerrain();
+//    createWater();
 
     ELGameObject *gameObject = new ELGameObject(world);
     world->addNode(gameObject);
@@ -40,7 +40,17 @@ createTerrain();
 
     GLuint diffuseMap = ELTexture::texture(ELAssets::shared()->findFile("dirt_01.jpg"))->value;
     GLuint normalMap = ELTexture::texture(ELAssets::shared()->findFile("water_normal.png"))->value;
-    createCubeGameObject(ELVector3Make(9000,1,9000),ELVector3Make(0,220,0),0,diffuseMap,normalMap);
+
+    for (int i = 0; i < 20; ++i) {
+        srand(rand());
+        float x = rand() / (float)RAND_MAX * 6 - 3;
+        float z = rand() / (float)RAND_MAX * 16 - 3;
+        float y = rand() / (float)RAND_MAX * 6 - 3 + 230;
+        createCubeGameObject(ELVector3Make(3,3,3),ELVector3Make(x,y,z),2.0,diffuseMap,normalMap);
+    }
+    
+
+//    createFloor();
 }
 
 // 比例关系  1 => 1m
@@ -251,12 +261,12 @@ void FGScene::createTerrain() {
     printf("%s",gameObject->description().c_str());
     world->addNode(gameObject);
     gameObject->transform->position = ELVector3Make(0,0,0);
-    ELTerrain *terrain = new ELTerrain(ELVector2Make(200,200),ELAssets::shared()->findFile("island8.jpeg"),70);
+    ELTerrain *terrain = new ELTerrain(ELVector2Make(200,200),ELAssets::shared()->findFile("island6.png"),70);
     gameObject->addComponent(terrain);
     GLuint diffuseMap = ELTexture::texture(ELAssets::shared()->findFile("dirt_01.jpg"))->value;
     GLuint normalMap = ELTexture::texture(ELAssets::shared()->findFile("water_normal.png"))->value;
     GLuint dudvNormalMap = ELTexture::texture(ELAssets::shared()->findFile("grass_01.jpeg"))->value;
-    terrain->material.ambient = ELVector4Make(0.6,0.6,0.6,1.0);
+    terrain->material.ambient = ELVector4Make(0.3,0.3,0.3,1.0);
     terrain->material.diffuseMap = diffuseMap;
     terrain->material.ambientMap = normalMap;
     terrain->material.specularMap = dudvNormalMap;

@@ -11,7 +11,7 @@ class FGScene {
 public:
     FGScene(ELWorld *world);
     ELRigidBody *playerRigidBody;
-
+    ELLight * defaultLight;
 private:
     ELWorld *world;
     void createScene();

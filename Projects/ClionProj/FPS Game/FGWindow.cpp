@@ -89,9 +89,9 @@ FGWindow::FGWindow() {
     ELAssets::shared()->addSearchPath("/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/Shader/");
     ELAssets::shared()->addSearchPath("/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/FPS Game/Textures/");
 
-    std::string vertexShader = ELFileUtil::stringContentOfFile(ELAssets::shared()->findFile("vertex.glsl").c_str());
-    std::string fragShader = ELFileUtil::stringContentOfFile(ELAssets::shared()->findFile("frag.glsl").c_str());
-    std::string shadowFragShader = ELFileUtil::stringContentOfFile(ELAssets::shared()->findFile("shadow_frag.glsl").c_str());
+    std::string vertexShader = ELFileUtil::stringContentOfFile(ELAssets::shared()->findFile("vtx_phong.glsl").c_str());
+    std::string fragShader = ELFileUtil::stringContentOfFile(ELAssets::shared()->findFile("frg_phong.glsl").c_str());
+    std::string shadowFragShader = ELFileUtil::stringContentOfFile(ELAssets::shared()->findFile("frg_shadowmap.glsl").c_str());
     std::string waterFragShader = ELFileUtil::stringContentOfFile(ELAssets::shared()->findFile("water.glsl").c_str());
     ELEffect * activeEffect = new ELEffect(vertexShader.c_str(), fragShader.c_str());
     ELEffect * shadowEffect = new ELEffect(vertexShader.c_str(), shadowFragShader.c_str());

@@ -7,15 +7,20 @@
 #include "ELLight.h"
 #include "ELGameObject.h"
 #include "components/ELWaterPlane.h"
+#include "utils/ELAssets.h"
 
 #define UseDepthFramebuffer 1
 
 ELWorld::ELWorld() {
+    ELAssets::shared()->addSearchPath("assets/shaders");
+
     physicsWorld = ELPhysicsWorld::shared();
     addNode(physicsWorld);
 }
 
 ELWorld::ELWorld(ELFloat aspect) {
+    ELAssets::shared()->addSearchPath("assets/shaders");
+
     ELVector3 eye = {0, 1.7, 0};
     ELVector3 center = {0, 0, -10};
     ELVector3 up = {0, 1, 0};

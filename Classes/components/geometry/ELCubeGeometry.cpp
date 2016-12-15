@@ -96,7 +96,7 @@ ELGeometryData ELCubeGeometry::generateData() {
     vertexBuffer->append(rectZFar);
     vertexBuffer->append(rectZNear);
 
-    vertexBuffer->caculatePerVertexNormal();
+//    vertexBuffer->caculatePerVertexNormal();
 
     GLfloat *vertex = (GLfloat *)(vertexBuffer->data());
     glGenBuffers(1, &data.vertexVBO);

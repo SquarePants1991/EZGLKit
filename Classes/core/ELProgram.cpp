@@ -122,6 +122,7 @@ bool compileShader(GLuint *shader, GLenum type, const GLchar *source) {
         GLchar *log = (GLchar *)malloc(logLength);
         glGetShaderInfoLog(*shader, logLength, &logLength, log);
         printf("Shader compile log:\n%s", log);
+        printf("Shader: \n %s\n", source);
         free(log);
     }
 

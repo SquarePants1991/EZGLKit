@@ -113,9 +113,9 @@ void init() {
     ELAssets::shared()->addSearchPath("/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/");
     ELAssets::shared()->addSearchPath("/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/Clion/Shader/");
 
-    std::string vertexShader = ELFileUtil::stringContentOfFile(ELAssets::shared()->findFile("vertex.glsl").c_str());
-    std::string fragShader = ELFileUtil::stringContentOfFile(ELAssets::shared()->findFile("frag.glsl").c_str());
-    std::string shadowFragShader = ELFileUtil::stringContentOfFile(ELAssets::shared()->findFile("shadow_frag.glsl").c_str());
+    std::string vertexShader = ELFileUtil::stringContentOfFile(ELAssets::shared()->findFile("vtx_phong.glsl").c_str());
+    std::string fragShader = ELFileUtil::stringContentOfFile(ELAssets::shared()->findFile("frg_phong.glsl").c_str());
+    std::string shadowFragShader = ELFileUtil::stringContentOfFile(ELAssets::shared()->findFile("frg_shadowmap.glsl").c_str());
     ELEffect * activeEffect = new ELEffect(vertexShader.c_str(), fragShader.c_str());
     ELEffect * shadowEffect = new ELEffect(vertexShader.c_str(), shadowFragShader.c_str());
 
@@ -126,10 +126,10 @@ void init() {
 
     defaultLight = new ELLight();
     defaultLight->position = ELVector3Make(8,8,8);
-    defaultLight->color = ELVector4Make(1.0,1.0,1.0,1.0);
+    defaultLight->color = ELVector4Make(1.0,0.0,0.0,1.0);
     defaultLight->intensity = 1.0;
     defaultLight->identity = "main-light";
-    defaultLight->enableShadow();
+//    defaultLight->enableShadow();
     world->addNode(defaultLight);
 
     ELGameObject *gameObject = new ELGameObject(world);

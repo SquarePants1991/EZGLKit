@@ -10,6 +10,7 @@
 class ELFileUtil {
 public:
     static std::string stringContentOfFile(const char *filePath);
+    static std::string stringContentOfShader(const char *filePath);
 };
 
 

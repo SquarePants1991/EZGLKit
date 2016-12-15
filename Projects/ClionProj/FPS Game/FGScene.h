@@ -13,6 +13,7 @@ public:
     ELRigidBody *playerRigidBody;
 
 private:
+    ELLight * defaultLight;
     ELWorld *world;
     void createScene();
 
