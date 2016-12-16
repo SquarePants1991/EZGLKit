@@ -66,6 +66,7 @@ public:
     virtual ELGeometryData generateData();
     virtual void update(ELFloat timeInSecs);
     virtual void render();
+    virtual std::string kind();
 
 private:
     ELGeometryVertexBuffer *vertexBuffer;

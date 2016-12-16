@@ -8,13 +8,13 @@
 #include "ELTexture.h"
 
 ELProjector::ELProjector() {
-    ELVector3 eye = {30, 1.7, 30};
+    ELVector3 eye = {30, 3, 30};
     ELVector3 center = {30, 0, 30};
     ELVector3 up = {0, 0, 1};
     camera = new ELCamera(eye, center, up, 70.0, 1.0, 0.1, 1000);
     camera->identity = "p1";
-    camera->ortho(-20, 20, 20, -20, -20, 20);
-    this->projectorMap = ELTexture::texture(ELAssets::shared()->findFile("1.jpg"))->value;
+    camera->ortho(-15, 15, 15, -15, -20, 20);
+    this->projectorMap = ELTexture::texture(ELAssets::shared()->findFile("icon.png"))->value;
 }
 
 ELProjector::ELProjector(ELCamera *camera, ELUint projectorMap) {

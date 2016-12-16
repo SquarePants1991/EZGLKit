@@ -22,7 +22,7 @@ void FGScene::createScene() {
     createTerrain();
     createFloor();
     createWater();
-    createParticalGameObject(ELVector2Make(1,1),ELVector3Make(0,2,0),0,0,0);
+    createParticalGameObject(ELVector2Make(1,1),ELVector3Make(30,6,30),0,0,0);
     world->addNode(new ELProjector());
 
     ELGameObject *gameObject = new ELGameObject(world);

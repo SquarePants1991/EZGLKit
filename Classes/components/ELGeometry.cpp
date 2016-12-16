@@ -90,6 +90,8 @@ void ELGeometry::render() {
         glDrawArrays(GL_TRIANGLES, 0, data.vertexCount);
     }
     glBindVertexArray(0);
+
+    ELNode::render();
 }
 
 void ELGeometry::setupVao() {

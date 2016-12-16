@@ -28,6 +28,7 @@ public:
 ELParticleSystem::ELParticleSystem() : isDataInitialized(false), partical(NULL) {
     emitTimeInterval = 0.3;
     onlyUseColorAttrib = true;
+    identity = "psystem";
 }
 
 ELGeometryData ELParticleSystem::generateData() {
@@ -165,4 +166,8 @@ void ELParticleSystem::render() {
     glDepthMask(GL_TRUE);
     glDisable(GL_BLEND);
     glEnable(GL_CULL_FACE);
+}
+
+std::string ELParticleSystem::kind() {
+    return "particle_system";
 }

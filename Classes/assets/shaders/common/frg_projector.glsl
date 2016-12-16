@@ -15,3 +15,13 @@ vec4 project(projector_struct projector) {
     }
     return projectColor;
 }
+
+bool caculateProjector(out vec4 out_ambient, out vec4 out_diffuse, out vec4 out_specular) {
+    out_ambient = vec4(0.0,0.0,0.0,0.0);
+    out_diffuse = vec4(0.0,0.0,0.0,0.0);
+    out_specular = vec4(0.0,0.0,0.0,0.0);
+    for(int i=0;i<projectorNum;i++) {
+        out_diffuse += project(projectors[i]);
+    }
+    return projectorNum > 0;
+}
