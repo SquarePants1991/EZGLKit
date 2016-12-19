@@ -8,10 +8,14 @@
 #include "ELGameObject.h"
 #include "components/ELWaterPlane.h"
 #include "utils/ELAssets.h"
+#include "utils/ELGLState.h"
 
 #define UseDepthFramebuffer 1
 
 ELWorld::ELWorld() {
+    ELGLState::setup();
+    ELGLState::set(ELGLStateCullFace, GL_BACK);
+
     ELAssets::shared()->addSearchPath("assets/shaders");
 
     physicsWorld = ELPhysicsWorld::shared();
@@ -19,6 +23,8 @@ ELWorld::ELWorld() {
 }
 
 ELWorld::ELWorld(ELFloat aspect) {
+    ELGLState::setup();
+    ELGLState::set(ELGLStateCullFace, GL_BACK);
     ELAssets::shared()->addSearchPath("assets/shaders");
 
     ELVector3 eye = {0, 1.7, 0};
@@ -71,7 +77,7 @@ void ELWorld::renderReflectionMaps() {
             ELMatrix4 additionMatrix = ELMatrix4MakeScale(1,-1,1);
             additionMatrix = ELMatrix4Multiply(additionMatrix,ELMatrix4MakeTranslation(0,waterPlane->gameObject()->transform->position.y,0));
             glUniformMatrix4fv(activedEffect->program->uniform("additionMatrix"), 1, 0, additionMatrix.m);
-            glCullFace(GL_FRONT);
+            ELGLState::set(ELGLStateCullFace, GL_FRONT);
             glUniform1i(activedEffect->program->uniform("enableClipPlane0"), 1);
             glUniform4fv(activedEffect->program->uniform("clipPlane0"), 1,waterPlane->plane().v);
             waterPlane->beginGenReflectionMap();

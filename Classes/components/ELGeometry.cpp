@@ -6,6 +6,7 @@
 #include "ELGeometry.h"
 #include "core/ELEffect.h"
 #include "core/ELGameObject.h"
+#include "utils/ELGLState.h"
 
 ELGeometry::ELGeometry() : vao(-1),
                            isGeometryDataValid(false),
@@ -79,16 +80,17 @@ void ELGeometry::render() {
     glBindVertexArray(vao);
     if (enableBorder) {
         // TODO: 增加管理Cull Face状态类，使Cull Face能够restore回去，暂时禁用边缘渲染
-//        glCullFace(GL_FRONT);
-//        glUniform1i(program->uniform("renderBorder"), 1);
-//        glUniform1f(program->uniform("borderWidth"), borderWidth);
-//        glUniform4fv(program->uniform("borderColor"), 1, borderColor.v);
-//        if (data.supportIndiceVBO) {
-//            glDrawElements(GL_TRIANGLES, data.indiceCount, GL_UNSIGNED_INT, 0);
-//        } else {
-//            glDrawArrays(GL_TRIANGLES, 0, data.vertexCount);
-//        }
-//        glCullFace(GL_BACK);
+        ELGLState::saveState();
+        ELGLState::set(ELGLStateCullFace, GL_FRONT);
+        glUniform1i(program->uniform("renderBorder"), 1);
+        glUniform1f(program->uniform("borderWidth"), borderWidth);
+        glUniform4fv(program->uniform("borderColor"), 1, borderColor.v);
+        if (data.supportIndiceVBO) {
+            glDrawElements(GL_TRIANGLES, data.indiceCount, GL_UNSIGNED_INT, 0);
+        } else {
+            glDrawArrays(GL_TRIANGLES, 0, data.vertexCount);
+        }
+        ELGLState::restoreState();
     }
 
     glUniform1i(program->uniform("renderBorder"), 0);
