@@ -27,6 +27,7 @@ public:
     virtual void update(ELFloat timeInSecs);
     virtual void render();
 
+    void orderedRender();
     void activeEffect(std::string effectName);
     void activeCamera(std::string cameraName, ELCamera *camera = NULL);
 private:

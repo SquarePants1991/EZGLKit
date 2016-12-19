@@ -36,6 +36,14 @@ std::string ELGeometry::kind() {
 }
 
 void ELGeometry::render() {
+
+    if (!ELNode::drawTransparency && isTransparency) {
+        return;
+    }
+    if (ELNode::drawTransparency && !isTransparency) {
+        return;
+    }
+
     if (isGeometryDataValid == false) {
         prepare();
     }

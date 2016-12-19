@@ -29,6 +29,7 @@ ELParticleSystem::ELParticleSystem() : isDataInitialized(false), partical(NULL) 
     emitTimeInterval = 0.3;
     onlyUseColorAttrib = true;
     identity = "psystem";
+    isTransparency = true;
 }
 
 ELGeometryData ELParticleSystem::generateData() {

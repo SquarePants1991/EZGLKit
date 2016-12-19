@@ -53,7 +53,7 @@ void ELWorld::renderShadowMaps() {
             activedEffect->prepare();
             light->beginGenShadowMap();
             activeCamera(light->identity + "-shadow-camera", light->shadowMapGenCamera());
-            ELNode::render();
+            orderedRender();
             light->endGenShadowMap();
         }
     }
@@ -75,7 +75,7 @@ void ELWorld::renderReflectionMaps() {
             glUniform1i(activedEffect->program->uniform("enableClipPlane0"), 1);
             glUniform4fv(activedEffect->program->uniform("clipPlane0"), 1,waterPlane->plane().v);
             waterPlane->beginGenReflectionMap();
-            ELNode::render();
+            orderedRender();
             waterPlane->endGenReflectionMap();
             glUniform1i(activedEffect->program->uniform("enableClipPlane0"), 0);
         }
@@ -97,7 +97,7 @@ void ELWorld::renderRefractionMaps() {
             glUniform4fv(activedEffect->program->uniform("clipPlane0"), 1,waterPlane->inversePlane().v);
             glUniform1i(activedEffect->program->uniform("useAdditionMatrix"),0);
             waterPlane->beginGenRefractionMap();
-            ELNode::render();
+            orderedRender();
             waterPlane->endGenRefractionMap();
             glUniform1i(activedEffect->program->uniform("enableClipPlane0"), 0);
         }
@@ -130,6 +130,13 @@ void ELWorld::renderScene() {
         }
     }
 
+    orderedRender();
+}
+
+void ELWorld::orderedRender() {
+    ELNode::drawTransparency  = false;
+    ELNode::render();
+    ELNode::drawTransparency  = true;
     ELNode::render();
 }
 

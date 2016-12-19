@@ -11,6 +11,8 @@ public:
     }
 };
 
+bool ELNode::drawTransparency = true;
+
 ELNode::ELNode() : renderShadow(false), elapsedSeconds(0), objReleased(false) {
     transform = new ELTransform();
     transform->position = ELVector3Make(0.0, 0.0, 0.0);
@@ -54,7 +56,6 @@ void ELNode::render() {
     for (int i = 0; i < children.size(); ++i) {
         children.at(i)->render();
     }
-//    printf("kind => %s \n", this->kind().c_str());
 }
 
 std::string ELNode::kind() {

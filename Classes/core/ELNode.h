@@ -24,6 +24,7 @@ public:
     ELFloat elapsedSeconds;
     std::string identity;
 
+    static bool drawTransparency;
 public:
     ELNode();
     void release();
