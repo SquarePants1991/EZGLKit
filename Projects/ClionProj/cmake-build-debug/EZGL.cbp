@@ -898,6 +898,12 @@
 		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/utils/ELFileUtil.h">
 			<Option target="EZGLib"/>
 		</Unit>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/utils/ELGLState.cpp">
+			<Option target="EZGLib"/>
+		</Unit>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/utils/ELGLState.h">
+			<Option target="EZGLib"/>
+		</Unit>
 		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/utils/ELGeometryVertexBuffer.cpp">
 			<Option target="EZGLib"/>
 		</Unit>

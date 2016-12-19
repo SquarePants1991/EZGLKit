@@ -156,8 +156,6 @@ void ELParticleSystem::restartPartical(ELPartical *partical) {
 }
 
 void ELParticleSystem::render() {
-    ELParticalSystemCompare compare(this);
-    std::sort(activeParticals.begin(),activeParticals.end(),compare);
     this->setNeedRegenData();
     glDisable(GL_CULL_FACE);
     glEnable(GL_BLEND);

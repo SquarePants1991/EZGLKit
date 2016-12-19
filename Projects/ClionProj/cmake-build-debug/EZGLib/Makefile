@@ -842,6 +842,33 @@ utils/ELFileUtil.cpp.s:
 	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug" && $(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/utils/ELFileUtil.cpp.s
 .PHONY : utils/ELFileUtil.cpp.s
 
+utils/ELGLState.o: utils/ELGLState.cpp.o
+
+.PHONY : utils/ELGLState.o
+
+# target to build an object file
+utils/ELGLState.cpp.o:
+	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug" && $(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/utils/ELGLState.cpp.o
+.PHONY : utils/ELGLState.cpp.o
+
+utils/ELGLState.i: utils/ELGLState.cpp.i
+
+.PHONY : utils/ELGLState.i
+
+# target to preprocess a source file
+utils/ELGLState.cpp.i:
+	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug" && $(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/utils/ELGLState.cpp.i
+.PHONY : utils/ELGLState.cpp.i
+
+utils/ELGLState.s: utils/ELGLState.cpp.s
+
+.PHONY : utils/ELGLState.s
+
+# target to generate assembly for a file
+utils/ELGLState.cpp.s:
+	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug" && $(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/utils/ELGLState.cpp.s
+.PHONY : utils/ELGLState.cpp.s
+
 utils/ELGeometryVertexBuffer.o: utils/ELGeometryVertexBuffer.cpp.o
 
 .PHONY : utils/ELGeometryVertexBuffer.o
@@ -984,6 +1011,9 @@ help:
 	@echo "... utils/ELFileUtil.o"
 	@echo "... utils/ELFileUtil.i"
 	@echo "... utils/ELFileUtil.s"
+	@echo "... utils/ELGLState.o"
+	@echo "... utils/ELGLState.i"
+	@echo "... utils/ELGLState.s"
 	@echo "... utils/ELGeometryVertexBuffer.o"
 	@echo "... utils/ELGeometryVertexBuffer.i"
 	@echo "... utils/ELGeometryVertexBuffer.s"

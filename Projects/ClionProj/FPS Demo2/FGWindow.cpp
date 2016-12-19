@@ -32,7 +32,6 @@ void focus_callback(GLFWwindow*,int);
 
 FGWindow::FGWindow() {
 
-    world = new ELWorld(WindowWidth / WindowHeight);
     /* Initialize the library */
     if (!glfwInit()) {
         printf("GLFW Init Failed!!!");
@@ -81,6 +80,7 @@ FGWindow::FGWindow() {
     glfwSetKeyCallback(glfwWindow, key_callback);
     glfwSetWindowFocusCallback(glfwWindow,focus_callback);
 
+    world = new ELWorld(WindowWidth / WindowHeight);
     int fbWidth,fbHeight;
     glfwGetFramebufferSize(glfwWindow, &fbWidth, &fbHeight);
 

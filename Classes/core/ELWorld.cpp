@@ -41,6 +41,7 @@ ELWorld::ELWorld(ELFloat aspect) {
 }
 
 void ELWorld::update(ELFloat timeInSecs) {
+    activeCamera("main");
     ELNode::update(timeInSecs);
 }
 

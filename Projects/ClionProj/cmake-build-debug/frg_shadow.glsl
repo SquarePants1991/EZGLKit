@@ -1,4 +1,4 @@
-float shadowValue() {
+void caculateShadow(out float out_shadow) {
 //    highp vec3 lightPosition = lights[0].position;
 //    highp vec3 vp = normalize(lightPosition - mMatrixPosition);
 //    float cosTheta = clamp(dot(normal, vp),0,1);
@@ -23,5 +23,5 @@ float shadowValue() {
     shadow /= 9.0;
 
 //    shadowColor = tex2D(shadowMap[0], fragTexcoord);
-    return 1 - shadow;
+    out_shadow = 1 - shadow;
 }

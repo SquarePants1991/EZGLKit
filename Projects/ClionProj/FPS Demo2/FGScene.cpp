@@ -19,15 +19,15 @@ void FGScene::createScene() {
     defaultLight->identity = "main-light";
 //    defaultLight->enableShadow();
     world->addNode(defaultLight);
-    createTerrain();
+//    createTerrain();
     createFloor();
-    createWater();
-    createParticalGameObject(ELVector2Make(1,1),ELVector3Make(20,5,20),0,0,0);
+//    createWater();
+    createParticalGameObject(ELVector2Make(1,1),ELVector3Make(5,1,5),0,0,0);
     world->addNode(new ELProjector());
 
     ELGameObject *gameObject = new ELGameObject(world);
     world->addNode(gameObject);
-    gameObject->transform->position = ELVector3Make(20, 54.5, 0);
+    gameObject->transform->position = ELVector3Make(0, 5, 0);
     ELCubeGeometry *cube = new ELCubeGeometry(ELVector3Make(0.4,1,0.4));
     gameObject->addComponent(cube);
     cube->material.diffuse = ELVector4Make(1.0,0.0,0.0,1.0);

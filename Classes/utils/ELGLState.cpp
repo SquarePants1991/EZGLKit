@@ -4,30 +4,30 @@
 
 #include "ELGLState.h"
 
-std::map<ELGLStates, GLenum> ELGLState::values;
-std::map<ELGLStates, GLenum> ELGLState::valuesSaved;
-std::map<ELGLStates, ELGLStateSetFunc> ELGLState::stateProcessFunc;
+std::map<ELGLStates, GLenum> ELGLState::values = std::map<ELGLStates, GLenum>();
+std::map<ELGLStates, GLenum> ELGLState::valuesSaved = std::map<ELGLStates, GLenum>();
+std::map<ELGLStates, ELGLStateSetFunc> ELGLState::stateProcessFunc = std::map<ELGLStates, ELGLStateSetFunc>();
 
 void ELGLState::setup() {
-    stateProcessFunc[ELGLStateCullFace] = glCullFace;
+    ELGLState::stateProcessFunc[ELGLStateCullFace] = glCullFace;
 }
 
 void ELGLState::saveState() {
-    valuesSaved = values;
+    ELGLState::valuesSaved = ELGLState::values;
 }
 
 void ELGLState::restoreState() {
-    values = valuesSaved;
+    ELGLState::values = ELGLState::valuesSaved;
     std::map<ELGLStates, GLenum>::iterator iter;
-    for (iter = values.begin(); iter != values.end(); ++iter) {
-        if (valuesSaved[iter->first] != iter->first) {
-            set(iter->first, valuesSaved[iter->first]);
+    for (iter = ELGLState::values.begin(); iter != ELGLState::values.end(); ++iter) {
+        if (ELGLState::valuesSaved[iter->first] != iter->first) {
+            set(iter->first, ELGLState::valuesSaved[iter->first]);
         }
     }
 }
 
 void ELGLState::set(ELGLStates state, GLenum stateValue) {
-    stateProcessFunc[ELGLStateCullFace](stateValue);
+    ELGLState::stateProcessFunc[ELGLStateCullFace](stateValue);
 }
 
 

@@ -321,6 +321,7 @@ EZGLib/CMakeFiles/EZGLib.dir/components/ELGeometry.cpp.o: /Users/wangyang/Docume
 EZGLib/CMakeFiles/EZGLib.dir/components/ELGeometry.cpp.o: /Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/ClionProj/../../Classes/types/EZGLMatrixTypes.h
 EZGLib/CMakeFiles/EZGLib.dir/components/ELGeometry.cpp.o: /Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/ClionProj/../../Classes/types/EZGLTypes.h
 EZGLib/CMakeFiles/EZGLib.dir/components/ELGeometry.cpp.o: /Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/ClionProj/../../Classes/types/EZGLVectorTypes.h
+EZGLib/CMakeFiles/EZGLib.dir/components/ELGeometry.cpp.o: /Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/ClionProj/../../Classes/utils/ELGLState.h
 EZGLib/CMakeFiles/EZGLib.dir/components/ELGeometry.cpp.o: /Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/ClionProj/../../libs/glad/include/KHR/khrplatform.h
 EZGLib/CMakeFiles/EZGLib.dir/components/ELGeometry.cpp.o: /Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/ClionProj/../../libs/glad/include/glad/glad.h
 EZGLib/CMakeFiles/EZGLib.dir/components/ELGeometry.cpp.o: /usr/local/include/GLFW/glfw3.h
@@ -977,6 +978,7 @@ EZGLib/CMakeFiles/EZGLib.dir/core/ELWorld.cpp.o: /Users/wangyang/Documents/Proje
 EZGLib/CMakeFiles/EZGLib.dir/core/ELWorld.cpp.o: /Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/ClionProj/../../Classes/types/EZGLTypes.h
 EZGLib/CMakeFiles/EZGLib.dir/core/ELWorld.cpp.o: /Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/ClionProj/../../Classes/types/EZGLVectorTypes.h
 EZGLib/CMakeFiles/EZGLib.dir/core/ELWorld.cpp.o: /Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/ClionProj/../../Classes/utils/ELAssets.h
+EZGLib/CMakeFiles/EZGLib.dir/core/ELWorld.cpp.o: /Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/ClionProj/../../Classes/utils/ELGLState.h
 EZGLib/CMakeFiles/EZGLib.dir/core/ELWorld.cpp.o: /Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/ClionProj/../../Classes/utils/ELGeometryVertexBuffer.h
 EZGLib/CMakeFiles/EZGLib.dir/core/ELWorld.cpp.o: /Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/ClionProj/../../libs/glad/include/KHR/khrplatform.h
 EZGLib/CMakeFiles/EZGLib.dir/core/ELWorld.cpp.o: /Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/ClionProj/../../libs/glad/include/glad/glad.h
@@ -992,6 +994,13 @@ EZGLib/CMakeFiles/EZGLib.dir/utils/ELFileUtil.cpp.o: /Users/wangyang/Documents/P
 EZGLib/CMakeFiles/EZGLib.dir/utils/ELFileUtil.cpp.o: /Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/ClionProj/../../libs/glad/include/KHR/khrplatform.h
 EZGLib/CMakeFiles/EZGLib.dir/utils/ELFileUtil.cpp.o: /Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/ClionProj/../../libs/glad/include/glad/glad.h
 EZGLib/CMakeFiles/EZGLib.dir/utils/ELFileUtil.cpp.o: /usr/local/include/GLFW/glfw3.h
+
+EZGLib/CMakeFiles/EZGLib.dir/utils/ELGLState.cpp.o: /Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Classes/utils/ELGLState.cpp
+EZGLib/CMakeFiles/EZGLib.dir/utils/ELGLState.cpp.o: /Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Classes/utils/ELGLState.h
+EZGLib/CMakeFiles/EZGLib.dir/utils/ELGLState.cpp.o: /Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/ClionProj/../../Classes/EZGLBase.h
+EZGLib/CMakeFiles/EZGLib.dir/utils/ELGLState.cpp.o: /Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/ClionProj/../../libs/glad/include/KHR/khrplatform.h
+EZGLib/CMakeFiles/EZGLib.dir/utils/ELGLState.cpp.o: /Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Projects/ClionProj/../../libs/glad/include/glad/glad.h
+EZGLib/CMakeFiles/EZGLib.dir/utils/ELGLState.cpp.o: /usr/local/include/GLFW/glfw3.h
 
 EZGLib/CMakeFiles/EZGLib.dir/utils/ELGeometryVertexBuffer.cpp.o: /Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Classes/utils/ELGeometryVertexBuffer.cpp
 EZGLib/CMakeFiles/EZGLib.dir/utils/ELGeometryVertexBuffer.cpp.o: /Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Classes/utils/ELGeometryVertexBuffer.h

@@ -77,6 +77,8 @@ core/ELEffect.h
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/core/ELEffect.h
 core/ELGameObject.h
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/core/ELGameObject.h
+utils/ELGLState.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/utils/ELGLState.h
 
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELGeometry.h
 core/ELComponent.h
@@ -399,6 +401,8 @@ components/ELWaterPlane.h
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/components/ELWaterPlane.h
 utils/ELAssets.h
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/utils/ELAssets.h
+utils/ELGLState.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/utils/ELGLState.h
 
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/ELWorld.h
 ELNode.h
@@ -531,6 +535,14 @@ regex
 -
 
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/utils/ELFileUtil.h
+EZGLBase.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/utils/EZGLBase.h
+
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/utils/ELGLState.cpp
+ELGLState.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/utils/ELGLState.h
+
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/utils/ELGLState.h
 EZGLBase.h
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/utils/EZGLBase.h
 
@@ -803,6 +815,10 @@ vector
 -
 string
 -
+
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/../../Classes/utils/ELGLState.h
+EZGLBase.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/../../Classes/utils/EZGLBase.h
 
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/../../Classes/utils/ELGeometryVertexBuffer.h
 types/ELGeometryTypes.h

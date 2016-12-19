@@ -7,6 +7,7 @@ Copying /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/assets/shaders
 Copying /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/assets/shaders/common/cm_uniforms.glsl
 Copying /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/assets/shaders/common/defines.glsl
 Copying /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/assets/shaders/common/frg_base.glsl
+Copying /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/assets/shaders/common/frg_camera.glsl
 Copying /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/assets/shaders/common/frg_fog.glsl
 Copying /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/assets/shaders/common/frg_light.glsl
 Copying /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/assets/shaders/common/frg_normal.glsl
