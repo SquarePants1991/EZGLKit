@@ -43,6 +43,7 @@ protected:
     ELGeometryData data;
     bool isGeometryDataValid;
     virtual ELGeometryData generateData() = 0;
+    virtual ELMatrix4 modelMatrix();
     void setNeedRegenData();
 private:
     ELInt vao;

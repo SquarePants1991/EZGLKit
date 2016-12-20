@@ -2,7 +2,7 @@
 // Created by wangyang on 16/11/24.
 //
 
-#include <core/ELCamera.h>
+#include "core/ELCamera.h"
 #include "ELGeometry.h"
 #include "core/ELEffect.h"
 #include "core/ELGameObject.h"
@@ -29,7 +29,6 @@ void ELGeometry::setNeedRegenData() {
 
 void ELGeometry::update(ELFloat timeInSecs) {
     ELNode::update(timeInSecs);
-    enableBorder = false;
 }
 
 std::string ELGeometry::kind() {
@@ -58,7 +57,7 @@ void ELGeometry::render() {
 
     glUniform3fv(program->uniform("cameraPosition"), 1, camera->position().v);
     glUniformMatrix4fv(program->uniform("viewProjection"), 1, 0, camera->matrix().m);
-    glUniformMatrix4fv(program->uniform("modelMatrix"), 1, 0, ELMatrix4FromTransform(gameObject()->transform).m);
+    glUniformMatrix4fv(program->uniform("modelMatrix"), 1, 0, modelMatrix().m);
     glUniform4fv(program->uniform("material.ambient"), 1, material.ambient.v);
     glUniform4fv(program->uniform("material.diffuse"), 1, material.diffuse.v);
     glUniform4fv(program->uniform("material.specular"), 1, material.specular.v);
@@ -146,6 +145,10 @@ void ELGeometry::setupVao() {
 
     glBindVertexArray(0);
 
+}
+
+ELMatrix4 ELGeometry::modelMatrix() {
+    return ELMatrix4FromTransform(gameObject()->transform);
 }
 
 ELEffect * ELGeometry::effect() {

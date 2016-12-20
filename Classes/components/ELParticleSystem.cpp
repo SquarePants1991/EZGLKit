@@ -140,10 +140,9 @@ ELVector4 randomVec4(ELVector4 initial,ELVector4 rangeBegin,ELVector4 rangeEnd) 
 
 void ELParticleSystem::restartPartical(ELPartical *partical) {
     partical->size = ELVector2Make(0.3,0.3);
-    partical->transform = *(gameObject()->transform);
     srand(rand());
 
-    partical->transform.position = randomVec3(partical->transform.position,data.positionRandomRangeBegin,data.positionRandomRangeEnd);
+    partical->transform.position = randomVec3(gameObject()->transform->position,data.positionRandomRangeBegin,data.positionRandomRangeEnd);
     partical->velocity = randomVec3(data.velocity,data.velocityRandomRangeBegin,data.velocityRandomRangeEnd);
     partical->sizeStart = randomVec2Lock(ELVector2Make(data.sizeBegin,data.sizeBegin),data.sizeBeginRandomRangeBegin,data.sizeBeginRandomRangeEnd);
     partical->sizeEnd = randomVec2Lock(ELVector2Make(data.sizeEnd,data.sizeEnd),data.sizeEndRandomRangeBegin,data.sizeEndRandomRangeEnd);
@@ -169,4 +168,8 @@ void ELParticleSystem::render() {
 
 std::string ELParticleSystem::kind() {
     return "particle_system";
+}
+
+ELMatrix4 ELParticleSystem::modelMatrix() {
+    return ELMatrix4Identity;
 }

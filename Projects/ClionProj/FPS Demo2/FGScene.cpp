@@ -22,7 +22,7 @@ void FGScene::createScene() {
 //    createTerrain();
     createFloor();
 //    createWater();
-    createParticalGameObject(ELVector2Make(1,1),ELVector3Make(5,1,5),0,0,0);
+    createParticalGameObject(ELVector2Make(1,1),ELVector3Make(5,0,10),0,0,0);
     world->addNode(new ELProjector());
 
     ELGameObject *gameObject = new ELGameObject(world);
@@ -41,16 +41,16 @@ void FGScene::createScene() {
     playerRigidBody = rigidBody;
     world->activedCamera->lockOn(gameObject->transform);
 
-//    GLuint diffuseMap = ELTexture::texture(ELAssets::shared()->findFile("dirt_01.jpg"))->value;
-//    GLuint normalMap = ELTexture::texture(ELAssets::shared()->findFile("water_normal.png"))->value;
-//
-//    for (int i = 0; i < 20; ++i) {
-//        srand(rand());
-//        float x = rand() / (float)RAND_MAX * 6 - 3;
-//        float z = rand() / (float)RAND_MAX * 16 - 3;
-//        float y = rand() / (float)RAND_MAX * 6 - 3 + 230;
-//        createCubeGameObject(ELVector3Make(3,3,3),ELVector3Make(x,y,z),2.0,diffuseMap,normalMap);
-//    }
+    GLuint diffuseMap = ELTexture::texture(ELAssets::shared()->findFile("dirt_01.jpg"))->value;
+    GLuint normalMap = ELTexture::texture(ELAssets::shared()->findFile("water_normal.png"))->value;
+
+    for (int i = 0; i < 20; ++i) {
+        srand(rand());
+        float x = rand() / (float)RAND_MAX * 6 - 3;
+        float z = rand() / (float)RAND_MAX * 16 - 3;
+        float y = rand() / (float)RAND_MAX * 6 - 3 + 230;
+        createCubeGameObject(ELVector3Make(3,3,3),ELVector3Make(x,y,z),2.0,diffuseMap,normalMap, true);
+    }
 }
 
 // 比例关系  1 => 1m
@@ -72,8 +72,8 @@ void FGScene::createBoundWall(ELVector3 offset, ELFloat width,ELFloat height,ELF
 }
 
 void FGScene::createFloor() {
-    ELFloat width = 17 * 3;
-    ELFloat height = 17 * 3;
+    ELFloat width = 30 * 3;
+    ELFloat height = 30 * 3;
     ELFloat wallHeight = 3.5;
     ELVector3 floorSize = ELVector3Make(width,0.5,height);
     GLuint diffuseMap,normalMap;
@@ -83,7 +83,7 @@ void FGScene::createFloor() {
     ELGameObject *gameObject = new ELGameObject(world);
     world->addNode(gameObject);
     gameObject->transform->position = ELVector3Make(0,0,0);
-    createCubeGameObject(ELVector3Make(50,1,50),ELVector3Make(0,-2.5,0),0,diffuseMap,normalMap);
+    createCubeGameObject(ELVector3Make(500,1,500),ELVector3Make(0,-0.5,0),0,diffuseMap,normalMap);
 //
 //    ELCollisionShape *collisionShape = new ELCollisionShape();
 //    collisionShape->asBox(ELVector3Make(width/2,0.5,height/2));
@@ -129,7 +129,7 @@ void FGScene::createMiddleWalls(ELVector3 offset,ELFloat width,ELFloat height) {
     createCubeGameObject(zWallsSize,ELVector3Make(0+ offset.x,wallHeight / 2.0,-height / 2+ offset.z),0.0,diffuseMap,normalMap);
 }
 
-void FGScene::createCubeGameObject(ELVector3 size,ELVector3 pos,ELFloat mass,GLuint diffuseMap,GLuint normalMap) {
+void FGScene::createCubeGameObject(ELVector3 size,ELVector3 pos,ELFloat mass,GLuint diffuseMap,GLuint normalMap, bool hasBorder) {
 
     ELGameObject *gameObject = new ELGameObject(world);
     world->addNode(gameObject);
@@ -140,6 +140,9 @@ void FGScene::createCubeGameObject(ELVector3 size,ELVector3 pos,ELFloat mass,GLu
     cube->material.ambient = ELVector4Make(0.4,0.4,0.4,1.0);
     cube->material.diffuseMap = diffuseMap;//ELTexture::texture(ELAssets::shared()->findFile("rock.png"))->value;
     cube->material.normalMap = normalMap;//ELTexture::texture(ELAssets::shared()->findFile("rock_NRM.png"))->value;
+    cube->enableBorder = hasBorder;
+    cube->borderWidth = 0.2;
+    cube->borderColor = ELVector4Make(1,0,0,1);
 
     ELCollisionShape *collisionShape = new ELCollisionShape();
     collisionShape->asBox(ELVector3Make(size.x / 2,size.y / 2,size.z / 2));

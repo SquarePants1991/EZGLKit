@@ -17,17 +17,18 @@ void ELGLState::saveState() {
 }
 
 void ELGLState::restoreState() {
-    ELGLState::values = ELGLState::valuesSaved;
     std::map<ELGLStates, GLenum>::iterator iter;
     for (iter = ELGLState::values.begin(); iter != ELGLState::values.end(); ++iter) {
-        if (ELGLState::valuesSaved[iter->first] != iter->first) {
+        if (ELGLState::valuesSaved[iter->first] != iter->second) {
             set(iter->first, ELGLState::valuesSaved[iter->first]);
         }
     }
+    ELGLState::values = ELGLState::valuesSaved;
 }
 
 void ELGLState::set(ELGLStates state, GLenum stateValue) {
     ELGLState::stateProcessFunc[ELGLStateCullFace](stateValue);
+    ELGLState::values[state] = stateValue;
 }
 
 

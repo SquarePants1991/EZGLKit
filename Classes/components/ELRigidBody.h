@@ -18,6 +18,11 @@ public:
     ELCollisionShape *collisionShape;
     ELFloat mass;
     ELVector3 velocity;
+    ELFloat restitution;
+    ELFloat friction;
+    ELVector3 angleFactor;
+    ELVector3 linearFactor;
+
 public:
     ELRigidBody(ELCollisionShape *shape, ELFloat mass);
     void applyForce(ELVector3 force,ELVector3 pos);

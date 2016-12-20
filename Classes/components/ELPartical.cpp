@@ -68,17 +68,17 @@ void ELPartical::update(ELVector3 cameraPosition,ELFloat timeInSecs,ELVector3 fo
             {1.0, 1.0, 0.0, 1.0}
     };
 
-//    ELQuaternion rotateQuaternion = ELQuaternionMakeWithAngleAndAxis(rotation / 180.0 * M_PI, 0,0,1);
-//    ELMatrix4 rotateMatrix = ELMatrix4MakeWithQuaternion(rotateQuaternion);
-//    rect.geometryRect.point1 = ELMatrix4MultiplyVector4(rotateMatrix, ELVector4MakeWithVector3(rect.geometryRect.point1,1)).xyz;
-//    rect.geometryRect.point2 = ELMatrix4MultiplyVector4(rotateMatrix, ELVector4MakeWithVector3(rect.geometryRect.point2,1)).xyz;
-//    rect.geometryRect.point3 = ELMatrix4MultiplyVector4(rotateMatrix, ELVector4MakeWithVector3(rect.geometryRect.point3,1)).xyz;
-//    rect.geometryRect.point4 = ELMatrix4MultiplyVector4(rotateMatrix, ELVector4MakeWithVector3(rect.geometryRect.point4,1)).xyz;
+    ELQuaternion rotateQuaternion = ELQuaternionMakeWithAngleAndAxis(rotation / 180.0 * M_PI, 0,0,1);
+    ELMatrix4 rotateMatrix = ELMatrix4MakeWithQuaternion(rotateQuaternion);
+    rect.geometryRect.point1 = ELMatrix4MultiplyVector4(rotateMatrix, ELVector4MakeWithVector3(rect.geometryRect.point1,1)).xyz;
+    rect.geometryRect.point2 = ELMatrix4MultiplyVector4(rotateMatrix, ELVector4MakeWithVector3(rect.geometryRect.point2,1)).xyz;
+    rect.geometryRect.point3 = ELMatrix4MultiplyVector4(rotateMatrix, ELVector4MakeWithVector3(rect.geometryRect.point3,1)).xyz;
+    rect.geometryRect.point4 = ELMatrix4MultiplyVector4(rotateMatrix, ELVector4MakeWithVector3(rect.geometryRect.point4,1)).xyz;
 
     ELMatrix4 modelMatrix;
     ELMatrix4 translateMatrix = ELMatrix4MakeTranslation(newTransform.position.x,newTransform.position.y,newTransform.position.z);
     ELMatrix4 quaternionMatrix = ELMatrix4MakeWithQuaternion(newTransform.quaternion);
-    modelMatrix = ELMatrix4Multiply(quaternionMatrix, translateMatrix);
+    modelMatrix = ELMatrix4Multiply(translateMatrix, quaternionMatrix);
 
     rect.geometryRect.point1 = ELMatrix4MultiplyVector4(modelMatrix, ELVector4MakeWithVector3(rect.geometryRect.point1,1)).xyz;
     rect.geometryRect.point2 = ELMatrix4MultiplyVector4(modelMatrix, ELVector4MakeWithVector3(rect.geometryRect.point2,1)).xyz;

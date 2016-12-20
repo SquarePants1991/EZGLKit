@@ -10,6 +10,7 @@
 
 class ELPartical {
 public:
+    ELVector3 relativePosition;
     ELTransform transform;
 
     ELVector3 velocity;
@@ -37,7 +38,6 @@ public:
     bool isAlive();
 private:
     ELFloat currentAge;
-
 };
 
 

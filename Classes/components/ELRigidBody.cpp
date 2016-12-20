@@ -9,7 +9,11 @@
 
 ELRigidBody::ELRigidBody(ELCollisionShape *shape, ELFloat mass) :
         collisionShape(shape),
-        mass(mass)
+        mass(mass),
+        friction(0.1),
+        restitution(0.2),
+        angleFactor(ELVector3Make(1,1,1)),
+        linearFactor(ELVector3Make(1,1,1))
 {
 
 }
@@ -62,12 +66,11 @@ void ELRigidBody::didAddedToGameObject(ELGameObject *gameObject) {
     btVector3 fallInertia(0,0,0);
     collisionShape->collisionShape->calculateLocalInertia(mass,fallInertia);
     rigidBody = new btRigidBody(mass,motionState,collisionShape->collisionShape,fallInertia);
-    rigidBody->setRestitution(0.2);
-    rigidBody->setFriction(0.6);
+    rigidBody->setRestitution(restitution);
+    rigidBody->setFriction(friction);
 
-    // TODO: Configable
-//    rigidBody->setDamping(1,0);
-    rigidBody->setAngularFactor(btVector3(0,0,0));
+    rigidBody->setAngularFactor(btVector3(angleFactor.x,angleFactor.y,angleFactor.z));
+    rigidBody->setLinearFactor(btVector3(linearFactor.x, linearFactor.y, linearFactor.z))
     ELPhysicsWorld::shared()->addRigidBody(rigidBody);
     rigidBody->setUserPointer(this->gameObject());
     collisionShape->collisionShape->setUserPointer(this->gameObject());

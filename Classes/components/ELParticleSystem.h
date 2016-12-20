@@ -67,6 +67,7 @@ public:
     virtual void update(ELFloat timeInSecs);
     virtual void render();
     virtual std::string kind();
+    virtual ELMatrix4 modelMatrix();
 
 private:
     ELGeometryVertexBuffer *vertexBuffer;
