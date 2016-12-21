@@ -5,19 +5,18 @@
 #ifndef EZGL_ELPLANGEOMETRY_H
 #define EZGL_ELPLANGEOMETRY_H
 
-#include "../ELGeometry.h"
+#include "ELVertexBufferGeometry.h"
 #include "utils/ELGeometryVertexBuffer.h"
 
-class ELPlaneGeometry : public ELGeometry {
+class ELPlaneGeometry : public ELVertexBufferGeometry {
 public:
     ELPlaneGeometry(ELVector2 size);
-    ~ELPlaneGeometry();
+    ELPlaneGeometry(ELVector2 size, bool smooth);
 
-    virtual ELGeometryData generateData();
+    virtual void fillVertexBuffer(ELGeometryVertexBuffer *vertexBuffer);
 
 private:
     ELVector2 size;
-    ELGeometryVertexBuffer *vertexBuffer;
 };
 
 

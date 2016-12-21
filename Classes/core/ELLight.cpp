@@ -7,7 +7,11 @@
 
 #define UseDepthFramebuffer 1
 
-ELLight::ELLight() : shadowTexture(-1) , isShadowEnabled(false) , cameraForShadowMap(NULL) {
+ELLight::ELLight() : shadowTexture(-1) ,
+                     isShadowEnabled(false) ,
+                     cameraForShadowMap(NULL),
+                     type(ELLightTypeDirection)
+{
 
 }
 

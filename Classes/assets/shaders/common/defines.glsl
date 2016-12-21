@@ -20,11 +20,15 @@ precision highp float;
 out float outDepth;
 
 struct light {
+    int type;
     vec3 position;
     vec4 color;
     float intensity;
     float intensityFallOff;
 };
+
+int LightType_Point = 0;
+int LightType_Direction = 1; // 平行光时position就是方向
 
 struct material_struct {
     vec4 diffuse;

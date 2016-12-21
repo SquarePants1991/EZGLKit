@@ -13,7 +13,9 @@ ELRigidBody::ELRigidBody(ELCollisionShape *shape, ELFloat mass) :
         friction(0.1),
         restitution(0.2),
         angleFactor(ELVector3Make(1,1,1)),
-        linearFactor(ELVector3Make(1,1,1))
+        linearFactor(ELVector3Make(1,1,1)),
+        collisionGroup(0x00000001),
+        collisionMask(0x00000001)
 {
 
 }
@@ -70,8 +72,8 @@ void ELRigidBody::didAddedToGameObject(ELGameObject *gameObject) {
     rigidBody->setFriction(friction);
 
     rigidBody->setAngularFactor(btVector3(angleFactor.x,angleFactor.y,angleFactor.z));
-    rigidBody->setLinearFactor(btVector3(linearFactor.x, linearFactor.y, linearFactor.z))
-    ELPhysicsWorld::shared()->addRigidBody(rigidBody);
+    rigidBody->setLinearFactor(btVector3(linearFactor.x, linearFactor.y, linearFactor.z));
+    ELPhysicsWorld::shared()->addRigidBody(rigidBody, collisionGroup, collisionMask);
     rigidBody->setUserPointer(this->gameObject());
     collisionShape->collisionShape->setUserPointer(this->gameObject());
 }

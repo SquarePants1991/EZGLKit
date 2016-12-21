@@ -12,6 +12,11 @@ public:
     FGScene(ELWorld *world);
     ELRigidBody *playerRigidBody;
     ELLight * defaultLight;
+
+    void update(ELFloat timeInSecs);
+
+    void mouseLeftButtonClicked();
+    void mouseRightButtonClicked();
 private:
     ELWorld *world;
     void createScene();
@@ -20,7 +25,7 @@ private:
     void createFloor();
     void createMonkey();
     void createMiddleWalls(ELVector3 offset,ELFloat width,ELFloat height);
-    void createCubeGameObject(ELVector3 size,ELVector3 pos,ELFloat mass,GLuint diffuseMap,GLuint normalMap, bool hasBorder = false);
+    void createCubeGameObject(ELVector3 size,ELVector3 pos,ELFloat mass,GLuint diffuseMap,GLuint normalMap, bool hasBorder = false, int collisionGroup=1, int collisionMask=1, ELVector3 velocity=ELVector3Make(0,0,0));
     void createBoardGameObject(ELVector2 size,ELVector3 pos,ELFloat mass,GLuint diffuseMap,GLuint normalMap);
     void createParticalGameObject(ELVector2 size,ELVector3 pos,ELFloat mass,GLuint diffuseMap,GLuint normalMap);
     void createWater();

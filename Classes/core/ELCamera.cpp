@@ -24,6 +24,9 @@ ELCamera::ELCamera(ELVector3 eye,ELVector3 lookAt,ELVector3 up,ELFloat fovyRadia
     radiansAroundForward = 0.0;
     radiansAroundUp = 0.0;
     radiansAroundLeft = 0.0;
+    radiansAroundForwardLimit = ELVector2Make(0,2 * 180);
+    radiansAroundUpLimit =  ELVector2Make(-2 * 180,2 * 180);
+    radiansAroundLeftLimit =  ELVector2Make(0,2 * 180);
 }
 
 ELCamera::ELCamera(ELFloat left, ELFloat right, ELFloat top, ELFloat bottom, ELFloat nearZ, ELFloat farZ) :
@@ -67,14 +70,39 @@ void ELCamera::rotateEye(ELFloat radians, ELVector3 axis) {
 
 void ELCamera::rotateLookAtAroundUp(ELFloat radians) {
     radiansAroundUp += radians;
+    while (fabs(radiansAroundUp) > 2 * 180) {
+        radiansAroundUp = -radiansAroundUp + 2 * 180 * fabs(radiansAroundUp) / radiansAroundUp;
+    }
+
+    if (radiansAroundUp > radiansAroundUpLimit.y) {
+        radiansAroundUp = radiansAroundUpLimit.y;
+    }
+    if (radiansAroundUp < radiansAroundUpLimit.x) {
+        radiansAroundUp = radiansAroundUpLimit.x;
+    }
 }
 
 void ELCamera::rotateLookAtAroundLeft(ELFloat radians) {
     radiansAroundLeft += radians;
+    while (fabs(radiansAroundLeft) > 2 * 180) {
+        radiansAroundLeft = -radiansAroundLeft + 2 * 180 * fabs(radiansAroundLeft) / radiansAroundLeft;
+    }
+    if (radiansAroundLeft > radiansAroundLeftLimit.y) {
+        radiansAroundLeft = radiansAroundLeftLimit.y;
+    }
+    if (radiansAroundLeft < radiansAroundLeftLimit.x) {
+        radiansAroundLeft = radiansAroundLeftLimit.x;
+    }
 }
 
 void ELCamera::rotateLookAtAroundForward(ELFloat radians) {
     radiansAroundForward += radians;
+    if (radiansAroundForward > radiansAroundForwardLimit.y) {
+        radiansAroundForward = radiansAroundForwardLimit.y;
+    }
+    if (radiansAroundForward < radiansAroundForwardLimit.x) {
+        radiansAroundForward = radiansAroundForwardLimit.x;
+    }
 }
 
 void ELCamera::translateForward(ELFloat distance) {

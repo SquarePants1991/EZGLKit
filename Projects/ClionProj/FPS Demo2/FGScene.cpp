@@ -4,15 +4,52 @@
 
 #include "FGScene.h"
 
+#define  Bit(n) (0x00000001 << n)
+
+enum CollisionTypes {
+    CT_Floor = Bit(0),
+    CT_Prop = Bit(1),
+    CT_Prop2 = Bit(2),
+    CT_Role = Bit(3),
+    CT_Prop3 = Bit(4)
+};
+
+void FGScene::update(ELFloat timeInSecs) {
+    ELVector3 start = world->activedCamera->position();
+    ELVector3 end = ELVector3Add(start,ELVector3MultiplyScalar(world->activedCamera->forwardVector(),100));
+    std::vector<ELGameObject *> objs = ELPhysicsWorld::shared()->raycast(start,end,CT_Prop);
+    for (int i = 0; i < objs.size(); ++i) {
+        ELGameObject *obj = objs.at(i);
+        std::vector<ELNode *> nodes = obj->findChildrenWithKind("geometry");
+        for (int j = 0; j < nodes.size(); ++j) {
+            ELGeometry *geo = (ELGeometry *)nodes.at(j);
+            geo->enableBorder = true;
+        }
+    }
+}
+
+void FGScene::mouseLeftButtonClicked() {
+    GLuint diffuseMap = ELTexture::texture(ELAssets::shared()->findFile("dirt_01.jpg"))->value;
+    GLuint normalMap = ELTexture::texture(ELAssets::shared()->findFile("water_normal.png"))->value;
+    ELVector3 velocity = world->activedCamera->forwardVector();
+    velocity = ELVector3MultiplyScalar(velocity, 30);
+    createCubeGameObject(ELVector3Make(1,1,1),world->activedCamera->position(),2.0,diffuseMap,normalMap, true, CT_Prop2, CT_Prop2 | CT_Prop | CT_Floor,velocity);
+}
+
+void FGScene::mouseRightButtonClicked() {
+
+}
+
 FGScene::FGScene(ELWorld *world) : world(world){
     createScene();
+    ELGeometry::resetBorderBeforeUpdate = true;
 }
 
 void FGScene::createScene() {
     // init game world
 
     defaultLight = new ELLight();
-    defaultLight->position = ELVector3Make(100,100,100);
+    defaultLight->position = ELVector3Make(0,30,30);
     defaultLight->color = ELVector4Make(1.0,1.0,1.0,1.0);
     defaultLight->intensity = 1.0;
     defaultLight->intensityFallOff = 0.0;
@@ -36,21 +73,27 @@ void FGScene::createScene() {
     ELCollisionShape *collisionShape = new ELCollisionShape();
     collisionShape->asSphere(3);
     ELRigidBody *rigidBody = new ELRigidBody(collisionShape,1.0);
-    gameObject->addComponent(rigidBody);
-    rigidBody->setVelocity(ELVector3Make(0, 0, 0));
     playerRigidBody = rigidBody;
+    rigidBody->collisionGroup = CT_Role;
+    rigidBody->collisionMask = CT_Floor;
+    gameObject->addComponent(rigidBody);
+
+    rigidBody->setVelocity(ELVector3Make(0, 0, 0));
     world->activedCamera->lockOn(gameObject->transform);
 
     GLuint diffuseMap = ELTexture::texture(ELAssets::shared()->findFile("dirt_01.jpg"))->value;
     GLuint normalMap = ELTexture::texture(ELAssets::shared()->findFile("water_normal.png"))->value;
 
-    for (int i = 0; i < 20; ++i) {
+    for (int i = 0; i < 10; ++i) {
         srand(rand());
-        float x = rand() / (float)RAND_MAX * 6 - 3;
-        float z = rand() / (float)RAND_MAX * 16 - 3;
-        float y = rand() / (float)RAND_MAX * 6 - 3 + 230;
-        createCubeGameObject(ELVector3Make(3,3,3),ELVector3Make(x,y,z),2.0,diffuseMap,normalMap, true);
+        float x = rand() / (float) RAND_MAX * 6 - 3;
+        float z = rand() / (float) RAND_MAX * 16 - 3;
+        float y = rand() / (float) RAND_MAX * 6 - 3 + 230;
+        createCubeGameObject(ELVector3Make(3, 3, 3), ELVector3Make(x, y, z), 2.0, diffuseMap, normalMap, true, CT_Prop,
+                             CT_Floor | CT_Prop2 | CT_Prop);
     }
+
+    ELPlaneGeometry *plane = new ELPlaneGeometry(ELVector2Make(1,1), true);
 }
 
 // 比例关系  1 => 1m
@@ -83,7 +126,7 @@ void FGScene::createFloor() {
     ELGameObject *gameObject = new ELGameObject(world);
     world->addNode(gameObject);
     gameObject->transform->position = ELVector3Make(0,0,0);
-    createCubeGameObject(ELVector3Make(500,1,500),ELVector3Make(0,-0.5,0),0,diffuseMap,normalMap);
+    createCubeGameObject(ELVector3Make(500,1,500),ELVector3Make(0,-0.5,0),0,diffuseMap,normalMap,false, CT_Floor, CT_Prop2 | CT_Prop | CT_Role);
 //
 //    ELCollisionShape *collisionShape = new ELCollisionShape();
 //    collisionShape->asBox(ELVector3Make(width/2,0.5,height/2));
@@ -129,7 +172,7 @@ void FGScene::createMiddleWalls(ELVector3 offset,ELFloat width,ELFloat height) {
     createCubeGameObject(zWallsSize,ELVector3Make(0+ offset.x,wallHeight / 2.0,-height / 2+ offset.z),0.0,diffuseMap,normalMap);
 }
 
-void FGScene::createCubeGameObject(ELVector3 size,ELVector3 pos,ELFloat mass,GLuint diffuseMap,GLuint normalMap, bool hasBorder) {
+void FGScene::createCubeGameObject(ELVector3 size,ELVector3 pos,ELFloat mass,GLuint diffuseMap,GLuint normalMap, bool hasBorder, int collisionGroup, int collisionMask, ELVector3 velocity) {
 
     ELGameObject *gameObject = new ELGameObject(world);
     world->addNode(gameObject);
@@ -137,7 +180,7 @@ void FGScene::createCubeGameObject(ELVector3 size,ELVector3 pos,ELFloat mass,GLu
     ELCubeGeometry *cube = new ELCubeGeometry(size);
     gameObject->addComponent(cube);
     cube->material.diffuse = ELVector4Make(0.0,0.0,0.0,1.0);
-    cube->material.ambient = ELVector4Make(0.4,0.4,0.4,1.0);
+    cube->material.ambient = ELVector4Make(0.7,0.7,0.7,1.0);
     cube->material.diffuseMap = diffuseMap;//ELTexture::texture(ELAssets::shared()->findFile("rock.png"))->value;
     cube->material.normalMap = normalMap;//ELTexture::texture(ELAssets::shared()->findFile("rock_NRM.png"))->value;
     cube->enableBorder = hasBorder;
@@ -147,7 +190,10 @@ void FGScene::createCubeGameObject(ELVector3 size,ELVector3 pos,ELFloat mass,GLu
     ELCollisionShape *collisionShape = new ELCollisionShape();
     collisionShape->asBox(ELVector3Make(size.x / 2,size.y / 2,size.z / 2));
     ELRigidBody *rigidBody = new ELRigidBody(collisionShape,mass);
+    rigidBody->collisionGroup = collisionGroup;
+    rigidBody->collisionMask = collisionMask;
     gameObject->addComponent(rigidBody);
+    rigidBody->setVelocity(velocity);
 }
 
 void FGScene::createBoardGameObject(ELVector2 size,ELVector3 pos,ELFloat mass,GLuint diffuseMap,GLuint normalMap) {

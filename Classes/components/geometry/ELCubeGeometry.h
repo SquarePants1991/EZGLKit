@@ -5,20 +5,18 @@
 #ifndef EZGL_ELCUBEGEOMETRY_H
 #define EZGL_ELCUBEGEOMETRY_H
 
-#include "../ELGeometry.h"
+#include "ELVertexBufferGeometry.h"
 #include "utils/ELGeometryVertexBuffer.h"
 
-class ELCubeGeometry : public ELGeometry {
+class ELCubeGeometry : public ELVertexBufferGeometry {
 public:
     ELCubeGeometry(ELVector3 size);
-    ~ELCubeGeometry();
+    ELCubeGeometry(ELVector3 size, bool smooth);
 
-    virtual void update(ELFloat timeInSecs);
-    virtual ELGeometryData generateData();
+    virtual void fillVertexBuffer(ELGeometryVertexBuffer *vertexBuffer);
 
 private:
     ELVector3 size;
-    ELGeometryVertexBuffer *vertexBuffer;
 };
 
 

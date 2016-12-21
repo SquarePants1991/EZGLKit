@@ -35,6 +35,8 @@ void ELEffect::prepare() {
 
     for (int index = 0; index < lights.size(); ++index) {
         ELLight *light = (ELLight *)lights[index];
+        snprintf(buffer, 1024, "lights[%d].type",index);
+        glUniform1i(program->uniform(buffer), light->type);
         snprintf(buffer, 1024, "lights[%d].color",index);
         glUniform4fv(program->uniform(buffer), 1, light->color.v);
         snprintf(buffer, 1024, "lights[%d].position",index);

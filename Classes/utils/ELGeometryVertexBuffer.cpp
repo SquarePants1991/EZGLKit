@@ -183,7 +183,37 @@ void ELGeometryVertexBuffer::append(ELGeometryColorRect colorRect) {
 }
 
 void ELGeometryVertexBuffer::append(ELGeometryTriangle triangle) {
+    ELVector3 point1 = triangle.point1;
+    ELVector3 point2 = triangle.point2;
+    ELVector3 point3 = triangle.point3;
 
+
+    ELVector3 edge1 = ELVector3Subtract((ELVector3)point1, (ELVector3)point2);
+    ELVector3 edge2 = ELVector3Subtract((ELVector3)point3, (ELVector3)point2);
+    ELVector3 normal = ELVector3CrossProduct(edge1, edge2);
+    normal = ELVector3Normalize(normal);
+
+    ELGeometryVertex vertex1_1 = {point1.x, point1.y, point1.z, normal.x, normal.y, normal.z, triangle.uv1.x, triangle.uv1.y};
+    ELGeometryVertex vertex1_2 = {point3.x, point3.y, point3.z, normal.x, normal.y, normal.z, triangle.uv3.x, triangle.uv3.y};
+    ELGeometryVertex vertex1_3 = {point2.x, point2.y, point2.z, normal.x, normal.y, normal.z, triangle.uv2.x, triangle.uv2.y};
+
+    ELVector3 tangent1_1,bitangent1_1;
+    ELVector3 tangent1_2,bitangent1_2;
+    ELVector3 tangent1_3,bitangent1_3;
+    caculateTangents(&tangent1_1, &bitangent1_1, (ELVector3)point1, normal);
+    caculateTangents(&tangent1_2, &bitangent1_2, (ELVector3)point2, normal);
+    caculateTangents(&tangent1_3, &bitangent1_3, (ELVector3)point3, normal);
+    vertex1_1.tnx = tangent1_1.x;       vertex1_1.tny = tangent1_1.y;       vertex1_1.tnz = tangent1_1.z;
+    vertex1_1.btnx = bitangent1_1.x;    vertex1_1.btny = bitangent1_1.y;    vertex1_1.btnz = bitangent1_1.z;
+    vertex1_2.tnx = tangent1_2.x;       vertex1_2.tny = tangent1_2.y;       vertex1_2.tnz = tangent1_2.z;
+    vertex1_2.btnx = bitangent1_2.x;    vertex1_2.btny = bitangent1_2.y;    vertex1_2.btnz = bitangent1_2.z;
+    vertex1_3.tnx = tangent1_3.x;       vertex1_3.tny = tangent1_3.y;       vertex1_3.tnz = tangent1_3.z;
+    vertex1_3.btnx = bitangent1_3.x;    vertex1_3.btny = bitangent1_3.y;    vertex1_3.btnz = bitangent1_3.z;
+
+
+    append(vertex1_1);
+    append(vertex1_2);
+    append(vertex1_3);
 }
 
 

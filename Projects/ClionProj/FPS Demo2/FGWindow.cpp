@@ -14,7 +14,7 @@ double lastTime = 0;
 double lastFpsTime = 0;
 double frames = 0;
 float rotateUpFactor = 0;
-float walkingFactor = 0;
+ELVector3 walkingFactor = ELVector3Make(0,0,0);
 const float WindowWidth = 400;
 const float WindowHeight = 300;
 ELGameObject *player;
@@ -28,7 +28,9 @@ void render(ELWorld *world);
 void resize(GLFWwindow *window ,int w,int h);
 void setupWindow(int argc,char **argv);
 void key_callback(GLFWwindow*,int,int,int,int);
+void cursor_position_callback(GLFWwindow* window, double xpos, double ypos);
 void focus_callback(GLFWwindow*,int);
+void mouse_callback(GLFWwindow*,int,int,int);
 
 FGWindow::FGWindow() {
 
@@ -57,7 +59,7 @@ FGWindow::FGWindow() {
     /* Make the window's context current */
     glfwMakeContextCurrent(glfwWindow);
 
-    glfwSetWindowPos(glfwWindow,0,1920 - WindowHeight);
+    glfwSetWindowPos(glfwWindow,500,1920 - WindowHeight);
 //        glfwSetWindowPos(glfwWindow,0,0);
 
     if (!gladLoadGLLoader((GLADloadproc) glfwGetProcAddress))
@@ -79,6 +81,10 @@ FGWindow::FGWindow() {
     glfwSetWindowSizeCallback(glfwWindow,resize);
     glfwSetKeyCallback(glfwWindow, key_callback);
     glfwSetWindowFocusCallback(glfwWindow,focus_callback);
+    glfwSetMouseButtonCallback(glfwWindow,mouse_callback);
+
+    glfwSetCursorPosCallback(glfwWindow, cursor_position_callback);
+    glfwSetInputMode(glfwWindow, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
     world = new ELWorld(WindowWidth / WindowHeight);
     int fbWidth,fbHeight;
@@ -111,9 +117,9 @@ FGWindow::FGWindow() {
     world->addNode(shadowEffect);
     world->addNode(waterEffect);
 
-    activeEffect->frogColor = ELVector4Make(0.1,0.1,0.1,1.0);
-    activeEffect->frogStart = 50;
-    activeEffect->frogEnd = 70;
+    activeEffect->frogColor = ELVector4Make(1,1,1,1.0);
+    activeEffect->frogStart = 500;
+    activeEffect->frogEnd = 700;
 
     glad_glEnable(GL_CULL_FACE);
     glad_glDepthMask(GL_TRUE);
@@ -126,6 +132,8 @@ FGWindow::FGWindow() {
 
     g_world = world;
     g_scene = mainScene;
+
+    g_world->activedCamera->radiansAroundLeftLimit = ELVector2Make(-45,80);
 }
 
 void FGWindow::run() {
@@ -152,27 +160,21 @@ void render(ELWorld *world) {
     double elapsedTime = currentTimeInMs - lastTime;
     lastTime = currentTimeInMs;
 
-    g_world->activedCamera->rotateLookAtAroundUp(elapsedTime * rotateUpFactor);
-    ELVector3 direction = g_world->activedCamera->forwardVector();
-    direction = ELVector3MultiplyScalar(direction,walkingFactor);
+    ELVector3 forwardDirection = g_world->activedCamera->forwardVector();
+    forwardDirection = ELVector3MultiplyScalar(forwardDirection,walkingFactor.z);
+    ELVector3 leftDirection = g_world->activedCamera->leftVector();
+    leftDirection = ELVector3MultiplyScalar(leftDirection,walkingFactor.x);
+
+    ELVector3 direction = ELVector3Add(forwardDirection, leftDirection);
     g_scene->playerRigidBody->setVelocityX(direction.x);
     g_scene->playerRigidBody->setVelocityZ(direction.z);
 
     world->update(elapsedTime);
+    g_scene->update(elapsedTime);
     ELQuaternion rotation = ELQuaternionMakeWithAngleAndAxis(elapsedTime / 5.0,1,0,0);
     g_scene->defaultLight->position = ELQuaternionRotateVector3(rotation,  g_scene->defaultLight->position);
 
-    ELVector3 start = g_world->activedCamera->position();
-    ELVector3 end = ELVector3Add(start,ELVector3MultiplyScalar(g_world->activedCamera->forwardVector(),100));
-//    std::vector<ELGameObject *> objs = ELPhysicsWorld::shared()->raycast(start,end);
-//    for (int i = 0; i < objs.size(); ++i) {
-//        ELGameObject *obj = objs.at(i);
-//        std::vector<ELNode *> nodes = obj->findChildrenWithKind("geometry");
-//        for (int j = 0; j < nodes.size(); ++j) {
-//            ELGeometry *geo = (ELGeometry *)nodes.at(j);
-//            geo->enableBorder = true;
-//        }
-//    }
+
     world->render();
 
     double currentTime = glfwGetTime();
@@ -198,17 +200,17 @@ void resize(GLFWwindow *window ,int w,int h) {
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
     if (action == GLFW_PRESS) {
-        if (key == GLFW_KEY_UP) {
-            walkingFactor = 14;
+        if (key == GLFW_KEY_W) {
+            walkingFactor.z = 14;
         }
-        if (key == GLFW_KEY_DOWN) {
-            walkingFactor = -14;
+        if (key == GLFW_KEY_S) {
+            walkingFactor.z = -14;
         }
-        if (key == GLFW_KEY_LEFT){
-            rotateUpFactor = 80;
+        if (key == GLFW_KEY_A){
+            walkingFactor.x = -14;
         }
-        if (key == GLFW_KEY_RIGHT){
-            rotateUpFactor = -80;
+        if (key == GLFW_KEY_D){
+            walkingFactor.x = 14;
         }
         if (key == GLFW_KEY_SPACE) {
             g_scene->playerRigidBody->setVelocityY(16);
@@ -219,25 +221,53 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
     }
 
     if (action == GLFW_RELEASE) {
-        if (key == GLFW_KEY_UP) {
-            walkingFactor = 0;
+        if (key == GLFW_KEY_W) {
+            walkingFactor.z = 0;
             g_scene->playerRigidBody->setVelocityX(0);
             g_scene->playerRigidBody->setVelocityZ(0);
         }
-        if (key == GLFW_KEY_DOWN) {
-            walkingFactor = 0;
+        if (key == GLFW_KEY_S) {
+            walkingFactor.z = 0;
             g_scene->playerRigidBody->setVelocityX(0);
             g_scene->playerRigidBody->setVelocityZ(0);
         }
-        if (key == GLFW_KEY_LEFT){
-            rotateUpFactor = 0;
+        if (key == GLFW_KEY_A){
+            walkingFactor.x = 0;
         }
-        if (key == GLFW_KEY_RIGHT){
-            rotateUpFactor = 0;
+        if (key == GLFW_KEY_D){
+            walkingFactor.x = 0;
         }
     }
 }
 
 void focus_callback(GLFWwindow *window, int focus) {
 
+}
+
+static bool isInit = false;
+static double lastXPos = 0;
+static double lastYPos = 0;
+
+void cursor_position_callback(GLFWwindow* window, double xpos, double ypos) {
+    if (isInit == false) {
+        lastXPos = xpos;
+        lastYPos = ypos;
+        isInit = true;
+    } else {
+        double deltaX = xpos - lastXPos;
+        double deltaY = ypos - lastYPos;
+        g_world->activedCamera->rotateLookAtAroundUp(-deltaX);
+        g_world->activedCamera->rotateLookAtAroundLeft(-deltaY);
+        lastXPos = xpos;
+        lastYPos = ypos;
+    }
+}
+
+void mouse_callback(GLFWwindow* window, int button, int action, int mods) {
+    if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS) {
+        g_scene->mouseLeftButtonClicked();
+    }
+    if (button == GLFW_MOUSE_BUTTON_RIGHT && action == GLFW_PRESS) {
+        g_scene->mouseRightButtonClicked();
+    }
 }

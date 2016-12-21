@@ -9,8 +9,15 @@
 #include "ELNode.h"
 #include "ELCamera.h"
 
+enum _ELLightType {
+    ELLightTypePoint = 0,
+    ELLightTypeDirection
+};
+typedef _ELLightType ELLightType;
+
 class ELLight : public ELNode {
 public:
+    ELLightType type;
     ELVector4 color;
     ELFloat intensity;
     ELVector3 position;

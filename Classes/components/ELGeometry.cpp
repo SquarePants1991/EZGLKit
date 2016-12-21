@@ -8,6 +8,8 @@
 #include "core/ELGameObject.h"
 #include "utils/ELGLState.h"
 
+bool ELGeometry::resetBorderBeforeUpdate = false;
+
 ELGeometry::ELGeometry() : vao(-1),
                            isGeometryDataValid(false),
                            borderWidth(0.1),
@@ -28,6 +30,9 @@ void ELGeometry::setNeedRegenData() {
 }
 
 void ELGeometry::update(ELFloat timeInSecs) {
+    if (ELGeometry::resetBorderBeforeUpdate) {
+        enableBorder = false;
+    }
     ELNode::update(timeInSecs);
 }
 

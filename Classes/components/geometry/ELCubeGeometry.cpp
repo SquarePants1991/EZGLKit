@@ -7,16 +7,13 @@
 
 
 ELCubeGeometry::ELCubeGeometry(ELVector3 size) : size(size) {
+}
+
+ELCubeGeometry::ELCubeGeometry(ELVector3 size, bool smooth) : ELVertexBufferGeometry(smooth), size(size) {
 
 }
 
-ELCubeGeometry::~ELCubeGeometry() {
-    delete vertexBuffer;
-}
-
-ELGeometryData ELCubeGeometry::generateData() {
-    vertexBuffer = new ELGeometryVertexBuffer();
-    ELGeometryData data;
+void ELCubeGeometry::fillVertexBuffer(ELGeometryVertexBuffer *vertexBuffer) {
     // 柱子
     int segments = 4;
 
@@ -95,21 +92,4 @@ ELGeometryData ELCubeGeometry::generateData() {
 
     vertexBuffer->append(rectZFar);
     vertexBuffer->append(rectZNear);
-
-    vertexBuffer->caculatePerVertexNormal();
-
-    GLfloat *vertex = (GLfloat *)(vertexBuffer->data());
-    glGenBuffers(1, &data.vertexVBO);
-    glBindBuffer(GL_ARRAY_BUFFER, data.vertexVBO);
-    glBufferData(GL_ARRAY_BUFFER, vertexBuffer->rawLength(), vertex, GL_STATIC_DRAW);
-    glBindBuffer(GL_ARRAY_BUFFER, 0);
-
-    data.vertexCount = vertexBuffer->rawLength() / sizeof(ELGeometryVertex);
-    data.vertexStride = sizeof(ELGeometryVertex);
-    data.supportIndiceVBO = false;
-    return data;
-}
-
-void ELCubeGeometry::update(ELFloat timeInSecs) {
-    ELGeometry::update(timeInSecs);
 }

@@ -22,6 +22,8 @@ public:
     ELFloat friction;
     ELVector3 angleFactor;
     ELVector3 linearFactor;
+    ELInt collisionGroup;
+    ELInt collisionMask;
 
 public:
     ELRigidBody(ELCollisionShape *shape, ELFloat mass);

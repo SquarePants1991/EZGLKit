@@ -30,6 +30,7 @@ public:
     ELFloat borderWidth;
 
     bool onlyUseColorAttrib;
+    static bool resetBorderBeforeUpdate;
 public:
     ELGeometry();
     void prepare();

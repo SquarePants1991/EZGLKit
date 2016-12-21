@@ -19,8 +19,11 @@ public:
     ELFloat aspect;
 
     ELFloat radiansAroundLeft;
+    ELVector2 radiansAroundLeftLimit;
     ELFloat radiansAroundUp;
+    ELVector2 radiansAroundUpLimit;
     ELFloat radiansAroundForward;
+    ELVector2 radiansAroundForwardLimit;
 
     ELVector3 translation;
 

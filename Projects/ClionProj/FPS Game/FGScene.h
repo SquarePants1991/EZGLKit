@@ -11,7 +11,7 @@ class FGScene {
 public:
     FGScene(ELWorld *world);
     ELRigidBody *playerRigidBody;
-
+    void update(ELFloat timeInSecs);
 private:
     ELLight * defaultLight;
     ELWorld *world;
@@ -21,7 +21,7 @@ private:
     void createFloor();
     void createMonkey();
     void createMiddleWalls(ELVector3 offset,ELFloat width,ELFloat height);
-    void createCubeGameObject(ELVector3 size,ELVector3 pos,ELFloat mass,GLuint diffuseMap,GLuint normalMap);
+    void createCubeGameObject(ELVector3 size,ELVector3 pos,ELFloat mass,GLuint diffuseMap,GLuint normalMap, int collisionGroup=1, int collisionMask=1);
     void createBoardGameObject(ELVector2 size,ELVector3 pos,ELFloat mass,GLuint diffuseMap,GLuint normalMap);
     void createParticalGameObject(ELVector2 size,ELVector3 pos,ELFloat mass,GLuint diffuseMap,GLuint normalMap);
     void createWater();

@@ -19,9 +19,11 @@ class ELPhysicsWorld : public ELNode{
 public:
     static ELPhysicsWorld *shared();
     void addRigidBody(btRigidBody *rigidBody);
+    void addRigidBody(btRigidBody *rigidBody, ELInt group, ELInt mask);
     void removeRigidBody(btRigidBody *rigidBody);
 
     std::vector<ELGameObject *> raycast(ELVector3 start,ELVector3 end);
+    std::vector<ELGameObject *> raycast(ELVector3 start,ELVector3 end, ELInt filterMask);
 
     virtual void update(ELFloat timeInSecs);
 private:
