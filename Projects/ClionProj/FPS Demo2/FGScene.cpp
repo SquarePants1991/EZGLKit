@@ -33,7 +33,7 @@ void FGScene::mouseLeftButtonClicked() {
     GLuint normalMap = ELTexture::texture(ELAssets::shared()->findFile("water_normal.png"))->value;
     ELVector3 velocity = world->activedCamera->forwardVector();
     velocity = ELVector3MultiplyScalar(velocity, 30);
-    createCubeGameObject(ELVector3Make(1,1,1),world->activedCamera->position(),2.0,diffuseMap,normalMap, true, CT_Prop2, CT_Prop2 | CT_Prop | CT_Floor,velocity);
+    createSphereGameObject(ELVector3Make(1,1,1),world->activedCamera->position(),2.0,diffuseMap,normalMap, true, CT_Prop2, CT_Prop2 | CT_Prop | CT_Floor,velocity);
 }
 
 void FGScene::mouseRightButtonClicked() {
@@ -92,8 +92,6 @@ void FGScene::createScene() {
         createCubeGameObject(ELVector3Make(3, 3, 3), ELVector3Make(x, y, z), 2.0, diffuseMap, normalMap, true, CT_Prop,
                              CT_Floor | CT_Prop2 | CT_Prop);
     }
-
-    ELPlaneGeometry *plane = new ELPlaneGeometry(ELVector2Make(1,1), true);
 }
 
 // 比例关系  1 => 1m
@@ -189,6 +187,30 @@ void FGScene::createCubeGameObject(ELVector3 size,ELVector3 pos,ELFloat mass,GLu
 
     ELCollisionShape *collisionShape = new ELCollisionShape();
     collisionShape->asBox(ELVector3Make(size.x / 2,size.y / 2,size.z / 2));
+    ELRigidBody *rigidBody = new ELRigidBody(collisionShape,mass);
+    rigidBody->collisionGroup = collisionGroup;
+    rigidBody->collisionMask = collisionMask;
+    gameObject->addComponent(rigidBody);
+    rigidBody->setVelocity(velocity);
+}
+
+void FGScene::createSphereGameObject(ELVector3 size,ELVector3 pos,ELFloat mass,GLuint diffuseMap,GLuint normalMap, bool hasBorder, int collisionGroup, int collisionMask, ELVector3 velocity) {
+
+    ELGameObject *gameObject = new ELGameObject(world);
+    world->addNode(gameObject);
+    gameObject->transform->position = pos;
+    ELSphereGeometry *cube = new ELSphereGeometry(1, 20,20);
+    gameObject->addComponent(cube);
+    cube->material.diffuse = ELVector4Make(0.0,0.0,0.0,1.0);
+    cube->material.ambient = ELVector4Make(0.7,0.7,0.7,1.0);
+    cube->material.diffuseMap = diffuseMap;//ELTexture::texture(ELAssets::shared()->findFile("rock.png"))->value;
+    cube->material.normalMap = normalMap;//ELTexture::texture(ELAssets::shared()->findFile("rock_NRM.png"))->value;
+    cube->enableBorder = hasBorder;
+    cube->borderWidth = 0.2;
+    cube->borderColor = ELVector4Make(1,0,0,1);
+
+    ELCollisionShape *collisionShape = new ELCollisionShape();
+    collisionShape->asSphere(1);
     ELRigidBody *rigidBody = new ELRigidBody(collisionShape,mass);
     rigidBody->collisionGroup = collisionGroup;
     rigidBody->collisionMask = collisionMask;
