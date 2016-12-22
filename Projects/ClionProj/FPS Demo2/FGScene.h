@@ -21,6 +21,7 @@ private:
     ELWorld *world;
     void createScene();
 
+    void createSkySphere();
     void createBoundWall(ELVector3 offset,ELFloat width,ELFloat height,ELFloat wallHeight = 3.5);
     void createFloor();
     void createMonkey();

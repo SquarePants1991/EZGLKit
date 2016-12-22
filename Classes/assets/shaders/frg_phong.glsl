@@ -25,6 +25,10 @@ vec4 renderPass_color() {
     return finalColor;
 }
 
+vec4 renderPass_textureonly() {
+    return tex2D(diffuseMap, fragTexcoord);
+}
+
 vec4 renderPass_shadow_frog_light() {
     float shadow;
     caculateShadow(shadow);
@@ -48,6 +52,8 @@ void main()
         outColor = renderPass_border();
     } else if (onlyUseColorAttrib == 1) {
         outColor = renderPass_color();
+    } else if (isSky == 1) {
+        outColor = renderPass_textureonly();
     } else {
         outColor = renderPass_shadow_frog_light();
     }

@@ -59,7 +59,7 @@ FGWindow::FGWindow() {
     /* Make the window's context current */
     glfwMakeContextCurrent(glfwWindow);
 
-    glfwSetWindowPos(glfwWindow,500,1920 - WindowHeight);
+    glfwSetWindowPos(glfwWindow,1500,1420 - WindowHeight);
 //        glfwSetWindowPos(glfwWindow,0,0);
 
     if (!gladLoadGLLoader((GLADloadproc) glfwGetProcAddress))

@@ -85,6 +85,10 @@ void FGScene::createScene() {
     world->activedCamera->lockOn(gameObject->transform);
 }
 
+void FGScene::createSkySphere() {
+
+}
+
 // 比例关系  1 => 1m
 // 人  =>  2 => 2m
 // 墙高 =>  3.5 => 3.5m

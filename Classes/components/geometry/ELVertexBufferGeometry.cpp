@@ -36,5 +36,8 @@ ELGeometryData ELVertexBufferGeometry::generateData() {
     data.supportIndiceVBO = false;
 
     return data;
+}
 
+void ELVertexBufferGeometry::render() {
+    ELGeometry::render();
 }

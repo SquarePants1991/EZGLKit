@@ -2,6 +2,7 @@
 // Created by wangyang on 16/12/2.
 //
 
+#include <components/geometry/ELSphereGeometry.h>
 #include "FGScene.h"
 
 #define  Bit(n) (0x00000001 << n)
@@ -56,9 +57,10 @@ void FGScene::createScene() {
     defaultLight->identity = "main-light";
 //    defaultLight->enableShadow();
     world->addNode(defaultLight);
-//    createTerrain();
-    createFloor();
+    createTerrain();
+//    createFloor();
 //    createWater();
+    createSkySphere();
     createParticalGameObject(ELVector2Make(1,1),ELVector3Make(5,0,10),0,0,0);
     world->addNode(new ELProjector());
 
@@ -92,6 +94,18 @@ void FGScene::createScene() {
         createCubeGameObject(ELVector3Make(3, 3, 3), ELVector3Make(x, y, z), 2.0, diffuseMap, normalMap, true, CT_Prop,
                              CT_Floor | CT_Prop2 | CT_Prop);
     }
+}
+
+void FGScene::createSkySphere() {
+    ELGameObject *gameObject = new ELGameObject(world);
+    world->addNode(gameObject);
+    ELSkySphere *cube = new ELSkySphere(500);
+    cube->renderType = ELGeometryRenderTypeBackSide;
+    gameObject->addComponent(cube);
+    cube->material.diffuse = ELVector4Make(0.0,0.0,0.0,1.0);
+    cube->material.ambient = ELVector4Make(1.0,1.0,1.0,1.0);
+    cube->material.diffuseMap = ELTexture::texture(ELAssets::shared()->findFile("sky.png"))->value;
+//    cube->material.normalMap = ELTexture::texture(ELAssets::shared()->findFile("rock_NRM.png"))->value;
 }
 
 // 比例关系  1 => 1m
@@ -175,7 +189,7 @@ void FGScene::createCubeGameObject(ELVector3 size,ELVector3 pos,ELFloat mass,GLu
     ELGameObject *gameObject = new ELGameObject(world);
     world->addNode(gameObject);
     gameObject->transform->position = pos;
-    ELCubeGeometry *cube = new ELCubeGeometry(size);
+    ELCubeGeometry *cube = new ELCubeGeometry(size, true);
     gameObject->addComponent(cube);
     cube->material.diffuse = ELVector4Make(0.0,0.0,0.0,1.0);
     cube->material.ambient = ELVector4Make(0.7,0.7,0.7,1.0);
@@ -190,6 +204,7 @@ void FGScene::createCubeGameObject(ELVector3 size,ELVector3 pos,ELFloat mass,GLu
     ELRigidBody *rigidBody = new ELRigidBody(collisionShape,mass);
     rigidBody->collisionGroup = collisionGroup;
     rigidBody->collisionMask = collisionMask;
+    rigidBody->friction = 0.5;
     gameObject->addComponent(rigidBody);
     rigidBody->setVelocity(velocity);
 }
@@ -214,6 +229,7 @@ void FGScene::createSphereGameObject(ELVector3 size,ELVector3 pos,ELFloat mass,G
     ELRigidBody *rigidBody = new ELRigidBody(collisionShape,mass);
     rigidBody->collisionGroup = collisionGroup;
     rigidBody->collisionMask = collisionMask;
+    rigidBody->friction = 0.5;
     gameObject->addComponent(rigidBody);
     rigidBody->setVelocity(velocity);
 }
@@ -348,5 +364,7 @@ void FGScene::createTerrain() {
     ELCollisionShape *collisionShape = new ELCollisionShape();
     collisionShape->asTerrian(terrain->mapData,terrain->mapDataSize,0,70);
     ELRigidBody *rigidBody = new ELRigidBody(collisionShape,0);
+    rigidBody->collisionGroup = CT_Floor;
+    rigidBody->collisionMask = CT_Prop2 | CT_Prop | CT_Role;
     gameObject->addComponent(rigidBody);
 }

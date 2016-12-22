@@ -18,12 +18,19 @@ typedef struct {
     ELBool supportColorAttrib;
 }ELGeometryData;
 
+typedef enum {
+    ELGeometryRenderTypeDoubleSide,
+    ELGeometryRenderTypeFrontSide,
+    ELGeometryRenderTypeBackSide,
+}ELGeometryRenderType;
+
 class ELEffect;
 class ELCamera;
 
 class ELGeometry : public ELComponent {
 public:
     ELMaterial material;
+    ELGeometryRenderType renderType;
 
     bool enableBorder;
     ELVector4 borderColor;

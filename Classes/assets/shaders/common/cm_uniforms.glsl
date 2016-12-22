@@ -23,6 +23,7 @@ uniform float borderWidth;
 
 uniform int onlyUseColorAttrib;
 
+uniform int isSky;
 
 uniform int enableTerrainMix;
 

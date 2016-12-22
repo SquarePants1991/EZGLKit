@@ -1,23 +1,18 @@
 //
-// Created by wang yang on 2016/11/27.
+// Created by wangyang on 16/12/22.
 //
 
-#include <core/ELGameObject.h>
-#include "ELSphereGeometry.h"
+#include "ELSkySphere.h"
 
 
-ELSphereGeometry::ELSphereGeometry(ELFloat radius, ELFloat ring, ELFloat segments) :
+ELSkySphere::ELSkySphere(ELFloat radius) :
         radius(radius),
-        ring(ring),
-        segments(segments)
+        ring(20),
+        segments(20)
 {
 }
 
-ELSphereGeometry::ELSphereGeometry(ELFloat radius, ELFloat ring, ELFloat segments, bool smooth) : ELVertexBufferGeometry(smooth), radius(radius) {
-
-}
-
-void ELSphereGeometry::genHalfSphere(ELInt step, ELGeometryVertexBuffer *vertexBuffer) {
+void ELSkySphere::genHalfSphere(ELInt step, ELGeometryVertexBuffer *vertexBuffer) {
     // 半圆
     for (int i = 0;fabs(i) < ring;i+=step) {
         ELFloat ringHeight = radius * i / ring;
@@ -73,7 +68,6 @@ void ELSphereGeometry::genHalfSphere(ELInt step, ELGeometryVertexBuffer *vertexB
     }
 }
 
-void ELSphereGeometry::fillVertexBuffer(ELGeometryVertexBuffer *vertexBuffer) {
+void ELSkySphere::fillVertexBuffer(ELGeometryVertexBuffer *vertexBuffer) {
     genHalfSphere(1, vertexBuffer);
-    genHalfSphere(-1, vertexBuffer);
 }

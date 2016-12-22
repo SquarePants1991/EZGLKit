@@ -14,7 +14,8 @@ ELGeometry::ELGeometry() : vao(-1),
                            isGeometryDataValid(false),
                            borderWidth(0.1),
                            borderColor(ELVector4Make(1.0,1.0,1.0,1.0)),
-                           onlyUseColorAttrib(false)
+                           onlyUseColorAttrib(false),
+                           renderType(ELGeometryRenderTypeDoubleSide)
 {
     material = ELMaterialDefault;
 }
@@ -41,7 +42,6 @@ std::string ELGeometry::kind() {
 }
 
 void ELGeometry::render() {
-
     if (!ELNode::drawTransparency && isTransparency) {
         return;
     }
@@ -97,6 +97,19 @@ void ELGeometry::render() {
         ELGLState::restoreState();
     }
 
+    ELGLState::saveState();
+    switch (renderType) {
+        case ELGeometryRenderTypeFrontSide:
+            ELGLState::set(ELGLStateCullFace, GL_BACK);
+            break;
+        case ELGeometryRenderTypeBackSide:
+            ELGLState::set(ELGLStateCullFace, GL_FRONT);
+            break;
+        case ELGeometryRenderTypeDoubleSide:
+            ELGLState::set(ELGLStateCullFace, GL_NONE);
+            break;
+    }
+
     glUniform1i(program->uniform("renderBorder"), 0);
     if (data.supportIndiceVBO) {
         glDrawElements(GL_TRIANGLES, data.indiceCount, GL_UNSIGNED_INT, 0);
@@ -106,6 +119,8 @@ void ELGeometry::render() {
     glBindVertexArray(0);
 
     ELNode::render();
+
+    ELGLState::restoreState();
 }
 
 void ELGeometry::setupVao() {

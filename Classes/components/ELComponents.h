@@ -10,6 +10,7 @@
 #include "geometry/ELCubeGeometry.h"
 #include "geometry/ELMeshGeometry.h"
 #include "geometry/ELSphereGeometry.h"
+#include "geometry/ELSkySphere.h"
 
 #include "ELBoard.h"
 #include "ELParticleSystem.h"

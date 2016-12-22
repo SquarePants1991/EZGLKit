@@ -40,7 +40,6 @@ void ELNode::addNode(ELNode *node) {
 
 void ELNode::update(ELFloat timeInSecs) {
     elapsedSeconds += timeInSecs;
-    std::sort(children.begin(),children.end(),ELNodeTransparencyCompare());
     for (int i = 0; i < children.size(); ++i) {
         if (children.at(i)->objReleased) {
             delete children.at(i);

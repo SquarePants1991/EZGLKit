@@ -30,7 +30,7 @@ ELWorld::ELWorld(ELFloat aspect) {
     ELVector3 eye = {0, 1.7, 0};
     ELVector3 center = {0, 0, -10};
     ELVector3 up = {0, 1, 0};
-    ELCamera * defaultCamera = new ELCamera(eye, center, up, 70.0, aspect, 0.1, 450);
+    ELCamera * defaultCamera = new ELCamera(eye, center, up, 70.0, aspect, 0.1, 1000);
     defaultCamera->identity = "main";
     addNode(defaultCamera);
 

@@ -16,6 +16,7 @@ public:
 
     virtual ELGeometryData generateData();
     virtual void fillVertexBuffer(ELGeometryVertexBuffer *vertexBuffer) = 0;
+    virtual void render();
 protected:
     bool smooth;
     ELGeometryVertexBuffer *vertexBuffer;
