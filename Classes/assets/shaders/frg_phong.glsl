@@ -43,6 +43,7 @@ vec4 renderPass_shadow_frog_light() {
 
     highp vec4 color = surfaceColor();
     highp vec4 outputColor = (color * diffuse + color * ambient + color * specular) * shadow;
+
     return caculateColorWithFrog(outputColor);
 }
 

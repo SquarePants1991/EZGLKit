@@ -58,8 +58,8 @@ void FGScene::createScene() {
 //    defaultLight->enableShadow();
     world->addNode(defaultLight);
     createTerrain();
-//    createFloor();
-//    createWater();
+    createFloor();
+    createWater();
     createSkySphere();
     createParticalGameObject(ELVector2Make(1,1),ELVector3Make(5,0,10),0,0,0);
     world->addNode(new ELProjector());
@@ -67,8 +67,8 @@ void FGScene::createScene() {
     ELGameObject *gameObject = new ELGameObject(world);
     world->addNode(gameObject);
     gameObject->transform->position = ELVector3Make(0, 5, 0);
-    ELCubeGeometry *cube = new ELCubeGeometry(ELVector3Make(0.4,1,0.4));
-    gameObject->addComponent(cube);
+    ELCubeGeometry *cube = new ELCubeGeometry(ELVector3Make(0.1,0.1,0.1));
+//    gameObject->addComponent(cube);
     cube->material.diffuse = ELVector4Make(1.0,0.0,0.0,1.0);
 
 
@@ -127,10 +127,10 @@ void FGScene::createBoundWall(ELVector3 offset, ELFloat width,ELFloat height,ELF
 }
 
 void FGScene::createFloor() {
-    ELFloat width = 30 * 3;
-    ELFloat height = 30 * 3;
+    ELFloat width = 1000 * 3;
+    ELFloat height = 1000 * 3;
     ELFloat wallHeight = 3.5;
-    ELVector3 floorSize = ELVector3Make(width,0.5,height);
+    ELVector3 floorSize = ELVector3Make(width,-10,height);
     GLuint diffuseMap,normalMap;
     normalMap = ELTexture::texture(ELAssets::shared()->findFile("rock_NRM.png"))->value;
     diffuseMap = ELTexture::texture(ELAssets::shared()->findFile("rock.png"))->value;
@@ -334,7 +334,7 @@ void FGScene::createWater() {
     ELGameObject *gameObject = new ELGameObject(world);
     world->addNode(gameObject);
     gameObject->transform->position = ELVector3Make(0,0,0);
-    ELWaterPlane *waterPlane = new ELWaterPlane(ELVector2Make(200,200));
+    ELWaterPlane *waterPlane = new ELWaterPlane(ELVector2Make(1000,1000));
     gameObject->addComponent(waterPlane);
 
     gameObject->specificEffectName = "water";

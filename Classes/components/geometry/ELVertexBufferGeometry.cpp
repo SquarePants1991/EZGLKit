@@ -2,6 +2,7 @@
 // Created by wangyang on 16/12/21.
 //
 
+#include <core/ELEffect.h>
 #include "ELVertexBufferGeometry.h"
 
 ELVertexBufferGeometry::ELVertexBufferGeometry() {
@@ -36,8 +37,4 @@ ELGeometryData ELVertexBufferGeometry::generateData() {
     data.supportIndiceVBO = false;
 
     return data;
-}
-
-void ELVertexBufferGeometry::render() {
-    ELGeometry::render();
 }

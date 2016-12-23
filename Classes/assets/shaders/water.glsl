@@ -123,16 +123,15 @@ vec4 waterColor(
     projCoord = clamp(projCoord,0.001,0.999);
     vec4 baseColor = vec4(0.4,0.4,0.4,1.0);
 
-    vec4 reflectionColor = mix(tex2D(reflectionMap,projCoord.xy),baseColor,0.3);
+    vec4 reflectionColor = mix(tex2D(reflectionMap,projCoord.xy),baseColor,0.15);
     reflectionColor *= fresnelTerm;
 
     vec4 refractionColor = tex2D(refractionMap, projCoord.xy);
-    vec4 depthValue = vec4(0.1,0.1,0.1,1.0);
+    vec4 depthValue = vec4(0.5,0.5,0.5,1.0);
     vec4 invDepth = 1.0 - depthValue;
     refractionColor *= invertedFresnel * invDepth;
-    refractionColor += baseColor * depthValue * invertedFresnel;
-
-    return reflectionColor + refractionColor;
+//  refractionColor += baseColor * depthValue * invertedFresnel;
+    return refractionColor;//reflectionColor + refractionColor;
 }
 
 void pointLight(

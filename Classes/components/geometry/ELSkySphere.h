@@ -12,6 +12,8 @@ public:
     ELSkySphere(ELFloat radius);
 
     virtual void fillVertexBuffer(ELGeometryVertexBuffer *vertexBuffer);
+    virtual void effectDidActive(ELEffect * effect);
+    virtual void effectDidInactive(ELEffect * effect);
 private:
     ELFloat radius;
     ELFloat ring;

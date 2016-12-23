@@ -16,7 +16,9 @@ public:
 
     virtual ELGeometryData generateData();
     virtual void fillVertexBuffer(ELGeometryVertexBuffer *vertexBuffer) = 0;
-    virtual void render();
+    virtual void effectDidActive(ELEffect * effect){}
+    virtual void effectDidInactive(ELEffect * effect){}
+
 protected:
     bool smooth;
     ELGeometryVertexBuffer *vertexBuffer;

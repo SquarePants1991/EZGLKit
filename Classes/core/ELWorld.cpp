@@ -87,7 +87,7 @@ void ELWorld::renderReflectionMaps() {
             glUniform1i(activedEffect->program->uniform("enableClipPlane0"), 0);
         }
     }
-    glCullFace(GL_BACK);
+    ELGLState::set(ELGLStateCullFace, GL_BACK);
     glUniform1i(activedEffect->program->uniform("useAdditionMatrix"),0);
     glUniformMatrix4fv(activedEffect->program->uniform("additionMatrix"), 1, 0, ELMatrix4Identity.m);
 }

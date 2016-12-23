@@ -172,7 +172,7 @@ void render(ELWorld *world) {
     world->update(elapsedTime);
     g_scene->update(elapsedTime);
     ELQuaternion rotation = ELQuaternionMakeWithAngleAndAxis(elapsedTime / 5.0,1,0,0);
-    g_scene->defaultLight->position = ELQuaternionRotateVector3(rotation,  g_scene->defaultLight->position);
+   // g_scene->defaultLight->position = ELQuaternionRotateVector3(rotation,  g_scene->defaultLight->position);
 
 
     world->render();

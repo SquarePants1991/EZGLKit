@@ -3,7 +3,7 @@
 //
 
 #include "ELSkySphere.h"
-
+#include "core/ELEffect.h"
 
 ELSkySphere::ELSkySphere(ELFloat radius) :
         radius(radius),
@@ -22,6 +22,9 @@ void ELSkySphere::genHalfSphere(ELInt step, ELGeometryVertexBuffer *vertexBuffer
 
         for (int j=0;j< segments ;j++) {
             int segmentIndex = step > 0 ? j : (segments - j);
+            if (segmentIndex == segments) {
+                segmentIndex = 0;
+            }
             ELFloat radian = segmentIndex / segments * M_PI * 2;
             ELFloat radianNext = (segmentIndex + step) / segments * M_PI * 2;
 
@@ -46,9 +49,9 @@ void ELSkySphere::genHalfSphere(ELInt step, ELGeometryVertexBuffer *vertexBuffer
                         {x_r2_x0, x_r2_y0, x_r2_z0},
                         {x_r1_x0, x_r1_y0, x_r1_z0},
                         {x_r1_x1, x_r1_y1, x_r1_z1},
-                        {0.5, 1.0 - (x_r2_y0 + radius) / (radius * 2)},
-                        {radian / (M_PI * 2.0), 1.0 - (x_r1_y0 + radius) / (radius * 2)},
-                        {radianNext / (M_PI * 2.0), 1.0 - (x_r1_y1 + radius) / (radius * 2)}
+                        {0.5, 1.0 - (x_r2_y0 + radius) / (radius * 2) * 2.0},
+                        {radian / (M_PI * 2.0), 1.0 - (x_r1_y0 + radius) / (radius * 2) * 2.0},
+                        {radianNext / (M_PI * 2.0), 1.0 - (x_r1_y1 + radius) / (radius * 2) * 2.0}
                 };
                 vertexBuffer->append(triangle);
             } else {
@@ -57,10 +60,10 @@ void ELSkySphere::genHalfSphere(ELInt step, ELGeometryVertexBuffer *vertexBuffer
                         {x_r1_x0, x_r1_y0, x_r1_z0},
                         {x_r1_x1, x_r1_y1, x_r1_z1},
                         {x_r2_x1, x_r2_y1, x_r2_z1},
-                        {radian / M_PI / 2, 1.0 - (x_r2_y0 + radius) / (radius * 2)},
-                        {radian / M_PI / 2, 1.0 - (x_r1_y0 + radius) / (radius * 2)},
-                        {radianNext / M_PI / 2, 1.0 - (x_r1_y1 + radius) / (radius * 2)},
-                        {radianNext / M_PI / 2, 1.0 - (x_r2_y1 + radius) / (radius * 2)}
+                        {radian / M_PI / 2, 1.0 - (x_r2_y0 + radius) / (radius * 2) * 2.0},
+                        {radian / M_PI / 2, 1.0 - (x_r1_y0 + radius) / (radius * 2) * 2.0},
+                        {radianNext / M_PI / 2, 1.0 - (x_r1_y1 + radius) / (radius * 2) * 2.0},
+                        {radianNext / M_PI / 2, 1.0 - (x_r2_y1 + radius) / (radius * 2) * 2.0}
                 };
                 vertexBuffer->append(rect);
             }
@@ -70,4 +73,14 @@ void ELSkySphere::genHalfSphere(ELInt step, ELGeometryVertexBuffer *vertexBuffer
 
 void ELSkySphere::fillVertexBuffer(ELGeometryVertexBuffer *vertexBuffer) {
     genHalfSphere(1, vertexBuffer);
+}
+
+void ELSkySphere::effectDidActive(ELEffect * effect) {
+    glDisable(GL_CULL_FACE);
+    glUniform1i(effect->program->uniform("isSky"),1);
+}
+
+void ELSkySphere::effectDidInactive(ELEffect * effect) {
+    glUniform1i(effect->program->uniform("isSky"),0);
+    glEnable(GL_CULL_FACE);
 }

@@ -15,7 +15,7 @@ ELGeometry::ELGeometry() : vao(-1),
                            borderWidth(0.1),
                            borderColor(ELVector4Make(1.0,1.0,1.0,1.0)),
                            onlyUseColorAttrib(false),
-                           renderType(ELGeometryRenderTypeDoubleSide)
+                           renderType(ELGeometryRenderTypeFrontSide)
 {
     material = ELMaterialDefault;
 }
@@ -119,9 +119,11 @@ void ELGeometry::render() {
     glBindVertexArray(0);
 
     ELNode::render();
-
     ELGLState::restoreState();
+
+    effectDidInactive(defaultEffect);
 }
+
 
 void ELGeometry::setupVao() {
     ELEffect * defaultEffect = effect();
