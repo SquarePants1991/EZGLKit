@@ -57,9 +57,6 @@ ELCamera * ELLight::shadowMapGenCamera() {
 void ELLight::beginGenShadowMap() {
     glad_glViewport(0,0,ELConfig::shadowMapWidth,ELConfig::shadowMapHeight);
     glad_glBindFramebuffer(GL_FRAMEBUFFER, shadowFramebuffer);
-    glad_glDepthMask(GL_TRUE);
-    glad_glDepthFunc(GL_LESS);
-    glad_glEnable(GL_DEPTH_TEST);
     glad_glClear(GL_DEPTH_BUFFER_BIT);
 }
 

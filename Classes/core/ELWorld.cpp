@@ -15,8 +15,10 @@
 ELWorld::ELWorld() {
     ELGLState::setup();
     ELGLState::set(ELGLStateCullFace, GL_BACK);
+    glEnable(GL_DEPTH_TEST);
 
     ELAssets::shared()->addSearchPath("assets/shaders");
+    ELAssets::shared()->addSearchPath("assets/textures");
 
     physicsWorld = ELPhysicsWorld::shared();
     addNode(physicsWorld);
@@ -25,7 +27,9 @@ ELWorld::ELWorld() {
 ELWorld::ELWorld(ELFloat aspect) {
     ELGLState::setup();
     ELGLState::set(ELGLStateCullFace, GL_BACK);
+    glEnable(GL_DEPTH_TEST);
     ELAssets::shared()->addSearchPath("assets/shaders");
+    ELAssets::shared()->addSearchPath("assets/textures");
 
     ELVector3 eye = {0, 1.7, 0};
     ELVector3 center = {0, 0, -10};
@@ -70,7 +74,9 @@ void ELWorld::renderReflectionMaps() {
     activeEffect("render_scene");
     activedEffect->prepare();
     activeCamera("main");
+    glEnable(GL_DEPTH_TEST);
     std::vector<ELNode *> waterPlanes = findChildrenWithKind("water_plane", true);
+    ELWaterPlane::isInWaterPlanePreparePass = true;
     for (int i = 0; i < waterPlanes.size(); ++i) {
         ELWaterPlane * waterPlane = dynamic_cast<ELWaterPlane *>(waterPlanes.at(i));
         if (waterPlane != NULL) {
@@ -87,6 +93,7 @@ void ELWorld::renderReflectionMaps() {
             glUniform1i(activedEffect->program->uniform("enableClipPlane0"), 0);
         }
     }
+    ELWaterPlane::isInWaterPlanePreparePass = false;
     ELGLState::set(ELGLStateCullFace, GL_BACK);
     glUniform1i(activedEffect->program->uniform("useAdditionMatrix"),0);
     glUniformMatrix4fv(activedEffect->program->uniform("additionMatrix"), 1, 0, ELMatrix4Identity.m);
@@ -97,6 +104,7 @@ void ELWorld::renderRefractionMaps() {
     activedEffect->prepare();
     activeCamera("main");
     std::vector<ELNode *> waterPlanes = findChildrenWithKind("water_plane", true);
+    ELWaterPlane::isInWaterPlanePreparePass = true;
     for (int i = 0; i < waterPlanes.size(); ++i) {
         ELWaterPlane * waterPlane = dynamic_cast<ELWaterPlane *>(waterPlanes.at(i));
         if (waterPlane != NULL) {
@@ -109,6 +117,7 @@ void ELWorld::renderRefractionMaps() {
             glUniform1i(activedEffect->program->uniform("enableClipPlane0"), 0);
         }
     }
+    ELWaterPlane::isInWaterPlanePreparePass = false;
 }
 
 void ELWorld::renderScene() {

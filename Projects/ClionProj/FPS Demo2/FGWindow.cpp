@@ -117,16 +117,12 @@ FGWindow::FGWindow() {
     world->addNode(shadowEffect);
     world->addNode(waterEffect);
 
-    activeEffect->frogColor = ELVector4Make(1,1,1,1.0);
-    activeEffect->frogStart = 500;
-    activeEffect->frogEnd = 700;
+    activeEffect->frogColor = ELVector4Make(0.2,0.2,0.2,1.0);
+    activeEffect->frogStart = 380;
+    activeEffect->frogEnd = 500;
 
     glad_glEnable(GL_CULL_FACE);
-    glad_glDepthMask(GL_TRUE);
-    glad_glDepthFunc(GL_LESS);
     glad_glEnable(GL_DEPTH_TEST);
-    glEnable(GL_BLEND);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     mainScene = new FGScene(world);
 
@@ -141,9 +137,6 @@ void FGWindow::run() {
     while (!glfwWindowShouldClose(glfwWindow))
     {
         /* Render here */
-        glad_glClearColor(1.0, 1.0, 0.0, 1.0);
-        glad_glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
         render(world);
         /* Swap front and back buffers */
         glfwSwapBuffers(glfwWindow);

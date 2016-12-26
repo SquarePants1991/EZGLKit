@@ -9,5 +9,6 @@
 #include "core/ELCore.h"
 #include "utils/ELUtil.h"
 #include "components/ELComponents.h"
+#include "prefabs/ELPrefabs.h"
 
 #endif //EZGL_EZGL_H

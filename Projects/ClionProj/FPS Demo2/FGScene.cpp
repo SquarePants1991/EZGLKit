@@ -58,10 +58,10 @@ void FGScene::createScene() {
 //    defaultLight->enableShadow();
     world->addNode(defaultLight);
     createTerrain();
-    createFloor();
+//    createFloor();
     createWater();
     createSkySphere();
-    createParticalGameObject(ELVector2Make(1,1),ELVector3Make(5,0,10),0,0,0);
+    ELFire::createInstance(world, ELVector3Make(35,10,35));
     world->addNode(new ELProjector());
 
     ELGameObject *gameObject = new ELGameObject(world);
@@ -90,7 +90,7 @@ void FGScene::createScene() {
         srand(rand());
         float x = rand() / (float) RAND_MAX * 6 - 3;
         float z = rand() / (float) RAND_MAX * 16 - 3;
-        float y = rand() / (float) RAND_MAX * 6 - 3 + 230;
+        float y = rand() / (float) RAND_MAX * 6 - 3 + 8;
         createCubeGameObject(ELVector3Make(3, 3, 3), ELVector3Make(x, y, z), 2.0, diffuseMap, normalMap, true, CT_Prop,
                              CT_Floor | CT_Prop2 | CT_Prop);
     }
@@ -138,7 +138,7 @@ void FGScene::createFloor() {
     ELGameObject *gameObject = new ELGameObject(world);
     world->addNode(gameObject);
     gameObject->transform->position = ELVector3Make(0,0,0);
-    createCubeGameObject(ELVector3Make(500,1,500),ELVector3Make(0,-0.5,0),0,diffuseMap,normalMap,false, CT_Floor, CT_Prop2 | CT_Prop | CT_Role);
+    createCubeGameObject(ELVector3Make(500,1,500),ELVector3Make(0,100,0),0,diffuseMap,normalMap,false, CT_Floor, CT_Prop2 | CT_Prop | CT_Role);
 //
 //    ELCollisionShape *collisionShape = new ELCollisionShape();
 //    collisionShape->asBox(ELVector3Make(width/2,0.5,height/2));
@@ -191,17 +191,17 @@ void FGScene::createCubeGameObject(ELVector3 size,ELVector3 pos,ELFloat mass,GLu
     gameObject->transform->position = pos;
     ELCubeGeometry *cube = new ELCubeGeometry(size, true);
     gameObject->addComponent(cube);
-    cube->material.diffuse = ELVector4Make(0.0,0.0,0.0,1.0);
-    cube->material.ambient = ELVector4Make(0.7,0.7,0.7,1.0);
+    cube->material.diffuse = ELVector4Make(0.0, 0.0, 0.0, 1.0);
+    cube->material.ambient = ELVector4Make(0.7, 0.7, 0.7, 1.0);
     cube->material.diffuseMap = diffuseMap;//ELTexture::texture(ELAssets::shared()->findFile("rock.png"))->value;
     cube->material.normalMap = normalMap;//ELTexture::texture(ELAssets::shared()->findFile("rock_NRM.png"))->value;
     cube->enableBorder = hasBorder;
     cube->borderWidth = 0.2;
-    cube->borderColor = ELVector4Make(1,0,0,1);
+    cube->borderColor = ELVector4Make(1, 0, 0, 1);
 
     ELCollisionShape *collisionShape = new ELCollisionShape();
-    collisionShape->asBox(ELVector3Make(size.x / 2,size.y / 2,size.z / 2));
-    ELRigidBody *rigidBody = new ELRigidBody(collisionShape,mass);
+    collisionShape->asBox(ELVector3Make(size.x / 2, size.y / 2, size.z / 2));
+    ELRigidBody *rigidBody = new ELRigidBody(collisionShape, mass);
     rigidBody->collisionGroup = collisionGroup;
     rigidBody->collisionMask = collisionMask;
     rigidBody->friction = 0.5;
@@ -254,47 +254,7 @@ void FGScene::createBoardGameObject(ELVector2 size,ELVector3 pos,ELFloat mass,GL
 }
 
 void FGScene::createParticalGameObject(ELVector2 size,ELVector3 pos,ELFloat mass,GLuint diffuseMap,GLuint normalMap) {
-    diffuseMap = ELTexture::texture(ELAssets::shared()->findFile("particleTexture.png"))->value;
-    normalMap = ELTexture::texture(ELAssets::shared()->findFile("water_normal.png"))->value;
-    ELGameObject *gameObject = new ELGameObject(world);
-    world->addNode(gameObject);
-    gameObject->transform->position = pos;
-    ELParticleSystem *ps = new ELParticleSystem();
-    ps->material.diffuseMap = diffuseMap;
-    gameObject->addComponent(ps);
-    ELParticleSystemData data;
 
-
-    // Fire
-    data.maxParticleAmount = 250;
-    data.birthRate = 0.1;
-    data.force = ELVector3Make(0,0.6,0);
-    data.velocity = ELVector3Make(0.0, 1 ,0.0);
-    data.velocityRandomRangeBegin = ELVector3Make(-1.6,0,-0.6);
-    data.velocityRandomRangeEnd = ELVector3Make(0.6,1,0.6);
-    data.positionRandomRangeBegin = ELVector3Make(-0.1,0,-0.1);
-    data.positionRandomRangeEnd = ELVector3Make(0.1,0.0,0.1);
-    data.sizeBegin = 2.3;
-    data.sizeBeginRandomRangeBegin = 0;
-    data.sizeBeginRandomRangeEnd = 1.5;
-    data.sizeEnd = 0.1;
-    data.sizeEndRandomRangeBegin = 0;
-    data.sizeEndRandomRangeEnd = 0.2;
-    data.colorBegin = ELVector4Make(1.0,0.7,0.1,1.0);
-    data.colorBeginRandomRangeBegin = ELVector4Make(0.0,0,0,0.0);
-    data.colorBeginRandomRangeEnd = ELVector4Make(0.1,0.2,0,0.0);
-    data.colorEnd = ELVector4Make(1.0,0.0,0.0,1);
-    data.colorEndRandomRangeBegin = ELVector4Make(0.0,0,0,0.0);
-    data.colorEndRandomRangeEnd = ELVector4Make(0.0,0.0,0.0,0.0);
-    data.rotationBegin = 190;
-    data.rotationBeginRandomRangeBegin = 0;
-    data.rotationBeginRandomRangeEnd = 0;
-    data.rotationEnd = 90;
-    data.rotationEndRandomRangeBegin = 0;
-    data.rotationEndRandomRangeEnd = 180;
-    data.age = 0.6;
-    data.ageRandomBegin = 0;
-    data.ageRandomEnd = 1.4;
 
     //  萤火虫
 //    data.maxParticleAmount = 300;
@@ -327,7 +287,6 @@ void FGScene::createParticalGameObject(ELVector2 size,ELVector3 pos,ELFloat mass
 //    data.rotationEndRandomRangeBegin = 0;
 //    data.rotationEndRandomRangeEnd = 180;
 
-    ps->setData(data);
 }
 
 void FGScene::createWater() {

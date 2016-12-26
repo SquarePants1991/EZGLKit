@@ -1,3 +1,4 @@
+#version 330 core
 //#define Use_BumpMap
 
 #include <frg_base.glsl>

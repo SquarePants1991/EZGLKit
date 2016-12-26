@@ -17,15 +17,19 @@ file(GLOB EL_SRC
         "components/*.cpp"
         "components/geometry/*.h"
         "components/geometry/*.cpp"
+        "prefabs/*.h"
+        "prefabs/*.cpp"
 )
 
 add_library(EZGLib EZGL.h EZGL.cpp ${EL_SRC})
 
-macro(copy_files target GLOBPAT DESTINATION)
+macro(copy_files target GLOBPAT0 GLOBPAT1 DESTINATION)
     file(GLOB COPY_FILES
             RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
-            ${GLOBPAT}/*
-            ${GLOBPAT}/**/*)
+            ${GLOBPAT0}/*
+            ${GLOBPAT0}/**/*
+            ${GLOBPAT1}/*
+            ${GLOBPAT1}/**/*)
     make_directory(${DESTINATION})
     add_custom_target(${target} ALL
             COMMENT "Copying files: ${GLOBPAT}")
@@ -41,6 +45,6 @@ macro(copy_files target GLOBPAT DESTINATION)
         )
     endforeach(FILENAME)
 endmacro(copy_files)
-copy_files(CopyShaders assets/shaders ${CMAKE_BINARY_DIR})
+copy_files(CopyShaders assets/shaders assets/textures ${CMAKE_BINARY_DIR})
 
 add_dependencies(EZGLib CopyShaders)

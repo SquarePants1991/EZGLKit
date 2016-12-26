@@ -12,6 +12,8 @@
 
 class ELWaterPlane : public ELGeometry {
 public:
+    static bool isInWaterPlanePreparePass;
+
     GLuint dudvMap;
     GLuint reflectionMap;
     GLuint refractionMap;

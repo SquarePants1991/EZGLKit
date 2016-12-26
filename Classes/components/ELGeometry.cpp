@@ -97,18 +97,18 @@ void ELGeometry::render() {
         ELGLState::restoreState();
     }
 
-    ELGLState::saveState();
-    switch (renderType) {
-        case ELGeometryRenderTypeFrontSide:
-            ELGLState::set(ELGLStateCullFace, GL_BACK);
-            break;
-        case ELGeometryRenderTypeBackSide:
-            ELGLState::set(ELGLStateCullFace, GL_FRONT);
-            break;
-        case ELGeometryRenderTypeDoubleSide:
-            ELGLState::set(ELGLStateCullFace, GL_NONE);
-            break;
-    }
+//    ELGLState::saveState();
+//    switch (renderType) {
+//        case ELGeometryRenderTypeFrontSide:
+//            ELGLState::set(ELGLStateCullFace, GL_BACK);
+//            break;
+//        case ELGeometryRenderTypeBackSide:
+//            ELGLState::set(ELGLStateCullFace, GL_FRONT);
+//            break;
+//        case ELGeometryRenderTypeDoubleSide:
+//            ELGLState::set(ELGLStateCullFace, GL_NONE);
+//            break;
+//    }
 
     glUniform1i(program->uniform("renderBorder"), 0);
     if (data.supportIndiceVBO) {
@@ -119,7 +119,7 @@ void ELGeometry::render() {
     glBindVertexArray(0);
 
     ELNode::render();
-    ELGLState::restoreState();
+//    ELGLState::restoreState();
 
     effectDidInactive(defaultEffect);
 }
