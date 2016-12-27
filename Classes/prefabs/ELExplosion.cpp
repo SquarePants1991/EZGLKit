@@ -22,7 +22,7 @@ ELExplosion::ELExplosion(ELWorld *world, ELVector3 position) {
     ELParticleSystemData data = ELParticleSystemDataDefault();
 
     data.onshot = true;
-    data.delay = 3;
+    data.delay = 10;
     data.maxParticleAmount = 250;
     data.birthRate = 1;
     data.force = ELVector3Make(0,0.6,0);

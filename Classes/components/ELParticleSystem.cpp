@@ -86,10 +86,6 @@ void ELParticleSystem::update(ELFloat timeInSecs) {
                 inactiveParticals.erase(inactiveParticals.begin());
             }
         }
-        if (data.onshot) {
-            isRunning = false;
-            isActive = false;
-        }
     }
 
     // update active particals
@@ -97,7 +93,9 @@ void ELParticleSystem::update(ELFloat timeInSecs) {
         ELPartical *partical = activeParticals.at(i);
         partical->update(gameObject()->mainCamera()->position(), timeInSecs, data.force);
         if (partical->isAlive() == false) {
-            inactiveParticals.push_back(activeParticals.at(i));
+            if (data.onshot == false) {
+                inactiveParticals.push_back(activeParticals.at(i));
+            }
             activeParticals.erase(activeParticals.begin() + i);
             i--;
         }

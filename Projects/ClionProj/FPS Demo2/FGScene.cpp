@@ -61,8 +61,8 @@ void FGScene::createScene() {
 //    createFloor();
     createWater();
     createSkySphere();
-    new ELFire(world, ELVector3Make(35,10,35));
-    new ELSnow(world, ELVector3Make(0,0,0));
+//    new ELFire(world, ELVector3Make(35,10,35));
+//    new ELSnow(world, ELVector3Make(0,0,0));
     new ELExplosion(world, ELVector3Make(35,30,35));
     world->addNode(new ELProjector());
 

@@ -60,7 +60,7 @@ struct _ELParticleSystemData {
 };
 typedef _ELParticleSystemData ELParticleSystemData;
 
-ELParticleSystemData ELParticleSystemDataDefault() {
+static ELParticleSystemData ELParticleSystemDataDefault() {
     ELParticleSystemData data;
     data.delay = 0;
     data.onshot = false;
