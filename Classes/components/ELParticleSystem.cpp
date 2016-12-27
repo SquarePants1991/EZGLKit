@@ -25,7 +25,7 @@ public:
     }
 };
 
-ELParticleSystem::ELParticleSystem() : isDataInitialized(false), partical(NULL) {
+ELParticleSystem::ELParticleSystem() : isDataInitialized(false), partical(NULL), isRunning(false), isActive(true) {
     emitTimeInterval = 0.3;
     onlyUseColorAttrib = true;
     identity = "psystem";
@@ -64,6 +64,15 @@ ELGeometryData ELParticleSystem::generateData() {
 }
 
 void ELParticleSystem::update(ELFloat timeInSecs) {
+    if (isRunning == false && isActive) {
+        data.delay -= timeInSecs;
+        if (data.delay <= 0) {
+            isRunning = true;
+        }
+    }
+    if (isRunning == false) {
+        return;
+    }
 
     // emit new particals
     emitTimeInterval -= timeInSecs;
@@ -76,6 +85,10 @@ void ELParticleSystem::update(ELFloat timeInSecs) {
                 activeParticals.push_back(inactiveParticals.at(0));
                 inactiveParticals.erase(inactiveParticals.begin());
             }
+        }
+        if (data.onshot) {
+            isRunning = false;
+            isActive = false;
         }
     }
 
@@ -159,7 +172,7 @@ void ELParticleSystem::render() {
     glDisable(GL_CULL_FACE);
     glEnable(GL_BLEND);
     glDepthMask(GL_FALSE);
-    glBlendFunc(GL_ONE_MINUS_SRC_ALPHA, GL_DST_ALPHA);
+    glBlendFunc(data.blendFuncSRC, data.blendFuncDST);
     ELGeometry::render();
     glDepthMask(GL_TRUE);
     glDisable(GL_BLEND);

@@ -2,16 +2,13 @@
 #define Use_BumpMap
 
 #include <frg_base.glsl>
-#include <frg_projector.glsl>
 #include <frg_light.glsl>
 #include <frg_fog.glsl>
-#include <frg_shadow.glsl>
-#include <frg_terrain.glsl>
 
 uniform sampler2D dudvMap;
 uniform sampler2D reflectionMap;
 uniform sampler2D refractionMap;
-uniform float time;
+uniform vec4 waterBaseColor;
 
 vec4 waterColor(
                 in vec3 normalVec,
@@ -19,7 +16,7 @@ vec4 waterColor(
                 in vec3 eye
                 ) {
     float kDistortion = 0.015;
-    float kReflection = 0.02;
+    float kReflection = 0.01;
     vec4 lightTanSpace = normalize(vec4(vp,1.0));
     vec4 distOffset = tex2D(dudvMap,fragTexcoord + vec2(time / 50.0)) * kDistortion;
 
@@ -37,7 +34,7 @@ vec4 waterColor(
     projCoord = (projCoord + 1.0) / 2.0;
     projCoord += dudvColor;
     projCoord = clamp(projCoord,0.001,0.999);
-    vec4 baseColor = vec4(0.2,0.2,0.2,1.0);
+    vec4 baseColor = waterBaseColor;
 
 
     vec4 reflectionColor = mix(tex2D(reflectionMap,projCoord.xy),baseColor,0.3);
@@ -67,5 +64,5 @@ vec4 render() {
 
 void main()
 {
-    outColor = caculateColorWithFrog(render());
+    outColor = render();
 }

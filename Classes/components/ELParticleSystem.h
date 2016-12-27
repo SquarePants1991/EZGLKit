@@ -51,8 +51,21 @@ struct _ELParticleSystemData {
     ELFloat age;
     ELFloat ageRandomBegin;
     ELFloat ageRandomEnd;
+
+    ELFloat delay;
+    ELBool onshot;
+
+    GLenum blendFuncSRC;
+    GLenum blendFuncDST;
 };
 typedef _ELParticleSystemData ELParticleSystemData;
+
+ELParticleSystemData ELParticleSystemDataDefault() {
+    ELParticleSystemData data;
+    data.delay = 0;
+    data.onshot = false;
+    return data;
+}
 
 class ELParticleSystem : public ELGeometry {
 public:
@@ -70,6 +83,8 @@ public:
     virtual ELMatrix4 modelMatrix();
 
 private:
+    bool isRunning;
+    bool isActive;
     ELGeometryVertexBuffer *vertexBuffer;
     ELGeometryData currentData;
     bool isDataInitialized;

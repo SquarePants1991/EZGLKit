@@ -29,3 +29,5 @@ uniform int enableTerrainMix;
 
 uniform mat4 additionMatrix;
 uniform int useAdditionMatrix;
+
+uniform float time;

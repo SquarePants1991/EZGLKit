@@ -6,5 +6,7 @@
 #define EZGL_ELPREFABS_H
 
 #include "ELFire.h"
+#include "ELSnow.h"
+#include "ELExplosion.h"
 
 #endif //EZGL_ELPREFABS_H

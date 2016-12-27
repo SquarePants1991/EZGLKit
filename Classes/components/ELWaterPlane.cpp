@@ -10,10 +10,12 @@ bool ELWaterPlane::isInWaterPlanePreparePass = false;
 
 ELWaterPlane::ELWaterPlane() {
     createFramebuffers();
+    waterColor = ELVector4Make(1.0,1.0,0.0,1.0);
 }
 
 ELWaterPlane::ELWaterPlane(ELVector2 size) : size(size) {
     createFramebuffers();
+    waterColor = ELVector4Make(0.0,0.6,0.4,1.0);
 }
 
 ELVector4 ELWaterPlane::plane() {
@@ -44,6 +46,12 @@ void ELWaterPlane::effectDidActive(ELEffect * effect) {
     glUniform1i(effect->program->uniform("refractionMap"), 15);
     glActiveTexture(GL_TEXTURE15);
     glBindTexture(GL_TEXTURE_2D, refractionMap);
+
+    glUniform4fv(effect->program->uniform("waterBaseColor"), 1, waterColor.v);
+}
+
+void ELWaterPlane::effectDidInactive(ELEffect * effect) {
+
 }
 
 ELGeometryData ELWaterPlane::generateData() {

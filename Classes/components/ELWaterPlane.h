@@ -18,6 +18,8 @@ public:
     GLuint reflectionMap;
     GLuint refractionMap;
     ELVector2 size;
+    ELVector4 waterColor;
+
     ELWaterPlane();
     ELWaterPlane(ELVector2 size);
 
@@ -29,6 +31,7 @@ public:
     void endGenRefractionMap();
     virtual void render();
     virtual void effectDidActive(ELEffect * effect);
+    virtual void effectDidInactive(ELEffect * effect);
     virtual ELGeometryData generateData();
     virtual std::string kind();
 

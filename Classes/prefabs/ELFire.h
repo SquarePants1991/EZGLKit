@@ -5,11 +5,12 @@
 #ifndef EZGL_ELFIRE_H
 #define EZGL_ELFIRE_H
 
-#include "core/ELPrefab.h"
+#include "core/ELNode.h"
 
-class ELFire : public ELPrefab {
+class ELWorld;
+class ELFire : public ELNode {
 public:
-    static void createInstance(ELWorld *world, ELVector3 position);
+    ELFire(ELWorld *world, ELVector3 position);
 };
 
 
