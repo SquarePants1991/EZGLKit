@@ -54,7 +54,7 @@ ELVector4 row1,
 ELVector4 row3);
 
 /*
- column3's first three components should correspond to the translation values tx, ty, and tz.
+ column3's first three component should correspond to the translation values tx, ty, and tz.
  */
 EL_INLINE ELMatrix4 ELMatrix4MakeWithColumns(ELVector4 column0,
 ELVector4 column1,
@@ -115,7 +115,7 @@ EL_INLINE ELMatrix2 ELMatrix4GetMatrix2(ELMatrix4 matrix);
  */
 EL_INLINE ELVector4 ELMatrix4GetRow(ELMatrix4 matrix, int row);
 /*
- ELMatrix4GetColumn returns a vector for column 3 whose first three components will be the translation values tx, ty, and tz.
+ ELMatrix4GetColumn returns a vector for column 3 whose first three component will be the translation values tx, ty, and tz.
  Valid column values range from 0 to 3, inclusive.
  */
 EL_INLINE ELVector4 ELMatrix4GetColumn(ELMatrix4 matrix, int column);
@@ -126,7 +126,7 @@ EL_INLINE ELVector4 ELMatrix4GetColumn(ELMatrix4 matrix, int column);
  */
 EL_INLINE ELMatrix4 ELMatrix4SetRow(ELMatrix4 matrix, int row, ELVector4 vector);
 /*
- ELMatrix4SetColumn expects that the vector for column 3 will contain the translation values tx, ty, and tz as its first three components, respectively.
+ ELMatrix4SetColumn expects that the vector for column 3 will contain the translation values tx, ty, and tz as its first three component, respectively.
  Valid column values range from 0 to 3, inclusive.
  */
 EL_INLINE ELMatrix4 ELMatrix4SetColumn(ELMatrix4 matrix, int column, ELVector4 vector);

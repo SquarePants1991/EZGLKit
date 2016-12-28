@@ -13,12 +13,12 @@ file(GLOB EL_SRC
         "types/*.cpp"
         "utils/*.h"
         "utils/*.cpp"
-        "components/*.h"
-        "components/*.cpp"
-        "components/geometry/*.h"
-        "components/geometry/*.cpp"
-        "prefabs/*.h"
-        "prefabs/*.cpp"
+        "component/*.h"
+        "component/*.cpp"
+        "component/**/*.h"
+        "component/**/*.cpp"
+        "prefab/*.h"
+        "prefab/*.cpp"
 )
 
 add_library(EZGLib EZGL.h EZGL.cpp ${EL_SRC})

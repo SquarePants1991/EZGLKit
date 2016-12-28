@@ -3,10 +3,10 @@
 //
 
 #include <tiny_obj_loader.h>
-#include <components/ELGeometry.h>
+#include <component/ELGeometry.h>
 #include "core/ELTexture.h"
 #include "ELWaveFrontLoader.h"
-#include "components/geometry/ELMeshGeometry.h"
+#include "component/geometry/ELMeshGeometry.h"
 #include "ELAssets.h"
 
 std::vector<ELMeshGeometry *> ELWaveFrontLoader::loadFile(std::string filePath) {

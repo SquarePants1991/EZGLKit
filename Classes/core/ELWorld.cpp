@@ -3,45 +3,36 @@
 //
 
 #include "ELWorld.h"
-#include "EZGLBase.h"
 #include "ELLight.h"
 #include "ELGameObject.h"
-#include "components/ELWaterPlane.h"
 #include "utils/ELAssets.h"
 #include "utils/ELGLState.h"
+#include "ELRenderPass.h"
 
 #define UseDepthFramebuffer 1
 
 ELWorld::ELWorld() {
-    ELGLState::setup();
-    ELGLState::set(ELGLStateCullFace, GL_BACK);
     glEnable(GL_DEPTH_TEST);
 
+    ELGLState::setup();
+    ELGLState::set(GL_CULL_FACE_MODE, GL_BACK);
     ELAssets::shared()->addSearchPath("assets/shaders");
     ELAssets::shared()->addSearchPath("assets/textures");
+}
 
+void ELWorld::enablePhysics() {
     physicsWorld = ELPhysicsWorld::shared();
     addNode(physicsWorld);
 }
 
-ELWorld::ELWorld(ELFloat aspect) {
-    ELGLState::setup();
-    ELGLState::set(ELGLStateCullFace, GL_BACK);
-    glEnable(GL_DEPTH_TEST);
-    ELAssets::shared()->addSearchPath("assets/shaders");
-    ELAssets::shared()->addSearchPath("assets/textures");
-
+void ELWorld::enableDefaultCamera(ELFloat aspect) {
     ELVector3 eye = {0, 1.7, 0};
     ELVector3 center = {0, 0, -10};
     ELVector3 up = {0, 1, 0};
     ELCamera * defaultCamera = new ELCamera(eye, center, up, 70.0, aspect, 0.1, 1000);
-    defaultCamera->identity = "main";
+    defaultCamera->identity = "default";
     addNode(defaultCamera);
-
-    physicsWorld = ELPhysicsWorld::shared();
-    addNode(physicsWorld);
-
-    activeCamera("main");
+    activeCamera("default");
 }
 
 void ELWorld::update(ELFloat timeInSecs) {
@@ -50,74 +41,10 @@ void ELWorld::update(ELFloat timeInSecs) {
 }
 
 void ELWorld::render() {
-    renderShadowMaps();
-    renderReflectionMaps();
-    renderRefractionMaps();
+    for (std::vector<ELRenderPass *>::iterator iter = renderPasses.begin(); iter != renderPasses.end(); ++iter) {
+        (*iter)->render(this);
+    }
     renderScene();
-}
-
-void ELWorld::renderShadowMaps() {
-    for (int i = 0; i < children.size(); ++i) {
-        ELLight * light = dynamic_cast<ELLight *>(children.at(i));
-        if (light != NULL && light->isShadowEnabled) {
-            activeEffect("gen_shadow");
-            activedEffect->prepare();
-            light->beginGenShadowMap();
-            activeCamera(light->identity + "-shadow-camera", light->shadowMapGenCamera());
-            orderedRender();
-            light->endGenShadowMap();
-        }
-    }
-}
-
-void ELWorld::renderReflectionMaps() {
-    activeEffect("render_scene");
-    activedEffect->prepare();
-    activeCamera("main");
-    glEnable(GL_DEPTH_TEST);
-    std::vector<ELNode *> waterPlanes = findChildrenWithKind("water_plane", true);
-    ELWaterPlane::isInWaterPlanePreparePass = true;
-    for (int i = 0; i < waterPlanes.size(); ++i) {
-        ELWaterPlane * waterPlane = dynamic_cast<ELWaterPlane *>(waterPlanes.at(i));
-        if (waterPlane != NULL) {
-            glUniform1i(activedEffect->program->uniform("useAdditionMatrix"),1);
-            ELMatrix4 additionMatrix = ELMatrix4MakeScale(1,-1,1);
-            additionMatrix = ELMatrix4Multiply(additionMatrix,ELMatrix4MakeTranslation(0,waterPlane->gameObject()->transform->position.y,0));
-            glUniformMatrix4fv(activedEffect->program->uniform("additionMatrix"), 1, 0, additionMatrix.m);
-            ELGLState::set(ELGLStateCullFace, GL_FRONT);
-            glUniform1i(activedEffect->program->uniform("enableClipPlane0"), 1);
-            glUniform4fv(activedEffect->program->uniform("clipPlane0"), 1,waterPlane->plane().v);
-            waterPlane->beginGenReflectionMap();
-            orderedRender();
-            waterPlane->endGenReflectionMap();
-            glUniform1i(activedEffect->program->uniform("enableClipPlane0"), 0);
-        }
-    }
-    ELWaterPlane::isInWaterPlanePreparePass = false;
-    ELGLState::set(ELGLStateCullFace, GL_BACK);
-    glUniform1i(activedEffect->program->uniform("useAdditionMatrix"),0);
-    glUniformMatrix4fv(activedEffect->program->uniform("additionMatrix"), 1, 0, ELMatrix4Identity.m);
-}
-
-void ELWorld::renderRefractionMaps() {
-    activeEffect("render_scene");
-    activedEffect->prepare();
-    activeCamera("main");
-    std::vector<ELNode *> waterPlanes = findChildrenWithKind("water_plane", true);
-    ELWaterPlane::isInWaterPlanePreparePass = true;
-    for (int i = 0; i < waterPlanes.size(); ++i) {
-        ELWaterPlane * waterPlane = dynamic_cast<ELWaterPlane *>(waterPlanes.at(i));
-        if (waterPlane != NULL) {
-            glUniform1i(activedEffect->program->uniform("enableClipPlane0"), 1);
-            glUniform4fv(activedEffect->program->uniform("clipPlane0"), 1,waterPlane->inversePlane().v);
-            glUniform1i(activedEffect->program->uniform("useAdditionMatrix"),0);
-            waterPlane->beginGenRefractionMap();
-            orderedRender();
-            waterPlane->endGenRefractionMap();
-            glUniform1i(activedEffect->program->uniform("enableClipPlane0"), 0);
-        }
-    }
-    ELWaterPlane::isInWaterPlanePreparePass = false;
 }
 
 void ELWorld::renderScene() {
@@ -180,4 +107,8 @@ void ELWorld::activeCamera(std::string cameraName, ELCamera *camera) {
         addNode(camera);
         activedCamera = camera;
     }
+}
+
+void ELWorld::addRenderPass(ELRenderPass *renderPass) {
+    renderPasses.push_back(renderPass);
 }

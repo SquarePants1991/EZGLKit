@@ -79,30 +79,30 @@
 //    int x,y,n;
 //    unsigned char *data = stbi_load(filename, &x, &y, &n, 0);
 //    // ... process data if not NULL ... 
-//    // ... x = width, y = height, n = # 8-bit components per pixel ...
-//    // ... replace '0' with '1'..'4' to force that many components per pixel
+//    // ... x = width, y = height, n = # 8-bit component per pixel ...
+//    // ... replace '0' with '1'..'4' to force that many component per pixel
 //    stbi_image_free(data)
 //
 // Standard parameters:
 //    int *x       -- outputs image width in pixels
 //    int *y       -- outputs image height in pixels
-//    int *comp    -- outputs # of image components in image file
-//    int req_comp -- if non-zero, # of image components requested in result
+//    int *comp    -- outputs # of image component in image file
+//    int req_comp -- if non-zero, # of image component requested in result
 //
 // The return value from an image loader is an 'unsigned char *' which points
 // to the pixel data. The pixel data consists of *y scanlines of *x pixels,
-// with each pixel consisting of N interleaved 8-bit components; the first
+// with each pixel consisting of N interleaved 8-bit component; the first
 // pixel pointed to is top-left-most in the image. There is no padding between
 // image scanlines or between pixels, regardless of format. The number of
-// components N is 'req_comp' if req_comp is non-zero, or *comp otherwise.
-// If req_comp is non-zero, *comp has the number of components that _would_
+// component N is 'req_comp' if req_comp is non-zero, or *comp otherwise.
+// If req_comp is non-zero, *comp has the number of component that _would_
 // have been output otherwise. E.g. if you set req_comp to 4, you will always
 // get RGBA output, but you can check *comp to easily see if it's opaque.
 //
-// An output image with N components has the following components interleaved
+// An output image with N component has the following component interleaved
 // in this order in each pixel:
 //
-//     N=#comp     components
+//     N=#comp     component
 //       1           grey
 //       2           grey, alpha
 //       3           red, green, blue
@@ -219,7 +219,7 @@ extern char    *stbi_failure_reason  (void);
 // free the loaded image -- this is just free()
 extern void     stbi_image_free      (void *retval_from_stbi_load);
 
-// get image dimensions & components without fully decoding
+// get image dimensions & component without fully decoding
 extern int      stbi_info_from_memory(stbi_uc const *buffer, int len, int *x, int *y, int *comp);
 extern int      stbi_is_hdr_from_memory(stbi_uc const *buffer, int len);
 #ifndef STBI_NO_STDIO

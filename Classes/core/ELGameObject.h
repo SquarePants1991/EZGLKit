@@ -24,7 +24,7 @@ public:
     template <typename T>
     std::vector<T> getNodesFromWorld();
 
-    // for components
+    // for component
     std::vector<ELLight *> lights();
     ELCamera *mainCamera();
     ELEffect *activeEffect();

@@ -44,7 +44,7 @@ int
 	);
 
 /**
-	This function takes the RGB components of the image
+	This function takes the RGB component of the image
 	and scales each channel from [0,255] to [16,235].
 	This makes the colors "Safe" for display on NTSC
 	displays.  Note that this is _NOT_ a good idea for
@@ -58,10 +58,10 @@ int
 	);
 
 /**
-	This function takes the RGB components of the image
-	and converts them into YCoCg.  3 components will be
+	This function takes the RGB component of the image
+	and converts them into YCoCg.  3 component will be
 	re-ordered to CoYCg (for optimum DXT1 compression),
-	while 4 components will be ordered CoCgAY (for DXT5
+	while 4 component will be ordered CoCgAY (for DXT5
 	compression).
 **/
 int
@@ -72,7 +72,7 @@ int
 	);
 
 /**
-	This function takes the YCoCg components of the image
+	This function takes the YCoCg component of the image
 	and converts them into RGB.  See above.
 **/
 int

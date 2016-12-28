@@ -4,103 +4,33 @@
 
 #include "FGWindow.h"
 #include <iostream>
+#include <utils/ELGLState.h>
 #include "FGScene.h"
 
 
-ELWorld *g_world;
-FGScene *g_scene;
-GLFWwindow *g_window;
 double lastTime = 0;
 double lastFpsTime = 0;
 double frames = 0;
 float rotateUpFactor = 0;
 ELVector3 walkingFactor = ELVector3Make(0,0,0);
-const float WindowWidth = 400;
-const float WindowHeight = 300;
-ELGameObject *player;
-ELRigidBody *playerRigidBody;
+const float WindowWidth = 200;
+const float WindowHeight = 100;
 ELLight * defaultLight;
 
 bool isWalking = false;
 
 void init();
 void render(ELWorld *world);
-void resize(GLFWwindow *window ,int w,int h);
-void setupWindow(int argc,char **argv);
-void key_callback(GLFWwindow*,int,int,int,int);
-void cursor_position_callback(GLFWwindow* window, double xpos, double ypos);
-void focus_callback(GLFWwindow*,int);
-void mouse_callback(GLFWwindow*,int,int,int);
 
-FGWindow::FGWindow() {
-
-    /* Initialize the library */
-    if (!glfwInit()) {
-        printf("GLFW Init Failed!!!");
-        return;
-    }
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
-    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
-//    glfwWindowHint(GLFW_SAMPLES, 3);
-
-    /* Create a windowed mode window and its OpenGL context */
-    glfwWindow = glfwCreateWindow(WindowWidth, WindowHeight, "Hello World", NULL, NULL);
-    if (!glfwWindow)
-    {
-        printf("GLFW Window create failed!!!");
-        glfwTerminate();
-        return;
-    }
-
-    g_window = glfwWindow;
-
-    /* Make the window's context current */
-    glfwMakeContextCurrent(glfwWindow);
-
-    glfwSetWindowPos(glfwWindow,1500,1420 - WindowHeight);
-//        glfwSetWindowPos(glfwWindow,0,0);
-
-    if (!gladLoadGLLoader((GLADloadproc) glfwGetProcAddress))
-    {
-        std::cout << "Failed to initialize OpenGL context" << std::endl;
-        return;
-    }
-
-    printf("OpenGL %d.%d\n", GLVersion.major, GLVersion.minor);
-    if (GLVersion.major < 2) {
-        printf("Your system doesn't support OpenGL >= 2!\n");
-        return;
-    }
-
-    printf("OpenGL %s, GLSL %s\n", glGetString(GL_VERSION),
-           glGetString(GL_SHADING_LANGUAGE_VERSION));
-
-    glfwSwapInterval(1);
-    glfwSetWindowSizeCallback(glfwWindow,resize);
-    glfwSetKeyCallback(glfwWindow, key_callback);
-    glfwSetWindowFocusCallback(glfwWindow,focus_callback);
-    glfwSetMouseButtonCallback(glfwWindow,mouse_callback);
-
-    glfwSetCursorPosCallback(glfwWindow, cursor_position_callback);
-    glfwSetInputMode(glfwWindow, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
-
-    world = new ELWorld(WindowWidth / WindowHeight);
+FGWindow::FGWindow(GLFWwindow *glfwWindow, int width, int height) {
+    this->glfwWindow = glfwWindow;
+    world = new ELWorld();
     int fbWidth,fbHeight;
     glfwGetFramebufferSize(glfwWindow, &fbWidth, &fbHeight);
 
     world->fbWidth = fbWidth;
     world->fbHeight = fbHeight;
-
-    ELAssets::shared()->addSearchPath("/Users/ocean/Documents/Codes/On Git/EZGLKit/Projects/ClionProj/");
-    ELAssets::shared()->addSearchPath("/Users/ocean/Documents/Codes/On Git/EZGLKit/Projects/ClionProj/Shader/");
-    ELAssets::shared()->addSearchPath("/Users/ocean/Documents/Codes/On Git/EZGLKit/Projects/ClionProj/FPS Game/Textures/");
-    ELAssets::shared()->addSearchPath("/Users/ocean/Documents/Codes/On Git/EZGLKit/Projects/ClionProj/FPS Demo2/Textures/");
-    ELAssets::shared()->addSearchPath("/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/");
-    ELAssets::shared()->addSearchPath("/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/Shader/");
-    ELAssets::shared()->addSearchPath("/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/FPS Game/Textures/");
-    ELAssets::shared()->addSearchPath("/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/FPS Demo2/Textures/");
+    world->enableDefaultCamera(fbWidth / fbHeight);
 
     std::string vertexShader = ELFileUtil::stringContentOfShader(ELAssets::shared()->findFile("vtx_phong.glsl").c_str());
     std::string fragShader = ELFileUtil::stringContentOfShader(ELAssets::shared()->findFile("frg_phong.glsl").c_str());
@@ -117,19 +47,19 @@ FGWindow::FGWindow() {
     world->addNode(shadowEffect);
     world->addNode(waterEffect);
 
+    world->addRenderPass(new ELWaterPlaneRenderPass());
+    world->addRenderPass(new ELShadowMapRenderPass());
+
     activeEffect->frogColor = ELVector4Make(0.2,0.2,0.2,1.0);
     activeEffect->frogStart = 380;
     activeEffect->frogEnd = 500;
 
-    glad_glEnable(GL_CULL_FACE);
-    glad_glEnable(GL_DEPTH_TEST);
+    ELGLState::set(GL_CULL_FACE, GL_TRUE);
+    ELGLState::set(GL_DEPTH_TEST, GL_TRUE);
 
     mainScene = new FGScene(world);
 
-    g_world = world;
-    g_scene = mainScene;
-
-    g_world->activedCamera->radiansAroundLeftLimit = ELVector2Make(-45,80);
+    world->activedCamera->radiansAroundLeftLimit = ELVector2Make(-45,80);
 }
 
 void FGWindow::run() {
@@ -137,7 +67,8 @@ void FGWindow::run() {
     while (!glfwWindowShouldClose(glfwWindow))
     {
         /* Render here */
-        render(world);
+        update();
+        render();
         /* Swap front and back buffers */
         glfwSwapBuffers(glfwWindow);
 
@@ -148,100 +79,99 @@ void FGWindow::run() {
     glfwTerminate();
 }
 
-void render(ELWorld *world) {
+void FGWindow::update() {
+    static double lastTime = 0;
     double currentTimeInMs = glfwGetTime();
     double elapsedTime = currentTimeInMs - lastTime;
     lastTime = currentTimeInMs;
 
-    ELVector3 forwardDirection = g_world->activedCamera->forwardVector();
-    forwardDirection = ELVector3MultiplyScalar(forwardDirection,walkingFactor.z);
-    ELVector3 leftDirection = g_world->activedCamera->leftVector();
-    leftDirection = ELVector3MultiplyScalar(leftDirection,walkingFactor.x);
-
-    ELVector3 direction = ELVector3Add(forwardDirection, leftDirection);
-    g_scene->playerRigidBody->setVelocityX(direction.x);
-    g_scene->playerRigidBody->setVelocityZ(direction.z);
-
-    world->update(elapsedTime);
-    g_scene->update(elapsedTime);
-    ELQuaternion rotation = ELQuaternionMakeWithAngleAndAxis(elapsedTime / 5.0,1,0,0);
-   // g_scene->defaultLight->position = ELQuaternionRotateVector3(rotation,  g_scene->defaultLight->position);
-
-
-    world->render();
-
     double currentTime = glfwGetTime();
     frames++;
-    if ( currentTime - lastFpsTime >= 1.0 ){ // If last cout was more than 1 sec ago
+    if ( currentTime - lastFpsTime >= 1.0 ) { // If last cout was more than 1 sec ago
         lastFpsTime = currentTime;
         char buffer[1024];
         snprintf(buffer, 1024, "FPS: %.0f", frames);
-        glfwSetWindowTitle(g_window,buffer);
+        glfwSetWindowTitle(glfwWindow,buffer);
         frames = 0;
     }
+
+    ELVector3 forwardDirection = world->activedCamera->forwardVector();
+    forwardDirection = ELVector3MultiplyScalar(forwardDirection,walkingFactor.z);
+    ELVector3 leftDirection = world->activedCamera->leftVector();
+    leftDirection = ELVector3MultiplyScalar(leftDirection,walkingFactor.x);
+
+    ELVector3 direction = ELVector3Add(forwardDirection, leftDirection);
+    mainScene->playerRigidBody->setVelocityX(direction.x);
+    mainScene->playerRigidBody->setVelocityZ(direction.z);
+
+    ELQuaternion rotation = ELQuaternionMakeWithAngleAndAxis(elapsedTime / 5.0,1,0,0);
+
+
+    world->update(elapsedTime);
+    mainScene->update(elapsedTime);
 }
 
-void resize(GLFWwindow *window ,int w,int h) {
-    g_world->activedCamera->aspect = w / (float)h;
-
-    int fbWidth,fbHeight;
-    glfwGetFramebufferSize(window, &fbWidth, &fbHeight);
-    g_world->fbWidth = fbWidth;
-    g_world->fbHeight = fbHeight;
+void FGWindow::render() {
+    // g_scene->defaultLight->position = ELQuaternionRotateVector3(rotation,  g_scene->defaultLight->position);
+    world->render();
 }
 
-void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
-{
-    if (action == GLFW_PRESS) {
-        if (key == GLFW_KEY_W) {
-            walkingFactor.z = 14;
-        }
-        if (key == GLFW_KEY_S) {
-            walkingFactor.z = -14;
-        }
-        if (key == GLFW_KEY_A){
-            walkingFactor.x = -14;
-        }
-        if (key == GLFW_KEY_D){
-            walkingFactor.x = 14;
-        }
-        if (key == GLFW_KEY_SPACE) {
-            g_scene->playerRigidBody->setVelocityY(16);
-        }
-        if (key == GLFW_KEY_ESCAPE) {
-            exit(0);
-        }
+void FGWindow::keyPressed(int key) {
+    if (key == GLFW_KEY_W) {
+        walkingFactor.z = 14;
     }
-
-    if (action == GLFW_RELEASE) {
-        if (key == GLFW_KEY_W) {
-            walkingFactor.z = 0;
-            g_scene->playerRigidBody->setVelocityX(0);
-            g_scene->playerRigidBody->setVelocityZ(0);
-        }
-        if (key == GLFW_KEY_S) {
-            walkingFactor.z = 0;
-            g_scene->playerRigidBody->setVelocityX(0);
-            g_scene->playerRigidBody->setVelocityZ(0);
-        }
-        if (key == GLFW_KEY_A){
-            walkingFactor.x = 0;
-        }
-        if (key == GLFW_KEY_D){
-            walkingFactor.x = 0;
-        }
+    if (key == GLFW_KEY_S) {
+        walkingFactor.z = -14;
+    }
+    if (key == GLFW_KEY_A){
+        walkingFactor.x = -14;
+    }
+    if (key == GLFW_KEY_D){
+        walkingFactor.x = 14;
+    }
+    if (key == GLFW_KEY_SPACE) {
+        mainScene->playerRigidBody->setVelocityY(16);
+    }
+    if (key == GLFW_KEY_ESCAPE) {
+        exit(0);
     }
 }
 
-void focus_callback(GLFWwindow *window, int focus) {
+void FGWindow::keyReleased(int key) {
+    if (key == GLFW_KEY_W) {
+        walkingFactor.z = 0;
+        mainScene->playerRigidBody->setVelocityX(0);
+        mainScene->playerRigidBody->setVelocityZ(0);
+    }
+    if (key == GLFW_KEY_S) {
+        walkingFactor.z = 0;
+        mainScene->playerRigidBody->setVelocityX(0);
+        mainScene->playerRigidBody->setVelocityZ(0);
+    }
+    if (key == GLFW_KEY_A){
+        walkingFactor.x = 0;
+    }
+    if (key == GLFW_KEY_D){
+        walkingFactor.x = 0;
+    }
+}
+
+void FGWindow::mousePressed(int mouseButton) {
+    if (mouseButton == GLFW_MOUSE_BUTTON_LEFT) {
+        mainScene->mouseLeftButtonClicked();
+    }
+    if (mouseButton == GLFW_MOUSE_BUTTON_RIGHT) {
+        mainScene->mouseRightButtonClicked();
+    }
+}
+
+void FGWindow::mouseReleased(int mouseButton) {
 
 }
 
-static bool isInit = false;
-static double lastXPos = 0;
-static double lastYPos = 0;
 
-void cursor_position_callback(GLFWwindow* window, double xpos, double ypos) {
+void FGWindow::mouseMove(int xpos, int ypos) {
+    static bool isInit = false;
     if (isInit == false) {
         lastXPos = xpos;
         lastYPos = ypos;
@@ -249,18 +179,18 @@ void cursor_position_callback(GLFWwindow* window, double xpos, double ypos) {
     } else {
         double deltaX = xpos - lastXPos;
         double deltaY = ypos - lastYPos;
-        g_world->activedCamera->rotateLookAtAroundUp(-deltaX);
-        g_world->activedCamera->rotateLookAtAroundLeft(-deltaY);
+        world->activedCamera->rotateLookAtAroundUp(-deltaX);
+        world->activedCamera->rotateLookAtAroundLeft(-deltaY);
         lastXPos = xpos;
         lastYPos = ypos;
     }
 }
 
-void mouse_callback(GLFWwindow* window, int button, int action, int mods) {
-    if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS) {
-        g_scene->mouseLeftButtonClicked();
-    }
-    if (button == GLFW_MOUSE_BUTTON_RIGHT && action == GLFW_PRESS) {
-        g_scene->mouseRightButtonClicked();
-    }
+void FGWindow::resize(int w, int h) {
+    world->activedCamera->aspect = w / (float)h;
+
+    int fbWidth,fbHeight;
+    glfwGetFramebufferSize(glfwWindow, &fbWidth, &fbHeight);
+    world->fbWidth = fbWidth;
+    world->fbHeight = fbHeight;
 }

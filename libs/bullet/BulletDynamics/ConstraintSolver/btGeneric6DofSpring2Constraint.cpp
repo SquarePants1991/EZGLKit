@@ -304,7 +304,7 @@ void btGeneric6DofSpring2Constraint::calculateAngleInfo()
 	// to prove the result for angle[0], write the expression for angle[0] from
 	// GetInfo1 then take the derivative. to prove this for angle[2] it is
 	// easier to take the euler rate expression for d(angle[2])/dt with respect
-	// to the components of w and set that to 0.
+	// to the component of w and set that to 0.
 	switch (m_rotateOrder)
 	{
 	case RO_XYZ :

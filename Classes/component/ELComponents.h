@@ -12,6 +12,9 @@
 #include "geometry/ELSphereGeometry.h"
 #include "geometry/ELSkySphere.h"
 
+#include "renderpass/ELShadowMapRenderPass.h"
+#include "renderpass/ELWaterPlaneRenderPass.h"
+
 #include "ELBoard.h"
 #include "ELParticleSystem.h"
 #include "ELWaterPlane.h"

@@ -88,7 +88,7 @@ enum
 	SOIL_FLAG_INVERT_Y: flip the image vertically
 	SOIL_FLAG_COMPRESS_TO_DXT: if the card can display them, will convert RGB to DXT1, RGBA to DXT5
 	SOIL_FLAG_DDS_LOAD_DIRECT: will load DDS files directly without _ANY_ additional processing
-	SOIL_FLAG_NTSC_SAFE_RGB: clamps RGB components to the range [16,235]
+	SOIL_FLAG_NTSC_SAFE_RGB: clamps RGB component to the range [16,235]
 	SOIL_FLAG_CoCg_Y: Google YCoCg; RGB=>CoYCg, RGBA=>CoCgAY
 	SOIL_FLAG_TEXTURE_RECTANGE: uses ARB_texture_rectangle ; pixel indexed & no repeat or MIPmaps or cubemaps
 **/

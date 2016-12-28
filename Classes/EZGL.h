@@ -8,7 +8,7 @@
 #include "types/EZGLTypes.h"
 #include "core/ELCore.h"
 #include "utils/ELUtil.h"
-#include "components/ELComponents.h"
-#include "prefabs/ELPrefabs.h"
+#include "component/ELComponents.h"
+#include "prefab/ELPrefabs.h"
 
 #endif //EZGL_EZGL_H

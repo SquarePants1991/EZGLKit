@@ -2,7 +2,7 @@
 // Created by wangyang on 16/12/2.
 //
 
-#include <components/geometry/ELSphereGeometry.h>
+#include <component/geometry/ELSphereGeometry.h>
 #include "FGScene.h"
 
 #define  Bit(n) (0x00000001 << n)

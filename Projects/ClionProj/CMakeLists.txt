@@ -49,8 +49,5 @@ endmacro(add_exe)
 
 
 add_exe(EZGL .)
-add_exe(TestBaseWindow BaseWindow)
-add_exe(TestShader Shader)
-add_exe(FPSGame "FPS Game")
 add_exe(FPS2 "FPS Demo2")
 add_exe(LuaTest "LuaTest")

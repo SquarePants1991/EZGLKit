@@ -7,7 +7,7 @@
 #include "core/ELTexture.h"
 #include "core/ELGameObject.h"
 #include "core/ELWorld.h"
-#include "components/ELParticleSystem.h"
+#include "component/ELParticleSystem.h"
 #include "utils/ELAssets.h"
 
 ELFire::ELFire(ELWorld *world, ELVector3 position) {

@@ -12,6 +12,7 @@
 #include "ELEffect.h"
 
 class ELLight;
+class ELRenderPass;
 
 class ELWorld : public ELNode {
 public:
@@ -23,15 +24,21 @@ public:
     int fbHeight;
 public:
     ELWorld();
-    ELWorld(ELFloat aspect);
+
     virtual void update(ELFloat timeInSecs);
     virtual void render();
 
     void orderedRender();
+    void enablePhysics();
+    void enableDefaultCamera(ELFloat aspect);
     void activeEffect(std::string effectName);
     void activeCamera(std::string cameraName, ELCamera *camera = NULL);
-private:
 
+    void addRenderPass(ELRenderPass *renderPass);
+private:
+    std::vector<ELRenderPass *> renderPasses;
+
+private:
     void renderShadowMaps();
     void renderReflectionMaps();
     void renderRefractionMaps();

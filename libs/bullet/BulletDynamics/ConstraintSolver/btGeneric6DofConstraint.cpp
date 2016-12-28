@@ -367,7 +367,7 @@ void btGeneric6DofConstraint::calculateAngleInfo()
 	// to prove the result for angle[0], write the expression for angle[0] from
 	// GetInfo1 then take the derivative. to prove this for angle[2] it is
 	// easier to take the euler rate expression for d(angle[2])/dt with respect
-	// to the components of w and set that to 0.
+	// to the component of w and set that to 0.
 	btVector3 axis0 = m_calculatedTransformB.getBasis().getColumn(0);
 	btVector3 axis2 = m_calculatedTransformA.getBasis().getColumn(2);
 

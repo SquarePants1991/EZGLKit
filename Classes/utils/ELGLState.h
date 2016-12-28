@@ -7,11 +7,6 @@
 
 #include "EZGLBase.h"
 
-enum _ELGLStates {
-    ELGLStateCullFace
-};
-typedef _ELGLStates ELGLStates;
-
 typedef void(* ELGLStateSetFunc)(GLenum stateValue);
 
 class ELGLState {
@@ -21,11 +16,12 @@ public:
     static void restoreState();
 
     static void cullFace(GLenum cullFaceState);
-    static void set(ELGLStates state, GLenum stateValue);
+    static void set(GLenum state, GLenum stateValue);
 private:
-    static std::map<ELGLStates, GLenum> values;
-    static std::map<ELGLStates, GLenum> valuesSaved;
-    static std::map<ELGLStates, ELGLStateSetFunc> stateProcessFunc;
+    static std::map<GLenum, GLenum> values;
+    static std::vector<std::map<GLenum, GLenum> > valuesSaved;
+    static std::map<GLenum, ELGLStateSetFunc> stateProcessFunc;
+    static std::map<GLenum, std::string> stateProcessFuncDesc;
 };
 
 

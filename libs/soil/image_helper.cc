@@ -177,7 +177,7 @@ int
 	}
 	/*	for channels = 2 or 4, ignore the alpha component	*/
 	nc -= 1 - (channels & 1);
-	/*	OK, go through the image and scale any non-alpha components	*/
+	/*	OK, go through the image and scale any non-alpha component	*/
 	for( i = 0; i < width*height*channels; i += channels )
 	{
 		for( j = 0; j < nc; ++j )
@@ -191,10 +191,10 @@ int
 unsigned char clamp_byte( int x ) { return ( (x) < 0 ? (0) : ( (x) > 255 ? 255 : (x) ) ); }
 
 /*
-	This function takes the RGB components of the image
-	and converts them into YCoCg.  3 components will be
+	This function takes the RGB component of the image
+	and converts them into YCoCg.  3 component will be
 	re-ordered to CoYCg (for optimum DXT1 compression),
-	while 4 components will be ordered CoCgAY (for DXT5
+	while 4 component will be ordered CoCgAY (for DXT5
 	compression).
 */
 int
@@ -253,7 +253,7 @@ int
 }
 
 /*
-	This function takes the YCoCg components of the image
+	This function takes the YCoCg component of the image
 	and converts them into RGB.  See above.
 */
 int

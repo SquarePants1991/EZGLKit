@@ -20,7 +20,7 @@ subject to the following restrictions:
 
 
 //notes:
-// Another memory optimization would be to store m_1MinvJt in the remaining 3 w components
+// Another memory optimization would be to store m_1MinvJt in the remaining 3 w component
 // which makes the btJacobianEntry memory layout 16 bytes
 // if you only are interested in angular part, just feed massInvA and massInvB zero
 

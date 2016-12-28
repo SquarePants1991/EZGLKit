@@ -6,8 +6,8 @@
 #endif
 
 
-/* Version number components: V=Version, R=Revision, P=Patch
-   Version date components:   YYYY=Year, MM=Month,   DD=Day  */
+/* Version number component: V=Version, R=Revision, P=Patch
+   Version date component:   YYYY=Year, MM=Month,   DD=Day  */
 
 #if defined(__COMO__)
 # define COMPILER_ID "Comeau"
@@ -452,7 +452,7 @@ char const *info_cray = "INFO" ":" "compiler_wrapper[CrayPrgEnv]";
   ('0' + ((n)>>4  & 0xF)), \
   ('0' + ((n)     & 0xF))
 
-/* Construct a string literal encoding the version number components. */
+/* Construct a string literal encoding the version number component. */
 #ifdef COMPILER_VERSION_MAJOR
 char const info_version[] = {
   'I', 'N', 'F', 'O', ':',
@@ -470,7 +470,7 @@ char const info_version[] = {
   ']','\0'};
 #endif
 
-/* Construct a string literal encoding the version number components. */
+/* Construct a string literal encoding the version number component. */
 #ifdef SIMULATE_VERSION_MAJOR
 char const info_simulate_version[] = {
   'I', 'N', 'F', 'O', ':',

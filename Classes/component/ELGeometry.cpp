@@ -85,7 +85,7 @@ void ELGeometry::render() {
     if (enableBorder) {
         // TODO: 增加管理Cull Face状态类，使Cull Face能够restore回去，暂时禁用边缘渲染
         ELGLState::saveState();
-        ELGLState::set(ELGLStateCullFace, GL_FRONT);
+        ELGLState::set(GL_CULL_FACE_MODE, GL_FRONT);
         glUniform1i(program->uniform("renderBorder"), 1);
         glUniform1f(program->uniform("borderWidth"), borderWidth);
         glUniform4fv(program->uniform("borderColor"), 1, borderColor.v);
