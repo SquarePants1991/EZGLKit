@@ -29,6 +29,9 @@ private:
     FGScene *mainScene;
     double lastXPos;
     double lastYPos;
+    double lastFpsTime;
+    double frames;
+    ELVector3 walkingFactor;
 };
 
 

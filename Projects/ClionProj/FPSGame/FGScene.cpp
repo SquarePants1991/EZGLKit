@@ -68,7 +68,7 @@ void FGScene::createScene() {
 
     ELGameObject *gameObject = new ELGameObject(world);
     world->addNode(gameObject);
-    gameObject->transform->position = ELVector3Make(0, 5, 0);
+    gameObject->transform->position = ELVector3Make(0, 35, 0);
     ELCubeGeometry *cube = new ELCubeGeometry(ELVector3Make(0.1,0.1,0.1));
 //    gameObject->addComponent(cube);
     cube->material.diffuse = ELVector4Make(1.0,0.0,0.0,1.0);
@@ -294,7 +294,7 @@ void FGScene::createParticalGameObject(ELVector2 size,ELVector3 pos,ELFloat mass
 void FGScene::createWater() {
     ELGameObject *gameObject = new ELGameObject(world);
     world->addNode(gameObject);
-    gameObject->transform->position = ELVector3Make(0,0,0);
+    gameObject->transform->position = ELVector3Make(0,-15,0);
     ELWaterPlane *waterPlane = new ELWaterPlane(ELVector2Make(1000,1000));
     gameObject->addComponent(waterPlane);
 
@@ -311,7 +311,7 @@ void FGScene::createTerrain() {
     printf("%s",gameObject->description().c_str());
     world->addNode(gameObject);
     gameObject->transform->position = ELVector3Make(0,0,0);
-    ELTerrain *terrain = new ELTerrain(ELVector2Make(200,200),ELAssets::shared()->findFile("island6.png"),70);
+    ELTerrain *terrain = new ELTerrain(ELVector2Make(350,350),ELAssets::shared()->findFile("island5.png"),70);
     gameObject->addComponent(terrain);
     GLuint diffuseMap = ELTexture::texture(ELAssets::shared()->findFile("dirt_01.jpg"))->value;
     GLuint normalMap = ELTexture::texture(ELAssets::shared()->findFile("water_normal.png"))->value;

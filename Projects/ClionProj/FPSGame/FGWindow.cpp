@@ -7,24 +7,10 @@
 #include <utils/ELGLState.h>
 #include "FGScene.h"
 
-
-double lastTime = 0;
-double lastFpsTime = 0;
-double frames = 0;
-float rotateUpFactor = 0;
-ELVector3 walkingFactor = ELVector3Make(0,0,0);
-const float WindowWidth = 200;
-const float WindowHeight = 100;
-ELLight * defaultLight;
-
-bool isWalking = false;
-
-void init();
-void render(ELWorld *world);
-
 FGWindow::FGWindow(GLFWwindow *glfwWindow, int width, int height) {
     this->glfwWindow = glfwWindow;
     world = new ELWorld();
+    world->enablePhysics();
     int fbWidth,fbHeight;
     glfwGetFramebufferSize(glfwWindow, &fbWidth, &fbHeight);
 

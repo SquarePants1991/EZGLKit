@@ -5,9 +5,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/BaseWindow/main.cpp" "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/CMakeFiles/EZGL.dir/BaseWindow/main.cpp.o"
-  "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/FPS Demo2/FGScene.cpp" "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/CMakeFiles/EZGL.dir/FPS_Demo2/FGScene.cpp.o"
-  "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/FPS Demo2/FGWindow.cpp" "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/CMakeFiles/EZGL.dir/FPS_Demo2/FGWindow.cpp.o"
-  "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/FPS Demo2/main.cpp" "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/CMakeFiles/EZGL.dir/FPS_Demo2/main.cpp.o"
+  "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/FPSGame/FGScene.cpp" "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/CMakeFiles/EZGL.dir/FPS_Demo2/FGScene.cpp.o"
+  "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/FPSGame/FGWindow.cpp" "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/CMakeFiles/EZGL.dir/FPS_Demo2/FGWindow.cpp.o"
+  "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/FPSGame/main.cpp" "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/CMakeFiles/EZGL.dir/FPS_Demo2/main.cpp.o"
   "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/FPS Game/FGScene.cpp" "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/CMakeFiles/EZGL.dir/FPS_Game/FGScene.cpp.o"
   "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/FPS Game/FGWindow.cpp" "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/CMakeFiles/EZGL.dir/FPS_Game/FGWindow.cpp.o"
   "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/FPS Game/main.cpp" "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/CMakeFiles/EZGL.dir/FPS_Game/main.cpp.o"

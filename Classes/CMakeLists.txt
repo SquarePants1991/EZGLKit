@@ -19,6 +19,8 @@ file(GLOB EL_SRC
         "component/**/*.cpp"
         "prefab/*.h"
         "prefab/*.cpp"
+        "lua interface/*.h"
+        "lua interface/*.cpp"
 )
 
 add_library(EZGLib EZGL.h EZGL.cpp ${EL_SRC})

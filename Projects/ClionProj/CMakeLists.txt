@@ -49,5 +49,6 @@ endmacro(add_exe)
 
 
 add_exe(EZGL .)
-add_exe(FPS2 "FPS Demo2")
+add_exe(FPS "FPSGame")
+add_exe(FPS_LUA "FPSGameWithLua")
 add_exe(LuaTest "LuaTest")

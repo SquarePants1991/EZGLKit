@@ -17,7 +17,12 @@
 --
 --end
 
-function main(num)
-    pcls = create()
-    pcls.print("Hello OO")
+function init()
+    light = Light:create()
+    light.color =
+    world:addNode(light)
+end
+
+function update(timeInSecs)
+
 end
