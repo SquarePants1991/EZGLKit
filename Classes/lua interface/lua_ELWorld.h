@@ -11,14 +11,14 @@
 #include "lualib.h"
 #include "lauxlib.h"
 
-static int lua_create_table_from_world(lua_State *state, ELWorld *world);
-static ELWorld *lua_world_from_table(lua_State *state, int idx);
-static int lua_new_world(lua_State *state);
-static void lua_push_world(lua_State *state, ELWorld *world);
-static void lua_register_world(lua_State *state);
+extern int lua_create_table_from_world(lua_State *state, ELWorld *world);
+extern ELWorld *lua_world_from_table(lua_State *state, int idx);
+extern int lua_new_world(lua_State *state);
+extern void lua_push_world(lua_State *state, ELWorld *world);
+extern void lua_register_world(lua_State *state);
 
 // Instance Methods, First param will be table
-static int lua_add_node(lua_State *state);
+extern int lua_add_node(lua_State *state);
 
 
 

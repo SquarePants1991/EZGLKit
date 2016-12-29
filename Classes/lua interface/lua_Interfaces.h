@@ -9,11 +9,11 @@
 #include "lualib.h"
 #include "lauxlib.h"
 #include "lua_ELWorld.h"
-//#include "lua_ELNode.h"
+#include "lua_ELNode.h"
 
 static void lua_registerEZGL(lua_State *state) {
     lua_register_world(state);
-//    lua_register_node(state);
+    lua_register_node(state);
 }
 
 #endif //EZGL_LUA_INTERFACES_H

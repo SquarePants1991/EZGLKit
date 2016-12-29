@@ -10,15 +10,15 @@
 #include "lualib.h"
 #include "lauxlib.h"
 
-static int lua_create_table_from_node(lua_State *state, ELNode *node);
+extern int lua_create_table_from_node(lua_State *state, ELNode *node);
 
-static ELNode *lua_node_from_table(lua_State *state, int idx);
+extern ELNode *lua_node_from_table(lua_State *state, int idx);
 
-static int lua_new_node(lua_State *state);
+extern int lua_new_node(lua_State *state);
 
-static void lua_push_node(lua_State *state, ELNode *world);
+extern void lua_push_node(lua_State *state, ELNode *world);
 
-static void lua_register_node(lua_State *state);
+extern void lua_register_node(lua_State *state);
 
 
 #endif //EZGL_LUA_ELNODE_H
