@@ -111,56 +111,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named FPSDemo2
+# Target rules for targets named EZGL
 
 # Build rule for target.
-FPSDemo2: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 FPSDemo2
-.PHONY : FPSDemo2
+EZGL: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 EZGL
+.PHONY : EZGL
 
 # fast build rule for target.
-FPSDemo2/fast:
-	$(MAKE) -f CMakeFiles/FPSDemo2.dir/build.make CMakeFiles/FPSDemo2.dir/build
-.PHONY : FPSDemo2/fast
-
-#=============================================================================
-# Target rules for targets named FPSGame
-
-# Build rule for target.
-FPSGame: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 FPSGame
-.PHONY : FPSGame
-
-# fast build rule for target.
-FPSGame/fast:
-	$(MAKE) -f CMakeFiles/FPSGame.dir/build.make CMakeFiles/FPSGame.dir/build
-.PHONY : FPSGame/fast
-
-#=============================================================================
-# Target rules for targets named TestShader
-
-# Build rule for target.
-TestShader: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 TestShader
-.PHONY : TestShader
-
-# fast build rule for target.
-TestShader/fast:
-	$(MAKE) -f CMakeFiles/TestShader.dir/build.make CMakeFiles/TestShader.dir/build
-.PHONY : TestShader/fast
-
-#=============================================================================
-# Target rules for targets named TestBaseWindow
-
-# Build rule for target.
-TestBaseWindow: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 TestBaseWindow
-.PHONY : TestBaseWindow
-
-# fast build rule for target.
-TestBaseWindow/fast:
-	$(MAKE) -f CMakeFiles/TestBaseWindow.dir/build.make CMakeFiles/TestBaseWindow.dir/build
-.PHONY : TestBaseWindow/fast
+EZGL/fast:
+	$(MAKE) -f CMakeFiles/EZGL.dir/build.make CMakeFiles/EZGL.dir/build
+.PHONY : EZGL/fast
 
 #=============================================================================
 # Target rules for targets named LuaTest
@@ -176,17 +137,30 @@ LuaTest/fast:
 .PHONY : LuaTest/fast
 
 #=============================================================================
-# Target rules for targets named EZGL
+# Target rules for targets named FPS_LUA
 
 # Build rule for target.
-EZGL: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 EZGL
-.PHONY : EZGL
+FPS_LUA: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 FPS_LUA
+.PHONY : FPS_LUA
 
 # fast build rule for target.
-EZGL/fast:
-	$(MAKE) -f CMakeFiles/EZGL.dir/build.make CMakeFiles/EZGL.dir/build
-.PHONY : EZGL/fast
+FPS_LUA/fast:
+	$(MAKE) -f CMakeFiles/FPS_LUA.dir/build.make CMakeFiles/FPS_LUA.dir/build
+.PHONY : FPS_LUA/fast
+
+#=============================================================================
+# Target rules for targets named FPS
+
+# Build rule for target.
+FPS: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 FPS
+.PHONY : FPS
+
+# fast build rule for target.
+FPS/fast:
+	$(MAKE) -f CMakeFiles/FPS.dir/build.make CMakeFiles/FPS.dir/build
+.PHONY : FPS/fast
 
 #=============================================================================
 # Target rules for targets named CopyShaders
@@ -285,7 +259,6 @@ BaseWindow/main.o: BaseWindow/main.cpp.o
 
 # target to build an object file
 BaseWindow/main.cpp.o:
-	$(MAKE) -f CMakeFiles/TestBaseWindow.dir/build.make CMakeFiles/TestBaseWindow.dir/BaseWindow/main.cpp.o
 	$(MAKE) -f CMakeFiles/EZGL.dir/build.make CMakeFiles/EZGL.dir/BaseWindow/main.cpp.o
 .PHONY : BaseWindow/main.cpp.o
 
@@ -295,7 +268,6 @@ BaseWindow/main.i: BaseWindow/main.cpp.i
 
 # target to preprocess a source file
 BaseWindow/main.cpp.i:
-	$(MAKE) -f CMakeFiles/TestBaseWindow.dir/build.make CMakeFiles/TestBaseWindow.dir/BaseWindow/main.cpp.i
 	$(MAKE) -f CMakeFiles/EZGL.dir/build.make CMakeFiles/EZGL.dir/BaseWindow/main.cpp.i
 .PHONY : BaseWindow/main.cpp.i
 
@@ -305,189 +277,188 @@ BaseWindow/main.s: BaseWindow/main.cpp.s
 
 # target to generate assembly for a file
 BaseWindow/main.cpp.s:
-	$(MAKE) -f CMakeFiles/TestBaseWindow.dir/build.make CMakeFiles/TestBaseWindow.dir/BaseWindow/main.cpp.s
 	$(MAKE) -f CMakeFiles/EZGL.dir/build.make CMakeFiles/EZGL.dir/BaseWindow/main.cpp.s
 .PHONY : BaseWindow/main.cpp.s
 
-FPS_Demo2/FGScene.o: FPS_Demo2/FGScene.cpp.o
+FPSGame/FGScene.o: FPSGame/FGScene.cpp.o
 
-.PHONY : FPS_Demo2/FGScene.o
-
-# target to build an object file
-FPS_Demo2/FGScene.cpp.o:
-	$(MAKE) -f CMakeFiles/FPSDemo2.dir/build.make CMakeFiles/FPSDemo2.dir/FPS_Demo2/FGScene.cpp.o
-	$(MAKE) -f CMakeFiles/EZGL.dir/build.make CMakeFiles/EZGL.dir/FPS_Demo2/FGScene.cpp.o
-.PHONY : FPS_Demo2/FGScene.cpp.o
-
-FPS_Demo2/FGScene.i: FPS_Demo2/FGScene.cpp.i
-
-.PHONY : FPS_Demo2/FGScene.i
-
-# target to preprocess a source file
-FPS_Demo2/FGScene.cpp.i:
-	$(MAKE) -f CMakeFiles/FPSDemo2.dir/build.make CMakeFiles/FPSDemo2.dir/FPS_Demo2/FGScene.cpp.i
-	$(MAKE) -f CMakeFiles/EZGL.dir/build.make CMakeFiles/EZGL.dir/FPS_Demo2/FGScene.cpp.i
-.PHONY : FPS_Demo2/FGScene.cpp.i
-
-FPS_Demo2/FGScene.s: FPS_Demo2/FGScene.cpp.s
-
-.PHONY : FPS_Demo2/FGScene.s
-
-# target to generate assembly for a file
-FPS_Demo2/FGScene.cpp.s:
-	$(MAKE) -f CMakeFiles/FPSDemo2.dir/build.make CMakeFiles/FPSDemo2.dir/FPS_Demo2/FGScene.cpp.s
-	$(MAKE) -f CMakeFiles/EZGL.dir/build.make CMakeFiles/EZGL.dir/FPS_Demo2/FGScene.cpp.s
-.PHONY : FPS_Demo2/FGScene.cpp.s
-
-FPS_Demo2/FGWindow.o: FPS_Demo2/FGWindow.cpp.o
-
-.PHONY : FPS_Demo2/FGWindow.o
+.PHONY : FPSGame/FGScene.o
 
 # target to build an object file
-FPS_Demo2/FGWindow.cpp.o:
-	$(MAKE) -f CMakeFiles/FPSDemo2.dir/build.make CMakeFiles/FPSDemo2.dir/FPS_Demo2/FGWindow.cpp.o
-	$(MAKE) -f CMakeFiles/EZGL.dir/build.make CMakeFiles/EZGL.dir/FPS_Demo2/FGWindow.cpp.o
-.PHONY : FPS_Demo2/FGWindow.cpp.o
+FPSGame/FGScene.cpp.o:
+	$(MAKE) -f CMakeFiles/EZGL.dir/build.make CMakeFiles/EZGL.dir/FPSGame/FGScene.cpp.o
+	$(MAKE) -f CMakeFiles/FPS.dir/build.make CMakeFiles/FPS.dir/FPSGame/FGScene.cpp.o
+.PHONY : FPSGame/FGScene.cpp.o
 
-FPS_Demo2/FGWindow.i: FPS_Demo2/FGWindow.cpp.i
+FPSGame/FGScene.i: FPSGame/FGScene.cpp.i
 
-.PHONY : FPS_Demo2/FGWindow.i
+.PHONY : FPSGame/FGScene.i
 
 # target to preprocess a source file
-FPS_Demo2/FGWindow.cpp.i:
-	$(MAKE) -f CMakeFiles/FPSDemo2.dir/build.make CMakeFiles/FPSDemo2.dir/FPS_Demo2/FGWindow.cpp.i
-	$(MAKE) -f CMakeFiles/EZGL.dir/build.make CMakeFiles/EZGL.dir/FPS_Demo2/FGWindow.cpp.i
-.PHONY : FPS_Demo2/FGWindow.cpp.i
+FPSGame/FGScene.cpp.i:
+	$(MAKE) -f CMakeFiles/EZGL.dir/build.make CMakeFiles/EZGL.dir/FPSGame/FGScene.cpp.i
+	$(MAKE) -f CMakeFiles/FPS.dir/build.make CMakeFiles/FPS.dir/FPSGame/FGScene.cpp.i
+.PHONY : FPSGame/FGScene.cpp.i
 
-FPS_Demo2/FGWindow.s: FPS_Demo2/FGWindow.cpp.s
+FPSGame/FGScene.s: FPSGame/FGScene.cpp.s
 
-.PHONY : FPS_Demo2/FGWindow.s
+.PHONY : FPSGame/FGScene.s
 
 # target to generate assembly for a file
-FPS_Demo2/FGWindow.cpp.s:
-	$(MAKE) -f CMakeFiles/FPSDemo2.dir/build.make CMakeFiles/FPSDemo2.dir/FPS_Demo2/FGWindow.cpp.s
-	$(MAKE) -f CMakeFiles/EZGL.dir/build.make CMakeFiles/EZGL.dir/FPS_Demo2/FGWindow.cpp.s
-.PHONY : FPS_Demo2/FGWindow.cpp.s
+FPSGame/FGScene.cpp.s:
+	$(MAKE) -f CMakeFiles/EZGL.dir/build.make CMakeFiles/EZGL.dir/FPSGame/FGScene.cpp.s
+	$(MAKE) -f CMakeFiles/FPS.dir/build.make CMakeFiles/FPS.dir/FPSGame/FGScene.cpp.s
+.PHONY : FPSGame/FGScene.cpp.s
 
-FPS_Demo2/main.o: FPS_Demo2/main.cpp.o
+FPSGame/FGWindow.o: FPSGame/FGWindow.cpp.o
 
-.PHONY : FPS_Demo2/main.o
+.PHONY : FPSGame/FGWindow.o
 
 # target to build an object file
-FPS_Demo2/main.cpp.o:
-	$(MAKE) -f CMakeFiles/FPSDemo2.dir/build.make CMakeFiles/FPSDemo2.dir/FPS_Demo2/main.cpp.o
-	$(MAKE) -f CMakeFiles/EZGL.dir/build.make CMakeFiles/EZGL.dir/FPS_Demo2/main.cpp.o
-.PHONY : FPS_Demo2/main.cpp.o
+FPSGame/FGWindow.cpp.o:
+	$(MAKE) -f CMakeFiles/EZGL.dir/build.make CMakeFiles/EZGL.dir/FPSGame/FGWindow.cpp.o
+	$(MAKE) -f CMakeFiles/FPS.dir/build.make CMakeFiles/FPS.dir/FPSGame/FGWindow.cpp.o
+.PHONY : FPSGame/FGWindow.cpp.o
 
-FPS_Demo2/main.i: FPS_Demo2/main.cpp.i
+FPSGame/FGWindow.i: FPSGame/FGWindow.cpp.i
 
-.PHONY : FPS_Demo2/main.i
+.PHONY : FPSGame/FGWindow.i
 
 # target to preprocess a source file
-FPS_Demo2/main.cpp.i:
-	$(MAKE) -f CMakeFiles/FPSDemo2.dir/build.make CMakeFiles/FPSDemo2.dir/FPS_Demo2/main.cpp.i
-	$(MAKE) -f CMakeFiles/EZGL.dir/build.make CMakeFiles/EZGL.dir/FPS_Demo2/main.cpp.i
-.PHONY : FPS_Demo2/main.cpp.i
+FPSGame/FGWindow.cpp.i:
+	$(MAKE) -f CMakeFiles/EZGL.dir/build.make CMakeFiles/EZGL.dir/FPSGame/FGWindow.cpp.i
+	$(MAKE) -f CMakeFiles/FPS.dir/build.make CMakeFiles/FPS.dir/FPSGame/FGWindow.cpp.i
+.PHONY : FPSGame/FGWindow.cpp.i
 
-FPS_Demo2/main.s: FPS_Demo2/main.cpp.s
+FPSGame/FGWindow.s: FPSGame/FGWindow.cpp.s
 
-.PHONY : FPS_Demo2/main.s
+.PHONY : FPSGame/FGWindow.s
 
 # target to generate assembly for a file
-FPS_Demo2/main.cpp.s:
-	$(MAKE) -f CMakeFiles/FPSDemo2.dir/build.make CMakeFiles/FPSDemo2.dir/FPS_Demo2/main.cpp.s
-	$(MAKE) -f CMakeFiles/EZGL.dir/build.make CMakeFiles/EZGL.dir/FPS_Demo2/main.cpp.s
-.PHONY : FPS_Demo2/main.cpp.s
+FPSGame/FGWindow.cpp.s:
+	$(MAKE) -f CMakeFiles/EZGL.dir/build.make CMakeFiles/EZGL.dir/FPSGame/FGWindow.cpp.s
+	$(MAKE) -f CMakeFiles/FPS.dir/build.make CMakeFiles/FPS.dir/FPSGame/FGWindow.cpp.s
+.PHONY : FPSGame/FGWindow.cpp.s
 
-FPS_Game/FGScene.o: FPS_Game/FGScene.cpp.o
+FPSGame/main.o: FPSGame/main.cpp.o
 
-.PHONY : FPS_Game/FGScene.o
+.PHONY : FPSGame/main.o
 
 # target to build an object file
-FPS_Game/FGScene.cpp.o:
-	$(MAKE) -f CMakeFiles/FPSGame.dir/build.make CMakeFiles/FPSGame.dir/FPS_Game/FGScene.cpp.o
-	$(MAKE) -f CMakeFiles/EZGL.dir/build.make CMakeFiles/EZGL.dir/FPS_Game/FGScene.cpp.o
-.PHONY : FPS_Game/FGScene.cpp.o
+FPSGame/main.cpp.o:
+	$(MAKE) -f CMakeFiles/EZGL.dir/build.make CMakeFiles/EZGL.dir/FPSGame/main.cpp.o
+	$(MAKE) -f CMakeFiles/FPS.dir/build.make CMakeFiles/FPS.dir/FPSGame/main.cpp.o
+.PHONY : FPSGame/main.cpp.o
 
-FPS_Game/FGScene.i: FPS_Game/FGScene.cpp.i
+FPSGame/main.i: FPSGame/main.cpp.i
 
-.PHONY : FPS_Game/FGScene.i
+.PHONY : FPSGame/main.i
 
 # target to preprocess a source file
-FPS_Game/FGScene.cpp.i:
-	$(MAKE) -f CMakeFiles/FPSGame.dir/build.make CMakeFiles/FPSGame.dir/FPS_Game/FGScene.cpp.i
-	$(MAKE) -f CMakeFiles/EZGL.dir/build.make CMakeFiles/EZGL.dir/FPS_Game/FGScene.cpp.i
-.PHONY : FPS_Game/FGScene.cpp.i
+FPSGame/main.cpp.i:
+	$(MAKE) -f CMakeFiles/EZGL.dir/build.make CMakeFiles/EZGL.dir/FPSGame/main.cpp.i
+	$(MAKE) -f CMakeFiles/FPS.dir/build.make CMakeFiles/FPS.dir/FPSGame/main.cpp.i
+.PHONY : FPSGame/main.cpp.i
 
-FPS_Game/FGScene.s: FPS_Game/FGScene.cpp.s
+FPSGame/main.s: FPSGame/main.cpp.s
 
-.PHONY : FPS_Game/FGScene.s
+.PHONY : FPSGame/main.s
 
 # target to generate assembly for a file
-FPS_Game/FGScene.cpp.s:
-	$(MAKE) -f CMakeFiles/FPSGame.dir/build.make CMakeFiles/FPSGame.dir/FPS_Game/FGScene.cpp.s
-	$(MAKE) -f CMakeFiles/EZGL.dir/build.make CMakeFiles/EZGL.dir/FPS_Game/FGScene.cpp.s
-.PHONY : FPS_Game/FGScene.cpp.s
+FPSGame/main.cpp.s:
+	$(MAKE) -f CMakeFiles/EZGL.dir/build.make CMakeFiles/EZGL.dir/FPSGame/main.cpp.s
+	$(MAKE) -f CMakeFiles/FPS.dir/build.make CMakeFiles/FPS.dir/FPSGame/main.cpp.s
+.PHONY : FPSGame/main.cpp.s
 
-FPS_Game/FGWindow.o: FPS_Game/FGWindow.cpp.o
+FPSGameWithLua/FGScene.o: FPSGameWithLua/FGScene.cpp.o
 
-.PHONY : FPS_Game/FGWindow.o
+.PHONY : FPSGameWithLua/FGScene.o
 
 # target to build an object file
-FPS_Game/FGWindow.cpp.o:
-	$(MAKE) -f CMakeFiles/FPSGame.dir/build.make CMakeFiles/FPSGame.dir/FPS_Game/FGWindow.cpp.o
-	$(MAKE) -f CMakeFiles/EZGL.dir/build.make CMakeFiles/EZGL.dir/FPS_Game/FGWindow.cpp.o
-.PHONY : FPS_Game/FGWindow.cpp.o
+FPSGameWithLua/FGScene.cpp.o:
+	$(MAKE) -f CMakeFiles/EZGL.dir/build.make CMakeFiles/EZGL.dir/FPSGameWithLua/FGScene.cpp.o
+	$(MAKE) -f CMakeFiles/FPS_LUA.dir/build.make CMakeFiles/FPS_LUA.dir/FPSGameWithLua/FGScene.cpp.o
+.PHONY : FPSGameWithLua/FGScene.cpp.o
 
-FPS_Game/FGWindow.i: FPS_Game/FGWindow.cpp.i
+FPSGameWithLua/FGScene.i: FPSGameWithLua/FGScene.cpp.i
 
-.PHONY : FPS_Game/FGWindow.i
+.PHONY : FPSGameWithLua/FGScene.i
 
 # target to preprocess a source file
-FPS_Game/FGWindow.cpp.i:
-	$(MAKE) -f CMakeFiles/FPSGame.dir/build.make CMakeFiles/FPSGame.dir/FPS_Game/FGWindow.cpp.i
-	$(MAKE) -f CMakeFiles/EZGL.dir/build.make CMakeFiles/EZGL.dir/FPS_Game/FGWindow.cpp.i
-.PHONY : FPS_Game/FGWindow.cpp.i
+FPSGameWithLua/FGScene.cpp.i:
+	$(MAKE) -f CMakeFiles/EZGL.dir/build.make CMakeFiles/EZGL.dir/FPSGameWithLua/FGScene.cpp.i
+	$(MAKE) -f CMakeFiles/FPS_LUA.dir/build.make CMakeFiles/FPS_LUA.dir/FPSGameWithLua/FGScene.cpp.i
+.PHONY : FPSGameWithLua/FGScene.cpp.i
 
-FPS_Game/FGWindow.s: FPS_Game/FGWindow.cpp.s
+FPSGameWithLua/FGScene.s: FPSGameWithLua/FGScene.cpp.s
 
-.PHONY : FPS_Game/FGWindow.s
+.PHONY : FPSGameWithLua/FGScene.s
 
 # target to generate assembly for a file
-FPS_Game/FGWindow.cpp.s:
-	$(MAKE) -f CMakeFiles/FPSGame.dir/build.make CMakeFiles/FPSGame.dir/FPS_Game/FGWindow.cpp.s
-	$(MAKE) -f CMakeFiles/EZGL.dir/build.make CMakeFiles/EZGL.dir/FPS_Game/FGWindow.cpp.s
-.PHONY : FPS_Game/FGWindow.cpp.s
+FPSGameWithLua/FGScene.cpp.s:
+	$(MAKE) -f CMakeFiles/EZGL.dir/build.make CMakeFiles/EZGL.dir/FPSGameWithLua/FGScene.cpp.s
+	$(MAKE) -f CMakeFiles/FPS_LUA.dir/build.make CMakeFiles/FPS_LUA.dir/FPSGameWithLua/FGScene.cpp.s
+.PHONY : FPSGameWithLua/FGScene.cpp.s
 
-FPS_Game/main.o: FPS_Game/main.cpp.o
+FPSGameWithLua/FGWindow.o: FPSGameWithLua/FGWindow.cpp.o
 
-.PHONY : FPS_Game/main.o
+.PHONY : FPSGameWithLua/FGWindow.o
 
 # target to build an object file
-FPS_Game/main.cpp.o:
-	$(MAKE) -f CMakeFiles/FPSGame.dir/build.make CMakeFiles/FPSGame.dir/FPS_Game/main.cpp.o
-	$(MAKE) -f CMakeFiles/EZGL.dir/build.make CMakeFiles/EZGL.dir/FPS_Game/main.cpp.o
-.PHONY : FPS_Game/main.cpp.o
+FPSGameWithLua/FGWindow.cpp.o:
+	$(MAKE) -f CMakeFiles/EZGL.dir/build.make CMakeFiles/EZGL.dir/FPSGameWithLua/FGWindow.cpp.o
+	$(MAKE) -f CMakeFiles/FPS_LUA.dir/build.make CMakeFiles/FPS_LUA.dir/FPSGameWithLua/FGWindow.cpp.o
+.PHONY : FPSGameWithLua/FGWindow.cpp.o
 
-FPS_Game/main.i: FPS_Game/main.cpp.i
+FPSGameWithLua/FGWindow.i: FPSGameWithLua/FGWindow.cpp.i
 
-.PHONY : FPS_Game/main.i
+.PHONY : FPSGameWithLua/FGWindow.i
 
 # target to preprocess a source file
-FPS_Game/main.cpp.i:
-	$(MAKE) -f CMakeFiles/FPSGame.dir/build.make CMakeFiles/FPSGame.dir/FPS_Game/main.cpp.i
-	$(MAKE) -f CMakeFiles/EZGL.dir/build.make CMakeFiles/EZGL.dir/FPS_Game/main.cpp.i
-.PHONY : FPS_Game/main.cpp.i
+FPSGameWithLua/FGWindow.cpp.i:
+	$(MAKE) -f CMakeFiles/EZGL.dir/build.make CMakeFiles/EZGL.dir/FPSGameWithLua/FGWindow.cpp.i
+	$(MAKE) -f CMakeFiles/FPS_LUA.dir/build.make CMakeFiles/FPS_LUA.dir/FPSGameWithLua/FGWindow.cpp.i
+.PHONY : FPSGameWithLua/FGWindow.cpp.i
 
-FPS_Game/main.s: FPS_Game/main.cpp.s
+FPSGameWithLua/FGWindow.s: FPSGameWithLua/FGWindow.cpp.s
 
-.PHONY : FPS_Game/main.s
+.PHONY : FPSGameWithLua/FGWindow.s
 
 # target to generate assembly for a file
-FPS_Game/main.cpp.s:
-	$(MAKE) -f CMakeFiles/FPSGame.dir/build.make CMakeFiles/FPSGame.dir/FPS_Game/main.cpp.s
-	$(MAKE) -f CMakeFiles/EZGL.dir/build.make CMakeFiles/EZGL.dir/FPS_Game/main.cpp.s
-.PHONY : FPS_Game/main.cpp.s
+FPSGameWithLua/FGWindow.cpp.s:
+	$(MAKE) -f CMakeFiles/EZGL.dir/build.make CMakeFiles/EZGL.dir/FPSGameWithLua/FGWindow.cpp.s
+	$(MAKE) -f CMakeFiles/FPS_LUA.dir/build.make CMakeFiles/FPS_LUA.dir/FPSGameWithLua/FGWindow.cpp.s
+.PHONY : FPSGameWithLua/FGWindow.cpp.s
+
+FPSGameWithLua/main.o: FPSGameWithLua/main.cpp.o
+
+.PHONY : FPSGameWithLua/main.o
+
+# target to build an object file
+FPSGameWithLua/main.cpp.o:
+	$(MAKE) -f CMakeFiles/EZGL.dir/build.make CMakeFiles/EZGL.dir/FPSGameWithLua/main.cpp.o
+	$(MAKE) -f CMakeFiles/FPS_LUA.dir/build.make CMakeFiles/FPS_LUA.dir/FPSGameWithLua/main.cpp.o
+.PHONY : FPSGameWithLua/main.cpp.o
+
+FPSGameWithLua/main.i: FPSGameWithLua/main.cpp.i
+
+.PHONY : FPSGameWithLua/main.i
+
+# target to preprocess a source file
+FPSGameWithLua/main.cpp.i:
+	$(MAKE) -f CMakeFiles/EZGL.dir/build.make CMakeFiles/EZGL.dir/FPSGameWithLua/main.cpp.i
+	$(MAKE) -f CMakeFiles/FPS_LUA.dir/build.make CMakeFiles/FPS_LUA.dir/FPSGameWithLua/main.cpp.i
+.PHONY : FPSGameWithLua/main.cpp.i
+
+FPSGameWithLua/main.s: FPSGameWithLua/main.cpp.s
+
+.PHONY : FPSGameWithLua/main.s
+
+# target to generate assembly for a file
+FPSGameWithLua/main.cpp.s:
+	$(MAKE) -f CMakeFiles/EZGL.dir/build.make CMakeFiles/EZGL.dir/FPSGameWithLua/main.cpp.s
+	$(MAKE) -f CMakeFiles/FPS_LUA.dir/build.make CMakeFiles/FPS_LUA.dir/FPSGameWithLua/main.cpp.s
+.PHONY : FPSGameWithLua/main.cpp.s
 
 LuaTest/main.o: LuaTest/main.cpp.o
 
@@ -495,8 +466,8 @@ LuaTest/main.o: LuaTest/main.cpp.o
 
 # target to build an object file
 LuaTest/main.cpp.o:
-	$(MAKE) -f CMakeFiles/LuaTest.dir/build.make CMakeFiles/LuaTest.dir/LuaTest/main.cpp.o
 	$(MAKE) -f CMakeFiles/EZGL.dir/build.make CMakeFiles/EZGL.dir/LuaTest/main.cpp.o
+	$(MAKE) -f CMakeFiles/LuaTest.dir/build.make CMakeFiles/LuaTest.dir/LuaTest/main.cpp.o
 .PHONY : LuaTest/main.cpp.o
 
 LuaTest/main.i: LuaTest/main.cpp.i
@@ -505,8 +476,8 @@ LuaTest/main.i: LuaTest/main.cpp.i
 
 # target to preprocess a source file
 LuaTest/main.cpp.i:
-	$(MAKE) -f CMakeFiles/LuaTest.dir/build.make CMakeFiles/LuaTest.dir/LuaTest/main.cpp.i
 	$(MAKE) -f CMakeFiles/EZGL.dir/build.make CMakeFiles/EZGL.dir/LuaTest/main.cpp.i
+	$(MAKE) -f CMakeFiles/LuaTest.dir/build.make CMakeFiles/LuaTest.dir/LuaTest/main.cpp.i
 .PHONY : LuaTest/main.cpp.i
 
 LuaTest/main.s: LuaTest/main.cpp.s
@@ -515,8 +486,8 @@ LuaTest/main.s: LuaTest/main.cpp.s
 
 # target to generate assembly for a file
 LuaTest/main.cpp.s:
-	$(MAKE) -f CMakeFiles/LuaTest.dir/build.make CMakeFiles/LuaTest.dir/LuaTest/main.cpp.s
 	$(MAKE) -f CMakeFiles/EZGL.dir/build.make CMakeFiles/EZGL.dir/LuaTest/main.cpp.s
+	$(MAKE) -f CMakeFiles/LuaTest.dir/build.make CMakeFiles/LuaTest.dir/LuaTest/main.cpp.s
 .PHONY : LuaTest/main.cpp.s
 
 Shader/main.o: Shader/main.cpp.o
@@ -525,7 +496,6 @@ Shader/main.o: Shader/main.cpp.o
 
 # target to build an object file
 Shader/main.cpp.o:
-	$(MAKE) -f CMakeFiles/TestShader.dir/build.make CMakeFiles/TestShader.dir/Shader/main.cpp.o
 	$(MAKE) -f CMakeFiles/EZGL.dir/build.make CMakeFiles/EZGL.dir/Shader/main.cpp.o
 .PHONY : Shader/main.cpp.o
 
@@ -535,7 +505,6 @@ Shader/main.i: Shader/main.cpp.i
 
 # target to preprocess a source file
 Shader/main.cpp.i:
-	$(MAKE) -f CMakeFiles/TestShader.dir/build.make CMakeFiles/TestShader.dir/Shader/main.cpp.i
 	$(MAKE) -f CMakeFiles/EZGL.dir/build.make CMakeFiles/EZGL.dir/Shader/main.cpp.i
 .PHONY : Shader/main.cpp.i
 
@@ -545,7 +514,6 @@ Shader/main.s: Shader/main.cpp.s
 
 # target to generate assembly for a file
 Shader/main.cpp.s:
-	$(MAKE) -f CMakeFiles/TestShader.dir/build.make CMakeFiles/TestShader.dir/Shader/main.cpp.s
 	$(MAKE) -f CMakeFiles/EZGL.dir/build.make CMakeFiles/EZGL.dir/Shader/main.cpp.s
 .PHONY : Shader/main.cpp.s
 
@@ -583,13 +551,11 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
-	@echo "... rebuild_cache"
-	@echo "... FPSDemo2"
-	@echo "... FPSGame"
-	@echo "... TestShader"
-	@echo "... TestBaseWindow"
-	@echo "... LuaTest"
 	@echo "... EZGL"
+	@echo "... LuaTest"
+	@echo "... rebuild_cache"
+	@echo "... FPS_LUA"
+	@echo "... FPS"
 	@echo "... CopyShaders"
 	@echo "... EZGLib"
 	@echo "... glad"
@@ -600,24 +566,24 @@ help:
 	@echo "... BaseWindow/main.o"
 	@echo "... BaseWindow/main.i"
 	@echo "... BaseWindow/main.s"
-	@echo "... FPS_Demo2/FGScene.o"
-	@echo "... FPS_Demo2/FGScene.i"
-	@echo "... FPS_Demo2/FGScene.s"
-	@echo "... FPS_Demo2/FGWindow.o"
-	@echo "... FPS_Demo2/FGWindow.i"
-	@echo "... FPS_Demo2/FGWindow.s"
-	@echo "... FPS_Demo2/main.o"
-	@echo "... FPS_Demo2/main.i"
-	@echo "... FPS_Demo2/main.s"
-	@echo "... FPS_Game/FGScene.o"
-	@echo "... FPS_Game/FGScene.i"
-	@echo "... FPS_Game/FGScene.s"
-	@echo "... FPS_Game/FGWindow.o"
-	@echo "... FPS_Game/FGWindow.i"
-	@echo "... FPS_Game/FGWindow.s"
-	@echo "... FPS_Game/main.o"
-	@echo "... FPS_Game/main.i"
-	@echo "... FPS_Game/main.s"
+	@echo "... FPSGame/FGScene.o"
+	@echo "... FPSGame/FGScene.i"
+	@echo "... FPSGame/FGScene.s"
+	@echo "... FPSGame/FGWindow.o"
+	@echo "... FPSGame/FGWindow.i"
+	@echo "... FPSGame/FGWindow.s"
+	@echo "... FPSGame/main.o"
+	@echo "... FPSGame/main.i"
+	@echo "... FPSGame/main.s"
+	@echo "... FPSGameWithLua/FGScene.o"
+	@echo "... FPSGameWithLua/FGScene.i"
+	@echo "... FPSGameWithLua/FGScene.s"
+	@echo "... FPSGameWithLua/FGWindow.o"
+	@echo "... FPSGameWithLua/FGWindow.i"
+	@echo "... FPSGameWithLua/FGWindow.s"
+	@echo "... FPSGameWithLua/main.o"
+	@echo "... FPSGameWithLua/main.i"
+	@echo "... FPSGameWithLua/main.s"
 	@echo "... LuaTest/main.o"
 	@echo "... LuaTest/main.i"
 	@echo "... LuaTest/main.s"

@@ -21,14 +21,14 @@ ELSnow::ELSnow(ELWorld *world, ELVector3 position) {
     gameObject->addComponent(ps);
     ELParticleSystemData data = ELParticleSystemDataDefault();
 
-    data.maxParticleAmount = 650;
-    data.birthRate = 0.04;
-    data.force = ELVector3Make(4,-4.5,0);
-    data.velocity = ELVector3Make(0.0, -6 ,0.0);
+    data.maxParticleAmount = 1000;
+    data.birthRate = 0.01;
+    data.force = ELVector3Make(4,-6.5,0);
+    data.velocity = ELVector3Make(0.0, -10 ,0.0);
     data.velocityRandomRangeBegin = ELVector3Make(-0.6,0,-0.6);
     data.velocityRandomRangeEnd = ELVector3Make(0.6,-3,0.6);
-    data.positionRandomRangeBegin = ELVector3Make(-200,100,-200);
-    data.positionRandomRangeEnd = ELVector3Make(200,80,200);
+    data.positionRandomRangeBegin = ELVector3Make(-200,200,-200);
+    data.positionRandomRangeEnd = ELVector3Make(200,280,200);
     data.sizeBegin = 1.0;
     data.sizeBeginRandomRangeBegin = 0;
     data.sizeBeginRandomRangeEnd = 2;
@@ -47,7 +47,7 @@ ELSnow::ELSnow(ELWorld *world, ELVector3 position) {
     data.rotationEnd = 0;
     data.rotationEndRandomRangeBegin = 0;
     data.rotationEndRandomRangeEnd = 0;
-    data.age = 4;
+    data.age = 6;
     data.ageRandomBegin = 0;
     data.ageRandomEnd = 1.4;
 

@@ -25,7 +25,13 @@ void caculateLights(vec3 normal,vec3 eyeVec, out vec4 out_ambient, out vec4 out_
     for (int i=0; i< lightNum; i++) {
         // 计算表面点到光源的向量
         light defaultLight = lights[i];
-        highp vec3 vp = normalize(defaultLight.position - modelMatrixPosition);
+        highp vec3 vp;
+        if (defaultLight.type == LightType_Point) {
+            vp = normalize(defaultLight.position - modelMatrixPosition);
+        } else if (defaultLight.type == LightType_Direction) {
+            vp = normalize(defaultLight.position);
+        }
+
     #ifdef Use_BumpMap
         vp = normalize(tbnMatrix * vp);
     #endif

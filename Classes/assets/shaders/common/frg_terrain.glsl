@@ -17,5 +17,7 @@ vec4 terrainColor() {
     percent2 = percent2 > 1.0 ? 1.0 : percent2;
     percent2 = percent2 < 0.0 ? 0.0 : percent2;
 
-    return vec4((color1 * percent1 + color2 * (1 - percent1)).rgb,1.0);
+    vec4 finalColor = vec4((color1 * percent1 + color2 * (1 - percent1)).rgb,1.0);
+    finalColor = vec4((finalColor * percent1 + vec4(1.0,1.0,1.0,1.0) * (1 - percent1) * 0.8).rgb, 1.0);
+    return finalColor;
 }

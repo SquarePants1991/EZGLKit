@@ -58,12 +58,12 @@ void FGScene::createScene() {
 //    defaultLight->enableShadow();
     world->addNode(defaultLight);
     createTerrain();
-//    createFloor();
+    createFloor();
     createWater();
     createSkySphere();
-//    new ELFire(world, ELVector3Make(35,10,35));
-//    new ELSnow(world, ELVector3Make(0,0,0));
-    new ELExplosion(world, ELVector3Make(35,30,35));
+    new ELFire(world, ELVector3Make(35,10,35));
+    new ELSnow(world, ELVector3Make(0,0,0));
+    new ELExplosion(world, ELVector3Make(0,10,0));
     world->addNode(new ELProjector());
 
     ELGameObject *gameObject = new ELGameObject(world);
@@ -129,8 +129,8 @@ void FGScene::createBoundWall(ELVector3 offset, ELFloat width,ELFloat height,ELF
 }
 
 void FGScene::createFloor() {
-    ELFloat width = 1000 * 3;
-    ELFloat height = 1000 * 3;
+    ELFloat width = 1000 * 6;
+    ELFloat height = 1000 * 6;
     ELFloat wallHeight = 3.5;
     ELVector3 floorSize = ELVector3Make(width,-10,height);
     GLuint diffuseMap,normalMap;
@@ -140,7 +140,7 @@ void FGScene::createFloor() {
     ELGameObject *gameObject = new ELGameObject(world);
     world->addNode(gameObject);
     gameObject->transform->position = ELVector3Make(0,0,0);
-    createCubeGameObject(ELVector3Make(500,1,500),ELVector3Make(0,100,0),0,diffuseMap,normalMap,false, CT_Floor, CT_Prop2 | CT_Prop | CT_Role);
+    createCubeGameObject(ELVector3Make(width,1,height),ELVector3Make(0,-25,0),0,diffuseMap,normalMap,false, CT_Floor, CT_Prop2 | CT_Prop | CT_Role);
 //
 //    ELCollisionShape *collisionShape = new ELCollisionShape();
 //    collisionShape->asBox(ELVector3Make(width/2,0.5,height/2));
@@ -294,8 +294,8 @@ void FGScene::createParticalGameObject(ELVector2 size,ELVector3 pos,ELFloat mass
 void FGScene::createWater() {
     ELGameObject *gameObject = new ELGameObject(world);
     world->addNode(gameObject);
-    gameObject->transform->position = ELVector3Make(0,-15,0);
-    ELWaterPlane *waterPlane = new ELWaterPlane(ELVector2Make(1000,1000));
+    gameObject->transform->position = ELVector3Make(0,0,0);
+    ELWaterPlane *waterPlane = new ELWaterPlane(ELVector2Make(1200,1200));
     gameObject->addComponent(waterPlane);
 
     gameObject->specificEffectName = "water";
@@ -311,7 +311,7 @@ void FGScene::createTerrain() {
     printf("%s",gameObject->description().c_str());
     world->addNode(gameObject);
     gameObject->transform->position = ELVector3Make(0,0,0);
-    ELTerrain *terrain = new ELTerrain(ELVector2Make(350,350),ELAssets::shared()->findFile("island5.png"),70);
+    ELTerrain *terrain = new ELTerrain(ELVector2Make(250,250),ELAssets::shared()->findFile("island4.jpg"),50);
     gameObject->addComponent(terrain);
     GLuint diffuseMap = ELTexture::texture(ELAssets::shared()->findFile("dirt_01.jpg"))->value;
     GLuint normalMap = ELTexture::texture(ELAssets::shared()->findFile("water_normal.png"))->value;
@@ -323,7 +323,7 @@ void FGScene::createTerrain() {
     gameObject->transform->position = ELVector3Make(0,0,0);
     terrain->genMap();
     ELCollisionShape *collisionShape = new ELCollisionShape();
-    collisionShape->asTerrian(terrain->mapData,terrain->mapDataSize,0,70);
+    collisionShape->asTerrian(terrain->mapData,terrain->mapDataSize,0,50);
     ELRigidBody *rigidBody = new ELRigidBody(collisionShape,0);
     rigidBody->collisionGroup = CT_Floor;
     rigidBody->collisionMask = CT_Prop2 | CT_Prop | CT_Role;

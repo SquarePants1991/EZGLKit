@@ -17,134 +17,144 @@ core/ELCore.h
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/ELCore.h
 utils/ELUtil.h
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/utils/ELUtil.h
-components/ELComponents.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELComponents.h
+component/ELComponents.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/ELComponents.h
+prefab/ELPrefabs.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/prefab/ELPrefabs.h
 
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELBoard.cpp
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/ELBoard.cpp
 ELBoard.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELBoard.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/ELBoard.h
 core/ELGameObject.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/core/ELGameObject.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/core/ELGameObject.h
 
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELBoard.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/ELBoard.h
 ELGeometry.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELGeometry.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/ELGeometry.h
 utils/ELGeometryVertexBuffer.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/utils/ELGeometryVertexBuffer.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/utils/ELGeometryVertexBuffer.h
 
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELCollisionShape.cpp
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/ELCollisionShape.cpp
 ELCollisionShape.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELCollisionShape.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/ELCollisionShape.h
 BulletCollision/CollisionShapes/btHeightfieldTerrainShape.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/BulletCollision/CollisionShapes/btHeightfieldTerrainShape.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/BulletCollision/CollisionShapes/btHeightfieldTerrainShape.h
 
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELCollisionShape.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/ELCollisionShape.h
 types/EZGLTypes.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/types/EZGLTypes.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/types/EZGLTypes.h
 btBulletCollisionCommon.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/btBulletCollisionCommon.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/btBulletCollisionCommon.h
 btBulletDynamicsCommon.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/btBulletDynamicsCommon.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/btBulletDynamicsCommon.h
 
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELComponents.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/ELComponents.h
 ELGeometry.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELGeometry.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/ELGeometry.h
 geometry/ELPlaneGeometry.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/geometry/ELPlaneGeometry.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/geometry/ELPlaneGeometry.h
 geometry/ELCubeGeometry.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/geometry/ELCubeGeometry.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/geometry/ELCubeGeometry.h
 geometry/ELMeshGeometry.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/geometry/ELMeshGeometry.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/geometry/ELMeshGeometry.h
+geometry/ELSphereGeometry.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/geometry/ELSphereGeometry.h
+geometry/ELSkySphere.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/geometry/ELSkySphere.h
+renderpass/ELShadowMapRenderPass.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/renderpass/ELShadowMapRenderPass.h
+renderpass/ELWaterPlaneRenderPass.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/renderpass/ELWaterPlaneRenderPass.h
 ELBoard.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELBoard.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/ELBoard.h
 ELParticleSystem.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELParticleSystem.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/ELParticleSystem.h
 ELWaterPlane.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELWaterPlane.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/ELWaterPlane.h
 ELTerrain.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELTerrain.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/ELTerrain.h
 ELRigidBody.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELRigidBody.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/ELRigidBody.h
 ELCollisionShape.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELCollisionShape.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/ELCollisionShape.h
 
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELGeometry.cpp
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/ELGeometry.cpp
 core/ELCamera.h
--
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/core/ELCamera.h
 ELGeometry.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELGeometry.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/ELGeometry.h
 core/ELEffect.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/core/ELEffect.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/core/ELEffect.h
 core/ELGameObject.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/core/ELGameObject.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/core/ELGameObject.h
 utils/ELGLState.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/utils/ELGLState.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/utils/ELGLState.h
 
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELGeometry.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/ELGeometry.h
 core/ELComponent.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/core/ELComponent.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/core/ELComponent.h
 types/ELGeometryTypes.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/types/ELGeometryTypes.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/types/ELGeometryTypes.h
 
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELPartical.cpp
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/ELPartical.cpp
 ELPartical.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELPartical.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/ELPartical.h
 types/ELGeometryTypes.h
 -
 
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELPartical.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/ELPartical.h
 EZGLBase.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/EZGLBase.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/EZGLBase.h
 types/EZGLTypes.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/types/EZGLTypes.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/types/EZGLTypes.h
 
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELParticleSystem.cpp
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/ELParticleSystem.cpp
 types/ELGeometryTypes.h
 -
 ELParticleSystem.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELParticleSystem.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/ELParticleSystem.h
 ELPartical.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELPartical.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/ELPartical.h
 core/ELGameObject.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/core/ELGameObject.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/core/ELGameObject.h
 ELGeometry.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELGeometry.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/ELGeometry.h
 functional
 -
 stdlib.h
 -
 
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELParticleSystem.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/ELParticleSystem.h
 EZGLBase.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/EZGLBase.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/EZGLBase.h
 ELGeometry.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELGeometry.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/ELGeometry.h
 utils/ELGeometryVertexBuffer.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/utils/ELGeometryVertexBuffer.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/utils/ELGeometryVertexBuffer.h
 ELPartical.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELPartical.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/ELPartical.h
 
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELRigidBody.cpp
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/ELRigidBody.cpp
 ELRigidBody.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELRigidBody.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/ELRigidBody.h
 ELCollisionShape.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELCollisionShape.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/ELCollisionShape.h
 core/ELGameObject.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/core/ELGameObject.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/core/ELGameObject.h
 core/ELPhysicsWorld.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/core/ELPhysicsWorld.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/core/ELPhysicsWorld.h
 
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELRigidBody.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/ELRigidBody.h
 types/EZGLTypes.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/types/EZGLTypes.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/types/EZGLTypes.h
 core/ELComponent.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/core/ELComponent.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/core/ELComponent.h
 btBulletCollisionCommon.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/btBulletCollisionCommon.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/btBulletCollisionCommon.h
 btBulletDynamicsCommon.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/btBulletDynamicsCommon.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/btBulletDynamicsCommon.h
 
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELTerrain.cpp
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/ELTerrain.cpp
 stdlib.h
 -
 SOIL.h
@@ -152,67 +162,129 @@ SOIL.h
 core/ELEffect.h
 -
 core/ELGameObject.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/core/ELGameObject.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/core/ELGameObject.h
 ELTerrain.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELTerrain.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/ELTerrain.h
 utils/ELGeometryVertexBuffer.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/utils/ELGeometryVertexBuffer.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/utils/ELGeometryVertexBuffer.h
 
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELTerrain.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/ELTerrain.h
 ELGeometry.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELGeometry.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/ELGeometry.h
 
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELWaterPlane.cpp
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/ELWaterPlane.cpp
 ELWaterPlane.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELWaterPlane.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/ELWaterPlane.h
 core/ELConfig.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/core/ELConfig.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/core/ELConfig.h
 core/ELGameObject.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/core/ELGameObject.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/core/ELGameObject.h
 
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELWaterPlane.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/ELWaterPlane.h
 EZGLBase.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/EZGLBase.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/EZGLBase.h
 ELGeometry.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELGeometry.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/ELGeometry.h
 core/ELCamera.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/core/ELCamera.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/core/ELCamera.h
 utils/ELGeometryVertexBuffer.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/utils/ELGeometryVertexBuffer.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/utils/ELGeometryVertexBuffer.h
 
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/geometry/ELCubeGeometry.cpp
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/geometry/ELCubeGeometry.cpp
 core/ELGameObject.h
 -
 ELCubeGeometry.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/geometry/ELCubeGeometry.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/geometry/ELCubeGeometry.h
 
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/geometry/ELCubeGeometry.h
-../ELGeometry.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELGeometry.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/geometry/ELCubeGeometry.h
+ELVertexBufferGeometry.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/geometry/ELVertexBufferGeometry.h
 utils/ELGeometryVertexBuffer.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/geometry/utils/ELGeometryVertexBuffer.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/geometry/utils/ELGeometryVertexBuffer.h
 
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/geometry/ELMeshGeometry.cpp
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/geometry/ELMeshGeometry.cpp
 core/ELGameObject.h
 -
 ELMeshGeometry.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/geometry/ELMeshGeometry.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/geometry/ELMeshGeometry.h
 
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/geometry/ELMeshGeometry.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/geometry/ELMeshGeometry.h
 ../ELGeometry.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELGeometry.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/ELGeometry.h
 utils/ELGeometryVertexBuffer.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/geometry/utils/ELGeometryVertexBuffer.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/geometry/utils/ELGeometryVertexBuffer.h
 
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/geometry/ELPlaneGeometry.cpp
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/geometry/ELPlaneGeometry.cpp
 ELPlaneGeometry.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/geometry/ELPlaneGeometry.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/geometry/ELPlaneGeometry.h
 
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/geometry/ELPlaneGeometry.h
-../ELGeometry.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/ELGeometry.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/geometry/ELPlaneGeometry.h
+ELVertexBufferGeometry.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/geometry/ELVertexBufferGeometry.h
 utils/ELGeometryVertexBuffer.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/components/geometry/utils/ELGeometryVertexBuffer.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/geometry/utils/ELGeometryVertexBuffer.h
+
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/geometry/ELSkySphere.cpp
+ELSkySphere.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/geometry/ELSkySphere.h
+core/ELEffect.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/geometry/core/ELEffect.h
+
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/geometry/ELSkySphere.h
+ELVertexBufferGeometry.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/geometry/ELVertexBufferGeometry.h
+
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/geometry/ELSphereGeometry.cpp
+core/ELGameObject.h
+-
+ELSphereGeometry.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/geometry/ELSphereGeometry.h
+
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/geometry/ELSphereGeometry.h
+ELVertexBufferGeometry.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/geometry/ELVertexBufferGeometry.h
+utils/ELGeometryVertexBuffer.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/geometry/utils/ELGeometryVertexBuffer.h
+
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/geometry/ELVertexBufferGeometry.cpp
+core/ELEffect.h
+-
+ELVertexBufferGeometry.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/geometry/ELVertexBufferGeometry.h
+
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/geometry/ELVertexBufferGeometry.h
+component/ELGeometry.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/geometry/component/ELGeometry.h
+utils/ELGeometryVertexBuffer.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/geometry/utils/ELGeometryVertexBuffer.h
+
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/renderpass/ELShadowMapRenderPass.cpp
+ELShadowMapRenderPass.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/renderpass/ELShadowMapRenderPass.h
+core/ELWorld.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/renderpass/core/ELWorld.h
+core/ELLight.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/renderpass/core/ELLight.h
+
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/renderpass/ELShadowMapRenderPass.h
+core/ELRenderPass.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/renderpass/core/ELRenderPass.h
+
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/renderpass/ELWaterPlaneRenderPass.cpp
+ELWaterPlaneRenderPass.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/renderpass/ELWaterPlaneRenderPass.h
+component/ELWaterPlane.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/renderpass/component/ELWaterPlane.h
+utils/ELGLState.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/renderpass/utils/ELGLState.h
+core/ELWorld.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/renderpass/core/ELWorld.h
+core/ELGameObject.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/renderpass/core/ELGameObject.h
+
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/renderpass/ELWaterPlaneRenderPass.h
+core/ELRenderPass.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/renderpass/core/ELRenderPass.h
 
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/ELCamera.cpp
 ELCamera.h
@@ -350,6 +422,16 @@ btBulletDynamicsCommon.h
 ELNode.h
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/ELNode.h
 
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/ELPrefab.cpp
+ELPrefab.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/ELPrefab.h
+
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/ELPrefab.h
+EZGLBase.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/EZGLBase.h
+core/ELWorld.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/core/ELWorld.h
+
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/ELProgram.cpp
 ELProgram.h
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/ELProgram.h
@@ -374,6 +456,14 @@ ELTexture.h
 ELNode.h
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/ELNode.h
 
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/ELRenderPass.cpp
+ELRenderPass.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/ELRenderPass.h
+ELWorld.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/ELWorld.h
+
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/ELRenderPass.h
+
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/ELTexture.cpp
 ELTexture.h
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/ELTexture.h
@@ -391,18 +481,16 @@ EZGLBase.h
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/ELWorld.cpp
 ELWorld.h
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/ELWorld.h
-EZGLBase.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/EZGLBase.h
 ELLight.h
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/ELLight.h
 ELGameObject.h
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/ELGameObject.h
-components/ELWaterPlane.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/components/ELWaterPlane.h
 utils/ELAssets.h
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/utils/ELAssets.h
 utils/ELGLState.h
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/utils/ELGLState.h
+ELRenderPass.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/ELRenderPass.h
 
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/ELWorld.h
 ELNode.h
@@ -415,6 +503,96 @@ ELPhysicsWorld.h
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/ELPhysicsWorld.h
 ELEffect.h
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/core/ELEffect.h
+
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/lua interface/lua_ELNode.cpp
+lua_ELNode.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/lua interface/lua_ELNode.h
+
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/lua interface/lua_ELNode.h
+core/ELNode.h
+-
+lua.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/lua interface/lua.h
+lualib.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/lua interface/lualib.h
+lauxlib.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/lua interface/lauxlib.h
+
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/lua interface/lua_ELWorld.cpp
+lua_ELWorld.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/lua interface/lua_ELWorld.h
+
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/lua interface/lua_ELWorld.h
+core/ELWorld.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/lua interface/core/ELWorld.h
+lua.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/lua interface/lua.h
+lualib.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/lua interface/lualib.h
+lauxlib.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/lua interface/lauxlib.h
+
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/prefab/ELExplosion.cpp
+ELExplosion.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/prefab/ELExplosion.h
+core/ELTexture.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/prefab/core/ELTexture.h
+core/ELGameObject.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/prefab/core/ELGameObject.h
+core/ELWorld.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/prefab/core/ELWorld.h
+component/ELParticleSystem.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/prefab/component/ELParticleSystem.h
+utils/ELAssets.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/prefab/utils/ELAssets.h
+
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/prefab/ELExplosion.h
+core/ELNode.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/prefab/core/ELNode.h
+
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/prefab/ELFire.cpp
+ELFire.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/prefab/ELFire.h
+core/ELTexture.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/prefab/core/ELTexture.h
+core/ELGameObject.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/prefab/core/ELGameObject.h
+core/ELWorld.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/prefab/core/ELWorld.h
+component/ELParticleSystem.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/prefab/component/ELParticleSystem.h
+utils/ELAssets.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/prefab/utils/ELAssets.h
+
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/prefab/ELFire.h
+core/ELNode.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/prefab/core/ELNode.h
+
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/prefab/ELPrefabs.h
+ELFire.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/prefab/ELFire.h
+ELSnow.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/prefab/ELSnow.h
+ELExplosion.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/prefab/ELExplosion.h
+
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/prefab/ELSnow.cpp
+ELSnow.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/prefab/ELSnow.h
+core/ELTexture.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/prefab/core/ELTexture.h
+core/ELGameObject.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/prefab/core/ELGameObject.h
+core/ELWorld.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/prefab/core/ELWorld.h
+component/ELParticleSystem.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/prefab/component/ELParticleSystem.h
+utils/ELAssets.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/prefab/utils/ELAssets.h
+
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/prefab/ELSnow.h
+core/ELNode.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/prefab/core/ELNode.h
 
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/types/ELGeometryTypes.h
 EZGLBasicTypes.h
@@ -573,24 +751,26 @@ ELAssets.h
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/utils/ELAssets.h
 ELWaveFrontLoader.h
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/utils/ELWaveFrontLoader.h
+ELGLState.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/utils/ELGLState.h
 
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/utils/ELWaveFrontLoader.cpp
 tiny_obj_loader.h
 -
-components/ELGeometry.h
+component/ELGeometry.h
 -
 core/ELTexture.h
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/utils/core/ELTexture.h
 ELWaveFrontLoader.h
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/utils/ELWaveFrontLoader.h
-components/geometry/ELMeshGeometry.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/utils/components/geometry/ELMeshGeometry.h
+component/geometry/ELMeshGeometry.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/utils/component/geometry/ELMeshGeometry.h
 ELAssets.h
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/utils/ELAssets.h
 
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/utils/ELWaveFrontLoader.h
-components/ELGeometry.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/utils/components/ELGeometry.h
+component/ELGeometry.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/utils/component/ELGeometry.h
 tiny_obj_loader.h
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/utils/tiny_obj_loader.h
 ELGeometryVertexBuffer.h
@@ -612,27 +792,43 @@ glad/glad.h
 GLFW/glfw3.h
 -
 
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/../../Classes/components/ELGeometry.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/../../Classes/component/ELGeometry.h
 core/ELComponent.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/../../Classes/components/core/ELComponent.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/../../Classes/component/core/ELComponent.h
 types/ELGeometryTypes.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/../../Classes/components/types/ELGeometryTypes.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/../../Classes/component/types/ELGeometryTypes.h
 
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/../../Classes/components/ELWaterPlane.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/../../Classes/component/ELPartical.h
 EZGLBase.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/../../Classes/components/EZGLBase.h
-ELGeometry.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/../../Classes/components/ELGeometry.h
-core/ELCamera.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/../../Classes/components/core/ELCamera.h
-utils/ELGeometryVertexBuffer.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/../../Classes/components/utils/ELGeometryVertexBuffer.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/../../Classes/component/EZGLBase.h
+types/EZGLTypes.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/../../Classes/component/types/EZGLTypes.h
 
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/../../Classes/components/geometry/ELMeshGeometry.h
-../ELGeometry.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/../../Classes/components/ELGeometry.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/../../Classes/component/ELParticleSystem.h
+EZGLBase.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/../../Classes/component/EZGLBase.h
+ELGeometry.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/../../Classes/component/ELGeometry.h
 utils/ELGeometryVertexBuffer.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/../../Classes/components/geometry/utils/ELGeometryVertexBuffer.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/../../Classes/component/utils/ELGeometryVertexBuffer.h
+ELPartical.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/../../Classes/component/ELPartical.h
+
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/../../Classes/component/ELWaterPlane.h
+EZGLBase.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/../../Classes/component/EZGLBase.h
+ELGeometry.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/../../Classes/component/ELGeometry.h
+core/ELCamera.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/../../Classes/component/core/ELCamera.h
+utils/ELGeometryVertexBuffer.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/../../Classes/component/utils/ELGeometryVertexBuffer.h
+
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/../../Classes/component/geometry/ELMeshGeometry.h
+../ELGeometry.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/../../Classes/component/ELGeometry.h
+utils/ELGeometryVertexBuffer.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/../../Classes/component/geometry/utils/ELGeometryVertexBuffer.h
 
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/../../Classes/core/ELCamera.h
 types/EZGLTypes.h
@@ -695,6 +891,8 @@ ELNode.h
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/../../Classes/core/ELProgram.h
 EZGLBase.h
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/../../Classes/core/EZGLBase.h
+
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/../../Classes/core/ELRenderPass.h
 
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/../../Classes/core/ELTexture.h
 string
@@ -1711,6 +1909,36 @@ stdint.h
 -
 inttypes.h
 -
+
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/../../libs/lua/lauxlib.h
+stddef.h
+-
+stdio.h
+-
+lua.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/../../libs/lua/lua.h
+
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/../../libs/lua/lua.h
+stdarg.h
+-
+stddef.h
+-
+luaconf.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/../../libs/lua/luaconf.h
+
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/../../libs/lua/luaconf.h
+limits.h
+-
+stddef.h
+-
+stdint.h
+-
+assert.h
+-
+
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/../../libs/lua/lualib.h
+lua.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/../../libs/lua/lua.h
 
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/../../libs/soil/SOIL.h
 

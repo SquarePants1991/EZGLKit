@@ -3,6 +3,7 @@ Copying /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/assets/shaders
 Copying /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/assets/shaders/frg_phong.glsl
 Copying /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/assets/shaders/frg_shadowmap.glsl
 Copying /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/assets/shaders/vtx_phong.glsl
+Copying /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/assets/shaders/water.glsl
 Copying /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/assets/shaders/common/cm_depth_pack.glsl
 Copying /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/assets/shaders/common/cm_uniforms.glsl
 Copying /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/assets/shaders/common/defines.glsl
@@ -20,6 +21,8 @@ Copying /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/assets/shaders
 Copying /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/assets/shaders/common/vtx_in_out.glsl
 Copying /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/assets/shaders/common/vtx_simple_pass.glsl
 Copying /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/assets/shaders/common/vtx_uniforms.glsl
+Copying /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/assets/textures/particle_fire.png
+Copying /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/assets/textures/particle_point.png
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug

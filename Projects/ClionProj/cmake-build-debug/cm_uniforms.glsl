@@ -23,8 +23,11 @@ uniform float borderWidth;
 
 uniform int onlyUseColorAttrib;
 
+uniform int isSky;
 
 uniform int enableTerrainMix;
 
 uniform mat4 additionMatrix;
 uniform int useAdditionMatrix;
+
+uniform float time;

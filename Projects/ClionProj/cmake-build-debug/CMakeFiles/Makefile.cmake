@@ -63,12 +63,10 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/FPSDemo2.dir/DependInfo.cmake"
-  "CMakeFiles/FPSGame.dir/DependInfo.cmake"
-  "CMakeFiles/TestShader.dir/DependInfo.cmake"
-  "CMakeFiles/TestBaseWindow.dir/DependInfo.cmake"
-  "CMakeFiles/LuaTest.dir/DependInfo.cmake"
   "CMakeFiles/EZGL.dir/DependInfo.cmake"
+  "CMakeFiles/LuaTest.dir/DependInfo.cmake"
+  "CMakeFiles/FPS_LUA.dir/DependInfo.cmake"
+  "CMakeFiles/FPS.dir/DependInfo.cmake"
   "EZGLib/CMakeFiles/CopyShaders.dir/DependInfo.cmake"
   "EZGLib/CMakeFiles/EZGLib.dir/DependInfo.cmake"
   "glad/CMakeFiles/glad.dir/DependInfo.cmake"
