@@ -6,10 +6,10 @@
 #include <stdio.h>
 #include <iostream>
 
-#define WindowWidth 800
-#define WindowHeight 600
-#define WindowPosX 100
-#define WindowPosY 0//1920 - WindowHeight
+#define WindowWidth 200
+#define WindowHeight 100
+#define WindowPosX 0
+#define WindowPosY 1920 - WindowHeight
 
 FGWindow *fgWindow;
 

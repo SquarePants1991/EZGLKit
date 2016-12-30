@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION 2.8)
+set(CMAKE_MACOSX_RPATH 1)
 
 include_directories(${PROJECT_SOURCE_DIR}/../../libs/glad/include)
 include_directories(${PROJECT_SOURCE_DIR}/../../libs/soil)
@@ -23,7 +24,7 @@ file(GLOB EL_SRC
         "lua interface/*.cpp"
 )
 
-add_library(EZGLib EZGL.h EZGL.cpp ${EL_SRC})
+add_library(EZGLib EZGL.h EZGL.cpp EZGLBase.h ${EL_SRC})
 
 macro(copy_files target GLOBPAT0 GLOBPAT1 DESTINATION)
     file(GLOB COPY_FILES
