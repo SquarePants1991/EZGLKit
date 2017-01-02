@@ -31,6 +31,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/Applications/CLion.app/Contents/bin/cmake/share/cmake-3.6/Modules/ProcessorCount.cmake"
   "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/CMakeLists.txt"
   "../CMakeLists.txt"
+  "../FindFBX.cmake"
   "CMakeFiles/3.6.2/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.6.2/CMakeSystem.cmake"
   "/Users/wangyang/Documents/Projects/On Git/EZGLKit/libs/bullet/CMakeLists.txt"

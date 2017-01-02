@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION 2.8)
+
 project(EZGL CXX)
 set(CMAKE_MACOSX_RPATH 1)
 
@@ -14,6 +15,11 @@ add_definitions(${OpenGL_DEFINITIONS})
 if(NOT OPENGL_FOUND)
     message(ERROR " OPENGL not found!")
 endif(NOT OPENGL_FOUND)
+
+#########################################################
+# FIND FBX SDK
+#########################################################
+include(FindFBX.cmake)
 
 include_directories(/usr/local/)
 include_directories(/usr/local/include/)

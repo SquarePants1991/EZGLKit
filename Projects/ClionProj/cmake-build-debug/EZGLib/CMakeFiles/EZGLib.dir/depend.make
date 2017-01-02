@@ -49,6 +49,7 @@ EZGLib/CMakeFiles/EZGLib.dir/EZGL.cpp.o: /Users/wangyang/Documents/Projects/On\ 
 EZGLib/CMakeFiles/EZGLib.dir/EZGL.cpp.o: /Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Classes/types/EZGLTypes.h
 EZGLib/CMakeFiles/EZGLib.dir/EZGL.cpp.o: /Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Classes/types/EZGLVectorTypes.h
 EZGLib/CMakeFiles/EZGLib.dir/EZGL.cpp.o: /Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Classes/utils/ELAssets.h
+EZGLib/CMakeFiles/EZGLib.dir/EZGL.cpp.o: /Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Classes/utils/ELDAELoader.h
 EZGLib/CMakeFiles/EZGLib.dir/EZGL.cpp.o: /Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Classes/utils/ELFileUtil.h
 EZGLib/CMakeFiles/EZGLib.dir/EZGL.cpp.o: /Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Classes/utils/ELGLState.h
 EZGLib/CMakeFiles/EZGLib.dir/EZGL.cpp.o: /Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Classes/utils/ELGeometryVertexBuffer.h
@@ -1334,6 +1335,9 @@ EZGLib/CMakeFiles/EZGLib.dir/prefab/ELSnow.cpp.o: /usr/local/include/GLFW/glfw3.
 
 EZGLib/CMakeFiles/EZGLib.dir/utils/ELAssets.cpp.o: /Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Classes/utils/ELAssets.cpp
 EZGLib/CMakeFiles/EZGLib.dir/utils/ELAssets.cpp.o: /Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Classes/utils/ELAssets.h
+
+EZGLib/CMakeFiles/EZGLib.dir/utils/ELDAELoader.cpp.o: /Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Classes/utils/ELDAELoader.cpp
+EZGLib/CMakeFiles/EZGLib.dir/utils/ELDAELoader.cpp.o: /Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Classes/utils/ELDAELoader.h
 
 EZGLib/CMakeFiles/EZGLib.dir/utils/ELFileUtil.cpp.o: /Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Classes/utils/ELAssets.h
 EZGLib/CMakeFiles/EZGLib.dir/utils/ELFileUtil.cpp.o: /Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Classes/utils/ELFileUtil.cpp

@@ -176,6 +176,15 @@ EZGL_SOURCE_DIR:STATIC=/Users/wangyang/Documents/Projects/On Git/EZGLKit/Project
 //Dependencies for target
 EZGLib_LIB_DEPENDS:STATIC=
 
+//Path to a file.
+FBX_INCLUDE_DIR:PATH=FBX_INCLUDE_DIR-NOTFOUND
+
+//Path to a library.
+FBX_LIBRARY:FILEPATH=FBX_LIBRARY-NOTFOUND
+
+//Path to a library.
+FBX_LIBRARY_DEBUG:FILEPATH=FBX_LIBRARY_DEBUG-NOTFOUND
+
 //Include for OpenGL on OS X
 OPENGL_INCLUDE_DIR:PATH=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks/OpenGL.framework
 
@@ -200,8 +209,8 @@ glfw3_DIR:PATH=/usr/local/lib/cmake/glfw3
 //Dependencies for target
 lua_LIB_DEPENDS:STATIC=
 
-//Dependencies for target
-soil_LIB_DEPENDS:STATIC=
+//Dependencies for the target
+soil_LIB_DEPENDS:STATIC=general;-framework CoreFoundation;general;/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks/OpenGL.framework;general;/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks/OpenGL.framework;
 
 //Dependencies for target
 wavefront_LIB_DEPENDS:STATIC=

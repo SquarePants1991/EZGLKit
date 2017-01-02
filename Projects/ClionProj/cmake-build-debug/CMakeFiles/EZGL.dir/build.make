@@ -105,9 +105,33 @@ CMakeFiles/EZGL.dir/BaseWindow/main.cpp.o.provides: CMakeFiles/EZGL.dir/BaseWind
 CMakeFiles/EZGL.dir/BaseWindow/main.cpp.o.provides.build: CMakeFiles/EZGL.dir/BaseWindow/main.cpp.o
 
 
+CMakeFiles/EZGL.dir/FPSGame/ELBullet.cpp.o: CMakeFiles/EZGL.dir/flags.make
+CMakeFiles/EZGL.dir/FPSGame/ELBullet.cpp.o: ../FPSGame/ELBullet.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/EZGL.dir/FPSGame/ELBullet.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/EZGL.dir/FPSGame/ELBullet.cpp.o -c "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/FPSGame/ELBullet.cpp"
+
+CMakeFiles/EZGL.dir/FPSGame/ELBullet.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/EZGL.dir/FPSGame/ELBullet.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/FPSGame/ELBullet.cpp" > CMakeFiles/EZGL.dir/FPSGame/ELBullet.cpp.i
+
+CMakeFiles/EZGL.dir/FPSGame/ELBullet.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/EZGL.dir/FPSGame/ELBullet.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/FPSGame/ELBullet.cpp" -o CMakeFiles/EZGL.dir/FPSGame/ELBullet.cpp.s
+
+CMakeFiles/EZGL.dir/FPSGame/ELBullet.cpp.o.requires:
+
+.PHONY : CMakeFiles/EZGL.dir/FPSGame/ELBullet.cpp.o.requires
+
+CMakeFiles/EZGL.dir/FPSGame/ELBullet.cpp.o.provides: CMakeFiles/EZGL.dir/FPSGame/ELBullet.cpp.o.requires
+	$(MAKE) -f CMakeFiles/EZGL.dir/build.make CMakeFiles/EZGL.dir/FPSGame/ELBullet.cpp.o.provides.build
+.PHONY : CMakeFiles/EZGL.dir/FPSGame/ELBullet.cpp.o.provides
+
+CMakeFiles/EZGL.dir/FPSGame/ELBullet.cpp.o.provides.build: CMakeFiles/EZGL.dir/FPSGame/ELBullet.cpp.o
+
+
 CMakeFiles/EZGL.dir/FPSGame/FGScene.cpp.o: CMakeFiles/EZGL.dir/flags.make
 CMakeFiles/EZGL.dir/FPSGame/FGScene.cpp.o: ../FPSGame/FGScene.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/EZGL.dir/FPSGame/FGScene.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/EZGL.dir/FPSGame/FGScene.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/EZGL.dir/FPSGame/FGScene.cpp.o -c "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/FPSGame/FGScene.cpp"
 
 CMakeFiles/EZGL.dir/FPSGame/FGScene.cpp.i: cmake_force
@@ -131,7 +155,7 @@ CMakeFiles/EZGL.dir/FPSGame/FGScene.cpp.o.provides.build: CMakeFiles/EZGL.dir/FP
 
 CMakeFiles/EZGL.dir/FPSGame/FGWindow.cpp.o: CMakeFiles/EZGL.dir/flags.make
 CMakeFiles/EZGL.dir/FPSGame/FGWindow.cpp.o: ../FPSGame/FGWindow.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/EZGL.dir/FPSGame/FGWindow.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/EZGL.dir/FPSGame/FGWindow.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/EZGL.dir/FPSGame/FGWindow.cpp.o -c "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/FPSGame/FGWindow.cpp"
 
 CMakeFiles/EZGL.dir/FPSGame/FGWindow.cpp.i: cmake_force
@@ -155,7 +179,7 @@ CMakeFiles/EZGL.dir/FPSGame/FGWindow.cpp.o.provides.build: CMakeFiles/EZGL.dir/F
 
 CMakeFiles/EZGL.dir/FPSGame/main.cpp.o: CMakeFiles/EZGL.dir/flags.make
 CMakeFiles/EZGL.dir/FPSGame/main.cpp.o: ../FPSGame/main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/EZGL.dir/FPSGame/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/EZGL.dir/FPSGame/main.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/EZGL.dir/FPSGame/main.cpp.o -c "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/FPSGame/main.cpp"
 
 CMakeFiles/EZGL.dir/FPSGame/main.cpp.i: cmake_force
@@ -179,7 +203,7 @@ CMakeFiles/EZGL.dir/FPSGame/main.cpp.o.provides.build: CMakeFiles/EZGL.dir/FPSGa
 
 CMakeFiles/EZGL.dir/FPSGameWithLua/FGScene.cpp.o: CMakeFiles/EZGL.dir/flags.make
 CMakeFiles/EZGL.dir/FPSGameWithLua/FGScene.cpp.o: ../FPSGameWithLua/FGScene.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/EZGL.dir/FPSGameWithLua/FGScene.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/EZGL.dir/FPSGameWithLua/FGScene.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/EZGL.dir/FPSGameWithLua/FGScene.cpp.o -c "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/FPSGameWithLua/FGScene.cpp"
 
 CMakeFiles/EZGL.dir/FPSGameWithLua/FGScene.cpp.i: cmake_force
@@ -203,7 +227,7 @@ CMakeFiles/EZGL.dir/FPSGameWithLua/FGScene.cpp.o.provides.build: CMakeFiles/EZGL
 
 CMakeFiles/EZGL.dir/FPSGameWithLua/FGWindow.cpp.o: CMakeFiles/EZGL.dir/flags.make
 CMakeFiles/EZGL.dir/FPSGameWithLua/FGWindow.cpp.o: ../FPSGameWithLua/FGWindow.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/EZGL.dir/FPSGameWithLua/FGWindow.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/EZGL.dir/FPSGameWithLua/FGWindow.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/EZGL.dir/FPSGameWithLua/FGWindow.cpp.o -c "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/FPSGameWithLua/FGWindow.cpp"
 
 CMakeFiles/EZGL.dir/FPSGameWithLua/FGWindow.cpp.i: cmake_force
@@ -227,7 +251,7 @@ CMakeFiles/EZGL.dir/FPSGameWithLua/FGWindow.cpp.o.provides.build: CMakeFiles/EZG
 
 CMakeFiles/EZGL.dir/FPSGameWithLua/main.cpp.o: CMakeFiles/EZGL.dir/flags.make
 CMakeFiles/EZGL.dir/FPSGameWithLua/main.cpp.o: ../FPSGameWithLua/main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/EZGL.dir/FPSGameWithLua/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/EZGL.dir/FPSGameWithLua/main.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/EZGL.dir/FPSGameWithLua/main.cpp.o -c "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/FPSGameWithLua/main.cpp"
 
 CMakeFiles/EZGL.dir/FPSGameWithLua/main.cpp.i: cmake_force
@@ -251,7 +275,7 @@ CMakeFiles/EZGL.dir/FPSGameWithLua/main.cpp.o.provides.build: CMakeFiles/EZGL.di
 
 CMakeFiles/EZGL.dir/LuaTest/main.cpp.o: CMakeFiles/EZGL.dir/flags.make
 CMakeFiles/EZGL.dir/LuaTest/main.cpp.o: ../LuaTest/main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/EZGL.dir/LuaTest/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/EZGL.dir/LuaTest/main.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/EZGL.dir/LuaTest/main.cpp.o -c "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/LuaTest/main.cpp"
 
 CMakeFiles/EZGL.dir/LuaTest/main.cpp.i: cmake_force
@@ -275,7 +299,7 @@ CMakeFiles/EZGL.dir/LuaTest/main.cpp.o.provides.build: CMakeFiles/EZGL.dir/LuaTe
 
 CMakeFiles/EZGL.dir/Shader/main.cpp.o: CMakeFiles/EZGL.dir/flags.make
 CMakeFiles/EZGL.dir/Shader/main.cpp.o: ../Shader/main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/EZGL.dir/Shader/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/EZGL.dir/Shader/main.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/EZGL.dir/Shader/main.cpp.o -c "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/Shader/main.cpp"
 
 CMakeFiles/EZGL.dir/Shader/main.cpp.i: cmake_force
@@ -301,6 +325,7 @@ CMakeFiles/EZGL.dir/Shader/main.cpp.o.provides.build: CMakeFiles/EZGL.dir/Shader
 EZGL_OBJECTS = \
 "CMakeFiles/EZGL.dir/main.cpp.o" \
 "CMakeFiles/EZGL.dir/BaseWindow/main.cpp.o" \
+"CMakeFiles/EZGL.dir/FPSGame/ELBullet.cpp.o" \
 "CMakeFiles/EZGL.dir/FPSGame/FGScene.cpp.o" \
 "CMakeFiles/EZGL.dir/FPSGame/FGWindow.cpp.o" \
 "CMakeFiles/EZGL.dir/FPSGame/main.cpp.o" \
@@ -315,6 +340,7 @@ EZGL_EXTERNAL_OBJECTS =
 
 EZGL: CMakeFiles/EZGL.dir/main.cpp.o
 EZGL: CMakeFiles/EZGL.dir/BaseWindow/main.cpp.o
+EZGL: CMakeFiles/EZGL.dir/FPSGame/ELBullet.cpp.o
 EZGL: CMakeFiles/EZGL.dir/FPSGame/FGScene.cpp.o
 EZGL: CMakeFiles/EZGL.dir/FPSGame/FGWindow.cpp.o
 EZGL: CMakeFiles/EZGL.dir/FPSGame/main.cpp.o
@@ -332,7 +358,7 @@ EZGL: wavefront/libwavefront.a
 EZGL: bullet/libbullet.a
 EZGL: lua/liblua.a
 EZGL: CMakeFiles/EZGL.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX executable EZGL"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_12) "Linking CXX executable EZGL"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/EZGL.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -342,6 +368,7 @@ CMakeFiles/EZGL.dir/build: EZGL
 
 CMakeFiles/EZGL.dir/requires: CMakeFiles/EZGL.dir/main.cpp.o.requires
 CMakeFiles/EZGL.dir/requires: CMakeFiles/EZGL.dir/BaseWindow/main.cpp.o.requires
+CMakeFiles/EZGL.dir/requires: CMakeFiles/EZGL.dir/FPSGame/ELBullet.cpp.o.requires
 CMakeFiles/EZGL.dir/requires: CMakeFiles/EZGL.dir/FPSGame/FGScene.cpp.o.requires
 CMakeFiles/EZGL.dir/requires: CMakeFiles/EZGL.dir/FPSGame/FGWindow.cpp.o.requires
 CMakeFiles/EZGL.dir/requires: CMakeFiles/EZGL.dir/FPSGame/main.cpp.o.requires

@@ -1139,6 +1139,33 @@ utils/ELAssets.cpp.s:
 	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug" && $(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/utils/ELAssets.cpp.s
 .PHONY : utils/ELAssets.cpp.s
 
+utils/ELDAELoader.o: utils/ELDAELoader.cpp.o
+
+.PHONY : utils/ELDAELoader.o
+
+# target to build an object file
+utils/ELDAELoader.cpp.o:
+	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug" && $(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/utils/ELDAELoader.cpp.o
+.PHONY : utils/ELDAELoader.cpp.o
+
+utils/ELDAELoader.i: utils/ELDAELoader.cpp.i
+
+.PHONY : utils/ELDAELoader.i
+
+# target to preprocess a source file
+utils/ELDAELoader.cpp.i:
+	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug" && $(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/utils/ELDAELoader.cpp.i
+.PHONY : utils/ELDAELoader.cpp.i
+
+utils/ELDAELoader.s: utils/ELDAELoader.cpp.s
+
+.PHONY : utils/ELDAELoader.s
+
+# target to generate assembly for a file
+utils/ELDAELoader.cpp.s:
+	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug" && $(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/utils/ELDAELoader.cpp.s
+.PHONY : utils/ELDAELoader.cpp.s
+
 utils/ELFileUtil.o: utils/ELFileUtil.cpp.o
 
 .PHONY : utils/ELFileUtil.o
@@ -1368,6 +1395,9 @@ help:
 	@echo "... utils/ELAssets.o"
 	@echo "... utils/ELAssets.i"
 	@echo "... utils/ELAssets.s"
+	@echo "... utils/ELDAELoader.o"
+	@echo "... utils/ELDAELoader.i"
+	@echo "... utils/ELDAELoader.s"
 	@echo "... utils/ELFileUtil.o"
 	@echo "... utils/ELFileUtil.i"
 	@echo "... utils/ELFileUtil.s"

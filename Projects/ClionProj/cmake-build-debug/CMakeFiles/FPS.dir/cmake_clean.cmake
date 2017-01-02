@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/FPS.dir/FPSGame/main.cpp.o"
+  "CMakeFiles/FPS.dir/FPSGame/ELBullet.cpp.o"
   "CMakeFiles/FPS.dir/FPSGame/FGScene.cpp.o"
   "CMakeFiles/FPS.dir/FPSGame/FGWindow.cpp.o"
   "FPS.pdb"

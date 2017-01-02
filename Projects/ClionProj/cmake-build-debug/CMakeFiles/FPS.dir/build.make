@@ -81,9 +81,33 @@ CMakeFiles/FPS.dir/FPSGame/main.cpp.o.provides: CMakeFiles/FPS.dir/FPSGame/main.
 CMakeFiles/FPS.dir/FPSGame/main.cpp.o.provides.build: CMakeFiles/FPS.dir/FPSGame/main.cpp.o
 
 
+CMakeFiles/FPS.dir/FPSGame/ELBullet.cpp.o: CMakeFiles/FPS.dir/flags.make
+CMakeFiles/FPS.dir/FPSGame/ELBullet.cpp.o: ../FPSGame/ELBullet.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/FPS.dir/FPSGame/ELBullet.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/FPS.dir/FPSGame/ELBullet.cpp.o -c "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/FPSGame/ELBullet.cpp"
+
+CMakeFiles/FPS.dir/FPSGame/ELBullet.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FPS.dir/FPSGame/ELBullet.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/FPSGame/ELBullet.cpp" > CMakeFiles/FPS.dir/FPSGame/ELBullet.cpp.i
+
+CMakeFiles/FPS.dir/FPSGame/ELBullet.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FPS.dir/FPSGame/ELBullet.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/FPSGame/ELBullet.cpp" -o CMakeFiles/FPS.dir/FPSGame/ELBullet.cpp.s
+
+CMakeFiles/FPS.dir/FPSGame/ELBullet.cpp.o.requires:
+
+.PHONY : CMakeFiles/FPS.dir/FPSGame/ELBullet.cpp.o.requires
+
+CMakeFiles/FPS.dir/FPSGame/ELBullet.cpp.o.provides: CMakeFiles/FPS.dir/FPSGame/ELBullet.cpp.o.requires
+	$(MAKE) -f CMakeFiles/FPS.dir/build.make CMakeFiles/FPS.dir/FPSGame/ELBullet.cpp.o.provides.build
+.PHONY : CMakeFiles/FPS.dir/FPSGame/ELBullet.cpp.o.provides
+
+CMakeFiles/FPS.dir/FPSGame/ELBullet.cpp.o.provides.build: CMakeFiles/FPS.dir/FPSGame/ELBullet.cpp.o
+
+
 CMakeFiles/FPS.dir/FPSGame/FGScene.cpp.o: CMakeFiles/FPS.dir/flags.make
 CMakeFiles/FPS.dir/FPSGame/FGScene.cpp.o: ../FPSGame/FGScene.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/FPS.dir/FPSGame/FGScene.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/FPS.dir/FPSGame/FGScene.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/FPS.dir/FPSGame/FGScene.cpp.o -c "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/FPSGame/FGScene.cpp"
 
 CMakeFiles/FPS.dir/FPSGame/FGScene.cpp.i: cmake_force
@@ -107,7 +131,7 @@ CMakeFiles/FPS.dir/FPSGame/FGScene.cpp.o.provides.build: CMakeFiles/FPS.dir/FPSG
 
 CMakeFiles/FPS.dir/FPSGame/FGWindow.cpp.o: CMakeFiles/FPS.dir/flags.make
 CMakeFiles/FPS.dir/FPSGame/FGWindow.cpp.o: ../FPSGame/FGWindow.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/FPS.dir/FPSGame/FGWindow.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/FPS.dir/FPSGame/FGWindow.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/FPS.dir/FPSGame/FGWindow.cpp.o -c "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/FPSGame/FGWindow.cpp"
 
 CMakeFiles/FPS.dir/FPSGame/FGWindow.cpp.i: cmake_force
@@ -132,6 +156,7 @@ CMakeFiles/FPS.dir/FPSGame/FGWindow.cpp.o.provides.build: CMakeFiles/FPS.dir/FPS
 # Object files for target FPS
 FPS_OBJECTS = \
 "CMakeFiles/FPS.dir/FPSGame/main.cpp.o" \
+"CMakeFiles/FPS.dir/FPSGame/ELBullet.cpp.o" \
 "CMakeFiles/FPS.dir/FPSGame/FGScene.cpp.o" \
 "CMakeFiles/FPS.dir/FPSGame/FGWindow.cpp.o"
 
@@ -139,6 +164,7 @@ FPS_OBJECTS = \
 FPS_EXTERNAL_OBJECTS =
 
 FPS: CMakeFiles/FPS.dir/FPSGame/main.cpp.o
+FPS: CMakeFiles/FPS.dir/FPSGame/ELBullet.cpp.o
 FPS: CMakeFiles/FPS.dir/FPSGame/FGScene.cpp.o
 FPS: CMakeFiles/FPS.dir/FPSGame/FGWindow.cpp.o
 FPS: CMakeFiles/FPS.dir/build.make
@@ -150,7 +176,7 @@ FPS: wavefront/libwavefront.a
 FPS: bullet/libbullet.a
 FPS: lua/liblua.a
 FPS: CMakeFiles/FPS.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable FPS"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable FPS"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/FPS.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -159,6 +185,7 @@ CMakeFiles/FPS.dir/build: FPS
 .PHONY : CMakeFiles/FPS.dir/build
 
 CMakeFiles/FPS.dir/requires: CMakeFiles/FPS.dir/FPSGame/main.cpp.o.requires
+CMakeFiles/FPS.dir/requires: CMakeFiles/FPS.dir/FPSGame/ELBullet.cpp.o.requires
 CMakeFiles/FPS.dir/requires: CMakeFiles/FPS.dir/FPSGame/FGScene.cpp.o.requires
 CMakeFiles/FPS.dir/requires: CMakeFiles/FPS.dir/FPSGame/FGWindow.cpp.o.requires
 

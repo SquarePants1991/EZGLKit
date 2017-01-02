@@ -280,6 +280,36 @@ BaseWindow/main.cpp.s:
 	$(MAKE) -f CMakeFiles/EZGL.dir/build.make CMakeFiles/EZGL.dir/BaseWindow/main.cpp.s
 .PHONY : BaseWindow/main.cpp.s
 
+FPSGame/ELBullet.o: FPSGame/ELBullet.cpp.o
+
+.PHONY : FPSGame/ELBullet.o
+
+# target to build an object file
+FPSGame/ELBullet.cpp.o:
+	$(MAKE) -f CMakeFiles/EZGL.dir/build.make CMakeFiles/EZGL.dir/FPSGame/ELBullet.cpp.o
+	$(MAKE) -f CMakeFiles/FPS.dir/build.make CMakeFiles/FPS.dir/FPSGame/ELBullet.cpp.o
+.PHONY : FPSGame/ELBullet.cpp.o
+
+FPSGame/ELBullet.i: FPSGame/ELBullet.cpp.i
+
+.PHONY : FPSGame/ELBullet.i
+
+# target to preprocess a source file
+FPSGame/ELBullet.cpp.i:
+	$(MAKE) -f CMakeFiles/EZGL.dir/build.make CMakeFiles/EZGL.dir/FPSGame/ELBullet.cpp.i
+	$(MAKE) -f CMakeFiles/FPS.dir/build.make CMakeFiles/FPS.dir/FPSGame/ELBullet.cpp.i
+.PHONY : FPSGame/ELBullet.cpp.i
+
+FPSGame/ELBullet.s: FPSGame/ELBullet.cpp.s
+
+.PHONY : FPSGame/ELBullet.s
+
+# target to generate assembly for a file
+FPSGame/ELBullet.cpp.s:
+	$(MAKE) -f CMakeFiles/EZGL.dir/build.make CMakeFiles/EZGL.dir/FPSGame/ELBullet.cpp.s
+	$(MAKE) -f CMakeFiles/FPS.dir/build.make CMakeFiles/FPS.dir/FPSGame/ELBullet.cpp.s
+.PHONY : FPSGame/ELBullet.cpp.s
+
 FPSGame/FGScene.o: FPSGame/FGScene.cpp.o
 
 .PHONY : FPSGame/FGScene.o
@@ -566,6 +596,9 @@ help:
 	@echo "... BaseWindow/main.o"
 	@echo "... BaseWindow/main.i"
 	@echo "... BaseWindow/main.s"
+	@echo "... FPSGame/ELBullet.o"
+	@echo "... FPSGame/ELBullet.i"
+	@echo "... FPSGame/ELBullet.s"
 	@echo "... FPSGame/FGScene.o"
 	@echo "... FPSGame/FGScene.i"
 	@echo "... FPSGame/FGScene.s"

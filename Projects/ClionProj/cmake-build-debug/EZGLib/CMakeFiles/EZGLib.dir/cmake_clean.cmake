@@ -15,6 +15,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/EZGLib.dir/core/ELTexture.cpp.o"
   "CMakeFiles/EZGLib.dir/core/ELWorld.cpp.o"
   "CMakeFiles/EZGLib.dir/utils/ELAssets.cpp.o"
+  "CMakeFiles/EZGLib.dir/utils/ELDAELoader.cpp.o"
   "CMakeFiles/EZGLib.dir/utils/ELFileUtil.cpp.o"
   "CMakeFiles/EZGLib.dir/utils/ELGLState.cpp.o"
   "CMakeFiles/EZGLib.dir/utils/ELGeometryVertexBuffer.cpp.o"

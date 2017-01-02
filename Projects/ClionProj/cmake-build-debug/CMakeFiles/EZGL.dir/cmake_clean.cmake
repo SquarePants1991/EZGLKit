@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/EZGL.dir/main.cpp.o"
   "CMakeFiles/EZGL.dir/BaseWindow/main.cpp.o"
+  "CMakeFiles/EZGL.dir/FPSGame/ELBullet.cpp.o"
   "CMakeFiles/EZGL.dir/FPSGame/FGScene.cpp.o"
   "CMakeFiles/EZGL.dir/FPSGame/FGWindow.cpp.o"
   "CMakeFiles/EZGL.dir/FPSGame/main.cpp.o"

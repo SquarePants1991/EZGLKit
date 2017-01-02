@@ -5,7 +5,6 @@
 #ifndef EZGL_ELDAELOADER_H
 #define EZGL_ELDAELOADER_H
 
-#include <FCollada/FCollada.h>
 
 class ELDAELoader {
 public:

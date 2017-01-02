@@ -594,6 +594,9 @@
 		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/EZGL.h">
 			<Option target="EZGLib"/>
 		</Unit>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/EZGLBase.h">
+			<Option target="EZGLib"/>
+		</Unit>
 		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/component/ELBoard.cpp">
 			<Option target="EZGLib"/>
 		</Unit>
@@ -858,6 +861,12 @@
 		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/utils/ELAssets.h">
 			<Option target="EZGLib"/>
 		</Unit>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/utils/ELDAELoader.cpp">
+			<Option target="EZGLib"/>
+		</Unit>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/utils/ELDAELoader.h">
+			<Option target="EZGLib"/>
+		</Unit>
 		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/utils/ELFileUtil.cpp">
 			<Option target="EZGLib"/>
 		</Unit>
@@ -887,6 +896,14 @@
 		</Unit>
 		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/BaseWindow/main.cpp">
 			<Option target="EZGL"/>
+		</Unit>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/FPSGame/ELBullet.cpp">
+			<Option target="EZGL"/>
+			<Option target="FPS"/>
+		</Unit>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/FPSGame/ELBullet.h">
+			<Option target="EZGL"/>
+			<Option target="FPS"/>
 		</Unit>
 		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/FPSGame/FGScene.cpp">
 			<Option target="EZGL"/>
@@ -2268,6 +2285,9 @@
 			<Option target="wavefront"/>
 		</Unit>
 		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/FindFBX.cmake">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/../../../../../../../../usr/local/lib/cmake/glfw3/glfw3ConfigVersion.cmake">

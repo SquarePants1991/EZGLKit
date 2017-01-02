@@ -3,8 +3,7 @@
 //
 
 #include "ELDAELoader.h"
+#include <fbxsdk.h>
 
 void ELDAELoader::loadFromFile(const char *filePath) {
-    FCDocument *doc = new FCDocument();
-    doc->
 }
