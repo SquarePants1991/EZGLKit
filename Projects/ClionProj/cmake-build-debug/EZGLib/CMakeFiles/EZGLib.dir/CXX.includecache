@@ -702,11 +702,11 @@ vector
 string
 -
 
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/utils/ELDAELoader.cpp
-ELDAELoader.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/utils/ELDAELoader.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/utils/ELFBXLoader.cpp
+ELFBXLoader.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/utils/ELFBXLoader.h
 
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/utils/ELDAELoader.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/utils/ELFBXLoader.h
 FCollada/FCollada.h
 -
 
@@ -759,8 +759,8 @@ ELAssets.h
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/utils/ELAssets.h
 ELWaveFrontLoader.h
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/utils/ELWaveFrontLoader.h
-ELDAELoader.h
-/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/utils/ELDAELoader.h
+ELFBXLoader.h
+/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/utils/ELFBXLoader.h
 ELGLState.h
 /Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/utils/ELGLState.h
 

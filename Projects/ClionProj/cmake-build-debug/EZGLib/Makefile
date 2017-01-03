@@ -1139,32 +1139,32 @@ utils/ELAssets.cpp.s:
 	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug" && $(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/utils/ELAssets.cpp.s
 .PHONY : utils/ELAssets.cpp.s
 
-utils/ELDAELoader.o: utils/ELDAELoader.cpp.o
+utils/ELFBXLoader.o: utils/ELFBXLoader.cpp.o
 
-.PHONY : utils/ELDAELoader.o
+.PHONY : utils/ELFBXLoader.o
 
 # target to build an object file
-utils/ELDAELoader.cpp.o:
-	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug" && $(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/utils/ELDAELoader.cpp.o
-.PHONY : utils/ELDAELoader.cpp.o
+utils/ELFBXLoader.cpp.o:
+	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug" && $(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/utils/ELFBXLoader.cpp.o
+.PHONY : utils/ELFBXLoader.cpp.o
 
-utils/ELDAELoader.i: utils/ELDAELoader.cpp.i
+utils/ELFBXLoader.i: utils/ELFBXLoader.cpp.i
 
-.PHONY : utils/ELDAELoader.i
+.PHONY : utils/ELFBXLoader.i
 
 # target to preprocess a source file
-utils/ELDAELoader.cpp.i:
-	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug" && $(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/utils/ELDAELoader.cpp.i
-.PHONY : utils/ELDAELoader.cpp.i
+utils/ELFBXLoader.cpp.i:
+	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug" && $(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/utils/ELFBXLoader.cpp.i
+.PHONY : utils/ELFBXLoader.cpp.i
 
-utils/ELDAELoader.s: utils/ELDAELoader.cpp.s
+utils/ELFBXLoader.s: utils/ELFBXLoader.cpp.s
 
-.PHONY : utils/ELDAELoader.s
+.PHONY : utils/ELFBXLoader.s
 
 # target to generate assembly for a file
-utils/ELDAELoader.cpp.s:
-	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug" && $(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/utils/ELDAELoader.cpp.s
-.PHONY : utils/ELDAELoader.cpp.s
+utils/ELFBXLoader.cpp.s:
+	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug" && $(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/utils/ELFBXLoader.cpp.s
+.PHONY : utils/ELFBXLoader.cpp.s
 
 utils/ELFileUtil.o: utils/ELFileUtil.cpp.o
 
@@ -1395,9 +1395,9 @@ help:
 	@echo "... utils/ELAssets.o"
 	@echo "... utils/ELAssets.i"
 	@echo "... utils/ELAssets.s"
-	@echo "... utils/ELDAELoader.o"
-	@echo "... utils/ELDAELoader.i"
-	@echo "... utils/ELDAELoader.s"
+	@echo "... utils/ELFBXLoader.o"
+	@echo "... utils/ELFBXLoader.i"
+	@echo "... utils/ELFBXLoader.s"
 	@echo "... utils/ELFileUtil.o"
 	@echo "... utils/ELFileUtil.i"
 	@echo "... utils/ELFileUtil.s"

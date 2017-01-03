@@ -9,7 +9,7 @@
 # correspond to the ./configure --prefix=$FBX_DIR
 
 IF(APPLE)
-    SET(FBX_LIBDIR "gcc4/ub")
+    SET(FBX_LIBDIR "clang")
 ELSEIF(CMAKE_COMPILER_IS_GNUCXX)
     SET(FBX_LIBDIR "gcc4")
 ELSEIF(MSVC80)
@@ -39,7 +39,7 @@ ENDIF()
 #try to use 2015.1 or 2014.2 version
 
 IF(APPLE)
-    SET(FBX_LIBNAME "libfbxsdk")
+    SET(FBX_LIBNAME "libfbxsdk.a")
 ELSEIF(CMAKE_COMPILER_IS_GNUCXX)
     SET(FBX_LIBNAME "fbxsdk")
 ELSE()
@@ -55,7 +55,8 @@ SET( FBX_SEARCH_PATHS
     "$ENV{ProgramW6432}/Autodesk/FBX/FBX SDK/2015.1"
     "$ENV{PROGRAMFILES}/Autodesk/FBX/FBX SDK/2015.1"
     "/Applications/Autodesk/FBX/FBX SDK/2015.1"
-    /Applications/Autodesk/FBXSDK20151
+    "/Applications/Autodesk/FBX SDK/2015.1"
+    "/Applications/Autodesk/FBXSDK20151"
     "$ENV{ProgramW6432}/Autodesk/FBX/FBX SDK/2014.2"
     "$ENV{PROGRAMFILES}/Autodesk/FBX/FBX SDK/2014.2"
     "/Applications/Autodesk/FBX/FBX SDK/2014.2"
@@ -163,5 +164,3 @@ IF(NOT FBX_FOUND)
     ENDIF()
 
 ENDIF()
-
-message("${FBX_INCLUDE_DIR}")

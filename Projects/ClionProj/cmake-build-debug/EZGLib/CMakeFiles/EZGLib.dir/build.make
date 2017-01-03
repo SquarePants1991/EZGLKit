@@ -441,28 +441,28 @@ EZGLib/CMakeFiles/EZGLib.dir/utils/ELAssets.cpp.o.provides: EZGLib/CMakeFiles/EZ
 EZGLib/CMakeFiles/EZGLib.dir/utils/ELAssets.cpp.o.provides.build: EZGLib/CMakeFiles/EZGLib.dir/utils/ELAssets.cpp.o
 
 
-EZGLib/CMakeFiles/EZGLib.dir/utils/ELDAELoader.cpp.o: EZGLib/CMakeFiles/EZGLib.dir/flags.make
-EZGLib/CMakeFiles/EZGLib.dir/utils/ELDAELoader.cpp.o: /Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Classes/utils/ELDAELoader.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object EZGLib/CMakeFiles/EZGLib.dir/utils/ELDAELoader.cpp.o"
-	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/EZGLib" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/EZGLib.dir/utils/ELDAELoader.cpp.o -c "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/utils/ELDAELoader.cpp"
+EZGLib/CMakeFiles/EZGLib.dir/utils/ELFBXLoader.cpp.o: EZGLib/CMakeFiles/EZGLib.dir/flags.make
+EZGLib/CMakeFiles/EZGLib.dir/utils/ELFBXLoader.cpp.o: /Users/wangyang/Documents/Projects/On\ Git/EZGLKit/Classes/utils/ELFBXLoader.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object EZGLib/CMakeFiles/EZGLib.dir/utils/ELFBXLoader.cpp.o"
+	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/EZGLib" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/EZGLib.dir/utils/ELFBXLoader.cpp.o -c "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/utils/ELFBXLoader.cpp"
 
-EZGLib/CMakeFiles/EZGLib.dir/utils/ELDAELoader.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/EZGLib.dir/utils/ELDAELoader.cpp.i"
-	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/EZGLib" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/utils/ELDAELoader.cpp" > CMakeFiles/EZGLib.dir/utils/ELDAELoader.cpp.i
+EZGLib/CMakeFiles/EZGLib.dir/utils/ELFBXLoader.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/EZGLib.dir/utils/ELFBXLoader.cpp.i"
+	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/EZGLib" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/utils/ELFBXLoader.cpp" > CMakeFiles/EZGLib.dir/utils/ELFBXLoader.cpp.i
 
-EZGLib/CMakeFiles/EZGLib.dir/utils/ELDAELoader.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/EZGLib.dir/utils/ELDAELoader.cpp.s"
-	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/EZGLib" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/utils/ELDAELoader.cpp" -o CMakeFiles/EZGLib.dir/utils/ELDAELoader.cpp.s
+EZGLib/CMakeFiles/EZGLib.dir/utils/ELFBXLoader.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/EZGLib.dir/utils/ELFBXLoader.cpp.s"
+	cd "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/EZGLib" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/utils/ELFBXLoader.cpp" -o CMakeFiles/EZGLib.dir/utils/ELFBXLoader.cpp.s
 
-EZGLib/CMakeFiles/EZGLib.dir/utils/ELDAELoader.cpp.o.requires:
+EZGLib/CMakeFiles/EZGLib.dir/utils/ELFBXLoader.cpp.o.requires:
 
-.PHONY : EZGLib/CMakeFiles/EZGLib.dir/utils/ELDAELoader.cpp.o.requires
+.PHONY : EZGLib/CMakeFiles/EZGLib.dir/utils/ELFBXLoader.cpp.o.requires
 
-EZGLib/CMakeFiles/EZGLib.dir/utils/ELDAELoader.cpp.o.provides: EZGLib/CMakeFiles/EZGLib.dir/utils/ELDAELoader.cpp.o.requires
-	$(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/utils/ELDAELoader.cpp.o.provides.build
-.PHONY : EZGLib/CMakeFiles/EZGLib.dir/utils/ELDAELoader.cpp.o.provides
+EZGLib/CMakeFiles/EZGLib.dir/utils/ELFBXLoader.cpp.o.provides: EZGLib/CMakeFiles/EZGLib.dir/utils/ELFBXLoader.cpp.o.requires
+	$(MAKE) -f EZGLib/CMakeFiles/EZGLib.dir/build.make EZGLib/CMakeFiles/EZGLib.dir/utils/ELFBXLoader.cpp.o.provides.build
+.PHONY : EZGLib/CMakeFiles/EZGLib.dir/utils/ELFBXLoader.cpp.o.provides
 
-EZGLib/CMakeFiles/EZGLib.dir/utils/ELDAELoader.cpp.o.provides.build: EZGLib/CMakeFiles/EZGLib.dir/utils/ELDAELoader.cpp.o
+EZGLib/CMakeFiles/EZGLib.dir/utils/ELFBXLoader.cpp.o.provides.build: EZGLib/CMakeFiles/EZGLib.dir/utils/ELFBXLoader.cpp.o
 
 
 EZGLib/CMakeFiles/EZGLib.dir/utils/ELFileUtil.cpp.o: EZGLib/CMakeFiles/EZGLib.dir/flags.make
@@ -1083,7 +1083,7 @@ EZGLib_OBJECTS = \
 "CMakeFiles/EZGLib.dir/core/ELTexture.cpp.o" \
 "CMakeFiles/EZGLib.dir/core/ELWorld.cpp.o" \
 "CMakeFiles/EZGLib.dir/utils/ELAssets.cpp.o" \
-"CMakeFiles/EZGLib.dir/utils/ELDAELoader.cpp.o" \
+"CMakeFiles/EZGLib.dir/utils/ELFBXLoader.cpp.o" \
 "CMakeFiles/EZGLib.dir/utils/ELFileUtil.cpp.o" \
 "CMakeFiles/EZGLib.dir/utils/ELGLState.cpp.o" \
 "CMakeFiles/EZGLib.dir/utils/ELGeometryVertexBuffer.cpp.o" \
@@ -1129,7 +1129,7 @@ EZGLib/libEZGLib.a: EZGLib/CMakeFiles/EZGLib.dir/core/ELRenderPass.cpp.o
 EZGLib/libEZGLib.a: EZGLib/CMakeFiles/EZGLib.dir/core/ELTexture.cpp.o
 EZGLib/libEZGLib.a: EZGLib/CMakeFiles/EZGLib.dir/core/ELWorld.cpp.o
 EZGLib/libEZGLib.a: EZGLib/CMakeFiles/EZGLib.dir/utils/ELAssets.cpp.o
-EZGLib/libEZGLib.a: EZGLib/CMakeFiles/EZGLib.dir/utils/ELDAELoader.cpp.o
+EZGLib/libEZGLib.a: EZGLib/CMakeFiles/EZGLib.dir/utils/ELFBXLoader.cpp.o
 EZGLib/libEZGLib.a: EZGLib/CMakeFiles/EZGLib.dir/utils/ELFileUtil.cpp.o
 EZGLib/libEZGLib.a: EZGLib/CMakeFiles/EZGLib.dir/utils/ELGLState.cpp.o
 EZGLib/libEZGLib.a: EZGLib/CMakeFiles/EZGLib.dir/utils/ELGeometryVertexBuffer.cpp.o
@@ -1182,7 +1182,7 @@ EZGLib/CMakeFiles/EZGLib.dir/requires: EZGLib/CMakeFiles/EZGLib.dir/core/ELRende
 EZGLib/CMakeFiles/EZGLib.dir/requires: EZGLib/CMakeFiles/EZGLib.dir/core/ELTexture.cpp.o.requires
 EZGLib/CMakeFiles/EZGLib.dir/requires: EZGLib/CMakeFiles/EZGLib.dir/core/ELWorld.cpp.o.requires
 EZGLib/CMakeFiles/EZGLib.dir/requires: EZGLib/CMakeFiles/EZGLib.dir/utils/ELAssets.cpp.o.requires
-EZGLib/CMakeFiles/EZGLib.dir/requires: EZGLib/CMakeFiles/EZGLib.dir/utils/ELDAELoader.cpp.o.requires
+EZGLib/CMakeFiles/EZGLib.dir/requires: EZGLib/CMakeFiles/EZGLib.dir/utils/ELFBXLoader.cpp.o.requires
 EZGLib/CMakeFiles/EZGLib.dir/requires: EZGLib/CMakeFiles/EZGLib.dir/utils/ELFileUtil.cpp.o.requires
 EZGLib/CMakeFiles/EZGLib.dir/requires: EZGLib/CMakeFiles/EZGLib.dir/utils/ELGLState.cpp.o.requires
 EZGLib/CMakeFiles/EZGLib.dir/requires: EZGLib/CMakeFiles/EZGLib.dir/utils/ELGeometryVertexBuffer.cpp.o.requires

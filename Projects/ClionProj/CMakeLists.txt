@@ -20,6 +20,7 @@ endif(NOT OPENGL_FOUND)
 # FIND FBX SDK
 #########################################################
 include(FindFBX.cmake)
+include_directories(${FBX_INCLUDE_DIR})
 
 include_directories(/usr/local/)
 include_directories(/usr/local/include/)
@@ -50,7 +51,7 @@ macro(add_exe target prefix)
             "${prefix}/**/*.cpp"
     )
     add_executable(${target} ${prefix}/main.cpp ${TARGET_SRC})
-    target_link_libraries(${target} EZGLib ${GLUT_LIBRARY} ${OPENGL_LIBRARIES} glfw glad soil wavefront bullet lua)
+    target_link_libraries(${target} EZGLib ${GLUT_LIBRARY} ${OPENGL_LIBRARIES} glfw glad soil wavefront bullet lua ${FBX_LIBRARY})
 endmacro(add_exe)
 
 
@@ -59,3 +60,4 @@ add_exe(EZGL .)
 add_exe(FPS "FPSGame")
 add_exe(FPS_LUA "FPSGameWithLua")
 add_exe(LuaTest "LuaTest")
+add_exe(FBX "FBX")

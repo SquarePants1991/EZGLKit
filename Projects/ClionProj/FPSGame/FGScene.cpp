@@ -49,7 +49,7 @@ FGScene::FGScene(ELWorld *world) : world(world){
 void FGScene::createScene() {
     // init game world
 
-    ELDAELoader::loadFromFile(ELAssets::shared()->findFile("ArmyPilot.dae").c_str());
+    ELFBXLoader::loadFromFile(ELAssets::shared()->findFile("ArmyPilot.fbx").c_str());
 
     defaultLight = new ELLight();
     defaultLight->position = ELVector3Make(0,30,30);

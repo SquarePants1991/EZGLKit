@@ -861,10 +861,10 @@
 		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/utils/ELAssets.h">
 			<Option target="EZGLib"/>
 		</Unit>
-		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/utils/ELDAELoader.cpp">
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/utils/ELFBXLoader.cpp">
 			<Option target="EZGLib"/>
 		</Unit>
-		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/utils/ELDAELoader.h">
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/utils/ELFBXLoader.h">
 			<Option target="EZGLib"/>
 		</Unit>
 		<Unit filename="/Users/wangyang/Documents/Projects/On Git/EZGLKit/Classes/utils/ELFileUtil.cpp">

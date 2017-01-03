@@ -9,7 +9,7 @@
 #include "ELGeometryVertexBuffer.h"
 #include "ELAssets.h"
 #include "ELWaveFrontLoader.h"
-#include "ELDAELoader.h"
+#include "ELFBXLoader.h"
 #include "ELGLState.h"
 
 #endif //EZGL_EZUTIL_H
