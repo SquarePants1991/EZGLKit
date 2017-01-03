@@ -64,12 +64,11 @@ void loadTrianglePoint(FbxMesh *mesh,FbxVector4 *pVertices, int polyIndex,int po
             case FbxGeometryElement::eByControlPoint:
                 break;
             case FbxGeometryElement::eByPolygonVertex:
+                int textureUVIndex = mesh->GetTextureUVIndex(polyIndex, pointIndex);
                 switch (elementUV->GetReferenceMode()) {
                     case FbxGeometryElement::eDirect:
-                        break;
                     case FbxGeometryElement::eIndexToDirect:
-                        int id = elementUV->GetIndexArray().GetAt(index);
-                        FbxVector2 vec2 = elementUV->GetDirectArray().GetAt(id);
+                        FbxVector2 vec2 = elementUV->GetDirectArray().GetAt(textureUVIndex);
                         pUV.x = vec2[0];
                         pUV.y = vec2[1];
                         break;
@@ -87,9 +86,9 @@ ELMeshGeometry *ELFBXLoader::loadMesh(FbxMesh *mesh) {
         int polySize = mesh->GetPolygonSize(i);
         if (polySize == 3) { // is triangle
             ELGeometryTriangle triangle;
-            loadTrianglePoint(mesh,pVertices,i,2,triangle.point1,triangle.uv1);
-            loadTrianglePoint(mesh,pVertices,i,1,triangle.point2,triangle.uv2);
             loadTrianglePoint(mesh,pVertices,i,0,triangle.point3,triangle.uv3);
+            loadTrianglePoint(mesh,pVertices,i,1,triangle.point2,triangle.uv2);
+            loadTrianglePoint(mesh,pVertices,i,2,triangle.point1,triangle.uv1);
             vertexBuffer->append(triangle);
         }
     }
