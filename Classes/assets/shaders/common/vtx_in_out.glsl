@@ -1,6 +1,7 @@
 VertIN vec4 position;
 VertIN vec3 normal;
 VertIN vec2 texcoord;
+VertIN float matID;
 VertIN vec3 tangent;
 VertIN vec3 bitangent;
 VertIN vec4 color;
@@ -11,3 +12,4 @@ VertOUT vec4 fragPosition;
 VertOUT vec3 fragTangent;
 VertOUT vec3 fragBitangent;
 VertOUT vec4 fragColor;
+VertOUT float fragMatID;

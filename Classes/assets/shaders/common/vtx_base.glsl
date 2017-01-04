@@ -10,4 +10,5 @@ void passValueToFragShader() {
     fragTangent = tangent;
     fragBitangent = bitangent;
     fragColor = color;
+    fragMatID = matID;
 }

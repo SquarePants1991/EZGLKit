@@ -18,6 +18,7 @@ public:
 private:
     ELWorld *world;
     void createMonkey();
+    void createPlane();
     void createFloor();
     void createCubeGameObject(ELVector3 size,ELVector3 pos,ELFloat mass,GLuint diffuseMap,GLuint normalMap, bool hasBorder, int collisionGroup, int collisionMask, ELVector3 velocity);
 };

@@ -17,6 +17,7 @@ public:
     static void setupFbxEnv();
     static std::vector<ELMeshGeometry *> loadFromFile(const char *filePath);
     static ELMeshGeometry *loadMesh(FbxMesh *mesh);
+    static void loadAnimation(FbxScene *scene);
 
 private:
     static FbxManager *fbxManager;

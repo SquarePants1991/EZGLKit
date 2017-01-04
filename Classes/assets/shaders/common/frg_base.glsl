@@ -5,6 +5,7 @@ OUT highp vec3 fragNormal;
 OUT highp vec3 fragTangent;
 OUT highp vec3 fragBitangent;
 OUT highp vec4 fragColor;
+OUT float fragMatID;
 #include <cm_uniforms.glsl>
 
 // vars

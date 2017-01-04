@@ -15,7 +15,7 @@ public:
     void enableColorAttrib();
     void append(ELGeometryVertex vertex);
     void append(ELGeometryColorVertex vertex);
-    void append(ELGeometryTriangle triangle);
+    void append(ELGeometryTriangle triangle, ELInt matID = 0);
     void append(ELGeometryRect rect);
     void append(ELGeometryColorRect colorRect);
     ELSize rawLength();

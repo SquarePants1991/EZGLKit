@@ -182,7 +182,8 @@ void ELGeometryVertexBuffer::append(ELGeometryColorRect colorRect) {
     append(vertex2_3);
 }
 
-void ELGeometryVertexBuffer::append(ELGeometryTriangle triangle) {
+void ELGeometryVertexBuffer::append(ELGeometryTriangle triangle, ELInt matID) {
+    triangle.matID = matID;
     ELVector3 point1 = triangle.point1;
     ELVector3 point2 = triangle.point2;
     ELVector3 point3 = triangle.point3;
@@ -210,6 +211,9 @@ void ELGeometryVertexBuffer::append(ELGeometryTriangle triangle) {
     vertex1_3.tnx = tangent1_3.x;       vertex1_3.tny = tangent1_3.y;       vertex1_3.tnz = tangent1_3.z;
     vertex1_3.btnx = bitangent1_3.x;    vertex1_3.btny = bitangent1_3.y;    vertex1_3.btnz = bitangent1_3.z;
 
+    vertex1_1.matID = matID;
+    vertex1_2.matID = matID;
+    vertex1_3.matID = matID;
 
     append(vertex1_1);
     append(vertex1_2);

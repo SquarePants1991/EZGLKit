@@ -33,6 +33,8 @@ std::vector<ELMeshGeometry *> ELFBXLoader::loadFromFile(const char *filePath) {
     importer->Import(scene);
     importer->Destroy();
 
+    FbxAxisSystem::OpenGL.ConvertScene(scene);
+
     FbxNode* rootNode = scene->GetRootNode();
     if(rootNode) {
         for(int i = 0; i < rootNode->GetChildCount(); i++) {
@@ -47,6 +49,7 @@ std::vector<ELMeshGeometry *> ELFBXLoader::loadFromFile(const char *filePath) {
             }
         }
     }
+    loadAnimation(scene);
     return meshes;
 }
 
@@ -55,27 +58,16 @@ void loadTrianglePoint(FbxMesh *mesh,FbxVector4 *pVertices, int polyIndex,int po
     pPos.x = pVertices[index].mData[0];
     pPos.y = pVertices[index].mData[1];
     pPos.z = pVertices[index].mData[2];
-    FbxVector4 fbxnormal;
-    mesh->GetPolygonVertexNormal(polyIndex, pointIndex, fbxnormal);
-    int elementUVCount = mesh->GetElementUVCount();
-    for (int i = 0; i < elementUVCount; ++i) {
-       FbxGeometryElementUV *elementUV = mesh->GetElementUV(i);
-        switch (elementUV->GetMappingMode()) {
-            case FbxGeometryElement::eByControlPoint:
-                break;
-            case FbxGeometryElement::eByPolygonVertex:
-                int textureUVIndex = mesh->GetTextureUVIndex(polyIndex, pointIndex);
-                switch (elementUV->GetReferenceMode()) {
-                    case FbxGeometryElement::eDirect:
-                    case FbxGeometryElement::eIndexToDirect:
-                        FbxVector2 vec2 = elementUV->GetDirectArray().GetAt(textureUVIndex);
-                        pUV.x = vec2[0];
-                        pUV.y = vec2[1];
-                        break;
-                }
-                break;
-        }
-    }
+
+    FbxVector2 texcoord;
+    bool unmapped;
+    FbxStringList lUVSetNameList;
+    int uvCount = lUVSetNameList.GetCount();
+    mesh->GetUVSetNames(lUVSetNameList);
+    const char* lUVSetName = lUVSetNameList.GetStringAt(0);
+    mesh->GetPolygonVertexUV(polyIndex,pointIndex,lUVSetName,texcoord,unmapped);
+    pUV.x = texcoord.mData[0];
+    pUV.y = 1 - texcoord.mData[1];
 }
 
 ELMeshGeometry *ELFBXLoader::loadMesh(FbxMesh *mesh) {
@@ -84,12 +76,22 @@ ELMeshGeometry *ELFBXLoader::loadMesh(FbxMesh *mesh) {
     FbxVector4 *pVertices = mesh->GetControlPoints();
     for (int i = 0; i < polyCount; ++i) {
         int polySize = mesh->GetPolygonSize(i);
+        // load material
+        FbxGeometryElementMaterial *materialElement = mesh->GetElementMaterial(0);
+        FbxSurfaceMaterial *material = NULL;
+        int matId = 0;
+        if (materialElement->GetIndexArray().GetCount() > i) {
+            material = mesh->GetNode()->GetMaterial(materialElement->GetIndexArray().GetAt(i));
+            matId = materialElement->GetIndexArray().GetAt(i);
+        }
+
+        // TODO: add rectangle support
         if (polySize == 3) { // is triangle
             ELGeometryTriangle triangle;
             loadTrianglePoint(mesh,pVertices,i,0,triangle.point3,triangle.uv3);
             loadTrianglePoint(mesh,pVertices,i,1,triangle.point2,triangle.uv2);
             loadTrianglePoint(mesh,pVertices,i,2,triangle.point1,triangle.uv1);
-            vertexBuffer->append(triangle);
+            vertexBuffer->append(triangle, matId);
         }
     }
     ELGeometryData geometryData;
@@ -108,7 +110,20 @@ void ELFBXLoader::generateVertexVBO(ELGeometryVertexBuffer *buffer, ELGeometryDa
     glBindBuffer(GL_ARRAY_BUFFER, 0);
 
     geometryData->vertexVBO = vertexVBO;
-    geometryData->vertexStride = sizeof(GLfloat) * 14;
+    geometryData->vertexStride = sizeof(ELGeometryVertex);
     geometryData->vertexCount = buffer->rawLength() / sizeof(ELGeometryVertex);
     geometryData->supportIndiceVBO = false;
+}
+
+void ELFBXLoader::loadAnimation(FbxScene *scene) {
+    for (int i = 0; i < scene->GetSrcObjectCount<FbxAnimStack>(); ++i) {
+        FbxAnimStack *stack = scene->GetSrcObject<FbxAnimStack>(i);
+        printf("Anim Stack : %s\n", stack->GetName());
+
+        int animLayersCount = stack->GetMemberCount<FbxAnimLayer>();
+        for (int j = 0; j < animLayersCount; ++j) {
+            FbxAnimLayer *layer = stack->GetMember<FbxAnimLayer>(j);
+            FbxAnimCurve * curveX = scene->GetRootNode()->LclTranslation.GetCurve(layer, FBXSDK_CURVENODE_COMPONENT_X);
+        }
+    }
 }

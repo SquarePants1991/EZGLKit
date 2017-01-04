@@ -56,6 +56,7 @@ typedef struct {
     ELVector2 uv1;
     ELVector2 uv2;
     ELVector2 uv3;
+    ELInt matID;
 }ELGeometryTriangle;
 
 typedef struct {
@@ -67,6 +68,7 @@ typedef struct {
     ELFloat nz;
     ELFloat u;
     ELFloat v;
+    ELFloat matID;
     ELFloat tnx;
     ELFloat tny;
     ELFloat tnz;
@@ -84,6 +86,7 @@ typedef struct {
     ELFloat nz;
     ELFloat u;
     ELFloat v;
+    ELFloat matID;
     ELFloat tnx;
     ELFloat tny;
     ELFloat tnz;

@@ -30,6 +30,7 @@ class ELCamera;
 class ELGeometry : public ELComponent {
 public:
     ELMaterial material;
+    ELMaterial materials[8];
     ELGeometryRenderType renderType;
 
     bool enableBorder;

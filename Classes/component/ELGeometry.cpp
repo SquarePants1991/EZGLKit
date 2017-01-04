@@ -53,6 +53,7 @@ void ELGeometry::render() {
         prepare();
     }
 
+
     ELEffect *defaultEffect = effect();
     defaultEffect->prepare();
     ELProgram *program = defaultEffect->program;
@@ -63,21 +64,50 @@ void ELGeometry::render() {
     glUniform3fv(program->uniform("cameraPosition"), 1, camera->position().v);
     glUniformMatrix4fv(program->uniform("viewProjection"), 1, 0, camera->matrix().m);
     glUniformMatrix4fv(program->uniform("modelMatrix"), 1, 0, modelMatrix().m);
-    glUniform4fv(program->uniform("material.ambient"), 1, material.ambient.v);
-    glUniform4fv(program->uniform("material.diffuse"), 1, material.diffuse.v);
-    glUniform4fv(program->uniform("material.specular"), 1, material.specular.v);
+//    glUniform4fv(program->uniform("material.ambient"), 1, material.ambient.v);
+//    glUniform4fv(program->uniform("material.diffuse"), 1, material.diffuse.v);
+//    glUniform4fv(program->uniform("material.specular"), 1, material.specular.v);
+//
+//    glUniform1i(program->uniform("diffuseMap"), 0);
+//    glActiveTexture(GL_TEXTURE0);
+//    glBindTexture(GL_TEXTURE_2D, material.diffuseMap);
 
-    glUniform1i(program->uniform("diffuseMap"), 0);
-    glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, material.diffuseMap);
 
-    glActiveTexture(GL_TEXTURE2);
-    glBindTexture(GL_TEXTURE_2D, material.normalMap);
-    glUniform1i(program->uniform("normalMap"), 2);
-
-    glActiveTexture(GL_TEXTURE3);
-    glBindTexture(GL_TEXTURE_2D, material.specularMap);
-    glUniform1i(program->uniform("specularMap"), 3);
+    for (int i = 0; i < sizeof(materials) / sizeof(ELMaterial); ++i) {
+        ELMaterial mat = materials[i];
+        char buffer[256];
+        snprintf(buffer, 256, "materials[%d].ambient", i);
+        glUniform4fv(program->uniform(buffer), 1, mat.ambient.v);
+        snprintf(buffer, 256, "materials[%d].diffuse", i);
+        glUniform4fv(program->uniform(buffer), 1, mat.diffuse.v);
+        snprintf(buffer, 256, "materials[%d].specular", i);
+        glUniform4fv(program->uniform(buffer), 1, mat.specular.v);
+        snprintf(buffer, 256, "materials[%d].diffuseMap", i);
+        glUniform1i(program->uniform(buffer), i);
+        glActiveTexture(GL_TEXTURE0 + i);
+        glBindTexture(GL_TEXTURE_2D, mat.diffuseMap);
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
     glUniform1i(program->uniform("onlyUseColorAttrib"), onlyUseColorAttrib? 1 : 0);
 
@@ -147,18 +177,22 @@ void ELGeometry::setupVao() {
     glEnableVertexAttribArray(uvLocation);
     glVertexAttribPointer(uvLocation, 2, GL_FLOAT, GL_FALSE, data.vertexStride, BUFFER_OFFSET(6 * sizeof(GLfloat)));
 
+    GLuint matIDLocation = glGetAttribLocation(program->value, "matID");
+    glEnableVertexAttribArray(matIDLocation);
+    glVertexAttribPointer(matIDLocation, 1, GL_FLOAT, GL_FALSE, data.vertexStride, BUFFER_OFFSET(8 * sizeof(GLfloat)));
+
     GLuint tangentLocation = glGetAttribLocation(program->value, "tangent");
     glEnableVertexAttribArray(tangentLocation);
-    glVertexAttribPointer(tangentLocation, 3, GL_FLOAT, GL_FALSE, data.vertexStride, BUFFER_OFFSET(8 * sizeof(GLfloat)));
+    glVertexAttribPointer(tangentLocation, 3, GL_FLOAT, GL_FALSE, data.vertexStride, BUFFER_OFFSET(9 * sizeof(GLfloat)));
 
     GLuint bitangentLocation = glGetAttribLocation(program->value, "bitangent");
     glEnableVertexAttribArray(bitangentLocation);
-    glVertexAttribPointer(bitangentLocation, 3, GL_FLOAT, GL_FALSE, data.vertexStride, BUFFER_OFFSET(11 * sizeof(GLfloat)));
+    glVertexAttribPointer(bitangentLocation, 3, GL_FLOAT, GL_FALSE, data.vertexStride, BUFFER_OFFSET(12 * sizeof(GLfloat)));
 
     if (data.supportColorAttrib) {
         GLuint colorLocation = glGetAttribLocation(program->value, "color");
         glEnableVertexAttribArray(colorLocation);
-        glVertexAttribPointer(colorLocation, 4, GL_FLOAT, GL_FALSE, data.vertexStride, BUFFER_OFFSET(14 * sizeof(GLfloat)));
+        glVertexAttribPointer(colorLocation, 4, GL_FLOAT, GL_FALSE, data.vertexStride, BUFFER_OFFSET(15 * sizeof(GLfloat)));
     }
 
     if (data.indiceVBO) {

@@ -62,38 +62,72 @@ FGScene::FGScene(ELWorld *world) : world(world){
     world->activedCamera->lockOn(gameObject->transform);
 }
 
+void FGScene::createPlane() {
+    ELFloat width = 17 * 3;
+    ELFloat height = 17 * 3;
+    ELFloat wallHeight = 3.5;
+    ELVector3 floorSize = ELVector3Make(width,0.5,height);
+    GLuint diffuseMap_head,diffuseMap_body,diffuseMap_m4;
+    diffuseMap_head = ELTexture::texture(ELAssets::shared()->findFile("Airbus A310.png"))->value;
+    diffuseMap_body = ELTexture::texture(ELAssets::shared()->findFile("Turkish Airlines.png"))->value;
+
+    ELGameObject *gameObject = new ELGameObject(world);
+    world->addNode(gameObject);
+    gameObject->transform->position = ELVector3Make(0,0,0);
+//    gameObject->transform->scale = ELVector3Make(0.02,0.02,0.02);
+
+    std::vector<ELMeshGeometry *> geometries = ELFBXLoader::loadFromFile(ELAssets::shared()->findFile("Airbus A310.fbx").c_str());
+    for (int i = 0; i < geometries.size(); ++i) {
+//        geometries.at(i)->material.diffuse = ELVector4Make(0.5,0,0,1);
+        geometries.at(i)->materials[0].diffuse = ELVector4Make(0.0, 0.0, 0.0, 1.0);
+        geometries.at(i)->materials[0].ambient = ELVector4Make(0.7, 0.7, 0.7, 1.0);
+        geometries.at(i)->materials[0].diffuseMap = diffuseMap_head;
+        geometries.at(i)->materials[1].diffuse = ELVector4Make(0.0, 0.0, 0.0, 1.0);
+        geometries.at(i)->materials[1].ambient = ELVector4Make(0.7, 0.7, 0.7, 1.0);
+        geometries.at(i)->materials[1].diffuseMap = diffuseMap_body;
+        gameObject->addComponent(geometries.at(i));
+    }
+}
+
 void FGScene::createMonkey() {
     ELFloat width = 17 * 3;
     ELFloat height = 17 * 3;
     ELFloat wallHeight = 3.5;
     ELVector3 floorSize = ELVector3Make(width,0.5,height);
-    GLuint diffuseMap,normalMap;
-    normalMap = ELTexture::texture(ELAssets::shared()->findFile("body01.png"))->value;
-    diffuseMap = ELTexture::texture(ELAssets::shared()->findFile("body01.png"))->value;
+    GLuint diffuseMap_head,diffuseMap_body,diffuseMap_m4;
+    diffuseMap_head = ELTexture::texture(ELAssets::shared()->findFile("head01.png"))->value;
+    diffuseMap_body = ELTexture::texture(ELAssets::shared()->findFile("body01.png"))->value;
+    diffuseMap_m4 = ELTexture::texture(ELAssets::shared()->findFile("m4tex_2.png"))->value;
 
     ELGameObject *gameObject = new ELGameObject(world);
     world->addNode(gameObject);
     gameObject->transform->position = ELVector3Make(0,3,0);
-    gameObject->transform->scale = ELVector3Make(0.05,0.05,0.05);
+    gameObject->transform->scale = ELVector3Make(0.02,0.02,0.02);
 
     std::vector<ELMeshGeometry *> geometries = ELFBXLoader::loadFromFile(ELAssets::shared()->findFile("ArmyPilot.fbx").c_str());
     for (int i = 0; i < geometries.size(); ++i) {
 //        geometries.at(i)->material.diffuse = ELVector4Make(0.5,0,0,1);
-        geometries.at(i)->material.diffuse = ELVector4Make(0.0, 0.0, 0.0, 1.0);
-        geometries.at(i)->material.ambient = ELVector4Make(0.7, 0.7, 0.7, 1.0);
-        geometries.at(i)->material.diffuseMap = diffuseMap;
+        geometries.at(i)->materials[0].diffuse = ELVector4Make(0.0, 0.0, 0.0, 1.0);
+        geometries.at(i)->materials[0].ambient = ELVector4Make(0.7, 0.7, 0.7, 1.0);
+        geometries.at(i)->materials[0].diffuseMap = diffuseMap_head;
+        geometries.at(i)->materials[1].diffuse = ELVector4Make(0.0, 0.0, 0.0, 1.0);
+        geometries.at(i)->materials[1].ambient = ELVector4Make(0.7, 0.7, 0.7, 1.0);
+        geometries.at(i)->materials[1].diffuseMap = diffuseMap_body;
+        geometries.at(i)->materials[2].diffuse = ELVector4Make(0.0, 0.0, 0.0, 1.0);
+        geometries.at(i)->materials[2].ambient = ELVector4Make(0.7, 0.7, 0.7, 1.0);
+        geometries.at(i)->materials[2].diffuseMap = diffuseMap_m4;
         gameObject->addComponent(geometries.at(i));
     }
 }
 
 void FGScene::createFloor() {
-    ELFloat width = 40;
-    ELFloat height = 40;
+    ELFloat width = 100;
+    ELFloat height = 100;
     ELFloat wallHeight = 3.5;
     ELVector3 floorSize = ELVector3Make(width,-10,height);
     GLuint diffuseMap,normalMap;
     normalMap = ELTexture::texture(ELAssets::shared()->findFile("rock_NRM.png"))->value;
-    diffuseMap = ELTexture::texture(ELAssets::shared()->findFile("body01.png"))->value;
+    diffuseMap = ELTexture::texture(ELAssets::shared()->findFile("box.png"))->value;
 
     ELGameObject *gameObject = new ELGameObject(world);
     world->addNode(gameObject);
@@ -108,10 +142,10 @@ void FGScene::createCubeGameObject(ELVector3 size,ELVector3 pos,ELFloat mass,GLu
     gameObject->transform->position = pos;
     ELCubeGeometry *cube = new ELCubeGeometry(size, true);
     gameObject->addComponent(cube);
-    cube->material.diffuse = ELVector4Make(0.0, 0.0, 0.0, 1.0);
-    cube->material.ambient = ELVector4Make(0.7, 0.7, 0.7, 1.0);
-    cube->material.diffuseMap = diffuseMap;//ELTexture::texture(ELAssets::shared()->findFile("rock.png"))->value;
-    cube->material.normalMap = normalMap;//ELTexture::texture(ELAssets::shared()->findFile("rock_NRM.png"))->value;
+    cube->materials[0].diffuse = ELVector4Make(0.2, 0.2, 0.2, 1.0);
+    cube->materials[0].ambient = ELVector4Make(0.7, 0.7, 0.7, 1.0);
+    cube->materials[0].diffuseMap = diffuseMap;//ELTexture::texture(ELAssets::shared()->findFile("rock.png"))->value;
+    cube->materials[0].normalMap = normalMap;//ELTexture::texture(ELAssets::shared()->findFile("rock_NRM.png"))->value;
     cube->enableBorder = hasBorder;
     cube->borderWidth = 0.2;
     cube->borderColor = ELVector4Make(1, 0, 0, 1);
