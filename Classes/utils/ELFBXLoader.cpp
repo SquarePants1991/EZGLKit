@@ -45,6 +45,7 @@ std::vector<ELMeshGeometry *> ELFBXLoader::loadFromFile(const char *filePath) {
             FbxNodeAttribute::EType attrType = node->GetNodeAttribute()->GetAttributeType();
             if (attrType == FbxNodeAttribute::EType::eMesh) {
                 FbxMesh * mesh = (FbxMesh *) node->GetNodeAttribute();
+                loadSkin(mesh);
                 meshes.push_back(loadMesh(mesh));
             }
         }
@@ -118,12 +119,82 @@ void ELFBXLoader::generateVertexVBO(ELGeometryVertexBuffer *buffer, ELGeometryDa
 void ELFBXLoader::loadAnimation(FbxScene *scene) {
     for (int i = 0; i < scene->GetSrcObjectCount<FbxAnimStack>(); ++i) {
         FbxAnimStack *stack = scene->GetSrcObject<FbxAnimStack>(i);
-        printf("Anim Stack : %s\n", stack->GetName());
+        printf("Anim Stack : %s \n", stack->GetName());
 
-        int animLayersCount = stack->GetMemberCount<FbxAnimLayer>();
-        for (int j = 0; j < animLayersCount; ++j) {
-            FbxAnimLayer *layer = stack->GetMember<FbxAnimLayer>(j);
-            FbxAnimCurve * curveX = scene->GetRootNode()->LclTranslation.GetCurve(layer, FBXSDK_CURVENODE_COMPONENT_X);
+        FbxAnimLayer *animLayer = stack->GetMember<FbxAnimLayer>();
+
+        FbxTime startTime, endTime;
+        FbxTakeInfo *takeInfo = scene->GetTakeInfo(stack->GetName());
+        if (takeInfo) {
+            startTime = takeInfo->mLocalTimeSpan.GetStart();
+            endTime = takeInfo->mLocalTimeSpan.GetStop();
+            printf("%d s : %d s \n",startTime.GetSecondCount(), endTime.GetSecondCount());
         }
     }
+
+    //check if any pose exists
+    int posCount = scene->GetPoseCount();
+    FbxPose *pose = scene->GetPose(0);
+
+    // check if any cache exists
+    int nodeCount = scene->GetSrcObjectCount<FbxNode>();
+    for (int j = 0; j < nodeCount; ++j) {
+        FbxNode *node = scene->GetSrcObject<FbxNode>(j);
+        if (node->GetGeometry()) {
+            int vertexCacheDeformerCount = node->GetGeometry()->GetDeformerCount(FbxDeformer::eVertexCache);
+            for (int i = 0; i < vertexCacheDeformerCount; ++i) {
+                FbxVertexCacheDeformer *deformer = static_cast<FbxVertexCacheDeformer *>(node->GetGeometry()->GetDeformer(i, FbxDeformer::eVertexCache));
+            }
+        }
+    }
+}
+
+void ELFBXLoader::loadSkin(FbxMesh *mesh) {
+    int shapeCount = mesh->GetShapeCount();
+    int clusterCount = 0;
+    for (int i = 0; i < mesh->GetDeformerCount(FbxDeformer::eSkin); ++i) {
+        FbxSkin * skin = (FbxSkin *)mesh->GetDeformer(i, FbxDeformer::eSkin);
+        clusterCount += skin->GetClusterCount();
+    }
+    if (clusterCount) {
+        FbxSkin * skin = (FbxSkin *)mesh->GetDeformer(0, FbxDeformer::eSkin);
+        FbxSkin::EType skinType = skin->GetSkinningType();
+        if (skinType == FbxSkin::eLinear || skinType == FbxSkin::eRigid) {
+            FbxAMatrix globalMatrix;
+            computerLinearDeformation(globalMatrix, mesh, FbxTime());
+        }
+    }
+}
+
+void ELFBXLoader::computerLinearDeformation(FbxAMatrix& pGlobalPosition, FbxMesh *mesh, FbxTime time) {
+    FbxCluster::ELinkMode clusterMode = ((FbxSkin *)mesh->GetDeformer(0, FbxDeformer::eSkin))->GetCluster(0)->GetLinkMode();
+    int vertexCount = mesh->GetControlPointsCount();
+
+    FbxAMatrix *clusterDeformation = new FbxAMatrix[vertexCount];
+    memset(clusterDeformation, 0, vertexCount * sizeof(FbxAMatrix));
+
+    double *clusterWeight = new double[vertexCount];
+    memset(clusterWeight, 0, sizeof(double) * vertexCount);
+
+    if (clusterMode == FbxCluster::eAdditive) {
+        for (int i = 0; i < vertexCount; ++i) {
+            clusterDeformation[i].SetIdentity();
+        }
+    }
+
+    int skinCount = mesh->GetDeformerCount(FbxDeformer::eSkin);
+    for (int j = 0; j < skinCount; ++j) {
+        FbxSkin *skin = static_cast<FbxSkin *>(mesh->GetDeformer(j, FbxDeformer::eSkin));
+        int clusterCount = skin->GetClusterCount();
+        for (int i = 0; i < clusterCount; ++i) {
+            FbxCluster *cluster = skin->GetCluster(i);
+            if (!cluster->GetLink()) continue;
+            FbxAMatrix vertexTransformMatrix;
+            computerClusterDeformation(pGlobalPosition, mesh, cluster, vertexTransformMatrix);
+        }
+    }
+}
+
+void ELFBXLoader::computerClusterDeformation(FbxAMatrix& pGlobalPosition, FbxMesh *mesh, FbxCluster *cluster, FbxAMatrix& vertexTransform) {
+
 }

@@ -18,7 +18,9 @@ public:
     static std::vector<ELMeshGeometry *> loadFromFile(const char *filePath);
     static ELMeshGeometry *loadMesh(FbxMesh *mesh);
     static void loadAnimation(FbxScene *scene);
-
+    static void loadSkin(FbxMesh *mesh);
+    static void computerLinearDeformation(FbxAMatrix& pGlobalPosition, FbxMesh *mesh, FbxTime time);
+    static void computerClusterDeformation(FbxAMatrix& pGlobalPosition, FbxMesh *mesh, FbxCluster *cluster, FbxAMatrix& vertexTransform);
 private:
     static FbxManager *fbxManager;
 
