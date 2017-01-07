@@ -6,7 +6,7 @@
 #define EZGL_ELDAELOADER_H
 
 #include <fbxsdk.h>
-#include "component/ELGeometry.h"
+#include "component/geometry/ELMeshGeometry.h"
 #include <vector>
 
 class ELGeometryVertexBuffer;
@@ -17,10 +17,11 @@ public:
     static void setupFbxEnv();
     static std::vector<ELMeshGeometry *> loadFromFile(const char *filePath);
     static ELMeshGeometry *loadMesh(FbxMesh *mesh);
+    static std::map<std::string, ELAnimation> loadAnimationNames(FbxScene *scene);
     static void loadAnimation(FbxScene *scene);
     static void loadSkin(FbxMesh *mesh);
     static void computerLinearDeformation(FbxAMatrix& pGlobalPosition, FbxMesh *mesh, FbxTime time);
-    static void computerClusterDeformation(FbxAMatrix& pGlobalPosition, FbxMesh *mesh, FbxCluster *cluster, FbxAMatrix& vertexTransform);
+    static void computerClusterDeformation(FbxAMatrix& pGlobalPosition,FbxTime &pTime, FbxPose *pPose, FbxMesh *mesh, FbxCluster *cluster, FbxAMatrix& vertexTransform);
 private:
     static FbxManager *fbxManager;
 

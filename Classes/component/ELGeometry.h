@@ -24,6 +24,13 @@ typedef enum {
     ELGeometryRenderTypeBackSide,
 }ELGeometryRenderType;
 
+class ELAnimation {
+public:
+    std::string name;
+    ELFloat startTime;
+    ELFloat stopTime;
+};
+
 class ELEffect;
 class ELCamera;
 
@@ -39,6 +46,8 @@ public:
 
     bool onlyUseColorAttrib;
     static bool resetBorderBeforeUpdate;
+
+    std::map<std::string, ELAnimation> animations;
 public:
     ELGeometry();
     void prepare();

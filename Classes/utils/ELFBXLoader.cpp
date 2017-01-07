@@ -45,12 +45,13 @@ std::vector<ELMeshGeometry *> ELFBXLoader::loadFromFile(const char *filePath) {
             FbxNodeAttribute::EType attrType = node->GetNodeAttribute()->GetAttributeType();
             if (attrType == FbxNodeAttribute::EType::eMesh) {
                 FbxMesh * mesh = (FbxMesh *) node->GetNodeAttribute();
-                loadSkin(mesh);
-                meshes.push_back(loadMesh(mesh));
+                ELMeshGeometry *meshGeometry = loadMesh(mesh);
+                meshGeometry->animations = loadAnimationNames(scene);
+                meshes.push_back(meshGeometry);
             }
         }
     }
-    loadAnimation(scene);
+
     return meshes;
 }
 
@@ -116,6 +117,27 @@ void ELFBXLoader::generateVertexVBO(ELGeometryVertexBuffer *buffer, ELGeometryDa
     geometryData->supportIndiceVBO = false;
 }
 
+std::map<std::string, ELAnimation> ELFBXLoader::loadAnimationNames(FbxScene *scene) {
+    std::map<std::string, ELAnimation> animations;
+    for (int i = 0; i < scene->GetSrcObjectCount<FbxAnimStack>(); ++i) {
+        ELAnimation animation;
+        FbxAnimStack *stack = scene->GetSrcObject<FbxAnimStack>(i);
+        animation.name = std::string(stack->GetName());
+        FbxAnimLayer *animLayer = stack->GetMember<FbxAnimLayer>();
+
+        FbxTime startTime, endTime;
+        FbxTakeInfo *takeInfo = scene->GetTakeInfo(stack->GetName());
+        if (takeInfo) {
+            startTime = takeInfo->mLocalTimeSpan.GetStart();
+            endTime = takeInfo->mLocalTimeSpan.GetStop();
+            animation.startTime = startTime.GetMilliSeconds();
+            animation.stopTime = endTime.GetMilliSeconds();
+        }
+        animations[animation.name] = animation;
+    }
+    return animations;
+}
+
 void ELFBXLoader::loadAnimation(FbxScene *scene) {
     for (int i = 0; i < scene->GetSrcObjectCount<FbxAnimStack>(); ++i) {
         FbxAnimStack *stack = scene->GetSrcObject<FbxAnimStack>(i);
@@ -166,6 +188,89 @@ void ELFBXLoader::loadSkin(FbxMesh *mesh) {
     }
 }
 
+FbxAMatrix GetPoseMatrix(FbxPose* pPose, int pNodeIndex)
+{
+    FbxAMatrix lPoseMatrix;
+    FbxMatrix lMatrix = pPose->GetMatrix(pNodeIndex);
+
+    memcpy((double*)lPoseMatrix, (double*)lMatrix, sizeof(lMatrix.mData));
+
+    return lPoseMatrix;
+}
+
+FbxAMatrix GetGlobalPosition(FbxNode* pNode, const FbxTime& pTime, FbxPose* pPose, FbxAMatrix* pParentGlobalPosition = NULL)
+{
+    FbxAMatrix lGlobalPosition;
+    bool        lPositionFound = false;
+
+    if (pPose)
+    {
+        int lNodeIndex = pPose->Find(pNode);
+
+        if (lNodeIndex > -1)
+        {
+            // The bind pose is always a global matrix.
+            // If we have a rest pose, we need to check if it is
+            // stored in global or local space.
+            if (pPose->IsBindPose() || !pPose->IsLocalMatrix(lNodeIndex))
+            {
+                lGlobalPosition = GetPoseMatrix(pPose, lNodeIndex);
+            }
+            else
+            {
+                // We have a local matrix, we need to convert it to
+                // a global space matrix.
+                FbxAMatrix lParentGlobalPosition;
+
+                if (pParentGlobalPosition)
+                {
+                    lParentGlobalPosition = *pParentGlobalPosition;
+                }
+                else
+                {
+                    if (pNode->GetParent())
+                    {
+                        lParentGlobalPosition = GetGlobalPosition(pNode->GetParent(), pTime, pPose);
+                    }
+                }
+
+                FbxAMatrix lLocalPosition = GetPoseMatrix(pPose, lNodeIndex);
+                lGlobalPosition = lParentGlobalPosition * lLocalPosition;
+            }
+
+            lPositionFound = true;
+        }
+    }
+
+    if (!lPositionFound)
+    {
+        // There is no pose entry for that node, get the current global position instead.
+
+        // Ideally this would use parent global position and local position to compute the global position.
+        // Unfortunately the equation
+        //    lGlobalPosition = pParentGlobalPosition * lLocalPosition
+        // does not hold when inheritance type is other than "Parent" (RSrs).
+        // To compute the parent rotation and scaling is tricky in the RrSs and Rrs cases.
+        lGlobalPosition = pNode->EvaluateGlobalTransform(pTime);
+    }
+
+    return lGlobalPosition;
+}
+
+// Scale all the elements of a matrix.
+void MatrixScale(FbxAMatrix& pMatrix, double pValue)
+{
+    int i,j;
+
+    for (i = 0; i < 4; i++)
+    {
+        for (j = 0; j < 4; j++)
+        {
+            pMatrix[i][j] *= pValue;
+        }
+    }
+}
+
 void ELFBXLoader::computerLinearDeformation(FbxAMatrix& pGlobalPosition, FbxMesh *mesh, FbxTime time) {
     FbxCluster::ELinkMode clusterMode = ((FbxSkin *)mesh->GetDeformer(0, FbxDeformer::eSkin))->GetCluster(0)->GetLinkMode();
     int vertexCount = mesh->GetControlPointsCount();
@@ -190,11 +295,149 @@ void ELFBXLoader::computerLinearDeformation(FbxAMatrix& pGlobalPosition, FbxMesh
             FbxCluster *cluster = skin->GetCluster(i);
             if (!cluster->GetLink()) continue;
             FbxAMatrix vertexTransformMatrix;
-            computerClusterDeformation(pGlobalPosition, mesh, cluster, vertexTransformMatrix);
+            FbxTime time;
+            computerClusterDeformation(pGlobalPosition, time, NULL, mesh, cluster, vertexTransformMatrix);
+            int lVertexIndexCount = cluster->GetControlPointIndicesCount();
+            for (int k = 0; k < lVertexIndexCount; ++k)
+            {
+                int lIndex = cluster->GetControlPointIndices()[k];
+
+                // Sometimes, the mesh can have less points than at the time of the skinning
+                // because a smooth operator was active when skinning but has been deactivated during export.
+                if (lIndex >= vertexCount)
+                    continue;
+
+                double lWeight = cluster->GetControlPointWeights()[k];
+
+                if (lWeight == 0.0)
+                {
+                    continue;
+                }
+
+                // Compute the influence of the link on the vertex.
+                FbxAMatrix lInfluence = vertexTransformMatrix;
+                MatrixScale(lInfluence, lWeight);
+
+                if (clusterMode == FbxCluster::eAdditive)
+                {
+//                    // Multiply with the product of the deformations on the vertex.
+//                    MatrixAddToDiagonal(lInfluence, 1.0 - lWeight);
+//                    lClusterDeformation[lIndex] = lInfluence * lClusterDeformation[lIndex];
+//
+//                    // Set the link to 1.0 just to know this vertex is influenced by a link.
+//                    lClusterWeight[lIndex] = 1.0;
+                }
+                else // lLinkMode == FbxCluster::eNormalize || lLinkMode == FbxCluster::eTotalOne
+                {
+//                    // Add to the sum of the deformations on the vertex.
+//                    MatrixAdd(lClusterDeformation[lIndex], lInfluence);
+//
+//                    // Add to the sum of weights to either normalize or complete the vertex.
+//                    lClusterWeight[lIndex] += lWeight;
+                }
+            }//For each vertex
+
+            //Actually deform each vertices here by information stored in lClusterDeformation and lClusterWeight
+            for (int i = 0; i < vertexCount; i++)
+            {
+                FbxVector4 lSrcVertex = pVertexArray[i];
+                FbxVector4& lDstVertex = pVertexArray[i];
+                double lWeight = lClusterWeight[i];
+
+                // Deform the vertex if there was at least a link with an influence on the vertex,
+                if (lWeight != 0.0)
+                {
+                    lDstVertex = lClusterDeformation[i].MultT(lSrcVertex);
+                    if (lClusterMode == FbxCluster::eNormalize)
+                    {
+                        // In the normalized link mode, a vertex is always totally influenced by the links.
+                        lDstVertex /= lWeight;
+                    }
+                    else if (lClusterMode == FbxCluster::eTotalOne)
+                    {
+                        // In the total 1 link mode, a vertex can be partially influenced by the links.
+                        lSrcVertex *= (1.0 - lWeight);
+                        lDstVertex += lSrcVertex;
+                    }
+                }
+            }
         }
     }
 }
 
-void ELFBXLoader::computerClusterDeformation(FbxAMatrix& pGlobalPosition, FbxMesh *mesh, FbxCluster *cluster, FbxAMatrix& vertexTransform) {
+FbxAMatrix GetGeometry(FbxNode* pNode)
+{
+    const FbxVector4 lT = pNode->GetGeometricTranslation(FbxNode::eSourcePivot);
+    const FbxVector4 lR = pNode->GetGeometricRotation(FbxNode::eSourcePivot);
+    const FbxVector4 lS = pNode->GetGeometricScaling(FbxNode::eSourcePivot);
 
+    return FbxAMatrix(lT, lR, lS);
+}
+
+void ELFBXLoader::computerClusterDeformation(FbxAMatrix& pGlobalPosition,FbxTime &pTime, FbxPose *pPose, FbxMesh *pMesh, FbxCluster *pCluster, FbxAMatrix& pVertexTransformMatrix) {
+    FbxCluster::ELinkMode lClusterMode = pCluster->GetLinkMode();
+
+    FbxAMatrix lReferenceGlobalInitPosition;
+    FbxAMatrix lReferenceGlobalCurrentPosition;
+    FbxAMatrix lAssociateGlobalInitPosition;
+    FbxAMatrix lAssociateGlobalCurrentPosition;
+    FbxAMatrix lClusterGlobalInitPosition;
+    FbxAMatrix lClusterGlobalCurrentPosition;
+
+    FbxAMatrix lReferenceGeometry;
+    FbxAMatrix lAssociateGeometry;
+    FbxAMatrix lClusterGeometry;
+
+    FbxAMatrix lClusterRelativeInitPosition;
+    FbxAMatrix lClusterRelativeCurrentPositionInverse;
+
+    if (lClusterMode == FbxCluster::eAdditive && pCluster->GetAssociateModel())
+    {
+        pCluster->GetTransformAssociateModelMatrix(lAssociateGlobalInitPosition);
+        // Model Matrix
+        // Geometric transform of the model
+        lAssociateGeometry = GetGeometry(pCluster->GetAssociateModel());
+        lAssociateGlobalInitPosition *= lAssociateGeometry;
+        lAssociateGlobalCurrentPosition = GetGlobalPosition(pCluster->GetAssociateModel(), pTime, pPose);
+
+        pCluster->GetTransformMatrix(lReferenceGlobalInitPosition);
+        // Mesh Matrix
+        // Multiply lReferenceGlobalInitPosition by Geometric Transformation
+        lReferenceGeometry = GetGeometry(pMesh->GetNode());
+        lReferenceGlobalInitPosition *= lReferenceGeometry;
+        lReferenceGlobalCurrentPosition = pGlobalPosition;
+
+        // Get the link initial global position and the link current global position.
+        pCluster->GetTransformLinkMatrix(lClusterGlobalInitPosition);
+        // Multiply lClusterGlobalInitPosition by Geometric Transformation
+        lClusterGeometry = GetGeometry(pCluster->GetLink());
+        lClusterGlobalInitPosition *= lClusterGeometry;
+        lClusterGlobalCurrentPosition = GetGlobalPosition(pCluster->GetLink(), pTime, pPose);
+
+        // Compute the shift of the link relative to the reference.
+        //ModelM-1 * AssoM * AssoGX-1 * LinkGX * LinkM-1*ModelM
+        pVertexTransformMatrix = lReferenceGlobalInitPosition.Inverse() * lAssociateGlobalInitPosition * lAssociateGlobalCurrentPosition.Inverse() *
+                                 lClusterGlobalCurrentPosition * lClusterGlobalInitPosition.Inverse() * lReferenceGlobalInitPosition;
+    }
+    else
+    {
+        pCluster->GetTransformMatrix(lReferenceGlobalInitPosition);
+        lReferenceGlobalCurrentPosition = pGlobalPosition;
+        // Multiply lReferenceGlobalInitPosition by Geometric Transformation
+        lReferenceGeometry = GetGeometry(pMesh->GetNode());
+        lReferenceGlobalInitPosition *= lReferenceGeometry;
+
+        // Get the link initial global position and the link current global position.
+        pCluster->GetTransformLinkMatrix(lClusterGlobalInitPosition);
+        lClusterGlobalCurrentPosition = GetGlobalPosition(pCluster->GetLink(), pTime, pPose);
+
+        // Compute the initial position of the link relative to the reference.
+        lClusterRelativeInitPosition = lClusterGlobalInitPosition.Inverse() * lReferenceGlobalInitPosition;
+
+        // Compute the current position of the link relative to the reference.
+        lClusterRelativeCurrentPositionInverse = lReferenceGlobalCurrentPosition.Inverse() * lClusterGlobalCurrentPosition;
+
+        // Compute the shift of the link relative to the reference.
+        pVertexTransformMatrix = lClusterRelativeCurrentPositionInverse * lClusterRelativeInitPosition;
+    }
 }
