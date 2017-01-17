@@ -8,7 +8,14 @@
 #include "component/ELGeometry.h"
 #include "utils/ELGeometryVertexBuffer.h"
 
+class ELGeometryVertexBufferProvider : public ELNode {
+public:
+    virtual void update(ELFloat timeInSecs, ELGeometryVertexBuffer *vertexBuffer) = 0;
+};
+
 class ELVertexBufferGeometry : public ELGeometry {
+public:
+    ELGeometryVertexBufferProvider * vertexBufferProvider;
 public:
     ELVertexBufferGeometry();
     ELVertexBufferGeometry(bool smooth);

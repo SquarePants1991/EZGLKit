@@ -1,4 +1,3 @@
-set(CMAKE_MACOSX_RPATH 1)
 file(GLOB SRC
         "*.h"
         "*.c"

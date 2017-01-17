@@ -5,15 +5,17 @@
 #ifndef EZGL_ELMESHGEOMETRY_H
 #define EZGL_ELMESHGEOMETRY_H
 
-#include "../ELGeometry.h"
+#include "ELVertexBufferGeometry.h"
 #include "utils/ELGeometryVertexBuffer.h"
 
-class ELMeshGeometry : public ELGeometry {
+class ELMeshGeometry : public ELVertexBufferGeometry {
 public:
+    ELMeshGeometry();
     ELMeshGeometry(ELGeometryData data);
 
     virtual ELGeometryData generateData();
     void update(ELFloat timeInSecs);
+    virtual void fillVertexBuffer(ELGeometryVertexBuffer *vertexBuffer);
 private:
     ELGeometryData _data;
 };

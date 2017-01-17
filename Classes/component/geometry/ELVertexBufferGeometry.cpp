@@ -3,19 +3,27 @@
 //
 
 #include <core/ELEffect.h>
+#include <component/ELGeometry.h>
 #include "ELVertexBufferGeometry.h"
 
-ELVertexBufferGeometry::ELVertexBufferGeometry() {
+ELVertexBufferGeometry::ELVertexBufferGeometry() :
+        vertexBufferProvider(NULL)
+{
     smooth = false;
     vertexBuffer = new ELGeometryVertexBuffer();
 }
 
-ELVertexBufferGeometry::ELVertexBufferGeometry(bool smooth) : smooth(smooth) {
+ELVertexBufferGeometry::ELVertexBufferGeometry(bool smooth) :
+        vertexBufferProvider(NULL),
+        smooth(smooth)
+{
     vertexBuffer = new ELGeometryVertexBuffer();
 }
 
 ELVertexBufferGeometry::~ELVertexBufferGeometry() {
-    delete vertexBuffer;
+    if (vertexBuffer != NULL) {
+        delete vertexBuffer;
+    }
 }
 
 ELGeometryData ELVertexBufferGeometry::generateData() {
@@ -35,6 +43,7 @@ ELGeometryData ELVertexBufferGeometry::generateData() {
     data.vertexCount = vertexBuffer->rawLength() / sizeof(ELGeometryVertex);
     data.vertexStride = sizeof(ELGeometryVertex);
     data.supportIndiceVBO = false;
+    data.supportColorAttrib = false;
 
     return data;
 }
