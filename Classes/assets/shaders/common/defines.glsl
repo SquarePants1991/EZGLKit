@@ -32,6 +32,7 @@ struct material_struct {
     vec4 ambient;
     vec4 specular;
     sampler2D diffuseMap;
+    sampler2D normalMap;
 };
 
 struct projector_struct {

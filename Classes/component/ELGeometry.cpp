@@ -73,7 +73,7 @@ void ELGeometry::render() {
 //    glActiveTexture(GL_TEXTURE0);
 //    glBindTexture(GL_TEXTURE_2D, material.diffuseMap);
 
-
+    int textureID = 0;
     for (int i = 0; i < sizeof(materials) / sizeof(ELMaterial); ++i) {
         ELMaterial mat = materials[i];
         char buffer[256];
@@ -83,27 +83,17 @@ void ELGeometry::render() {
         glUniform4fv(program->uniform(buffer), 1, (GLfloat *)mat.diffuse.v);
         snprintf(buffer, 256, "materials[%d].specular", i);
         glUniform4fv(program->uniform(buffer), 1, (GLfloat *)mat.specular.v);
-//        snprintf(buffer, 256, "materials[%d].diffuseMap", i);
-//        glUniform1i(program->uniform(buffer), i);
-//        glActiveTexture(GL_TEXTURE0 + i);
-//        glBindTexture(GL_TEXTURE_2D, mat.diffuseMap);
-        
+        snprintf(buffer, 256, "materials[%d].diffuseMap", i * 2 + 0);
+        glUniform1i(program->uniform(buffer), textureID);
+        glActiveTexture(GL_TEXTURE0 + textureID);
+        glBindTexture(GL_TEXTURE_2D, mat.diffuseMap);
+        textureID++;
+        snprintf(buffer, 256, "materials[%d].normalMap", i * 2 + 0);
+        glUniform1i(program->uniform(buffer), textureID);
+        glActiveTexture(GL_TEXTURE0 + textureID);
+        glBindTexture(GL_TEXTURE_2D, mat.normalMap);
+        textureID++;
     }
-    char buffer[256];
-    
-    snprintf(buffer, 256, "normalMap");
-    glUniform1i(program->uniform(buffer),5);
-    glActiveTexture(GL_TEXTURE5);
-    glBindTexture(GL_TEXTURE_2D, materials[0].normalMap);
-    
-    snprintf(buffer, 256, "diffuseMap");
-    glUniform1i(program->uniform(buffer), 0);
-    glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, materials[0].diffuseMap);
-    
-    
-    
-    
     
     
     

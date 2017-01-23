@@ -11,7 +11,7 @@
 vec4 surfaceColor() {
     if (enableTerrainMix == 0) {
         int matId = int(fragMatID);
-        return tex2D(diffuseMap, fragTexcoord) + materials[matId].diffuse;
+        return tex2D(materials[matId].diffuseMap, fragTexcoord) + materials[matId].diffuse;
     } else {
        return terrainColor();
     }

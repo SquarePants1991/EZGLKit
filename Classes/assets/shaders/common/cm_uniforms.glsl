@@ -15,7 +15,7 @@ uniform sampler2D normalMap;
 uniform sampler2D specularMap;
 
 uniform material_struct material;
-uniform material_struct materials[10];
+uniform material_struct materials[3];
 
 uniform int renderShadow;
 uniform int renderBorder;

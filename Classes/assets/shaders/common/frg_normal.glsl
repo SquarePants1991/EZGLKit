@@ -7,8 +7,9 @@ void transformNormal(in vec3 position, in vec3 normal,out vec3 newNormal)
 }
 
 vec3 caculateNormal() {
+    int matId = int(fragMatID);
  // 扰动法向量
-    highp vec3 rgb = tex2D( normalMap, fragTexcoord ).rgb;
+    highp vec3 rgb = tex2D( materials[matId].normalMap, fragTexcoord ).rgb;
     highp float tnx = 2.0 * (rgb.r - 0.5);
     highp float tny = 2.0 * (rgb.g - 0.5);
     highp float tnz = 2.0 * (rgb.b - 0.5);
