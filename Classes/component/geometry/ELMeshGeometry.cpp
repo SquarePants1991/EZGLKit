@@ -9,8 +9,24 @@ ELMeshGeometry::ELMeshGeometry() {
 
 }
 
-ELMeshGeometry::ELMeshGeometry(ELGeometryData data) : _data(data) {
+ELMeshGeometry::ELMeshGeometry(ELGeometryData data) :
+        _data(data),
+        currentTime(0),
+        currentAnimation(ELAnimation::None())
+{
 
+}
+
+void ELMeshGeometry::setAnimation(std::string animationName) {
+    if(animations.size() == 0) {
+        currentAnimation = ELAnimation::Default();
+        return;
+    }
+    auto animationIndex = animations.find(animationName);
+    if (animationIndex != animations.end()) {
+        currentAnimation = animations[animationName];
+        currentTime = currentAnimation.startTime / 1000.0;
+    }
 }
 
 ELGeometryData ELMeshGeometry::generateData() {
@@ -23,10 +39,20 @@ ELGeometryData ELMeshGeometry::generateData() {
 
 void ELMeshGeometry::update(ELFloat timeInSecs) {
     ELGeometry::update(timeInSecs);
+    if (currentAnimation != ELAnimation::None() &&
+        currentAnimation != ELAnimation::Default()) {
+        isGeometryDataValid = false;
+        currentTime += timeInSecs;
+        if (currentTime >= currentAnimation.stopTime / 1000.0f) {
+            currentTime = currentAnimation.startTime / 1000.0f;
+        }
+    }
 }
 
 void ELMeshGeometry::fillVertexBuffer(ELGeometryVertexBuffer *vertexBuffer) {
-    if (vertexBufferProvider != NULL) {
-        vertexBufferProvider->update(0,vertexBuffer);
+    if (currentAnimation != ELAnimation::None()) {
+        if (vertexBufferProvider != NULL) {
+            vertexBufferProvider->update(currentAnimation.name.c_str(), currentTime, vertexBuffer);
+        }
     }
 }

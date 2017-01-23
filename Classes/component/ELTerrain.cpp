@@ -3,8 +3,8 @@
 //
 
 #include <stdlib.h>
-#include <SOIL.h>
-#include <core/ELEffect.h>
+#include "SOIL.h"
+#include "core/ELEffect.h"
 #include "core/ELGameObject.h"
 
 #include "ELTerrain.h"

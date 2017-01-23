@@ -2,7 +2,7 @@
 // Created by wangyang on 16/11/28.
 //
 
-#include <tiny_obj_loader.h>
+#include "tiny_obj_loader.h"
 #include <component/ELGeometry.h>
 #include "core/ELTexture.h"
 #include "ELWaveFrontLoader.h"

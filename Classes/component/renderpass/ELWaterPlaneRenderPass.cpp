@@ -26,10 +26,10 @@ void ELWaterPlaneRenderPass::renderReflectionMaps(ELWorld *world) {
             glUniform1i(world->activedEffect->program->uniform("useAdditionMatrix"),1);
             ELMatrix4 additionMatrix = ELMatrix4MakeScale(1,-1,1);
             additionMatrix = ELMatrix4Multiply(additionMatrix,ELMatrix4MakeTranslation(0,waterPlane->gameObject()->transform->position.y,0));
-            glUniformMatrix4fv(world->activedEffect->program->uniform("additionMatrix"), 1, 0, additionMatrix.m);
+            glUniformMatrix4fv(world->activedEffect->program->uniform("additionMatrix"), 1, 0, (GLfloat *)additionMatrix.m);
             ELGLState::set(GL_CULL_FACE_MODE, GL_FRONT);
             glUniform1i(world->activedEffect->program->uniform("enableClipPlane0"), 1);
-            glUniform4fv(world->activedEffect->program->uniform("clipPlane0"), 1,waterPlane->plane().v);
+            glUniform4fv(world->activedEffect->program->uniform("clipPlane0"), 1,(GLfloat *)waterPlane->plane().v);
             waterPlane->beginGenReflectionMap();
             world->orderedRender();
             waterPlane->endGenReflectionMap();
@@ -39,7 +39,7 @@ void ELWaterPlaneRenderPass::renderReflectionMaps(ELWorld *world) {
     ELWaterPlane::isInWaterPlanePreparePass = false;
     ELGLState::set(GL_CULL_FACE_MODE, GL_BACK);
     glUniform1i(world->activedEffect->program->uniform("useAdditionMatrix"),0);
-    glUniformMatrix4fv(world->activedEffect->program->uniform("additionMatrix"), 1, 0, ELMatrix4Identity.m);
+    glUniformMatrix4fv(world->activedEffect->program->uniform("additionMatrix"), 1, 0, (GLfloat *)ELMatrix4Identity.m);
 }
 
 void ELWaterPlaneRenderPass::renderRefractionMaps(ELWorld *world) {
@@ -52,7 +52,7 @@ void ELWaterPlaneRenderPass::renderRefractionMaps(ELWorld *world) {
         ELWaterPlane * waterPlane = dynamic_cast<ELWaterPlane *>(waterPlanes.at(i));
         if (waterPlane != NULL) {
             glUniform1i(world->activedEffect->program->uniform("enableClipPlane0"), 1);
-            glUniform4fv(world->activedEffect->program->uniform("clipPlane0"), 1,waterPlane->inversePlane().v);
+            glUniform4fv(world->activedEffect->program->uniform("clipPlane0"), 1,(GLfloat *)waterPlane->inversePlane().v);
             glUniform1i(world->activedEffect->program->uniform("useAdditionMatrix"),0);
             waterPlane->beginGenRefractionMap();
             world->orderedRender();

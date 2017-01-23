@@ -1,4 +1,5 @@
 precision highp float;
+precision highp int;
 
 #ifdef ES
     #define OUT varying
@@ -14,8 +15,6 @@ precision highp float;
     #define outColor GLfragColor
     #define tex2D(map, uv) texture(map, uv)
 #endif
-
-out float outDepth;
 
 struct light {
     int type;

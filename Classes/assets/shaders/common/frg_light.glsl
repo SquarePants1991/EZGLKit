@@ -12,7 +12,7 @@ void pointLight(
                 ) {
     ambient = lightAmbient;
     vec3 halfVector = normalize(vp + eye);
-    float shininess = 60.0;
+    float shininess = 10.0;
     float nDotViewPosition = clamp(dot(normal,vp),0.0,1.0);
     diffuse = lightDiffuse * nDotViewPosition;
     float nDotViewHalfVector = clamp(dot(normal,halfVector),0.0,1.0);

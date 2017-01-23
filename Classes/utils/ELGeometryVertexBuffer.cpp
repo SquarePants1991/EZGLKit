@@ -9,10 +9,16 @@
 #include <types/ELGeometryTypes.h>
 #include "ELGeometryVertexBuffer.h"
 
-ELGeometryVertexBuffer::ELGeometryVertexBuffer() : supportColorAttrib(false) {
+ELGeometryVertexBuffer::ELGeometryVertexBuffer() : supportColorAttrib(false), vbo(-1) {
     bufferLen = 32;
     index = 0;
     vertices = (ELGeometryVertex *)malloc(sizeof(ELGeometryVertex) * bufferLen);
+    aabbBox.data[0] = INT32_MAX;
+    aabbBox.data[1] = INT32_MIN;
+    aabbBox.data[2] = INT32_MAX;
+    aabbBox.data[3] = INT32_MIN;
+    aabbBox.data[4] = INT32_MAX;
+    aabbBox.data[5] = INT32_MIN;
 }
 
 void ELGeometryVertexBuffer::enableColorAttrib() {
@@ -32,6 +38,14 @@ void ELGeometryVertexBuffer::append(ELGeometryVertex vertex) {
         bufferLen += 32;
         vertices = (ELGeometryVertex *)realloc(vertices, sizeof(ELGeometryVertex) * bufferLen);
     }
+    
+    // caculate aabb box
+    if (vertex.x < aabbBox.minX) aabbBox.minX = vertex.x;
+    if (vertex.x > aabbBox.maxX) aabbBox.maxX = vertex.x;
+    if (vertex.y < aabbBox.minY) aabbBox.minY = vertex.y;
+    if (vertex.y > aabbBox.maxY) aabbBox.maxY = vertex.y;
+    if (vertex.z < aabbBox.minZ) aabbBox.minZ = vertex.z;
+    if (vertex.z > aabbBox.maxZ) aabbBox.maxZ = vertex.z;
 }
 
 void ELGeometryVertexBuffer::append(ELGeometryColorVertex vertex) {
@@ -274,6 +288,26 @@ void * ELGeometryVertexBuffer::data() {
 
 void ELGeometryVertexBuffer::clear() {
     index = 0;
+}
+
+ELVector3 ELGeometryVertexBuffer::size() {
+    ELVector3 size;
+    size.x = aabbBox.maxX - aabbBox.minX;
+    size.y = aabbBox.maxY - aabbBox.minY;
+    size.z = aabbBox.maxZ - aabbBox.minZ;
+    return size;
+}
+
+GLuint ELGeometryVertexBuffer::getVBO() {
+    GLuint vboVal = vbo;
+    if (vbo < 0) {
+        glGenBuffers(1, &vboVal);
+        vbo = vboVal;
+    }
+    glBindBuffer(GL_ARRAY_BUFFER, vboVal);
+    glBufferData(GL_ARRAY_BUFFER, rawLength(), data(), GL_DYNAMIC_DRAW);
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+    return vbo;
 }
 
 void ELGeometryVertexBuffer::caculateTangents(ELVector3 *pTangent, ELVector3 *pBitangent, ELVector3 position, ELVector3 normal) {

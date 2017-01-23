@@ -10,6 +10,7 @@ void caculateShadow(out float out_shadow) {
     lightMVPPosition = lightMVPPosition * 0.5 + 0.5;
     float nearestDepth = tex2D(shadowMap[0], lightMVPPosition.st).x;
     float shadow = 0.0;
+#ifndef ES
     vec2 texelSize = 1.0 / textureSize(shadowMap[0], 0);
     int blurSize = 1;
     for(int x = -blurSize; x <= blurSize; ++x)
@@ -21,7 +22,8 @@ void caculateShadow(out float out_shadow) {
         }
     }
     shadow /= 9.0;
+#endif
 
 //    shadowColor = tex2D(shadowMap[0], fragTexcoord);
-    out_shadow = 1 - shadow;
+    out_shadow = 1.0 - shadow;
 }

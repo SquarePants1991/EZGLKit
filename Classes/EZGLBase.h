@@ -5,20 +5,24 @@
 #ifndef EZGL_EZGLBASE_H
 #define EZGL_EZGLBASE_H
 
-#define Platform_OSX 1
-
 #include <string>
 #include <vector>
 #include <map>
 
-#include "glad/glad.h"
-
 #if Platform_OSX
 #include <GLFW/glfw3.h>
+#include "SOIL.h"
+
+#define glBindVertexArrayEL(value) glBindVertexArray(value)
+#define glGenVertexArraysEL(num, value) glGenVertexArrays(num, value)
+
+#elif Platform_iOS
+#include <OpenGLES/ES2/glext.h>
+#define glBindVertexArrayEL(value) glBindVertexArrayOES(value)
+#define glGenVertexArraysEL(num, value) glGenVertexArraysOES(num, value)
+
 #endif
 
-#define glBindVertexArrayEL(value) glad_glBindVertexArray(value)
-#define glGenVertexArraysEL(num, value) glad_glGenVertexArrays(num, value)
 
 #define BUFFER_OFFSET(i) ((char *)NULL + (i))
 

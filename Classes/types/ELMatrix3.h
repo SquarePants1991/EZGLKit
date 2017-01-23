@@ -291,7 +291,7 @@ return m;
 
 EL_INLINE ELMatrix3 ELMatrix3Multiply(ELMatrix3 matrixLeft, ELMatrix3 matrixRight)
 {
-#if defined(__ARM_NEON__)
+#if defined(__ARM_NEON__TODO)
 ELMatrix3 m;
     ELFloat32x4x3_t iMatrixLeft;
     ELFloat32x4x3_t iMatrixRight;
@@ -321,7 +321,7 @@ ELMatrix3 m;
 
     memcpy(&m.m[0], (char *)&(mm.val[0]), 16);
     memcpy(&m.m[3], (char *)&(mm.val[1]), 16);
-    ELFloat32x2_t vlow = vget_low_f32(mm.val[2]);
+    float32x2_t vlow = vget_low_f32(mm.val[2]);
     memcpy(&m.m[6], (char *)&vlow, 8);
     m.m[8] = vgetq_lane_f32(mm.val[2], 2);
     

@@ -118,6 +118,8 @@ bool compileShader(GLuint *shader, GLenum type, const GLchar *source) {
 
     GLint logLength;
     glGetShaderiv(*shader, GL_INFO_LOG_LENGTH, &logLength);
+    
+#if Debug
     if (logLength > 0) {
         GLchar *log = (GLchar *)malloc(logLength);
         glGetShaderInfoLog(*shader, logLength, &logLength, log);
@@ -125,6 +127,7 @@ bool compileShader(GLuint *shader, GLenum type, const GLchar *source) {
         printf("Shader: \n %s\n", source);
         free(log);
     }
+#endif
 
     glGetShaderiv(*shader, GL_COMPILE_STATUS, &status);
     if (status == 0) {
@@ -139,6 +142,7 @@ bool linkProgram(GLuint prog) {
     GLint status;
     glLinkProgram(prog);
 
+#if Debug
     GLint logLength;
     glGetProgramiv(prog, GL_INFO_LOG_LENGTH, &logLength);
     if (logLength > 0) {
@@ -147,6 +151,7 @@ bool linkProgram(GLuint prog) {
         printf("Program link log:\n%s", log);
         free(log);
     }
+#endif
 
     glGetProgramiv(prog, GL_LINK_STATUS, &status);
     if (status == 0) {

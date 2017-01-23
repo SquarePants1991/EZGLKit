@@ -78,8 +78,8 @@ EL_INLINE ELVector2 ELVector2Make(ELFloat x, ELFloat y)
 
 EL_INLINE ELVector2 ELVector2MakeWithArray(ELFloat values[2])
 {
-#if defined(__ARM_NEON__)
-    ELFloat32x2_t v = vld1_f32(values);
+#if defined(__ARM_NEON__TODO)
+    float32x2_t v = vld1_f32(values);
     return *(ELVector2 *)&v;
 #elif defined(EL_SSE3_INTRINSICS)
     __m128 v;
@@ -93,8 +93,8 @@ EL_INLINE ELVector2 ELVector2MakeWithArray(ELFloat values[2])
 
 EL_INLINE ELVector2 ELVector2Negate(ELVector2 vector)
 {
-#if defined(__ARM_NEON__)
-    ELFloat32x2_t v = vneg_f32(*(ELFloat32x2_t *)&vector);
+#if defined(__ARM_NEON__TODO)
+    float32x2_t v = vneg_f32(*(float32x2_t *)&vector);
     return *(ELVector2 *)&v;
 #elif defined(EL_SSE3_INTRINSICS)
     __m128 v;
@@ -108,9 +108,9 @@ EL_INLINE ELVector2 ELVector2Negate(ELVector2 vector)
 
 EL_INLINE ELVector2 ELVector2Add(ELVector2 vectorLeft, ELVector2 vectorRight)
 {
-#if defined(__ARM_NEON__)
-    ELFloat32x2_t v = vadd_f32(*(ELFloat32x2_t *)&vectorLeft,
-                             *(ELFloat32x2_t *)&vectorRight);
+#if defined(__ARM_NEON__TODO)
+    float32x2_t v = vadd_f32(*(float32x2_t *)&vectorLeft,
+                             *(float32x2_t *)&vectorRight);
     return *(ELVector2 *)&v;
 #elif defined(EL_SSE3_INTRINSICS)
     __m128 v;
@@ -125,9 +125,9 @@ EL_INLINE ELVector2 ELVector2Add(ELVector2 vectorLeft, ELVector2 vectorRight)
 
 EL_INLINE ELVector2 ELVector2Subtract(ELVector2 vectorLeft, ELVector2 vectorRight)
 {
-#if defined(__ARM_NEON__)
-    ELFloat32x2_t v = vsub_f32(*(ELFloat32x2_t *)&vectorLeft,
-                             *(ELFloat32x2_t *)&vectorRight);
+#if defined(__ARM_NEON__TODO)
+    float32x2_t v = vsub_f32(*(float32x2_t *)&vectorLeft,
+                             *(float32x2_t *)&vectorRight);
     return *(ELVector2 *)&v;
 #elif defined(EL_SSE3_INTRINSICS)
     __m128 v;
@@ -142,9 +142,9 @@ EL_INLINE ELVector2 ELVector2Subtract(ELVector2 vectorLeft, ELVector2 vectorRigh
 
 EL_INLINE ELVector2 ELVector2Multiply(ELVector2 vectorLeft, ELVector2 vectorRight)
 {
-#if defined(__ARM_NEON__)
-    ELFloat32x2_t v = vmul_f32(*(ELFloat32x2_t *)&vectorLeft,
-                             *(ELFloat32x2_t *)&vectorRight);
+#if defined(__ARM_NEON__TODO)
+    float32x2_t v = vmul_f32(*(float32x2_t *)&vectorLeft,
+                             *(float32x2_t *)&vectorRight);
     return *(ELVector2 *)&v;
 #elif defined(EL_SSE3_INTRINSICS)
     __m128 v;
@@ -159,13 +159,13 @@ EL_INLINE ELVector2 ELVector2Multiply(ELVector2 vectorLeft, ELVector2 vectorRigh
 
 EL_INLINE ELVector2 ELVector2Divide(ELVector2 vectorLeft, ELVector2 vectorRight)
 {
-#if defined(__ARM_NEON__)
-    ELFloat32x2_t *vLeft = (ELFloat32x2_t *)&vectorLeft;
-    ELFloat32x2_t *vRight = (ELFloat32x2_t *)&vectorRight;
-    ELFloat32x2_t estimate = vrecpe_f32(*vRight);
+#if defined(__ARM_NEON__TODO)
+    float32x2_t *vLeft = (float32x2_t *)&vectorLeft;
+    float32x2_t *vRight = (float32x2_t *)&vectorRight;
+    float32x2_t estimate = vrecpe_f32(*vRight);
     estimate = vmul_f32(vrecps_f32(*vRight, estimate), estimate);
     estimate = vmul_f32(vrecps_f32(*vRight, estimate), estimate);
-    ELFloat32x2_t v = vmul_f32(*vLeft, estimate);
+    float32x2_t v = vmul_f32(*vLeft, estimate);
     return *(ELVector2 *)&v;
 #elif defined(EL_SSE3_INTRINSICS)
     __m128 v;
@@ -180,8 +180,8 @@ EL_INLINE ELVector2 ELVector2Divide(ELVector2 vectorLeft, ELVector2 vectorRight)
 
 EL_INLINE ELVector2 ELVector2AddScalar(ELVector2 vector, ELFloat value)
 {
-#if defined(__ARM_NEON__)
-    ELFloat32x2_t v = vadd_f32(*(ELFloat32x2_t *)&vector,
+#if defined(__ARM_NEON__TODO)
+    float32x2_t v = vadd_f32(*(float32x2_t *)&vector,
                              vdup_n_f32((ELFloat32_t)value));
     return *(ELVector2 *)&v;
 #elif defined(EL_SSE3_INTRINSICS)
@@ -197,8 +197,8 @@ EL_INLINE ELVector2 ELVector2AddScalar(ELVector2 vector, ELFloat value)
 
 EL_INLINE ELVector2 ELVector2SubtractScalar(ELVector2 vector, ELFloat value)
 {
-#if defined(__ARM_NEON__)
-    ELFloat32x2_t v = vsub_f32(*(ELFloat32x2_t *)&vector,
+#if defined(__ARM_NEON__TODO)
+    float32x2_t v = vsub_f32(*(float32x2_t *)&vector,
                              vdup_n_f32((ELFloat32_t)value));
     return *(ELVector2 *)&v;
 #elif defined(EL_SSE3_INTRINSICS)
@@ -214,8 +214,8 @@ EL_INLINE ELVector2 ELVector2SubtractScalar(ELVector2 vector, ELFloat value)
 
 EL_INLINE ELVector2 ELVector2MultiplyScalar(ELVector2 vector, ELFloat value)
 {
-#if defined(__ARM_NEON__)
-    ELFloat32x2_t v = vmul_f32(*(ELFloat32x2_t *)&vector,
+#if defined(__ARM_NEON__TODO)
+    float32x2_t v = vmul_f32(*(float32x2_t *)&vector,
                              vdup_n_f32((ELFloat32_t)value));
     return *(ELVector2 *)&v;
 #elif defined(EL_SSE3_INTRINSICS)
@@ -231,12 +231,12 @@ EL_INLINE ELVector2 ELVector2MultiplyScalar(ELVector2 vector, ELFloat value)
 
 EL_INLINE ELVector2 ELVector2DivideScalar(ELVector2 vector, ELFloat value)
 {
-#if defined(__ARM_NEON__)
-    ELFloat32x2_t values = vdup_n_f32((ELFloat32_t)value);
-    ELFloat32x2_t estimate = vrecpe_f32(values);
+#if defined(__ARM_NEON__TODO)
+    float32x2_t values = vdup_n_f32((ELFloat32_t)value);
+    float32x2_t estimate = vrecpe_f32(values);
     estimate = vmul_f32(vrecps_f32(values, estimate), estimate);
     estimate = vmul_f32(vrecps_f32(values, estimate), estimate);
-    ELFloat32x2_t v = vmul_f32(*(ELFloat32x2_t *)&vector, estimate);
+    float32x2_t v = vmul_f32(*(float32x2_t *)&vector, estimate);
     return *(ELVector2 *)&v;
 #elif defined(EL_SSE3_INTRINSICS)
     __m128 v;
@@ -251,9 +251,9 @@ EL_INLINE ELVector2 ELVector2DivideScalar(ELVector2 vector, ELFloat value)
 
 EL_INLINE ELVector2 ELVector2Maximum(ELVector2 vectorLeft, ELVector2 vectorRight)
 {
-#if defined(__ARM_NEON__)
-    ELFloat32x2_t v = vmax_f32(*(ELFloat32x2_t *)&vectorLeft,
-                             *(ELFloat32x2_t *)&vectorRight);
+#if defined(__ARM_NEON__TODO)
+    float32x2_t v = vmax_f32(*(float32x2_t *)&vectorLeft,
+                             *(float32x2_t *)&vectorRight);
     return *(ELVector2 *)&v;
 #elif defined(EL_SSE3_INTRINSICS)
     __m128 v;
@@ -271,9 +271,9 @@ EL_INLINE ELVector2 ELVector2Maximum(ELVector2 vectorLeft, ELVector2 vectorRight
 
 EL_INLINE ELVector2 ELVector2Minimum(ELVector2 vectorLeft, ELVector2 vectorRight)
 {
-#if defined(__ARM_NEON__)
-    ELFloat32x2_t v = vmin_f32(*(ELFloat32x2_t *)&vectorLeft,
-                             *(ELFloat32x2_t *)&vectorRight);
+#if defined(__ARM_NEON__TODO)
+    float32x2_t v = vmin_f32(*(float32x2_t *)&vectorLeft,
+                             *(float32x2_t *)&vectorRight);
     return *(ELVector2 *)&v;
 #elif defined(EL_SSE3_INTRINSICS)
     __m128 v;
@@ -291,9 +291,9 @@ EL_INLINE ELVector2 ELVector2Minimum(ELVector2 vectorLeft, ELVector2 vectorRight
 
 EL_INLINE bool ELVector2AllEqualToVector2(ELVector2 vectorLeft, ELVector2 vectorRight)
 {
-#if defined(__ARM_NEON__)
-    ELFloat32x2_t v1 = *(ELFloat32x2_t *)&vectorLeft;
-    ELFloat32x2_t v2 = *(ELFloat32x2_t *)&vectorRight;
+#if defined(__ARM_NEON__TODO)
+    float32x2_t v1 = *(float32x2_t *)&vectorLeft;
+    float32x2_t v2 = *(float32x2_t *)&vectorRight;
     uint32x2_t vCmp = vceq_f32(v1, v2);
     uint32x2_t vAnd = vand_u32(vCmp, vext_u32(vCmp, vCmp, 1));
     vAnd = vand_u32(vAnd, vdup_n_u32(1));
@@ -309,9 +309,9 @@ EL_INLINE bool ELVector2AllEqualToVector2(ELVector2 vectorLeft, ELVector2 vector
 
 EL_INLINE bool ELVector2AllEqualToScalar(ELVector2 vector, ELFloat value)
 {
-#if defined(__ARM_NEON__)
-    ELFloat32x2_t v1 = *(ELFloat32x2_t *)&vector;
-    ELFloat32x2_t v2 = vdup_n_f32(value);
+#if defined(__ARM_NEON__TODO)
+    float32x2_t v1 = *(float32x2_t *)&vector;
+    float32x2_t v2 = vdup_n_f32(value);
     uint32x2_t vCmp = vceq_f32(v1, v2);
     uint32x2_t vAnd = vand_u32(vCmp, vext_u32(vCmp, vCmp, 1));
     vAnd = vand_u32(vAnd, vdup_n_u32(1));
@@ -327,9 +327,9 @@ EL_INLINE bool ELVector2AllEqualToScalar(ELVector2 vector, ELFloat value)
 
 EL_INLINE bool ELVector2AllGreaterThanVector2(ELVector2 vectorLeft, ELVector2 vectorRight)
 {
-#if defined(__ARM_NEON__)
-    ELFloat32x2_t v1 = *(ELFloat32x2_t *)&vectorLeft;
-    ELFloat32x2_t v2 = *(ELFloat32x2_t *)&vectorRight;
+#if defined(__ARM_NEON__TODO)
+    float32x2_t v1 = *(float32x2_t *)&vectorLeft;
+    float32x2_t v2 = *(float32x2_t *)&vectorRight;
     uint32x2_t vCmp = vcgt_f32(v1, v2);
     uint32x2_t vAnd = vand_u32(vCmp, vext_u32(vCmp, vCmp, 1));
     vAnd = vand_u32(vAnd, vdup_n_u32(1));
@@ -345,9 +345,9 @@ EL_INLINE bool ELVector2AllGreaterThanVector2(ELVector2 vectorLeft, ELVector2 ve
 
 EL_INLINE bool ELVector2AllGreaterThanScalar(ELVector2 vector, ELFloat value)
 {
-#if defined(__ARM_NEON__)
-    ELFloat32x2_t v1 = *(ELFloat32x2_t *)&vector;
-    ELFloat32x2_t v2 = vdup_n_f32(value);
+#if defined(__ARM_NEON__TODO)
+    float32x2_t v1 = *(float32x2_t *)&vector;
+    float32x2_t v2 = vdup_n_f32(value);
     uint32x2_t vCmp = vcgt_f32(v1, v2);
     uint32x2_t vAnd = vand_u32(vCmp, vext_u32(vCmp, vCmp, 1));
     vAnd = vand_u32(vAnd, vdup_n_u32(1));
@@ -363,9 +363,9 @@ EL_INLINE bool ELVector2AllGreaterThanScalar(ELVector2 vector, ELFloat value)
 
 EL_INLINE bool ELVector2AllGreaterThanOrEqualToVector2(ELVector2 vectorLeft, ELVector2 vectorRight)
 {
-#if defined(__ARM_NEON__)
-    ELFloat32x2_t v1 = *(ELFloat32x2_t *)&vectorLeft;
-    ELFloat32x2_t v2 = *(ELFloat32x2_t *)&vectorRight;
+#if defined(__ARM_NEON__TODO)
+    float32x2_t v1 = *(float32x2_t *)&vectorLeft;
+    float32x2_t v2 = *(float32x2_t *)&vectorRight;
     uint32x2_t vCmp = vcge_f32(v1, v2);
     uint32x2_t vAnd = vand_u32(vCmp, vext_u32(vCmp, vCmp, 1));
     vAnd = vand_u32(vAnd, vdup_n_u32(1));
@@ -381,9 +381,9 @@ EL_INLINE bool ELVector2AllGreaterThanOrEqualToVector2(ELVector2 vectorLeft, ELV
 
 EL_INLINE bool ELVector2AllGreaterThanOrEqualToScalar(ELVector2 vector, ELFloat value)
 {
-#if defined(__ARM_NEON__)
-    ELFloat32x2_t v1 = *(ELFloat32x2_t *)&vector;
-    ELFloat32x2_t v2 = vdup_n_f32(value);
+#if defined(__ARM_NEON__TODO)
+    float32x2_t v1 = *(float32x2_t *)&vector;
+    float32x2_t v2 = vdup_n_f32(value);
     uint32x2_t vCmp = vcge_f32(v1, v2);
     uint32x2_t vAnd = vand_u32(vCmp, vext_u32(vCmp, vCmp, 1));
     vAnd = vand_u32(vAnd, vdup_n_u32(1));
@@ -406,9 +406,9 @@ EL_INLINE ELVector2 ELVector2Normalize(ELVector2 vector)
 
 EL_INLINE ELFloat ELVector2DotProduct(ELVector2 vectorLeft, ELVector2 vectorRight)
 {
-#if defined(__ARM_NEON__)
-    ELFloat32x2_t v = vmul_f32(*(ELFloat32x2_t *)&vectorLeft,
-                             *(ELFloat32x2_t *)&vectorRight);
+#if defined(__ARM_NEON__TODO)
+    float32x2_t v = vmul_f32(*(float32x2_t *)&vectorLeft,
+                             *(float32x2_t *)&vectorRight);
     v = vpadd_f32(v, v);
     return vget_lane_f32(v, 0);
 #else
@@ -418,9 +418,9 @@ EL_INLINE ELFloat ELVector2DotProduct(ELVector2 vectorLeft, ELVector2 vectorRigh
 
 EL_INLINE ELFloat ELVector2Length(ELVector2 vector)
 {
-#if defined(__ARM_NEON__)
-    ELFloat32x2_t v = vmul_f32(*(ELFloat32x2_t *)&vector,
-                             *(ELFloat32x2_t *)&vector);
+#if defined(__ARM_NEON__TODO)
+    float32x2_t v = vmul_f32(*(float32x2_t *)&vector,
+                             *(float32x2_t *)&vector);
     v = vpadd_f32(v, v);
     return sqrt(vget_lane_f32(v, 0));
 #else
@@ -435,11 +435,11 @@ EL_INLINE ELFloat ELVector2Distance(ELVector2 vectorStart, ELVector2 vectorEnd)
 
 EL_INLINE ELVector2 ELVector2Lerp(ELVector2 vectorStart, ELVector2 vectorEnd, ELFloat t)
 {
-#if defined(__ARM_NEON__)
-    ELFloat32x2_t vDiff = vsub_f32(*(ELFloat32x2_t *)&vectorEnd,
-                                 *(ELFloat32x2_t *)&vectorStart);
+#if defined(__ARM_NEON__TODO)
+    float32x2_t vDiff = vsub_f32(*(float32x2_t *)&vectorEnd,
+                                 *(float32x2_t *)&vectorStart);
     vDiff = vmul_f32(vDiff, vdup_n_f32((ELFloat32_t)t));
-    ELFloat32x2_t v = vadd_f32(*(ELFloat32x2_t *)&vectorStart, vDiff);
+    float32x2_t v = vadd_f32(*(float32x2_t *)&vectorStart, vDiff);
     return *(ELVector2 *)&v;
 #else
     ELVector2 v = { vectorStart.v[0] + ((vectorEnd.v[0] - vectorStart.v[0]) * t),

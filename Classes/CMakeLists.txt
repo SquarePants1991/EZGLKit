@@ -25,6 +25,7 @@ file(GLOB EL_SRC
 )
 
 add_library(EZGLib EZGL.h EZGL.cpp EZGLBase.h ${EL_SRC})
+target_compile_definitions(EZGLib PRIVATE Platform_OSX=1)
 
 macro(copy_files target GLOBPAT0 GLOBPAT1 DESTINATION)
     file(GLOB COPY_FILES

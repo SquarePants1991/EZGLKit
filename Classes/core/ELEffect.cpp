@@ -38,9 +38,9 @@ void ELEffect::prepare() {
         snprintf(buffer, 1024, "lights[%d].type",index);
         glUniform1i(program->uniform(buffer), light->type);
         snprintf(buffer, 1024, "lights[%d].color",index);
-        glUniform4fv(program->uniform(buffer), 1, light->color.v);
+        glUniform4fv(program->uniform(buffer), 1, (GLfloat *)light->color.v);
         snprintf(buffer, 1024, "lights[%d].position",index);
-        glUniform3fv(program->uniform(buffer), 1, light->position.v);
+        glUniform3fv(program->uniform(buffer), 1, (GLfloat *)light->position.v);
         snprintf(buffer, 1024, "lights[%d].intensity",index);
         glUniform1f(program->uniform(buffer), light->intensity);
         snprintf(buffer, 1024, "lights[%d].intensityFallOff",index);
@@ -51,7 +51,7 @@ void ELEffect::prepare() {
     for (int index = 0; index < projectors.size(); ++index) {
         ELProjector *projector = (ELProjector *)projectors[index];
         snprintf(buffer, 1024, "projectors[%d].viewProjection",index);
-        glUniformMatrix4fv(program->uniform(buffer), 1, 0,projector->camera->matrix().m);
+        glUniformMatrix4fv(program->uniform(buffer), 1, 0,(GLfloat *)projector->camera->matrix().m);
         glActiveTexture(GL_TEXTURE11);
         glBindTexture(GL_TEXTURE_2D, projector->projectorMap);
         glUniform1i(program->uniform("projectorMap"), 11);
@@ -61,7 +61,7 @@ void ELEffect::prepare() {
 
     glUniform1f(program->uniform("frogStart"),frogStart);
     glUniform1f(program->uniform("frogEnd"),frogEnd);
-    glUniform4fv(program->uniform("frogColor"), 1, frogColor.v);
+    glUniform4fv(program->uniform("frogColor"), 1, (GLfloat *)frogColor.v);
     glUniform1f(program->uniform("time"), elapsedSeconds);
 }
 

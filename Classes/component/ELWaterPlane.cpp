@@ -47,7 +47,7 @@ void ELWaterPlane::effectDidActive(ELEffect * effect) {
     glActiveTexture(GL_TEXTURE15);
     glBindTexture(GL_TEXTURE_2D, refractionMap);
 
-    glUniform4fv(effect->program->uniform("waterBaseColor"), 1, waterColor.v);
+    glUniform4fv(effect->program->uniform("waterBaseColor"), 1, (GLfloat *)waterColor.v);
 }
 
 void ELWaterPlane::effectDidInactive(ELEffect * effect) {
@@ -88,29 +88,33 @@ std::string ELWaterPlane::kind() {
 }
 
 void ELWaterPlane::beginGenReflectionMap() {
-    glad_glViewport(0,0,ELConfig::reflectionMapWidth,ELConfig::reflectionMapHeight);
-    glad_glBindFramebuffer(GL_FRAMEBUFFER, reflectionFramebuffer);
-    glEnable(GL_CLIP_PLANE0);
-    glad_glClearColor(1.0,1.0,1.0,1.0);
-    glad_glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glViewport(0,0,ELConfig::reflectionMapWidth,ELConfig::reflectionMapHeight);
+    glBindFramebuffer(GL_FRAMEBUFFER, reflectionFramebuffer);
+//    glEnable(GL_CLIP_PLANE0);
+    glEnable(GL_CLIP_DISTANCE0_APPLE);
+    glClearColor(1.0,1.0,1.0,1.0);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
 void ELWaterPlane::endGenReflectionMap() {
-    glad_glBindFramebuffer(GL_FRAMEBUFFER, 0);
-    glDisable(GL_CLIP_PLANE0);
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+//    glDisable(GL_CLIP_PLANE0);
+    glDisable(GL_CLIP_DISTANCE0_APPLE);
 }
 
 void ELWaterPlane::beginGenRefractionMap() {
-    glad_glViewport(0,0,ELConfig::refractionMapWidth,ELConfig::refractionMapHeight);
-    glad_glBindFramebuffer(GL_FRAMEBUFFER, refractionFramebuffer);
-    glEnable(GL_CLIP_PLANE0);
-    glad_glClearColor(1.0,1.0,1.0,1.0);
-    glad_glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glViewport(0,0,ELConfig::refractionMapWidth,ELConfig::refractionMapHeight);
+    glBindFramebuffer(GL_FRAMEBUFFER, refractionFramebuffer);
+//    glEnable(GL_CLIP_PLANE0);
+    glEnable(GL_CLIP_DISTANCE0_APPLE);
+    glClearColor(1.0,1.0,1.0,1.0);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
 void ELWaterPlane::endGenRefractionMap() {
-    glad_glBindFramebuffer(GL_FRAMEBUFFER, 0);
-    glDisable(GL_CLIP_PLANE0);
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+//    glDisable(GL_CLIP_PLANE0);
+    glDisable(GL_CLIP_DISTANCE0_APPLE);
 }
 
 void ELWaterPlane::createFramebuffers() {
@@ -123,27 +127,27 @@ void ELWaterPlane::genColorFramebuffer(GLuint &outFramebuffer, GLuint &outTextur
     GLuint shadowTexture;
     GLuint depthBuffer;
 
-    glad_glGenFramebuffers(1, &framebuffer);
-    glad_glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);
+    glGenFramebuffers(1, &framebuffer);
+    glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);
 
-    glad_glGenTextures(1, &shadowTexture);
-    glad_glBindTexture(GL_TEXTURE_2D, shadowTexture);
-    glad_glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
-    glad_glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-    glad_glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-    glad_glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-    glad_glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-
-
-    glad_glGenRenderbuffers(1, &depthBuffer);
-    glad_glBindRenderbuffer(GL_RENDERBUFFER, depthBuffer);
-    glad_glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT, width, height);
-    glad_glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, depthBuffer);
-
-    glad_glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, shadowTexture, 0);
+    glGenTextures(1, &shadowTexture);
+    glBindTexture(GL_TEXTURE_2D, shadowTexture);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 
 
-    glad_glBindFramebuffer(GL_FRAMEBUFFER, 0);
+    glGenRenderbuffers(1, &depthBuffer);
+    glBindRenderbuffer(GL_RENDERBUFFER, depthBuffer);
+    glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT, width, height);
+    glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, depthBuffer);
+
+    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, shadowTexture, 0);
+
+
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
     outFramebuffer = framebuffer;
     outTexture = shadowTexture;

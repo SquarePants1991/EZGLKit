@@ -5,8 +5,10 @@
 #include "ELFBXVertexBufferProvider.h"
 #include "ELFbxUtil.h"
 
-ELFBXVertexBufferProvider::ELFBXVertexBufferProvider(FbxScene *scene) :
-        scene(scene)
+ELFBXVertexBufferProvider::ELFBXVertexBufferProvider(FbxScene *scene, FbxMesh *mesh) :
+        scene(scene),
+        mesh(mesh),
+        uvCacheAvaliableIndex(-1)
 {
 }
 
@@ -19,30 +21,12 @@ void ELFBXVertexBufferProvider::prepare() {
 }
 
 void ELFBXVertexBufferProvider::loadNodes() {
-    FbxNode *rootNode = scene->GetRootNode();
-    if(rootNode) {
-        for(int i = 0; i < rootNode->GetChildCount(); i++) {
-            FbxNode *node = rootNode->GetChild(i);
-            if (node->GetNodeAttribute() == NULL) {
-                continue;
-            }
-            FbxNodeAttribute::EType attrType = node->GetNodeAttribute()->GetAttributeType();
-            if (attrType == FbxNodeAttribute::EType::eMesh) {
-                mesh = node->GetMesh();
-            }
-        }
-    }
     int poseCount = scene->GetPoseCount();
     currentPose = scene->GetPose(0);
 }
 
-void ELFBXVertexBufferProvider::update(ELFloat timeInSecs, ELGeometryVertexBuffer *vertexBuffer) {
-    update("shot", timeInSecs,vertexBuffer);
-}
-
-void ComputeShapeDeformation(FbxMesh* pMesh, FbxTime& pTime, FbxAnimLayer * pAnimLayer, FbxVector4* pVertexArray)
+void ELFBXVertexBufferProvider::computeShapeDeformation(FbxMesh* pMesh, FbxTime& pTime, FbxAnimLayer * pAnimLayer, FbxVector4* pVertexArray)
 {
-
     int lVertexCount = pMesh->GetControlPointsCount();
 
     FbxVector4* lSrcVertexArray = pVertexArray;
@@ -52,7 +36,6 @@ void ComputeShapeDeformation(FbxMesh* pMesh, FbxTime& pTime, FbxAnimLayer * pAni
     int lBlendShapeDeformerCount = pMesh->GetDeformerCount(FbxDeformer::eBlendShape);
     for(int lBlendShapeIndex = 0; lBlendShapeIndex<lBlendShapeDeformerCount; ++lBlendShapeIndex)
     {
-        printf("%s\n", "come the shapes");
         FbxBlendShape* lBlendShape = (FbxBlendShape*)pMesh->GetDeformer(lBlendShapeIndex, FbxDeformer::eBlendShape);
 
         int lBlendShapeChannelCount = lBlendShape->GetBlendShapeChannelCount();
@@ -178,18 +161,18 @@ void ELFBXVertexBufferProvider::update(const char *animationName,ELFloat elapsed
     memcpy(vertexArray, mesh->GetControlPoints(), vertexCount * sizeof(FbxVector4));
 
     FbxAnimStack * lCurrentAnimationStack = scene->FindMember<FbxAnimStack>(animationName);
-
+    if (lCurrentAnimationStack) {
+        FbxAnimLayer *mCurrentAnimLayer = lCurrentAnimationStack->GetMember<FbxAnimLayer>();
+        scene->SetCurrentAnimationStack(lCurrentAnimationStack);
+        
+        int shapeCount = mesh->GetShapeCount();
+        const bool lHasShape =shapeCount > 0;
+        if (lHasShape) {
+            computeShapeDeformation(mesh, fbxElapsedTime, mCurrentAnimLayer, vertexArray);
+        }
+    }
     // we assume that the first animation layer connected to the animation stack is the base layer
     // (this is the assumption made in the FBXSDK)
-    FbxAnimLayer *mCurrentAnimLayer = lCurrentAnimationStack->GetMember<FbxAnimLayer>();
-    scene->SetCurrentAnimationStack(lCurrentAnimationStack);
-
-    int shapeCount = mesh->GetShapeCount();
-    const bool lHasShape =shapeCount > 0;
-    if (lHasShape) {
-        ComputeShapeDeformation(mesh, fbxElapsedTime, mCurrentAnimLayer, vertexArray);
-    }
-
     int clusterCount = 0;
     for (int i = 0; i < mesh->GetDeformerCount(FbxDeformer::eSkin); ++i) {
         FbxSkin * skin = (FbxSkin *)mesh->GetDeformer(i, FbxDeformer::eSkin);
@@ -201,9 +184,10 @@ void ELFBXVertexBufferProvider::update(const char *animationName,ELFloat elapsed
         if (skinType == FbxSkin::eLinear || skinType == FbxSkin::eRigid) {
             FbxAMatrix globalMatrix = FbxGetNodeGlobalPosition(mesh->GetNode(), fbxElapsedTime, currentPose, NULL);
             computerLinearDeformation(globalMatrix, mesh, fbxElapsedTime, vertexArray);
-            loadVerticesToVertexBuffer(mesh, vertexArray, vertexBuffer);
         }
     }
+    
+    loadVerticesToVertexBuffer(mesh, vertexArray, vertexBuffer);
 }
 
 void ELFBXVertexBufferProvider::computerLinearDeformation(FbxAMatrix& pGlobalPosition, FbxMesh *mesh, FbxTime time, FbxVector4 *vertexArray) {
@@ -390,6 +374,7 @@ void ELFBXVertexBufferProvider::computerClusterDeformation(FbxAMatrix& pGlobalPo
 }
 
 void ELFBXVertexBufferProvider::loadVerticesToVertexBuffer(FbxMesh *mesh, FbxVector4 *pVertices, ELGeometryVertexBuffer *vertexBuffer) {
+
     int polyCount = mesh->GetPolygonCount();
     for (int i = 0; i < polyCount; ++i) {
         int polySize = mesh->GetPolygonSize(i);
@@ -408,8 +393,63 @@ void ELFBXVertexBufferProvider::loadVerticesToVertexBuffer(FbxMesh *mesh, FbxVec
             FbxLoadTrianglePoint(mesh,pVertices,i,1,triangle.point2,triangle.uv2);
             FbxLoadTrianglePoint(mesh,pVertices,i,2,triangle.point1,triangle.uv1);
             vertexBuffer->append(triangle, matId);
+        } else if (polySize == 4) {
+            ELGeometryTriangle triangle;
+            FbxLoadTrianglePoint(mesh,pVertices,i,0,triangle.point3,triangle.uv3);
+            FbxLoadTrianglePoint(mesh,pVertices,i,1,triangle.point2,triangle.uv2);
+            FbxLoadTrianglePoint(mesh,pVertices,i,2,triangle.point1,triangle.uv1);
+            vertexBuffer->append(triangle, matId);
+            
+            FbxLoadTrianglePoint(mesh,pVertices,i,0,triangle.point3,triangle.uv3);
+            FbxLoadTrianglePoint(mesh,pVertices,i,2,triangle.point2,triangle.uv2);
+            FbxLoadTrianglePoint(mesh,pVertices,i,3,triangle.point1,triangle.uv1);
+            vertexBuffer->append(triangle, matId);
         }
     }
+}
+
+void ELFBXVertexBufferProvider::FbxLoadTrianglePoint(FbxMesh *mesh,FbxVector4 *pVertices, int polyIndex,int pointIndex, ELVector3 &pPos,ELVector2 &pUV) {
+    int index = mesh->GetPolygonVertex(polyIndex, pointIndex);
+    pPos.x = pVertices[index].mData[0];
+    pPos.y = pVertices[index].mData[1];
+    pPos.z = pVertices[index].mData[2];
+    
+    bool success;
+    pUV = getUVFromCache(polyIndex, pointIndex, success);
+    if (success) {
+        return;
+    }
+    
+    FbxVector2 texcoord;
+    bool unmapped;
+    FbxStringList lUVSetNameList;
+    int uvCount = lUVSetNameList.GetCount();
+    mesh->GetUVSetNames(lUVSetNameList);
+    const char* lUVSetName = lUVSetNameList.GetStringAt(0);
+    mesh->GetPolygonVertexUV(polyIndex,pointIndex,lUVSetName,texcoord,unmapped);
+    pUV.x = texcoord.mData[0];
+    pUV.y = texcoord.mData[1];
+    
+    addUVToCache(polyIndex, pointIndex, pUV);
+}
+
+void ELFBXVertexBufferProvider::addUVToCache(int polyIndex,int pointIndex, ELVector2 uv) {
+    int index = polyIndex * 4 + pointIndex;
+    if (index >= uvCache.size()) {
+        uvCache.resize(uvCache.size() + 256);
+    }
+    uvCache[index] = uv;
+    uvCacheAvaliableIndex = index;
+}
+
+ELVector2 ELFBXVertexBufferProvider::getUVFromCache(int polyIndex,int pointIndex, bool &success) {
+    int index = polyIndex * 4 + pointIndex;
+    if (index <= uvCacheAvaliableIndex) {
+        success = true;
+        return uvCache[index];
+    }
+    success = false; 
+    return ELVector2Make(0, 0);
 }
 
 

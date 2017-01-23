@@ -12,11 +12,18 @@ OUT float fragMatID;
 #ifdef Use_BumpMap
 mat3 tbnMatrix;
 #endif
-vec3 modelMatrixPosition = (modelMatrix * fragPosition).xyz;
+vec3 modelMatrixPosition;
 
 #include <frg_camera.glsl>
 #include <frg_normal.glsl>
 
 
-vec3 surfaceNormal = caculateNormal();
-vec3 surfaceToEyeVec = caculateSurfaceToEyeVec();
+vec3 surfaceNormal;
+vec3 surfaceToEyeVec;
+
+void frag_base() {
+    surfaceNormal = caculateNormal();
+    surfaceToEyeVec = caculateSurfaceToEyeVec();
+    modelMatrixPosition = (modelMatrix * fragPosition).xyz;
+}
+

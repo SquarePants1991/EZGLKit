@@ -12,5 +12,5 @@ float frogFactor(float start, float end) {
 
 vec4 caculateColorWithFrog(vec4 originColor) {
     float factor = frogFactor(frogStart, frogEnd);
-    return vec4((originColor * factor + frogColor * (1 - factor)).rgb,1.0);
+    return vec4((originColor * factor + frogColor * (1.0 - factor)).rgb,1.0);
 }

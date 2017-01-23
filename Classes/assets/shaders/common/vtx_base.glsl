@@ -8,6 +8,7 @@ void passValueToFragShader() {
     fragNormal = normal;
     fragPosition = position;// + vec4(normalize(fragNormal) * 1, 0.0);
     fragTangent = tangent;
+    // TODO: why ???
     fragBitangent = bitangent;
     fragColor = color;
     fragMatID = matID;

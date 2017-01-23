@@ -26,8 +26,8 @@ void ELWorld::enablePhysics() {
 }
 
 void ELWorld::enableDefaultCamera(ELFloat aspect) {
-    ELVector3 eye = {0, 1.7, 0};
-    ELVector3 center = {0, 0, -10};
+    ELVector3 eye = {0, 200, 500};
+    ELVector3 center = {0, 0, 0};
     ELVector3 up = {0, 1, 0};
     ELCamera * defaultCamera = new ELCamera(eye, center, up, 70.0, aspect, 0.1, 1000);
     defaultCamera->identity = "default";
@@ -50,9 +50,9 @@ void ELWorld::render() {
 void ELWorld::renderScene() {
     activeEffect("render_scene");
     activeCamera("main");
-    glad_glViewport(0,0,fbWidth,fbHeight);
-    glad_glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
-    glad_glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+//    glViewport(0,0,fbWidth,fbHeight);
+    glClearColor(0.6f, 0.6, 0.6, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     activedEffect->prepare();
     glUniform1i(activedEffect->program->uniform("useAdditionMatrix"),0);
@@ -64,12 +64,12 @@ void ELWorld::renderScene() {
         ELLight * light = dynamic_cast<ELLight *>(children.at(i));
         if (light != NULL && light->isShadowEnabled) {
             GLuint channel = GL_TEXTURE6 + lightIndex;
-            glad_glActiveTexture(channel);
-            glad_glBindTexture(GL_TEXTURE_2D, light->shadowTexture);
+            glActiveTexture(channel);
+            glBindTexture(GL_TEXTURE_2D, light->shadowTexture);
             snprintf(shadowMapUniformName,512,"shadowMap[%d]",lightIndex);
-            glad_glUniform1i(activedEffect->program->uniform(shadowMapUniformName), channel - GL_TEXTURE0);
+            glUniform1i(activedEffect->program->uniform(shadowMapUniformName), channel - GL_TEXTURE0);
             snprintf(shadowMapUniformName,512,"lightViewProjection[%d]",lightIndex);
-            glad_glUniformMatrix4fv(activedEffect->program->uniform(shadowMapUniformName), 1, 0, light->shadowMapGenCamera()->matrix().m);
+            glUniformMatrix4fv(activedEffect->program->uniform(shadowMapUniformName), 1, 0, (GLfloat *)light->shadowMapGenCamera()->matrix().m);
         }
     }
 

@@ -12,9 +12,9 @@ std::map<GLenum, std::string> ELGLState::stateProcessFuncDesc = std::map<GLenum,
 void fake_glEnableOrDisable(GLenum state) {}
 void glEnableOrDisable(GLenum state, GLenum stateVal) {
     if (stateVal == GL_TRUE) {
-        glad_glEnable(state);
+        glEnable(state);
     } else {
-        glad_glDisable(state);
+        glDisable(state);
     }
 }
 
@@ -32,7 +32,7 @@ void ELGLState::setup() {
     RegisterEnableFunc(GL_CULL_FACE);
 
     // set func
-    RegisterStateFunc(GL_CULL_FACE_MODE, glad_glCullFace);
+    RegisterStateFunc(GL_CULL_FACE_MODE, glCullFace);
 }
 
 void ELGLState::saveState() {

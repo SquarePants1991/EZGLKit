@@ -87,7 +87,7 @@ EL_INLINE ELVector4 ELVector4Make(ELFloat x, ELFloat y, ELFloat z, ELFloat w)
 
 EL_INLINE ELVector4 ELVector4MakeWithArray(ELFloat values[4])
 {
-#if defined(__ARM_NEON__)
+#if defined(__ARM_NEON__TODO)
     ELFloat32x4_t v = vld1q_f32(values);
     return *(ELVector4 *)&v;
 #elif defined(EL_SSE3_INTRINSICS)
@@ -107,7 +107,7 @@ EL_INLINE ELVector4 ELVector4MakeWithVector3(ELVector3 vector, ELFloat w)
 
 EL_INLINE ELVector4 ELVector4Negate(ELVector4 vector)
 {
-#if defined(__ARM_NEON__)
+#if defined(__ARM_NEON__TODO)
     ELFloat32x4_t v = vnegq_f32(*(ELFloat32x4_t *)&vector);
     return *(ELVector4 *)&v;
 #elif defined(EL_SSE3_INTRINSICS)
@@ -121,7 +121,7 @@ EL_INLINE ELVector4 ELVector4Negate(ELVector4 vector)
 
 EL_INLINE ELVector4 ELVector4Add(ELVector4 vectorLeft, ELVector4 vectorRight)
 {
-#if defined(__ARM_NEON__)
+#if defined(__ARM_NEON__TODO)
     ELFloat32x4_t v = vaddq_f32(*(ELFloat32x4_t *)&vectorLeft,
                               *(ELFloat32x4_t *)&vectorRight);
     return *(ELVector4 *)&v;
@@ -139,7 +139,7 @@ EL_INLINE ELVector4 ELVector4Add(ELVector4 vectorLeft, ELVector4 vectorRight)
 
 EL_INLINE ELVector4 ELVector4Subtract(ELVector4 vectorLeft, ELVector4 vectorRight)
 {
-#if defined(__ARM_NEON__)
+#if defined(__ARM_NEON__TODO)
     ELFloat32x4_t v = vsubq_f32(*(ELFloat32x4_t *)&vectorLeft,
                               *(ELFloat32x4_t *)&vectorRight);
     return *(ELVector4 *)&v;
@@ -157,7 +157,7 @@ EL_INLINE ELVector4 ELVector4Subtract(ELVector4 vectorLeft, ELVector4 vectorRigh
 
 EL_INLINE ELVector4 ELVector4Multiply(ELVector4 vectorLeft, ELVector4 vectorRight)
 {
-#if defined(__ARM_NEON__)
+#if defined(__ARM_NEON__TODO)
     ELFloat32x4_t v = vmulq_f32(*(ELFloat32x4_t *)&vectorLeft,
                               *(ELFloat32x4_t *)&vectorRight);
     return *(ELVector4 *)&v;
@@ -175,7 +175,7 @@ EL_INLINE ELVector4 ELVector4Multiply(ELVector4 vectorLeft, ELVector4 vectorRigh
 
 EL_INLINE ELVector4 ELVector4Divide(ELVector4 vectorLeft, ELVector4 vectorRight)
 {
-#if defined(__ARM_NEON__)
+#if defined(__ARM_NEON__TODO)
     ELFloat32x4_t *vLeft = (ELFloat32x4_t *)&vectorLeft;
     ELFloat32x4_t *vRight = (ELFloat32x4_t *)&vectorRight;
     ELFloat32x4_t estimate = vrecpeq_f32(*vRight);
@@ -197,7 +197,7 @@ EL_INLINE ELVector4 ELVector4Divide(ELVector4 vectorLeft, ELVector4 vectorRight)
 
 EL_INLINE ELVector4 ELVector4AddScalar(ELVector4 vector, ELFloat value)
 {
-#if defined(__ARM_NEON__)
+#if defined(__ARM_NEON__TODO)
     ELFloat32x4_t v = vaddq_f32(*(ELFloat32x4_t *)&vector,
                               vdupq_n_f32((ELFloat32_t)value));
     return *(ELVector4 *)&v;
@@ -215,7 +215,7 @@ EL_INLINE ELVector4 ELVector4AddScalar(ELVector4 vector, ELFloat value)
 
 EL_INLINE ELVector4 ELVector4SubtractScalar(ELVector4 vector, ELFloat value)
 {
-#if defined(__ARM_NEON__)
+#if defined(__ARM_NEON__TODO)
     ELFloat32x4_t v = vsubq_f32(*(ELFloat32x4_t *)&vector,
                               vdupq_n_f32((ELFloat32_t)value));
     return *(ELVector4 *)&v;
@@ -233,7 +233,7 @@ EL_INLINE ELVector4 ELVector4SubtractScalar(ELVector4 vector, ELFloat value)
 
 EL_INLINE ELVector4 ELVector4MultiplyScalar(ELVector4 vector, ELFloat value)
 {
-#if defined(__ARM_NEON__)
+#if defined(__ARM_NEON__TODO)
     ELFloat32x4_t v = vmulq_f32(*(ELFloat32x4_t *)&vector,
                               vdupq_n_f32((ELFloat32_t)value));
     return *(ELVector4 *)&v;
@@ -251,7 +251,7 @@ EL_INLINE ELVector4 ELVector4MultiplyScalar(ELVector4 vector, ELFloat value)
 
 EL_INLINE ELVector4 ELVector4DivideScalar(ELVector4 vector, ELFloat value)
 {
-#if defined(__ARM_NEON__)
+#if defined(__ARM_NEON__TODO)
     ELFloat32x4_t values = vdupq_n_f32((ELFloat32_t)value);
     ELFloat32x4_t estimate = vrecpeq_f32(values);
     estimate = vmulq_f32(vrecpsq_f32(values, estimate), estimate);
@@ -272,7 +272,7 @@ EL_INLINE ELVector4 ELVector4DivideScalar(ELVector4 vector, ELFloat value)
 
 EL_INLINE ELVector4 ELVector4Maximum(ELVector4 vectorLeft, ELVector4 vectorRight)
 {
-#if defined(__ARM_NEON__)
+#if defined(__ARM_NEON__TODO)
     ELFloat32x4_t v = vmaxq_f32(*(ELFloat32x4_t *)&vectorLeft,
                               *(ELFloat32x4_t *)&vectorRight);
     return *(ELVector4 *)&v;
@@ -295,7 +295,7 @@ EL_INLINE ELVector4 ELVector4Maximum(ELVector4 vectorLeft, ELVector4 vectorRight
 
 EL_INLINE ELVector4 ELVector4Minimum(ELVector4 vectorLeft, ELVector4 vectorRight)
 {
-#if defined(__ARM_NEON__)
+#if defined(__ARM_NEON__TODO)
     ELFloat32x4_t v = vminq_f32(*(ELFloat32x4_t *)&vectorLeft,
                                   *(ELFloat32x4_t *)&vectorRight);
         return *(ELVector4 *)&v;
@@ -318,7 +318,7 @@ EL_INLINE ELVector4 ELVector4Minimum(ELVector4 vectorLeft, ELVector4 vectorRight
 
 EL_INLINE bool ELVector4AllEqualToVector4(ELVector4 vectorLeft, ELVector4 vectorRight)
 {
-#if defined(__ARM_NEON__)
+#if defined(__ARM_NEON__TODO)
     ELFloat32x4_t v1 = *(ELFloat32x4_t *)&vectorLeft;
     ELFloat32x4_t v2 = *(ELFloat32x4_t *)&vectorRight;
     uint32x4_t vCmp = vceqq_f32(v1, v2);
@@ -341,7 +341,7 @@ EL_INLINE bool ELVector4AllEqualToVector4(ELVector4 vectorLeft, ELVector4 vector
 
 EL_INLINE bool ELVector4AllEqualToScalar(ELVector4 vector, ELFloat value)
 {
-#if defined(__ARM_NEON__)
+#if defined(__ARM_NEON__TODO)
     ELFloat32x4_t v1 = *(ELFloat32x4_t *)&vector;
     ELFloat32x4_t v2 = vdupq_n_f32(value);
     uint32x4_t vCmp = vceqq_f32(v1, v2);
@@ -364,7 +364,7 @@ EL_INLINE bool ELVector4AllEqualToScalar(ELVector4 vector, ELFloat value)
 
 EL_INLINE bool ELVector4AllGreaterThanVector4(ELVector4 vectorLeft, ELVector4 vectorRight)
 {
-#if defined(__ARM_NEON__)
+#if defined(__ARM_NEON__TODO)
     ELFloat32x4_t v1 = *(ELFloat32x4_t *)&vectorLeft;
     ELFloat32x4_t v2 = *(ELFloat32x4_t *)&vectorRight;
     uint32x4_t vCmp = vcgtq_f32(v1, v2);
@@ -387,7 +387,7 @@ EL_INLINE bool ELVector4AllGreaterThanVector4(ELVector4 vectorLeft, ELVector4 ve
 
 EL_INLINE bool ELVector4AllGreaterThanScalar(ELVector4 vector, ELFloat value)
 {
-#if defined(__ARM_NEON__)
+#if defined(__ARM_NEON__TODO)
     ELFloat32x4_t v1 = *(ELFloat32x4_t *)&vector;
     ELFloat32x4_t v2 = vdupq_n_f32(value);
     uint32x4_t vCmp = vcgtq_f32(v1, v2);
@@ -410,7 +410,7 @@ EL_INLINE bool ELVector4AllGreaterThanScalar(ELVector4 vector, ELFloat value)
 
 EL_INLINE bool ELVector4AllGreaterThanOrEqualToVector4(ELVector4 vectorLeft, ELVector4 vectorRight)
 {
-#if defined(__ARM_NEON__)
+#if defined(__ARM_NEON__TODO)
     ELFloat32x4_t v1 = *(ELFloat32x4_t *)&vectorLeft;
     ELFloat32x4_t v2 = *(ELFloat32x4_t *)&vectorRight;
     uint32x4_t vCmp = vcgeq_f32(v1, v2);
@@ -433,7 +433,7 @@ EL_INLINE bool ELVector4AllGreaterThanOrEqualToVector4(ELVector4 vectorLeft, ELV
 
 EL_INLINE bool ELVector4AllGreaterThanOrEqualToScalar(ELVector4 vector, ELFloat value)
 {
-#if defined(__ARM_NEON__)
+#if defined(__ARM_NEON__TODO)
     ELFloat32x4_t v1 = *(ELFloat32x4_t *)&vector;
     ELFloat32x4_t v2 = vdupq_n_f32(value);
     uint32x4_t vCmp = vcgeq_f32(v1, v2);
@@ -463,10 +463,10 @@ EL_INLINE ELVector4 ELVector4Normalize(ELVector4 vector)
 
 EL_INLINE ELFloat ELVector4DotProduct(ELVector4 vectorLeft, ELVector4 vectorRight)
 {
-#if defined(__ARM_NEON__)
+#if defined(__ARM_NEON__TODO)
     ELFloat32x4_t v = vmulq_f32(*(ELFloat32x4_t *)&vectorLeft,
                               *(ELFloat32x4_t *)&vectorRight);
-    ELFloat32x2_t v2 = vpadd_f32(vget_low_f32(v), vget_high_f32(v));
+    float32x2_t v2 = vpadd_f32(vget_low_f32(v), vget_high_f32(v));
     v2 = vpadd_f32(v2, v2);
     return vget_lane_f32(v2, 0);
 #elif defined(EL_SSE3_INTRINSICS)
@@ -483,10 +483,10 @@ EL_INLINE ELFloat ELVector4DotProduct(ELVector4 vectorLeft, ELVector4 vectorRigh
 
 EL_INLINE ELFloat ELVector4Length(ELVector4 vector)
 {
-#if defined(__ARM_NEON__)
+#if defined(__ARM_NEON__TODO)
     ELFloat32x4_t v = vmulq_f32(*(ELFloat32x4_t *)&vector,
                               *(ELFloat32x4_t *)&vector);
-    ELFloat32x2_t v2 = vpadd_f32(vget_low_f32(v), vget_high_f32(v));
+    float32x2_t v2 = vpadd_f32(vget_low_f32(v), vget_high_f32(v));
     v2 = vpadd_f32(v2, v2);
     return sqrt(vget_lane_f32(v2, 0));
 #elif defined(EL_SSE3_INTRINSICS)
@@ -509,7 +509,7 @@ EL_INLINE ELFloat ELVector4Distance(ELVector4 vectorStart, ELVector4 vectorEnd)
 
 EL_INLINE ELVector4 ELVector4Lerp(ELVector4 vectorStart, ELVector4 vectorEnd, ELFloat t)
 {
-#if defined(__ARM_NEON__)
+#if defined(__ARM_NEON__TODO)
     ELFloat32x4_t vDiff = vsubq_f32(*(ELFloat32x4_t *)&vectorEnd,
                                   *(ELFloat32x4_t *)&vectorStart);
     vDiff = vmulq_f32(vDiff, vdupq_n_f32((ELFloat32_t)t));

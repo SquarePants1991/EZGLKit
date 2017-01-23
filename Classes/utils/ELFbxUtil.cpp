@@ -98,22 +98,6 @@ FbxAMatrix FbxGetNodeGlobalPosition(FbxNode* pNode, const FbxTime& pTime, FbxPos
     return lGlobalPosition;
 }
 
-void FbxLoadTrianglePoint(FbxMesh *mesh,FbxVector4 *pVertices, int polyIndex,int pointIndex, ELVector3 &pPos,ELVector2 &pUV) {
-    int index = mesh->GetPolygonVertex(polyIndex, pointIndex);
-    pPos.x = pVertices[index].mData[0];
-    pPos.y = pVertices[index].mData[1];
-    pPos.z = pVertices[index].mData[2];
-
-    FbxVector2 texcoord;
-    bool unmapped;
-    FbxStringList lUVSetNameList;
-    int uvCount = lUVSetNameList.GetCount();
-    mesh->GetUVSetNames(lUVSetNameList);
-    const char* lUVSetName = lUVSetNameList.GetStringAt(0);
-    mesh->GetPolygonVertexUV(polyIndex,pointIndex,lUVSetName,texcoord,unmapped);
-    pUV.x = texcoord.mData[0];
-    pUV.y = 1 - texcoord.mData[1];
-}
 
 FbxAMatrix FbxGetNodeGeometricTransform(FbxNode *pNode) {
     const FbxVector4 lT = pNode->GetGeometricTranslation(FbxNode::eSourcePivot);

@@ -10,6 +10,7 @@
 #include "component/geometry/ELMeshGeometry.h"
 #include "ELFbxUtil.h"
 #include "ELFBXVertexBufferProvider.h"
+#include "ELTexture.h"
 
 FbxManager * ELFBXLoader::fbxManager = NULL;
 
@@ -37,15 +38,6 @@ std::vector<ELMeshGeometry *> ELFBXLoader::loadFromFile(const char *filePath) {
 
     FbxAxisSystem::OpenGL.ConvertScene(scene);
 
-    ELFBXVertexBufferProvider *vertexBufferProvider = new ELFBXVertexBufferProvider(scene);
-    vertexBufferProvider->prepare();
-
-    ELMeshGeometry *meshGeometry = new ELMeshGeometry();
-    meshGeometry->vertexBufferProvider = vertexBufferProvider;
-    meshGeometry->animations = vertexBufferProvider->loadAnimations();
-    meshes.push_back(meshGeometry);
-
-
     FbxNode *rootNode = scene->GetRootNode();
     if(rootNode) {
         for(int i = 0; i < rootNode->GetChildCount(); i++) {
@@ -56,7 +48,31 @@ std::vector<ELMeshGeometry *> ELFBXLoader::loadFromFile(const char *filePath) {
             FbxNodeAttribute::EType attrType = node->GetNodeAttribute()->GetAttributeType();
             if (attrType == FbxNodeAttribute::EType::eMesh) {
                 FbxMesh *mesh = node->GetMesh();
-
+                FbxAMatrix transform = FbxGetNodeGlobalPosition(node, NULL, NULL);
+                ELFBXVertexBufferProvider *vertexBufferProvider = new ELFBXVertexBufferProvider(scene, mesh);
+                vertexBufferProvider->prepare();
+                
+                ELMeshGeometry *meshGeometry = new ELMeshGeometry();
+                FbxVector4 pos = transform.GetT();
+                meshGeometry->transform->position.x = pos[0];
+                meshGeometry->transform->position.y = pos[1];
+                meshGeometry->transform->position.z = pos[2];
+                
+                FbxVector4 scale = transform.GetS();
+                meshGeometry->transform->scale.x = scale[0];
+                meshGeometry->transform->scale.y = scale[1];
+                meshGeometry->transform->scale.z = scale[2];
+                
+                FbxQuaternion rotate = transform.GetQ();
+                meshGeometry->transform->quaternion.x = rotate[0];
+                meshGeometry->transform->quaternion.y = rotate[1];
+                meshGeometry->transform->quaternion.z = rotate[2];
+                 meshGeometry->transform->quaternion.w = rotate[3];
+                
+                meshGeometry->vertexBufferProvider = vertexBufferProvider;
+                meshGeometry->animations = vertexBufferProvider->loadAnimations();
+                loadMaterial(meshGeometry, mesh);
+                meshes.push_back(meshGeometry);
             }
         }
     }
@@ -64,34 +80,49 @@ std::vector<ELMeshGeometry *> ELFBXLoader::loadFromFile(const char *filePath) {
     return meshes;
 }
 
-ELMeshGeometry *ELFBXLoader::loadMesh(FbxMesh *mesh) {
-    ELGeometryVertexBuffer *vertexBuffer = new ELGeometryVertexBuffer();
-    int polyCount = mesh->GetPolygonCount();
-    FbxVector4 *pVertices = mesh->GetControlPoints();
-    for (int i = 0; i < polyCount; ++i) {
-        int polySize = mesh->GetPolygonSize(i);
-        // load material
-        FbxGeometryElementMaterial *materialElement = mesh->GetElementMaterial(0);
-        FbxSurfaceMaterial *material = NULL;
-        int matId = 0;
-        if (materialElement->GetIndexArray().GetCount() > i) {
-            material = mesh->GetNode()->GetMaterial(materialElement->GetIndexArray().GetAt(i));
-            matId = materialElement->GetIndexArray().GetAt(i);
-        }
-
-        if (polySize == 3) { // is triangle
-            ELGeometryTriangle triangle;
-            FbxLoadTrianglePoint(mesh,pVertices,i,0,triangle.point3,triangle.uv3);
-            FbxLoadTrianglePoint(mesh,pVertices,i,1,triangle.point2,triangle.uv2);
-            FbxLoadTrianglePoint(mesh,pVertices,i,2,triangle.point1,triangle.uv1);
-            vertexBuffer->append(triangle, matId);
+void ELFBXLoader::loadMaterial(ELMeshGeometry *geometry, FbxMesh *mesh) {
+    FbxNode *pNode = mesh->GetNode();
+    const int lMaterialCount = pNode->GetMaterialCount();
+    for (int lMaterialIndex = 0; lMaterialIndex < lMaterialCount; ++lMaterialIndex)
+    {
+        FbxSurfaceMaterial * lMaterial = pNode->GetMaterial(lMaterialIndex);
+        if (lMaterial)
+        {
+            FbxProperty prop = lMaterial->FindProperty(FbxSurfaceMaterial::sDiffuse);
+            int layeredTextureCount = prop.GetSrcObjectCount<FbxLayeredTexture>();
+            
+            if (layeredTextureCount > 0)
+            {
+                for (int j = 0; j < layeredTextureCount; j++)
+                {
+                    FbxLayeredTexture* layered_texture = FbxCast<FbxLayeredTexture>(prop.GetSrcObject<FbxLayeredTexture>(j));
+                    int lcount = layered_texture->GetSrcObjectCount<FbxFileTexture>();
+                    
+                    for (int k = 0; k < lcount; k++)
+                    {
+                        FbxFileTexture* texture = FbxCast<FbxFileTexture>(layered_texture->GetSrcObject<FbxFileTexture>(k));
+                        // Then, you can get all the properties of the texture, include its name
+                        const char* textureName = texture->GetName();
+                    }
+                }
+            }
+            else
+            {
+                // Directly get textures
+                int textureCount = prop.GetSrcObjectCount<FbxFileTexture>();
+                for (int j = 0; j < textureCount; j++)
+                {
+                    FbxFileTexture* texture = FbxCast<FbxFileTexture>(prop.GetSrcObject<FbxFileTexture>(j));
+                    // Then, you can get all the properties of the texture, include its name
+                    const char* textureName = texture->GetName();
+                    
+                    const char *fileName = texture->GetFileName();
+                    geometry->materials[lMaterialIndex].diffuse = ELVector4Make(0.0, 0.0, 0.0, 1);
+                    geometry->materials[lMaterialIndex].diffuseMap = (ELUint)ELTexture::texture(ELAssets::shared()->findFile(std::string(fileName)))->value;
+                }
+            }
         }
     }
-    ELGeometryData geometryData;
-    generateVertexVBO(vertexBuffer, &geometryData);
-
-    ELMeshGeometry *meshGeometry = new ELMeshGeometry(geometryData);
-    return meshGeometry;
 }
 
 void ELFBXLoader::generateVertexVBO(ELGeometryVertexBuffer *buffer, ELGeometryData * geometryData) {

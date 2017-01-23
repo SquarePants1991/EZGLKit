@@ -7,7 +7,7 @@
 #include "BulletCollision/CollisionShapes/btHeightfieldTerrainShape.h"
 
 ELCollisionShape::ELCollisionShape() {
-
+    offset = ELVector3Make(0, 0, 0);
 }
 
 void ELCollisionShape::asSphere(ELFloat radius) {

@@ -4,11 +4,12 @@
 
 #include "ELTexture.h"
 #include "EZGLBase.h"
-#include "SOIL.h"
 
 std::map<std::string, ELTexture *> ELTexture::textureCache = std::map<std::string, ELTexture *>();
+ELTextureGenCallback ELTexture::callback = NULL;
 
 ELTexture::ELTexture(std::string path) {
+#if Platform_OSX
     int width, height, channel;
     unsigned char *imageData = SOIL_load_image(path.c_str(), &width, &height, &channel, SOIL_LOAD_RGBA);
 
@@ -19,6 +20,15 @@ ELTexture::ELTexture(std::string path) {
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
     glBindTexture(GL_TEXTURE_2D, 0);
+#endif
+    
+    if (ELTexture::callback != NULL) {
+        value = callback(path.c_str());
+    }
+}
+
+void ELTexture::config(ELTextureGenCallback callback) {
+    ELTexture::callback = callback;
 }
 
 ELTexture * ELTexture::texture(std::string path) {

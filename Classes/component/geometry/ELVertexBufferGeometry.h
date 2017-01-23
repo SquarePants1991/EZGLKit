@@ -10,7 +10,7 @@
 
 class ELGeometryVertexBufferProvider : public ELNode {
 public:
-    virtual void update(ELFloat timeInSecs, ELGeometryVertexBuffer *vertexBuffer) = 0;
+    virtual void update(const char *animationName, ELFloat timeInSecs, ELGeometryVertexBuffer *vertexBuffer) = 0;
 };
 
 class ELVertexBufferGeometry : public ELGeometry {

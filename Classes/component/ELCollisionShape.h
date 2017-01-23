@@ -13,7 +13,7 @@
 class ELCollisionShape {
 public:
     ELCollisionShape();
-
+    ELVector3 offset;
     void asSphere(ELFloat radius);
     void asBox(ELVector3 boxMargin);
     void asCone(ELFloat radius, ELFloat height);

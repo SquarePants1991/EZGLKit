@@ -102,11 +102,13 @@ void FGScene::createMonkey() {
     ELGameObject *gameObject = new ELGameObject(world);
     world->addNode(gameObject);
     gameObject->transform->position = ELVector3Make(0,3,0);
-    gameObject->transform->scale = ELVector3Make(0.04,0.04,0.04);
+    gameObject->transform->scale = ELVector3Make(0.1,0.1,0.1);
 
+//    std::vector<ELMeshGeometry *> geometries = ELFBXLoader::loadFromFile(ELAssets::shared()->findFile("Airbus A310.fbx").c_str());
     std::vector<ELMeshGeometry *> geometries = ELFBXLoader::loadFromFile(ELAssets::shared()->findFile("humanoid.fbx").c_str());
     for (int i = 0; i < geometries.size(); ++i) {
-//        geometries.at(i)->material.diffuse = ELVector4Make(0.5,0,0,1);
+        auto animations = geometries.at(i)->animations;
+        geometries.at(i)->setAnimation((*animations.begin()).second.name);
         geometries.at(i)->materials[0].diffuse = ELVector4Make(0.6, 0.0, 0.0, 1.0);
         geometries.at(i)->materials[0].ambient = ELVector4Make(0.7, 0.7, 0.7, 1.0);
         geometries.at(i)->materials[0].diffuseMap = diffuseMap_head;

@@ -29,6 +29,27 @@ public:
     std::string name;
     ELFloat startTime;
     ELFloat stopTime;
+    static ELAnimation None() {
+        ELAnimation animation;
+        animation.name = "";
+        return animation;
+    }
+    
+    static ELAnimation Default() {
+        ELAnimation animation;
+        animation.name = "Action_Default";
+        animation.startTime = 0;
+        animation.stopTime = 10000;
+        return animation;
+    }
+
+    bool operator==(ELAnimation animation) {
+        return name == animation.name;
+    }
+
+    bool operator!=(ELAnimation animation) {
+        return name != animation.name;
+    }
 };
 
 class ELEffect;
@@ -36,6 +57,7 @@ class ELCamera;
 
 class ELGeometry : public ELComponent {
 public:
+    ELVector3 size;
     ELMaterial material;
     ELMaterial materials[8];
     ELGeometryRenderType renderType;
@@ -47,7 +69,6 @@ public:
     bool onlyUseColorAttrib;
     static bool resetBorderBeforeUpdate;
 
-    std::map<std::string, ELAnimation> animations;
 public:
     ELGeometry();
     void prepare();

@@ -12,6 +12,7 @@ bool ELGeometry::resetBorderBeforeUpdate = false;
 
 ELGeometry::ELGeometry() : vao(-1),
                            isGeometryDataValid(false),
+                           enableBorder(false),
                            borderWidth(0.1),
                            borderColor(ELVector4Make(1.0,1.0,1.0,1.0)),
                            onlyUseColorAttrib(false),
@@ -61,9 +62,9 @@ void ELGeometry::render() {
 
     effectDidActive(defaultEffect);
 
-    glUniform3fv(program->uniform("cameraPosition"), 1, camera->position().v);
-    glUniformMatrix4fv(program->uniform("viewProjection"), 1, 0, camera->matrix().m);
-    glUniformMatrix4fv(program->uniform("modelMatrix"), 1, 0, modelMatrix().m);
+    glUniform3fv(program->uniform("cameraPosition"), 1, (GLfloat *)camera->position().v);
+    glUniformMatrix4fv(program->uniform("viewProjection"), 1, 0, (GLfloat *)camera->matrix().m);
+    glUniformMatrix4fv(program->uniform("modelMatrix"), 1, 0, (GLfloat *)modelMatrix().m);
 //    glUniform4fv(program->uniform("material.ambient"), 1, material.ambient.v);
 //    glUniform4fv(program->uniform("material.diffuse"), 1, material.diffuse.v);
 //    glUniform4fv(program->uniform("material.specular"), 1, material.specular.v);
@@ -77,16 +78,28 @@ void ELGeometry::render() {
         ELMaterial mat = materials[i];
         char buffer[256];
         snprintf(buffer, 256, "materials[%d].ambient", i);
-        glUniform4fv(program->uniform(buffer), 1, mat.ambient.v);
+        glUniform4fv(program->uniform(buffer), 1, (GLfloat *)mat.ambient.v);
         snprintf(buffer, 256, "materials[%d].diffuse", i);
-        glUniform4fv(program->uniform(buffer), 1, mat.diffuse.v);
+        glUniform4fv(program->uniform(buffer), 1, (GLfloat *)mat.diffuse.v);
         snprintf(buffer, 256, "materials[%d].specular", i);
-        glUniform4fv(program->uniform(buffer), 1, mat.specular.v);
-        snprintf(buffer, 256, "materials[%d].diffuseMap", i);
-        glUniform1i(program->uniform(buffer), i);
-        glActiveTexture(GL_TEXTURE0 + i);
-        glBindTexture(GL_TEXTURE_2D, mat.diffuseMap);
+        glUniform4fv(program->uniform(buffer), 1, (GLfloat *)mat.specular.v);
+//        snprintf(buffer, 256, "materials[%d].diffuseMap", i);
+//        glUniform1i(program->uniform(buffer), i);
+//        glActiveTexture(GL_TEXTURE0 + i);
+//        glBindTexture(GL_TEXTURE_2D, mat.diffuseMap);
+        
     }
+    char buffer[256];
+    
+    snprintf(buffer, 256, "normalMap");
+    glUniform1i(program->uniform(buffer),5);
+    glActiveTexture(GL_TEXTURE5);
+    glBindTexture(GL_TEXTURE_2D, materials[0].normalMap);
+    
+    snprintf(buffer, 256, "diffuseMap");
+    glUniform1i(program->uniform(buffer), 0);
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, materials[0].diffuseMap);
     
     
     
@@ -111,14 +124,14 @@ void ELGeometry::render() {
 
     glUniform1i(program->uniform("onlyUseColorAttrib"), onlyUseColorAttrib? 1 : 0);
 
-    glBindVertexArray(vao);
+    glBindVertexArrayEL(vao);
     if (enableBorder) {
         // TODO: 增加管理Cull Face状态类，使Cull Face能够restore回去，暂时禁用边缘渲染
         ELGLState::saveState();
         ELGLState::set(GL_CULL_FACE_MODE, GL_FRONT);
         glUniform1i(program->uniform("renderBorder"), 1);
         glUniform1f(program->uniform("borderWidth"), borderWidth);
-        glUniform4fv(program->uniform("borderColor"), 1, borderColor.v);
+        glUniform4fv(program->uniform("borderColor"), 1, (GLfloat *)borderColor.v);
         if (data.supportIndiceVBO) {
             glDrawElements(GL_TRIANGLES, data.indiceCount, GL_UNSIGNED_INT, 0);
         } else {
@@ -146,7 +159,7 @@ void ELGeometry::render() {
     } else {
         glDrawArrays(GL_TRIANGLES, 0, data.vertexCount);
     }
-    glBindVertexArray(0);
+    glBindVertexArrayEL(0);
 
     ELNode::render();
 //    ELGLState::restoreState();
@@ -159,9 +172,9 @@ void ELGeometry::setupVao() {
     ELEffect * defaultEffect = effect();
     ELProgram *program = defaultEffect->program;
     if (vao < 0) {
-        glGenVertexArrays(1, (GLuint *)(&vao));
+        glGenVertexArraysEL(1, (GLuint *)(&vao));
     }
-    glBindVertexArray(vao);
+    glBindVertexArrayEL(vao);
 
     glBindBuffer(GL_ARRAY_BUFFER, data.vertexVBO);
 
@@ -199,12 +212,14 @@ void ELGeometry::setupVao() {
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, data.indiceVBO);
     }
 
-    glBindVertexArray(0);
+    glBindVertexArrayEL(0);
 
 }
 
 ELMatrix4 ELGeometry::modelMatrix() {
-    return ELMatrix4FromTransform(gameObject()->transform);
+    ELMatrix4 baseMatrix = ELMatrix4FromTransform(transform);
+    ELMatrix4 parentMatrix = ELMatrix4FromTransform(gameObject()->transform);
+    return ELMatrix4Multiply(parentMatrix, baseMatrix);
 }
 
 ELEffect * ELGeometry::effect() {

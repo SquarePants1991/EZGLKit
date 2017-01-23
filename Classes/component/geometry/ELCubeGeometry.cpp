@@ -16,7 +16,7 @@ ELCubeGeometry::ELCubeGeometry(ELVector3 size, bool smooth) : ELVertexBufferGeom
 void ELCubeGeometry::fillVertexBuffer(ELGeometryVertexBuffer *vertexBuffer) {
     // 柱子
     int segments = 4;
-
+    float uvFactor = 80.0;
     // x 轴上的面
     ELGeometryRect rectXLeft = {
             {-size.x / 2, size.y / 2, size.z / 2},
@@ -24,9 +24,9 @@ void ELCubeGeometry::fillVertexBuffer(ELGeometryVertexBuffer *vertexBuffer) {
             {-size.x / 2, -size.y / 2, -size.z / 2},
             {-size.x / 2, size.y / 2, -size.z / 2},
             {0, 0},
-            {0, 1},
-            {1, 1},
-            {1, 0},
+            {0, size.z / uvFactor},
+            {size.y / uvFactor, size.z / uvFactor},
+            {size.y / uvFactor, 0},
     };
 
     ELGeometryRect rectXRight = {
@@ -35,9 +35,9 @@ void ELCubeGeometry::fillVertexBuffer(ELGeometryVertexBuffer *vertexBuffer) {
             {size.x / 2, -size.y / 2, size.z / 2},
             {size.x / 2, size.y / 2, size.z / 2},
             {0, 0},
-            {0, 1},
-            {1, 1},
-            {1, 0},
+            {0, size.z / uvFactor},
+            {size.y / uvFactor, size.z / uvFactor},
+            {size.y / uvFactor, 0},
     };
     vertexBuffer->append(rectXLeft);
     vertexBuffer->append(rectXRight);
@@ -49,9 +49,9 @@ void ELCubeGeometry::fillVertexBuffer(ELGeometryVertexBuffer *vertexBuffer) {
             {size.x / 2, -size.y / 2, size.z / 2},
             {size.x / 2, -size.y / 2, -size.z / 2},
             {0, 0},
-            {0, 1},
-            {1, 1},
-            {1, 0},
+            {0, size.z / uvFactor},
+            {size.x / uvFactor, size.z / uvFactor},
+            {size.x / uvFactor, 0},
     };
 
     ELGeometryRect rectYUp = {
@@ -60,9 +60,9 @@ void ELCubeGeometry::fillVertexBuffer(ELGeometryVertexBuffer *vertexBuffer) {
             {-size.x / 2, size.y / 2, size.z / 2},
             {-size.x / 2, size.y / 2, -size.z / 2},
             {0, 0},
-            {0, 1},
-            {1, 1},
-            {1, 0},
+            {0, size.z / uvFactor},
+            {size.x / uvFactor, size.z / uvFactor},
+            {size.x / uvFactor, 0},
     };
     vertexBuffer->append(rectYDown);
     vertexBuffer->append(rectYUp);
@@ -74,9 +74,9 @@ void ELCubeGeometry::fillVertexBuffer(ELGeometryVertexBuffer *vertexBuffer) {
             {size.x / 2, -size.y / 2, -size.z / 2},
             {size.x / 2, size.y / 2, -size.z / 2},
             {0, 0},
-            {0, 1},
-            {1, 1},
-            {1, 0},
+            {0, size.y / uvFactor},
+            {size.x / uvFactor, size.y / uvFactor},
+            {size.x / uvFactor, 0},
     };
 
     ELGeometryRect rectZNear = {
@@ -85,9 +85,9 @@ void ELCubeGeometry::fillVertexBuffer(ELGeometryVertexBuffer *vertexBuffer) {
             {-size.x / 2, -size.y / 2, size.z / 2},
             {-size.x / 2, size.y / 2, size.z / 2},
             {0, 0},
-            {0, 1},
-            {1, 1},
-            {1, 0},
+            {0, size.y / uvFactor},
+            {size.x / uvFactor, size.y / uvFactor},
+            {size.x / uvFactor, 0},
     };
 
     vertexBuffer->append(rectZFar);

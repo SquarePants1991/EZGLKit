@@ -233,7 +233,7 @@ EL_INLINE ELMatrix4 ELMatrix4MakeWithArray(ELFloat values[16])
 
 EL_INLINE ELMatrix4 ELMatrix4MakeWithArrayAndTranspose(ELFloat values[16])
 {
-#if defined(__ARM_NEON__)
+#if defined(__ARM_NEON__TODO)
     ELFloat32x4x4_t m = vld4q_f32(values);
     return *(ELMatrix4 *)&m;
 #else
@@ -262,7 +262,7 @@ ELVector4 column1,
         ELVector4 column2,
 ELVector4 column3)
 {
-#if defined(__ARM_NEON__)
+#if defined(__ARM_NEON__TODO)
 ELFloat32x4x4_t m;
     m.val[0] = vld1q_f32(column0.v);
     m.val[1] = vld1q_f32(column1.v);
@@ -498,7 +498,7 @@ return v;
 
 EL_INLINE ELVector4 ELMatrix4GetColumn(ELMatrix4 matrix, int column)
 {
-#if defined(__ARM_NEON__)
+#if defined(__ARM_NEON__TODO)
 ELFloat32x4_t v = vld1q_f32(&(matrix.m[column * 4]));
     return *(ELVector4 *)&v;
 #elif defined(EL_SSE3_INTRINSICS)
@@ -522,7 +522,7 @@ return matrix;
 
 EL_INLINE ELMatrix4 ELMatrix4SetColumn(ELMatrix4 matrix, int column, ELVector4 vector)
 {
-#if defined(__ARM_NEON__)
+#if defined(__ARM_NEON__TODO)
 ELFloat *dst = &(matrix.m[column * 4]);
     vst1q_f32(dst, vld1q_f32(vector.v));
     return matrix;
@@ -541,7 +541,7 @@ return matrix;
 
 EL_INLINE ELMatrix4 ELMatrix4Transpose(ELMatrix4 matrix)
 {
-#if defined(__ARM_NEON__)
+#if defined(__ARM_NEON__TODO)
 ELFloat32x4x4_t m = vld4q_f32(matrix.m);
     return *(ELMatrix4 *)&m;
 #else
@@ -555,7 +555,7 @@ return m;
 
 EL_INLINE ELMatrix4 ELMatrix4Multiply(ELMatrix4 matrixLeft, ELMatrix4 matrixRight)
 {
-#if defined(__ARM_NEON__)
+#if defined(__ARM_NEON__TODO)
 ELFloat32x4x4_t iMatrixLeft = *(ELFloat32x4x4_t *)&matrixLeft;
     ELFloat32x4x4_t iMatrixRight = *(ELFloat32x4x4_t *)&matrixRight;
     ELFloat32x4x4_t m;
@@ -649,7 +649,7 @@ return m;
 
 EL_INLINE ELMatrix4 ELMatrix4Add(ELMatrix4 matrixLeft, ELMatrix4 matrixRight)
 {
-#if defined(__ARM_NEON__)
+#if defined(__ARM_NEON__TODO)
 ELFloat32x4x4_t iMatrixLeft = *(ELFloat32x4x4_t *)&matrixLeft;
     ELFloat32x4x4_t iMatrixRight = *(ELFloat32x4x4_t *)&matrixRight;
     ELFloat32x4x4_t m;
@@ -698,7 +698,7 @@ return m;
 
 EL_INLINE ELMatrix4 ELMatrix4Subtract(ELMatrix4 matrixLeft, ELMatrix4 matrixRight)
 {
-#if defined(__ARM_NEON__)
+#if defined(__ARM_NEON__TODO)
 ELFloat32x4x4_t iMatrixLeft = *(ELFloat32x4x4_t *)&matrixLeft;
     ELFloat32x4x4_t iMatrixRight = *(ELFloat32x4x4_t *)&matrixRight;
     ELFloat32x4x4_t m;
@@ -783,7 +783,7 @@ return m;
 
 EL_INLINE ELMatrix4 ELMatrix4Scale(ELMatrix4 matrix, ELFloat sx, ELFloat sy, ELFloat sz)
 {
-#if defined(__ARM_NEON__)
+#if defined(__ARM_NEON__TODO)
 ELFloat32x4x4_t iMatrix = *(ELFloat32x4x4_t *)&matrix;
     ELFloat32x4x4_t m;
     
@@ -813,7 +813,7 @@ return m;
 
 EL_INLINE ELMatrix4 ELMatrix4ScaleWithVector3(ELMatrix4 matrix, ELVector3 scaleVector)
 {
-#if defined(__ARM_NEON__)
+#if defined(__ARM_NEON__TODO)
 ELFloat32x4x4_t iMatrix = *(ELFloat32x4x4_t *)&matrix;
     ELFloat32x4x4_t m;
     
@@ -843,7 +843,7 @@ return m;
 
 EL_INLINE ELMatrix4 ELMatrix4ScaleWithVector4(ELMatrix4 matrix, ELVector4 scaleVector)
 {
-#if defined(__ARM_NEON__)
+#if defined(__ARM_NEON__TODO)
 ELFloat32x4x4_t iMatrix = *(ELFloat32x4x4_t *)&matrix;
     ELFloat32x4x4_t m;
     
@@ -948,7 +948,7 @@ vectors[i] = ELMatrix4MultiplyAndProjectVector3(matrix, vectors[i]);
 
 EL_INLINE ELVector4 ELMatrix4MultiplyVector4(ELMatrix4 matrixLeft, ELVector4 vectorRight)
 {
-#if defined(__ARM_NEON__)
+#if defined(__ARM_NEON__TODO)
 ELFloat32x4x4_t iMatrix = *(ELFloat32x4x4_t *)&matrixLeft;
     ELFloat32x4_t v;
     

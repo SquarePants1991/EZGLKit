@@ -23,7 +23,8 @@ public:
     bool isTransparency;
     ELFloat elapsedSeconds;
     std::string identity;
-
+    ELVector3 size;
+    
     static bool drawTransparency;
 public:
     ELNode();

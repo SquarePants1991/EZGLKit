@@ -1,0 +1,909 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8E03AA801E30EBDA00008F82 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E03AA7F1E30EBDA00008F82 /* main.m */; };
+		8E03AA831E30EBDA00008F82 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E03AA821E30EBDA00008F82 /* AppDelegate.m */; };
+		8E03AA8A1E30EBDA00008F82 /* GameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8E03AA891E30EBDA00008F82 /* GameViewController.mm */; };
+		8E03AA8D1E30EBDA00008F82 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E03AA8B1E30EBDA00008F82 /* Main.storyboard */; };
+		8E03AA8F1E30EBDA00008F82 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E03AA8E1E30EBDA00008F82 /* Assets.xcassets */; };
+		8E03AA921E30EBDA00008F82 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E03AA901E30EBDA00008F82 /* LaunchScreen.storyboard */; };
+		8E03AA9D1E30EBDA00008F82 /* EZGLTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E03AA9C1E30EBDA00008F82 /* EZGLTests.m */; };
+		8E03AAA81E30EBDB00008F82 /* EZGLUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E03AAA71E30EBDB00008F82 /* EZGLUITests.m */; };
+		8E03AEE71E30F9CE00008F82 /* libEZGLSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E03AEE41E30F4E900008F82 /* libEZGLSDK.a */; };
+		8E03AEEB1E30F9F300008F82 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E03AEE91E30F9F300008F82 /* GLKit.framework */; };
+		8E03AEEC1E30F9F300008F82 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E03AEEA1E30F9F300008F82 /* OpenGLES.framework */; };
+		8E30C28D1E31EA2800D5AA1D /* ELTextureImp.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8E30C28C1E31EA2800D5AA1D /* ELTextureImp.mm */; };
+		8E30C2911E31EAE300D5AA1D /* UIImage+GL.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E30C2901E31EAE300D5AA1D /* UIImage+GL.m */; };
+		8E30C2951E31ECC100D5AA1D /* Default.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 8E30C2931E31ECC100D5AA1D /* Default.fsh */; };
+		8E30C2961E31ECC100D5AA1D /* Default.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 8E30C2941E31ECC100D5AA1D /* Default.vsh */; };
+		8E30C29A1E31F02100D5AA1D /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E30C2991E31F02100D5AA1D /* libstdc++.6.0.9.tbd */; };
+		8E30C2C61E31F1FB00D5AA1D /* cm_depth_pack.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E30C2AA1E31F1FB00D5AA1D /* cm_depth_pack.glsl */; };
+		8E30C2C71E31F1FB00D5AA1D /* cm_uniforms.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E30C2AB1E31F1FB00D5AA1D /* cm_uniforms.glsl */; };
+		8E30C2C81E31F1FB00D5AA1D /* defines.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E30C2AC1E31F1FB00D5AA1D /* defines.glsl */; };
+		8E30C2C91E31F1FB00D5AA1D /* frg_base.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E30C2AD1E31F1FB00D5AA1D /* frg_base.glsl */; };
+		8E30C2CA1E31F1FB00D5AA1D /* frg_camera.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E30C2AE1E31F1FB00D5AA1D /* frg_camera.glsl */; };
+		8E30C2CB1E31F1FB00D5AA1D /* frg_fog.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E30C2AF1E31F1FB00D5AA1D /* frg_fog.glsl */; };
+		8E30C2CC1E31F1FB00D5AA1D /* frg_light.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E30C2B01E31F1FB00D5AA1D /* frg_light.glsl */; };
+		8E30C2CD1E31F1FB00D5AA1D /* frg_normal.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E30C2B11E31F1FB00D5AA1D /* frg_normal.glsl */; };
+		8E30C2CE1E31F1FB00D5AA1D /* frg_projector.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E30C2B21E31F1FB00D5AA1D /* frg_projector.glsl */; };
+		8E30C2CF1E31F1FB00D5AA1D /* frg_shadow.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E30C2B31E31F1FB00D5AA1D /* frg_shadow.glsl */; };
+		8E30C2D01E31F1FB00D5AA1D /* frg_terrain.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E30C2B41E31F1FB00D5AA1D /* frg_terrain.glsl */; };
+		8E30C2D11E31F1FB00D5AA1D /* vtx_base.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E30C2B51E31F1FB00D5AA1D /* vtx_base.glsl */; };
+		8E30C2D21E31F1FB00D5AA1D /* vtx_border_pass.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E30C2B61E31F1FB00D5AA1D /* vtx_border_pass.glsl */; };
+		8E30C2D31E31F1FB00D5AA1D /* vtx_clip_plane.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E30C2B71E31F1FB00D5AA1D /* vtx_clip_plane.glsl */; };
+		8E30C2D41E31F1FB00D5AA1D /* vtx_in_out.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E30C2B81E31F1FB00D5AA1D /* vtx_in_out.glsl */; };
+		8E30C2D51E31F1FB00D5AA1D /* vtx_simple_pass.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E30C2B91E31F1FB00D5AA1D /* vtx_simple_pass.glsl */; };
+		8E30C2D61E31F1FB00D5AA1D /* vtx_uniforms.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E30C2BA1E31F1FB00D5AA1D /* vtx_uniforms.glsl */; };
+		8E30C2D71E31F1FB00D5AA1D /* frg_phong.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E30C2BB1E31F1FB00D5AA1D /* frg_phong.glsl */; };
+		8E30C2D81E31F1FB00D5AA1D /* frg_phong_es.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E30C2BC1E31F1FB00D5AA1D /* frg_phong_es.glsl */; };
+		8E30C2D91E31F1FB00D5AA1D /* frg_shadowmap.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E30C2BD1E31F1FB00D5AA1D /* frg_shadowmap.glsl */; };
+		8E30C2DA1E31F1FB00D5AA1D /* frg_shadowmap_es.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E30C2BE1E31F1FB00D5AA1D /* frg_shadowmap_es.glsl */; };
+		8E30C2DB1E31F1FB00D5AA1D /* vtx_phong.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E30C2BF1E31F1FB00D5AA1D /* vtx_phong.glsl */; };
+		8E30C2DC1E31F1FB00D5AA1D /* vtx_phong_es.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E30C2C01E31F1FB00D5AA1D /* vtx_phong_es.glsl */; };
+		8E30C2DD1E31F1FB00D5AA1D /* water.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E30C2C11E31F1FB00D5AA1D /* water.glsl */; };
+		8E30C2DE1E31F1FB00D5AA1D /* water_es.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E30C2C21E31F1FB00D5AA1D /* water_es.glsl */; };
+		8E30C2DF1E31F1FB00D5AA1D /* particle_fire.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E30C2C41E31F1FB00D5AA1D /* particle_fire.png */; };
+		8E30C2E01E31F1FB00D5AA1D /* particle_point.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E30C2C51E31F1FB00D5AA1D /* particle_point.png */; };
+		8E30C2E21E31F63B00D5AA1D /* wood_01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8E30C2E11E31F63B00D5AA1D /* wood_01.jpg */; };
+		8E30C2E41E320AB100D5AA1D /* humanoid.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 8E30C2E31E320AB100D5AA1D /* humanoid.fbx */; };
+		8E45644E1E35EC1900A0A22E /* stone_ground.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 8E45644D1E35EC1900A0A22E /* stone_ground.jpeg */; };
+		8E4564501E35EC8400A0A22E /* stone_ground.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E45644F1E35EC8400A0A22E /* stone_ground.png */; };
+		8E4564541E35EEBA00A0A22E /* stone_ground_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E4564531E35EEBA00A0A22E /* stone_ground_normal.png */; };
+		8E4564611E360C0300A0A22E /* walk_1.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 8E4564561E360C0300A0A22E /* walk_1.fbx */; };
+		8E4564621E360C0300A0A22E /* ausfb.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 8E4564581E360C0300A0A22E /* ausfb.fbx */; };
+		8E4564631E360C0300A0A22E /* Body 1.tga in Resources */ = {isa = PBXBuildFile; fileRef = 8E4564591E360C0300A0A22E /* Body 1.tga */; };
+		8E4564641E360C0300A0A22E /* Body 2.tga in Resources */ = {isa = PBXBuildFile; fileRef = 8E45645A1E360C0300A0A22E /* Body 2.tga */; };
+		8E4564651E360C0300A0A22E /* Track.tga in Resources */ = {isa = PBXBuildFile; fileRef = 8E45645B1E360C0300A0A22E /* Track.tga */; };
+		8E4564661E360C0300A0A22E /* Turret 2.tga in Resources */ = {isa = PBXBuildFile; fileRef = 8E45645C1E360C0300A0A22E /* Turret 2.tga */; };
+		8E4564671E360C0300A0A22E /* Turret.tga in Resources */ = {isa = PBXBuildFile; fileRef = 8E45645D1E360C0300A0A22E /* Turret.tga */; };
+		8E4564681E360C0300A0A22E /* draw_sword_1_1.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 8E45645F1E360C0300A0A22E /* draw_sword_1_1.fbx */; };
+		8E4564691E360C0300A0A22E /* draw_sword_2_1.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 8E4564601E360C0300A0A22E /* draw_sword_2_1.fbx */; };
+		8E5B54E51E321D5A0082AE9F /* libfbxsdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E5B54E41E321D5A0082AE9F /* libfbxsdk.a */; };
+		8E5B54E91E3445480082AE9F /* libiconv.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E5B54E81E3445480082AE9F /* libiconv.2.tbd */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8E03AA991E30EBDA00008F82 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8E03AA731E30EBDA00008F82 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8E03AA7A1E30EBDA00008F82;
+			remoteInfo = EZGL;
+		};
+		8E03AAA41E30EBDA00008F82 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8E03AA731E30EBDA00008F82 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8E03AA7A1E30EBDA00008F82;
+			remoteInfo = EZGL;
+		};
+		8E03AEE31E30F4E900008F82 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8E03AEDF1E30F4E900008F82 /* EZGLSDK.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8E03AABE1E30EC1B00008F82;
+			remoteInfo = EZGLSDK;
+		};
+		8E03AEE51E30F4F300008F82 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8E03AEDF1E30F4E900008F82 /* EZGLSDK.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 8E03AABD1E30EC1B00008F82;
+			remoteInfo = EZGLSDK;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		8E03AA7B1E30EBDA00008F82 /* EZGL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EZGL.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E03AA7F1E30EBDA00008F82 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		8E03AA811E30EBDA00008F82 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		8E03AA821E30EBDA00008F82 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		8E03AA881E30EBDA00008F82 /* GameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
+		8E03AA891E30EBDA00008F82 /* GameViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = GameViewController.mm; sourceTree = "<group>"; };
+		8E03AA8C1E30EBDA00008F82 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8E03AA8E1E30EBDA00008F82 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8E03AA911E30EBDA00008F82 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8E03AA931E30EBDA00008F82 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8E03AA981E30EBDA00008F82 /* EZGLTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EZGLTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E03AA9C1E30EBDA00008F82 /* EZGLTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EZGLTests.m; sourceTree = "<group>"; };
+		8E03AA9E1E30EBDA00008F82 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8E03AAA31E30EBDA00008F82 /* EZGLUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EZGLUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E03AAA71E30EBDB00008F82 /* EZGLUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EZGLUITests.m; sourceTree = "<group>"; };
+		8E03AAA91E30EBDB00008F82 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8E03AEDF1E30F4E900008F82 /* EZGLSDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = EZGLSDK.xcodeproj; path = ../EZGLSDK/EZGLSDK.xcodeproj; sourceTree = "<group>"; };
+		8E03AEE91E30F9F300008F82 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		8E03AEEA1E30F9F300008F82 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		8E30C28B1E31EA2800D5AA1D /* ELTextureImp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELTextureImp.h; sourceTree = "<group>"; };
+		8E30C28C1E31EA2800D5AA1D /* ELTextureImp.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ELTextureImp.mm; sourceTree = "<group>"; };
+		8E30C28F1E31EAE300D5AA1D /* UIImage+GL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+GL.h"; sourceTree = "<group>"; };
+		8E30C2901E31EAE300D5AA1D /* UIImage+GL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+GL.m"; sourceTree = "<group>"; };
+		8E30C2931E31ECC100D5AA1D /* Default.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Default.fsh; sourceTree = "<group>"; };
+		8E30C2941E31ECC100D5AA1D /* Default.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Default.vsh; sourceTree = "<group>"; };
+		8E30C2991E31F02100D5AA1D /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
+		8E30C2AA1E31F1FB00D5AA1D /* cm_depth_pack.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cm_depth_pack.glsl; sourceTree = "<group>"; };
+		8E30C2AB1E31F1FB00D5AA1D /* cm_uniforms.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cm_uniforms.glsl; sourceTree = "<group>"; };
+		8E30C2AC1E31F1FB00D5AA1D /* defines.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = defines.glsl; sourceTree = "<group>"; };
+		8E30C2AD1E31F1FB00D5AA1D /* frg_base.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = frg_base.glsl; sourceTree = "<group>"; };
+		8E30C2AE1E31F1FB00D5AA1D /* frg_camera.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = frg_camera.glsl; sourceTree = "<group>"; };
+		8E30C2AF1E31F1FB00D5AA1D /* frg_fog.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = frg_fog.glsl; sourceTree = "<group>"; };
+		8E30C2B01E31F1FB00D5AA1D /* frg_light.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = frg_light.glsl; sourceTree = "<group>"; };
+		8E30C2B11E31F1FB00D5AA1D /* frg_normal.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = frg_normal.glsl; sourceTree = "<group>"; };
+		8E30C2B21E31F1FB00D5AA1D /* frg_projector.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = frg_projector.glsl; sourceTree = "<group>"; };
+		8E30C2B31E31F1FB00D5AA1D /* frg_shadow.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = frg_shadow.glsl; sourceTree = "<group>"; };
+		8E30C2B41E31F1FB00D5AA1D /* frg_terrain.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = frg_terrain.glsl; sourceTree = "<group>"; };
+		8E30C2B51E31F1FB00D5AA1D /* vtx_base.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vtx_base.glsl; sourceTree = "<group>"; };
+		8E30C2B61E31F1FB00D5AA1D /* vtx_border_pass.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vtx_border_pass.glsl; sourceTree = "<group>"; };
+		8E30C2B71E31F1FB00D5AA1D /* vtx_clip_plane.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vtx_clip_plane.glsl; sourceTree = "<group>"; };
+		8E30C2B81E31F1FB00D5AA1D /* vtx_in_out.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vtx_in_out.glsl; sourceTree = "<group>"; };
+		8E30C2B91E31F1FB00D5AA1D /* vtx_simple_pass.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vtx_simple_pass.glsl; sourceTree = "<group>"; };
+		8E30C2BA1E31F1FB00D5AA1D /* vtx_uniforms.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vtx_uniforms.glsl; sourceTree = "<group>"; };
+		8E30C2BB1E31F1FB00D5AA1D /* frg_phong.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = frg_phong.glsl; sourceTree = "<group>"; };
+		8E30C2BC1E31F1FB00D5AA1D /* frg_phong_es.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = frg_phong_es.glsl; sourceTree = "<group>"; };
+		8E30C2BD1E31F1FB00D5AA1D /* frg_shadowmap.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = frg_shadowmap.glsl; sourceTree = "<group>"; };
+		8E30C2BE1E31F1FB00D5AA1D /* frg_shadowmap_es.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = frg_shadowmap_es.glsl; sourceTree = "<group>"; };
+		8E30C2BF1E31F1FB00D5AA1D /* vtx_phong.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vtx_phong.glsl; sourceTree = "<group>"; };
+		8E30C2C01E31F1FB00D5AA1D /* vtx_phong_es.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vtx_phong_es.glsl; sourceTree = "<group>"; };
+		8E30C2C11E31F1FB00D5AA1D /* water.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = water.glsl; sourceTree = "<group>"; };
+		8E30C2C21E31F1FB00D5AA1D /* water_es.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = water_es.glsl; sourceTree = "<group>"; };
+		8E30C2C41E31F1FB00D5AA1D /* particle_fire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = particle_fire.png; sourceTree = "<group>"; };
+		8E30C2C51E31F1FB00D5AA1D /* particle_point.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = particle_point.png; sourceTree = "<group>"; };
+		8E30C2E11E31F63B00D5AA1D /* wood_01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wood_01.jpg; sourceTree = "<group>"; };
+		8E30C2E31E320AB100D5AA1D /* humanoid.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; path = humanoid.fbx; sourceTree = "<group>"; };
+		8E45644D1E35EC1900A0A22E /* stone_ground.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = stone_ground.jpeg; sourceTree = "<group>"; };
+		8E45644F1E35EC8400A0A22E /* stone_ground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stone_ground.png; sourceTree = "<group>"; };
+		8E4564531E35EEBA00A0A22E /* stone_ground_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stone_ground_normal.png; sourceTree = "<group>"; };
+		8E4564561E360C0300A0A22E /* walk_1.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; path = walk_1.fbx; sourceTree = "<group>"; };
+		8E4564581E360C0300A0A22E /* ausfb.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; path = ausfb.fbx; sourceTree = "<group>"; };
+		8E4564591E360C0300A0A22E /* Body 1.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Body 1.tga"; sourceTree = "<group>"; };
+		8E45645A1E360C0300A0A22E /* Body 2.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Body 2.tga"; sourceTree = "<group>"; };
+		8E45645B1E360C0300A0A22E /* Track.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = Track.tga; sourceTree = "<group>"; };
+		8E45645C1E360C0300A0A22E /* Turret 2.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Turret 2.tga"; sourceTree = "<group>"; };
+		8E45645D1E360C0300A0A22E /* Turret.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = Turret.tga; sourceTree = "<group>"; };
+		8E45645F1E360C0300A0A22E /* draw_sword_1_1.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; path = draw_sword_1_1.fbx; sourceTree = "<group>"; };
+		8E4564601E360C0300A0A22E /* draw_sword_2_1.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; path = draw_sword_2_1.fbx; sourceTree = "<group>"; };
+		8E5B54E41E321D5A0082AE9F /* libfbxsdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfbxsdk.a; path = "../../../../../../../../../Applications/Autodesk/FBX SDK/2015.1/lib/ios-armv7/debug/libfbxsdk.a"; sourceTree = "<group>"; };
+		8E5B54E81E3445480082AE9F /* libiconv.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.2.tbd; path = usr/lib/libiconv.2.tbd; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8E03AA781E30EBDA00008F82 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8E5B54E91E3445480082AE9F /* libiconv.2.tbd in Frameworks */,
+				8E30C29A1E31F02100D5AA1D /* libstdc++.6.0.9.tbd in Frameworks */,
+				8E03AEEB1E30F9F300008F82 /* GLKit.framework in Frameworks */,
+				8E5B54E51E321D5A0082AE9F /* libfbxsdk.a in Frameworks */,
+				8E03AEEC1E30F9F300008F82 /* OpenGLES.framework in Frameworks */,
+				8E03AEE71E30F9CE00008F82 /* libEZGLSDK.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8E03AA951E30EBDA00008F82 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8E03AAA01E30EBDA00008F82 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8E03AA721E30EBDA00008F82 = {
+			isa = PBXGroup;
+			children = (
+				8E03AEDF1E30F4E900008F82 /* EZGLSDK.xcodeproj */,
+				8E03AA7D1E30EBDA00008F82 /* EZGL */,
+				8E03AA9B1E30EBDA00008F82 /* EZGLTests */,
+				8E03AAA61E30EBDA00008F82 /* EZGLUITests */,
+				8E03AA7C1E30EBDA00008F82 /* Products */,
+				8E03AEE81E30F9F200008F82 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		8E03AA7C1E30EBDA00008F82 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8E03AA7B1E30EBDA00008F82 /* EZGL.app */,
+				8E03AA981E30EBDA00008F82 /* EZGLTests.xctest */,
+				8E03AAA31E30EBDA00008F82 /* EZGLUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8E03AA7D1E30EBDA00008F82 /* EZGL */ = {
+			isa = PBXGroup;
+			children = (
+				8E45633E1E359C6000A0A22E /* Models */,
+				8E30C2E31E320AB100D5AA1D /* humanoid.fbx */,
+				8E30C2E11E31F63B00D5AA1D /* wood_01.jpg */,
+				8E30C2A71E31F1FB00D5AA1D /* assets */,
+				8E30C2921E31ECC100D5AA1D /* Shaders */,
+				8E30C28E1E31EAE300D5AA1D /* Utils */,
+				8E03AA811E30EBDA00008F82 /* AppDelegate.h */,
+				8E03AA821E30EBDA00008F82 /* AppDelegate.m */,
+				8E03AA881E30EBDA00008F82 /* GameViewController.h */,
+				8E03AA891E30EBDA00008F82 /* GameViewController.mm */,
+				8E03AA8B1E30EBDA00008F82 /* Main.storyboard */,
+				8E03AA8E1E30EBDA00008F82 /* Assets.xcassets */,
+				8E03AA901E30EBDA00008F82 /* LaunchScreen.storyboard */,
+				8E03AA931E30EBDA00008F82 /* Info.plist */,
+				8E03AA7E1E30EBDA00008F82 /* Supporting Files */,
+				8E30C28B1E31EA2800D5AA1D /* ELTextureImp.h */,
+				8E30C28C1E31EA2800D5AA1D /* ELTextureImp.mm */,
+			);
+			path = EZGL;
+			sourceTree = "<group>";
+		};
+		8E03AA7E1E30EBDA00008F82 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8E03AA7F1E30EBDA00008F82 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8E03AA9B1E30EBDA00008F82 /* EZGLTests */ = {
+			isa = PBXGroup;
+			children = (
+				8E03AA9C1E30EBDA00008F82 /* EZGLTests.m */,
+				8E03AA9E1E30EBDA00008F82 /* Info.plist */,
+			);
+			path = EZGLTests;
+			sourceTree = "<group>";
+		};
+		8E03AAA61E30EBDA00008F82 /* EZGLUITests */ = {
+			isa = PBXGroup;
+			children = (
+				8E03AAA71E30EBDB00008F82 /* EZGLUITests.m */,
+				8E03AAA91E30EBDB00008F82 /* Info.plist */,
+			);
+			path = EZGLUITests;
+			sourceTree = "<group>";
+		};
+		8E03AEE01E30F4E900008F82 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8E03AEE41E30F4E900008F82 /* libEZGLSDK.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8E03AEE81E30F9F200008F82 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8E5B54E81E3445480082AE9F /* libiconv.2.tbd */,
+				8E5B54E41E321D5A0082AE9F /* libfbxsdk.a */,
+				8E30C2991E31F02100D5AA1D /* libstdc++.6.0.9.tbd */,
+				8E03AEE91E30F9F300008F82 /* GLKit.framework */,
+				8E03AEEA1E30F9F300008F82 /* OpenGLES.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8E30C28E1E31EAE300D5AA1D /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				8E30C28F1E31EAE300D5AA1D /* UIImage+GL.h */,
+				8E30C2901E31EAE300D5AA1D /* UIImage+GL.m */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		8E30C2921E31ECC100D5AA1D /* Shaders */ = {
+			isa = PBXGroup;
+			children = (
+				8E30C2931E31ECC100D5AA1D /* Default.fsh */,
+				8E30C2941E31ECC100D5AA1D /* Default.vsh */,
+			);
+			path = Shaders;
+			sourceTree = "<group>";
+		};
+		8E30C2A71E31F1FB00D5AA1D /* assets */ = {
+			isa = PBXGroup;
+			children = (
+				8E30C2A81E31F1FB00D5AA1D /* shaders */,
+				8E30C2C31E31F1FB00D5AA1D /* textures */,
+			);
+			name = assets;
+			path = ../../../../Classes/assets;
+			sourceTree = "<group>";
+		};
+		8E30C2A81E31F1FB00D5AA1D /* shaders */ = {
+			isa = PBXGroup;
+			children = (
+				8E30C2A91E31F1FB00D5AA1D /* common */,
+				8E30C2BB1E31F1FB00D5AA1D /* frg_phong.glsl */,
+				8E30C2BC1E31F1FB00D5AA1D /* frg_phong_es.glsl */,
+				8E30C2BD1E31F1FB00D5AA1D /* frg_shadowmap.glsl */,
+				8E30C2BE1E31F1FB00D5AA1D /* frg_shadowmap_es.glsl */,
+				8E30C2BF1E31F1FB00D5AA1D /* vtx_phong.glsl */,
+				8E30C2C01E31F1FB00D5AA1D /* vtx_phong_es.glsl */,
+				8E30C2C11E31F1FB00D5AA1D /* water.glsl */,
+				8E30C2C21E31F1FB00D5AA1D /* water_es.glsl */,
+			);
+			path = shaders;
+			sourceTree = "<group>";
+		};
+		8E30C2A91E31F1FB00D5AA1D /* common */ = {
+			isa = PBXGroup;
+			children = (
+				8E30C2AA1E31F1FB00D5AA1D /* cm_depth_pack.glsl */,
+				8E30C2AB1E31F1FB00D5AA1D /* cm_uniforms.glsl */,
+				8E30C2AC1E31F1FB00D5AA1D /* defines.glsl */,
+				8E30C2AD1E31F1FB00D5AA1D /* frg_base.glsl */,
+				8E30C2AE1E31F1FB00D5AA1D /* frg_camera.glsl */,
+				8E30C2AF1E31F1FB00D5AA1D /* frg_fog.glsl */,
+				8E30C2B01E31F1FB00D5AA1D /* frg_light.glsl */,
+				8E30C2B11E31F1FB00D5AA1D /* frg_normal.glsl */,
+				8E30C2B21E31F1FB00D5AA1D /* frg_projector.glsl */,
+				8E30C2B31E31F1FB00D5AA1D /* frg_shadow.glsl */,
+				8E30C2B41E31F1FB00D5AA1D /* frg_terrain.glsl */,
+				8E30C2B51E31F1FB00D5AA1D /* vtx_base.glsl */,
+				8E30C2B61E31F1FB00D5AA1D /* vtx_border_pass.glsl */,
+				8E30C2B71E31F1FB00D5AA1D /* vtx_clip_plane.glsl */,
+				8E30C2B81E31F1FB00D5AA1D /* vtx_in_out.glsl */,
+				8E30C2B91E31F1FB00D5AA1D /* vtx_simple_pass.glsl */,
+				8E30C2BA1E31F1FB00D5AA1D /* vtx_uniforms.glsl */,
+			);
+			path = common;
+			sourceTree = "<group>";
+		};
+		8E30C2C31E31F1FB00D5AA1D /* textures */ = {
+			isa = PBXGroup;
+			children = (
+				8E4564531E35EEBA00A0A22E /* stone_ground_normal.png */,
+				8E45644F1E35EC8400A0A22E /* stone_ground.png */,
+				8E45644D1E35EC1900A0A22E /* stone_ground.jpeg */,
+				8E30C2C41E31F1FB00D5AA1D /* particle_fire.png */,
+				8E30C2C51E31F1FB00D5AA1D /* particle_point.png */,
+			);
+			path = textures;
+			sourceTree = "<group>";
+		};
+		8E45633E1E359C6000A0A22E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8E4564551E360C0300A0A22E /* Animals */,
+				8E4564571E360C0300A0A22E /* Ausfb */,
+				8E45645E1E360C0300A0A22E /* Knight */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8E4564551E360C0300A0A22E /* Animals */ = {
+			isa = PBXGroup;
+			children = (
+				8E4564561E360C0300A0A22E /* walk_1.fbx */,
+			);
+			path = Animals;
+			sourceTree = "<group>";
+		};
+		8E4564571E360C0300A0A22E /* Ausfb */ = {
+			isa = PBXGroup;
+			children = (
+				8E4564581E360C0300A0A22E /* ausfb.fbx */,
+				8E4564591E360C0300A0A22E /* Body 1.tga */,
+				8E45645A1E360C0300A0A22E /* Body 2.tga */,
+				8E45645B1E360C0300A0A22E /* Track.tga */,
+				8E45645C1E360C0300A0A22E /* Turret 2.tga */,
+				8E45645D1E360C0300A0A22E /* Turret.tga */,
+			);
+			path = Ausfb;
+			sourceTree = "<group>";
+		};
+		8E45645E1E360C0300A0A22E /* Knight */ = {
+			isa = PBXGroup;
+			children = (
+				8E45645F1E360C0300A0A22E /* draw_sword_1_1.fbx */,
+				8E4564601E360C0300A0A22E /* draw_sword_2_1.fbx */,
+			);
+			path = Knight;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8E03AA7A1E30EBDA00008F82 /* EZGL */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8E03AAAC1E30EBDB00008F82 /* Build configuration list for PBXNativeTarget "EZGL" */;
+			buildPhases = (
+				8E03AA771E30EBDA00008F82 /* Sources */,
+				8E03AA781E30EBDA00008F82 /* Frameworks */,
+				8E03AA791E30EBDA00008F82 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8E03AEE61E30F4F300008F82 /* PBXTargetDependency */,
+			);
+			name = EZGL;
+			productName = EZGL;
+			productReference = 8E03AA7B1E30EBDA00008F82 /* EZGL.app */;
+			productType = "com.apple.product-type.application";
+		};
+		8E03AA971E30EBDA00008F82 /* EZGLTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8E03AAAF1E30EBDB00008F82 /* Build configuration list for PBXNativeTarget "EZGLTests" */;
+			buildPhases = (
+				8E03AA941E30EBDA00008F82 /* Sources */,
+				8E03AA951E30EBDA00008F82 /* Frameworks */,
+				8E03AA961E30EBDA00008F82 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8E03AA9A1E30EBDA00008F82 /* PBXTargetDependency */,
+			);
+			name = EZGLTests;
+			productName = EZGLTests;
+			productReference = 8E03AA981E30EBDA00008F82 /* EZGLTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		8E03AAA21E30EBDA00008F82 /* EZGLUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8E03AAB21E30EBDB00008F82 /* Build configuration list for PBXNativeTarget "EZGLUITests" */;
+			buildPhases = (
+				8E03AA9F1E30EBDA00008F82 /* Sources */,
+				8E03AAA01E30EBDA00008F82 /* Frameworks */,
+				8E03AAA11E30EBDA00008F82 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8E03AAA51E30EBDA00008F82 /* PBXTargetDependency */,
+			);
+			name = EZGLUITests;
+			productName = EZGLUITests;
+			productReference = 8E03AAA31E30EBDA00008F82 /* EZGLUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8E03AA731E30EBDA00008F82 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = wangyang;
+				TargetAttributes = {
+					8E03AA7A1E30EBDA00008F82 = {
+						CreatedOnToolsVersion = 8.2;
+						DevelopmentTeam = P48344HVQL;
+						ProvisioningStyle = Automatic;
+					};
+					8E03AA971E30EBDA00008F82 = {
+						CreatedOnToolsVersion = 8.2;
+						DevelopmentTeam = P48344HVQL;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 8E03AA7A1E30EBDA00008F82;
+					};
+					8E03AAA21E30EBDA00008F82 = {
+						CreatedOnToolsVersion = 8.2;
+						DevelopmentTeam = P48344HVQL;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 8E03AA7A1E30EBDA00008F82;
+					};
+				};
+			};
+			buildConfigurationList = 8E03AA761E30EBDA00008F82 /* Build configuration list for PBXProject "EZGL" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8E03AA721E30EBDA00008F82;
+			productRefGroup = 8E03AA7C1E30EBDA00008F82 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 8E03AEE01E30F4E900008F82 /* Products */;
+					ProjectRef = 8E03AEDF1E30F4E900008F82 /* EZGLSDK.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				8E03AA7A1E30EBDA00008F82 /* EZGL */,
+				8E03AA971E30EBDA00008F82 /* EZGLTests */,
+				8E03AAA21E30EBDA00008F82 /* EZGLUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		8E03AEE41E30F4E900008F82 /* libEZGLSDK.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libEZGLSDK.a;
+			remoteRef = 8E03AEE31E30F4E900008F82 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8E03AA791E30EBDA00008F82 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8E30C2CC1E31F1FB00D5AA1D /* frg_light.glsl in Resources */,
+				8E30C2C61E31F1FB00D5AA1D /* cm_depth_pack.glsl in Resources */,
+				8E30C2E01E31F1FB00D5AA1D /* particle_point.png in Resources */,
+				8E30C2E41E320AB100D5AA1D /* humanoid.fbx in Resources */,
+				8E03AA8D1E30EBDA00008F82 /* Main.storyboard in Resources */,
+				8E30C2DF1E31F1FB00D5AA1D /* particle_fire.png in Resources */,
+				8E30C2DD1E31F1FB00D5AA1D /* water.glsl in Resources */,
+				8E30C2D01E31F1FB00D5AA1D /* frg_terrain.glsl in Resources */,
+				8E30C2C91E31F1FB00D5AA1D /* frg_base.glsl in Resources */,
+				8E4564501E35EC8400A0A22E /* stone_ground.png in Resources */,
+				8E4564661E360C0300A0A22E /* Turret 2.tga in Resources */,
+				8E4564691E360C0300A0A22E /* draw_sword_2_1.fbx in Resources */,
+				8E30C2D61E31F1FB00D5AA1D /* vtx_uniforms.glsl in Resources */,
+				8E30C2CE1E31F1FB00D5AA1D /* frg_projector.glsl in Resources */,
+				8E30C2CB1E31F1FB00D5AA1D /* frg_fog.glsl in Resources */,
+				8E30C2C81E31F1FB00D5AA1D /* defines.glsl in Resources */,
+				8E30C2D71E31F1FB00D5AA1D /* frg_phong.glsl in Resources */,
+				8E30C2D81E31F1FB00D5AA1D /* frg_phong_es.glsl in Resources */,
+				8E30C2CA1E31F1FB00D5AA1D /* frg_camera.glsl in Resources */,
+				8E30C2E21E31F63B00D5AA1D /* wood_01.jpg in Resources */,
+				8E45644E1E35EC1900A0A22E /* stone_ground.jpeg in Resources */,
+				8E4564681E360C0300A0A22E /* draw_sword_1_1.fbx in Resources */,
+				8E4564631E360C0300A0A22E /* Body 1.tga in Resources */,
+				8E30C2D21E31F1FB00D5AA1D /* vtx_border_pass.glsl in Resources */,
+				8E30C2CF1E31F1FB00D5AA1D /* frg_shadow.glsl in Resources */,
+				8E30C2DA1E31F1FB00D5AA1D /* frg_shadowmap_es.glsl in Resources */,
+				8E30C2951E31ECC100D5AA1D /* Default.fsh in Resources */,
+				8E30C2DE1E31F1FB00D5AA1D /* water_es.glsl in Resources */,
+				8E30C2D11E31F1FB00D5AA1D /* vtx_base.glsl in Resources */,
+				8E4564611E360C0300A0A22E /* walk_1.fbx in Resources */,
+				8E03AA8F1E30EBDA00008F82 /* Assets.xcassets in Resources */,
+				8E4564641E360C0300A0A22E /* Body 2.tga in Resources */,
+				8E30C2D41E31F1FB00D5AA1D /* vtx_in_out.glsl in Resources */,
+				8E4564651E360C0300A0A22E /* Track.tga in Resources */,
+				8E30C2C71E31F1FB00D5AA1D /* cm_uniforms.glsl in Resources */,
+				8E30C2D51E31F1FB00D5AA1D /* vtx_simple_pass.glsl in Resources */,
+				8E30C2D31E31F1FB00D5AA1D /* vtx_clip_plane.glsl in Resources */,
+				8E30C2CD1E31F1FB00D5AA1D /* frg_normal.glsl in Resources */,
+				8E30C2DB1E31F1FB00D5AA1D /* vtx_phong.glsl in Resources */,
+				8E4564541E35EEBA00A0A22E /* stone_ground_normal.png in Resources */,
+				8E4564671E360C0300A0A22E /* Turret.tga in Resources */,
+				8E30C2961E31ECC100D5AA1D /* Default.vsh in Resources */,
+				8E30C2DC1E31F1FB00D5AA1D /* vtx_phong_es.glsl in Resources */,
+				8E30C2D91E31F1FB00D5AA1D /* frg_shadowmap.glsl in Resources */,
+				8E4564621E360C0300A0A22E /* ausfb.fbx in Resources */,
+				8E03AA921E30EBDA00008F82 /* LaunchScreen.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8E03AA961E30EBDA00008F82 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8E03AAA11E30EBDA00008F82 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8E03AA771E30EBDA00008F82 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8E30C2911E31EAE300D5AA1D /* UIImage+GL.m in Sources */,
+				8E03AA831E30EBDA00008F82 /* AppDelegate.m in Sources */,
+				8E30C28D1E31EA2800D5AA1D /* ELTextureImp.mm in Sources */,
+				8E03AA8A1E30EBDA00008F82 /* GameViewController.mm in Sources */,
+				8E03AA801E30EBDA00008F82 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8E03AA941E30EBDA00008F82 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8E03AA9D1E30EBDA00008F82 /* EZGLTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8E03AA9F1E30EBDA00008F82 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8E03AAA81E30EBDB00008F82 /* EZGLUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8E03AA9A1E30EBDA00008F82 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8E03AA7A1E30EBDA00008F82 /* EZGL */;
+			targetProxy = 8E03AA991E30EBDA00008F82 /* PBXContainerItemProxy */;
+		};
+		8E03AAA51E30EBDA00008F82 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8E03AA7A1E30EBDA00008F82 /* EZGL */;
+			targetProxy = 8E03AAA41E30EBDA00008F82 /* PBXContainerItemProxy */;
+		};
+		8E03AEE61E30F4F300008F82 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = EZGLSDK;
+			targetProxy = 8E03AEE51E30F4F300008F82 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		8E03AA8B1E30EBDA00008F82 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8E03AA8C1E30EBDA00008F82 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		8E03AA901E30EBDA00008F82 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8E03AA911E30EBDA00008F82 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8E03AAAA1E30EBDB00008F82 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		8E03AAAB1E30EBDB00008F82 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8E03AAAD1E30EBDB00008F82 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LIBRARY = "compiler-default";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				DEVELOPMENT_TEAM = P48344HVQL;
+				ENABLE_BITCODE = NO;
+				HEADER_SEARCH_PATHS = (
+					"${SRCROOT}/../../../Classes",
+					"${SRCROOT}/../../../libs/**",
+					"${SRCROOT}/../../../libs/glad/include",
+					"/Applications/Autodesk/FBX\\ SDK/2015.1/include",
+					"${SRCROOT}/../../../libs/bullet",
+				);
+				INFOPLIST_FILE = EZGL/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "/Applications/Autodesk/FBX\\ SDK/2015.1/lib/ios-i386/debug";
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = me.ocean.EZGL;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "armv7 armv7s arm64";
+			};
+			name = Debug;
+		};
+		8E03AAAE1E30EBDB00008F82 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LIBRARY = "compiler-default";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				DEVELOPMENT_TEAM = P48344HVQL;
+				ENABLE_BITCODE = NO;
+				HEADER_SEARCH_PATHS = (
+					"${SRCROOT}/../../../Classes",
+					"${SRCROOT}/../../../libs/**",
+					"${SRCROOT}/../../../libs/glad/include",
+					"/Applications/Autodesk/FBX\\ SDK/2015.1/include",
+					"${SRCROOT}/../../../libs/bullet",
+				);
+				INFOPLIST_FILE = EZGL/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "/Applications/Autodesk/FBX\\ SDK/2015.1/lib/ios-i386/debug";
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = me.ocean.EZGL;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "armv7 armv7s arm64";
+			};
+			name = Release;
+		};
+		8E03AAB01E30EBDB00008F82 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = P48344HVQL;
+				INFOPLIST_FILE = EZGLTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = me.ocean.EZGLTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EZGL.app/EZGL";
+			};
+			name = Debug;
+		};
+		8E03AAB11E30EBDB00008F82 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = P48344HVQL;
+				INFOPLIST_FILE = EZGLTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = me.ocean.EZGLTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EZGL.app/EZGL";
+			};
+			name = Release;
+		};
+		8E03AAB31E30EBDB00008F82 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = P48344HVQL;
+				INFOPLIST_FILE = EZGLUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = me.ocean.EZGLUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = EZGL;
+			};
+			name = Debug;
+		};
+		8E03AAB41E30EBDB00008F82 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = P48344HVQL;
+				INFOPLIST_FILE = EZGLUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = me.ocean.EZGLUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = EZGL;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8E03AA761E30EBDA00008F82 /* Build configuration list for PBXProject "EZGL" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8E03AAAA1E30EBDB00008F82 /* Debug */,
+				8E03AAAB1E30EBDB00008F82 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8E03AAAC1E30EBDB00008F82 /* Build configuration list for PBXNativeTarget "EZGL" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8E03AAAD1E30EBDB00008F82 /* Debug */,
+				8E03AAAE1E30EBDB00008F82 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8E03AAAF1E30EBDB00008F82 /* Build configuration list for PBXNativeTarget "EZGLTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8E03AAB01E30EBDB00008F82 /* Debug */,
+				8E03AAB11E30EBDB00008F82 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8E03AAB21E30EBDB00008F82 /* Build configuration list for PBXNativeTarget "EZGLUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8E03AAB31E30EBDB00008F82 /* Debug */,
+				8E03AAB41E30EBDB00008F82 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8E03AA731E30EBDA00008F82 /* Project object */;
+}

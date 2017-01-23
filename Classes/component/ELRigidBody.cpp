@@ -85,18 +85,20 @@ void ELRigidBody::update(ELFloat timeInSecs) {
     gameObj->transform->quaternion = elTransform.quaternion;
 }
 
+// btTransform + offset = elTransform
+
 btTransform ELRigidBody::btTransformFromELTransform(ELTransform transform) {
     ELQuaternion elQuaternion = transform.quaternion;
     btQuaternion quaternion(elQuaternion.x,elQuaternion.y,elQuaternion.z,elQuaternion.w);
-    btTransform bttransform(quaternion,btVector3(transform.position.x, transform.position.y, transform.position.z));
+    btTransform bttransform(quaternion,btVector3(transform.position.x - collisionShape->offset.x, transform.position.y - collisionShape->offset.y, transform.position.z - collisionShape->offset.z));
     return bttransform;
 }
 
 ELTransform ELRigidBody::elTransformFrombtTransform(btTransform transform,ELTransform originELTransform) {
     ELTransform elTransform = originELTransform;
-    elTransform.position.x = transform.getOrigin().x();
-    elTransform.position.y = transform.getOrigin().y();
-    elTransform.position.z = transform.getOrigin().z();
+    elTransform.position.x = transform.getOrigin().x() + collisionShape->offset.x;
+    elTransform.position.y = transform.getOrigin().y() + collisionShape->offset.y;
+    elTransform.position.z = transform.getOrigin().z() + collisionShape->offset.z;
 
     btQuaternionFloatData quaternionFloatData;
     transform.getRotation().serialize(quaternionFloatData);

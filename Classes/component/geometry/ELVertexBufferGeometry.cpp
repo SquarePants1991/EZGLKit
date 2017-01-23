@@ -2,8 +2,9 @@
 // Created by wangyang on 16/12/21.
 //
 
-#include <core/ELEffect.h>
-#include <component/ELGeometry.h>
+
+#include "core/ELEffect.h"
+#include "component/ELGeometry.h"
 #include "ELVertexBufferGeometry.h"
 
 ELVertexBufferGeometry::ELVertexBufferGeometry() :
@@ -32,14 +33,10 @@ ELGeometryData ELVertexBufferGeometry::generateData() {
     if (smooth) {
         vertexBuffer->caculatePerVertexNormal();
     }
+    size = vertexBuffer->size();
 
-    GLfloat *vertex = (GLfloat *)vertexBuffer->data();
     ELGeometryData data;
-    glGenBuffers(1, &data.vertexVBO);
-    glBindBuffer(GL_ARRAY_BUFFER, data.vertexVBO);
-    glBufferData(GL_ARRAY_BUFFER, vertexBuffer->rawLength(), vertex, GL_STATIC_DRAW);
-    glBindBuffer(GL_ARRAY_BUFFER, 0);
-
+    data.vertexVBO = vertexBuffer->getVBO();
     data.vertexCount = vertexBuffer->rawLength() / sizeof(ELGeometryVertex);
     data.vertexStride = sizeof(ELGeometryVertex);
     data.supportIndiceVBO = false;

@@ -24,7 +24,7 @@ public:
     static void computerClusterDeformation(FbxAMatrix& pGlobalPosition,FbxTime &pTime, FbxPose *pPose, FbxMesh *mesh, FbxCluster *cluster, FbxAMatrix& vertexTransform);
 private:
     static FbxManager *fbxManager;
-
+    static void loadMaterial(ELMeshGeometry *geometry, FbxMesh *mesh);
     static void generateVertexVBO(ELGeometryVertexBuffer *buffer, ELGeometryData * geometryData);
 };
 
