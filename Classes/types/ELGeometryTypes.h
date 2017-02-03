@@ -13,6 +13,7 @@ struct _ELMaterial {
     ELVector4 ambient;
     ELVector4 diffuse;
     ELVector4 specular;
+    ELFloat shininess;
     ELUint ambientMap;
     ELUint diffuseMap;
     ELUint normalMap;
@@ -21,9 +22,10 @@ struct _ELMaterial {
 typedef _ELMaterial ELMaterial;
 
 const ELMaterial ELMaterialDefault = {
-        {0.5, 0.5, 0.5, 1.0},
-        {0.6, 0.6, 0.6, 1.0},
         {1.0, 1.0, 1.0, 1.0},
+        {0.0, 0.0, 0.0, 1.0},
+        {0.0, 0.0, 0.0, 1.0},
+        90.0,
         0,
         0,
         0,

@@ -18,6 +18,7 @@
 		8E03AEE71E30F9CE00008F82 /* libEZGLSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E03AEE41E30F4E900008F82 /* libEZGLSDK.a */; };
 		8E03AEEB1E30F9F300008F82 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E03AEE91E30F9F300008F82 /* GLKit.framework */; };
 		8E03AEEC1E30F9F300008F82 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E03AEEA1E30F9F300008F82 /* OpenGLES.framework */; };
+		8E0F37D81E4485C000F402A8 /* ExampleBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E0F37D71E4485C000F402A8 /* ExampleBaseViewController.m */; };
 		8E30C28D1E31EA2800D5AA1D /* ELTextureImp.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8E30C28C1E31EA2800D5AA1D /* ELTextureImp.mm */; };
 		8E30C2911E31EAE300D5AA1D /* UIImage+GL.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E30C2901E31EAE300D5AA1D /* UIImage+GL.m */; };
 		8E30C2951E31ECC100D5AA1D /* Default.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 8E30C2931E31ECC100D5AA1D /* Default.fsh */; };
@@ -119,6 +120,8 @@
 		8E03AEDF1E30F4E900008F82 /* EZGLSDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = EZGLSDK.xcodeproj; path = ../EZGLSDK/EZGLSDK.xcodeproj; sourceTree = "<group>"; };
 		8E03AEE91E30F9F300008F82 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		8E03AEEA1E30F9F300008F82 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		8E0F37D61E4485C000F402A8 /* ExampleBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExampleBaseViewController.h; sourceTree = "<group>"; };
+		8E0F37D71E4485C000F402A8 /* ExampleBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExampleBaseViewController.m; sourceTree = "<group>"; };
 		8E30C28B1E31EA2800D5AA1D /* ELTextureImp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELTextureImp.h; sourceTree = "<group>"; };
 		8E30C28C1E31EA2800D5AA1D /* ELTextureImp.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ELTextureImp.mm; sourceTree = "<group>"; };
 		8E30C28F1E31EAE300D5AA1D /* UIImage+GL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+GL.h"; sourceTree = "<group>"; };
@@ -227,6 +230,7 @@
 		8E03AA7D1E30EBDA00008F82 /* EZGL */ = {
 			isa = PBXGroup;
 			children = (
+				8E0F37D51E4485A400F402A8 /* Examples */,
 				8E45633E1E359C6000A0A22E /* Models */,
 				8E30C2E31E320AB100D5AA1D /* humanoid.fbx */,
 				8E30C2E11E31F63B00D5AA1D /* wood_01.jpg */,
@@ -294,11 +298,20 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		8E0F37D51E4485A400F402A8 /* Examples */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Examples;
+			sourceTree = "<group>";
+		};
 		8E30C28E1E31EAE300D5AA1D /* Utils */ = {
 			isa = PBXGroup;
 			children = (
 				8E30C28F1E31EAE300D5AA1D /* UIImage+GL.h */,
 				8E30C2901E31EAE300D5AA1D /* UIImage+GL.m */,
+				8E0F37D61E4485C000F402A8 /* ExampleBaseViewController.h */,
+				8E0F37D71E4485C000F402A8 /* ExampleBaseViewController.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -612,6 +625,7 @@
 			files = (
 				8E30C2911E31EAE300D5AA1D /* UIImage+GL.m in Sources */,
 				8E03AA831E30EBDA00008F82 /* AppDelegate.m in Sources */,
+				8E0F37D81E4485C000F402A8 /* ExampleBaseViewController.m in Sources */,
 				8E30C28D1E31EA2800D5AA1D /* ELTextureImp.mm in Sources */,
 				8E03AA8A1E30EBDA00008F82 /* GameViewController.mm in Sources */,
 				8E03AA801E30EBDA00008F82 /* main.m in Sources */,

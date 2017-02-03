@@ -6,8 +6,8 @@
 #include <stdio.h>
 #include <iostream>
 
-#define WindowWidth 200
-#define WindowHeight 100
+#define WindowWidth 500
+#define WindowHeight 400
 #define WindowPosX 0
 #define WindowPosY 1920 - WindowHeight
 

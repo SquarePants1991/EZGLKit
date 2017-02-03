@@ -1,5 +1,5 @@
 #version 330 core
-//#define Use_BumpMap
+#define Use_BumpMap
 
 #include <frg_base.glsl>
 #include <frg_projector.glsl>
@@ -51,6 +51,7 @@ vec4 renderPass_shadow_frog_light() {
 
 void main()
 {
+    frag_base();
     if (renderBorder == 1) {
         outColor = renderPass_border();
     } else if (onlyUseColorAttrib == 1) {

@@ -17,7 +17,7 @@ ELSnow::ELSnow(ELWorld *world, ELVector3 position) {
     world->addNode(this);
     ELParticleSystem *ps = new ELParticleSystem();
     gameObject->transform->position = position;
-    ps->material.diffuseMap = diffuseMap;
+    ps->materials[0].diffuseMap = diffuseMap;
     gameObject->addComponent(ps);
     ELParticleSystemData data = ELParticleSystemDataDefault();
 

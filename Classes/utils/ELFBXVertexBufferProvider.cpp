@@ -188,6 +188,8 @@ void ELFBXVertexBufferProvider::update(const char *animationName,ELFloat elapsed
     }
     
     loadVerticesToVertexBuffer(mesh, vertexArray, vertexBuffer);
+    
+    delete [] vertexArray;
 }
 
 void ELFBXVertexBufferProvider::computerLinearDeformation(FbxAMatrix& pGlobalPosition, FbxMesh *mesh, FbxTime time, FbxVector4 *vertexArray) {
@@ -303,6 +305,8 @@ void ELFBXVertexBufferProvider::computerLinearDeformation(FbxAMatrix& pGlobalPos
         }
     }
 
+    delete [] clusterWeight;
+    delete [] clusterDeformation;
 }
 
 void ELFBXVertexBufferProvider::computerClusterDeformation(FbxAMatrix& pGlobalPosition,FbxTime &pTime, FbxPose *pPose, FbxMesh *pMesh, FbxCluster *pCluster, FbxAMatrix& pVertexTransformMatrix) {

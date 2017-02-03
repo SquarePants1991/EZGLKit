@@ -12,15 +12,19 @@ void pointLight(
                 ) {
     ambient = lightAmbient;
     vec3 halfVector = normalize(vp + eye);
-    float shininess = 10.0;
+    int matId = int(fragMatID);
+    float shininess = materials[matId].shininess;
     float nDotViewPosition = clamp(dot(normal,vp),0.0,1.0);
     diffuse = lightDiffuse * nDotViewPosition;
-    float nDotViewHalfVector = clamp(dot(normal,halfVector),0.0,1.0);
+    
+    float nDotViewHalfVector = clamp(dot(normal, halfVector),0.0,1.0);
     float powerFactor = max(0.0, pow(nDotViewHalfVector,shininess));
-    specular = lightSpecular * powerFactor / 10.0;
+    specular = lightSpecular * powerFactor;
 }
 
 void caculateLights(vec3 normal,vec3 eyeVec, out vec4 out_ambient, out vec4 out_diffuse, out vec4 out_specular) {
+    int matId = int(fragMatID);
+    
     highp vec4 sum_ambient = vec4(0.0,0.0,0.0,0.0), sum_diffuse = vec4(0.0,0.0,0.0,0.0), sum_specular = vec4(0.0,0.0,0.0,0.0);
     for (int i=0; i< lightNum; i++) {
         // 计算表面点到光源的向量
@@ -33,7 +37,9 @@ void caculateLights(vec3 normal,vec3 eyeVec, out vec4 out_ambient, out vec4 out_
         }
 
     #ifdef Use_BumpMap
-        vp = normalize(tbnMatrix * vp);
+        if (useBumpMap) {
+            vp = normalize(tbnMatrix * vp);
+        }
     #endif
 
         // 计算表面到光源的位置
@@ -44,11 +50,11 @@ void caculateLights(vec3 normal,vec3 eyeVec, out vec4 out_ambient, out vec4 out_
     #ifdef Use_SpecularMap
         highp vec4 specularColor = tex2D(specularMap, fragTexcoord);
     #else
-        highp vec4 specularColor = material.specular;
+        highp vec4 specularColor = materials[matId].specular;
     #endif
-        pointLight(normal,ambient,diffuse,specular,vp,eyeVec,lightDistance,material.ambient,defaultLight.color,vec4(1.0,1.0,1.0,1.0));
+        pointLight(normal,ambient,diffuse,specular,vp,eyeVec,lightDistance,materials[matId].ambient,defaultLight.color,specularColor);
 
-        sum_ambient = ambient;
+        sum_ambient = sum_ambient + ambient;
         sum_diffuse = sum_diffuse + diffuse;
         sum_specular = sum_specular + specular;
     }

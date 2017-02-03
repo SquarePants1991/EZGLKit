@@ -10,7 +10,7 @@
 #include "component/geometry/ELMeshGeometry.h"
 #include "ELFbxUtil.h"
 #include "ELFBXVertexBufferProvider.h"
-#include "ELTexture.h"
+#include "core/ELTexture.h"
 
 FbxManager * ELFBXLoader::fbxManager = NULL;
 

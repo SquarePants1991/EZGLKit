@@ -31,8 +31,10 @@ struct material_struct {
     vec4 diffuse;
     vec4 ambient;
     vec4 specular;
+    float shininess;
     sampler2D diffuseMap;
     sampler2D normalMap;
+    int normalMapEnable;
 };
 
 struct projector_struct {

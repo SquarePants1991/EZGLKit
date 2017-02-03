@@ -10,6 +10,7 @@ OUT float fragMatID;
 
 // vars
 #ifdef Use_BumpMap
+bool useBumpMap;
 mat3 tbnMatrix;
 #endif
 vec3 modelMatrixPosition;
@@ -22,8 +23,8 @@ vec3 surfaceNormal;
 vec3 surfaceToEyeVec;
 
 void frag_base() {
+    modelMatrixPosition = (modelMatrix * fragPosition).xyz;
     surfaceNormal = caculateNormal();
     surfaceToEyeVec = caculateSurfaceToEyeVec();
-    modelMatrixPosition = (modelMatrix * fragPosition).xyz;
 }
 

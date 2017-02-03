@@ -24,9 +24,9 @@ void ELCubeGeometry::fillVertexBuffer(ELGeometryVertexBuffer *vertexBuffer) {
             {-size.x / 2, -size.y / 2, -size.z / 2},
             {-size.x / 2, size.y / 2, -size.z / 2},
             {0, 0},
-            {0, size.z / uvFactor},
-            {size.y / uvFactor, size.z / uvFactor},
-            {size.y / uvFactor, 0},
+            {0, size.y / uvFactor},
+            {size.z / uvFactor, size.y / uvFactor},
+            {size.z / uvFactor, 0},
     };
 
     ELGeometryRect rectXRight = {
@@ -35,9 +35,9 @@ void ELCubeGeometry::fillVertexBuffer(ELGeometryVertexBuffer *vertexBuffer) {
             {size.x / 2, -size.y / 2, size.z / 2},
             {size.x / 2, size.y / 2, size.z / 2},
             {0, 0},
-            {0, size.z / uvFactor},
-            {size.y / uvFactor, size.z / uvFactor},
-            {size.y / uvFactor, 0},
+            {0, size.y / uvFactor},
+            {size.z / uvFactor, size.y / uvFactor},
+            {size.z / uvFactor, 0},
     };
     vertexBuffer->append(rectXLeft);
     vertexBuffer->append(rectXRight);

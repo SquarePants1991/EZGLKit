@@ -23,6 +23,7 @@ enum CollisionTypes {
 @interface GameViewController () {
     ELWorld *world;
     ELGameObject *tank;
+    ELGameObject *floor;
 }
 @property (strong, nonatomic) EAGLContext *context;
 @property (strong, nonatomic) GLKBaseEffect *effect;
@@ -31,7 +32,7 @@ enum CollisionTypes {
 
 @implementation GameViewController
 
-void createCubeGameObject(ELVector3 size,ELVector3 pos,ELFloat mass,GLuint diffuseMap,GLuint normalMap, bool hasBorder, int collisionGroup, int collisionMask, ELVector3 velocity);
+ELGameObject * createCubeGameObject(ELVector3 size,ELVector3 pos,ELFloat mass,GLuint diffuseMap,GLuint normalMap, bool hasBorder, int collisionGroup, int collisionMask, ELVector3 velocity);
 
 - (void)setupWorld:(ELWorld *)world {
     world->fbWidth = self.view.frame.size.width;
@@ -63,6 +64,8 @@ void createCubeGameObject(ELVector3 size,ELVector3 pos,ELFloat mass,GLuint diffu
     ELGLState::set(GL_CULL_FACE, GL_TRUE);
     ELGLState::set(GL_DEPTH_TEST, GL_TRUE);
 
+    
+    world->activedCamera->perspective(ELVector3Make(0, 100, 400), ELVector3Make(0, 0, 0), ELVector3Make(0, 1, 0), world->activedCamera->fovyRadians, world->activedCamera->aspect, world->activedCamera->nearZ, world->activedCamera->farZ);
 }
 
 - (void)viewDidLoad
@@ -88,7 +91,8 @@ void createCubeGameObject(ELVector3 size,ELVector3 pos,ELFloat mass,GLuint diffu
     [self setupWorld:world];
     
     ELLight *defaultLight = new ELLight();
-    defaultLight->position = ELVector3Make(0,30,30);
+    defaultLight->position = ELVector3Make(0,1,1);
+//    defaultLight->type = ELLightTypePoint;
     defaultLight->color = ELVector4Make(1.0,1.0,1.0,1.0);
     defaultLight->intensity = 1.0;
     defaultLight->intensityFallOff = 0.0;
@@ -121,8 +125,8 @@ void createCubeGameObject(ELVector3 size,ELVector3 pos,ELFloat mass,GLuint diffu
 }
 
 - (void)createFloor {
-    ELFloat width = 100 * 100;
-    ELFloat height = 100 * 100;
+    ELFloat width = 140;
+    ELFloat height = 140;
     ELFloat wallHeight = 3.5;
     ELVector3 floorSize = ELVector3Make(width,-10,height);
     GLuint diffuseMap,normalMap;
@@ -132,7 +136,7 @@ void createCubeGameObject(ELVector3 size,ELVector3 pos,ELFloat mass,GLuint diffu
     ELGameObject *gameObject = new ELGameObject(world);
     world->addNode(gameObject);
     gameObject->transform->position = ELVector3Make(0,0,0);
-    createCubeGameObject(world, ELVector3Make(width,1,height),ELVector3Make(0,-0.5,0),0,diffuseMap,normalMap,false, CT_Floor, CT_Prop2 | CT_Prop | CT_Role, ELVector3Make(0,0,0));
+    floor = createCubeGameObject(world, ELVector3Make(width,50,height),ELVector3Make(0,-25,0),0,diffuseMap,normalMap,false, CT_Floor, CT_Prop2 | CT_Prop | CT_Role, ELVector3Make(0,0,0));
 }
 
 - (void)createACube {
@@ -163,12 +167,15 @@ void createCubeGameObject(ELVector3 size,ELVector3 pos,ELFloat mass,GLuint diffu
     ELGameObject *gameObject = new ELGameObject(world);
     tank = gameObject;
     world->addNode(gameObject);
-    gameObject->transform->position = ELVector3Make(0,0,0);
+    static float posY = 0;
+    gameObject->transform->position = ELVector3Make(posY,0,0);
+    
+    posY += 200;
     //gameObject->transform->scale = ELVector3Make(0.2,0.2,0.2);
 //    gameObject->transform->quaternion = ELQuaternionMakeWithAngleAndAxis(M_PI / 2, 0, 1, 0);
     
     //        std::vector<ELMeshGeometry *> geometries = ELFBXLoader::loadFromFile(ELAssets::shared()->findFile("Airbus A310.fbx").c_str());
-    std::vector<ELMeshGeometry *> geometries = ELFBXLoader::loadFromFile(ELAssets::shared()->findFile("walk_1.fbx").c_str());
+    std::vector<ELMeshGeometry *> geometries = ELFBXLoader::loadFromFile(ELAssets::shared()->findFile("draw_sword_2_1.fbx").c_str());
     ELVector3 finalSize = ELVector3Make(0, 0, 0);
     for (int i = 0; i < geometries.size(); ++i) {
         auto animations = geometries.at(i)->animations;
@@ -191,7 +198,7 @@ void createCubeGameObject(ELVector3 size,ELVector3 pos,ELFloat mass,GLuint diffu
     rigidBody->collisionGroup = CT_Prop;
     rigidBody->collisionMask = CT_Floor | CT_Prop | CT_Prop2 | CT_Prop3;
     rigidBody->friction = 0.5;
-    gameObject->addComponent(rigidBody);
+//    gameObject->addComponent(rigidBody);
 }
 
 - (void)createTank {
@@ -277,15 +284,15 @@ void createCubeGameObject(ELVector3 size,ELVector3 pos,ELFloat mass,GLuint diffu
     }
 }
 
-void createCubeGameObject(ELWorld *world, ELVector3 size,ELVector3 pos,ELFloat mass,GLuint diffuseMap,GLuint normalMap, bool hasBorder, int collisionGroup, int collisionMask, ELVector3 velocity) {
+ELGameObject * createCubeGameObject(ELWorld *world, ELVector3 size,ELVector3 pos,ELFloat mass,GLuint diffuseMap,GLuint normalMap, bool hasBorder, int collisionGroup, int collisionMask, ELVector3 velocity) {
     
     ELGameObject *gameObject = new ELGameObject(world);
     world->addNode(gameObject);
     gameObject->transform->position = pos;
-    ELCubeGeometry *cube = new ELCubeGeometry(size, true);
+    ELCubeGeometry *cube = new ELCubeGeometry(size, false);
     gameObject->addComponent(cube);
     cube->materials[0].diffuse = ELVector4Make(0.3, 0.3, 0.3, 1.0);
-    cube->materials[0].ambient = ELVector4Make(0.7, 0.7, 0.7, 1.0);
+    cube->materials[0].ambient = ELVector4Make(0.3,0.3,0.3, 1.0);
     cube->materials[0].diffuseMap = diffuseMap;//ELTexture::texture(ELAssets::shared()->findFile("rock.png"))->value;
     cube->materials[0].normalMap = normalMap;//ELTexture::texture(ELAssets::shared()->findFile("rock_NRM.png"))->value;
     cube->enableBorder = hasBorder;
@@ -298,8 +305,10 @@ void createCubeGameObject(ELWorld *world, ELVector3 size,ELVector3 pos,ELFloat m
     rigidBody->collisionGroup = collisionGroup;
     rigidBody->collisionMask = collisionMask;
     rigidBody->friction = 0.5;
-    gameObject->addComponent(rigidBody);
-    rigidBody->setVelocity(velocity);
+//    gameObject->addComponent(rigidBody);
+//    rigidBody->setVelocity(velocity);
+    
+    return gameObject;
 }
 
 - (void)dealloc
@@ -310,9 +319,6 @@ void createCubeGameObject(ELWorld *world, ELVector3 size,ELVector3 pos,ELFloat m
 }
 
 - (void)update {
-    static float angle = 0;
-    angle += self.timeSinceLastUpdate;
-    tank->transform->quaternion = ELQuaternionMakeWithAngleAndAxis(angle, 0, 1, 0);
     world->update(self.timeSinceLastUpdate);
 }
 
@@ -321,4 +327,12 @@ void createCubeGameObject(ELWorld *world, ELVector3 size,ELVector3 pos,ELFloat m
     world->render();
 }
 
+    - (void)userScaled:(float)deltaScale {
+        tank->transform->scale = ELVector3AddScalar( tank->transform->scale, deltaScale);
+    }
+    
+    - (void)userMoved:(CGPoint)deltaPosition {
+        tank->transform->quaternion = ELQuaternionMultiply(tank->transform->quaternion, ELQuaternionMakeWithAngleAndAxis(deltaPosition.x / 10.0, 0, 1, 0));
+           floor->transform->quaternion = ELQuaternionMultiply(floor->transform->quaternion, ELQuaternionMakeWithAngleAndAxis(deltaPosition.x / 10.0, 0, 1, 0));
+    }
 @end

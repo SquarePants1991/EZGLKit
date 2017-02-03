@@ -3,7 +3,9 @@ vec3 caculateSurfaceToEyeVec() {
     highp vec3 eye;
     eye = normalize(cameraPosition - modelMatrixPosition);
 #ifdef Use_BumpMap
-    eye = normalize(tbnMatrix * eye);
+    if (useBumpMap) {
+        eye = normalize(tbnMatrix * eye);
+    }
 #endif
     return eye;
 }

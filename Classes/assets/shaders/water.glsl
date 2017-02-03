@@ -45,7 +45,7 @@ vec4 waterColor(
     vec4 invDepth = 1.0 - depthValue;
     refractionColor *= invertedFresnel * invDepth;
     refractionColor += baseColor * depthValue * invertedFresnel;
-    return reflectionColor + refractionColor;
+    return reflectionColor + refractionColor   ;
 }
 
 vec4 render() {
@@ -57,12 +57,15 @@ vec4 render() {
         vp = normalize(defaultLight.position);
     }
     #ifdef Use_BumpMap
+    if (useBumpMap) {
         vp = normalize(tbnMatrix * vp);
+    }
     #endif
     return waterColor(surfaceNormal,vp,surfaceToEyeVec);
 }
 
 void main()
 {
+    frag_base();
     outColor = render();
 }

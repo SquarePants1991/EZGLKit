@@ -6,6 +6,7 @@ file(GLOB SRC
 )
 
 add_library(soil SOIL.h SOIL.cc ${SRC})
+target_compile_definitions(soil PRIVATE Platform_OSX=1)
 
 find_package(OpenGL REQUIRED)
 include_directories(${OpenGL_INCLUDE_DIRS})

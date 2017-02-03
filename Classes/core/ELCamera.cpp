@@ -39,6 +39,17 @@ ELCamera::ELCamera(ELFloat left, ELFloat right, ELFloat top, ELFloat bottom, ELF
     ortho(left, right, top, bottom, nearZ, farZ);
 }
 
+void ELCamera::perspective(ELVector3 eye, ELVector3 lookAt, ELVector3 up, ELFloat fovyRadians, ELFloat aspect, ELFloat nearZ, ELFloat farZ) {
+    originEye = eye;
+    originLookAt = lookAt;
+    originUp = up;
+    fovyRadians = fovyRadians;
+    aspect = aspect;
+    nearZ = nearZ;
+    farZ = farZ;
+    isOrtho = false;
+}
+
 void ELCamera::ortho(ELFloat left, ELFloat right, ELFloat top, ELFloat bottom, ELFloat nearZ, ELFloat farZ) {
     isOrtho = true;
     orthoView = ELVector4Make(left,right,top,bottom);

@@ -19,6 +19,9 @@ ELGeometry::ELGeometry() : vao(-1),
                            renderType(ELGeometryRenderTypeFrontSide)
 {
     material = ELMaterialDefault;
+    for (int i = 0;i < sizeof(materials) / sizeof(ELMaterial); ++i) {
+        materials[i] = ELMaterialDefault;
+    }
 }
 
 void ELGeometry::prepare() {
@@ -83,16 +86,29 @@ void ELGeometry::render() {
         glUniform4fv(program->uniform(buffer), 1, (GLfloat *)mat.diffuse.v);
         snprintf(buffer, 256, "materials[%d].specular", i);
         glUniform4fv(program->uniform(buffer), 1, (GLfloat *)mat.specular.v);
+        snprintf(buffer, 256, "materials[%d].shininess", i);
+        glUniform1f(program->uniform(buffer), (GLfloat)mat.shininess);
         snprintf(buffer, 256, "materials[%d].diffuseMap", i * 2 + 0);
         glUniform1i(program->uniform(buffer), textureID);
-        glActiveTexture(GL_TEXTURE0 + textureID);
+        GLenum gltexture = GL_TEXTURE0 + textureID;
+        glActiveTexture(gltexture);
         glBindTexture(GL_TEXTURE_2D, mat.diffuseMap);
         textureID++;
-        snprintf(buffer, 256, "materials[%d].normalMap", i * 2 + 0);
-        glUniform1i(program->uniform(buffer), textureID);
-        glActiveTexture(GL_TEXTURE0 + textureID);
-        glBindTexture(GL_TEXTURE_2D, mat.normalMap);
-        textureID++;
+        
+        if (mat.normalMap > 0) {
+            snprintf(buffer, 256, "materials[%d].normalMap", i * 2 + 0);
+            glUniform1i(program->uniform(buffer), textureID);
+            GLenum gltexture = GL_TEXTURE0 + textureID;
+            glActiveTexture(gltexture);
+            glBindTexture(GL_TEXTURE_2D, mat.normalMap);
+            textureID++;
+            
+            snprintf(buffer, 256, "materials[%d].normalMapEnable", i * 2 + 0);
+            glUniform1i(program->uniform(buffer), 1);
+        } else {
+            snprintf(buffer, 256, "materials[%d].normalMapEnable", i * 2 + 0);
+            glUniform1i(program->uniform(buffer), 0);
+        }
     }
     
     

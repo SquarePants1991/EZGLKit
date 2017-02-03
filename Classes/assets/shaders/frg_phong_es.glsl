@@ -43,8 +43,6 @@ vec4 renderPass_shadow_frog_light() {
         diffuse = vec4((diffuse * 0.0 + projector_diffuse * 1.0).rgb, diffuse.a);
     }
     
-//    return tex2D(normalMap, fragTexcoord);
-    
     highp vec4 color = surfaceColor();
     highp vec4 outputColor = (color * diffuse + color * ambient + color * specular) * shadow;
 

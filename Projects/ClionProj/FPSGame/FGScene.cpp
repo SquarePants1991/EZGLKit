@@ -52,7 +52,8 @@ void FGScene::createScene() {
     ELFBXLoader::loadFromFile(ELAssets::shared()->findFile("ArmyPilot.fbx").c_str());
 
     defaultLight = new ELLight();
-    defaultLight->position = ELVector3Make(0,30,30);
+    defaultLight->position = ELVector3Make(0,30,-30);
+    defaultLight->type = ELLightTypePoint;
     defaultLight->color = ELVector4Make(1.0,1.0,1.0,1.0);
     defaultLight->intensity = 1.0;
     defaultLight->intensityFallOff = 0.0;
@@ -60,7 +61,7 @@ void FGScene::createScene() {
 //    defaultLight->enableShadow();
     world->addNode(defaultLight);
     createTerrain();
-    createFloor();
+//    createFloor();
     createWater();
     createSkySphere();
     new ELFire(world, ELVector3Make(35,10,35));
@@ -106,9 +107,9 @@ void FGScene::createSkySphere() {
     ELSkySphere *cube = new ELSkySphere(500);
     cube->renderType = ELGeometryRenderTypeBackSide;
     gameObject->addComponent(cube);
-    cube->material.diffuse = ELVector4Make(0.0,0.0,0.0,1.0);
-    cube->material.ambient = ELVector4Make(1.0,1.0,1.0,1.0);
-    cube->material.diffuseMap = ELTexture::texture(ELAssets::shared()->findFile("sky.png"))->value;
+    cube->materials[0].diffuse = ELVector4Make(0.0,0.0,0.0,1.0);
+    cube->materials[0].ambient = ELVector4Make(1.0,1.0,1.0,1.0);
+    cube->materials[0].diffuseMap = ELTexture::texture(ELAssets::shared()->findFile("sky.png"))->value;
 //    cube->material.normalMap = ELTexture::texture(ELAssets::shared()->findFile("rock_NRM.png"))->value;
 }
 
@@ -195,10 +196,10 @@ void FGScene::createCubeGameObject(ELVector3 size,ELVector3 pos,ELFloat mass,GLu
     gameObject->transform->position = pos;
     ELCubeGeometry *cube = new ELCubeGeometry(size, true);
     gameObject->addComponent(cube);
-    cube->material.diffuse = ELVector4Make(0.0, 0.0, 0.0, 1.0);
-    cube->material.ambient = ELVector4Make(0.7, 0.7, 0.7, 1.0);
-    cube->material.diffuseMap = diffuseMap;//ELTexture::texture(ELAssets::shared()->findFile("rock.png"))->value;
-    cube->material.normalMap = normalMap;//ELTexture::texture(ELAssets::shared()->findFile("rock_NRM.png"))->value;
+    cube->materials[0].diffuse = ELVector4Make(0.0, 0.0, 0.0, 1.0);
+    cube->materials[0].ambient = ELVector4Make(0.7, 0.7, 0.7, 1.0);
+    cube->materials[0].diffuseMap = diffuseMap;//ELTexture::texture(ELAssets::shared()->findFile("rock.png"))->value;
+    cube->materials[0].normalMap = normalMap;//ELTexture::texture(ELAssets::shared()->findFile("rock_NRM.png"))->value;
     cube->enableBorder = hasBorder;
     cube->borderWidth = 0.2;
     cube->borderColor = ELVector4Make(1, 0, 0, 1);
@@ -220,10 +221,10 @@ void FGScene::createSphereGameObject(ELVector3 size,ELVector3 pos,ELFloat mass,G
     gameObject->transform->position = pos;
     ELSphereGeometry *cube = new ELSphereGeometry(1, 20,20);
     gameObject->addComponent(cube);
-    cube->material.diffuse = ELVector4Make(0.0,0.0,0.0,1.0);
-    cube->material.ambient = ELVector4Make(0.7,0.7,0.7,1.0);
-    cube->material.diffuseMap = diffuseMap;//ELTexture::texture(ELAssets::shared()->findFile("rock.png"))->value;
-    cube->material.normalMap = normalMap;//ELTexture::texture(ELAssets::shared()->findFile("rock_NRM.png"))->value;
+    cube->materials[0].diffuse = ELVector4Make(0.0,0.0,0.0,1.0);
+    cube->materials[0].ambient = ELVector4Make(0.7,0.7,0.7,1.0);
+    cube->materials[0].diffuseMap = diffuseMap;//ELTexture::texture(ELAssets::shared()->findFile("rock.png"))->value;
+    cube->materials[0].normalMap = normalMap;//ELTexture::texture(ELAssets::shared()->findFile("rock_NRM.png"))->value;
     cube->enableBorder = hasBorder;
     cube->borderWidth = 0.2;
     cube->borderColor = ELVector4Make(1,0,0,1);
@@ -313,7 +314,7 @@ void FGScene::createTerrain() {
     printf("%s",gameObject->description().c_str());
     world->addNode(gameObject);
     gameObject->transform->position = ELVector3Make(0,0,0);
-    ELTerrain *terrain = new ELTerrain(ELVector2Make(250,250),ELAssets::shared()->findFile("island4.jpg"),50);
+    ELTerrain *terrain = new ELTerrain(ELVector2Make(250,250),ELAssets::shared()->findFile("island6.png"),50);
     gameObject->addComponent(terrain);
     GLuint diffuseMap = ELTexture::texture(ELAssets::shared()->findFile("dirt_01.jpg"))->value;
     GLuint normalMap = ELTexture::texture(ELAssets::shared()->findFile("water_normal.png"))->value;

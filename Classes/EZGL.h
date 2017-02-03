@@ -5,6 +5,8 @@
 #ifndef EZGL_EZGL_H
 #define EZGL_EZGL_H
 
+#include "EZGLBase.h"
+
 #include "types/EZGLTypes.h"
 #include "core/ELCore.h"
 #include "utils/ELUtil.h"

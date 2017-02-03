@@ -6,9 +6,8 @@
 //  Copyright © 2017年 wangyang. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import <GLKit/GLKit.h>
+#import "ExampleBaseViewController.h"
 
-@interface GameViewController : GLKViewController
-
+@interface GameViewController : ExampleBaseViewController
+    
 @end

@@ -10,6 +10,7 @@
 #include <map>
 
 #if Platform_OSX
+#include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include "SOIL.h"
 

@@ -52,6 +52,7 @@ macro(add_exe target prefix)
     )
     add_executable(${target} ${prefix}/main.cpp ${TARGET_SRC})
     target_link_libraries(${target} EZGLib ${GLUT_LIBRARY} ${OPENGL_LIBRARIES} lua glfw glad soil wavefront bullet ${FBX_LIBRARY})
+    target_compile_definitions(${target} PRIVATE Platform_OSX=1)
 endmacro(add_exe)
 
 
