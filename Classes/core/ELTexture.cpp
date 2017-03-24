@@ -3,14 +3,15 @@
 //
 
 #include "ELTexture.h"
-#include "EZGLBase.h"
+#include "../EZGLBase.h"
 
 std::map<std::string, ELTexture *> ELTexture::textureCache = std::map<std::string, ELTexture *>();
 ELTextureGenCallback ELTexture::callback = NULL;
+ELTextureResetCallback ELTexture::resetCallback = NULL;
 
-ELTexture::ELTexture(std::string path) {
+ELTexture::ELTexture(std::string path, bool keepImgData) {
 #if Platform_OSX
-    int width, height, channel;
+    int channel;
     unsigned char *imageData = SOIL_load_image(path.c_str(), &width, &height, &channel, SOIL_LOAD_RGBA);
 
     glGenTextures(1, &value);
@@ -20,23 +21,45 @@ ELTexture::ELTexture(std::string path) {
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
     glBindTexture(GL_TEXTURE_2D, 0);
+    
+    imgData = imageData;
+    if (keepImgData == false) {
+        releaseImageData();
+    }
 #endif
     
     if (ELTexture::callback != NULL) {
-        value = callback(path.c_str());
+        if (keepImgData) {
+            value = callback(path.c_str(), &imgData, width, height);
+        } else {
+            value = callback(path.c_str(), NULL, width, height);
+        }
     }
 }
 
-void ELTexture::config(ELTextureGenCallback callback) {
-    ELTexture::callback = callback;
+void ELTexture::releaseImageData() {
+    if (imgData != NULL) {
+        delete imgData;
+        imgData = NULL;
+    }
 }
 
-ELTexture * ELTexture::texture(std::string path) {
+void ELTexture::config(ELTextureGenCallback callback, ELTextureResetCallback resetCallback) {
+    ELTexture::callback = callback;
+    ELTexture::resetCallback = resetCallback;
+}
+
+ELTexture * ELTexture::texture(std::string path, bool keepImgData) {
     if (ELTexture::textureCache.find(path) != ELTexture::textureCache.end()) {
         return ELTexture::textureCache[path];
     }
-    ELTexture *texture = new ELTexture(path);
+    ELTexture *texture = new ELTexture(path, keepImgData);
     ELTexture::textureCache[path] = texture;
     return texture;
 }
 
+void ELTexture::reset(uint8_t *imgData, ELInt width, ELInt height, GLenum pixelFormat, GLenum dataType) {
+    if (ELTexture::resetCallback) {
+        resetCallback(imgData, this->value, width, height, pixelFormat, dataType);
+    }
+}

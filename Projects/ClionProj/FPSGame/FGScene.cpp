@@ -64,9 +64,9 @@ void FGScene::createScene() {
 //    createFloor();
     createWater();
     createSkySphere();
-    new ELFire(world, ELVector3Make(35,10,35));
-    new ELSnow(world, ELVector3Make(0,0,0));
-    new ELExplosion(world, ELVector3Make(0,10,0));
+//    new ELFire(world, ELVector3Make(35,10,35));
+//    new ELSnow(world, ELVector3Make(0,0,0));
+//    new ELExplosion(world, ELVector3Make(0,10,0));
     world->addNode(new ELProjector());
 
     ELGameObject *gameObject = new ELGameObject(world);
@@ -314,15 +314,15 @@ void FGScene::createTerrain() {
     printf("%s",gameObject->description().c_str());
     world->addNode(gameObject);
     gameObject->transform->position = ELVector3Make(0,0,0);
-    ELTerrain *terrain = new ELTerrain(ELVector2Make(250,250),ELAssets::shared()->findFile("island6.png"),50);
+    ELTerrain *terrain = new ELTerrain(ELVector2Make(500,500),ELAssets::shared()->findFile("island12.png"),50);
     gameObject->addComponent(terrain);
     GLuint diffuseMap = ELTexture::texture(ELAssets::shared()->findFile("dirt_01.jpg"))->value;
     GLuint normalMap = ELTexture::texture(ELAssets::shared()->findFile("water_normal.png"))->value;
     GLuint dudvNormalMap = ELTexture::texture(ELAssets::shared()->findFile("grass_01.jpeg"))->value;
-    terrain->material.ambient = ELVector4Make(0.3,0.3,0.3,1.0);
-    terrain->material.diffuseMap = diffuseMap;
-    terrain->material.ambientMap = normalMap;
-    terrain->material.specularMap = dudvNormalMap;
+    terrain->materials[0].ambient = ELVector4Make(0.3,0.3,0.3,1.0);
+    terrain->materials[0].diffuseMap = diffuseMap;
+    terrain->materials[0].ambientMap = normalMap;
+    terrain->materials[0].specularMap = dudvNormalMap;
     gameObject->transform->position = ELVector3Make(0,0,0);
     terrain->genMap();
     ELCollisionShape *collisionShape = new ELCollisionShape();

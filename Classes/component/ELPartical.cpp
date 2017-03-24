@@ -4,7 +4,7 @@
 
 #include "ELPartical.h"
 
-#include <types/ELGeometryTypes.h>
+#include "../types/ELGeometryTypes.h"
 
 ELPartical::ELPartical() : currentAge(0) {
 

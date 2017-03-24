@@ -4,6 +4,7 @@
 
 #include "ELFBXVertexBufferProvider.h"
 #include "ELFbxUtil.h"
+#include <fbxsdk.h>
 
 ELFBXVertexBufferProvider::ELFBXVertexBufferProvider(FbxScene *scene, FbxMesh *mesh) :
         scene(scene),
@@ -192,7 +193,7 @@ void ELFBXVertexBufferProvider::update(const char *animationName,ELFloat elapsed
     delete [] vertexArray;
 }
 
-void ELFBXVertexBufferProvider::computerLinearDeformation(FbxAMatrix& pGlobalPosition, FbxMesh *mesh, FbxTime time, FbxVector4 *vertexArray) {
+void ELFBXVertexBufferProvider::computerLinearDeformation(FbxAMatrix& pGlobalPosition, FbxMesh *mesh, FbxTime& time, FbxVector4 *vertexArray) {
 
 
     FbxCluster::ELinkMode clusterMode = ((FbxSkin *) mesh->GetDeformer(0, FbxDeformer::eSkin))->GetCluster(

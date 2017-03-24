@@ -5,13 +5,12 @@
 #ifndef EZGL_ELRIGIDBODY_H
 #define EZGL_ELRIGIDBODY_H
 
-#include "types/EZGLTypes.h"
-#include "core/ELComponent.h"
-
-#include "btBulletCollisionCommon.h"
-#include "btBulletDynamicsCommon.h"
+#include "../types/EZGLTypes.h"
+#include "../core/ELComponent.h"
 
 class ELCollisionShape;
+class btRigidBody;
+class btTransform;
 
 class ELRigidBody : public ELComponent {
 public:

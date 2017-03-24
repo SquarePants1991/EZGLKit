@@ -2,10 +2,10 @@
 // Created by wangyang on 16/12/6.
 //
 
-#include <types/ELGeometryTypes.h>
+#include "../types/ELGeometryTypes.h"
 #include "ELParticleSystem.h"
 #include "ELPartical.h"
-#include "core/ELGameObject.h"
+#include "../core/ELGameObject.h"
 #include "ELGeometry.h"
 
 #include <functional>

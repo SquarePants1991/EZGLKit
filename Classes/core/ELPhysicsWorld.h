@@ -18,6 +18,7 @@ class btBroadphaseInterface;
 class ELPhysicsWorld : public ELNode{
 public:
     static ELPhysicsWorld *shared();
+    void setGravity(ELVector3 gravity);
     void addRigidBody(btRigidBody *rigidBody);
     void addRigidBody(btRigidBody *rigidBody, ELInt group, ELInt mask);
     void removeRigidBody(btRigidBody *rigidBody);

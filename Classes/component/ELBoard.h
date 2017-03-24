@@ -6,7 +6,7 @@
 #define EZGL_ELBOARD_H
 
 #include "ELGeometry.h"
-#include "utils/ELGeometryVertexBuffer.h"
+#include "../utils/ELGeometryVertexBuffer.h"
 
 class ELBoard : public ELGeometry {
 public:

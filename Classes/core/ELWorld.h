@@ -6,10 +6,11 @@
 #define EZGL_ELWORLD_H
 
 #include "ELNode.h"
-#include <vector>
 #include "ELCamera.h"
 #include "ELPhysicsWorld.h"
 #include "ELEffect.h"
+
+#include <vector>
 
 class ELLight;
 class ELRenderPass;
@@ -35,9 +36,11 @@ public:
     void activeCamera(std::string cameraName, ELCamera *camera = NULL);
 
     void addRenderPass(ELRenderPass *renderPass);
+    void setViewport(ELInt left, ELInt bottom, ELInt width, ELInt height);
 private:
     std::vector<ELRenderPass *> renderPasses;
-
+    
+    std::shared_ptr<ELVector4 *> viewport;
 private:
     void renderShadowMaps();
     void renderReflectionMaps();

@@ -5,7 +5,7 @@
 #ifndef EZGL_LUA_ELWORLD_H
 #define EZGL_LUA_ELWORLD_H
 
-#include "core/ELWorld.h"
+#include "../core/ELWorld.h"
 
 #include "lua.h"
 #include "lualib.h"

@@ -4,8 +4,11 @@
 
 #include "ELRigidBody.h"
 #include "ELCollisionShape.h"
-#include "core/ELGameObject.h"
-#include "core/ELPhysicsWorld.h"
+#include "../core/ELGameObject.h"
+#include "../core/ELPhysicsWorld.h"
+
+#include "bullet/btBulletCollisionCommon.h"
+#include "bullet/btBulletDynamicsCommon.h"
 
 ELRigidBody::ELRigidBody(ELCollisionShape *shape, ELFloat mass) :
         collisionShape(shape),

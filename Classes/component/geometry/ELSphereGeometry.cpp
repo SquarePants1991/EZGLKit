@@ -2,7 +2,7 @@
 // Created by wang yang on 2016/11/27.
 //
 
-#include <core/ELGameObject.h>
+#include "../../core/ELGameObject.h"
 #include "ELSphereGeometry.h"
 
 

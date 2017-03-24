@@ -5,8 +5,8 @@
 #ifndef EZGL_ELGEOMETRYVERTEXBUFFER_H
 #define EZGL_ELGEOMETRYVERTEXBUFFER_H
 
-#include "EZGLBase.h"
-#include "types/ELGeometryTypes.h"
+#include "../EZGLBase.h"
+#include "../types/ELGeometryTypes.h"
 
 union _AABBBox{
     ELFloat data[6];

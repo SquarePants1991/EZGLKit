@@ -6,7 +6,7 @@
 #define EZGL_ELCUBEGEOMETRY_H
 
 #include "ELVertexBufferGeometry.h"
-#include "utils/ELGeometryVertexBuffer.h"
+#include "../../utils/ELGeometryVertexBuffer.h"
 
 class ELCubeGeometry : public ELVertexBufferGeometry {
 public:

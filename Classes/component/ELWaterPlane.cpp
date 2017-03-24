@@ -2,9 +2,10 @@
 // Created by wangyang on 16/12/9.
 //
 
+#include "../utils/ELGLState.h"
 #include "ELWaterPlane.h"
-#include "core/ELConfig.h"
-#include "core/ELGameObject.h"
+#include "../core/ELConfig.h"
+#include "../core/ELGameObject.h"
 
 bool ELWaterPlane::isInWaterPlanePreparePass = false;
 
@@ -30,7 +31,10 @@ void ELWaterPlane::render() {
     if (ELWaterPlane::isInWaterPlanePreparePass) {
         return;
     } else {
+        ELGLState::saveState();
+        ELGLState::set(GL_CULL_FACE, GL_FALSE);
         ELGeometry::render();
+        ELGLState::restoreState();
     }
 }
 

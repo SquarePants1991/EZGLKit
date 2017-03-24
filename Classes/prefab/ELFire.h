@@ -5,7 +5,7 @@
 #ifndef EZGL_ELFIRE_H
 #define EZGL_ELFIRE_H
 
-#include "core/ELNode.h"
+#include "../core/ELNode.h"
 
 class ELWorld;
 class ELFire : public ELNode {

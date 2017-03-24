@@ -2,7 +2,7 @@
 // Created by wangyang on 16/11/28.
 //
 
-#include <core/ELGameObject.h>
+#include "../../core/ELGameObject.h"
 #include "ELMeshGeometry.h"
 
 ELMeshGeometry::ELMeshGeometry() {

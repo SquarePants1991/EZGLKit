@@ -30,7 +30,7 @@ public:
     ELEffect *activeEffect();
 
     std::string specificEffectName;
-private:
+//private:
     ELWorld *world;
 };
 

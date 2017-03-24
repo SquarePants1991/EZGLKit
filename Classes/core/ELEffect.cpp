@@ -2,10 +2,10 @@
 // Created by wangyang on 16/11/25.
 //
 
-#include <core/ELLight.h>
+#include "ELLight.h"
 #include "ELEffect.h"
-#include "core/ELProgram.h"
-#include "core/ELGameObject.h"
+#include "ELProgram.h"
+#include "ELGameObject.h"
 #include "ELWorld.h"
 #include "ELProjector.h"
 

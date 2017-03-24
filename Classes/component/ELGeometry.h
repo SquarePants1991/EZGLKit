@@ -5,8 +5,8 @@
 #ifndef EZGL_ELGEOMETRY_H
 #define EZGL_ELGEOMETRY_H
 
-#include "core/ELComponent.h"
-#include "types/ELGeometryTypes.h"
+#include "../core/ELComponent.h"
+#include "../types/ELGeometryTypes.h"
 
 typedef struct {
     ELUint vertexVBO;

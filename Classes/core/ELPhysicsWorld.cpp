@@ -26,6 +26,10 @@ ELPhysicsWorld::ELPhysicsWorld() {
     world->setGravity(btVector3(0,-25,0));
 }
 
+void ELPhysicsWorld::setGravity(ELVector3 gravity) {
+      world->setGravity(btVector3(gravity.x,gravity.y,gravity.z));
+}
+
 void ELPhysicsWorld::addRigidBody(btRigidBody *rigidBody) {
     world->addRigidBody(rigidBody);
 }

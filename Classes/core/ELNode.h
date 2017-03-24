@@ -5,7 +5,7 @@
 #ifndef EZGL_ELNODE_H
 #define EZGL_ELNODE_H
 
-#include "types/EZGLTypes.h"
+#include "../types/EZGLTypes.h"
 #include <vector>
 #include <string>
 

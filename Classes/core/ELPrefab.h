@@ -5,8 +5,8 @@
 #ifndef EZGL_ELPREFAB_H
 #define EZGL_ELPREFAB_H
 
-#include "EZGLBase.h"
-#include "core/ELWorld.h"
+#include "../EZGLBase.h"
+#include "../core/ELWorld.h"
 
 class ELPrefab {
 };

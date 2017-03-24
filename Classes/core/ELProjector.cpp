@@ -2,7 +2,7 @@
 // Created by wangyang on 16/12/9.
 //
 
-#include "utils/ELAssets.h"
+#include "../utils/ELAssets.h"
 #include "ELProjector.h"
 #include "ELCamera.h"
 #include "ELTexture.h"

@@ -5,7 +5,7 @@
 #ifndef EZGL_ELSIMPLERENDERPASS_H
 #define EZGL_ELSIMPLERENDERPASS_H
 
-#include "core/ELRenderPass.h"
+#include "../../core/ELRenderPass.h"
 
 class ELWaterPlaneRenderPass : public ELRenderPass {
 public:

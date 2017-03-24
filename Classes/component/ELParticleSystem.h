@@ -5,9 +5,9 @@
 #ifndef EZGL_ELPARTICALSYSTEM_H
 #define EZGL_ELPARTICALSYSTEM_H
 
-#include "EZGLBase.h"
+#include "../EZGLBase.h"
 #include "ELGeometry.h"
-#include "utils/ELGeometryVertexBuffer.h"
+#include "../utils/ELGeometryVertexBuffer.h"
 #include "ELPartical.h"
 
 class ELPartical;

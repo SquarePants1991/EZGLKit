@@ -19,7 +19,8 @@ ELCamera::ELCamera(ELVector3 eye,ELVector3 lookAt,ELVector3 up,ELFloat fovyRadia
         farZ(farZ),
         isOrtho(false),
         lockOnTransform(NULL),
-        translation(ELVector3Make(0, 0, 0))
+        translation(ELVector3Make(0, 0, 0)),
+        useDirectMatrix(false)
 {
     radiansAroundForward = 0.0;
     radiansAroundUp = 0.0;
@@ -31,7 +32,8 @@ ELCamera::ELCamera(ELVector3 eye,ELVector3 lookAt,ELVector3 up,ELFloat fovyRadia
 
 ELCamera::ELCamera(ELFloat left, ELFloat right, ELFloat top, ELFloat bottom, ELFloat nearZ, ELFloat farZ) :
         lockOnTransform(NULL),
-        translation(ELVector3Make(0, 0, 0))
+        translation(ELVector3Make(0, 0, 0)),
+        useDirectMatrix(false)
 {
     radiansAroundForward = 0.0;
     radiansAroundUp = 0.0;
@@ -58,10 +60,38 @@ void ELCamera::ortho(ELFloat left, ELFloat right, ELFloat top, ELFloat bottom, E
 }
 
 ELMatrix4 ELCamera::matrix() {
+    if (useDirectMatrix) {
+        ELMatrix4 pos = ELMatrix4MakeWithArray(directMatrix);
+        
+        float proj[16] =
+        {
+            0,
+        -2.1229856,
+        0,
+        0,
+        2.66294003,
+        0,
+        0,
+        0,
+        -0.00667858123,
+        -0.00376278162,
+         -1.00501251,
+         -1,
+         0,
+         0,
+         -10.0250626,
+        0
+        };
+        ELMatrix4 projection = ELMatrix4MakeWithArray(proj);
+        return pos;//ELMatrix4Multiply(projection, pos);
+    }
     ELVector3 up = upVector();
     ELMatrix4 projection = ELMatrix4MakePerspective(fovyRadians / 180.0f * M_PI, aspect, nearZ, farZ);
     if (isOrtho) {
-        projection = ELMatrix4MakeOrtho(orthoView.x,orthoView.y,orthoView.w,orthoView.z,nearZ,farZ);
+        projection = ELMatrix4MakeOrtho(orthoView.x,orthoView.y,orthoView.w,orthoView.z,nearZ, farZ);
+        // TODO: replace me with real funcs
+        
+        return projection;
     }
     ELVector3 eyePosition = position();
     ELVector3 desPosition = lookAtPosition();
@@ -197,4 +227,12 @@ ELQuaternion ELCamera::quaternion() {
     ELQuaternion upQuaternion = ELQuaternionMakeWithAngleAndAxis(radiansAroundUp / 180.0 * M_PI, originUp.x, originUp.y, originUp.z);
     ELQuaternion leftQuaternion = ELQuaternionMakeWithAngleAndAxis(radiansAroundLeft / 180.0 * M_PI, left.x, left.y, left.z);
     return ELQuaternionMultiply(ELQuaternionMultiply(forwardQuaternion, upQuaternion),leftQuaternion);
+}
+
+void ELCamera::setMatrixDirect(float * matrix) {
+    for (int i = 0; i < 16; i++) {
+        directMatrix[i] = matrix[i];
+    }
+    useDirectMatrix = true;
+    
 }

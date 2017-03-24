@@ -3,7 +3,7 @@
 //
 
 #include "ELBoard.h"
-#include "core/ELGameObject.h"
+#include "../core/ELGameObject.h"
 
 ELBoard::ELBoard(ELVector2 size) : size(size) {
 

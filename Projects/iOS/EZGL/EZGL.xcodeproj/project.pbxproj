@@ -7,64 +7,73 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8E03AA801E30EBDA00008F82 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E03AA7F1E30EBDA00008F82 /* main.m */; };
-		8E03AA831E30EBDA00008F82 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E03AA821E30EBDA00008F82 /* AppDelegate.m */; };
-		8E03AA8A1E30EBDA00008F82 /* GameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8E03AA891E30EBDA00008F82 /* GameViewController.mm */; };
-		8E03AA8D1E30EBDA00008F82 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E03AA8B1E30EBDA00008F82 /* Main.storyboard */; };
-		8E03AA8F1E30EBDA00008F82 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E03AA8E1E30EBDA00008F82 /* Assets.xcassets */; };
-		8E03AA921E30EBDA00008F82 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E03AA901E30EBDA00008F82 /* LaunchScreen.storyboard */; };
 		8E03AA9D1E30EBDA00008F82 /* EZGLTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E03AA9C1E30EBDA00008F82 /* EZGLTests.m */; };
 		8E03AAA81E30EBDB00008F82 /* EZGLUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E03AAA71E30EBDB00008F82 /* EZGLUITests.m */; };
-		8E03AEE71E30F9CE00008F82 /* libEZGLSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E03AEE41E30F4E900008F82 /* libEZGLSDK.a */; };
 		8E03AEEB1E30F9F300008F82 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E03AEE91E30F9F300008F82 /* GLKit.framework */; };
 		8E03AEEC1E30F9F300008F82 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E03AEEA1E30F9F300008F82 /* OpenGLES.framework */; };
-		8E0F37D81E4485C000F402A8 /* ExampleBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E0F37D71E4485C000F402A8 /* ExampleBaseViewController.m */; };
-		8E30C28D1E31EA2800D5AA1D /* ELTextureImp.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8E30C28C1E31EA2800D5AA1D /* ELTextureImp.mm */; };
-		8E30C2911E31EAE300D5AA1D /* UIImage+GL.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E30C2901E31EAE300D5AA1D /* UIImage+GL.m */; };
-		8E30C2951E31ECC100D5AA1D /* Default.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 8E30C2931E31ECC100D5AA1D /* Default.fsh */; };
-		8E30C2961E31ECC100D5AA1D /* Default.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 8E30C2941E31ECC100D5AA1D /* Default.vsh */; };
+		8E0F38011E457FA100F402A8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E0F37DC1E457FA100F402A8 /* AppDelegate.m */; };
+		8E0F38021E457FA100F402A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E0F37DD1E457FA100F402A8 /* Assets.xcassets */; };
+		8E0F38041E457FA100F402A8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E0F37E01E457FA100F402A8 /* Main.storyboard */; };
+		8E0F38051E457FA100F402A8 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E0F37E21E457FA100F402A8 /* Info.plist */; };
+		8E0F38061E457FA100F402A8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E0F37E31E457FA100F402A8 /* main.m */; };
+		8E0F38071E457FA100F402A8 /* GameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8E0F37E61E457FA100F402A8 /* GameViewController.mm */; };
+		8E0F38081E457FA100F402A8 /* walk_1.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 8E0F37E91E457FA100F402A8 /* walk_1.fbx */; };
+		8E0F38091E457FA100F402A8 /* ausfb.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 8E0F37EB1E457FA100F402A8 /* ausfb.fbx */; };
+		8E0F380A1E457FA100F402A8 /* Body 1.tga in Resources */ = {isa = PBXBuildFile; fileRef = 8E0F37EC1E457FA100F402A8 /* Body 1.tga */; };
+		8E0F380B1E457FA100F402A8 /* Body 2.tga in Resources */ = {isa = PBXBuildFile; fileRef = 8E0F37ED1E457FA100F402A8 /* Body 2.tga */; };
+		8E0F380C1E457FA100F402A8 /* Track.tga in Resources */ = {isa = PBXBuildFile; fileRef = 8E0F37EE1E457FA100F402A8 /* Track.tga */; };
+		8E0F380D1E457FA100F402A8 /* Turret 2.tga in Resources */ = {isa = PBXBuildFile; fileRef = 8E0F37EF1E457FA100F402A8 /* Turret 2.tga */; };
+		8E0F380E1E457FA100F402A8 /* Turret.tga in Resources */ = {isa = PBXBuildFile; fileRef = 8E0F37F01E457FA100F402A8 /* Turret.tga */; };
+		8E0F380F1E457FA100F402A8 /* humanoid.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 8E0F37F11E457FA100F402A8 /* humanoid.fbx */; };
+		8E0F38101E457FA100F402A8 /* draw_sword_1_1.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 8E0F37F31E457FA100F402A8 /* draw_sword_1_1.fbx */; };
+		8E0F38111E457FA100F402A8 /* draw_sword_2_1.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 8E0F37F41E457FA100F402A8 /* draw_sword_2_1.fbx */; };
+		8E0F38121E457FA100F402A8 /* ELTextureImp.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8E0F37F71E457FA100F402A8 /* ELTextureImp.mm */; };
+		8E0F38131E457FA100F402A8 /* ExampleBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E0F37F91E457FA100F402A8 /* ExampleBaseViewController.m */; };
+		8E0F38141E457FA100F402A8 /* EZGLBaseViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8E0F37FB1E457FA100F402A8 /* EZGLBaseViewController.mm */; };
+		8E0F38151E457FA100F402A8 /* EZGLMoveJoySticker.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E0F37FD1E457FA100F402A8 /* EZGLMoveJoySticker.m */; };
+		8E0F38161E457FA100F402A8 /* UIImage+GL.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E0F38001E457FA100F402A8 /* UIImage+GL.m */; };
+		8E0F38491E459E4800F402A8 /* cm_depth_pack.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E0F382A1E459E4700F402A8 /* cm_depth_pack.glsl */; };
+		8E0F384A1E459E4800F402A8 /* cm_uniforms.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E0F382B1E459E4700F402A8 /* cm_uniforms.glsl */; };
+		8E0F384B1E459E4800F402A8 /* defines.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E0F382C1E459E4700F402A8 /* defines.glsl */; };
+		8E0F384C1E459E4800F402A8 /* frg_base.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E0F382D1E459E4700F402A8 /* frg_base.glsl */; };
+		8E0F384D1E459E4800F402A8 /* frg_camera.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E0F382E1E459E4700F402A8 /* frg_camera.glsl */; };
+		8E0F384E1E459E4800F402A8 /* frg_fog.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E0F382F1E459E4700F402A8 /* frg_fog.glsl */; };
+		8E0F384F1E459E4800F402A8 /* frg_light.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E0F38301E459E4700F402A8 /* frg_light.glsl */; };
+		8E0F38501E459E4800F402A8 /* frg_normal.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E0F38311E459E4700F402A8 /* frg_normal.glsl */; };
+		8E0F38511E459E4800F402A8 /* frg_projector.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E0F38321E459E4700F402A8 /* frg_projector.glsl */; };
+		8E0F38521E459E4800F402A8 /* frg_shadow.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E0F38331E459E4800F402A8 /* frg_shadow.glsl */; };
+		8E0F38531E459E4800F402A8 /* frg_terrain.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E0F38341E459E4800F402A8 /* frg_terrain.glsl */; };
+		8E0F38541E459E4800F402A8 /* vtx_base.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E0F38351E459E4800F402A8 /* vtx_base.glsl */; };
+		8E0F38551E459E4800F402A8 /* vtx_border_pass.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E0F38361E459E4800F402A8 /* vtx_border_pass.glsl */; };
+		8E0F38561E459E4800F402A8 /* vtx_clip_plane.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E0F38371E459E4800F402A8 /* vtx_clip_plane.glsl */; };
+		8E0F38571E459E4800F402A8 /* vtx_in_out.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E0F38381E459E4800F402A8 /* vtx_in_out.glsl */; };
+		8E0F38581E459E4800F402A8 /* vtx_simple_pass.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E0F38391E459E4800F402A8 /* vtx_simple_pass.glsl */; };
+		8E0F38591E459E4800F402A8 /* vtx_uniforms.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E0F383A1E459E4800F402A8 /* vtx_uniforms.glsl */; };
+		8E0F385A1E459E4800F402A8 /* frg_phong.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E0F383B1E459E4800F402A8 /* frg_phong.glsl */; };
+		8E0F385B1E459E4800F402A8 /* frg_phong_es.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E0F383C1E459E4800F402A8 /* frg_phong_es.glsl */; };
+		8E0F385C1E459E4800F402A8 /* frg_shadowmap.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E0F383D1E459E4800F402A8 /* frg_shadowmap.glsl */; };
+		8E0F385D1E459E4800F402A8 /* frg_shadowmap_es.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E0F383E1E459E4800F402A8 /* frg_shadowmap_es.glsl */; };
+		8E0F385E1E459E4800F402A8 /* vtx_phong.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E0F383F1E459E4800F402A8 /* vtx_phong.glsl */; };
+		8E0F385F1E459E4800F402A8 /* vtx_phong_es.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E0F38401E459E4800F402A8 /* vtx_phong_es.glsl */; };
+		8E0F38601E459E4800F402A8 /* water.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E0F38411E459E4800F402A8 /* water.glsl */; };
+		8E0F38611E459E4800F402A8 /* water_es.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E0F38421E459E4800F402A8 /* water_es.glsl */; };
+		8E0F38621E459E4800F402A8 /* particle_fire.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E0F38441E459E4800F402A8 /* particle_fire.png */; };
+		8E0F38631E459E4800F402A8 /* particle_point.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E0F38451E459E4800F402A8 /* particle_point.png */; };
+		8E0F38641E459E4800F402A8 /* stone_ground.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 8E0F38461E459E4800F402A8 /* stone_ground.jpeg */; };
+		8E0F38651E459E4800F402A8 /* stone_ground.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E0F38471E459E4800F402A8 /* stone_ground.png */; };
+		8E0F38661E459E4800F402A8 /* stone_ground_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E0F38481E459E4800F402A8 /* stone_ground_normal.png */; };
 		8E30C29A1E31F02100D5AA1D /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E30C2991E31F02100D5AA1D /* libstdc++.6.0.9.tbd */; };
-		8E30C2C61E31F1FB00D5AA1D /* cm_depth_pack.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E30C2AA1E31F1FB00D5AA1D /* cm_depth_pack.glsl */; };
-		8E30C2C71E31F1FB00D5AA1D /* cm_uniforms.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E30C2AB1E31F1FB00D5AA1D /* cm_uniforms.glsl */; };
-		8E30C2C81E31F1FB00D5AA1D /* defines.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E30C2AC1E31F1FB00D5AA1D /* defines.glsl */; };
-		8E30C2C91E31F1FB00D5AA1D /* frg_base.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E30C2AD1E31F1FB00D5AA1D /* frg_base.glsl */; };
-		8E30C2CA1E31F1FB00D5AA1D /* frg_camera.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E30C2AE1E31F1FB00D5AA1D /* frg_camera.glsl */; };
-		8E30C2CB1E31F1FB00D5AA1D /* frg_fog.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E30C2AF1E31F1FB00D5AA1D /* frg_fog.glsl */; };
-		8E30C2CC1E31F1FB00D5AA1D /* frg_light.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E30C2B01E31F1FB00D5AA1D /* frg_light.glsl */; };
-		8E30C2CD1E31F1FB00D5AA1D /* frg_normal.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E30C2B11E31F1FB00D5AA1D /* frg_normal.glsl */; };
-		8E30C2CE1E31F1FB00D5AA1D /* frg_projector.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E30C2B21E31F1FB00D5AA1D /* frg_projector.glsl */; };
-		8E30C2CF1E31F1FB00D5AA1D /* frg_shadow.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E30C2B31E31F1FB00D5AA1D /* frg_shadow.glsl */; };
-		8E30C2D01E31F1FB00D5AA1D /* frg_terrain.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E30C2B41E31F1FB00D5AA1D /* frg_terrain.glsl */; };
-		8E30C2D11E31F1FB00D5AA1D /* vtx_base.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E30C2B51E31F1FB00D5AA1D /* vtx_base.glsl */; };
-		8E30C2D21E31F1FB00D5AA1D /* vtx_border_pass.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E30C2B61E31F1FB00D5AA1D /* vtx_border_pass.glsl */; };
-		8E30C2D31E31F1FB00D5AA1D /* vtx_clip_plane.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E30C2B71E31F1FB00D5AA1D /* vtx_clip_plane.glsl */; };
-		8E30C2D41E31F1FB00D5AA1D /* vtx_in_out.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E30C2B81E31F1FB00D5AA1D /* vtx_in_out.glsl */; };
-		8E30C2D51E31F1FB00D5AA1D /* vtx_simple_pass.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E30C2B91E31F1FB00D5AA1D /* vtx_simple_pass.glsl */; };
-		8E30C2D61E31F1FB00D5AA1D /* vtx_uniforms.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E30C2BA1E31F1FB00D5AA1D /* vtx_uniforms.glsl */; };
-		8E30C2D71E31F1FB00D5AA1D /* frg_phong.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E30C2BB1E31F1FB00D5AA1D /* frg_phong.glsl */; };
-		8E30C2D81E31F1FB00D5AA1D /* frg_phong_es.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E30C2BC1E31F1FB00D5AA1D /* frg_phong_es.glsl */; };
-		8E30C2D91E31F1FB00D5AA1D /* frg_shadowmap.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E30C2BD1E31F1FB00D5AA1D /* frg_shadowmap.glsl */; };
-		8E30C2DA1E31F1FB00D5AA1D /* frg_shadowmap_es.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E30C2BE1E31F1FB00D5AA1D /* frg_shadowmap_es.glsl */; };
-		8E30C2DB1E31F1FB00D5AA1D /* vtx_phong.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E30C2BF1E31F1FB00D5AA1D /* vtx_phong.glsl */; };
-		8E30C2DC1E31F1FB00D5AA1D /* vtx_phong_es.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E30C2C01E31F1FB00D5AA1D /* vtx_phong_es.glsl */; };
-		8E30C2DD1E31F1FB00D5AA1D /* water.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E30C2C11E31F1FB00D5AA1D /* water.glsl */; };
-		8E30C2DE1E31F1FB00D5AA1D /* water_es.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E30C2C21E31F1FB00D5AA1D /* water_es.glsl */; };
-		8E30C2DF1E31F1FB00D5AA1D /* particle_fire.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E30C2C41E31F1FB00D5AA1D /* particle_fire.png */; };
-		8E30C2E01E31F1FB00D5AA1D /* particle_point.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E30C2C51E31F1FB00D5AA1D /* particle_point.png */; };
-		8E30C2E21E31F63B00D5AA1D /* wood_01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8E30C2E11E31F63B00D5AA1D /* wood_01.jpg */; };
-		8E30C2E41E320AB100D5AA1D /* humanoid.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 8E30C2E31E320AB100D5AA1D /* humanoid.fbx */; };
-		8E45644E1E35EC1900A0A22E /* stone_ground.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 8E45644D1E35EC1900A0A22E /* stone_ground.jpeg */; };
-		8E4564501E35EC8400A0A22E /* stone_ground.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E45644F1E35EC8400A0A22E /* stone_ground.png */; };
-		8E4564541E35EEBA00A0A22E /* stone_ground_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E4564531E35EEBA00A0A22E /* stone_ground_normal.png */; };
-		8E4564611E360C0300A0A22E /* walk_1.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 8E4564561E360C0300A0A22E /* walk_1.fbx */; };
-		8E4564621E360C0300A0A22E /* ausfb.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 8E4564581E360C0300A0A22E /* ausfb.fbx */; };
-		8E4564631E360C0300A0A22E /* Body 1.tga in Resources */ = {isa = PBXBuildFile; fileRef = 8E4564591E360C0300A0A22E /* Body 1.tga */; };
-		8E4564641E360C0300A0A22E /* Body 2.tga in Resources */ = {isa = PBXBuildFile; fileRef = 8E45645A1E360C0300A0A22E /* Body 2.tga */; };
-		8E4564651E360C0300A0A22E /* Track.tga in Resources */ = {isa = PBXBuildFile; fileRef = 8E45645B1E360C0300A0A22E /* Track.tga */; };
-		8E4564661E360C0300A0A22E /* Turret 2.tga in Resources */ = {isa = PBXBuildFile; fileRef = 8E45645C1E360C0300A0A22E /* Turret 2.tga */; };
-		8E4564671E360C0300A0A22E /* Turret.tga in Resources */ = {isa = PBXBuildFile; fileRef = 8E45645D1E360C0300A0A22E /* Turret.tga */; };
-		8E4564681E360C0300A0A22E /* draw_sword_1_1.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 8E45645F1E360C0300A0A22E /* draw_sword_1_1.fbx */; };
-		8E4564691E360C0300A0A22E /* draw_sword_2_1.fbx in Resources */ = {isa = PBXBuildFile; fileRef = 8E4564601E360C0300A0A22E /* draw_sword_2_1.fbx */; };
+		8E53A70F1E45AB0F00C790CE /* TerrainSnowViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8E53A70E1E45AB0F00C790CE /* TerrainSnowViewController.mm */; };
+		8E53A7111E45ABA300C790CE /* island.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E53A7101E45ABA300C790CE /* island.png */; };
+		8E53A7141E45B47000C790CE /* EZGLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E53A7131E45B47000C790CE /* EZGLViewController.m */; };
+		8E53A7161E45B48F00C790CE /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E53A7151E45B48F00C790CE /* Launch Screen.storyboard */; };
+		8E53A7191E45B59200C790CE /* ExampleCollector.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E53A7181E45B59200C790CE /* ExampleCollector.m */; };
+		8E53A72A1E45C9C000C790CE /* dirt.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8E53A7241E45C9C000C790CE /* dirt.jpg */; };
+		8E53A72B1E45C9C000C790CE /* dirt.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E53A7251E45C9C000C790CE /* dirt.png */; };
+		8E53A72C1E45C9C000C790CE /* grass_green.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 8E53A7261E45C9C000C790CE /* grass_green.jpeg */; };
+		8E53A72D1E45C9C000C790CE /* grass_green.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E53A7271E45C9C000C790CE /* grass_green.png */; };
+		8E53A72E1E45C9C000C790CE /* grass_yellow.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8E53A7281E45C9C000C790CE /* grass_yellow.jpg */; };
+		8E53A72F1E45C9C000C790CE /* grass_yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E53A7291E45C9C000C790CE /* grass_yellow.png */; };
 		8E5B54E51E321D5A0082AE9F /* libfbxsdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E5B54E41E321D5A0082AE9F /* libfbxsdk.a */; };
 		8E5B54E91E3445480082AE9F /* libiconv.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E5B54E81E3445480082AE9F /* libiconv.2.tbd */; };
 /* End PBXBuildFile section */
@@ -84,92 +93,92 @@
 			remoteGlobalIDString = 8E03AA7A1E30EBDA00008F82;
 			remoteInfo = EZGL;
 		};
-		8E03AEE31E30F4E900008F82 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8E03AEDF1E30F4E900008F82 /* EZGLSDK.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 8E03AABE1E30EC1B00008F82;
-			remoteInfo = EZGLSDK;
-		};
-		8E03AEE51E30F4F300008F82 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8E03AEDF1E30F4E900008F82 /* EZGLSDK.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 8E03AABD1E30EC1B00008F82;
-			remoteInfo = EZGLSDK;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		8E03AA7B1E30EBDA00008F82 /* EZGL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EZGL.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		8E03AA7F1E30EBDA00008F82 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		8E03AA811E30EBDA00008F82 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		8E03AA821E30EBDA00008F82 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		8E03AA881E30EBDA00008F82 /* GameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
-		8E03AA891E30EBDA00008F82 /* GameViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = GameViewController.mm; sourceTree = "<group>"; };
-		8E03AA8C1E30EBDA00008F82 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		8E03AA8E1E30EBDA00008F82 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		8E03AA911E30EBDA00008F82 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		8E03AA931E30EBDA00008F82 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8E03AA981E30EBDA00008F82 /* EZGLTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EZGLTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E03AA9C1E30EBDA00008F82 /* EZGLTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EZGLTests.m; sourceTree = "<group>"; };
 		8E03AA9E1E30EBDA00008F82 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8E03AAA31E30EBDA00008F82 /* EZGLUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EZGLUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E03AAA71E30EBDB00008F82 /* EZGLUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EZGLUITests.m; sourceTree = "<group>"; };
 		8E03AAA91E30EBDB00008F82 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8E03AEDF1E30F4E900008F82 /* EZGLSDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = EZGLSDK.xcodeproj; path = ../EZGLSDK/EZGLSDK.xcodeproj; sourceTree = "<group>"; };
 		8E03AEE91E30F9F300008F82 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		8E03AEEA1E30F9F300008F82 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
-		8E0F37D61E4485C000F402A8 /* ExampleBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExampleBaseViewController.h; sourceTree = "<group>"; };
-		8E0F37D71E4485C000F402A8 /* ExampleBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExampleBaseViewController.m; sourceTree = "<group>"; };
-		8E30C28B1E31EA2800D5AA1D /* ELTextureImp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELTextureImp.h; sourceTree = "<group>"; };
-		8E30C28C1E31EA2800D5AA1D /* ELTextureImp.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ELTextureImp.mm; sourceTree = "<group>"; };
-		8E30C28F1E31EAE300D5AA1D /* UIImage+GL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+GL.h"; sourceTree = "<group>"; };
-		8E30C2901E31EAE300D5AA1D /* UIImage+GL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+GL.m"; sourceTree = "<group>"; };
-		8E30C2931E31ECC100D5AA1D /* Default.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Default.fsh; sourceTree = "<group>"; };
-		8E30C2941E31ECC100D5AA1D /* Default.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Default.vsh; sourceTree = "<group>"; };
+		8E0F37DB1E457FA100F402A8 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		8E0F37DC1E457FA100F402A8 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		8E0F37DD1E457FA100F402A8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8E0F37E11E457FA100F402A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8E0F37E21E457FA100F402A8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8E0F37E31E457FA100F402A8 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		8E0F37E51E457FA100F402A8 /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameViewController.h; path = ../GameViewController.h; sourceTree = "<group>"; };
+		8E0F37E61E457FA100F402A8 /* GameViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = GameViewController.mm; path = ../GameViewController.mm; sourceTree = "<group>"; };
+		8E0F37E91E457FA100F402A8 /* walk_1.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; path = walk_1.fbx; sourceTree = "<group>"; };
+		8E0F37EB1E457FA100F402A8 /* ausfb.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; path = ausfb.fbx; sourceTree = "<group>"; };
+		8E0F37EC1E457FA100F402A8 /* Body 1.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Body 1.tga"; sourceTree = "<group>"; };
+		8E0F37ED1E457FA100F402A8 /* Body 2.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Body 2.tga"; sourceTree = "<group>"; };
+		8E0F37EE1E457FA100F402A8 /* Track.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = Track.tga; sourceTree = "<group>"; };
+		8E0F37EF1E457FA100F402A8 /* Turret 2.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Turret 2.tga"; sourceTree = "<group>"; };
+		8E0F37F01E457FA100F402A8 /* Turret.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = Turret.tga; sourceTree = "<group>"; };
+		8E0F37F11E457FA100F402A8 /* humanoid.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; path = humanoid.fbx; sourceTree = "<group>"; };
+		8E0F37F31E457FA100F402A8 /* draw_sword_1_1.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; path = draw_sword_1_1.fbx; sourceTree = "<group>"; };
+		8E0F37F41E457FA100F402A8 /* draw_sword_2_1.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; path = draw_sword_2_1.fbx; sourceTree = "<group>"; };
+		8E0F37F61E457FA100F402A8 /* ELTextureImp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELTextureImp.h; sourceTree = "<group>"; };
+		8E0F37F71E457FA100F402A8 /* ELTextureImp.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ELTextureImp.mm; sourceTree = "<group>"; };
+		8E0F37F81E457FA100F402A8 /* ExampleBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExampleBaseViewController.h; sourceTree = "<group>"; };
+		8E0F37F91E457FA100F402A8 /* ExampleBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExampleBaseViewController.m; sourceTree = "<group>"; };
+		8E0F37FA1E457FA100F402A8 /* EZGLBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EZGLBaseViewController.h; sourceTree = "<group>"; };
+		8E0F37FB1E457FA100F402A8 /* EZGLBaseViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = EZGLBaseViewController.mm; sourceTree = "<group>"; };
+		8E0F37FC1E457FA100F402A8 /* EZGLMoveJoySticker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EZGLMoveJoySticker.h; sourceTree = "<group>"; };
+		8E0F37FD1E457FA100F402A8 /* EZGLMoveJoySticker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EZGLMoveJoySticker.m; sourceTree = "<group>"; };
+		8E0F37FE1E457FA100F402A8 /* EZGLMoveJoyStickerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EZGLMoveJoyStickerDelegate.h; sourceTree = "<group>"; };
+		8E0F37FF1E457FA100F402A8 /* UIImage+GL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+GL.h"; sourceTree = "<group>"; };
+		8E0F38001E457FA100F402A8 /* UIImage+GL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+GL.m"; sourceTree = "<group>"; };
+		8E0F382A1E459E4700F402A8 /* cm_depth_pack.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cm_depth_pack.glsl; sourceTree = "<group>"; };
+		8E0F382B1E459E4700F402A8 /* cm_uniforms.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cm_uniforms.glsl; sourceTree = "<group>"; };
+		8E0F382C1E459E4700F402A8 /* defines.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = defines.glsl; sourceTree = "<group>"; };
+		8E0F382D1E459E4700F402A8 /* frg_base.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = frg_base.glsl; sourceTree = "<group>"; };
+		8E0F382E1E459E4700F402A8 /* frg_camera.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = frg_camera.glsl; sourceTree = "<group>"; };
+		8E0F382F1E459E4700F402A8 /* frg_fog.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = frg_fog.glsl; sourceTree = "<group>"; };
+		8E0F38301E459E4700F402A8 /* frg_light.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = frg_light.glsl; sourceTree = "<group>"; };
+		8E0F38311E459E4700F402A8 /* frg_normal.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = frg_normal.glsl; sourceTree = "<group>"; };
+		8E0F38321E459E4700F402A8 /* frg_projector.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = frg_projector.glsl; sourceTree = "<group>"; };
+		8E0F38331E459E4800F402A8 /* frg_shadow.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = frg_shadow.glsl; sourceTree = "<group>"; };
+		8E0F38341E459E4800F402A8 /* frg_terrain.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = frg_terrain.glsl; sourceTree = "<group>"; };
+		8E0F38351E459E4800F402A8 /* vtx_base.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vtx_base.glsl; sourceTree = "<group>"; };
+		8E0F38361E459E4800F402A8 /* vtx_border_pass.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vtx_border_pass.glsl; sourceTree = "<group>"; };
+		8E0F38371E459E4800F402A8 /* vtx_clip_plane.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vtx_clip_plane.glsl; sourceTree = "<group>"; };
+		8E0F38381E459E4800F402A8 /* vtx_in_out.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vtx_in_out.glsl; sourceTree = "<group>"; };
+		8E0F38391E459E4800F402A8 /* vtx_simple_pass.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vtx_simple_pass.glsl; sourceTree = "<group>"; };
+		8E0F383A1E459E4800F402A8 /* vtx_uniforms.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vtx_uniforms.glsl; sourceTree = "<group>"; };
+		8E0F383B1E459E4800F402A8 /* frg_phong.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = frg_phong.glsl; sourceTree = "<group>"; };
+		8E0F383C1E459E4800F402A8 /* frg_phong_es.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = frg_phong_es.glsl; sourceTree = "<group>"; };
+		8E0F383D1E459E4800F402A8 /* frg_shadowmap.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = frg_shadowmap.glsl; sourceTree = "<group>"; };
+		8E0F383E1E459E4800F402A8 /* frg_shadowmap_es.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = frg_shadowmap_es.glsl; sourceTree = "<group>"; };
+		8E0F383F1E459E4800F402A8 /* vtx_phong.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vtx_phong.glsl; sourceTree = "<group>"; };
+		8E0F38401E459E4800F402A8 /* vtx_phong_es.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vtx_phong_es.glsl; sourceTree = "<group>"; };
+		8E0F38411E459E4800F402A8 /* water.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = water.glsl; sourceTree = "<group>"; };
+		8E0F38421E459E4800F402A8 /* water_es.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = water_es.glsl; sourceTree = "<group>"; };
+		8E0F38441E459E4800F402A8 /* particle_fire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = particle_fire.png; sourceTree = "<group>"; };
+		8E0F38451E459E4800F402A8 /* particle_point.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = particle_point.png; sourceTree = "<group>"; };
+		8E0F38461E459E4800F402A8 /* stone_ground.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = stone_ground.jpeg; sourceTree = "<group>"; };
+		8E0F38471E459E4800F402A8 /* stone_ground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stone_ground.png; sourceTree = "<group>"; };
+		8E0F38481E459E4800F402A8 /* stone_ground_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stone_ground_normal.png; sourceTree = "<group>"; };
 		8E30C2991E31F02100D5AA1D /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
-		8E30C2AA1E31F1FB00D5AA1D /* cm_depth_pack.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cm_depth_pack.glsl; sourceTree = "<group>"; };
-		8E30C2AB1E31F1FB00D5AA1D /* cm_uniforms.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cm_uniforms.glsl; sourceTree = "<group>"; };
-		8E30C2AC1E31F1FB00D5AA1D /* defines.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = defines.glsl; sourceTree = "<group>"; };
-		8E30C2AD1E31F1FB00D5AA1D /* frg_base.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = frg_base.glsl; sourceTree = "<group>"; };
-		8E30C2AE1E31F1FB00D5AA1D /* frg_camera.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = frg_camera.glsl; sourceTree = "<group>"; };
-		8E30C2AF1E31F1FB00D5AA1D /* frg_fog.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = frg_fog.glsl; sourceTree = "<group>"; };
-		8E30C2B01E31F1FB00D5AA1D /* frg_light.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = frg_light.glsl; sourceTree = "<group>"; };
-		8E30C2B11E31F1FB00D5AA1D /* frg_normal.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = frg_normal.glsl; sourceTree = "<group>"; };
-		8E30C2B21E31F1FB00D5AA1D /* frg_projector.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = frg_projector.glsl; sourceTree = "<group>"; };
-		8E30C2B31E31F1FB00D5AA1D /* frg_shadow.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = frg_shadow.glsl; sourceTree = "<group>"; };
-		8E30C2B41E31F1FB00D5AA1D /* frg_terrain.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = frg_terrain.glsl; sourceTree = "<group>"; };
-		8E30C2B51E31F1FB00D5AA1D /* vtx_base.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vtx_base.glsl; sourceTree = "<group>"; };
-		8E30C2B61E31F1FB00D5AA1D /* vtx_border_pass.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vtx_border_pass.glsl; sourceTree = "<group>"; };
-		8E30C2B71E31F1FB00D5AA1D /* vtx_clip_plane.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vtx_clip_plane.glsl; sourceTree = "<group>"; };
-		8E30C2B81E31F1FB00D5AA1D /* vtx_in_out.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vtx_in_out.glsl; sourceTree = "<group>"; };
-		8E30C2B91E31F1FB00D5AA1D /* vtx_simple_pass.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vtx_simple_pass.glsl; sourceTree = "<group>"; };
-		8E30C2BA1E31F1FB00D5AA1D /* vtx_uniforms.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vtx_uniforms.glsl; sourceTree = "<group>"; };
-		8E30C2BB1E31F1FB00D5AA1D /* frg_phong.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = frg_phong.glsl; sourceTree = "<group>"; };
-		8E30C2BC1E31F1FB00D5AA1D /* frg_phong_es.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = frg_phong_es.glsl; sourceTree = "<group>"; };
-		8E30C2BD1E31F1FB00D5AA1D /* frg_shadowmap.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = frg_shadowmap.glsl; sourceTree = "<group>"; };
-		8E30C2BE1E31F1FB00D5AA1D /* frg_shadowmap_es.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = frg_shadowmap_es.glsl; sourceTree = "<group>"; };
-		8E30C2BF1E31F1FB00D5AA1D /* vtx_phong.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vtx_phong.glsl; sourceTree = "<group>"; };
-		8E30C2C01E31F1FB00D5AA1D /* vtx_phong_es.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vtx_phong_es.glsl; sourceTree = "<group>"; };
-		8E30C2C11E31F1FB00D5AA1D /* water.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = water.glsl; sourceTree = "<group>"; };
-		8E30C2C21E31F1FB00D5AA1D /* water_es.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = water_es.glsl; sourceTree = "<group>"; };
-		8E30C2C41E31F1FB00D5AA1D /* particle_fire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = particle_fire.png; sourceTree = "<group>"; };
-		8E30C2C51E31F1FB00D5AA1D /* particle_point.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = particle_point.png; sourceTree = "<group>"; };
-		8E30C2E11E31F63B00D5AA1D /* wood_01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wood_01.jpg; sourceTree = "<group>"; };
-		8E30C2E31E320AB100D5AA1D /* humanoid.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; path = humanoid.fbx; sourceTree = "<group>"; };
-		8E45644D1E35EC1900A0A22E /* stone_ground.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = stone_ground.jpeg; sourceTree = "<group>"; };
-		8E45644F1E35EC8400A0A22E /* stone_ground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stone_ground.png; sourceTree = "<group>"; };
-		8E4564531E35EEBA00A0A22E /* stone_ground_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stone_ground_normal.png; sourceTree = "<group>"; };
-		8E4564561E360C0300A0A22E /* walk_1.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; path = walk_1.fbx; sourceTree = "<group>"; };
-		8E4564581E360C0300A0A22E /* ausfb.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; path = ausfb.fbx; sourceTree = "<group>"; };
-		8E4564591E360C0300A0A22E /* Body 1.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Body 1.tga"; sourceTree = "<group>"; };
-		8E45645A1E360C0300A0A22E /* Body 2.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Body 2.tga"; sourceTree = "<group>"; };
-		8E45645B1E360C0300A0A22E /* Track.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = Track.tga; sourceTree = "<group>"; };
-		8E45645C1E360C0300A0A22E /* Turret 2.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Turret 2.tga"; sourceTree = "<group>"; };
-		8E45645D1E360C0300A0A22E /* Turret.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = Turret.tga; sourceTree = "<group>"; };
-		8E45645F1E360C0300A0A22E /* draw_sword_1_1.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; path = draw_sword_1_1.fbx; sourceTree = "<group>"; };
-		8E4564601E360C0300A0A22E /* draw_sword_2_1.fbx */ = {isa = PBXFileReference; lastKnownFileType = file; path = draw_sword_2_1.fbx; sourceTree = "<group>"; };
+		8E53A70D1E45AB0F00C790CE /* TerrainSnowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TerrainSnowViewController.h; sourceTree = "<group>"; };
+		8E53A70E1E45AB0F00C790CE /* TerrainSnowViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TerrainSnowViewController.mm; sourceTree = "<group>"; };
+		8E53A7101E45ABA300C790CE /* island.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = island.png; sourceTree = "<group>"; };
+		8E53A7121E45B47000C790CE /* EZGLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EZGLViewController.h; sourceTree = "<group>"; };
+		8E53A7131E45B47000C790CE /* EZGLViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EZGLViewController.m; sourceTree = "<group>"; };
+		8E53A7151E45B48F00C790CE /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		8E53A7171E45B59200C790CE /* ExampleCollector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExampleCollector.h; sourceTree = "<group>"; };
+		8E53A7181E45B59200C790CE /* ExampleCollector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExampleCollector.m; sourceTree = "<group>"; };
+		8E53A7241E45C9C000C790CE /* dirt.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dirt.jpg; sourceTree = "<group>"; };
+		8E53A7251E45C9C000C790CE /* dirt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dirt.png; sourceTree = "<group>"; };
+		8E53A7261E45C9C000C790CE /* grass_green.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = grass_green.jpeg; sourceTree = "<group>"; };
+		8E53A7271E45C9C000C790CE /* grass_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grass_green.png; sourceTree = "<group>"; };
+		8E53A7281E45C9C000C790CE /* grass_yellow.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = grass_yellow.jpg; sourceTree = "<group>"; };
+		8E53A7291E45C9C000C790CE /* grass_yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grass_yellow.png; sourceTree = "<group>"; };
 		8E5B54E41E321D5A0082AE9F /* libfbxsdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfbxsdk.a; path = "../../../../../../../../../Applications/Autodesk/FBX SDK/2015.1/lib/ios-armv7/debug/libfbxsdk.a"; sourceTree = "<group>"; };
 		8E5B54E81E3445480082AE9F /* libiconv.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.2.tbd; path = usr/lib/libiconv.2.tbd; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -184,7 +193,6 @@
 				8E03AEEB1E30F9F300008F82 /* GLKit.framework in Frameworks */,
 				8E5B54E51E321D5A0082AE9F /* libfbxsdk.a in Frameworks */,
 				8E03AEEC1E30F9F300008F82 /* OpenGLES.framework in Frameworks */,
-				8E03AEE71E30F9CE00008F82 /* libEZGLSDK.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,7 +216,6 @@
 		8E03AA721E30EBDA00008F82 = {
 			isa = PBXGroup;
 			children = (
-				8E03AEDF1E30F4E900008F82 /* EZGLSDK.xcodeproj */,
 				8E03AA7D1E30EBDA00008F82 /* EZGL */,
 				8E03AA9B1E30EBDA00008F82 /* EZGLTests */,
 				8E03AAA61E30EBDA00008F82 /* EZGLUITests */,
@@ -230,34 +237,13 @@
 		8E03AA7D1E30EBDA00008F82 /* EZGL */ = {
 			isa = PBXGroup;
 			children = (
-				8E0F37D51E4485A400F402A8 /* Examples */,
-				8E45633E1E359C6000A0A22E /* Models */,
-				8E30C2E31E320AB100D5AA1D /* humanoid.fbx */,
-				8E30C2E11E31F63B00D5AA1D /* wood_01.jpg */,
-				8E30C2A71E31F1FB00D5AA1D /* assets */,
-				8E30C2921E31ECC100D5AA1D /* Shaders */,
-				8E30C28E1E31EAE300D5AA1D /* Utils */,
-				8E03AA811E30EBDA00008F82 /* AppDelegate.h */,
-				8E03AA821E30EBDA00008F82 /* AppDelegate.m */,
-				8E03AA881E30EBDA00008F82 /* GameViewController.h */,
-				8E03AA891E30EBDA00008F82 /* GameViewController.mm */,
-				8E03AA8B1E30EBDA00008F82 /* Main.storyboard */,
-				8E03AA8E1E30EBDA00008F82 /* Assets.xcassets */,
-				8E03AA901E30EBDA00008F82 /* LaunchScreen.storyboard */,
-				8E03AA931E30EBDA00008F82 /* Info.plist */,
-				8E03AA7E1E30EBDA00008F82 /* Supporting Files */,
-				8E30C28B1E31EA2800D5AA1D /* ELTextureImp.h */,
-				8E30C28C1E31EA2800D5AA1D /* ELTextureImp.mm */,
+				8E0F38271E459E4700F402A8 /* assets */,
+				8E0F37DA1E457FA100F402A8 /* AppBase */,
+				8E0F37E41E457FA100F402A8 /* Examples */,
+				8E0F37E71E457FA100F402A8 /* Models */,
+				8E0F37F51E457FA100F402A8 /* Utils */,
 			);
 			path = EZGL;
-			sourceTree = "<group>";
-		};
-		8E03AA7E1E30EBDA00008F82 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				8E03AA7F1E30EBDA00008F82 /* main.m */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		8E03AA9B1E30EBDA00008F82 /* EZGLTests */ = {
@@ -278,14 +264,6 @@
 			path = EZGLUITests;
 			sourceTree = "<group>";
 		};
-		8E03AEE01E30F4E900008F82 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				8E03AEE41E30F4E900008F82 /* libEZGLSDK.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		8E03AEE81E30F9F200008F82 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -298,133 +276,177 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		8E0F37D51E4485A400F402A8 /* Examples */ = {
+		8E0F37DA1E457FA100F402A8 /* AppBase */ = {
 			isa = PBXGroup;
 			children = (
+				8E53A7121E45B47000C790CE /* EZGLViewController.h */,
+				8E53A7131E45B47000C790CE /* EZGLViewController.m */,
+				8E0F37DB1E457FA100F402A8 /* AppDelegate.h */,
+				8E0F37DC1E457FA100F402A8 /* AppDelegate.m */,
+				8E0F37DD1E457FA100F402A8 /* Assets.xcassets */,
+				8E0F37E01E457FA100F402A8 /* Main.storyboard */,
+				8E0F37E21E457FA100F402A8 /* Info.plist */,
+				8E0F37E31E457FA100F402A8 /* main.m */,
+				8E53A7151E45B48F00C790CE /* Launch Screen.storyboard */,
 			);
-			name = Examples;
+			path = AppBase;
 			sourceTree = "<group>";
 		};
-		8E30C28E1E31EAE300D5AA1D /* Utils */ = {
+		8E0F37E41E457FA100F402A8 /* Examples */ = {
 			isa = PBXGroup;
 			children = (
-				8E30C28F1E31EAE300D5AA1D /* UIImage+GL.h */,
-				8E30C2901E31EAE300D5AA1D /* UIImage+GL.m */,
-				8E0F37D61E4485C000F402A8 /* ExampleBaseViewController.h */,
-				8E0F37D71E4485C000F402A8 /* ExampleBaseViewController.m */,
+				8E53A70C1E45AB0F00C790CE /* Terrain & Snow */,
+				8E0F38671E45A7D600F402A8 /* Animation Knight */,
+			);
+			path = Examples;
+			sourceTree = "<group>";
+		};
+		8E0F37E71E457FA100F402A8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8E0F37E81E457FA100F402A8 /* Animals */,
+				8E0F37EA1E457FA100F402A8 /* Ausfb */,
+				8E0F37F11E457FA100F402A8 /* humanoid.fbx */,
+				8E0F37F21E457FA100F402A8 /* Knight */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8E0F37E81E457FA100F402A8 /* Animals */ = {
+			isa = PBXGroup;
+			children = (
+				8E0F37E91E457FA100F402A8 /* walk_1.fbx */,
+			);
+			path = Animals;
+			sourceTree = "<group>";
+		};
+		8E0F37EA1E457FA100F402A8 /* Ausfb */ = {
+			isa = PBXGroup;
+			children = (
+				8E0F37EB1E457FA100F402A8 /* ausfb.fbx */,
+				8E0F37EC1E457FA100F402A8 /* Body 1.tga */,
+				8E0F37ED1E457FA100F402A8 /* Body 2.tga */,
+				8E0F37EE1E457FA100F402A8 /* Track.tga */,
+				8E0F37EF1E457FA100F402A8 /* Turret 2.tga */,
+				8E0F37F01E457FA100F402A8 /* Turret.tga */,
+			);
+			path = Ausfb;
+			sourceTree = "<group>";
+		};
+		8E0F37F21E457FA100F402A8 /* Knight */ = {
+			isa = PBXGroup;
+			children = (
+				8E0F37F31E457FA100F402A8 /* draw_sword_1_1.fbx */,
+				8E0F37F41E457FA100F402A8 /* draw_sword_2_1.fbx */,
+			);
+			path = Knight;
+			sourceTree = "<group>";
+		};
+		8E0F37F51E457FA100F402A8 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				8E0F37F61E457FA100F402A8 /* ELTextureImp.h */,
+				8E0F37F71E457FA100F402A8 /* ELTextureImp.mm */,
+				8E0F37F81E457FA100F402A8 /* ExampleBaseViewController.h */,
+				8E0F37F91E457FA100F402A8 /* ExampleBaseViewController.m */,
+				8E0F37FA1E457FA100F402A8 /* EZGLBaseViewController.h */,
+				8E0F37FB1E457FA100F402A8 /* EZGLBaseViewController.mm */,
+				8E0F37FC1E457FA100F402A8 /* EZGLMoveJoySticker.h */,
+				8E0F37FD1E457FA100F402A8 /* EZGLMoveJoySticker.m */,
+				8E0F37FE1E457FA100F402A8 /* EZGLMoveJoyStickerDelegate.h */,
+				8E0F37FF1E457FA100F402A8 /* UIImage+GL.h */,
+				8E0F38001E457FA100F402A8 /* UIImage+GL.m */,
+				8E53A7171E45B59200C790CE /* ExampleCollector.h */,
+				8E53A7181E45B59200C790CE /* ExampleCollector.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		8E30C2921E31ECC100D5AA1D /* Shaders */ = {
+		8E0F38271E459E4700F402A8 /* assets */ = {
 			isa = PBXGroup;
 			children = (
-				8E30C2931E31ECC100D5AA1D /* Default.fsh */,
-				8E30C2941E31ECC100D5AA1D /* Default.vsh */,
-			);
-			path = Shaders;
-			sourceTree = "<group>";
-		};
-		8E30C2A71E31F1FB00D5AA1D /* assets */ = {
-			isa = PBXGroup;
-			children = (
-				8E30C2A81E31F1FB00D5AA1D /* shaders */,
-				8E30C2C31E31F1FB00D5AA1D /* textures */,
+				8E0F38281E459E4700F402A8 /* shaders */,
+				8E0F38431E459E4800F402A8 /* textures */,
 			);
 			name = assets;
 			path = ../../../../Classes/assets;
 			sourceTree = "<group>";
 		};
-		8E30C2A81E31F1FB00D5AA1D /* shaders */ = {
+		8E0F38281E459E4700F402A8 /* shaders */ = {
 			isa = PBXGroup;
 			children = (
-				8E30C2A91E31F1FB00D5AA1D /* common */,
-				8E30C2BB1E31F1FB00D5AA1D /* frg_phong.glsl */,
-				8E30C2BC1E31F1FB00D5AA1D /* frg_phong_es.glsl */,
-				8E30C2BD1E31F1FB00D5AA1D /* frg_shadowmap.glsl */,
-				8E30C2BE1E31F1FB00D5AA1D /* frg_shadowmap_es.glsl */,
-				8E30C2BF1E31F1FB00D5AA1D /* vtx_phong.glsl */,
-				8E30C2C01E31F1FB00D5AA1D /* vtx_phong_es.glsl */,
-				8E30C2C11E31F1FB00D5AA1D /* water.glsl */,
-				8E30C2C21E31F1FB00D5AA1D /* water_es.glsl */,
+				8E0F38291E459E4700F402A8 /* common */,
+				8E0F383B1E459E4800F402A8 /* frg_phong.glsl */,
+				8E0F383C1E459E4800F402A8 /* frg_phong_es.glsl */,
+				8E0F383D1E459E4800F402A8 /* frg_shadowmap.glsl */,
+				8E0F383E1E459E4800F402A8 /* frg_shadowmap_es.glsl */,
+				8E0F383F1E459E4800F402A8 /* vtx_phong.glsl */,
+				8E0F38401E459E4800F402A8 /* vtx_phong_es.glsl */,
+				8E0F38411E459E4800F402A8 /* water.glsl */,
+				8E0F38421E459E4800F402A8 /* water_es.glsl */,
 			);
 			path = shaders;
 			sourceTree = "<group>";
 		};
-		8E30C2A91E31F1FB00D5AA1D /* common */ = {
+		8E0F38291E459E4700F402A8 /* common */ = {
 			isa = PBXGroup;
 			children = (
-				8E30C2AA1E31F1FB00D5AA1D /* cm_depth_pack.glsl */,
-				8E30C2AB1E31F1FB00D5AA1D /* cm_uniforms.glsl */,
-				8E30C2AC1E31F1FB00D5AA1D /* defines.glsl */,
-				8E30C2AD1E31F1FB00D5AA1D /* frg_base.glsl */,
-				8E30C2AE1E31F1FB00D5AA1D /* frg_camera.glsl */,
-				8E30C2AF1E31F1FB00D5AA1D /* frg_fog.glsl */,
-				8E30C2B01E31F1FB00D5AA1D /* frg_light.glsl */,
-				8E30C2B11E31F1FB00D5AA1D /* frg_normal.glsl */,
-				8E30C2B21E31F1FB00D5AA1D /* frg_projector.glsl */,
-				8E30C2B31E31F1FB00D5AA1D /* frg_shadow.glsl */,
-				8E30C2B41E31F1FB00D5AA1D /* frg_terrain.glsl */,
-				8E30C2B51E31F1FB00D5AA1D /* vtx_base.glsl */,
-				8E30C2B61E31F1FB00D5AA1D /* vtx_border_pass.glsl */,
-				8E30C2B71E31F1FB00D5AA1D /* vtx_clip_plane.glsl */,
-				8E30C2B81E31F1FB00D5AA1D /* vtx_in_out.glsl */,
-				8E30C2B91E31F1FB00D5AA1D /* vtx_simple_pass.glsl */,
-				8E30C2BA1E31F1FB00D5AA1D /* vtx_uniforms.glsl */,
+				8E0F382A1E459E4700F402A8 /* cm_depth_pack.glsl */,
+				8E0F382B1E459E4700F402A8 /* cm_uniforms.glsl */,
+				8E0F382C1E459E4700F402A8 /* defines.glsl */,
+				8E0F382D1E459E4700F402A8 /* frg_base.glsl */,
+				8E0F382E1E459E4700F402A8 /* frg_camera.glsl */,
+				8E0F382F1E459E4700F402A8 /* frg_fog.glsl */,
+				8E0F38301E459E4700F402A8 /* frg_light.glsl */,
+				8E0F38311E459E4700F402A8 /* frg_normal.glsl */,
+				8E0F38321E459E4700F402A8 /* frg_projector.glsl */,
+				8E0F38331E459E4800F402A8 /* frg_shadow.glsl */,
+				8E0F38341E459E4800F402A8 /* frg_terrain.glsl */,
+				8E0F38351E459E4800F402A8 /* vtx_base.glsl */,
+				8E0F38361E459E4800F402A8 /* vtx_border_pass.glsl */,
+				8E0F38371E459E4800F402A8 /* vtx_clip_plane.glsl */,
+				8E0F38381E459E4800F402A8 /* vtx_in_out.glsl */,
+				8E0F38391E459E4800F402A8 /* vtx_simple_pass.glsl */,
+				8E0F383A1E459E4800F402A8 /* vtx_uniforms.glsl */,
 			);
 			path = common;
 			sourceTree = "<group>";
 		};
-		8E30C2C31E31F1FB00D5AA1D /* textures */ = {
+		8E0F38431E459E4800F402A8 /* textures */ = {
 			isa = PBXGroup;
 			children = (
-				8E4564531E35EEBA00A0A22E /* stone_ground_normal.png */,
-				8E45644F1E35EC8400A0A22E /* stone_ground.png */,
-				8E45644D1E35EC1900A0A22E /* stone_ground.jpeg */,
-				8E30C2C41E31F1FB00D5AA1D /* particle_fire.png */,
-				8E30C2C51E31F1FB00D5AA1D /* particle_point.png */,
+				8E53A7241E45C9C000C790CE /* dirt.jpg */,
+				8E53A7251E45C9C000C790CE /* dirt.png */,
+				8E53A7261E45C9C000C790CE /* grass_green.jpeg */,
+				8E53A7271E45C9C000C790CE /* grass_green.png */,
+				8E53A7281E45C9C000C790CE /* grass_yellow.jpg */,
+				8E53A7291E45C9C000C790CE /* grass_yellow.png */,
+				8E53A7101E45ABA300C790CE /* island.png */,
+				8E0F38441E459E4800F402A8 /* particle_fire.png */,
+				8E0F38451E459E4800F402A8 /* particle_point.png */,
+				8E0F38461E459E4800F402A8 /* stone_ground.jpeg */,
+				8E0F38471E459E4800F402A8 /* stone_ground.png */,
+				8E0F38481E459E4800F402A8 /* stone_ground_normal.png */,
 			);
 			path = textures;
 			sourceTree = "<group>";
 		};
-		8E45633E1E359C6000A0A22E /* Models */ = {
+		8E0F38671E45A7D600F402A8 /* Animation Knight */ = {
 			isa = PBXGroup;
 			children = (
-				8E4564551E360C0300A0A22E /* Animals */,
-				8E4564571E360C0300A0A22E /* Ausfb */,
-				8E45645E1E360C0300A0A22E /* Knight */,
+				8E0F37E51E457FA100F402A8 /* GameViewController.h */,
+				8E0F37E61E457FA100F402A8 /* GameViewController.mm */,
 			);
-			path = Models;
+			name = "Animation Knight";
 			sourceTree = "<group>";
 		};
-		8E4564551E360C0300A0A22E /* Animals */ = {
+		8E53A70C1E45AB0F00C790CE /* Terrain & Snow */ = {
 			isa = PBXGroup;
 			children = (
-				8E4564561E360C0300A0A22E /* walk_1.fbx */,
+				8E53A70D1E45AB0F00C790CE /* TerrainSnowViewController.h */,
+				8E53A70E1E45AB0F00C790CE /* TerrainSnowViewController.mm */,
 			);
-			path = Animals;
-			sourceTree = "<group>";
-		};
-		8E4564571E360C0300A0A22E /* Ausfb */ = {
-			isa = PBXGroup;
-			children = (
-				8E4564581E360C0300A0A22E /* ausfb.fbx */,
-				8E4564591E360C0300A0A22E /* Body 1.tga */,
-				8E45645A1E360C0300A0A22E /* Body 2.tga */,
-				8E45645B1E360C0300A0A22E /* Track.tga */,
-				8E45645C1E360C0300A0A22E /* Turret 2.tga */,
-				8E45645D1E360C0300A0A22E /* Turret.tga */,
-			);
-			path = Ausfb;
-			sourceTree = "<group>";
-		};
-		8E45645E1E360C0300A0A22E /* Knight */ = {
-			isa = PBXGroup;
-			children = (
-				8E45645F1E360C0300A0A22E /* draw_sword_1_1.fbx */,
-				8E4564601E360C0300A0A22E /* draw_sword_2_1.fbx */,
-			);
-			path = Knight;
+			path = "Terrain & Snow";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -441,7 +463,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				8E03AEE61E30F4F300008F82 /* PBXTargetDependency */,
 			);
 			name = EZGL;
 			productName = EZGL;
@@ -523,12 +544,6 @@
 			mainGroup = 8E03AA721E30EBDA00008F82;
 			productRefGroup = 8E03AA7C1E30EBDA00008F82 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 8E03AEE01E30F4E900008F82 /* Products */;
-					ProjectRef = 8E03AEDF1E30F4E900008F82 /* EZGLSDK.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				8E03AA7A1E30EBDA00008F82 /* EZGL */,
@@ -538,67 +553,62 @@
 		};
 /* End PBXProject section */
 
-/* Begin PBXReferenceProxy section */
-		8E03AEE41E30F4E900008F82 /* libEZGLSDK.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libEZGLSDK.a;
-			remoteRef = 8E03AEE31E30F4E900008F82 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
-
 /* Begin PBXResourcesBuildPhase section */
 		8E03AA791E30EBDA00008F82 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8E30C2CC1E31F1FB00D5AA1D /* frg_light.glsl in Resources */,
-				8E30C2C61E31F1FB00D5AA1D /* cm_depth_pack.glsl in Resources */,
-				8E30C2E01E31F1FB00D5AA1D /* particle_point.png in Resources */,
-				8E30C2E41E320AB100D5AA1D /* humanoid.fbx in Resources */,
-				8E03AA8D1E30EBDA00008F82 /* Main.storyboard in Resources */,
-				8E30C2DF1E31F1FB00D5AA1D /* particle_fire.png in Resources */,
-				8E30C2DD1E31F1FB00D5AA1D /* water.glsl in Resources */,
-				8E30C2D01E31F1FB00D5AA1D /* frg_terrain.glsl in Resources */,
-				8E30C2C91E31F1FB00D5AA1D /* frg_base.glsl in Resources */,
-				8E4564501E35EC8400A0A22E /* stone_ground.png in Resources */,
-				8E4564661E360C0300A0A22E /* Turret 2.tga in Resources */,
-				8E4564691E360C0300A0A22E /* draw_sword_2_1.fbx in Resources */,
-				8E30C2D61E31F1FB00D5AA1D /* vtx_uniforms.glsl in Resources */,
-				8E30C2CE1E31F1FB00D5AA1D /* frg_projector.glsl in Resources */,
-				8E30C2CB1E31F1FB00D5AA1D /* frg_fog.glsl in Resources */,
-				8E30C2C81E31F1FB00D5AA1D /* defines.glsl in Resources */,
-				8E30C2D71E31F1FB00D5AA1D /* frg_phong.glsl in Resources */,
-				8E30C2D81E31F1FB00D5AA1D /* frg_phong_es.glsl in Resources */,
-				8E30C2CA1E31F1FB00D5AA1D /* frg_camera.glsl in Resources */,
-				8E30C2E21E31F63B00D5AA1D /* wood_01.jpg in Resources */,
-				8E45644E1E35EC1900A0A22E /* stone_ground.jpeg in Resources */,
-				8E4564681E360C0300A0A22E /* draw_sword_1_1.fbx in Resources */,
-				8E4564631E360C0300A0A22E /* Body 1.tga in Resources */,
-				8E30C2D21E31F1FB00D5AA1D /* vtx_border_pass.glsl in Resources */,
-				8E30C2CF1E31F1FB00D5AA1D /* frg_shadow.glsl in Resources */,
-				8E30C2DA1E31F1FB00D5AA1D /* frg_shadowmap_es.glsl in Resources */,
-				8E30C2951E31ECC100D5AA1D /* Default.fsh in Resources */,
-				8E30C2DE1E31F1FB00D5AA1D /* water_es.glsl in Resources */,
-				8E30C2D11E31F1FB00D5AA1D /* vtx_base.glsl in Resources */,
-				8E4564611E360C0300A0A22E /* walk_1.fbx in Resources */,
-				8E03AA8F1E30EBDA00008F82 /* Assets.xcassets in Resources */,
-				8E4564641E360C0300A0A22E /* Body 2.tga in Resources */,
-				8E30C2D41E31F1FB00D5AA1D /* vtx_in_out.glsl in Resources */,
-				8E4564651E360C0300A0A22E /* Track.tga in Resources */,
-				8E30C2C71E31F1FB00D5AA1D /* cm_uniforms.glsl in Resources */,
-				8E30C2D51E31F1FB00D5AA1D /* vtx_simple_pass.glsl in Resources */,
-				8E30C2D31E31F1FB00D5AA1D /* vtx_clip_plane.glsl in Resources */,
-				8E30C2CD1E31F1FB00D5AA1D /* frg_normal.glsl in Resources */,
-				8E30C2DB1E31F1FB00D5AA1D /* vtx_phong.glsl in Resources */,
-				8E4564541E35EEBA00A0A22E /* stone_ground_normal.png in Resources */,
-				8E4564671E360C0300A0A22E /* Turret.tga in Resources */,
-				8E30C2961E31ECC100D5AA1D /* Default.vsh in Resources */,
-				8E30C2DC1E31F1FB00D5AA1D /* vtx_phong_es.glsl in Resources */,
-				8E30C2D91E31F1FB00D5AA1D /* frg_shadowmap.glsl in Resources */,
-				8E4564621E360C0300A0A22E /* ausfb.fbx in Resources */,
-				8E03AA921E30EBDA00008F82 /* LaunchScreen.storyboard in Resources */,
+				8E0F38491E459E4800F402A8 /* cm_depth_pack.glsl in Resources */,
+				8E0F385F1E459E4800F402A8 /* vtx_phong_es.glsl in Resources */,
+				8E0F38101E457FA100F402A8 /* draw_sword_1_1.fbx in Resources */,
+				8E0F384C1E459E4800F402A8 /* frg_base.glsl in Resources */,
+				8E0F384F1E459E4800F402A8 /* frg_light.glsl in Resources */,
+				8E0F38661E459E4800F402A8 /* stone_ground_normal.png in Resources */,
+				8E53A72D1E45C9C000C790CE /* grass_green.png in Resources */,
+				8E0F38651E459E4800F402A8 /* stone_ground.png in Resources */,
+				8E0F385B1E459E4800F402A8 /* frg_phong_es.glsl in Resources */,
+				8E0F384A1E459E4800F402A8 /* cm_uniforms.glsl in Resources */,
+				8E0F38601E459E4800F402A8 /* water.glsl in Resources */,
+				8E0F385D1E459E4800F402A8 /* frg_shadowmap_es.glsl in Resources */,
+				8E0F38051E457FA100F402A8 /* Info.plist in Resources */,
+				8E53A72B1E45C9C000C790CE /* dirt.png in Resources */,
+				8E0F38041E457FA100F402A8 /* Main.storyboard in Resources */,
+				8E0F38581E459E4800F402A8 /* vtx_simple_pass.glsl in Resources */,
+				8E0F385A1E459E4800F402A8 /* frg_phong.glsl in Resources */,
+				8E0F38021E457FA100F402A8 /* Assets.xcassets in Resources */,
+				8E53A72A1E45C9C000C790CE /* dirt.jpg in Resources */,
+				8E0F38641E459E4800F402A8 /* stone_ground.jpeg in Resources */,
+				8E0F38631E459E4800F402A8 /* particle_point.png in Resources */,
+				8E53A72C1E45C9C000C790CE /* grass_green.jpeg in Resources */,
+				8E0F38501E459E4800F402A8 /* frg_normal.glsl in Resources */,
+				8E0F384D1E459E4800F402A8 /* frg_camera.glsl in Resources */,
+				8E0F38081E457FA100F402A8 /* walk_1.fbx in Resources */,
+				8E0F38521E459E4800F402A8 /* frg_shadow.glsl in Resources */,
+				8E0F38591E459E4800F402A8 /* vtx_uniforms.glsl in Resources */,
+				8E0F380B1E457FA100F402A8 /* Body 2.tga in Resources */,
+				8E53A72F1E45C9C000C790CE /* grass_yellow.png in Resources */,
+				8E0F384E1E459E4800F402A8 /* frg_fog.glsl in Resources */,
+				8E0F38511E459E4800F402A8 /* frg_projector.glsl in Resources */,
+				8E53A72E1E45C9C000C790CE /* grass_yellow.jpg in Resources */,
+				8E0F38561E459E4800F402A8 /* vtx_clip_plane.glsl in Resources */,
+				8E0F385C1E459E4800F402A8 /* frg_shadowmap.glsl in Resources */,
+				8E0F380E1E457FA100F402A8 /* Turret.tga in Resources */,
+				8E0F385E1E459E4800F402A8 /* vtx_phong.glsl in Resources */,
+				8E0F38091E457FA100F402A8 /* ausfb.fbx in Resources */,
+				8E0F38531E459E4800F402A8 /* frg_terrain.glsl in Resources */,
+				8E0F38551E459E4800F402A8 /* vtx_border_pass.glsl in Resources */,
+				8E0F380F1E457FA100F402A8 /* humanoid.fbx in Resources */,
+				8E0F38541E459E4800F402A8 /* vtx_base.glsl in Resources */,
+				8E0F38111E457FA100F402A8 /* draw_sword_2_1.fbx in Resources */,
+				8E0F38611E459E4800F402A8 /* water_es.glsl in Resources */,
+				8E0F384B1E459E4800F402A8 /* defines.glsl in Resources */,
+				8E0F38571E459E4800F402A8 /* vtx_in_out.glsl in Resources */,
+				8E0F380D1E457FA100F402A8 /* Turret 2.tga in Resources */,
+				8E0F380C1E457FA100F402A8 /* Track.tga in Resources */,
+				8E0F38621E459E4800F402A8 /* particle_fire.png in Resources */,
+				8E53A7111E45ABA300C790CE /* island.png in Resources */,
+				8E0F380A1E457FA100F402A8 /* Body 1.tga in Resources */,
+				8E53A7161E45B48F00C790CE /* Launch Screen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -623,12 +633,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8E30C2911E31EAE300D5AA1D /* UIImage+GL.m in Sources */,
-				8E03AA831E30EBDA00008F82 /* AppDelegate.m in Sources */,
-				8E0F37D81E4485C000F402A8 /* ExampleBaseViewController.m in Sources */,
-				8E30C28D1E31EA2800D5AA1D /* ELTextureImp.mm in Sources */,
-				8E03AA8A1E30EBDA00008F82 /* GameViewController.mm in Sources */,
-				8E03AA801E30EBDA00008F82 /* main.m in Sources */,
+				8E0F38071E457FA100F402A8 /* GameViewController.mm in Sources */,
+				8E0F38061E457FA100F402A8 /* main.m in Sources */,
+				8E0F38151E457FA100F402A8 /* EZGLMoveJoySticker.m in Sources */,
+				8E0F38011E457FA100F402A8 /* AppDelegate.m in Sources */,
+				8E53A7141E45B47000C790CE /* EZGLViewController.m in Sources */,
+				8E0F38141E457FA100F402A8 /* EZGLBaseViewController.mm in Sources */,
+				8E0F38121E457FA100F402A8 /* ELTextureImp.mm in Sources */,
+				8E53A70F1E45AB0F00C790CE /* TerrainSnowViewController.mm in Sources */,
+				8E53A7191E45B59200C790CE /* ExampleCollector.m in Sources */,
+				8E0F38161E457FA100F402A8 /* UIImage+GL.m in Sources */,
+				8E0F38131E457FA100F402A8 /* ExampleBaseViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -661,28 +676,15 @@
 			target = 8E03AA7A1E30EBDA00008F82 /* EZGL */;
 			targetProxy = 8E03AAA41E30EBDA00008F82 /* PBXContainerItemProxy */;
 		};
-		8E03AEE61E30F4F300008F82 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = EZGLSDK;
-			targetProxy = 8E03AEE51E30F4F300008F82 /* PBXContainerItemProxy */;
-		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		8E03AA8B1E30EBDA00008F82 /* Main.storyboard */ = {
+		8E0F37E01E457FA100F402A8 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				8E03AA8C1E30EBDA00008F82 /* Base */,
+				8E0F37E11E457FA100F402A8 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		8E03AA901E30EBDA00008F82 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8E03AA911E30EBDA00008F82 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -792,7 +794,7 @@
 					"/Applications/Autodesk/FBX\\ SDK/2015.1/include",
 					"${SRCROOT}/../../../libs/bullet",
 				);
-				INFOPLIST_FILE = EZGL/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/EZGL/AppBase/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "/Applications/Autodesk/FBX\\ SDK/2015.1/lib/ios-i386/debug";
 				ONLY_ACTIVE_ARCH = YES;
@@ -818,7 +820,7 @@
 					"/Applications/Autodesk/FBX\\ SDK/2015.1/include",
 					"${SRCROOT}/../../../libs/bullet",
 				);
-				INFOPLIST_FILE = EZGL/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/EZGL/AppBase/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "/Applications/Autodesk/FBX\\ SDK/2015.1/lib/ios-i386/debug";
 				ONLY_ACTIVE_ARCH = NO;

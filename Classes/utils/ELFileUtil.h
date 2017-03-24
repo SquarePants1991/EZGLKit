@@ -5,7 +5,7 @@
 #ifndef EZGL_ELFILEUTIL_H
 #define EZGL_ELFILEUTIL_H
 
-#include "EZGLBase.h"
+#include "../EZGLBase.h"
 
 class ELFileUtil {
 public:

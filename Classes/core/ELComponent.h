@@ -5,7 +5,7 @@
 #ifndef EZGL_ELCOMPONENT_H
 #define EZGL_ELCOMPONENT_H
 
-#include "EZGLBase.h"
+#include "../EZGLBase.h"
 #include "ELNode.h"
 
 class ELGameObject;

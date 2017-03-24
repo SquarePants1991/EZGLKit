@@ -5,8 +5,8 @@
 #ifndef EZGL_ELPARTICAL_H
 #define EZGL_ELPARTICAL_H
 
-#include "EZGLBase.h"
-#include "types/EZGLTypes.h"
+#include "../EZGLBase.h"
+#include "../types/EZGLTypes.h"
 
 class ELPartical {
 public:

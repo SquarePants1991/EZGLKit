@@ -2,7 +2,7 @@
 // Created by wang yang on 2016/11/27.
 //
 
-#include <core/ELGameObject.h>
+#include "../../core/ELGameObject.h"
 #include "ELCubeGeometry.h"
 
 
@@ -16,7 +16,7 @@ ELCubeGeometry::ELCubeGeometry(ELVector3 size, bool smooth) : ELVertexBufferGeom
 void ELCubeGeometry::fillVertexBuffer(ELGeometryVertexBuffer *vertexBuffer) {
     // 柱子
     int segments = 4;
-    float uvFactor = 80.0;
+    float uvFactor = 80;
     // x 轴上的面
     ELGeometryRect rectXLeft = {
             {-size.x / 2, size.y / 2, size.z / 2},

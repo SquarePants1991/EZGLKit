@@ -5,8 +5,8 @@
 #ifndef EZGL_ELVERTEXBUFFERGEOMETRY_H
 #define EZGL_ELVERTEXBUFFERGEOMETRY_H
 
-#include "component/ELGeometry.h"
-#include "utils/ELGeometryVertexBuffer.h"
+#include "../ELGeometry.h"
+#include "../../utils/ELGeometryVertexBuffer.h"
 
 class ELGeometryVertexBufferProvider : public ELNode {
 public:

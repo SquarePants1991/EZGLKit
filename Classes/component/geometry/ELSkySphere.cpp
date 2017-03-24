@@ -3,7 +3,7 @@
 //
 
 #include "ELSkySphere.h"
-#include "core/ELEffect.h"
+#include "../../core/ELEffect.h"
 
 ELSkySphere::ELSkySphere(ELFloat radius) :
         radius(radius),

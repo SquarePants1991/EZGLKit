@@ -5,7 +5,7 @@
 #ifndef EZGL_ELEXPLOSION_H
 #define EZGL_ELEXPLOSION_H
 
-#include "core/ELNode.h"
+#include "../core/ELNode.h"
 
 class ELWorld;
 

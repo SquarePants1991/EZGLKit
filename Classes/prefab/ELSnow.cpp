@@ -4,19 +4,19 @@
 
 #include "ELSnow.h"
 
-#include "core/ELTexture.h"
-#include "core/ELGameObject.h"
-#include "core/ELWorld.h"
-#include "component/ELParticleSystem.h"
-#include "utils/ELAssets.h"
+#include "../core/ELTexture.h"
+#include "../core/ELGameObject.h"
+#include "../core/ELWorld.h"
+#include "../component/ELParticleSystem.h"
+#include "../utils/ELAssets.h"
 
-ELSnow::ELSnow(ELWorld *world, ELVector3 position) {
+ELSnow::ELSnow(ELWorld *world, ELVector3 position, ELVector2 size) {
     GLuint diffuseMap = ELTexture::texture(ELAssets::shared()->findFile("particle_point.png"))->value;
     ELGameObject *gameObject = new ELGameObject(world);
     world->addNode(gameObject);
     world->addNode(this);
     ELParticleSystem *ps = new ELParticleSystem();
-    gameObject->transform->position = position;
+//    gameObject->transform->position = position;
     ps->materials[0].diffuseMap = diffuseMap;
     gameObject->addComponent(ps);
     ELParticleSystemData data = ELParticleSystemDataDefault();
@@ -27,8 +27,8 @@ ELSnow::ELSnow(ELWorld *world, ELVector3 position) {
     data.velocity = ELVector3Make(0.0, -10 ,0.0);
     data.velocityRandomRangeBegin = ELVector3Make(-0.6,0,-0.6);
     data.velocityRandomRangeEnd = ELVector3Make(0.6,-3,0.6);
-    data.positionRandomRangeBegin = ELVector3Make(-200,200,-200);
-    data.positionRandomRangeEnd = ELVector3Make(200,280,200);
+    data.positionRandomRangeBegin = ELVector3Make(-size.x / 2,position.y,-size.y / 2);
+    data.positionRandomRangeEnd = ELVector3Make(size.x / 2,position.y * 1.2,size.y / 2);
     data.sizeBegin = 1.0;
     data.sizeBeginRandomRangeBegin = 0;
     data.sizeBeginRandomRangeEnd = 2;

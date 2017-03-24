@@ -5,8 +5,29 @@
 #ifndef EZGL_ELFBXVERTEXBUFFERPROVIDER_H
 #define EZGL_ELFBXVERTEXBUFFERPROVIDER_H
 
-#include "component/geometry/ELVertexBufferGeometry.h"
-#include "fbxsdk.h"
+#include "../component/geometry/ELVertexBufferGeometry.h"
+
+namespace fbxsdk_2015_1 {
+    class FbxMesh;
+
+    class FbxScene;
+
+    class FbxAMatrix;
+
+    class FbxTime;
+
+    class FbxPose;
+
+    class FbxCluster;
+
+    class FbxNode;
+
+    class FbxAnimLayer;
+
+    class FbxVector4;
+};
+
+using namespace fbxsdk_2015_1;
 
 class ELFBXVertexBufferProvider : public ELGeometryVertexBufferProvider {
 public:
@@ -26,7 +47,7 @@ private:
     long long uvCacheAvaliableIndex;
     void loadNodes();
     void computeShapeDeformation(FbxMesh* pMesh, FbxTime& pTime, FbxAnimLayer * pAnimLayer, FbxVector4* pVertexArray);
-    void computerLinearDeformation(FbxAMatrix& pGlobalPosition, FbxMesh *mesh, FbxTime time, FbxVector4 *vertices);
+    void computerLinearDeformation(FbxAMatrix& pGlobalPosition, FbxMesh *mesh, FbxTime& time, FbxVector4 *vertices);
     void computerClusterDeformation(FbxAMatrix& pGlobalPosition,FbxTime &pTime, FbxPose *pPose, FbxMesh *pMesh, FbxCluster *pCluster, FbxAMatrix& pVertexTransformMatrix);
     void loadVerticesToVertexBuffer(FbxMesh *mesh, FbxVector4 *pVertices, ELGeometryVertexBuffer *vertexBuffer);
     void addUVToCache(int polyIndex,int pointIndex, ELVector2 uv);

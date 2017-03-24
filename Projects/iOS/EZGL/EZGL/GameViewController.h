@@ -6,8 +6,8 @@
 //  Copyright © 2017年 wangyang. All rights reserved.
 //
 
-#import "ExampleBaseViewController.h"
+#import "EZGLBaseViewController.h"
 
-@interface GameViewController : ExampleBaseViewController
+@interface GameViewController : EZGLBaseViewController
     
 @end

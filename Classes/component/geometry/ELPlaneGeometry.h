@@ -6,7 +6,7 @@
 #define EZGL_ELPLANGEOMETRY_H
 
 #include "ELVertexBufferGeometry.h"
-#include "utils/ELGeometryVertexBuffer.h"
+#include "../../utils/ELGeometryVertexBuffer.h"
 
 class ELPlaneGeometry : public ELVertexBufferGeometry {
 public:

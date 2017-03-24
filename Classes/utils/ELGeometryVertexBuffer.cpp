@@ -6,7 +6,7 @@
 #include <string>
 #include <vector>
 #include <map>
-#include <types/ELGeometryTypes.h>
+#include "../types/ELGeometryTypes.h"
 #include "ELGeometryVertexBuffer.h"
 
 ELGeometryVertexBuffer::ELGeometryVertexBuffer() : supportColorAttrib(false), vbo(-1) {
@@ -91,7 +91,9 @@ void ELGeometryVertexBuffer::append(ELGeometryRect rect) {
     vertex1_3.tnx = tangent1_3.x;       vertex1_3.tny = tangent1_3.y;       vertex1_3.tnz = tangent1_3.z;
     vertex1_3.btnx = bitangent1_3.x;    vertex1_3.btny = bitangent1_3.y;    vertex1_3.btnz = bitangent1_3.z;
 
-
+    vertex1_1.matID = 0;
+    vertex1_2.matID = 0;
+    vertex1_3.matID = 0;
     append(vertex1_1);
     append(vertex1_2);
     append(vertex1_3);
@@ -120,6 +122,10 @@ void ELGeometryVertexBuffer::append(ELGeometryRect rect) {
     vertex2_3.tnx = tangent2_3.x;       vertex2_3.tny = tangent2_3.y;       vertex2_3.tnz = tangent2_3.z;
     vertex2_3.btnx = bitangent2_3.x;    vertex2_3.btny = bitangent2_3.y;    vertex2_3.btnz = bitangent2_3.z;
 
+    
+    vertex2_1.matID = 0;
+    vertex2_2.matID = 0;
+    vertex2_3.matID = 0;
     append(vertex2_1);
     append(vertex2_2);
     append(vertex2_3);

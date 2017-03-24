@@ -5,12 +5,13 @@
 #include "ELFBXLoader.h"
 #include "ELAssets.h"
 #include "ELGeometryVertexBuffer.h"
-#include "types/EZGLVectorTypes.h"
-#include "types/ELGeometryTypes.h"
-#include "component/geometry/ELMeshGeometry.h"
+#include "../types/EZGLVectorTypes.h"
+#include "../types/ELGeometryTypes.h"
+#include "../component/geometry/ELMeshGeometry.h"
 #include "ELFbxUtil.h"
 #include "ELFBXVertexBufferProvider.h"
-#include "core/ELTexture.h"
+#include "../core/ELTexture.h"
+#include <fbxsdk.h>
 
 FbxManager * ELFBXLoader::fbxManager = NULL;
 

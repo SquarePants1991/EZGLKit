@@ -231,6 +231,7 @@
 		8E03AED91E30EDBC00008F82 /* lzio.cc in Sources */ = {isa = PBXBuildFile; fileRef = 8E03AE151E30EDBC00008F82 /* lzio.cc */; };
 		8E03AEDE1E30EDBC00008F82 /* tiny_obj_loader.cc in Sources */ = {isa = PBXBuildFile; fileRef = 8E03AE251E30EDBC00008F82 /* tiny_obj_loader.cc */; };
 		8E03AEEF1E30FC0E00008F82 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E03AEEE1E30FC0E00008F82 /* OpenGLES.framework */; };
+		8E1965B71E7B864300C5EFC4 /* EL2DPlane.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8E1965B51E7B864300C5EFC4 /* EL2DPlane.cpp */; };
 		8E30C2861E31E8D600D5AA1D /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E30C2851E31E8D600D5AA1D /* GLKit.framework */; };
 		8E30C2881E31E8DA00D5AA1D /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E30C2871E31E8DA00D5AA1D /* CoreFoundation.framework */; };
 		8E30C28A1E31E8E800D5AA1D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E30C2891E31E8E800D5AA1D /* Foundation.framework */; };
@@ -820,6 +821,10 @@
 		8E03AE251E30EDBC00008F82 /* tiny_obj_loader.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tiny_obj_loader.cc; sourceTree = "<group>"; };
 		8E03AE261E30EDBC00008F82 /* tiny_obj_loader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tiny_obj_loader.h; sourceTree = "<group>"; };
 		8E03AEEE1E30FC0E00008F82 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		8E1965B51E7B864300C5EFC4 /* EL2DPlane.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EL2DPlane.cpp; sourceTree = "<group>"; };
+		8E1965B61E7B864300C5EFC4 /* EL2DPlane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EL2DPlane.h; sourceTree = "<group>"; };
+		8E1965B81E7BC71E00C5EFC4 /* vtx_video_disp.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vtx_video_disp.glsl; sourceTree = "<group>"; };
+		8E1965B91E7BC72B00C5EFC4 /* frg_video_disp.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = frg_video_disp.glsl; sourceTree = "<group>"; };
 		8E30C2851E31E8D600D5AA1D /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		8E30C2871E31E8DA00D5AA1D /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		8E30C2891E31E8E800D5AA1D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -828,6 +833,16 @@
 		8E30C29C1E31F14F00D5AA1D /* frg_shadowmap_es.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = frg_shadowmap_es.glsl; sourceTree = "<group>"; };
 		8E30C29D1E31F14F00D5AA1D /* vtx_phong_es.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vtx_phong_es.glsl; sourceTree = "<group>"; };
 		8E30C29E1E31F14F00D5AA1D /* water_es.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = water_es.glsl; sourceTree = "<group>"; };
+		8E53A71A1E45C75500C790CE /* dirt.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dirt.jpg; sourceTree = "<group>"; };
+		8E53A71B1E45C75500C790CE /* grass_green.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = grass_green.jpeg; sourceTree = "<group>"; };
+		8E53A71C1E45C75500C790CE /* grass_yellow.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = grass_yellow.jpg; sourceTree = "<group>"; };
+		8E53A71D1E45C75500C790CE /* island.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = island.png; sourceTree = "<group>"; };
+		8E53A71E1E45C75500C790CE /* stone_ground_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stone_ground_normal.png; sourceTree = "<group>"; };
+		8E53A71F1E45C75500C790CE /* stone_ground.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = stone_ground.jpeg; sourceTree = "<group>"; };
+		8E53A7201E45C75500C790CE /* stone_ground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stone_ground.png; sourceTree = "<group>"; };
+		8E53A7211E45C81200C790CE /* dirt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dirt.png; sourceTree = "<group>"; };
+		8E53A7221E45C81200C790CE /* grass_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grass_green.png; sourceTree = "<group>"; };
+		8E53A7231E45C81200C790CE /* grass_yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grass_yellow.png; sourceTree = "<group>"; };
 		8E5B54E61E321D610082AE9F /* libfbxsdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfbxsdk.a; path = "../../../../../../../../../Applications/Autodesk/FBX SDK/2015.1/lib/ios-armv7/debug/libfbxsdk.a"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -909,6 +924,8 @@
 				8E30C29C1E31F14F00D5AA1D /* frg_shadowmap_es.glsl */,
 				8E30C29D1E31F14F00D5AA1D /* vtx_phong_es.glsl */,
 				8E30C29E1E31F14F00D5AA1D /* water_es.glsl */,
+				8E1965B81E7BC71E00C5EFC4 /* vtx_video_disp.glsl */,
+				8E1965B91E7BC72B00C5EFC4 /* frg_video_disp.glsl */,
 			);
 			path = shaders;
 			sourceTree = "<group>";
@@ -940,6 +957,16 @@
 		8E03ABA31E30EDA800008F82 /* textures */ = {
 			isa = PBXGroup;
 			children = (
+				8E53A7211E45C81200C790CE /* dirt.png */,
+				8E53A7221E45C81200C790CE /* grass_green.png */,
+				8E53A7231E45C81200C790CE /* grass_yellow.png */,
+				8E53A71A1E45C75500C790CE /* dirt.jpg */,
+				8E53A71B1E45C75500C790CE /* grass_green.jpeg */,
+				8E53A71C1E45C75500C790CE /* grass_yellow.jpg */,
+				8E53A71D1E45C75500C790CE /* island.png */,
+				8E53A71E1E45C75500C790CE /* stone_ground_normal.png */,
+				8E53A71F1E45C75500C790CE /* stone_ground.jpeg */,
+				8E53A7201E45C75500C790CE /* stone_ground.png */,
 				8E03ABA41E30EDA800008F82 /* particle_fire.png */,
 				8E03ABA51E30EDA800008F82 /* particle_point.png */,
 			);
@@ -975,6 +1002,8 @@
 		8E03ABB91E30EDA800008F82 /* geometry */ = {
 			isa = PBXGroup;
 			children = (
+				8E1965B51E7B864300C5EFC4 /* EL2DPlane.cpp */,
+				8E1965B61E7B864300C5EFC4 /* EL2DPlane.h */,
 				8E03ABBA1E30EDA800008F82 /* ELCubeGeometry.cpp */,
 				8E03ABBB1E30EDA800008F82 /* ELCubeGeometry.h */,
 				8E03ABBC1E30EDA800008F82 /* ELMeshGeometry.cpp */,
@@ -1857,6 +1886,7 @@
 				8E03AE9B1E30EDBC00008F82 /* btMultiBodyConstraint.cpp in Sources */,
 				8E03AC2E1E30EDA800008F82 /* ELLight.cpp in Sources */,
 				8E03AE391E30EDBC00008F82 /* btCompoundCollisionAlgorithm.cpp in Sources */,
+				8E1965B71E7B864300C5EFC4 /* EL2DPlane.cpp in Sources */,
 				8E03AE6F1E30EDBC00008F82 /* btContactProcessing.cpp in Sources */,
 				8E03AE361E30EDBC00008F82 /* btCollisionObject.cpp in Sources */,
 				8E03AC1E1E30EDA800008F82 /* ELRigidBody.cpp in Sources */,

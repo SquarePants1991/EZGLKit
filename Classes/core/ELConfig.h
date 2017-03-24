@@ -5,8 +5,8 @@
 #ifndef EZGL_ELCONFIG_H
 #define EZGL_ELCONFIG_H
 
-#include "types/EZGLBasicTypes.h"
-#include "EZGLBase.h"
+#include "../types/EZGLBasicTypes.h"
+#include "../EZGLBase.h"
 
 class ELConfig {
 public:

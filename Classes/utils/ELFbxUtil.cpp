@@ -4,6 +4,8 @@
 
 #include "ELFbxUtil.h"
 
+#include <fbxsdk.h>
+
 // Scale all the elements of a matrix.
 void FbxAMatrixScale(FbxAMatrix& pMatrix, double scalar) {
     int i,j;

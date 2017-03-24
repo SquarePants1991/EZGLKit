@@ -5,7 +5,7 @@
 #ifndef EZGL_ELPROGRAM_H
 #define EZGL_ELPROGRAM_H
 
-#include "EZGLBase.h"
+#include "../EZGLBase.h"
 
 class ELProgram {
 public:

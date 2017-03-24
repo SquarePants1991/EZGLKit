@@ -5,7 +5,7 @@
 #ifndef EZGL_ELLIGHT_H
 #define EZGL_ELLIGHT_H
 
-#include "EZGLBase.h"
+#include "../EZGLBase.h"
 #include "ELNode.h"
 #include "ELCamera.h"
 

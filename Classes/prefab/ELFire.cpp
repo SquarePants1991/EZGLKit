@@ -4,11 +4,11 @@
 
 #include "ELFire.h"
 
-#include "core/ELTexture.h"
-#include "core/ELGameObject.h"
-#include "core/ELWorld.h"
-#include "component/ELParticleSystem.h"
-#include "utils/ELAssets.h"
+#include "../core/ELTexture.h"
+#include "../core/ELGameObject.h"
+#include "../core/ELWorld.h"
+#include "../component/ELParticleSystem.h"
+#include "../utils/ELAssets.h"
 
 ELFire::ELFire(ELWorld *world, ELVector3 position) {
     GLuint diffuseMap = ELTexture::texture(ELAssets::shared()->findFile("particle_fire.png"))->value;

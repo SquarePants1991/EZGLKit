@@ -3,12 +3,12 @@
 //
 
 #include <stdlib.h>
-#include "SOIL.h"
-#include "core/ELEffect.h"
-#include "core/ELGameObject.h"
+#include "../core/ELTexture.h"
+#include "../core/ELEffect.h"
+#include "../core/ELGameObject.h"
 
 #include "ELTerrain.h"
-#include "utils/ELGeometryVertexBuffer.h"
+#include "../utils/ELGeometryVertexBuffer.h"
 
 ELTerrain::ELTerrain(ELVector2 size, std::string heightMapPath) :
         size(size),
@@ -18,9 +18,11 @@ ELTerrain::ELTerrain(ELVector2 size, std::string heightMapPath) :
         maxHeight(100),
         imageData(NULL)
 {
-    int channels;
     this->size = size;
-    imageData = SOIL_load_image(heightMapPath.c_str(),&mapWidth,&mapHeight,&channels,SOIL_LOAD_RGBA);
+    ELTexture *texture = ELTexture::texture(heightMapPath.c_str(), true);
+    imageData = texture->imgData;
+    mapWidth = texture->width;
+    mapHeight = texture->height;
 }
 
 ELTerrain::ELTerrain(ELVector2 size, std::string heightMapPath, ELFloat maxHeight) :
@@ -33,8 +35,10 @@ ELTerrain::ELTerrain(ELVector2 size, std::string heightMapPath, ELFloat maxHeigh
 {
     this->size = size;
     this->maxHeight = maxHeight;
-    int channels;
-    imageData = SOIL_load_image(heightMapPath.c_str(),&mapWidth,&mapHeight,&channels,SOIL_LOAD_RGBA);
+    ELTexture *texture = ELTexture::texture(heightMapPath.c_str(), true);
+    imageData = texture->imgData;
+    mapWidth = texture->width;
+    mapHeight = texture->height;
 }
 
 ELTerrain::~ELTerrain() {
@@ -110,17 +114,11 @@ ELGeometryData ELTerrain::generateData() {
         genMap();
     }
 
-    GLfloat *vertex = (GLfloat *)vertexBuffer->data();
-
-    ELGeometryData data;
-    glGenBuffers(1, &data.vertexVBO);
-    glBindBuffer(GL_ARRAY_BUFFER, data.vertexVBO);
-    glBufferData(GL_ARRAY_BUFFER, vertexBuffer->rawLength(), vertex, GL_DYNAMIC_DRAW);
-    glBindBuffer(GL_ARRAY_BUFFER, 0);
-
-    data.vertexCount = vertexBuffer->rawLength() / sizeof(ELGeometryData);
+    data.vertexVBO = vertexBuffer->getVBO();
+    data.vertexCount = vertexBuffer->rawLength() / sizeof(ELGeometryVertex);
     data.vertexStride = sizeof(ELGeometryVertex);
     data.supportIndiceVBO = false;
+    data.supportColorAttrib = false;
     return data;
 }
 

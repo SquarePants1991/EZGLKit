@@ -5,8 +5,8 @@
 #include "ELWorld.h"
 #include "ELLight.h"
 #include "ELGameObject.h"
-#include "utils/ELAssets.h"
-#include "utils/ELGLState.h"
+#include "../utils/ELAssets.h"
+#include "../utils/ELGLState.h"
 #include "ELRenderPass.h"
 
 #define UseDepthFramebuffer 1
@@ -50,7 +50,10 @@ void ELWorld::render() {
 void ELWorld::renderScene() {
     activeEffect("render_scene");
     activeCamera("main");
-//    glViewport(0,0,fbWidth,fbHeight);
+    if (viewport.get() != NULL) {
+        glViewport((*viewport)->x, (*viewport)->y, (*viewport)->z, (*viewport)->w);
+    }
+    
     glClearColor(0.6f, 0.6, 0.6, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -111,4 +114,13 @@ void ELWorld::activeCamera(std::string cameraName, ELCamera *camera) {
 
 void ELWorld::addRenderPass(ELRenderPass *renderPass) {
     renderPasses.push_back(renderPass);
+}
+
+void ELWorld::setViewport(ELInt left, ELInt bottom, ELInt width, ELInt height) {
+    ELVector4 * pViewport = new ELVector4();
+    pViewport->x = left;
+    pViewport->y = bottom;
+    pViewport->z = width;
+    pViewport->w = height;
+    viewport = std::make_shared<ELVector4 *>(pViewport);
 }

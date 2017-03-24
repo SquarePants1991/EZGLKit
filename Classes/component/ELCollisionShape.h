@@ -6,9 +6,8 @@
 #define EZGL_ELCOLLISIONSHAPE_H
 
 
-#include "types/EZGLTypes.h"
-#include "btBulletCollisionCommon.h"
-#include "btBulletDynamicsCommon.h"
+#include "../types/EZGLTypes.h"
+class btCollisonShape;
 
 class ELCollisionShape {
 public:

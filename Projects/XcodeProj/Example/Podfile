@@ -1,8 +1,0 @@
-
-target 'EZGLKit_Example' do
-  pod 'EZGLKit', :path => '../'
-
-  target 'EZGLKit_Tests' do
-    inherit! :search_paths
-  end
-end

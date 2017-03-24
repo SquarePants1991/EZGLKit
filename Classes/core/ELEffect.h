@@ -5,9 +5,9 @@
 #ifndef EZGL_ELEFFECT_H
 #define EZGL_ELEFFECT_H
 
-#include "EZGLBase.h"
-#include "core/ELProgram.h"
-#include "core/ELNode.h"
+#include "../EZGLBase.h"
+#include "ELProgram.h"
+#include "ELNode.h"
 
 class ELEffect : public ELNode {
 public:

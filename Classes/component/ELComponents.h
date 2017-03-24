@@ -6,6 +6,7 @@
 #define EZGL_ELCOMPONENTS_H
 
 #include "ELGeometry.h"
+#include "geometry/EL2DPlane.h"
 #include "geometry/ELPlaneGeometry.h"
 #include "geometry/ELCubeGeometry.h"
 #include "geometry/ELMeshGeometry.h"

@@ -5,7 +5,7 @@
 #ifndef EZGL_ELCAMERA_H
 #define EZGL_ELCAMERA_H
 
-#include "types/EZGLTypes.h"
+#include "../types/EZGLTypes.h"
 #include "ELNode.h"
 
 class ELCamera : public ELNode {
@@ -56,12 +56,16 @@ public:
 
     ELVector3 position();
     ELVector3 lookAtPosition();
+    
+    void setMatrixDirect(float * matrix);
 
     virtual void update(ELFloat timeInSecs);
 
 private:
     bool isOrtho;
     bool needFlip;
+    float directMatrix[16];
+    bool useDirectMatrix;
 
     ELQuaternion quaternion();
 

@@ -133,7 +133,7 @@ EL_INLINE ELMatrix4 ELMatrix4SetColumn(ELMatrix4 matrix, int column, ELVector4 v
 
 EL_INLINE ELMatrix4 ELMatrix4Transpose(ELMatrix4 matrix);
 
-ELMatrix4 ELMatrix4Invert(ELMatrix4 matrix, bool * __nullable isInvertible);
+static ELMatrix4 ELMatrix4Invert(ELMatrix4 matrix, bool * __nullable isInvertible);
 ELMatrix4 ELMatrix4InvertAndTranspose(ELMatrix4 matrix, bool * __nullable isInvertible);
 
 EL_INLINE ELMatrix4 ELMatrix4Multiply(ELMatrix4 matrixLeft, ELMatrix4 matrixRight);
@@ -551,6 +551,140 @@ ELMatrix4 m = { matrix.m[0], matrix.m[4], matrix.m[8], matrix.m[12],
                  matrix.m[3], matrix.m[7], matrix.m[11], matrix.m[15] };
 return m;
 #endif
+}
+
+static ELMatrix4 ELMatrix4Invert(ELMatrix4 matrix, bool * __nullable isInvertible) {
+    double inv[16], det;
+    int i;
+    double *m = (double *)matrix.m;
+    
+    inv[0] = m[5]  * m[10] * m[15] -
+    m[5]  * m[11] * m[14] -
+    m[9]  * m[6]  * m[15] +
+    m[9]  * m[7]  * m[14] +
+    m[13] * m[6]  * m[11] -
+    m[13] * m[7]  * m[10];
+    
+    inv[4] = -m[4]  * m[10] * m[15] +
+    m[4]  * m[11] * m[14] +
+    m[8]  * m[6]  * m[15] -
+    m[8]  * m[7]  * m[14] -
+    m[12] * m[6]  * m[11] +
+    m[12] * m[7]  * m[10];
+    
+    inv[8] = m[4]  * m[9] * m[15] -
+    m[4]  * m[11] * m[13] -
+    m[8]  * m[5] * m[15] +
+    m[8]  * m[7] * m[13] +
+    m[12] * m[5] * m[11] -
+    m[12] * m[7] * m[9];
+    
+    inv[12] = -m[4]  * m[9] * m[14] +
+    m[4]  * m[10] * m[13] +
+    m[8]  * m[5] * m[14] -
+    m[8]  * m[6] * m[13] -
+    m[12] * m[5] * m[10] +
+    m[12] * m[6] * m[9];
+    
+    inv[1] = -m[1]  * m[10] * m[15] +
+    m[1]  * m[11] * m[14] +
+    m[9]  * m[2] * m[15] -
+    m[9]  * m[3] * m[14] -
+    m[13] * m[2] * m[11] +
+    m[13] * m[3] * m[10];
+    
+    inv[5] = m[0]  * m[10] * m[15] -
+    m[0]  * m[11] * m[14] -
+    m[8]  * m[2] * m[15] +
+    m[8]  * m[3] * m[14] +
+    m[12] * m[2] * m[11] -
+    m[12] * m[3] * m[10];
+    
+    inv[9] = -m[0]  * m[9] * m[15] +
+    m[0]  * m[11] * m[13] +
+    m[8]  * m[1] * m[15] -
+    m[8]  * m[3] * m[13] -
+    m[12] * m[1] * m[11] +
+    m[12] * m[3] * m[9];
+    
+    inv[13] = m[0]  * m[9] * m[14] -
+    m[0]  * m[10] * m[13] -
+    m[8]  * m[1] * m[14] +
+    m[8]  * m[2] * m[13] +
+    m[12] * m[1] * m[10] -
+    m[12] * m[2] * m[9];
+    
+    inv[2] = m[1]  * m[6] * m[15] -
+    m[1]  * m[7] * m[14] -
+    m[5]  * m[2] * m[15] +
+    m[5]  * m[3] * m[14] +
+    m[13] * m[2] * m[7] -
+    m[13] * m[3] * m[6];
+    
+    inv[6] = -m[0]  * m[6] * m[15] +
+    m[0]  * m[7] * m[14] +
+    m[4]  * m[2] * m[15] -
+    m[4]  * m[3] * m[14] -
+    m[12] * m[2] * m[7] +
+    m[12] * m[3] * m[6];
+    
+    inv[10] = m[0]  * m[5] * m[15] -
+    m[0]  * m[7] * m[13] -
+    m[4]  * m[1] * m[15] +
+    m[4]  * m[3] * m[13] +
+    m[12] * m[1] * m[7] -
+    m[12] * m[3] * m[5];
+    
+    inv[14] = -m[0]  * m[5] * m[14] +
+    m[0]  * m[6] * m[13] +
+    m[4]  * m[1] * m[14] -
+    m[4]  * m[2] * m[13] -
+    m[12] * m[1] * m[6] +
+    m[12] * m[2] * m[5];
+    
+    inv[3] = -m[1] * m[6] * m[11] +
+    m[1] * m[7] * m[10] +
+    m[5] * m[2] * m[11] -
+    m[5] * m[3] * m[10] -
+    m[9] * m[2] * m[7] +
+    m[9] * m[3] * m[6];
+    
+    inv[7] = m[0] * m[6] * m[11] -
+    m[0] * m[7] * m[10] -
+    m[4] * m[2] * m[11] +
+    m[4] * m[3] * m[10] +
+    m[8] * m[2] * m[7] -
+    m[8] * m[3] * m[6];
+    
+    inv[11] = -m[0] * m[5] * m[11] +
+    m[0] * m[7] * m[9] +
+    m[4] * m[1] * m[11] -
+    m[4] * m[3] * m[9] -
+    m[8] * m[1] * m[7] +
+    m[8] * m[3] * m[5];
+    
+    inv[15] = m[0] * m[5] * m[10] -
+    m[0] * m[6] * m[9] -
+    m[4] * m[1] * m[10] +
+    m[4] * m[2] * m[9] +
+    m[8] * m[1] * m[6] -
+    m[8] * m[2] * m[5];
+    
+    det = m[0] * inv[0] + m[1] * inv[4] + m[2] * inv[8] + m[3] * inv[12];
+    
+    if (det == 0.0) {
+        *isInvertible = false;
+    }
+    
+    det = 1.0 / det;
+    
+    float invOut[16];
+    for (i = 0; i < 16; i++) {
+        invOut[i] = inv[i] * det;
+    }
+    
+    *isInvertible = true;
+    return ELMatrix4MakeWithArray(invOut);
 }
 
 EL_INLINE ELMatrix4 ELMatrix4Multiply(ELMatrix4 matrixLeft, ELMatrix4 matrixRight)

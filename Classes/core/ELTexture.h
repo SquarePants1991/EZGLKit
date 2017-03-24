@@ -6,20 +6,27 @@
 #define EZGL_ELTEXTURE_H
 
 #include <string>
-#include "EZGLBase.h"
+#include "../EZGLBase.h"
+#include "../types/EZGLTypes.h"
 
-typedef GLuint (*ELTextureGenCallback)(const char* path);
+typedef GLuint (*ELTextureGenCallback)(const char* path, unsigned char **data, ELInt &width, ELInt &height);
+typedef void (*ELTextureResetCallback)(uint8_t *imageData, ELInt texID, ELInt width, ELInt height, GLenum pixelFormat, GLenum dataType);
 class ELTexture {
 public:
     GLuint value;
-
+    unsigned char *imgData;
+    ELInt width;
+    ELInt height;
 public:
-    static ELTexture * texture(std::string path);
-    static void config(ELTextureGenCallback callback);
+    static ELTexture * texture(std::string path, bool keepImgData = false);
+    static void config(ELTextureGenCallback callback, ELTextureResetCallback resetCallback);
+    void reset(uint8_t *imgData, ELInt width, ELInt height, GLenum pixelFormat, GLenum dataType = GL_UNSIGNED_BYTE);
 private:
     static ELTextureGenCallback callback;
+    static ELTextureResetCallback resetCallback;
     static std::map<std::string, ELTexture *> textureCache;
-    ELTexture(std::string path);
+    ELTexture(std::string path, bool keepImgData = false);
+    void releaseImageData();
 };
 
 

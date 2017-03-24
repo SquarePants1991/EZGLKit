@@ -34,6 +34,7 @@ struct material_struct {
     float shininess;
     sampler2D diffuseMap;
     sampler2D normalMap;
+    sampler2D specularMap;
     int normalMapEnable;
 };
 

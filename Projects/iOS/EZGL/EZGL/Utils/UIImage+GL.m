@@ -38,10 +38,10 @@
 }
 
 + (GLuint)textureNamed:(NSString *)imageName {
-    return [self textureFromCGImage:[UIImage imageNamed:imageName].CGImage];
+    return [self textureFromCGImage:[UIImage imageNamed:imageName].CGImage data:NULL];
 }
 
-+ (GLuint)textureFromCGImage:(CGImageRef)imageRef {
++ (GLuint)textureFromCGImage:(CGImageRef)imageRef data:(unsigned char **)data {
     size_t width = CGImageGetWidth(imageRef);
     size_t height = CGImageGetHeight(imageRef);
     
@@ -73,6 +73,10 @@
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
     glBindTexture(GL_TEXTURE_2D, 0);
+    
+    if (data != NULL) {
+        *data = textureData;
+    }
     return texture;
 }
 
@@ -89,7 +93,7 @@
     
     for (size_t i = 0; i<count; i++) {
         CGImageRef imageRef = CGImageSourceCreateImageAtIndex(imageSource, i, NULL);
-        GLuint texture = [self textureFromCGImage:imageRef];
+        GLuint texture = [self textureFromCGImage:imageRef data:NULL];
         [textures addObject:@(texture)];
         CFRelease(imageRef);
     }

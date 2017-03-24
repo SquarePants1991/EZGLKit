@@ -3,8 +3,8 @@
 //
 
 #include "ELShadowMapRenderPass.h"
-#include "core/ELWorld.h"
-#include "core/ELLight.h"
+#include "../../core/ELWorld.h"
+#include "../../core/ELLight.h"
 
 void ELShadowMapRenderPass::render(ELWorld *world) {
     for (int i = 0; i < world->children.size(); ++i) {

@@ -5,10 +5,10 @@
 #ifndef EZGL_ELWATERPLANE_H
 #define EZGL_ELWATERPLANE_H
 
-#include "EZGLBase.h"
+#include "../EZGLBase.h"
 #include "ELGeometry.h"
-#include "core/ELCamera.h"
-#include "utils/ELGeometryVertexBuffer.h"
+#include "../core/ELCamera.h"
+#include "../utils/ELGeometryVertexBuffer.h"
 
 class ELWaterPlane : public ELGeometry {
 public:

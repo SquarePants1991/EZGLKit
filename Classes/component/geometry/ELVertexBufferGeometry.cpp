@@ -3,8 +3,8 @@
 //
 
 
-#include "core/ELEffect.h"
-#include "component/ELGeometry.h"
+#include "../../core/ELEffect.h"
+#include "../../component/ELGeometry.h"
 #include "ELVertexBufferGeometry.h"
 
 ELVertexBufferGeometry::ELVertexBufferGeometry() :

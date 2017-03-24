@@ -6,7 +6,7 @@
 #define EZGL_ELMESHGEOMETRY_H
 
 #include "ELVertexBufferGeometry.h"
-#include "utils/ELGeometryVertexBuffer.h"
+#include "../../utils/ELGeometryVertexBuffer.h"
 
 class ELMeshGeometry : public ELVertexBufferGeometry {
 public:

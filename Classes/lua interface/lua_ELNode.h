@@ -5,7 +5,7 @@
 #ifndef EZGL_LUA_ELNODE_H
 #define EZGL_LUA_ELNODE_H
 
-#include <core/ELNode.h>
+#include "../core/ELNode.h"
 #include "lua.h"
 #include "lualib.h"
 #include "lauxlib.h"

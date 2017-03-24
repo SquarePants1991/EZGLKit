@@ -4,7 +4,10 @@
 
 #include "ELCollisionShape.h"
 
-#include "BulletCollision/CollisionShapes/btHeightfieldTerrainShape.h"
+#include "bullet/BulletCollision/CollisionShapes/btHeightfieldTerrainShape.h"
+
+#include "bullet/btBulletCollisionCommon.h"
+#include "bullet/btBulletDynamicsCommon.h"
 
 ELCollisionShape::ELCollisionShape() {
     offset = ELVector3Make(0, 0, 0);

@@ -5,8 +5,8 @@
 #ifndef EZGL_ELWAVEFRONTLOADER_H
 #define EZGL_ELWAVEFRONTLOADER_H
 
-#include "component/ELGeometry.h"
-#include "tiny_obj_loader.h"
+#include "../component/ELGeometry.h"
+#include "wavefront/tiny_obj_loader.h"
 #include "ELGeometryVertexBuffer.h"
 
 #include <vector>

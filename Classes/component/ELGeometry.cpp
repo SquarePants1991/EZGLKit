@@ -2,11 +2,11 @@
 // Created by wangyang on 16/11/24.
 //
 
-#include "core/ELCamera.h"
+#include "../core/ELCamera.h"
 #include "ELGeometry.h"
-#include "core/ELEffect.h"
-#include "core/ELGameObject.h"
-#include "utils/ELGLState.h"
+#include "../core/ELEffect.h"
+#include "../core/ELGameObject.h"
+#include "../utils/ELGLState.h"
 
 bool ELGeometry::resetBorderBeforeUpdate = false;
 
@@ -88,11 +88,19 @@ void ELGeometry::render() {
         glUniform4fv(program->uniform(buffer), 1, (GLfloat *)mat.specular.v);
         snprintf(buffer, 256, "materials[%d].shininess", i);
         glUniform1f(program->uniform(buffer), (GLfloat)mat.shininess);
+
         snprintf(buffer, 256, "materials[%d].diffuseMap", i * 2 + 0);
         glUniform1i(program->uniform(buffer), textureID);
         GLenum gltexture = GL_TEXTURE0 + textureID;
         glActiveTexture(gltexture);
         glBindTexture(GL_TEXTURE_2D, mat.diffuseMap);
+        textureID++;
+        
+        snprintf(buffer, 256, "materials[%d].specularMap", i * 2 + 0);
+        glUniform1i(program->uniform(buffer), textureID);
+        gltexture = GL_TEXTURE0 + textureID;
+        glActiveTexture(gltexture);
+        glBindTexture(GL_TEXTURE_2D, mat.specularMap);
         textureID++;
         
         if (mat.normalMap > 0) {

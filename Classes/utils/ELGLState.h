@@ -5,7 +5,7 @@
 #ifndef EZGL_ELGLSTATE_H
 #define EZGL_ELGLSTATE_H
 
-#include "EZGLBase.h"
+#include "../EZGLBase.h"
 
 typedef void(* ELGLStateSetFunc)(GLenum stateValue);
 
