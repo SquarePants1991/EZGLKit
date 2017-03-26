@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 2.8)
 set(CMAKE_MACOSX_RPATH 1)
 
 include_directories(${PROJECT_SOURCE_DIR}/../../libs/)
+include_directories(${PROJECT_SOURCE_DIR}/../../libs/bullet)
 
 file(GLOB EL_SRC
         "core/*.h"

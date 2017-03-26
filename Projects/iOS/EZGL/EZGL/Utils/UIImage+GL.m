@@ -41,12 +41,44 @@
     return [self textureFromCGImage:[UIImage imageNamed:imageName].CGImage data:NULL];
 }
 
-+ (GLuint)textureFromCGImage:(CGImageRef)imageRef data:(unsigned char **)data {
++ (GLuint)textureFromImageData:(uint8_t *)imgData size:(CGSize)size bind:(GLint)texID pixelFormat:(GLenum)pixelFormat {
+    return [self textureFromImageData:imgData size:size bind:texID pixelFormat:pixelFormat dataType:GL_UNSIGNED_BYTE];
+}
+
++ (GLuint)textureFromImageData:(uint8_t *)imgData size:(CGSize)size bind:(GLint)texID pixelFormat:(GLenum)pixelFormat dataType:(GLenum)dataType {
+    
+    
+    size_t width = size.width;
+    size_t height = size.height;
+    
+    //        width = pow(2,(int)log2(width));
+    //        height = pow(2,(int)log2(height));
+    
+    GLuint texture;
+    if (texID < 0) {
+        glGenTextures(1, &texture);
+    } else {
+        texture = texID;
+    }
+    glBindTexture(GL_TEXTURE_2D, texture);
+    glTexImage2D(GL_TEXTURE_2D, 0, pixelFormat, (GLsizei)width, (GLsizei)height, 0, pixelFormat, dataType, imgData);
+    // use linear filetring
+    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
+    // clamp to edge
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+    glBindTexture(GL_TEXTURE_2D, 0);
+    
+    return texture;
+}
+
++ (GLuint)textureFromCGImage:(CGImageRef)imageRef data:(unsigned char **)data bind:(GLint)texID {
     size_t width = CGImageGetWidth(imageRef);
     size_t height = CGImageGetHeight(imageRef);
     
-//    width = pow(2,(int)log2(width));
-//    height = pow(2,(int)log2(height));
+    //    width = pow(2,(int)log2(width));
+    //    height = pow(2,(int)log2(height));
     
     GLubyte *textureData = (GLubyte *)malloc(width * height * 4);
     
@@ -67,7 +99,12 @@
     CGContextRelease(context);
     
     GLuint texture;
-    glGenTextures(1, &texture);
+    if (texID < 0) {
+        glGenTextures(1, &texture);
+    } else {
+        texture = texID;
+    }
+    
     glBindTexture(GL_TEXTURE_2D, texture);
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, (GLsizei)width, (GLsizei)height, 0, GL_RGBA, GL_UNSIGNED_BYTE, textureData);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
@@ -78,6 +115,10 @@
         *data = textureData;
     }
     return texture;
+}
+
++ (GLuint)textureFromCGImage:(CGImageRef)imageRef data:(unsigned char **)data {
+    return [self textureFromCGImage:imageRef data:data bind:-1];
 }
 
 + (NSArray *)texturesFromGif:(NSString *)gifImage {

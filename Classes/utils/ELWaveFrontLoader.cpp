@@ -2,12 +2,17 @@
 // Created by wangyang on 16/11/28.
 //
 
-#include "tiny_obj_loader.h"
+#include "wavefront/tiny_obj_loader.h"
 #include "../component/ELGeometry.h"
 #include "../core/ELTexture.h"
 #include "ELWaveFrontLoader.h"
 #include "../component/geometry/ELMeshGeometry.h"
 #include "ELAssets.h"
+
+static std::vector<ELMaterial> loadMaterials(std::vector<tinyobj::material_t> materials);
+static ELMeshGeometry * buildGeometry(tinyobj::shape_t shape, tinyobj::attrib_t attrib, std::vector<ELMaterial> materials);
+static ELGeometryVertexBuffer *generateVertexBuffer(tinyobj::attrib_t attrib, std::vector<tinyobj::index_t> indices);
+static void generateVertexVBO(ELGeometryVertexBuffer *buffer, ELGeometryData * geometryData);
 
 std::vector<ELMeshGeometry *> ELWaveFrontLoader::loadFile(std::string filePath) {
     tinyobj::attrib_t attrib;
@@ -37,7 +42,7 @@ std::vector<ELMeshGeometry *> ELWaveFrontLoader::loadFile(std::string filePath) 
     return geometries;
 }
 
-std::vector<ELMaterial> ELWaveFrontLoader::loadMaterials(std::vector<tinyobj::material_t> materials) {
+static std::vector<ELMaterial> loadMaterials(std::vector<tinyobj::material_t> materials) {
     std::vector<ELMaterial> mats;
     for (size_t index = 0; index < materials.size(); index++) {
         ELMaterial material;
@@ -54,7 +59,7 @@ std::vector<ELMaterial> ELWaveFrontLoader::loadMaterials(std::vector<tinyobj::ma
     return mats;
 }
 
-ELMeshGeometry * ELWaveFrontLoader::buildGeometry(tinyobj::shape_t shape, tinyobj::attrib_t attrib, std::vector<ELMaterial> materials) {
+static ELMeshGeometry * buildGeometry(tinyobj::shape_t shape, tinyobj::attrib_t attrib, std::vector<ELMaterial> materials) {
     std::vector<tinyobj::index_t> indices;
     for (size_t index = 0; index < shape.mesh.indices.size(); index++) {
         tinyobj::index_t indice = shape.mesh.indices[index];
@@ -71,7 +76,7 @@ ELMeshGeometry * ELWaveFrontLoader::buildGeometry(tinyobj::shape_t shape, tinyob
     return geometry;
 }
 
-ELGeometryVertexBuffer * ELWaveFrontLoader::generateVertexBuffer(tinyobj::attrib_t attrib, std::vector<tinyobj::index_t> indices) {
+static  ELGeometryVertexBuffer * generateVertexBuffer(tinyobj::attrib_t attrib, std::vector<tinyobj::index_t> indices) {
     ELGeometryVertexBuffer *buffer = new ELGeometryVertexBuffer();
 
     std::vector<GLfloat> vertices;
@@ -98,7 +103,7 @@ ELGeometryVertexBuffer * ELWaveFrontLoader::generateVertexBuffer(tinyobj::attrib
     return buffer;
 }
 
-void ELWaveFrontLoader::generateVertexVBO(ELGeometryVertexBuffer *buffer, ELGeometryData * geometryData) {
+static void generateVertexVBO(ELGeometryVertexBuffer *buffer, ELGeometryData * geometryData) {
     GLuint vertexVBO;
     GLfloat *pVertices = (GLfloat *)(buffer->data());
     glGenBuffers(1, &vertexVBO);

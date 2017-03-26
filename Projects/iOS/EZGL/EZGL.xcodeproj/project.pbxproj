@@ -74,8 +74,8 @@
 		8E53A72D1E45C9C000C790CE /* grass_green.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E53A7271E45C9C000C790CE /* grass_green.png */; };
 		8E53A72E1E45C9C000C790CE /* grass_yellow.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8E53A7281E45C9C000C790CE /* grass_yellow.jpg */; };
 		8E53A72F1E45C9C000C790CE /* grass_yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E53A7291E45C9C000C790CE /* grass_yellow.png */; };
-		8E5B54E51E321D5A0082AE9F /* libfbxsdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E5B54E41E321D5A0082AE9F /* libfbxsdk.a */; };
 		8E5B54E91E3445480082AE9F /* libiconv.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E5B54E81E3445480082AE9F /* libiconv.2.tbd */; };
+		D347B2411E866FCB00F4A5F8 /* EZGLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D347B2401E866FCB00F4A5F8 /* EZGLib.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -179,8 +179,8 @@
 		8E53A7271E45C9C000C790CE /* grass_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grass_green.png; sourceTree = "<group>"; };
 		8E53A7281E45C9C000C790CE /* grass_yellow.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = grass_yellow.jpg; sourceTree = "<group>"; };
 		8E53A7291E45C9C000C790CE /* grass_yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grass_yellow.png; sourceTree = "<group>"; };
-		8E5B54E41E321D5A0082AE9F /* libfbxsdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfbxsdk.a; path = "../../../../../../../../../Applications/Autodesk/FBX SDK/2015.1/lib/ios-armv7/debug/libfbxsdk.a"; sourceTree = "<group>"; };
 		8E5B54E81E3445480082AE9F /* libiconv.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.2.tbd; path = usr/lib/libiconv.2.tbd; sourceTree = SDKROOT; };
+		D347B2401E866FCB00F4A5F8 /* EZGLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EZGLib.framework; path = ../EZGLSDK/EZGLib.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,8 +190,8 @@
 			files = (
 				8E5B54E91E3445480082AE9F /* libiconv.2.tbd in Frameworks */,
 				8E30C29A1E31F02100D5AA1D /* libstdc++.6.0.9.tbd in Frameworks */,
+				D347B2411E866FCB00F4A5F8 /* EZGLib.framework in Frameworks */,
 				8E03AEEB1E30F9F300008F82 /* GLKit.framework in Frameworks */,
-				8E5B54E51E321D5A0082AE9F /* libfbxsdk.a in Frameworks */,
 				8E03AEEC1E30F9F300008F82 /* OpenGLES.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -267,8 +267,8 @@
 		8E03AEE81E30F9F200008F82 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D347B2401E866FCB00F4A5F8 /* EZGLib.framework */,
 				8E5B54E81E3445480082AE9F /* libiconv.2.tbd */,
-				8E5B54E41E321D5A0082AE9F /* libfbxsdk.a */,
 				8E30C2991E31F02100D5AA1D /* libstdc++.6.0.9.tbd */,
 				8E03AEE91E30F9F300008F82 /* GLKit.framework */,
 				8E03AEEA1E30F9F300008F82 /* OpenGLES.framework */,
@@ -787,13 +787,11 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				DEVELOPMENT_TEAM = P48344HVQL;
 				ENABLE_BITCODE = NO;
-				HEADER_SEARCH_PATHS = (
-					"${SRCROOT}/../../../Classes",
-					"${SRCROOT}/../../../libs/**",
-					"${SRCROOT}/../../../libs/glad/include",
-					"/Applications/Autodesk/FBX\\ SDK/2015.1/include",
-					"${SRCROOT}/../../../libs/bullet",
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)SDK",
 				);
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "$(SRCROOT)/EZGL/AppBase/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "/Applications/Autodesk/FBX\\ SDK/2015.1/lib/ios-i386/debug";
@@ -813,13 +811,11 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				DEVELOPMENT_TEAM = P48344HVQL;
 				ENABLE_BITCODE = NO;
-				HEADER_SEARCH_PATHS = (
-					"${SRCROOT}/../../../Classes",
-					"${SRCROOT}/../../../libs/**",
-					"${SRCROOT}/../../../libs/glad/include",
-					"/Applications/Autodesk/FBX\\ SDK/2015.1/include",
-					"${SRCROOT}/../../../libs/bullet",
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)SDK",
 				);
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "$(SRCROOT)/EZGL/AppBase/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "/Applications/Autodesk/FBX\\ SDK/2015.1/lib/ios-i386/debug";

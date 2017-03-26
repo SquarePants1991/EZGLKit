@@ -6,9 +6,9 @@
 #define EZGL_LUA_ELNODE_H
 
 #include "../core/ELNode.h"
-#include "lua.h"
-#include "lualib.h"
-#include "lauxlib.h"
+#include "lua/lua.h"
+#include "lua/lualib.h"
+#include "lua/lauxlib.h"
 
 extern int lua_create_table_from_node(lua_State *state, ELNode *node);
 

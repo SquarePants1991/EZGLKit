@@ -13,5 +13,8 @@
 + (GLubyte *)dataFromImage:(NSString *)imageName width:(GLsizei *)pWidth height:(GLsizei *)pHeight;
 + (NSArray *)texturesFromGif:(NSString *)gifImage;
 + (GLuint)textureFromCGImage:(CGImageRef)imageRef data:(unsigned char **)data;
++ (GLuint)textureFromCGImage:(CGImageRef)imageRef data:(unsigned char **)data bind:(GLint)texID;
 + (GLuint)textureNamed:(NSString *)imageName;
++ (GLuint)textureFromImageData:(uint8_t *)imgData size:(CGSize)size bind:(GLint)texID pixelFormat:(GLenum)pixelFormat;
++ (GLuint)textureFromImageData:(uint8_t *)imgData size:(CGSize)size bind:(GLint)texID pixelFormat:(GLenum)pixelFormat dataType:(GLenum)dataType;
 @end

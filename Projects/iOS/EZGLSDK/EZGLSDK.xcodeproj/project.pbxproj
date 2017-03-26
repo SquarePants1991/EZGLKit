@@ -235,7 +235,7 @@
 		8E30C2861E31E8D600D5AA1D /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E30C2851E31E8D600D5AA1D /* GLKit.framework */; };
 		8E30C2881E31E8DA00D5AA1D /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E30C2871E31E8DA00D5AA1D /* CoreFoundation.framework */; };
 		8E30C28A1E31E8E800D5AA1D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E30C2891E31E8E800D5AA1D /* Foundation.framework */; };
-		8E5B54E71E321D610082AE9F /* libfbxsdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E5B54E61E321D610082AE9F /* libfbxsdk.a */; };
+		D347B23F1E866E8500F4A5F8 /* libfbxsdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D347B23E1E866E8500F4A5F8 /* libfbxsdk.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -844,6 +844,7 @@
 		8E53A7221E45C81200C790CE /* grass_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grass_green.png; sourceTree = "<group>"; };
 		8E53A7231E45C81200C790CE /* grass_yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grass_yellow.png; sourceTree = "<group>"; };
 		8E5B54E61E321D610082AE9F /* libfbxsdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfbxsdk.a; path = "../../../../../../../../../Applications/Autodesk/FBX SDK/2015.1/lib/ios-armv7/debug/libfbxsdk.a"; sourceTree = "<group>"; };
+		D347B23E1E866E8500F4A5F8 /* libfbxsdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libfbxsdk.a; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -853,7 +854,7 @@
 			files = (
 				8E30C28A1E31E8E800D5AA1D /* Foundation.framework in Frameworks */,
 				8E30C2881E31E8DA00D5AA1D /* CoreFoundation.framework in Frameworks */,
-				8E5B54E71E321D610082AE9F /* libfbxsdk.a in Frameworks */,
+				D347B23F1E866E8500F4A5F8 /* libfbxsdk.a in Frameworks */,
 				8E30C2861E31E8D600D5AA1D /* GLKit.framework in Frameworks */,
 				8E03AEEF1E30FC0E00008F82 /* OpenGLES.framework in Frameworks */,
 			);
@@ -882,6 +883,7 @@
 		8E03AAC01E30EC1B00008F82 /* EZGLSDK */ = {
 			isa = PBXGroup;
 			children = (
+				D347B23E1E866E8500F4A5F8 /* libfbxsdk.a */,
 				8E03AC451E30EDBB00008F82 /* libs */,
 				8E03AB8A1E30EDA800008F82 /* Classes */,
 			);
@@ -2137,7 +2139,11 @@
 					"/Applications/Autodesk/FBX\\ SDK/2015.1/include",
 					"${SRCROOT}/../../../libs/glad/include",
 				);
-				LIBRARY_SEARCH_PATHS = "/Applications/Autodesk/FBX\\ SDK/2015.1/lib/ios-armv7/debug/";
+				LIBRARY_SEARCH_PATHS = (
+					/Applications/Autodesk/FBX,
+					"SDK/2015.1/lib/ios-armv7/debug/",
+					"$(PROJECT_DIR)",
+				);
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2162,7 +2168,11 @@
 					"/Applications/Autodesk/FBX\\ SDK/2015.1/include",
 					"${SRCROOT}/../../../libs/glad/include",
 				);
-				LIBRARY_SEARCH_PATHS = "/Applications/Autodesk/FBX\\ SDK/2015.1/lib/ios-armv7/debug/";
+				LIBRARY_SEARCH_PATHS = (
+					/Applications/Autodesk/FBX,
+					"SDK/2015.1/lib/ios-armv7/debug/",
+					"$(PROJECT_DIR)",
+				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";

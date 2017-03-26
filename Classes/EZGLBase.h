@@ -10,9 +10,9 @@
 #include <map>
 
 #if Platform_OSX
-#include "glad/glad/glad.h"
+#include <glad/glad/glad.h>
 #include <GLFW/glfw3.h>
-#include "soil/SOIL.h"
+#include <soil/SOIL.h>
 
 #define glBindVertexArrayEL(value) glBindVertexArray(value)
 #define glGenVertexArraysEL(num, value) glGenVertexArrays(num, value)

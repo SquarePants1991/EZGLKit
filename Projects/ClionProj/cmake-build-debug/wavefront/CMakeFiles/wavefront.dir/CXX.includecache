@@ -1,0 +1,38 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/wangyang/Documents/Projects/EZGLKit/libs/wavefront/tiny_obj_loader.cc
+tiny_obj_loader.h
+/Users/wangyang/Documents/Projects/EZGLKit/libs/wavefront/tiny_obj_loader.h
+
+/Users/wangyang/Documents/Projects/EZGLKit/libs/wavefront/tiny_obj_loader.h
+map
+-
+string
+-
+vector
+-
+cassert
+-
+cctype
+-
+cmath
+-
+cstddef
+-
+cstdlib
+-
+cstring
+-
+utility
+-
+fstream
+-
+sstream
+-
+

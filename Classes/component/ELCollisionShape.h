@@ -7,7 +7,7 @@
 
 
 #include "../types/EZGLTypes.h"
-class btCollisonShape;
+class btCollisionShape;
 
 class ELCollisionShape {
 public:

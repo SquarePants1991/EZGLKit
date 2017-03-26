@@ -28,6 +28,7 @@ include_directories(/usr/local/include/)
 #include_directories(${PROJECT_SOURCE_DIR}/../../Classes/)
 add_subdirectory(${PROJECT_SOURCE_DIR}/../../Classes/ ${CMAKE_CURRENT_BINARY_DIR}/EZGLib)
 
+include_directories(${PROJECT_SOURCE_DIR}/../../libs)
 include_directories(${PROJECT_SOURCE_DIR}/../../libs/glad/include)
 add_subdirectory(${PROJECT_SOURCE_DIR}/../../libs/glad ${CMAKE_CURRENT_BINARY_DIR}/glad)
 

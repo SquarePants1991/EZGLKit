@@ -3,6 +3,7 @@
 //
 
 #include <component/geometry/ELSphereGeometry.h>
+#include <cstdlib>
 #include "FGScene.h"
 
 #define  Bit(n) (0x00000001 << n)

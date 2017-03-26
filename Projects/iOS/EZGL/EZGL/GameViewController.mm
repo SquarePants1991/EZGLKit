@@ -8,7 +8,7 @@
 
 #import "GameViewController.h"
 #import <OpenGLES/ES2/glext.h>
-#import "EZGL.h"
+#import <EZGLib/EZGL.h>
 
 #define  Bit(n) (0x00000001 << n)
 

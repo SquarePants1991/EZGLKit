@@ -8,7 +8,7 @@
 
 #import "ELTextureImp.h"
 #import <OpenGLES/ES2/glext.h>
-#include <EZGL.h>
+#import <EZGLib/EZGL.h>
 
 #import "UIImage+GL.h"
 
@@ -22,7 +22,11 @@ GLuint genTexture(const char *path, unsigned char **data, ELInt &width, ELInt &h
     return [UIImage textureFromCGImage:img.CGImage data:data];
 }
 
+void resetTexture(uint8_t *imageData, ELInt texID, ELInt width, ELInt height, GLenum pixelFormat, GLenum dataType) {
+    [UIImage textureFromImageData:imageData size:CGSizeMake(width , height) bind:texID pixelFormat:pixelFormat dataType:dataType];
+}
+
 + (void)load {
-    ELTexture::config(genTexture);
+    ELTexture::config(genTexture, resetTexture);
 }
 @end

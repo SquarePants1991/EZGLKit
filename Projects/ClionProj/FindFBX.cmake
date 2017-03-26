@@ -56,6 +56,7 @@ SET( FBX_SEARCH_PATHS
     "$ENV{PROGRAMFILES}/Autodesk/FBX/FBX SDK/2015.1"
     "/Applications/Autodesk/FBX/FBX SDK macosx/2015.1"
     "/Applications/Autodesk/FBX SDK macosx/2015.1"
+        "/Applications/Autodesk/FBX SDK/2015.1"
     "/Applications/Autodesk/FBXSDK20151"
     "$ENV{ProgramW6432}/Autodesk/FBX/FBX SDK/2014.2"
     "$ENV{PROGRAMFILES}/Autodesk/FBX/FBX SDK/2014.2"
