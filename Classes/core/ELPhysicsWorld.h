@@ -15,6 +15,7 @@ class btCollisionDispatcher;
 class btSequentialImpulseConstraintSolver;
 class btBroadphaseInterface;
 
+// TODO: 使用shared_ptr管理
 class ELPhysicsWorld : public ELNode{
 public:
     ELPhysicsWorld();
