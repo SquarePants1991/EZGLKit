@@ -20,11 +20,14 @@ public:
 public:
     static ELTexture * texture(std::string path, bool keepImgData = false);
     static void config(ELTextureGenCallback callback, ELTextureResetCallback resetCallback);
+    static void clearCache();
     void reset(uint8_t *imgData, ELInt width, ELInt height, GLenum pixelFormat, GLenum dataType = GL_UNSIGNED_BYTE);
 private:
     static ELTextureGenCallback callback;
     static ELTextureResetCallback resetCallback;
     static std::map<std::string, ELTexture *> textureCache;
+
+    ~ELTexture();
     ELTexture(std::string path, bool keepImgData = false);
     void releaseImageData();
 };

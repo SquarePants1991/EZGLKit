@@ -15,10 +15,16 @@ public:
     float xx;
     float yy;
     float zz;
+    std::map<std::string, int> data;
     PointCls(float xx,float yy) {
         this->xx = xx;
         this->yy = yy;
         zz = 10;
+        data["adsad"] = 5;
+    }
+
+    std::map<std::string, int> getData() {
+        return data;
     }
 
     static int attr(lua_State *state) {

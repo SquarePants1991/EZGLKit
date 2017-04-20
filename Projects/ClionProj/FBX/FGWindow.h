@@ -13,6 +13,7 @@ class GLFWwindow;
 class FGWindow {
 public:
     FGWindow(GLFWwindow* glfwWindow, int width, int height);
+    void initWorld();
     void run();
     void update();
     void render();

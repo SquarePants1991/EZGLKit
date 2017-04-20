@@ -19,7 +19,7 @@ enum CollisionTypes {
 void FGScene::update(ELFloat timeInSecs) {
     ELVector3 start = world->activedCamera->position();
     ELVector3 end = ELVector3Add(start,ELVector3MultiplyScalar(world->activedCamera->forwardVector(),100));
-    std::vector<ELGameObject *> objs = ELPhysicsWorld::shared()->raycast(start,end,CT_Prop);
+    std::vector<ELGameObject *> objs = world->physicsWorld->raycast(start,end,CT_Prop);
     for (int i = 0; i < objs.size(); ++i) {
         ELGameObject *obj = objs.at(i);
         std::vector<ELNode *> nodes = obj->findChildrenWithKind("geometry");

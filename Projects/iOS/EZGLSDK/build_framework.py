@@ -1,3 +1,5 @@
+#! /usr/bin/python
+
 import subprocess
 import os
 import shutil
@@ -7,18 +9,19 @@ archs = ['armv7', 'armv7s', 'arm64', 'x86_64']
 def exec_wait(command_line):
     p = subprocess.Popen(command_line, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     print(p.stdout.read().decode('utf-8'))
+    p.wait()
 
 def genStaticLib(release):
     action = ''
-    sdk = 'iphoneos10.2'
+    sdk = ''
     if release:
         action = 'archive'
-    command_template = 'xcodebuild -scheme EZGLSDK -arch {0} -derivedDataPath ./builds/build-{1} ONLY_ACTIVE_ARCH=NO VALID_ARCHS={2} -sdk {3} {4}'
+    command_template = 'xcodebuild -scheme EZGLSDK -arch {0} -derivedDataPath ./build/packages/build-{1} ONLY_ACTIVE_ARCH=NO VALID_ARCHS={2} -sdk {3} {4}'
     for arch in archs:
         if arch.startswith('arm'):
-            sdk = 'iphoneos10.2'
+            sdk = 'iphoneos10.3'
         else:
-            sdk = 'iphonesimulator10.2'
+            sdk = 'iphonesimulator10.3'
         print(str.format('Make Static Lib, Arch: {0} | Action: {1} Begin...', arch, action))
         command = str.format(command_template, arch, arch, arch, sdk ,action)
         print(command)
@@ -31,7 +34,7 @@ def collectLibs(release):
     libs = []
     for arch in archs:
         for subpath in subpaths:
-            lib_path = str.format('./builds/build-{0}/{1}', arch, subpath)
+            lib_path = str.format('./build/packages/build-{0}/{1}', arch, subpath)
             if os.path.exists(lib_path):
                 files = os.listdir(lib_path)
                 for file in files:
@@ -76,14 +79,11 @@ def gen_framework(dst_dir, framework_name, lib_path, headers_dir):
         if os.path.exists(absolute_dir) is False:
             os.mkdir(absolute_dir)
 
-    dir_to_be_ln = {'Versions/A' : 'Versions/Current', 'Versions/A/Resources' : 'Resources', 'Versions/A/Headers' : 'Headers'}
+    dir_to_be_ln = {'A' : 'Versions/Current', 'Versions/Current/Resources' : 'Resources', 'Versions/Current/Headers' : 'Headers'}
     for dir in dir_to_be_ln:
-        absolute_src_dir = os.path.join(framework_path, dir)
         absolute_dst_dir = os.path.join(framework_path, dir_to_be_ln[dir])
         if os.path.exists(absolute_dst_dir) is False:
-            print absolute_src_dir
-            print absolute_dst_dir
-            command = str.format('ln -sfh "{0}" {1}', os.path.realpath(absolute_src_dir), absolute_dst_dir)
+            command = str.format('ln -sfh "{0}" {1}', dir, absolute_dst_dir)
             print command
             exec_wait(command)
     # cp lib
@@ -95,11 +95,11 @@ def gen_framework(dst_dir, framework_name, lib_path, headers_dir):
 release = False
 genStaticLib(release)
 libs = collectLibs(release)
-merge_libs(libs, './lib_universe')
+merge_libs(libs, './build/lib_universe')
 print("Copy Headers Begin...")
-copy_headers('../../../Classes/', './headers')
-copy_headers('../../../libs/lua', './headers/lua')
-copy_headers('../../../libs/wavefront', './headers/wavefront')
-copy_headers('../../../libs/bullet', './headers/')
+copy_headers('../../../Classes/', './build/headers')
+copy_headers('../../../libs/lua', './build/headers/lua')
+copy_headers('../../../libs/wavefront', './build/headers/wavefront')
+copy_headers('../../../libs/bullet', './build/headers/')
 print("Copy Headers End...")
-gen_framework('./', 'EZGLib', './lib_universe/libEZGLSDK.a', './headers')
+gen_framework('./build', 'EZGLib', './build/lib_universe/libEZGLSDK.a', './build/headers')

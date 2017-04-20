@@ -18,15 +18,17 @@ ELRigidBody::ELRigidBody(ELCollisionShape *shape, ELFloat mass) :
         angleFactor(ELVector3Make(1,1,1)),
         linearFactor(ELVector3Make(1,1,1)),
         collisionGroup(0x00000001),
-        collisionMask(0x00000001)
+        collisionMask(0x00000001),
+        physicsWorld(NULL)
 {
 
 }
 
 ELRigidBody::~ELRigidBody() {
-    ELPhysicsWorld::shared()->removeRigidBody(rigidBody);
+    if (physicsWorld) {
+        physicsWorld->removeRigidBody(rigidBody);
+    }
     delete collisionShape;
-    delete rigidBody;
 }
 
 void ELRigidBody::applyForce(ELVector3 force,ELVector3 pos) {
@@ -66,6 +68,8 @@ void ELRigidBody::setVelocityZ(ELFloat velocityZ) {
 }
 
 void ELRigidBody::didAddedToGameObject(ELGameObject *gameObject) {
+    physicsWorld = this->gameObject()->world->physicsWorld;
+
     btTransform defaultTransform = btTransformFromELTransform(*(gameObject->transform));
     btDefaultMotionState *motionState = new btDefaultMotionState(defaultTransform);
     btVector3 fallInertia(0,0,0);
@@ -76,7 +80,7 @@ void ELRigidBody::didAddedToGameObject(ELGameObject *gameObject) {
 
     rigidBody->setAngularFactor(btVector3(angleFactor.x,angleFactor.y,angleFactor.z));
     rigidBody->setLinearFactor(btVector3(linearFactor.x, linearFactor.y, linearFactor.z));
-    ELPhysicsWorld::shared()->addRigidBody(rigidBody, collisionGroup, collisionMask);
+    this->gameObject()->world->physicsWorld->addRigidBody(rigidBody, collisionGroup, collisionMask);
     rigidBody->setUserPointer(this->gameObject());
     collisionShape->collisionShape->setUserPointer(this->gameObject());
 }

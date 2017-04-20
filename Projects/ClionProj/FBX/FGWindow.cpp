@@ -10,6 +10,11 @@
 
 FGWindow::FGWindow(GLFWwindow *glfwWindow, int width, int height) {
     this->glfwWindow = glfwWindow;
+    initWorld();
+    ELTexture::clearCache();
+}
+
+void FGWindow::initWorld() {
     world = new ELWorld();
     world->enablePhysics();
     int fbWidth,fbHeight;
@@ -47,7 +52,6 @@ FGWindow::FGWindow(GLFWwindow *glfwWindow, int width, int height) {
     mainScene = new FGScene(world);
 
     world->activedCamera->radiansAroundLeftLimit = ELVector2Make(-45,80);
-
 }
 
 void FGWindow::run() {

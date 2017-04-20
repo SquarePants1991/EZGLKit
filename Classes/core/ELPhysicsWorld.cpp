@@ -7,15 +7,6 @@
 #include "btBulletCollisionCommon.h"
 #include "btBulletDynamicsCommon.h"
 
-ELPhysicsWorld * ELPhysicsWorld::_shared = NULL;
-
-ELPhysicsWorld * ELPhysicsWorld::shared() {
-    if (_shared == NULL) {
-        _shared = new ELPhysicsWorld();
-    }
-    return _shared;
-}
-
 ELPhysicsWorld::ELPhysicsWorld() {
     configration = new btDefaultCollisionConfiguration();
     dispatcher = new btCollisionDispatcher(configration);

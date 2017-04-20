@@ -37,6 +37,11 @@ ELTexture::ELTexture(std::string path, bool keepImgData) {
     }
 }
 
+ELTexture::~ELTexture() {
+    this->releaseImageData();
+    glDeleteTextures(1, &value);
+}
+
 void ELTexture::releaseImageData() {
     if (imgData != NULL) {
         delete imgData;
@@ -47,6 +52,13 @@ void ELTexture::releaseImageData() {
 void ELTexture::config(ELTextureGenCallback callback, ELTextureResetCallback resetCallback) {
     ELTexture::callback = callback;
     ELTexture::resetCallback = resetCallback;
+}
+
+void ELTexture::clearCache() {
+    for (std::map<std::string, ELTexture *>::iterator iter = ELTexture::textureCache.begin(); iter != ELTexture::textureCache.end(); ++iter) {
+        delete iter->second;
+    }
+    ELTexture::textureCache.clear();
 }
 
 ELTexture * ELTexture::texture(std::string path, bool keepImgData) {

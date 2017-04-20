@@ -21,7 +21,7 @@ ELWorld::ELWorld() {
 }
 
 void ELWorld::enablePhysics() {
-    physicsWorld = ELPhysicsWorld::shared();
+    physicsWorld = new ELPhysicsWorld();
     addNode(physicsWorld);
 }
 

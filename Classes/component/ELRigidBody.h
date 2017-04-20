@@ -7,6 +7,7 @@
 
 #include "../types/EZGLTypes.h"
 #include "../core/ELComponent.h"
+#include "../core/ELPhysicsWorld.h"
 
 class ELCollisionShape;
 class btRigidBody;
@@ -39,6 +40,8 @@ public:
 protected:
     ~ELRigidBody();
 private:
+    // 暂时用这个解决内存释放问题，后续采用shared_ptr管理内存
+    ELPhysicsWorld *physicsWorld;
     btRigidBody *rigidBody;
     btTransform btTransformFromELTransform(ELTransform transform);
     ELTransform elTransformFrombtTransform(btTransform transform,ELTransform originELTransform);
