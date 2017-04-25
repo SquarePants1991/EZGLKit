@@ -11,11 +11,12 @@ class ELCamera;
 
 class ELProjector : public ELNode {
 public:
-    ELCamera *camera;
+    prop_strong(ELCamera, camera);
     ELUint projectorMap;
 public:
     ELProjector();
     ELProjector(ELCamera *camera,ELUint projectorMap);
+    ~ELProjector();
     virtual std::string kind();
     virtual void update(ELFloat timeInSecs);
 };

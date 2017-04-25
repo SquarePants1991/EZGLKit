@@ -16,6 +16,10 @@ ELProgram::ELProgram(const char *vertexShader, const char *fragmentShader) {
     isValid = result;
 }
 
+ELProgram::~ELProgram() {
+    glDeleteProgram(value);
+}
+
 GLuint ELProgram::uniform(char *uniformName) {
     std::string uniformNameStr = std::string(uniformName);
     if (uniformCache.find(uniformNameStr) != uniformCache.end()) {

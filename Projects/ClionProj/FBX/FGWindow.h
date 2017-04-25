@@ -26,7 +26,7 @@ public:
     void resize(int w, int h);
 private:
     GLFWwindow* glfwWindow;
-    ELWorld *world;
+    prop_strong(ELWorld, world);
     FGScene *mainScene;
     double lastXPos;
     double lastYPos;

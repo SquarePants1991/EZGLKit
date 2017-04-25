@@ -20,8 +20,8 @@ ELNode *lua_node_from_table(lua_State *state, int idx) {
 }
 
 int lua_new_node(lua_State *state) {
-    ELNode *node = new ELNode();
-    lua_create_table_from_node(state, node);
+//    ELNode *node = new ELNode();
+//    lua_create_table_from_node(state, node);
     return 1;
 }
 

@@ -19,6 +19,7 @@ class btBroadphaseInterface;
 class ELPhysicsWorld : public ELNode{
 public:
     ELPhysicsWorld();
+    ~ELPhysicsWorld();
     void setGravity(ELVector3 gravity);
     void addRigidBody(btRigidBody *rigidBody);
     void addRigidBody(btRigidBody *rigidBody, ELInt group, ELInt mask);
@@ -28,7 +29,6 @@ public:
     std::vector<ELGameObject *> raycast(ELVector3 start,ELVector3 end, ELInt filterMask);
 
     virtual void update(ELFloat timeInSecs);
-
 private:
     btDiscreteDynamicsWorld *world;
     btCollisionConfiguration *configration;

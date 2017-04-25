@@ -27,8 +27,8 @@ void FGScene::mouseRightButtonClicked() {
 
 }
 
-FGScene::FGScene(ELWorld *world) : world(world){
-
+FGScene::FGScene(std::shared_ptr<ELWorld> world) {
+    this->world = world;
     ELLight *defaultLight = new ELLight();
     defaultLight->position = ELVector3Make(0,30,30);
     defaultLight->color = ELVector4Make(1.0,1.0,1.0,1.0);
@@ -36,14 +36,14 @@ FGScene::FGScene(ELWorld *world) : world(world){
     defaultLight->intensityFallOff = 0.0;
     defaultLight->identity = "main-light";
 //    defaultLight->enableShadow();
-    world->addNode(defaultLight);
+    world->addNode(std::shared_ptr<ELNode>(defaultLight));
 
     createFloor();
     createMonkey();
 
 
-    ELGameObject *gameObject = new ELGameObject(world);
-    world->addNode(gameObject);
+    ELGameObject *gameObject = new ELGameObject(std::shared_ptr<ELWorld>(world));
+    world->addNode(std::shared_ptr<ELGameObject>(gameObject));
     gameObject->transform->position = ELVector3Make(0, 3, 0);
     ELCubeGeometry *cube = new ELCubeGeometry(ELVector3Make(0.1,0.1,0.1));
 //    gameObject->addComponent(cube);
@@ -71,8 +71,8 @@ void FGScene::createPlane() {
     diffuseMap_head = ELTexture::texture(ELAssets::shared()->findFile("Airbus A310.png"))->value;
     diffuseMap_body = ELTexture::texture(ELAssets::shared()->findFile("Turkish Airlines.png"))->value;
 
-    ELGameObject *gameObject = new ELGameObject(world);
-    world->addNode(gameObject);
+    ELGameObject *gameObject = new ELGameObject(std::shared_ptr<ELWorld>(world));
+    world->addNode(std::shared_ptr<ELGameObject>(gameObject));
     gameObject->transform->position = ELVector3Make(0,0,0);
 //    gameObject->transform->scale = ELVector3Make(0.02,0.02,0.02);
 
@@ -99,8 +99,8 @@ void FGScene::createMonkey() {
     diffuseMap_body = ELTexture::texture(ELAssets::shared()->findFile("body01.png"))->value;
     diffuseMap_m4 = ELTexture::texture(ELAssets::shared()->findFile("m4tex_2.png"))->value;
 
-    ELGameObject *gameObject = new ELGameObject(world);
-    world->addNode(gameObject);
+    ELGameObject *gameObject = new ELGameObject(std::shared_ptr<ELWorld>(world));
+    world->addNode(std::shared_ptr<ELGameObject>(gameObject));
     gameObject->transform->position = ELVector3Make(0,3,0);
     gameObject->transform->scale = ELVector3Make(0.1,0.1,0.1);
 
@@ -131,16 +131,16 @@ void FGScene::createFloor() {
     normalMap = ELTexture::texture(ELAssets::shared()->findFile("rock_NRM.png"))->value;
     diffuseMap = ELTexture::texture(ELAssets::shared()->findFile("box.png"))->value;
 
-    ELGameObject *gameObject = new ELGameObject(world);
-    world->addNode(gameObject);
+    ELGameObject *gameObject = new ELGameObject(std::shared_ptr<ELWorld>(world));
+    world->addNode(std::shared_ptr<ELGameObject>(gameObject));
     gameObject->transform->position = ELVector3Make(0,0,0);
     createCubeGameObject(ELVector3Make(width,1,height),ELVector3Make(0,0,0),0,diffuseMap,normalMap,false, CT_Floor, CT_Prop2 | CT_Prop | CT_Role, ELVector3Make(0,0,0));
 }
 
 void FGScene::createCubeGameObject(ELVector3 size,ELVector3 pos,ELFloat mass,GLuint diffuseMap,GLuint normalMap, bool hasBorder, int collisionGroup, int collisionMask, ELVector3 velocity) {
 
-    ELGameObject *gameObject = new ELGameObject(world);
-    world->addNode(gameObject);
+    ELGameObject *gameObject = new ELGameObject(std::shared_ptr<ELWorld>(world));
+    world->addNode(std::shared_ptr<ELNode>(gameObject));
     gameObject->transform->position = pos;
     ELCubeGeometry *cube = new ELCubeGeometry(size, true);
     gameObject->addComponent(cube);

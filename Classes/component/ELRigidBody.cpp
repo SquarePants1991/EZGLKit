@@ -21,7 +21,7 @@ ELRigidBody::ELRigidBody(ELCollisionShape *shape, ELFloat mass) :
         collisionMask(0x00000001),
         physicsWorld(NULL)
 {
-
+    this->kind = "rigidbody";
 }
 
 ELRigidBody::~ELRigidBody() {
@@ -68,7 +68,7 @@ void ELRigidBody::setVelocityZ(ELFloat velocityZ) {
 }
 
 void ELRigidBody::didAddedToGameObject(ELGameObject *gameObject) {
-    physicsWorld = this->gameObject()->world->physicsWorld;
+    physicsWorld = this->gameObject()->world.lock()->physicsWorld;
 
     btTransform defaultTransform = btTransformFromELTransform(*(gameObject->transform));
     btDefaultMotionState *motionState = new btDefaultMotionState(defaultTransform);
@@ -80,7 +80,7 @@ void ELRigidBody::didAddedToGameObject(ELGameObject *gameObject) {
 
     rigidBody->setAngularFactor(btVector3(angleFactor.x,angleFactor.y,angleFactor.z));
     rigidBody->setLinearFactor(btVector3(linearFactor.x, linearFactor.y, linearFactor.z));
-    this->gameObject()->world->physicsWorld->addRigidBody(rigidBody, collisionGroup, collisionMask);
+    this->gameObject()->world.lock()->physicsWorld->addRigidBody(rigidBody, collisionGroup, collisionMask);
     rigidBody->setUserPointer(this->gameObject());
     collisionShape->collisionShape->setUserPointer(this->gameObject());
 }

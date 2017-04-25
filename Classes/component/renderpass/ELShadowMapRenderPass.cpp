@@ -8,12 +8,12 @@
 
 void ELShadowMapRenderPass::render(ELWorld *world) {
     for (int i = 0; i < world->children.size(); ++i) {
-        ELLight * light = dynamic_cast<ELLight *>(world->children.at(i));
+        ELLight * light = dynamic_cast<ELLight *>(world->children.at(i).get());
         if (light != NULL && light->isShadowEnabled) {
             world->activeEffect("gen_shadow");
             world->activedEffect->prepare();
             light->beginGenShadowMap();
-            world->activeCamera(light->identity + "-shadow-camera", light->shadowMapGenCamera());
+            world->activeCamera(light->identity + "-shadow-camera", light->shadowMapGenCamera().get());
             world->orderedRender();
             light->endGenShadowMap();
         }

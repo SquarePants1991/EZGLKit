@@ -4,17 +4,17 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/wangyang/Documents/Projects/EZGLKit/libs/glad/src/glad.cc" "/Users/wangyang/Documents/Projects/EZGLKit/Projects/ClionProj/cmake-build-debug/glad/CMakeFiles/glad.dir/src/glad.cc.o"
+  "/Users/ocean/Documents/Codes/On Git/EZGLKit/libs/glad/src/glad.cc" "/Users/ocean/Documents/Codes/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/glad/CMakeFiles/glad.dir/src/glad.cc.o"
   )
 set(CMAKE_CXX_COMPILER_ID "Clang")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "/Applications/Autodesk/FBX SDK/2015.1/include"
+  "/Applications/Autodesk/FBX SDK macosx/2015.1/include"
   "/usr/local"
   "/usr/local/include"
-  "/Users/wangyang/Documents/Projects/EZGLKit/Projects/ClionProj/../../libs"
-  "/Users/wangyang/Documents/Projects/EZGLKit/Projects/ClionProj/../../libs/glad/include"
+  "/Users/ocean/Documents/Codes/On Git/EZGLKit/Projects/ClionProj/../../libs"
+  "/Users/ocean/Documents/Codes/On Git/EZGLKit/Projects/ClionProj/../../libs/glad/include"
   )
 
 # Targets to which this target links.

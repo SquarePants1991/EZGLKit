@@ -24,7 +24,8 @@
     
     UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(panned:)];
     [self.view addGestureRecognizer:panGesture];
-    // Do any additional setup after loading the view.
+
+    self.preferredFramesPerSecond = 60;
 }
 
 - (void)didReceiveMemoryWarning {

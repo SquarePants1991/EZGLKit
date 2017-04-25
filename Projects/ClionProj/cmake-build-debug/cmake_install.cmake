@@ -1,4 +1,4 @@
-# Install script for directory: /Users/wangyang/Documents/Projects/EZGLKit/Projects/ClionProj
+# Install script for directory: /Users/ocean/Documents/Codes/On Git/EZGLKit/Projects/ClionProj
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -29,12 +29,12 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/Users/wangyang/Documents/Projects/EZGLKit/Projects/ClionProj/cmake-build-debug/EZGLib/cmake_install.cmake")
-  include("/Users/wangyang/Documents/Projects/EZGLKit/Projects/ClionProj/cmake-build-debug/glad/cmake_install.cmake")
-  include("/Users/wangyang/Documents/Projects/EZGLKit/Projects/ClionProj/cmake-build-debug/soil/cmake_install.cmake")
-  include("/Users/wangyang/Documents/Projects/EZGLKit/Projects/ClionProj/cmake-build-debug/wavefront/cmake_install.cmake")
-  include("/Users/wangyang/Documents/Projects/EZGLKit/Projects/ClionProj/cmake-build-debug/bullet/cmake_install.cmake")
-  include("/Users/wangyang/Documents/Projects/EZGLKit/Projects/ClionProj/cmake-build-debug/lua/cmake_install.cmake")
+  include("/Users/ocean/Documents/Codes/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/EZGLib/cmake_install.cmake")
+  include("/Users/ocean/Documents/Codes/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/glad/cmake_install.cmake")
+  include("/Users/ocean/Documents/Codes/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/soil/cmake_install.cmake")
+  include("/Users/ocean/Documents/Codes/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/wavefront/cmake_install.cmake")
+  include("/Users/ocean/Documents/Codes/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/bullet/cmake_install.cmake")
+  include("/Users/ocean/Documents/Codes/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/lua/cmake_install.cmake")
 
 endif()
 
@@ -46,5 +46,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/wangyang/Documents/Projects/EZGLKit/Projects/ClionProj/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/ocean/Documents/Codes/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

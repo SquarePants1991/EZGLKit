@@ -26,21 +26,19 @@ public:
     ELInt shadowTexture;
 public:
     ELLight();
+    ~ELLight();
     void enableShadow();
     void disableShadow();
-    ELCamera *shadowMapGenCamera();
+    std::shared_ptr<ELCamera> shadowMapGenCamera();
 
     void beginGenShadowMap();
     void endGenShadowMap();
 
-    virtual std::string kind();
     virtual void update(ELFloat timeInSecs);
 
-protected:
-    ~ELLight();
 private:
     ELUint shadowFramebuffer;
-    ELCamera * cameraForShadowMap;
+    prop_strong(ELCamera, cameraForShadowMap);
     void createShadowFramebuffer();
     void genDepthFramebuffer();
     void genColorFramebuffer();

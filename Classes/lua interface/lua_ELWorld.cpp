@@ -45,7 +45,7 @@ int lua_create_table_from_world(lua_State *state, ELWorld *world) {
 int lua_add_node(lua_State *state) {
     ELWorld *world = lua_world_from_table(state, 1);
     ELNode *node = (ELNode *)lua_touserdata(state, 2);
-    world->addNode(node);
+    world->addNode(std::shared_ptr<ELNode>(node));
     return 0;
 }
 

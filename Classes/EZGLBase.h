@@ -27,4 +27,10 @@
 
 #define BUFFER_OFFSET(i) ((char *)NULL + (i))
 
+#define prop_strong(type,ptr) std::shared_ptr<type> ptr
+#define prop_weak(type,ptr) std::weak_ptr<type> ptr
+#define retain_ptr(type,ptr) std::shared_ptr<type>(ptr)
+#define retain_ptr_init(type) std::shared_ptr<type>(new type())
+#define retain_ptr_init_v(type, ...) std::shared_ptr<type>(new type(__VA_ARGS__))
+
 #endif //EZGL_EZGLBASE_H

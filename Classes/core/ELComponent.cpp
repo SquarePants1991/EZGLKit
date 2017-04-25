@@ -6,10 +6,12 @@
 #include "ELGameObject.h"
 
 ELComponent::ELComponent() {
-
+    kind = "component";
 }
 
 ELGameObject *ELComponent::gameObject() {
     return dynamic_cast<ELGameObject *>(parent);
 }
+
+
 

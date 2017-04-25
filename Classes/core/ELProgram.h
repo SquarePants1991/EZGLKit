@@ -13,6 +13,7 @@ public:
     bool isValid;
 public:
     ELProgram(const char *vertexShader,const char *fragmentShader);
+    ~ELProgram();
     GLuint uniform(char *uniformName);
 
 private:

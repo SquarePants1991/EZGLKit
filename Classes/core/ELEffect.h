@@ -11,7 +11,7 @@
 
 class ELEffect : public ELNode {
 public:
-    ELProgram *program;
+    std::shared_ptr<ELProgram> program;
     static ELEffect *defaultEffect();
 
     ELFloat frogStart;
@@ -24,8 +24,6 @@ public:
 
     void prepare();
     void active();
-
-    virtual std::string kind();
 };
 
 

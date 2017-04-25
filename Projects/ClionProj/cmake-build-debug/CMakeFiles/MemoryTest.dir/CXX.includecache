@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/ocean/Documents/Codes/On Git/EZGLKit/Projects/ClionProj/MemoryTest/main.cpp
+stdio.h
+-
+vector
+-
+map
+-
+string
+-
+

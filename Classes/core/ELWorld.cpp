@@ -18,11 +18,17 @@ ELWorld::ELWorld() {
     ELGLState::set(GL_CULL_FACE_MODE, GL_BACK);
     ELAssets::shared()->addSearchPath("assets/shaders");
     ELAssets::shared()->addSearchPath("assets/textures");
+
+    kind = "world";
+}
+
+ELWorld::~ELWorld() {
+
 }
 
 void ELWorld::enablePhysics() {
     physicsWorld = new ELPhysicsWorld();
-    addNode(physicsWorld);
+    addNode(retain_ptr(ELPhysicsWorld, physicsWorld));
 }
 
 void ELWorld::enableDefaultCamera(ELFloat aspect) {
@@ -31,7 +37,7 @@ void ELWorld::enableDefaultCamera(ELFloat aspect) {
     ELVector3 up = {0, 1, 0};
     ELCamera * defaultCamera = new ELCamera(eye, center, up, 70.0, aspect, 0.1, 1000);
     defaultCamera->identity = "default";
-    addNode(defaultCamera);
+    addNode(std::shared_ptr<ELCamera>(defaultCamera));
     activeCamera("default");
 }
 
@@ -41,7 +47,7 @@ void ELWorld::update(ELFloat timeInSecs) {
 }
 
 void ELWorld::render() {
-    for (std::vector<ELRenderPass *>::iterator iter = renderPasses.begin(); iter != renderPasses.end(); ++iter) {
+    for (auto iter = renderPasses.begin(); iter != renderPasses.end(); ++iter) {
         (*iter)->render(this);
     }
     renderScene();
@@ -64,7 +70,7 @@ void ELWorld::renderScene() {
     int lightIndex = 0;
     char shadowMapUniformName[512];
     for (int i = 0; i < children.size(); ++i) {
-        ELLight * light = dynamic_cast<ELLight *>(children.at(i));
+        ELLight * light = dynamic_cast<ELLight *>(children.at(i).get());
         if (light != NULL && light->isShadowEnabled) {
             GLuint channel = GL_TEXTURE6 + lightIndex;
             glActiveTexture(channel);
@@ -88,7 +94,7 @@ void ELWorld::orderedRender() {
 
 void ELWorld::activeEffect(std::string effectName) {
     for (int i = 0; i < children.size(); ++i) {
-        ELNode *node = children.at(i);
+        ELNode *node = children.at(i).get();
         ELEffect *effect = dynamic_cast<ELEffect *>(node);
         if (effect != NULL && effect->identity == effectName) {
             activedEffect = effect;
@@ -99,7 +105,7 @@ void ELWorld::activeEffect(std::string effectName) {
 void ELWorld::activeCamera(std::string cameraName, ELCamera *camera) {
     bool cameraFound = false;
     for (int i = 0; i < children.size(); ++i) {
-        ELNode *node = children.at(i);
+        ELNode *node = children.at(i).get();
         ELCamera *camera = dynamic_cast<ELCamera *>(node);
         if (camera != NULL && camera->identity == cameraName) {
             activedCamera = camera;
@@ -107,13 +113,13 @@ void ELWorld::activeCamera(std::string cameraName, ELCamera *camera) {
         }
     }
     if (cameraFound == false && camera != NULL) {
-        addNode(camera);
+        addNode(std::shared_ptr<ELCamera>(camera));
         activedCamera = camera;
     }
 }
 
 void ELWorld::addRenderPass(ELRenderPass *renderPass) {
-    renderPasses.push_back(renderPass);
+    renderPasses.push_back(retain_ptr(ELRenderPass, renderPass));
 }
 
 void ELWorld::setViewport(ELInt left, ELInt bottom, ELInt width, ELInt height) {

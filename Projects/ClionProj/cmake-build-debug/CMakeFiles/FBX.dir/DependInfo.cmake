@@ -4,9 +4,9 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/wangyang/Documents/Projects/EZGLKit/Projects/ClionProj/FBX/FGScene.cpp" "/Users/wangyang/Documents/Projects/EZGLKit/Projects/ClionProj/cmake-build-debug/CMakeFiles/FBX.dir/FBX/FGScene.cpp.o"
-  "/Users/wangyang/Documents/Projects/EZGLKit/Projects/ClionProj/FBX/FGWindow.cpp" "/Users/wangyang/Documents/Projects/EZGLKit/Projects/ClionProj/cmake-build-debug/CMakeFiles/FBX.dir/FBX/FGWindow.cpp.o"
-  "/Users/wangyang/Documents/Projects/EZGLKit/Projects/ClionProj/FBX/main.cpp" "/Users/wangyang/Documents/Projects/EZGLKit/Projects/ClionProj/cmake-build-debug/CMakeFiles/FBX.dir/FBX/main.cpp.o"
+  "/Users/ocean/Documents/Codes/On Git/EZGLKit/Projects/ClionProj/FBX/FGScene.cpp" "/Users/ocean/Documents/Codes/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/CMakeFiles/FBX.dir/FBX/FGScene.cpp.o"
+  "/Users/ocean/Documents/Codes/On Git/EZGLKit/Projects/ClionProj/FBX/FGWindow.cpp" "/Users/ocean/Documents/Codes/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/CMakeFiles/FBX.dir/FBX/FGWindow.cpp.o"
+  "/Users/ocean/Documents/Codes/On Git/EZGLKit/Projects/ClionProj/FBX/main.cpp" "/Users/ocean/Documents/Codes/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/CMakeFiles/FBX.dir/FBX/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "Clang")
 
@@ -17,7 +17,7 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "/Applications/Autodesk/FBX SDK/2015.1/include"
+  "/Applications/Autodesk/FBX SDK macosx/2015.1/include"
   "/usr/local"
   "/usr/local/include"
   "../../../libs"
@@ -31,12 +31,12 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/Users/wangyang/Documents/Projects/EZGLKit/Projects/ClionProj/cmake-build-debug/EZGLib/CMakeFiles/EZGLib.dir/DependInfo.cmake"
-  "/Users/wangyang/Documents/Projects/EZGLKit/Projects/ClionProj/cmake-build-debug/lua/CMakeFiles/lua.dir/DependInfo.cmake"
-  "/Users/wangyang/Documents/Projects/EZGLKit/Projects/ClionProj/cmake-build-debug/glad/CMakeFiles/glad.dir/DependInfo.cmake"
-  "/Users/wangyang/Documents/Projects/EZGLKit/Projects/ClionProj/cmake-build-debug/soil/CMakeFiles/soil.dir/DependInfo.cmake"
-  "/Users/wangyang/Documents/Projects/EZGLKit/Projects/ClionProj/cmake-build-debug/wavefront/CMakeFiles/wavefront.dir/DependInfo.cmake"
-  "/Users/wangyang/Documents/Projects/EZGLKit/Projects/ClionProj/cmake-build-debug/bullet/CMakeFiles/bullet.dir/DependInfo.cmake"
+  "/Users/ocean/Documents/Codes/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/EZGLib/CMakeFiles/EZGLib.dir/DependInfo.cmake"
+  "/Users/ocean/Documents/Codes/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/lua/CMakeFiles/lua.dir/DependInfo.cmake"
+  "/Users/ocean/Documents/Codes/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/glad/CMakeFiles/glad.dir/DependInfo.cmake"
+  "/Users/ocean/Documents/Codes/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/soil/CMakeFiles/soil.dir/DependInfo.cmake"
+  "/Users/ocean/Documents/Codes/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/wavefront/CMakeFiles/wavefront.dir/DependInfo.cmake"
+  "/Users/ocean/Documents/Codes/On Git/EZGLKit/Projects/ClionProj/cmake-build-debug/bullet/CMakeFiles/bullet.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

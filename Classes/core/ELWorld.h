@@ -17,14 +17,15 @@ class ELRenderPass;
 
 class ELWorld : public ELNode {
 public:
-    ELCamera *activedCamera;
-    ELEffect *activedEffect;
-    ELPhysicsWorld *physicsWorld;
+    ELCamera * activedCamera;
+    ELEffect * activedEffect;
+    ELPhysicsWorld * physicsWorld;
 
     int fbWidth;
     int fbHeight;
 public:
     ELWorld();
+    ~ELWorld();
 
     virtual void update(ELFloat timeInSecs);
     virtual void render();
@@ -38,7 +39,7 @@ public:
     void addRenderPass(ELRenderPass *renderPass);
     void setViewport(ELInt left, ELInt bottom, ELInt width, ELInt height);
 private:
-    std::vector<ELRenderPass *> renderPasses;
+    std::vector<std::shared_ptr<ELRenderPass> > renderPasses;
     
     std::shared_ptr<ELVector4 *> viewport;
 private:

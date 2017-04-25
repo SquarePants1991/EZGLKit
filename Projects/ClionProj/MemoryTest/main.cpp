@@ -54,5 +54,8 @@ int main(int argc, char **argv) {
         man->sayHello();
     }
     woman->sayHello();
+    std::vector<std::shared_ptr<MemoryTestClass> > peoples;
+    peoples.push_back(woman);
+    printf("all in.\n");
     return 0;
 }

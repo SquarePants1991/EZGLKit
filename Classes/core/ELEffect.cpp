@@ -10,15 +10,15 @@
 #include "ELProjector.h"
 
 ELEffect::ELEffect() {
-
+    kind = "effect";
 }
 
 ELEffect::ELEffect(const char *vertexShader,const char *fragmentShader) {
-    program = new ELProgram(vertexShader, fragmentShader);
+    program = std::shared_ptr<ELProgram>(new ELProgram(vertexShader, fragmentShader));
+    kind = "effect";
 }
 
 ELEffect::~ELEffect() {
-    delete program;
 }
 
 ELEffect * ELEffect::defaultEffect() {
@@ -67,8 +67,4 @@ void ELEffect::prepare() {
 
 void ELEffect::active() {
     glUseProgram(program->value);
-}
-
-std::string ELEffect::kind() {
-    return "effect";
 }

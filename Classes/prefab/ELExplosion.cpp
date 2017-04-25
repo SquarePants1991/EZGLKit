@@ -12,9 +12,9 @@
 
 ELExplosion::ELExplosion(ELWorld *world, ELVector3 position) {
     GLuint diffuseMap = ELTexture::texture(ELAssets::shared()->findFile("particle_point.png"))->value;
-    ELGameObject *gameObject = new ELGameObject(world);
-    world->addNode(gameObject);
-    world->addNode(this);
+    ELGameObject *gameObject = new ELGameObject(std::shared_ptr<ELWorld>(world));
+    world->addNode(std::shared_ptr<ELGameObject>(gameObject));
+    world->addNode(std::shared_ptr<ELExplosion>(this));
     ELParticleSystem *ps = new ELParticleSystem();
     gameObject->transform->position = position;
     ps->materials[0].diffuseMap = diffuseMap;

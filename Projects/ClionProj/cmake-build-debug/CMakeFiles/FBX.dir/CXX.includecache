@@ -105,6 +105,8 @@ ELPartical.h
 ../../../Classes/types/EZGLTypes.h
 ../core/ELComponent.h
 ../../../Classes/core/ELComponent.h
+../core/ELPhysicsWorld.h
+../../../Classes/core/ELPhysicsWorld.h
 
 ../../../Classes/component/ELTerrain.h
 ELGeometry.h
@@ -231,6 +233,8 @@ ELCamera.h
 ../../../Classes/core/ELCamera.h
 
 ../../../Classes/core/ELNode.h
+../EZGLBase.h
+../../../Classes/EZGLBase.h
 ../types/EZGLTypes.h
 ../../../Classes/types/EZGLTypes.h
 vector
@@ -463,8 +467,6 @@ ELGLState.h
 ../../../Classes/utils/ELWaveFrontLoader.h
 ../component/ELGeometry.h
 ../../../Classes/component/ELGeometry.h
-wavefront/tiny_obj_loader.h
-../../../Classes/utils/wavefront/tiny_obj_loader.h
 ELGeometryVertexBuffer.h
 ../../../Classes/utils/ELGeometryVertexBuffer.h
 vector
@@ -518,79 +520,43 @@ stddef.h
 luaconf.h
 ../../../libs/lua/luaconf.h
 
-../../../libs/lua/luaconf.h
-limits.h
--
-stddef.h
--
-stdint.h
--
-assert.h
--
-
 ../../../libs/lua/lualib.h
 lua.h
 ../../../libs/lua/lua.h
 
 ../../../libs/soil/SOIL.h
 
-../../../libs/wavefront/tiny_obj_loader.h
-map
--
-string
--
-vector
--
-cassert
--
-cctype
--
-cmath
--
-cstddef
--
-cstdlib
--
-cstring
--
-utility
--
-fstream
--
-sstream
--
-
-/Users/wangyang/Documents/Projects/EZGLKit/Projects/ClionProj/FBX/FGScene.cpp
+/Users/ocean/Documents/Codes/On Git/EZGLKit/Projects/ClionProj/FBX/FGScene.cpp
 component/geometry/ELSphereGeometry.h
 -
 FGScene.h
-/Users/wangyang/Documents/Projects/EZGLKit/Projects/ClionProj/FBX/FGScene.h
+/Users/ocean/Documents/Codes/On Git/EZGLKit/Projects/ClionProj/FBX/FGScene.h
 utils/ELFBXLoader.h
-/Users/wangyang/Documents/Projects/EZGLKit/Projects/ClionProj/FBX/utils/ELFBXLoader.h
+/Users/ocean/Documents/Codes/On Git/EZGLKit/Projects/ClionProj/FBX/utils/ELFBXLoader.h
 
-/Users/wangyang/Documents/Projects/EZGLKit/Projects/ClionProj/FBX/FGScene.h
+/Users/ocean/Documents/Codes/On Git/EZGLKit/Projects/ClionProj/FBX/FGScene.h
 EZGL.h
-/Users/wangyang/Documents/Projects/EZGLKit/Projects/ClionProj/FBX/EZGL.h
+/Users/ocean/Documents/Codes/On Git/EZGLKit/Projects/ClionProj/FBX/EZGL.h
 
-/Users/wangyang/Documents/Projects/EZGLKit/Projects/ClionProj/FBX/FGWindow.cpp
+/Users/ocean/Documents/Codes/On Git/EZGLKit/Projects/ClionProj/FBX/FGWindow.cpp
 FGWindow.h
-/Users/wangyang/Documents/Projects/EZGLKit/Projects/ClionProj/FBX/FGWindow.h
+/Users/ocean/Documents/Codes/On Git/EZGLKit/Projects/ClionProj/FBX/FGWindow.h
 iostream
 -
 utils/ELGLState.h
 -
 FGScene.h
-/Users/wangyang/Documents/Projects/EZGLKit/Projects/ClionProj/FBX/FGScene.h
+/Users/ocean/Documents/Codes/On Git/EZGLKit/Projects/ClionProj/FBX/FGScene.h
 lua interface/lua_Interfaces.h
-/Users/wangyang/Documents/Projects/EZGLKit/Projects/ClionProj/FBX/lua interface/lua_Interfaces.h
+/Users/ocean/Documents/Codes/On Git/EZGLKit/Projects/ClionProj/FBX/lua interface/lua_Interfaces.h
 
-/Users/wangyang/Documents/Projects/EZGLKit/Projects/ClionProj/FBX/FGWindow.h
+/Users/ocean/Documents/Codes/On Git/EZGLKit/Projects/ClionProj/FBX/FGWindow.h
 EZGL.h
-/Users/wangyang/Documents/Projects/EZGLKit/Projects/ClionProj/FBX/EZGL.h
+/Users/ocean/Documents/Codes/On Git/EZGLKit/Projects/ClionProj/FBX/EZGL.h
 
-/Users/wangyang/Documents/Projects/EZGLKit/Projects/ClionProj/FBX/main.cpp
+/Users/ocean/Documents/Codes/On Git/EZGLKit/Projects/ClionProj/FBX/main.cpp
 FGWindow.h
-/Users/wangyang/Documents/Projects/EZGLKit/Projects/ClionProj/FBX/FGWindow.h
+/Users/ocean/Documents/Codes/On Git/EZGLKit/Projects/ClionProj/FBX/FGWindow.h
 stdio.h
 -
 iostream
@@ -635,4 +601,34 @@ GL/glext.h
 -
 GL/glu.h
 -
+
+/usr/local/include/lauxlib.h
+stddef.h
+-
+stdio.h
+-
+lua.h
+/usr/local/include/lua.h
+
+/usr/local/include/lua.h
+stdarg.h
+-
+stddef.h
+-
+luaconf.h
+/usr/local/include/luaconf.h
+
+/usr/local/include/luaconf.h
+limits.h
+-
+stddef.h
+-
+stdint.h
+-
+assert.h
+-
+
+/usr/local/include/lualib.h
+lua.h
+/usr/local/include/lua.h
 

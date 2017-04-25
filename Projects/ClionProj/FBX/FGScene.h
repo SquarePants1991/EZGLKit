@@ -9,14 +9,14 @@
 
 class FGScene {
 public:
-    FGScene(ELWorld *world);
+    FGScene(std::shared_ptr<ELWorld> world);
     ELRigidBody *playerRigidBody;
     void update(ELFloat timeInSecs);
 
     void mouseLeftButtonClicked();
     void mouseRightButtonClicked();
 private:
-    ELWorld *world;
+    prop_strong(ELWorld, world);
     void createMonkey();
     void createPlane();
     void createFloor();

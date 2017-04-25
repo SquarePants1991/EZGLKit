@@ -52,13 +52,13 @@ ELGeometryData EL2DPlane::generateData() {
 void EL2DPlane::render() {
     glDisable(GL_CULL_FACE);
     glDepthMask(GL_FALSE);
-    std::string oldEffect = this->gameObject()->world->activedEffect->identity;
-    std::string oldCamera = this->gameObject()->world->activedCamera->identity;
-    this->gameObject()->world->activeEffect("disp_video");
-    this->gameObject()->world->activeCamera("ortho");
+    std::string oldEffect = this->gameObject()->world.lock()->activedEffect->identity;
+    std::string oldCamera = this->gameObject()->world.lock()->activedCamera->identity;
+    this->gameObject()->world.lock()->activeEffect("disp_video");
+    this->gameObject()->world.lock()->activeCamera("ortho");
     ELGeometry::render();
-    this->gameObject()->world->activeCamera(oldCamera);
-    this->gameObject()->world->activeEffect(oldEffect);
+    this->gameObject()->world.lock()->activeCamera(oldCamera);
+    this->gameObject()->world.lock()->activeEffect(oldEffect);
     glDepthMask(GL_TRUE);
 }
 

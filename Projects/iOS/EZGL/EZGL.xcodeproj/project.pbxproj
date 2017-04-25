@@ -75,7 +75,7 @@
 		8E53A72E1E45C9C000C790CE /* grass_yellow.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8E53A7281E45C9C000C790CE /* grass_yellow.jpg */; };
 		8E53A72F1E45C9C000C790CE /* grass_yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E53A7291E45C9C000C790CE /* grass_yellow.png */; };
 		8E5B54E91E3445480082AE9F /* libiconv.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E5B54E81E3445480082AE9F /* libiconv.2.tbd */; };
-		D347B2411E866FCB00F4A5F8 /* EZGLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D347B2401E866FCB00F4A5F8 /* EZGLib.framework */; };
+		8EBB9E631EAF0E740095A77B /* EZGLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EBB9E621EAF0E740095A77B /* EZGLib.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -180,6 +180,7 @@
 		8E53A7281E45C9C000C790CE /* grass_yellow.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = grass_yellow.jpg; sourceTree = "<group>"; };
 		8E53A7291E45C9C000C790CE /* grass_yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grass_yellow.png; sourceTree = "<group>"; };
 		8E5B54E81E3445480082AE9F /* libiconv.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.2.tbd; path = usr/lib/libiconv.2.tbd; sourceTree = SDKROOT; };
+		8EBB9E621EAF0E740095A77B /* EZGLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EZGLib.framework; path = ../EZGLSDK/build/EZGLib.framework; sourceTree = "<group>"; };
 		D347B2401E866FCB00F4A5F8 /* EZGLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EZGLib.framework; path = ../EZGLSDK/EZGLib.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -189,8 +190,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8E5B54E91E3445480082AE9F /* libiconv.2.tbd in Frameworks */,
+				8EBB9E631EAF0E740095A77B /* EZGLib.framework in Frameworks */,
 				8E30C29A1E31F02100D5AA1D /* libstdc++.6.0.9.tbd in Frameworks */,
-				D347B2411E866FCB00F4A5F8 /* EZGLib.framework in Frameworks */,
 				8E03AEEB1E30F9F300008F82 /* GLKit.framework in Frameworks */,
 				8E03AEEC1E30F9F300008F82 /* OpenGLES.framework in Frameworks */,
 			);
@@ -267,6 +268,7 @@
 		8E03AEE81E30F9F200008F82 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8EBB9E621EAF0E740095A77B /* EZGLib.framework */,
 				D347B2401E866FCB00F4A5F8 /* EZGLib.framework */,
 				8E5B54E81E3445480082AE9F /* libiconv.2.tbd */,
 				8E30C2991E31F02100D5AA1D /* libstdc++.6.0.9.tbd */,
@@ -790,6 +792,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)SDK",
+					"$(PROJECT_DIR)SDK/build",
 				);
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "$(SRCROOT)/EZGL/AppBase/Info.plist";
@@ -814,6 +817,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)SDK",
+					"$(PROJECT_DIR)SDK/build",
 				);
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "$(SRCROOT)/EZGL/AppBase/Info.plist";

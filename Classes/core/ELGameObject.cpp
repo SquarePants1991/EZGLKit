@@ -6,12 +6,14 @@
 #include "ELComponent.h"
 #include "ELLight.h"
 
-ELGameObject::ELGameObject(ELWorld *world) : ELNode(), world(world) {
+ELGameObject::ELGameObject(std::shared_ptr<ELWorld> world) : ELNode() {
     specificEffectName = "";
+    this->world = world;
+    kind = "game object";
 }
 
 void ELGameObject::addComponent(ELComponent *component) {
-    ELNode::addNode(dynamic_cast<ELNode *>(component));
+    ELNode::addNode(retain_ptr(ELComponent, component));
     component->didAddedToGameObject(this);
 }
 
@@ -25,24 +27,24 @@ std::vector<ELLight *> ELGameObject::lights() {
 }
 
 ELCamera * ELGameObject::mainCamera() {
-    return world->activedCamera;
+    return world.lock()->activedCamera;
 }
 
 ELEffect * ELGameObject::activeEffect() {
     if (specificEffectName != "") {
-        ELEffect * effect = (ELEffect *)world->findChildWithIdentity(specificEffectName);
+        ELEffect * effect = (ELEffect *)world.lock()->findChildWithIdentity(specificEffectName);
         if (effect != NULL) {
             return effect;
         }
     }
-    return world->activedEffect;
+    return world.lock()->activedEffect;
 }
 
 template <typename T>
 std::vector<T> ELGameObject::getNodesFromWorld() {
     std::vector<T> nodes;
-    for (int i = 0; i < world->children.size(); ++i) {
-        T node = dynamic_cast<T>(world->children.at(i));
+    for (int i = 0; i < world.lock()->children.size(); ++i) {
+        T node = dynamic_cast<T>(world.lock()->children.at(i).get());
         if (node != NULL) {
             nodes.push_back(node);
         }

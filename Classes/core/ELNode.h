@@ -5,6 +5,7 @@
 #ifndef EZGL_ELNODE_H
 #define EZGL_ELNODE_H
 
+#include "../EZGLBase.h"
 #include "../types/EZGLTypes.h"
 #include <vector>
 #include <string>
@@ -15,28 +16,28 @@
 
 class ELNode {
 public:
-    ELNode * parent;
+    ELNode* parent;
     // children nodes
-    std::vector<ELNode *> children;
-    ELTransform *transform;
+    std::vector<std::shared_ptr<ELNode> > children;
+    std::shared_ptr<ELTransform> transform;
     bool renderShadow;
     bool isTransparency;
     ELFloat elapsedSeconds;
     std::string identity;
+    std::string kind;
     ELVector3 size;
     
     static bool drawTransparency;
 public:
     ELNode();
+    virtual ~ELNode();
     void release();
 
-    void addNode(ELNode *node);
+    void addNode(std::shared_ptr<ELNode> node);
     // update node behavior
     virtual void update(ELFloat timeInSecs);
     // rerender node
     virtual void render();
-    // 字符串描述的Node种类
-    virtual std::string kind();
 
     // Node树的查找功能
     std::vector<ELNode *> findChildrenWithKind(std::string kind, bool deepSearch = false);
@@ -49,7 +50,6 @@ public:
     bool containTransparencyNode();
 protected:
     bool objReleased;
-    virtual ~ELNode();
     void findChildrenWithKind(std::string kind, std::vector<ELNode *> &collector, bool furtherSearch = true);
     void findChildWithIdentity(std::string kind, std::vector<ELNode *> &collector, bool furtherSearch = true);
 };

@@ -14,11 +14,17 @@ public:
 bool ELNode::drawTransparency = true;
 
 ELNode::ELNode() : renderShadow(false), elapsedSeconds(0), objReleased(false) {
-    transform = new ELTransform();
+    transform = std::shared_ptr<ELTransform>(new ELTransform());
     transform->position = ELVector3Make(0.0, 0.0, 0.0);
     transform->quaternion = ELQuaternionMakeWithAngleAndAxis(0,0,1,0);
     transform->scale = ELVector3Make(1, 1, 1);
 //    identity = "default";
+    kind = "node";
+#ifdef DEBUG
+    static int createCount = 0;
+    printf("Node Created %d %s!!!\n", createCount, kind.c_str());
+    createCount++;
+#endif
 }
 
 void ELNode::release() {
@@ -26,23 +32,22 @@ void ELNode::release() {
 }
 
 ELNode::~ELNode() {
-    delete transform;
-    for (int i = 0; i < children.size(); ++i) {
-        delete children.at(i);
-    }
-    printf("Node Destroyed!!! \n");
+#ifdef DEBUG
+    static int createCount = 0;
+    printf("Node Destroyed %d %s!!!\n", createCount, kind.c_str());
+    createCount++;
+#endif
 }
 
-void ELNode::addNode(ELNode *node) {
+void ELNode::addNode(std::shared_ptr<ELNode> node) {
     children.push_back(node);
-    node->parent = this;
+    node.get()->parent = this;
 }
 
 void ELNode::update(ELFloat timeInSecs) {
     elapsedSeconds += timeInSecs;
     for (int i = 0; i < children.size(); ++i) {
         if (children.at(i)->objReleased) {
-            delete children.at(i);
             children.erase(children.begin() + i);
             i--;
             continue;
@@ -55,10 +60,6 @@ void ELNode::render() {
     for (int i = 0; i < children.size(); ++i) {
         children.at(i)->render();
     }
-}
-
-std::string ELNode::kind() {
-    return std::string("Node");
 }
 
 std::vector<ELNode *> ELNode::findChildrenWithKind(std::string kind, bool deepSearch) {
@@ -76,8 +77,8 @@ void ELNode::findChildrenWithKind(std::string kind, std::vector<ELNode *> &colle
         if (furtherSearch) {
             children.at(i)->findChildrenWithKind(kind, collector);
         }
-        ELNode *component = dynamic_cast<ELNode *>(children.at(i));
-        if (component != NULL && component->kind() == kind) {
+        ELNode *component = dynamic_cast<ELNode *>(children.at(i).get());
+        if (component != NULL && component->kind == kind) {
             collector.push_back(component);
         }
     }
@@ -101,7 +102,7 @@ void ELNode::findChildWithIdentity(std::string identity, std::vector<ELNode *> &
         if (furtherSearch) {
             children.at(i)->findChildrenWithKind(identity, collector);
         }
-        ELNode *component = dynamic_cast<ELNode *>(children.at(i));
+        ELNode *component = dynamic_cast<ELNode *>(children.at(i).get());
         if (component != NULL && component->identity == identity) {
             collector.push_back(component);
         }
@@ -119,7 +120,7 @@ ELInt ELNode::nodeSumCount() {
 std::string ELNode::description() {
     char buffer[2048];
     const char *fmt = "------------- ELNode ------------- \nIdentity(%s) Kind(%s) Children(%d) \nPosition(%f, %f, %f) \nQuaternion(%f, %f, %f, %f) \nScale(%f, %f, %f) \n";
-    snprintf(buffer, 2048, fmt, identity.c_str(), kind().c_str(), children.size(),
+    snprintf(buffer, 2048, fmt, identity.c_str(), kind.c_str(), children.size(),
              transform->position.x,
              transform->position.y,
              transform->position.z,

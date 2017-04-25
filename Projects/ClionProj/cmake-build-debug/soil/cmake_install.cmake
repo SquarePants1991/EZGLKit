@@ -1,4 +1,4 @@
-# Install script for directory: /Users/wangyang/Documents/Projects/EZGLKit/libs/soil
+# Install script for directory: /Users/ocean/Documents/Codes/On Git/EZGLKit/libs/soil
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

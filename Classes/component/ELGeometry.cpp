@@ -60,7 +60,7 @@ void ELGeometry::render() {
 
     ELEffect *defaultEffect = effect();
     defaultEffect->prepare();
-    ELProgram *program = defaultEffect->program;
+    ELProgram *program = defaultEffect->program.get();
     ELCamera *camera = gameObject()->mainCamera();
 
     effectDidActive(defaultEffect);
@@ -184,7 +184,7 @@ void ELGeometry::render() {
 
 void ELGeometry::setupVao() {
     ELEffect * defaultEffect = effect();
-    ELProgram *program = defaultEffect->program;
+    ELProgram *program = defaultEffect->program.get();
     if (vao < 0) {
         glGenVertexArraysEL(1, (GLuint *)(&vao));
     }
@@ -231,8 +231,8 @@ void ELGeometry::setupVao() {
 }
 
 ELMatrix4 ELGeometry::modelMatrix() {
-    ELMatrix4 baseMatrix = ELMatrix4FromTransform(transform);
-    ELMatrix4 parentMatrix = ELMatrix4FromTransform(gameObject()->transform);
+    ELMatrix4 baseMatrix = ELMatrix4FromTransform(transform.get());
+    ELMatrix4 parentMatrix = ELMatrix4FromTransform(gameObject()->transform.get());
     return ELMatrix4Multiply(parentMatrix, baseMatrix);
 }
 

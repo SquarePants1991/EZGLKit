@@ -11,11 +11,10 @@
 FGWindow::FGWindow(GLFWwindow *glfwWindow, int width, int height) {
     this->glfwWindow = glfwWindow;
     initWorld();
-    ELTexture::clearCache();
 }
 
 void FGWindow::initWorld() {
-    world = new ELWorld();
+    world = std::shared_ptr<ELWorld>(new ELWorld());
     world->enablePhysics();
     int fbWidth,fbHeight;
     glfwGetFramebufferSize(glfwWindow, &fbWidth, &fbHeight);
@@ -35,9 +34,9 @@ void FGWindow::initWorld() {
     activeEffect->identity = "render_scene";
     shadowEffect->identity = "gen_shadow";
     waterEffect->identity = "water";
-    world->addNode(activeEffect);
-    world->addNode(shadowEffect);
-    world->addNode(waterEffect);
+    world->addNode(std::shared_ptr<ELNode>(activeEffect));
+    world->addNode(std::shared_ptr<ELNode>(shadowEffect));
+    world->addNode(std::shared_ptr<ELNode>(waterEffect));
 
     world->addRenderPass(new ELWaterPlaneRenderPass());
     world->addRenderPass(new ELShadowMapRenderPass());
@@ -58,9 +57,11 @@ void FGWindow::run() {
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(glfwWindow))
     {
-        /* Render here */
-        update();
-        render();
+        if (this->world) {
+            /* Render here */
+            update();
+            render();
+        }
         /* Swap front and back buffers */
         glfwSwapBuffers(glfwWindow);
 
@@ -109,6 +110,9 @@ void FGWindow::render() {
 }
 
 void FGWindow::keyPressed(int key) {
+    if (!world) {
+        return;
+    }
     if (key == GLFW_KEY_W) {
         walkingFactor.z = 14;
     }
@@ -130,6 +134,9 @@ void FGWindow::keyPressed(int key) {
 }
 
 void FGWindow::keyReleased(int key) {
+    if (!world) {
+        return;
+    }
     if (key == GLFW_KEY_W) {
         walkingFactor.z = 0;
         mainScene->playerRigidBody->setVelocityX(0);
@@ -149,6 +156,9 @@ void FGWindow::keyReleased(int key) {
 }
 
 void FGWindow::mousePressed(int mouseButton) {
+    if (!world) {
+        return;
+    }
     if (mouseButton == GLFW_MOUSE_BUTTON_LEFT) {
         mainScene->mouseLeftButtonClicked();
     }
@@ -158,11 +168,16 @@ void FGWindow::mousePressed(int mouseButton) {
 }
 
 void FGWindow::mouseReleased(int mouseButton) {
-
+    if (!world) {
+        return;
+    }
 }
 
 
 void FGWindow::mouseMove(int xpos, int ypos) {
+    if (!world) {
+        return;
+    }
     static bool isInit = false;
     if (isInit == false) {
         lastXPos = xpos;
@@ -179,6 +194,9 @@ void FGWindow::mouseMove(int xpos, int ypos) {
 }
 
 void FGWindow::resize(int w, int h) {
+    if (!world) {
+        return;
+    }
     world->activedCamera->aspect = w / (float)h;
 
     int fbWidth,fbHeight;

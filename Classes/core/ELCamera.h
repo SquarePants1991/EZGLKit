@@ -48,7 +48,7 @@ public:
     void translateLeft(ELFloat distance);
     void translateTo(ELVector3 loc);
 
-    void lockOn(ELTransform *transform);
+    void lockOn(std::shared_ptr<ELTransform> transform);
 
     ELVector3 leftVector();
     ELVector3 forwardVector();
@@ -60,7 +60,6 @@ public:
     void setMatrixDirect(float * matrix);
 
     virtual void update(ELFloat timeInSecs);
-
 private:
     bool isOrtho;
     bool needFlip;
@@ -69,7 +68,7 @@ private:
 
     ELQuaternion quaternion();
 
-    ELTransform * lockOnTransform;
+    std::weak_ptr<ELTransform> lockOnTransform;
 };
 
 

@@ -9,23 +9,21 @@
 
 ELLight::ELLight() : shadowTexture(-1) ,
                      isShadowEnabled(false) ,
-                     cameraForShadowMap(NULL),
                      type(ELLightTypeDirection)
 {
-
+    kind = "light";
 }
 
 ELLight::~ELLight() {
-
-}
-
-std::string ELLight::kind() {
-    return "light";
+    if (shadowTexture > 0) {
+        glDeleteFramebuffers(1, &shadowFramebuffer);
+        glDeleteTextures(1, (GLuint *)&shadowTexture);
+    }
 }
 
 void ELLight::update(ELFloat timeInSecs) {
     ELNode::update(timeInSecs);
-    if (cameraForShadowMap != NULL) {
+    if (cameraForShadowMap) {
         cameraForShadowMap->originEye = position;
     }
 }
@@ -41,12 +39,12 @@ void ELLight::disableShadow() {
     isShadowEnabled = false;
 }
 
-ELCamera * ELLight::shadowMapGenCamera() {
-    if (cameraForShadowMap == NULL) {
-        cameraForShadowMap = new ELCamera();
+std::shared_ptr<ELCamera> ELLight::shadowMapGenCamera() {
+    if (!cameraForShadowMap) {
+        cameraForShadowMap = retain_ptr_init(ELCamera);
         ELVector3 center = ELVector3Make(0,0,0);
         ELVector3 up = ELVector3Make(0,0,1);
-        cameraForShadowMap = new ELCamera(position, center,up,60,1,0,0);
+        cameraForShadowMap = retain_ptr_init_v(ELCamera, position, center,up,60,1,0,0);
         cameraForShadowMap->ortho(-40.0, 40.0, 40, -40, -40, 40);
         cameraForShadowMap->identity = this->identity + "-shadow-camera";
     }

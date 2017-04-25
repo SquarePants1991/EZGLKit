@@ -6,7 +6,7 @@
 
 ELCamera::ELCamera()
 {
-
+    kind = "camera";
 }
 
 ELCamera::ELCamera(ELVector3 eye,ELVector3 lookAt,ELVector3 up,ELFloat fovyRadians,ELFloat aspect,ELFloat nearZ,ELFloat farZ) :
@@ -18,10 +18,10 @@ ELCamera::ELCamera(ELVector3 eye,ELVector3 lookAt,ELVector3 up,ELFloat fovyRadia
         nearZ(nearZ),
         farZ(farZ),
         isOrtho(false),
-        lockOnTransform(NULL),
         translation(ELVector3Make(0, 0, 0)),
         useDirectMatrix(false)
 {
+    kind = "camera";
     radiansAroundForward = 0.0;
     radiansAroundUp = 0.0;
     radiansAroundLeft = 0.0;
@@ -31,10 +31,10 @@ ELCamera::ELCamera(ELVector3 eye,ELVector3 lookAt,ELVector3 up,ELFloat fovyRadia
 }
 
 ELCamera::ELCamera(ELFloat left, ELFloat right, ELFloat top, ELFloat bottom, ELFloat nearZ, ELFloat farZ) :
-        lockOnTransform(NULL),
         translation(ELVector3Make(0, 0, 0)),
         useDirectMatrix(false)
 {
+    kind = "camera";
     radiansAroundForward = 0.0;
     radiansAroundUp = 0.0;
     radiansAroundLeft = 0.0;
@@ -169,18 +169,18 @@ void ELCamera::translateTo(ELVector3 loc) {
     originLookAt = ELVector3Add(originEye, eyeVec);
 }
 
-void ELCamera::lockOn(ELTransform *transform) {
+void ELCamera::lockOn(std::shared_ptr<ELTransform> transform) {
     lockOnTransform = transform;
 }
 
 void ELCamera::update(ELFloat timeInSecs) {
-    if (lockOnTransform != NULL) {
+    if (lockOnTransform.lock()) {
 //        ELVector3 eyeVec = ELVector3Subtract(originLookAt, originEye);
 //        originLookAt = lockOnTransform->position;
 //        originEye = ELVector3Subtract(originLookAt, eyeVec);
 
         ELVector3 eyeVec = ELVector3Subtract(originLookAt, originEye);
-        originEye = lockOnTransform->position;
+        originEye = lockOnTransform.lock()->position;
         originEye.y += 2;
         originLookAt = ELVector3Add(originEye, eyeVec);
     }

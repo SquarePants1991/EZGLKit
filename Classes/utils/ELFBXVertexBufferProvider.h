@@ -35,6 +35,7 @@ public:
     void prepare();
     std::map<std::string, ELAnimation> loadAnimations();
     virtual void update(const char *animationName,ELFloat elapsedTime, ELGeometryVertexBuffer *vertexBuffer);
+    virtual std::string kind() { return "buffer provider"; };
 private:
     FbxScene *scene;
     FbxMesh *mesh; // process only one mesh now

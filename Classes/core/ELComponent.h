@@ -10,7 +10,7 @@
 
 class ELGameObject;
 
-class ELComponent : public ELNode{
+class ELComponent : public ELNode {
 public:
     ELComponent();
 

@@ -12,6 +12,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/EZGL.dir/FPSGameWithLua/FGWindow.cpp.o"
   "CMakeFiles/EZGL.dir/FPSGameWithLua/main.cpp.o"
   "CMakeFiles/EZGL.dir/LuaTest/main.cpp.o"
+  "CMakeFiles/EZGL.dir/MemoryTest/main.cpp.o"
   "CMakeFiles/EZGL.dir/Shader/main.cpp.o"
   "EZGL.pdb"
   "EZGL"

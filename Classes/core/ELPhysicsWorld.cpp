@@ -15,10 +15,20 @@ ELPhysicsWorld::ELPhysicsWorld() {
 
     world = new btDiscreteDynamicsWorld(dispatcher,broadphase,solver,configration);
     world->setGravity(btVector3(0,-25,0));
+
+    kind = "physics world";
+}
+
+ELPhysicsWorld::~ELPhysicsWorld() {
+    delete(configration);
+    delete(dispatcher);
+    delete(solver);
+    delete(broadphase);
+    delete(world);
 }
 
 void ELPhysicsWorld::setGravity(ELVector3 gravity) {
-      world->setGravity(btVector3(gravity.x,gravity.y,gravity.z));
+    world->setGravity(btVector3(gravity.x,gravity.y,gravity.z));
 }
 
 void ELPhysicsWorld::addRigidBody(btRigidBody *rigidBody) {

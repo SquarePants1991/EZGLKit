@@ -17,7 +17,7 @@ class ELCamera;
 class ELEffect;
 class ELGameObject : public ELNode {
 public:
-    ELGameObject(ELWorld *world);
+    ELGameObject(std::shared_ptr<ELWorld> world);
     void addComponent(ELComponent *component);
     virtual void render();
 
@@ -31,7 +31,7 @@ public:
 
     std::string specificEffectName;
 //private:
-    ELWorld *world;
+    std::weak_ptr<ELWorld> world;
 };
 
 
