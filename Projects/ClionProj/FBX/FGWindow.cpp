@@ -11,6 +11,9 @@
 FGWindow::FGWindow(GLFWwindow *glfwWindow, int width, int height) {
     this->glfwWindow = glfwWindow;
     initWorld();
+    delete world.get();
+    world.reset();
+    initWorld();
 }
 
 void FGWindow::initWorld() {

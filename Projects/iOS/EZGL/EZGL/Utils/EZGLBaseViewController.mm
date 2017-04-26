@@ -25,7 +25,7 @@
     [super viewDidLoad];
 
     self.context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
-
+    self.preferredFramesPerSecond = 60;
     if (!self.context) {
         NSLog(@"Failed to create ES context");
     }
@@ -50,7 +50,7 @@
     defaultLight->intensityFallOff = 0.0;
     defaultLight->identity = "main-light";
     //    defaultLight->enableShadow();
-    world->addNode(defaultLight);
+    world->addNode(retain_ptr(ELLight, defaultLight));
 
     [self setupWorld:world];
 
@@ -64,10 +64,17 @@
     [self.view addSubview:self.rotateSticker];
 }
 
+
+- (void)dealloc {
+    ELTexture::clearCache();
+}
+
 - (void)setupWorld:(ELWorld *)world {
     world->fbWidth = self.view.frame.size.width;
     world->fbHeight = self.view.frame.size.height;
     world->enableDefaultCamera(world->fbWidth / (float)world->fbHeight);
+    
+    world->physicsWorld->setGravity(ELVector3Make(0, -130, 0));
 
     std::string vertexShader = ELFileUtil::stringContentOfShader(ELAssets::shared()->findFile("vtx_phong_es.glsl").c_str());
     std::string fragShader = ELFileUtil::stringContentOfShader(ELAssets::shared()->findFile("frg_phong_es.glsl").c_str());
@@ -80,9 +87,9 @@
     activeEffect->identity = "render_scene";
     shadowEffect->identity = "gen_shadow";
     waterEffect->identity = "water";
-    world->addNode(activeEffect);
-    world->addNode(shadowEffect);
-    world->addNode(waterEffect);
+    world->addNode(retain_ptr(ELEffect, activeEffect));
+    world->addNode(retain_ptr(ELEffect, shadowEffect));
+    world->addNode(retain_ptr(ELEffect, waterEffect));
 
     //    world->addRenderPass(new ELWaterPlaneRenderPass());
     //    world->addRenderPass(new ELShadowMapRenderPass());

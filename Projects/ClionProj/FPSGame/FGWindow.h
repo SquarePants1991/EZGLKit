@@ -13,6 +13,7 @@ class GLFWwindow;
 class FGWindow {
 public:
     FGWindow(GLFWwindow* glfwWindow, int width, int height);
+    void initWorld();
     void run();
     void update();
     void render();
@@ -25,7 +26,7 @@ public:
     void resize(int w, int h);
 private:
     GLFWwindow* glfwWindow;
-    ELWorld *world;
+    prop_strong(ELWorld, world);
     FGScene *mainScene;
     double lastXPos;
     double lastYPos;

@@ -15,7 +15,7 @@ class btTransform;
 
 class ELRigidBody : public ELComponent {
 public:
-    ELCollisionShape *collisionShape;
+    prop_strong(ELCollisionShape, collisionShape);
     ELFloat mass;
     ELVector3 velocity;
     ELFloat restitution;
@@ -26,7 +26,7 @@ public:
     ELInt collisionMask;
 
 public:
-    ELRigidBody(ELCollisionShape *shape, ELFloat mass);
+    ELRigidBody(std::shared_ptr<ELCollisionShape> shape, ELFloat mass);
     void applyForce(ELVector3 force,ELVector3 pos);
     void applyDamping(ELFloat timeStep);
     void setVelocity(ELVector3 velocity);
@@ -41,8 +41,7 @@ protected:
     ~ELRigidBody();
 private:
     // 暂时用这个解决内存释放问题，后续采用shared_ptr管理内存
-    ELPhysicsWorld *physicsWorld;
-    btRigidBody *rigidBody;
+    prop_strong(btRigidBody, rigidBody);
     btTransform btTransformFromELTransform(ELTransform transform);
     ELTransform elTransformFrombtTransform(btTransform transform,ELTransform originELTransform);
 };

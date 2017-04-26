@@ -16,6 +16,7 @@ ELProjector::ELProjector() {
     camera->ortho(-15, 15, 15, -15, -20, 20);
     // TODO: 该代码和析构代码冲突，考虑传递ELTexture进来而不是TextureID
     this->projectorMap = ELTexture::texture(ELAssets::shared()->findFile("icon.png"))->value;
+    this->kind = "projector";
 }
 
 ELProjector::ELProjector(ELCamera *camera, ELUint projectorMap) {
@@ -26,10 +27,6 @@ ELProjector::ELProjector(ELCamera *camera, ELUint projectorMap) {
 ELProjector::~ELProjector() {
     // TODO: 该代码和默认初始化代码冲突，考虑传递ELTexture进来而不是TextureID，暂时注释。
     // glDeleteTextures(1, &projectorMap);
-}
-
-std::string ELProjector::kind() {
-    return "projector";
 }
 
 void ELProjector::update(ELFloat timeInSecs) {

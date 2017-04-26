@@ -21,9 +21,9 @@ enum CollisionTypes {
 };
 
 @interface GameViewController () {
-    ELWorld *world;
-    ELGameObject *tank;
-    ELGameObject *floor;
+    prop_strong(ELWorld, world);
+    prop_strong(ELGameObject, tank);
+    prop_strong(ELGameObject, floor);
 }
 @property (strong, nonatomic) EAGLContext *context;
 @property (strong, nonatomic) GLKBaseEffect *effect;
@@ -39,7 +39,7 @@ ELGameObject * createCubeGameObject(ELVector3 size,ELVector3 pos,ELFloat mass,GL
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    world = [self world];
+    world = retain_ptr(ELWorld, [self world]);
     world->activedCamera->perspective(ELVector3Make(0, 100, 400), ELVector3Make(0, 0, 0), ELVector3Make(0, 1, 0), world->activedCamera->fovyRadians, world->activedCamera->aspect, world->activedCamera->nearZ, world->activedCamera->farZ);
     self.isStickerEnabled = YES;
     
@@ -77,7 +77,7 @@ ELGameObject * createCubeGameObject(ELVector3 size,ELVector3 pos,ELFloat mass,GL
     normalMap = ELTexture::texture(ELAssets::shared()->findFile("stone_ground_normal.png"))->value;
     diffuseMap = ELTexture::texture(ELAssets::shared()->findFile("stone_ground.png"))->value;
     
-    ELGameObject *gameObject = new ELGameObject(world);
+    auto gameObject = retain_ptr_init_v(ELGameObject, world);
     world->addNode(gameObject);
     gameObject->transform->position = ELVector3Make(0,0,0);
     floor = createCubeGameObject(world, ELVector3Make(width,50,height),ELVector3Make(0,-25,0),0,diffuseMap,normalMap,false, CT_Floor, CT_Prop2 | CT_Prop | CT_Role, ELVector3Make(0,0,0));
@@ -91,7 +91,7 @@ ELGameObject * createCubeGameObject(ELVector3 size,ELVector3 pos,ELFloat mass,GL
     normalMap = ELTexture::texture(ELAssets::shared()->findFile("rock_NRM.png"))->value;
     diffuseMap = ELTexture::texture(ELAssets::shared()->findFile("wood_01.jpg"))->value;
     
-    ELGameObject *gameObject = new ELGameObject(world);
+    auto gameObject = retain_ptr_init_v(ELGameObject, world);
     world->addNode(gameObject);
     gameObject->transform->position = ELVector3Make(0,0,0);
     createCubeGameObject(world, ELVector3Make(width,width,width),ELVector3Make(0,10,0),2,diffuseMap,normalMap,false, CT_Prop, CT_Prop2 | CT_Floor | CT_Role | CT_Prop, ELVector3Make(0,0,0));
@@ -108,7 +108,7 @@ ELGameObject * createCubeGameObject(ELVector3 size,ELVector3 pos,ELFloat mass,GL
     diffuseMap_m4 = ELTexture::texture(ELAssets::shared()->findFile("m4tex_2.png"))->value;
     diffuseMap = ELTexture::texture(ELAssets::shared()->findFile("wood_01.jpg"))->value;
     
-    ELGameObject *gameObject = new ELGameObject(world);
+    auto gameObject = retain_ptr_init_v(ELGameObject, world);
     tank = gameObject;
     world->addNode(gameObject);
     static float posY = 0;
@@ -135,7 +135,7 @@ ELGameObject * createCubeGameObject(ELVector3 size,ELVector3 pos,ELFloat mass,GL
     }
     
     finalSize = ELVector3MultiplyScalar(finalSize, 0.005);
-    ELCollisionShape *collisionShape = new ELCollisionShape();
+    auto collisionShape = retain_ptr_init(ELCollisionShape);
     collisionShape->asBox(ELVector3Make(finalSize.x / 2, finalSize.y / 2, finalSize.z / 2));
     collisionShape->offset = ELVector3Make(0, -finalSize.y / 2, 0);
     ELRigidBody *rigidBody = new ELRigidBody(collisionShape, 100);
@@ -156,7 +156,7 @@ ELGameObject * createCubeGameObject(ELVector3 size,ELVector3 pos,ELFloat mass,GL
     diffuseMap_m4 = ELTexture::texture(ELAssets::shared()->findFile("m4tex_2.png"))->value;
     diffuseMap = ELTexture::texture(ELAssets::shared()->findFile("wood_01.jpg"))->value;
     
-    ELGameObject *gameObject = new ELGameObject(world);
+    auto gameObject = retain_ptr_init_v(ELGameObject, world);
     tank = gameObject;
     world->addNode(gameObject);
     gameObject->transform->position = ELVector3Make(0,0,0);
@@ -178,7 +178,7 @@ ELGameObject * createCubeGameObject(ELVector3 size,ELVector3 pos,ELFloat mass,GL
     }
     
     finalSize = ELVector3MultiplyScalar(finalSize, 0.005);
-    ELCollisionShape *collisionShape = new ELCollisionShape();
+    auto collisionShape = retain_ptr_init(ELCollisionShape);
     collisionShape->asBox(ELVector3Make(finalSize.x / 2, finalSize.y / 2, finalSize.z / 2));
     collisionShape->offset = ELVector3Make(0, -finalSize.y / 2, 0);
     ELRigidBody *rigidBody = new ELRigidBody(collisionShape, 100);
@@ -199,7 +199,7 @@ ELGameObject * createCubeGameObject(ELVector3 size,ELVector3 pos,ELFloat mass,GL
     diffuseMap_m4 = ELTexture::texture(ELAssets::shared()->findFile("m4tex_2.png"))->value;
     diffuseMap = ELTexture::texture(ELAssets::shared()->findFile("wood_01.jpg"))->value;
     
-    ELGameObject *gameObject = new ELGameObject(world);
+    auto gameObject = retain_ptr_init_v(ELGameObject, world);
     world->addNode(gameObject);
     gameObject->transform->position = ELVector3Make(0,0,0);
     gameObject->transform->scale = ELVector3Make(0.1,0.1,0.1);
@@ -228,9 +228,9 @@ ELGameObject * createCubeGameObject(ELVector3 size,ELVector3 pos,ELFloat mass,GL
     }
 }
 
-ELGameObject * createCubeGameObject(ELWorld *world, ELVector3 size,ELVector3 pos,ELFloat mass,GLuint diffuseMap,GLuint normalMap, bool hasBorder, int collisionGroup, int collisionMask, ELVector3 velocity) {
+std::shared_ptr<ELGameObject> createCubeGameObject(std::shared_ptr<ELWorld> world, ELVector3 size,ELVector3 pos,ELFloat mass,GLuint diffuseMap,GLuint normalMap, bool hasBorder, int collisionGroup, int collisionMask, ELVector3 velocity) {
     
-    ELGameObject *gameObject = new ELGameObject(world);
+    auto gameObject = retain_ptr_init_v(ELGameObject, world);
     world->addNode(gameObject);
     gameObject->transform->position = pos;
     ELCubeGeometry *cube = new ELCubeGeometry(size, false);
@@ -243,7 +243,7 @@ ELGameObject * createCubeGameObject(ELWorld *world, ELVector3 size,ELVector3 pos
     cube->borderWidth = 0.2;
     cube->borderColor = ELVector4Make(1, 0, 0, 1);
     
-    ELCollisionShape *collisionShape = new ELCollisionShape();
+    auto collisionShape = retain_ptr_init(ELCollisionShape);
     collisionShape->asBox(ELVector3Make(size.x / 2, size.y / 2, size.z / 2));
     ELRigidBody *rigidBody = new ELRigidBody(collisionShape, mass);
     rigidBody->collisionGroup = collisionGroup;

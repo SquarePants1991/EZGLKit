@@ -43,6 +43,8 @@ ELGeometry.h
 ../../../Classes/utils/ELGeometryVertexBuffer.h
 
 ../../../Classes/component/ELCollisionShape.h
+../EZGLBase.h
+../../../Classes/EZGLBase.h
 ../types/EZGLTypes.h
 ../../../Classes/types/EZGLTypes.h
 

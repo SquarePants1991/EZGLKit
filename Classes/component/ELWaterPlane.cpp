@@ -12,11 +12,18 @@ bool ELWaterPlane::isInWaterPlanePreparePass = false;
 ELWaterPlane::ELWaterPlane() {
     createFramebuffers();
     waterColor = ELVector4Make(1.0,1.0,0.0,1.0);
+    this->kind = "water plane";
 }
 
 ELWaterPlane::ELWaterPlane(ELVector2 size) : size(size) {
     createFramebuffers();
     waterColor = ELVector4Make(0.0,0.6,0.4,1.0);
+    this->kind = "water plane";
+}
+
+ELWaterPlane::~ELWaterPlane() {
+    glDeleteFramebuffers(1, &reflectionFramebuffer);
+    glDeleteFramebuffers(1, &refractionFramebuffer);
 }
 
 ELVector4 ELWaterPlane::plane() {
@@ -59,7 +66,7 @@ void ELWaterPlane::effectDidInactive(ELEffect * effect) {
 }
 
 ELGeometryData ELWaterPlane::generateData() {
-    vertexBuffer = new ELGeometryVertexBuffer();
+    vertexBuffer = retain_ptr_init(ELGeometryVertexBuffer);
     ELGeometryRect rect = {
             {0.5f * size.x , 0.0f ,  -0.5f * size.y  },
             {0.5f * size.x , 0.0f ,  0.5f * size.y   },
@@ -85,10 +92,6 @@ ELGeometryData ELWaterPlane::generateData() {
     data.supportIndiceVBO = false;
 
     return data;
-}
-
-std::string ELWaterPlane::kind() {
-    return "water_plane";
 }
 
 void ELWaterPlane::beginGenReflectionMap() {

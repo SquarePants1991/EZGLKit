@@ -19,7 +19,7 @@ enum CollisionTypes {
 };
 
 @interface TerrainSnowViewController () {
-    ELWorld *world;
+    prop_strong(ELWorld, world);
     ELRigidBody *playerRigidBody;
     ELVector3 walkingFactor;
 }
@@ -31,7 +31,7 @@ RegisterExample(@"Terrain & Snow")
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    world = [self world];
+    world = retain_ptr(ELWorld, [self world]);
     self.isStickerEnabled = YES;
     
     
@@ -39,28 +39,28 @@ RegisterExample(@"Terrain & Snow")
     [self createSnow];
     
     walkingFactor = ELVector3Make(0, 0, 0);
-    ELGameObject *gameObject = new ELGameObject(world);
-    world->addNode(gameObject);
+    auto gameObject = retain_ptr_init_v(ELGameObject, world);
+    world->addNode(retain_ptr(ELGameObject, gameObject));
     gameObject->transform->position = ELVector3Make(0, 35, 0);
     ELCubeGeometry *cube = new ELCubeGeometry(ELVector3Make(0.1,0.1,0.1));
     gameObject->addComponent(cube);
     cube->material.diffuse = ELVector4Make(1.0,0.0,0.0,1.0);
     
     
-    ELCollisionShape *collisionShape = new ELCollisionShape();
+    auto collisionShape = retain_ptr_init(ELCollisionShape);
     collisionShape->asSphere(3);
-    ELRigidBody *rigidBody = new ELRigidBody(collisionShape,10.0);
+    ELRigidBody *rigidBody = new ELRigidBody(collisionShape,100.0);
     playerRigidBody = rigidBody;
     rigidBody->collisionGroup = CT_Role;
     rigidBody->collisionMask = CT_Floor;
     gameObject->addComponent(rigidBody);
     
     rigidBody->setVelocity(ELVector3Make(0, 0, 0));
-    world->activedCamera->lockOn(gameObject->transform);
+    world->activedCamera->lockOn(retain_ptr(ELTransform, gameObject->transform));
 }
 
 - (void)createTerrain {
-    ELGameObject *gameObject = new ELGameObject(world);
+    auto gameObject = retain_ptr_init_v(ELGameObject, world);
     printf("%s",gameObject->description().c_str());
     world->addNode(gameObject);
     gameObject->transform->position = ELVector3Make(0,0,0);
@@ -74,7 +74,7 @@ RegisterExample(@"Terrain & Snow")
     terrain->materials[0].diffuseMap = diffuseMap;
     gameObject->transform->position = ELVector3Make(0,0,0);
     terrain->genMap();
-    ELCollisionShape *collisionShape = new ELCollisionShape();
+    auto collisionShape = retain_ptr_init(ELCollisionShape);
     collisionShape->asTerrian(terrain->mapData,terrain->mapDataSize,0,50);
     ELRigidBody *rigidBody = new ELRigidBody(collisionShape,0);
     rigidBody->collisionGroup = CT_Floor;

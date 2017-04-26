@@ -24,6 +24,16 @@ ELGeometry::ELGeometry() : vao(-1),
     }
 }
 
+ELGeometry::~ELGeometry() {
+    glDeleteVertexArraysEL(1, (GLuint *)&vao);
+    if (isGeometryDataValid) {
+        glDeleteBuffers(1, &data.vertexVBO);
+        if (data.supportIndiceVBO) {
+            glDeleteBuffers(1, &data.indiceVBO);
+        }
+    }
+}
+
 void ELGeometry::prepare() {
     data = generateData();
     setupVao();
@@ -39,10 +49,6 @@ void ELGeometry::update(ELFloat timeInSecs) {
         enableBorder = false;
     }
     ELNode::update(timeInSecs);
-}
-
-std::string ELGeometry::kind() {
-    return "geometry";
 }
 
 void ELGeometry::render() {

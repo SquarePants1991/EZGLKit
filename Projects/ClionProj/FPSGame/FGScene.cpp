@@ -42,7 +42,7 @@ void FGScene::mouseRightButtonClicked() {
 
 }
 
-FGScene::FGScene(ELWorld *world) : world(world){
+FGScene::FGScene(std::shared_ptr<ELWorld> world) : world(world) {
     createScene();
     ELGeometry::resetBorderBeforeUpdate = true;
 }
@@ -60,7 +60,7 @@ void FGScene::createScene() {
     defaultLight->intensityFallOff = 0.0;
     defaultLight->identity = "main-light";
 //    defaultLight->enableShadow();
-    world->addNode(defaultLight);
+    world->addNode(retain_ptr(ELLight, defaultLight));
     createTerrain();
 //    createFloor();
     createWater();
@@ -68,9 +68,9 @@ void FGScene::createScene() {
 //    new ELFire(world, ELVector3Make(35,10,35));
 //    new ELSnow(world, ELVector3Make(0,0,0));
 //    new ELExplosion(world, ELVector3Make(0,10,0));
-    world->addNode(new ELProjector());
+    world->addNode(retain_ptr(ELProjector, new ELProjector()));
 
-    ELGameObject *gameObject = new ELGameObject(world);
+    auto gameObject = retain_ptr_init_v(ELGameObject, world);
     world->addNode(gameObject);
     gameObject->transform->position = ELVector3Make(0, 35, 0);
     ELCubeGeometry *cube = new ELCubeGeometry(ELVector3Make(0.1,0.1,0.1));
@@ -78,7 +78,7 @@ void FGScene::createScene() {
     cube->material.diffuse = ELVector4Make(1.0,0.0,0.0,1.0);
 
 
-    ELCollisionShape *collisionShape = new ELCollisionShape();
+    std::shared_ptr<ELCollisionShape> collisionShape = retain_ptr_init(ELCollisionShape);
     collisionShape->asSphere(3);
     ELRigidBody *rigidBody = new ELRigidBody(collisionShape,1.0);
     playerRigidBody = rigidBody;
@@ -104,7 +104,7 @@ void FGScene::createScene() {
 
 void FGScene::createSkySphere() {
     ELGameObject *gameObject = new ELGameObject(world);
-    world->addNode(gameObject);
+    world->addNode(retain_ptr(ELGameObject, gameObject));
     ELSkySphere *cube = new ELSkySphere(500);
     cube->renderType = ELGeometryRenderTypeBackSide;
     gameObject->addComponent(cube);
@@ -142,7 +142,7 @@ void FGScene::createFloor() {
     diffuseMap = ELTexture::texture(ELAssets::shared()->findFile("rock.png"))->value;
 
     ELGameObject *gameObject = new ELGameObject(world);
-    world->addNode(gameObject);
+    world->addNode(retain_ptr(ELGameObject, gameObject));
     gameObject->transform->position = ELVector3Make(0,0,0);
     createCubeGameObject(ELVector3Make(width,1,height),ELVector3Make(0,-25,0),0,diffuseMap,normalMap,false, CT_Floor, CT_Prop2 | CT_Prop | CT_Role);
 //
@@ -162,7 +162,7 @@ void FGScene::createMonkey() {
     diffuseMap = ELTexture::texture(ELAssets::shared()->findFile("rock.png"))->value;
 
     ELGameObject *gameObject = new ELGameObject(world);
-    world->addNode(gameObject);
+    world->addNode(retain_ptr(ELGameObject, gameObject));
     gameObject->transform->position = ELVector3Make(0,3,0);
 
     std::vector<ELMeshGeometry *> geometries = ELWaveFrontLoader::loadFile(ELAssets::shared()->findFile("monkey.obj"));
@@ -193,7 +193,7 @@ void FGScene::createMiddleWalls(ELVector3 offset,ELFloat width,ELFloat height) {
 void FGScene::createCubeGameObject(ELVector3 size,ELVector3 pos,ELFloat mass,GLuint diffuseMap,GLuint normalMap, bool hasBorder, int collisionGroup, int collisionMask, ELVector3 velocity) {
 
     ELGameObject *gameObject = new ELGameObject(world);
-    world->addNode(gameObject);
+    world->addNode(retain_ptr(ELGameObject, gameObject));
     gameObject->transform->position = pos;
     ELCubeGeometry *cube = new ELCubeGeometry(size, true);
     gameObject->addComponent(cube);
@@ -205,7 +205,7 @@ void FGScene::createCubeGameObject(ELVector3 size,ELVector3 pos,ELFloat mass,GLu
     cube->borderWidth = 0.2;
     cube->borderColor = ELVector4Make(1, 0, 0, 1);
 
-    ELCollisionShape *collisionShape = new ELCollisionShape();
+    std::shared_ptr<ELCollisionShape> collisionShape = retain_ptr_init(ELCollisionShape);
     collisionShape->asBox(ELVector3Make(size.x / 2, size.y / 2, size.z / 2));
     ELRigidBody *rigidBody = new ELRigidBody(collisionShape, mass);
     rigidBody->collisionGroup = collisionGroup;
@@ -218,7 +218,7 @@ void FGScene::createCubeGameObject(ELVector3 size,ELVector3 pos,ELFloat mass,GLu
 void FGScene::createSphereGameObject(ELVector3 size,ELVector3 pos,ELFloat mass,GLuint diffuseMap,GLuint normalMap, bool hasBorder, int collisionGroup, int collisionMask, ELVector3 velocity) {
 
     ELGameObject *gameObject = new ELGameObject(world);
-    world->addNode(gameObject);
+    world->addNode(retain_ptr(ELGameObject, gameObject));
     gameObject->transform->position = pos;
     ELSphereGeometry *cube = new ELSphereGeometry(1, 20,20);
     gameObject->addComponent(cube);
@@ -230,7 +230,7 @@ void FGScene::createSphereGameObject(ELVector3 size,ELVector3 pos,ELFloat mass,G
     cube->borderWidth = 0.2;
     cube->borderColor = ELVector4Make(1,0,0,1);
 
-    ELCollisionShape *collisionShape = new ELCollisionShape();
+    std::shared_ptr<ELCollisionShape> collisionShape = retain_ptr_init(ELCollisionShape);
     collisionShape->asSphere(1);
     ELRigidBody *rigidBody = new ELRigidBody(collisionShape,mass);
     rigidBody->collisionGroup = collisionGroup;
@@ -243,7 +243,7 @@ void FGScene::createSphereGameObject(ELVector3 size,ELVector3 pos,ELFloat mass,G
 void FGScene::createBoardGameObject(ELVector2 size,ELVector3 pos,ELFloat mass,GLuint diffuseMap,GLuint normalMap) {
 
     ELGameObject *gameObject = new ELGameObject(world);
-    world->addNode(gameObject);
+    world->addNode(retain_ptr(ELGameObject, gameObject));
     gameObject->transform->position = pos;
     gameObject->transform->quaternion = ELQuaternionMakeWithAngleAndAxis(3.14/2,0,1,0);
     ELBoard *cube = new ELBoard(size);
@@ -297,7 +297,7 @@ void FGScene::createParticalGameObject(ELVector2 size,ELVector3 pos,ELFloat mass
 
 void FGScene::createWater() {
     ELGameObject *gameObject = new ELGameObject(world);
-    world->addNode(gameObject);
+    world->addNode(retain_ptr(ELGameObject, gameObject));
     gameObject->transform->position = ELVector3Make(0,0,0);
     ELWaterPlane *waterPlane = new ELWaterPlane(ELVector2Make(1200,1200));
     gameObject->addComponent(waterPlane);
@@ -313,7 +313,7 @@ void FGScene::createWater() {
 void FGScene::createTerrain() {
     ELGameObject *gameObject = new ELGameObject(world);
     printf("%s",gameObject->description().c_str());
-    world->addNode(gameObject);
+    world->addNode(retain_ptr(ELGameObject, gameObject));
     gameObject->transform->position = ELVector3Make(0,0,0);
     ELTerrain *terrain = new ELTerrain(ELVector2Make(500,500),ELAssets::shared()->findFile("island12.png"),50);
     gameObject->addComponent(terrain);
@@ -326,7 +326,7 @@ void FGScene::createTerrain() {
     terrain->materials[0].specularMap = dudvNormalMap;
     gameObject->transform->position = ELVector3Make(0,0,0);
     terrain->genMap();
-    ELCollisionShape *collisionShape = new ELCollisionShape();
+    std::shared_ptr<ELCollisionShape> collisionShape = retain_ptr_init(ELCollisionShape);
     collisionShape->asTerrian(terrain->mapData,terrain->mapDataSize,0,50);
     ELRigidBody *rigidBody = new ELRigidBody(collisionShape,0);
     rigidBody->collisionGroup = CT_Floor;

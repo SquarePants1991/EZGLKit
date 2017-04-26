@@ -10,7 +10,7 @@
 class ELWorld;
 class ELSnow : public ELNode {
 public:
-    ELSnow(ELWorld *world, ELVector3 position, ELVector2 size = ELVector2Make(400, 400));
+    ELSnow(std::shared_ptr<ELWorld> world, ELVector3 position, ELVector2 size = ELVector2Make(400, 400));
 };
 
 

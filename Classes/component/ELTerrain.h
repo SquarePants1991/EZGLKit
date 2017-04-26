@@ -27,7 +27,7 @@ protected:
     ~ELTerrain();
 
 private:
-    ELGeometryVertexBuffer *vertexBuffer;
+    prop_strong(ELGeometryVertexBuffer, vertexBuffer);
     int mapWidth;
     int mapHeight;
     unsigned char *imageData;

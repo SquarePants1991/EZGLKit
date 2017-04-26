@@ -72,6 +72,7 @@ public:
     ELParticleSystemData data;
 public:
     ELParticleSystem();
+    ~ELParticleSystem();
 
     void restartPartical(ELPartical *partical);
     void setData(ELParticleSystemData data);
@@ -88,7 +89,6 @@ private:
     ELGeometryVertexBuffer *vertexBuffer;
     ELGeometryData currentData;
     bool isDataInitialized;
-    ELPartical *partical;
     std::vector<ELPartical *> inactiveParticals;
     std::vector<ELPartical *> activeParticals;
     ELFloat emitTimeInterval;

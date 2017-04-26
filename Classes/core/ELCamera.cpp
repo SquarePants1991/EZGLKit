@@ -27,7 +27,7 @@ ELCamera::ELCamera(ELVector3 eye,ELVector3 lookAt,ELVector3 up,ELFloat fovyRadia
     radiansAroundLeft = 0.0;
     radiansAroundForwardLimit = ELVector2Make(0,2 * 180);
     radiansAroundUpLimit =  ELVector2Make(-2 * 180,2 * 180);
-    radiansAroundLeftLimit =  ELVector2Make(0,2 * 180);
+    radiansAroundLeftLimit =  ELVector2Make(-2 * 180,2 * 180);
 }
 
 ELCamera::ELCamera(ELFloat left, ELFloat right, ELFloat top, ELFloat bottom, ELFloat nearZ, ELFloat farZ) :

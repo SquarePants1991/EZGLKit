@@ -10,9 +10,9 @@
 #include "../component/ELParticleSystem.h"
 #include "../utils/ELAssets.h"
 
-ELSnow::ELSnow(ELWorld *world, ELVector3 position, ELVector2 size) {
+ELSnow::ELSnow(std::shared_ptr<ELWorld> world, ELVector3 position, ELVector2 size) {
     GLuint diffuseMap = ELTexture::texture(ELAssets::shared()->findFile("particle_point.png"))->value;
-    ELGameObject *gameObject = new ELGameObject(std::shared_ptr<ELWorld>(world));
+    ELGameObject *gameObject = new ELGameObject(world);
     world->addNode(std::shared_ptr<ELGameObject>(gameObject));
     world->addNode(std::shared_ptr<ELSnow>(this));
     ELParticleSystem *ps = new ELParticleSystem();

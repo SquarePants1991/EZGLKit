@@ -235,6 +235,8 @@
 		8E30C2861E31E8D600D5AA1D /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E30C2851E31E8D600D5AA1D /* GLKit.framework */; };
 		8E30C2881E31E8DA00D5AA1D /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E30C2871E31E8DA00D5AA1D /* CoreFoundation.framework */; };
 		8E30C28A1E31E8E800D5AA1D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E30C2891E31E8E800D5AA1D /* Foundation.framework */; };
+		8E383A921EB04D3800BDD339 /* EZGLBase.h in Headers */ = {isa = PBXBuildFile; fileRef = 8E03ABEB1E30EDA800008F82 /* EZGLBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8E383A931EB04D3A00BDD339 /* EZGL.h in Headers */ = {isa = PBXBuildFile; fileRef = 8E03ABEA1E30EDA800008F82 /* EZGL.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D347B23F1E866E8500F4A5F8 /* libfbxsdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D347B23E1E866E8500F4A5F8 /* libfbxsdk.a */; };
 /* End PBXBuildFile section */
 
@@ -1747,6 +1749,18 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		8E383A911EB04D2D00BDD339 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8E383A921EB04D3800BDD339 /* EZGLBase.h in Headers */,
+				8E383A931EB04D3A00BDD339 /* EZGL.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
 		8E03AABD1E30EC1B00008F82 /* EZGLSDK */ = {
 			isa = PBXNativeTarget;
@@ -1755,6 +1769,7 @@
 				8E03AABA1E30EC1B00008F82 /* Sources */,
 				8E03AABB1E30EC1B00008F82 /* Frameworks */,
 				8E03AABC1E30EC1B00008F82 /* CopyFiles */,
+				8E383A911EB04D2D00BDD339 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -2125,7 +2140,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
-				CLANG_CXX_LIBRARY = "compiler-default";
+				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = NO;
 				DEVELOPMENT_TEAM = P48344HVQL;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -2157,7 +2172,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
-				CLANG_CXX_LIBRARY = "compiler-default";
+				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = NO;
 				DEVELOPMENT_TEAM = P48344HVQL;
 				GCC_PREPROCESSOR_DEFINITIONS = "Platform_iOS=1";

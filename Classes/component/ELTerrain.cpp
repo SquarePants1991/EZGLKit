@@ -12,7 +12,6 @@
 
 ELTerrain::ELTerrain(ELVector2 size, std::string heightMapPath) :
         size(size),
-        vertexBuffer(NULL),
         mapData(NULL),
         resolution(1.0f),
         maxHeight(100),
@@ -27,7 +26,6 @@ ELTerrain::ELTerrain(ELVector2 size, std::string heightMapPath) :
 
 ELTerrain::ELTerrain(ELVector2 size, std::string heightMapPath, ELFloat maxHeight) :
         size(size),
-        vertexBuffer(NULL),
         mapData(NULL),
         resolution(1.0f),
         maxHeight(maxHeight),
@@ -67,8 +65,8 @@ ELFloat ELTerrain::heightWithLocation(ELFloat xLoc,ELFloat zLoc) {
 }
 
 void ELTerrain::genMap() {
-    if (vertexBuffer == NULL) {
-        vertexBuffer = new ELGeometryVertexBuffer();
+    if (!vertexBuffer) {
+        vertexBuffer = retain_ptr_init(ELGeometryVertexBuffer);
     } else {
         vertexBuffer->clear();
     }
@@ -110,7 +108,7 @@ void ELTerrain::genMap() {
 }
 
 ELGeometryData ELTerrain::generateData() {
-    if (vertexBuffer == NULL) {
+    if (!vertexBuffer) {
         genMap();
     }
 

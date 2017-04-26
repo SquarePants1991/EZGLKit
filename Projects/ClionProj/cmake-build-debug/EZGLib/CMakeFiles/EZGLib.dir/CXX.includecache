@@ -2723,6 +2723,8 @@ vector
 -
 map
 -
+memory
+-
 glad/glad/glad.h
 -
 GLFW/glfw3.h
@@ -2755,6 +2757,8 @@ bullet/btBulletDynamicsCommon.h
 /Users/ocean/Documents/Codes/On Git/EZGLKit/Classes/component/bullet/btBulletDynamicsCommon.h
 
 /Users/ocean/Documents/Codes/On Git/EZGLKit/Classes/component/ELCollisionShape.h
+../EZGLBase.h
+/Users/ocean/Documents/Codes/On Git/EZGLKit/Classes/EZGLBase.h
 ../types/EZGLTypes.h
 /Users/ocean/Documents/Codes/On Git/EZGLKit/Classes/types/EZGLTypes.h
 

@@ -6,7 +6,9 @@
 #define EZGL_ELCOLLISIONSHAPE_H
 
 
+#include "../EZGLBase.h"
 #include "../types/EZGLTypes.h"
+
 class btCollisionShape;
 
 class ELCollisionShape {
@@ -19,7 +21,7 @@ public:
     void asStaticPlane();
     void asTerrian(ELFloat *data,ELVector2 size,ELFloat minHeight,ELFloat maxHeight);
 
-    btCollisionShape *collisionShape;
+    prop_strong(btCollisionShape, collisionShape);
 };
 
 

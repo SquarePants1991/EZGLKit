@@ -10,25 +10,20 @@
 #include "bullet/btBulletCollisionCommon.h"
 #include "bullet/btBulletDynamicsCommon.h"
 
-ELRigidBody::ELRigidBody(ELCollisionShape *shape, ELFloat mass) :
-        collisionShape(shape),
+ELRigidBody::ELRigidBody(std::shared_ptr<ELCollisionShape> shape, ELFloat mass) :
         mass(mass),
         friction(0.1),
         restitution(0.2),
         angleFactor(ELVector3Make(1,1,1)),
         linearFactor(ELVector3Make(1,1,1)),
         collisionGroup(0x00000001),
-        collisionMask(0x00000001),
-        physicsWorld(NULL)
+        collisionMask(0x00000001)
 {
     this->kind = "rigidbody";
+    this->collisionShape = shape;
 }
 
 ELRigidBody::~ELRigidBody() {
-    if (physicsWorld) {
-        physicsWorld->removeRigidBody(rigidBody);
-    }
-    delete collisionShape;
 }
 
 void ELRigidBody::applyForce(ELVector3 force,ELVector3 pos) {
@@ -68,19 +63,18 @@ void ELRigidBody::setVelocityZ(ELFloat velocityZ) {
 }
 
 void ELRigidBody::didAddedToGameObject(ELGameObject *gameObject) {
-    physicsWorld = this->gameObject()->world.lock()->physicsWorld;
 
     btTransform defaultTransform = btTransformFromELTransform(*(gameObject->transform));
     btDefaultMotionState *motionState = new btDefaultMotionState(defaultTransform);
     btVector3 fallInertia(0,0,0);
     collisionShape->collisionShape->calculateLocalInertia(mass,fallInertia);
-    rigidBody = new btRigidBody(mass,motionState,collisionShape->collisionShape,fallInertia);
+    rigidBody = retain_ptr_init_v(btRigidBody, mass,motionState,collisionShape->collisionShape.get(),fallInertia);
     rigidBody->setRestitution(restitution);
     rigidBody->setFriction(friction);
 
     rigidBody->setAngularFactor(btVector3(angleFactor.x,angleFactor.y,angleFactor.z));
     rigidBody->setLinearFactor(btVector3(linearFactor.x, linearFactor.y, linearFactor.z));
-    this->gameObject()->world.lock()->physicsWorld->addRigidBody(rigidBody, collisionGroup, collisionMask);
+    this->gameObject()->world.lock()->physicsWorld->addRigidBody(rigidBody.get(), collisionGroup, collisionMask);
     rigidBody->setUserPointer(this->gameObject());
     collisionShape->collisionShape->setUserPointer(this->gameObject());
 }

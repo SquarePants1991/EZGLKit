@@ -17,7 +17,6 @@ public:
     ELProjector();
     ELProjector(ELCamera *camera,ELUint projectorMap);
     ~ELProjector();
-    virtual std::string kind();
     virtual void update(ELFloat timeInSecs);
 };
 

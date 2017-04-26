@@ -27,6 +27,7 @@ public:
     bool supportColorAttrib;
 public:
     ELGeometryVertexBuffer();
+    ~ELGeometryVertexBuffer();
     void enableColorAttrib();
     void append(ELGeometryVertex vertex);
     void append(ELGeometryColorVertex vertex);

@@ -7,7 +7,11 @@
 //
 
 #import <GLKit/GLKit.h>
-#import <EZGLib/EZGL.h>
+#if Use_EZGLFramework
+    #import <EZGLib/EZGL.h>
+#else
+    #import <EZGL.h>
+#endif
 #import "EZGLMoveJoySticker.h"
 #import "ExampleCollector.h"
 

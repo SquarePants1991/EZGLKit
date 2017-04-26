@@ -20,10 +20,6 @@ ELPhysicsWorld::ELPhysicsWorld() {
 }
 
 ELPhysicsWorld::~ELPhysicsWorld() {
-    delete(configration);
-    delete(dispatcher);
-    delete(solver);
-    delete(broadphase);
     delete(world);
 }
 

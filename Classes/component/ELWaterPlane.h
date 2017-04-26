@@ -14,6 +14,7 @@ class ELWaterPlane : public ELGeometry {
 public:
     static bool isInWaterPlanePreparePass;
 
+    // 纹理由ELTexture统一管理，不会在析构的时候delete
     GLuint dudvMap;
     GLuint reflectionMap;
     GLuint refractionMap;
@@ -22,6 +23,7 @@ public:
 
     ELWaterPlane();
     ELWaterPlane(ELVector2 size);
+    ~ELWaterPlane();
 
     ELVector4 plane();
     ELVector4 inversePlane();
@@ -33,10 +35,9 @@ public:
     virtual void effectDidActive(ELEffect * effect);
     virtual void effectDidInactive(ELEffect * effect);
     virtual ELGeometryData generateData();
-    virtual std::string kind();
 
 private:
-    ELGeometryVertexBuffer *vertexBuffer;
+    prop_strong(ELGeometryVertexBuffer, vertexBuffer);
     ELUint reflectionFramebuffer;
     ELUint refractionFramebuffer;
     void createFramebuffers();

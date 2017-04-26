@@ -9,7 +9,11 @@
 
 FGWindow::FGWindow(GLFWwindow *glfwWindow, int width, int height) {
     this->glfwWindow = glfwWindow;
-    world = new ELWorld();
+    initWorld();
+}
+
+void FGWindow::initWorld() {
+    world = std::shared_ptr<ELWorld>(new ELWorld());
     world->enablePhysics();
     int fbWidth,fbHeight;
     glfwGetFramebufferSize(glfwWindow, &fbWidth, &fbHeight);
@@ -29,9 +33,9 @@ FGWindow::FGWindow(GLFWwindow *glfwWindow, int width, int height) {
     activeEffect->identity = "render_scene";
     shadowEffect->identity = "gen_shadow";
     waterEffect->identity = "water";
-    world->addNode(activeEffect);
-    world->addNode(shadowEffect);
-    world->addNode(waterEffect);
+    world->addNode(std::shared_ptr<ELNode>(activeEffect));
+    world->addNode(std::shared_ptr<ELNode>(shadowEffect));
+    world->addNode(std::shared_ptr<ELNode>(waterEffect));
 
     world->addRenderPass(new ELWaterPlaneRenderPass());
     world->addRenderPass(new ELShadowMapRenderPass());

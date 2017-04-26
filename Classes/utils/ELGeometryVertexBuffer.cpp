@@ -9,8 +9,13 @@
 #include "../types/ELGeometryTypes.h"
 #include "ELGeometryVertexBuffer.h"
 
-ELGeometryVertexBuffer::ELGeometryVertexBuffer() : supportColorAttrib(false), vbo(-1) {
-    bufferLen = 32;
+ELGeometryVertexBuffer::ELGeometryVertexBuffer() :
+    supportColorAttrib(false),
+    vbo(-1),
+    vertices(NULL),
+    colorVertices(NULL)
+{
+    bufferLen = 9000;
     index = 0;
     vertices = (ELGeometryVertex *)malloc(sizeof(ELGeometryVertex) * bufferLen);
     aabbBox.data[0] = INT32_MAX;
@@ -19,6 +24,15 @@ ELGeometryVertexBuffer::ELGeometryVertexBuffer() : supportColorAttrib(false), vb
     aabbBox.data[3] = INT32_MIN;
     aabbBox.data[4] = INT32_MAX;
     aabbBox.data[5] = INT32_MIN;
+}
+
+ELGeometryVertexBuffer::~ELGeometryVertexBuffer() {
+    if (vertices) {
+        free(vertices);
+    }
+    if (colorVertices) {
+        free(colorVertices);
+    }
 }
 
 void ELGeometryVertexBuffer::enableColorAttrib() {
@@ -54,6 +68,7 @@ void ELGeometryVertexBuffer::append(ELGeometryColorVertex vertex) {
     vertex.tnx = tangent.x;     vertex.tny = tangent.y;       vertex.tnz = tangent.z;
     vertex.btnx = bitangent.x;    vertex.btny = bitangent.y;      vertex.btnz = bitangent.z;
 
+    
     *(colorVertices + index) = vertex;
     index++;
     if (index > bufferLen * 3 / 4.0) {

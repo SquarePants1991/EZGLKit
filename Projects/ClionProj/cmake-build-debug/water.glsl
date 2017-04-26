@@ -45,7 +45,7 @@ vec4 waterColor(
     vec4 invDepth = 1.0 - depthValue;
     refractionColor *= invertedFresnel * invDepth;
     refractionColor += baseColor * depthValue * invertedFresnel;
-    return reflectionColor + refractionColor   ;
+    return reflectionColor + refractionColor;
 }
 
 vec4 render() {

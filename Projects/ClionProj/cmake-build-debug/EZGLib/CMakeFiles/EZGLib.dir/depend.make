@@ -93,6 +93,7 @@ EZGLib/CMakeFiles/EZGLib.dir/component/ELBoard.cpp.o: /Users/ocean/Documents/Cod
 EZGLib/CMakeFiles/EZGLib.dir/component/ELBoard.cpp.o: /Users/ocean/Documents/Codes/On\ Git/EZGLKit/Projects/ClionProj/../../libs/soil/SOIL.h
 EZGLib/CMakeFiles/EZGLib.dir/component/ELBoard.cpp.o: /usr/local/include/GLFW/glfw3.h
 
+EZGLib/CMakeFiles/EZGLib.dir/component/ELCollisionShape.cpp.o: /Users/ocean/Documents/Codes/On\ Git/EZGLKit/Classes/EZGLBase.h
 EZGLib/CMakeFiles/EZGLib.dir/component/ELCollisionShape.cpp.o: /Users/ocean/Documents/Codes/On\ Git/EZGLKit/Classes/component/ELCollisionShape.cpp
 EZGLib/CMakeFiles/EZGLib.dir/component/ELCollisionShape.cpp.o: /Users/ocean/Documents/Codes/On\ Git/EZGLKit/Classes/component/ELCollisionShape.h
 EZGLib/CMakeFiles/EZGLib.dir/component/ELCollisionShape.cpp.o: /Users/ocean/Documents/Codes/On\ Git/EZGLKit/Classes/types/ELGeometryTypes.h
@@ -206,6 +207,10 @@ EZGLib/CMakeFiles/EZGLib.dir/component/ELCollisionShape.cpp.o: /Users/ocean/Docu
 EZGLib/CMakeFiles/EZGLib.dir/component/ELCollisionShape.cpp.o: /Users/ocean/Documents/Codes/On\ Git/EZGLKit/Projects/ClionProj/../../libs/bullet/LinearMath/btVector3.h
 EZGLib/CMakeFiles/EZGLib.dir/component/ELCollisionShape.cpp.o: /Users/ocean/Documents/Codes/On\ Git/EZGLKit/Projects/ClionProj/../../libs/bullet/btBulletCollisionCommon.h
 EZGLib/CMakeFiles/EZGLib.dir/component/ELCollisionShape.cpp.o: /Users/ocean/Documents/Codes/On\ Git/EZGLKit/Projects/ClionProj/../../libs/bullet/btBulletDynamicsCommon.h
+EZGLib/CMakeFiles/EZGLib.dir/component/ELCollisionShape.cpp.o: /Users/ocean/Documents/Codes/On\ Git/EZGLKit/Projects/ClionProj/../../libs/glad/KHR/khrplatform.h
+EZGLib/CMakeFiles/EZGLib.dir/component/ELCollisionShape.cpp.o: /Users/ocean/Documents/Codes/On\ Git/EZGLKit/Projects/ClionProj/../../libs/glad/glad/glad.h
+EZGLib/CMakeFiles/EZGLib.dir/component/ELCollisionShape.cpp.o: /Users/ocean/Documents/Codes/On\ Git/EZGLKit/Projects/ClionProj/../../libs/soil/SOIL.h
+EZGLib/CMakeFiles/EZGLib.dir/component/ELCollisionShape.cpp.o: /usr/local/include/GLFW/glfw3.h
 
 EZGLib/CMakeFiles/EZGLib.dir/component/ELGeometry.cpp.o: /Users/ocean/Documents/Codes/On\ Git/EZGLKit/Classes/EZGLBase.h
 EZGLib/CMakeFiles/EZGLib.dir/component/ELGeometry.cpp.o: /Users/ocean/Documents/Codes/On\ Git/EZGLKit/Classes/component/ELGeometry.cpp

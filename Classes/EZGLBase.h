@@ -8,6 +8,7 @@
 #include <string>
 #include <vector>
 #include <map>
+#include <memory>
 
 #if Platform_OSX
 #include <glad/glad/glad.h>
@@ -16,12 +17,13 @@
 
 #define glBindVertexArrayEL(value) glBindVertexArray(value)
 #define glGenVertexArraysEL(num, value) glGenVertexArrays(num, value)
+#define glDeleteVertexArraysEL(num, value) glDeleteVertexArrays(num, value)
 
 #elif Platform_iOS
 #include <OpenGLES/ES2/glext.h>
 #define glBindVertexArrayEL(value) glBindVertexArrayOES(value)
 #define glGenVertexArraysEL(num, value) glGenVertexArraysOES(num, value)
-
+#define glDeleteVertexArraysEL(num, value) glDeleteVertexArraysOES(num, value)
 #endif
 
 

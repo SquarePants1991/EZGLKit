@@ -18,7 +18,7 @@ void ELWaterPlaneRenderPass::renderReflectionMaps(ELWorld *world) {
     world->activedEffect->prepare();
     world->activeCamera("main");
     glEnable(GL_DEPTH_TEST);
-    std::vector<ELNode *> waterPlanes = world->findChildrenWithKind("water_plane", true);
+    std::vector<ELNode *> waterPlanes = world->findChildrenWithKind("water plane", true);
     ELWaterPlane::isInWaterPlanePreparePass = true;
     for (int i = 0; i < waterPlanes.size(); ++i) {
         ELWaterPlane * waterPlane = dynamic_cast<ELWaterPlane *>(waterPlanes.at(i));
@@ -52,7 +52,7 @@ void ELWaterPlaneRenderPass::renderRefractionMaps(ELWorld *world) {
     world->activeEffect("render_scene");
     world->activedEffect->prepare();
     world->activeCamera("main");
-    std::vector<ELNode *> waterPlanes = world->findChildrenWithKind("water_plane", true);
+    std::vector<ELNode *> waterPlanes = world->findChildrenWithKind("water plane", true);
     ELWaterPlane::isInWaterPlanePreparePass = true;
     for (int i = 0; i < waterPlanes.size(); ++i) {
         ELWaterPlane * waterPlane = dynamic_cast<ELWaterPlane *>(waterPlanes.at(i));

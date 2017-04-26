@@ -50,7 +50,7 @@ FGScene::FGScene(std::shared_ptr<ELWorld> world) {
     cube->material.diffuse = ELVector4Make(1.0,0.0,0.0,1.0);
 
 
-    ELCollisionShape *collisionShape = new ELCollisionShape();
+    std::shared_ptr<ELCollisionShape> collisionShape = retain_ptr_init(ELCollisionShape);
     collisionShape->asSphere(4);
     ELRigidBody *rigidBody = new ELRigidBody(collisionShape,1.0);
     playerRigidBody = rigidBody;
@@ -152,7 +152,7 @@ void FGScene::createCubeGameObject(ELVector3 size,ELVector3 pos,ELFloat mass,GLu
     cube->borderWidth = 0.2;
     cube->borderColor = ELVector4Make(1, 0, 0, 1);
 
-    ELCollisionShape *collisionShape = new ELCollisionShape();
+    std::shared_ptr<ELCollisionShape> collisionShape = retain_ptr_init(ELCollisionShape);
     collisionShape->asBox(ELVector3Make(size.x / 2, size.y / 2, size.z / 2));
     ELRigidBody *rigidBody = new ELRigidBody(collisionShape, mass);
     rigidBody->collisionGroup = collisionGroup;

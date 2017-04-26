@@ -25,11 +25,19 @@ public:
     }
 };
 
-ELParticleSystem::ELParticleSystem() : isDataInitialized(false), partical(NULL), isRunning(false), isActive(true) {
+ELParticleSystem::ELParticleSystem() :
+        isDataInitialized(false),
+        isRunning(false),
+        isActive(true)
+{
     emitTimeInterval = 0.3;
     onlyUseColorAttrib = true;
     identity = "psystem";
     isTransparency = true;
+}
+
+ELParticleSystem::~ELParticleSystem() {
+    delete vertexBuffer;
 }
 
 ELGeometryData ELParticleSystem::generateData() {
@@ -47,13 +55,7 @@ ELGeometryData ELParticleSystem::generateData() {
         vertexBuffer->append(partical->quadRect);
     }
 
-
-    GLfloat *vertex = (GLfloat *)(vertexBuffer->data());
-    glGenBuffers(1, &data.vertexVBO);
-    glBindBuffer(GL_ARRAY_BUFFER, data.vertexVBO);
-    glBufferData(GL_ARRAY_BUFFER, vertexBuffer->rawLength(), vertex, GL_DYNAMIC_DRAW);
-    glBindBuffer(GL_ARRAY_BUFFER, 0);
-
+    data.vertexVBO = vertexBuffer->getVBO();
     data.vertexCount = vertexBuffer->rawLength() / sizeof(ELGeometryColorVertex);
     data.vertexStride = sizeof(ELGeometryColorVertex);
     data.supportIndiceVBO = false;

@@ -63,6 +63,8 @@
 		8E0F38651E459E4800F402A8 /* stone_ground.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E0F38471E459E4800F402A8 /* stone_ground.png */; };
 		8E0F38661E459E4800F402A8 /* stone_ground_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E0F38481E459E4800F402A8 /* stone_ground_normal.png */; };
 		8E30C29A1E31F02100D5AA1D /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E30C2991E31F02100D5AA1D /* libstdc++.6.0.9.tbd */; };
+		8E383A8F1EB0493400BDD339 /* libEZGLSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E383A8C1EB0490400BDD339 /* libEZGLSDK.a */; };
+		8E383A951EB06C6800BDD339 /* libfbxsdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E383A941EB06C6800BDD339 /* libfbxsdk.a */; };
 		8E53A70F1E45AB0F00C790CE /* TerrainSnowViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8E53A70E1E45AB0F00C790CE /* TerrainSnowViewController.mm */; };
 		8E53A7111E45ABA300C790CE /* island.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E53A7101E45ABA300C790CE /* island.png */; };
 		8E53A7141E45B47000C790CE /* EZGLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E53A7131E45B47000C790CE /* EZGLViewController.m */; };
@@ -75,7 +77,6 @@
 		8E53A72E1E45C9C000C790CE /* grass_yellow.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8E53A7281E45C9C000C790CE /* grass_yellow.jpg */; };
 		8E53A72F1E45C9C000C790CE /* grass_yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E53A7291E45C9C000C790CE /* grass_yellow.png */; };
 		8E5B54E91E3445480082AE9F /* libiconv.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E5B54E81E3445480082AE9F /* libiconv.2.tbd */; };
-		8EBB9E631EAF0E740095A77B /* EZGLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EBB9E621EAF0E740095A77B /* EZGLib.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +93,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = 8E03AA7A1E30EBDA00008F82;
 			remoteInfo = EZGL;
+		};
+		8E383A8B1EB0490400BDD339 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8E383A871EB0490400BDD339 /* EZGLSDK.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8E03AABE1E30EC1B00008F82;
+			remoteInfo = EZGLSDK;
+		};
+		8E383A8D1EB0492600BDD339 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8E383A871EB0490400BDD339 /* EZGLSDK.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 8E03AABD1E30EC1B00008F82;
+			remoteInfo = EZGLSDK;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -165,6 +180,8 @@
 		8E0F38471E459E4800F402A8 /* stone_ground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stone_ground.png; sourceTree = "<group>"; };
 		8E0F38481E459E4800F402A8 /* stone_ground_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stone_ground_normal.png; sourceTree = "<group>"; };
 		8E30C2991E31F02100D5AA1D /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
+		8E383A871EB0490400BDD339 /* EZGLSDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = EZGLSDK.xcodeproj; path = ../../EZGLSDK/EZGLSDK.xcodeproj; sourceTree = "<group>"; };
+		8E383A941EB06C6800BDD339 /* libfbxsdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfbxsdk.a; path = ../EZGLSDK/libfbxsdk.a; sourceTree = "<group>"; };
 		8E53A70D1E45AB0F00C790CE /* TerrainSnowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TerrainSnowViewController.h; sourceTree = "<group>"; };
 		8E53A70E1E45AB0F00C790CE /* TerrainSnowViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TerrainSnowViewController.mm; sourceTree = "<group>"; };
 		8E53A7101E45ABA300C790CE /* island.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = island.png; sourceTree = "<group>"; };
@@ -189,8 +206,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E383A951EB06C6800BDD339 /* libfbxsdk.a in Frameworks */,
+				8E383A8F1EB0493400BDD339 /* libEZGLSDK.a in Frameworks */,
 				8E5B54E91E3445480082AE9F /* libiconv.2.tbd in Frameworks */,
-				8EBB9E631EAF0E740095A77B /* EZGLib.framework in Frameworks */,
 				8E30C29A1E31F02100D5AA1D /* libstdc++.6.0.9.tbd in Frameworks */,
 				8E03AEEB1E30F9F300008F82 /* GLKit.framework in Frameworks */,
 				8E03AEEC1E30F9F300008F82 /* OpenGLES.framework in Frameworks */,
@@ -238,6 +256,7 @@
 		8E03AA7D1E30EBDA00008F82 /* EZGL */ = {
 			isa = PBXGroup;
 			children = (
+				8E383A871EB0490400BDD339 /* EZGLSDK.xcodeproj */,
 				8E0F38271E459E4700F402A8 /* assets */,
 				8E0F37DA1E457FA100F402A8 /* AppBase */,
 				8E0F37E41E457FA100F402A8 /* Examples */,
@@ -268,6 +287,7 @@
 		8E03AEE81E30F9F200008F82 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8E383A941EB06C6800BDD339 /* libfbxsdk.a */,
 				8EBB9E621EAF0E740095A77B /* EZGLib.framework */,
 				D347B2401E866FCB00F4A5F8 /* EZGLib.framework */,
 				8E5B54E81E3445480082AE9F /* libiconv.2.tbd */,
@@ -442,6 +462,14 @@
 			name = "Animation Knight";
 			sourceTree = "<group>";
 		};
+		8E383A881EB0490400BDD339 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8E383A8C1EB0490400BDD339 /* libEZGLSDK.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		8E53A70C1E45AB0F00C790CE /* Terrain & Snow */ = {
 			isa = PBXGroup;
 			children = (
@@ -465,6 +493,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				8E383A8E1EB0492600BDD339 /* PBXTargetDependency */,
 			);
 			name = EZGL;
 			productName = EZGL;
@@ -546,6 +575,12 @@
 			mainGroup = 8E03AA721E30EBDA00008F82;
 			productRefGroup = 8E03AA7C1E30EBDA00008F82 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 8E383A881EB0490400BDD339 /* Products */;
+					ProjectRef = 8E383A871EB0490400BDD339 /* EZGLSDK.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				8E03AA7A1E30EBDA00008F82 /* EZGL */,
@@ -554,6 +589,16 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		8E383A8C1EB0490400BDD339 /* libEZGLSDK.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libEZGLSDK.a;
+			remoteRef = 8E383A8B1EB0490400BDD339 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		8E03AA791E30EBDA00008F82 /* Resources */ = {
@@ -678,6 +723,11 @@
 			target = 8E03AA7A1E30EBDA00008F82 /* EZGL */;
 			targetProxy = 8E03AAA41E30EBDA00008F82 /* PBXContainerItemProxy */;
 		};
+		8E383A8E1EB0492600BDD339 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = EZGLSDK;
+			targetProxy = 8E383A8D1EB0492600BDD339 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -785,7 +835,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
-				CLANG_CXX_LIBRARY = "compiler-default";
+				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				DEVELOPMENT_TEAM = P48344HVQL;
 				ENABLE_BITCODE = NO;
@@ -794,10 +844,13 @@
 					"$(PROJECT_DIR)SDK",
 					"$(PROJECT_DIR)SDK/build",
 				);
-				HEADER_SEARCH_PATHS = "";
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)SDK/../../../Classes";
 				INFOPLIST_FILE = "$(SRCROOT)/EZGL/AppBase/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "/Applications/Autodesk/FBX\\ SDK/2015.1/lib/ios-i386/debug";
+				LIBRARY_SEARCH_PATHS = (
+					"$(PROJECT_DIR)SDK/",
+					"$(PROJECT_DIR)SDK",
+				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = me.ocean.EZGL;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -810,7 +863,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
-				CLANG_CXX_LIBRARY = "compiler-default";
+				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				DEVELOPMENT_TEAM = P48344HVQL;
 				ENABLE_BITCODE = NO;
@@ -819,10 +872,13 @@
 					"$(PROJECT_DIR)SDK",
 					"$(PROJECT_DIR)SDK/build",
 				);
-				HEADER_SEARCH_PATHS = "";
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)SDK/../../../Classes";
 				INFOPLIST_FILE = "$(SRCROOT)/EZGL/AppBase/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "/Applications/Autodesk/FBX\\ SDK/2015.1/lib/ios-i386/debug";
+				LIBRARY_SEARCH_PATHS = (
+					"$(PROJECT_DIR)SDK/",
+					"$(PROJECT_DIR)SDK",
+				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = me.ocean.EZGL;
 				PRODUCT_NAME = "$(TARGET_NAME)";

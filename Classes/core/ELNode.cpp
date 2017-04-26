@@ -77,9 +77,8 @@ void ELNode::findChildrenWithKind(std::string kind, std::vector<ELNode *> &colle
         if (furtherSearch) {
             children.at(i)->findChildrenWithKind(kind, collector);
         }
-        ELNode *component = dynamic_cast<ELNode *>(children.at(i).get());
-        if (component != NULL && component->kind == kind) {
-            collector.push_back(component);
+        if (children.at(i) && children.at(i)->kind == kind) {
+            collector.push_back(children.at(i).get());
         }
     }
 }

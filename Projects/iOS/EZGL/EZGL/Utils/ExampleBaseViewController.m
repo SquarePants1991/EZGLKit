@@ -28,11 +28,6 @@
     self.preferredFramesPerSecond = 60;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 - (void)pinched:(UIPinchGestureRecognizer *)gesture {
     if (gesture.state == UIGestureRecognizerStateBegan) {
         lastScale = [gesture scale];
