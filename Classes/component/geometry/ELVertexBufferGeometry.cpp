@@ -22,8 +22,11 @@ ELVertexBufferGeometry::ELVertexBufferGeometry(bool smooth) :
 }
 
 ELVertexBufferGeometry::~ELVertexBufferGeometry() {
-    if (vertexBuffer != NULL) {
+    if (vertexBuffer) {
         delete vertexBuffer;
+    }
+    if (vertexBufferProvider) {
+        delete vertexBufferProvider;
     }
 }
 

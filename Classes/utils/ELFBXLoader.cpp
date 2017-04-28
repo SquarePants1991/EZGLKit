@@ -38,7 +38,7 @@ std::vector<ELMeshGeometry *> ELFBXLoader::loadFromFile(const char *filePath) {
     importer->Destroy();
 
     FbxAxisSystem::OpenGL.ConvertScene(scene);
-
+    // TODO: 解决scene的释放问题
     FbxNode *rootNode = scene->GetRootNode();
     if(rootNode) {
         for(int i = 0; i < rootNode->GetChildCount(); i++) {

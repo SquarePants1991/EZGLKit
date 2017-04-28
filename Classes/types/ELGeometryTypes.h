@@ -77,6 +77,15 @@ typedef struct {
     ELFloat btnx;
     ELFloat btny;
     ELFloat btnz;
+    ELFloat clusterCount;
+    ELFloat clusterID0;
+    ELFloat weight0;
+    ELFloat clusterID1;
+    ELFloat weight1;
+    ELFloat clusterID2;
+    ELFloat weight2;
+    ELFloat clusterID3;
+    ELFloat weight3;
 }ELGeometryVertex;
 
 typedef struct {
@@ -97,5 +106,32 @@ typedef struct {
     ELFloat btnz;
     ELVector4 color;
 }ELGeometryColorVertex;
+
+typedef struct {
+    ELFloat x;
+    ELFloat y;
+    ELFloat z;
+    ELFloat nx;
+    ELFloat ny;
+    ELFloat nz;
+    ELFloat u;
+    ELFloat v;
+    ELFloat matID;
+    ELFloat tnx;
+    ELFloat tny;
+    ELFloat tnz;
+    ELFloat btnx;
+    ELFloat btny;
+    ELFloat btnz;
+    ELFloat clusterCount;
+    ELFloat clusterID0;
+    ELFloat weight0;
+    ELFloat clusterID1;
+    ELFloat weight1;
+    ELFloat clusterID2;
+    ELFloat weight2;
+    ELFloat clusterID3;
+    ELFloat weight3;
+}ELGeometryClusterVertex;
 
 #endif //EZGL_ELGEOMETRYTYPES_H

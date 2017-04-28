@@ -32,16 +32,19 @@ public:
     void append(ELGeometryVertex vertex);
     void append(ELGeometryColorVertex vertex);
     void append(ELGeometryTriangle triangle, ELInt matID = 0);
+    void append(ELGeometryVertex v1,ELGeometryVertex v2,ELGeometryVertex v3);
     void append(ELGeometryRect rect);
     void append(ELGeometryColorRect colorRect);
     ELSize rawLength();
     void caculatePerVertexNormal();
     void * data();
     void clear();
+    void setRawData(void *data, ELInt dataLength);
     ELVector3 size();
 
     GLuint getVBO();
 private:
+    // TODO: 这个vbo可能会被GeometryData持有，无法做到自己释放，考虑增加一层
     int vbo;
     ELInt bufferLen;
     ELInt index;

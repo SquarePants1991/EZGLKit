@@ -10,7 +10,7 @@
 
 class ELGeometryVertexBufferProvider : public ELNode {
 public:
-    virtual void update(const char *animationName, ELFloat timeInSecs, ELGeometryVertexBuffer *vertexBuffer) = 0;
+    virtual void update(const char *animationName,ELFloat elapsedTime, ELGeometryVertexBuffer *vertexBuffer, std::vector<ELMatrix4> &clustersMatrix) = 0;
 };
 
 class ELVertexBufferGeometry : public ELGeometry {

@@ -835,6 +835,7 @@
 		8E30C29C1E31F14F00D5AA1D /* frg_shadowmap_es.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = frg_shadowmap_es.glsl; sourceTree = "<group>"; };
 		8E30C29D1E31F14F00D5AA1D /* vtx_phong_es.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vtx_phong_es.glsl; sourceTree = "<group>"; };
 		8E30C29E1E31F14F00D5AA1D /* water_es.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = water_es.glsl; sourceTree = "<group>"; };
+		8E39DD5A1EB3117A00FA5331 /* vtx_cluster.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vtx_cluster.glsl; sourceTree = "<group>"; };
 		8E53A71A1E45C75500C790CE /* dirt.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dirt.jpg; sourceTree = "<group>"; };
 		8E53A71B1E45C75500C790CE /* grass_green.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = grass_green.jpeg; sourceTree = "<group>"; };
 		8E53A71C1E45C75500C790CE /* grass_yellow.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = grass_yellow.jpg; sourceTree = "<group>"; };
@@ -954,6 +955,7 @@
 				8E03AB9C1E30EDA800008F82 /* vtx_in_out.glsl */,
 				8E03AB9D1E30EDA800008F82 /* vtx_simple_pass.glsl */,
 				8E03AB9E1E30EDA800008F82 /* vtx_uniforms.glsl */,
+				8E39DD5A1EB3117A00FA5331 /* vtx_cluster.glsl */,
 			);
 			path = common;
 			sourceTree = "<group>";

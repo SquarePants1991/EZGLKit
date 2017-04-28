@@ -77,6 +77,7 @@
     world->physicsWorld->setGravity(ELVector3Make(0, -130, 0));
 
     std::string vertexShader = ELFileUtil::stringContentOfShader(ELAssets::shared()->findFile("vtx_phong_es.glsl").c_str());
+//    printf("%s", vertexShader.c_str());
     std::string fragShader = ELFileUtil::stringContentOfShader(ELAssets::shared()->findFile("frg_phong_es.glsl").c_str());
     std::string shadowFragShader = ELFileUtil::stringContentOfShader(ELAssets::shared()->findFile("frg_shadowmap_es.glsl").c_str());
     std::string waterFragShader = ELFileUtil::stringContentOfShader(ELAssets::shared()->findFile("water_es.glsl").c_str());

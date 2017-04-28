@@ -221,6 +221,27 @@ void ELGeometry::setupVao() {
     GLuint bitangentLocation = glGetAttribLocation(program->value, "bitangent");
     glEnableVertexAttribArray(bitangentLocation);
     glVertexAttribPointer(bitangentLocation, 3, GL_FLOAT, GL_FALSE, data.vertexStride, BUFFER_OFFSET(12 * sizeof(GLfloat)));
+    
+    GLuint clusterCountLocation = glGetAttribLocation(program->value, "clusterCount");
+    glEnableVertexAttribArray(clusterCountLocation);
+    glVertexAttribPointer(clusterCountLocation, 1, GL_FLOAT, GL_FALSE, data.vertexStride, BUFFER_OFFSET(15 * sizeof(GLfloat)));
+    
+    char buffer[255];
+    int offset = 16;
+    for (int i = 0;i < 4; ++i) {
+        sprintf(buffer, "clusterID%d", i);
+        GLuint clusterIDLocation = glGetAttribLocation(program->value, buffer);
+        glEnableVertexAttribArray(clusterIDLocation);
+        glVertexAttribPointer(clusterIDLocation, 1, GL_FLOAT, GL_FALSE, data.vertexStride, BUFFER_OFFSET(offset * sizeof(GLfloat)));
+        offset += 1;
+        
+        sprintf(buffer, "clusterWeight%d", i);
+        GLuint clusterWeightLocation = glGetAttribLocation(program->value, buffer);
+        glEnableVertexAttribArray(clusterWeightLocation);
+        glVertexAttribPointer(clusterWeightLocation, 1, GL_FLOAT, GL_FALSE, data.vertexStride, BUFFER_OFFSET(offset * sizeof(GLfloat)));
+        offset += 1;
+    }
+
 
     if (data.supportColorAttrib) {
         GLuint colorLocation = glGetAttribLocation(program->value, "color");

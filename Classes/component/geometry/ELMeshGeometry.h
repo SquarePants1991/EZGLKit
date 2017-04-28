@@ -20,8 +20,10 @@ public:
     virtual ELGeometryData generateData();
     void update(ELFloat timeInSecs);
     virtual void fillVertexBuffer(ELGeometryVertexBuffer *vertexBuffer);
+    virtual void effectDidActive(ELEffect * effect);
 private:
     ELGeometryData _data;
+    std::vector<ELMatrix4> clustersMatrix;
     ELFloat currentTime;
     ELAnimation currentAnimation;
 };

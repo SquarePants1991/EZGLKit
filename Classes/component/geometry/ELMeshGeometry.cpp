@@ -52,7 +52,12 @@ void ELMeshGeometry::update(ELFloat timeInSecs) {
 void ELMeshGeometry::fillVertexBuffer(ELGeometryVertexBuffer *vertexBuffer) {
     if (currentAnimation != ELAnimation::None()) {
         if (vertexBufferProvider != NULL) {
-            vertexBufferProvider->update(currentAnimation.name.c_str(), currentTime, vertexBuffer);
+            vertexBufferProvider->update(currentAnimation.name.c_str(), currentTime, vertexBuffer, this->clustersMatrix);
         }
     }
+}
+
+void ELMeshGeometry::effectDidActive(ELEffect * effect) {
+    GLuint clustersLocation = (GLuint)effect->program->uniform((char *)"clusters");
+    glUniformMatrix4fv(clustersLocation, (GLuint)clustersMatrix.size(), false, (GLfloat *)(clustersMatrix.data()));
 }

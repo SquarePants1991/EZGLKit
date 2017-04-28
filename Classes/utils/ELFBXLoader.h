@@ -13,8 +13,6 @@ class ELMeshGeometry;
 class ELGeometryVertexBuffer;
 
 namespace fbxsdk_2015_1 {
-
-
     class FbxMesh;
 
     class FbxScene;

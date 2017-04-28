@@ -65,6 +65,7 @@
 		8E30C29A1E31F02100D5AA1D /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E30C2991E31F02100D5AA1D /* libstdc++.6.0.9.tbd */; };
 		8E383A8F1EB0493400BDD339 /* libEZGLSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E383A8C1EB0490400BDD339 /* libEZGLSDK.a */; };
 		8E383A951EB06C6800BDD339 /* libfbxsdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E383A941EB06C6800BDD339 /* libfbxsdk.a */; };
+		8E39DD5C1EB3153100FA5331 /* vtx_cluster.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8E39DD5B1EB3153100FA5331 /* vtx_cluster.glsl */; };
 		8E53A70F1E45AB0F00C790CE /* TerrainSnowViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8E53A70E1E45AB0F00C790CE /* TerrainSnowViewController.mm */; };
 		8E53A7111E45ABA300C790CE /* island.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E53A7101E45ABA300C790CE /* island.png */; };
 		8E53A7141E45B47000C790CE /* EZGLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E53A7131E45B47000C790CE /* EZGLViewController.m */; };
@@ -182,6 +183,7 @@
 		8E30C2991E31F02100D5AA1D /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
 		8E383A871EB0490400BDD339 /* EZGLSDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = EZGLSDK.xcodeproj; path = ../../EZGLSDK/EZGLSDK.xcodeproj; sourceTree = "<group>"; };
 		8E383A941EB06C6800BDD339 /* libfbxsdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfbxsdk.a; path = ../EZGLSDK/libfbxsdk.a; sourceTree = "<group>"; };
+		8E39DD5B1EB3153100FA5331 /* vtx_cluster.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vtx_cluster.glsl; sourceTree = "<group>"; };
 		8E53A70D1E45AB0F00C790CE /* TerrainSnowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TerrainSnowViewController.h; sourceTree = "<group>"; };
 		8E53A70E1E45AB0F00C790CE /* TerrainSnowViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TerrainSnowViewController.mm; sourceTree = "<group>"; };
 		8E53A7101E45ABA300C790CE /* island.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = island.png; sourceTree = "<group>"; };
@@ -413,6 +415,7 @@
 		8E0F38291E459E4700F402A8 /* common */ = {
 			isa = PBXGroup;
 			children = (
+				8E39DD5B1EB3153100FA5331 /* vtx_cluster.glsl */,
 				8E0F382A1E459E4700F402A8 /* cm_depth_pack.glsl */,
 				8E0F382B1E459E4700F402A8 /* cm_uniforms.glsl */,
 				8E0F382C1E459E4700F402A8 /* defines.glsl */,
@@ -656,6 +659,7 @@
 				8E53A7111E45ABA300C790CE /* island.png in Resources */,
 				8E0F380A1E457FA100F402A8 /* Body 1.tga in Resources */,
 				8E53A7161E45B48F00C790CE /* Launch Screen.storyboard in Resources */,
+				8E39DD5C1EB3153100FA5331 /* vtx_cluster.glsl in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
