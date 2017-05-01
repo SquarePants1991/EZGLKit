@@ -106,8 +106,8 @@ void FGScene::createMonkey() {
 }
 
 void FGScene::createFloor() {
-    ELFloat width = 100;
-    ELFloat height = 100;
+    ELFloat width = 10000;
+    ELFloat height = 10000;
     ELFloat wallHeight = 3.5;
     ELVector3 floorSize = ELVector3Make(width,-10,height);
     GLuint diffuseMap,normalMap;

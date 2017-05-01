@@ -62,39 +62,18 @@ void ELCamera::ortho(ELFloat left, ELFloat right, ELFloat top, ELFloat bottom, E
 ELMatrix4 ELCamera::matrix() {
     if (useDirectMatrix) {
         ELMatrix4 pos = ELMatrix4MakeWithArray(directMatrix);
-        
-        float proj[16] =
-        {
-            0,
-        -2.1229856,
-        0,
-        0,
-        2.66294003,
-        0,
-        0,
-        0,
-        -0.00667858123,
-        -0.00376278162,
-         -1.00501251,
-         -1,
-         0,
-         0,
-         -10.0250626,
-        0
-        };
-        ELMatrix4 projection = ELMatrix4MakeWithArray(proj);
-        return pos;//ELMatrix4Multiply(projection, pos);
+        return pos;
     }
     ELVector3 up = upVector();
     ELMatrix4 projection = ELMatrix4MakePerspective(fovyRadians / 180.0f * M_PI, aspect, nearZ, farZ);
+    ELVector3 eyePosition = position();
+    ELVector3 desPosition = lookAtPosition();
     if (isOrtho) {
         projection = ELMatrix4MakeOrtho(orthoView.x,orthoView.y,orthoView.w,orthoView.z,nearZ, farZ);
         // TODO: replace me with real funcs
-        
-        return projection;
+        ELMatrix4 lookAt = ELMatrix4MakeLookAt(eyePosition.x,eyePosition.y,eyePosition.z,desPosition.x, desPosition.y, desPosition.z, up.x, up.y, up.z);
+        return ELMatrix4Multiply(projection, lookAt);;
     }
-    ELVector3 eyePosition = position();
-    ELVector3 desPosition = lookAtPosition();
 
     ELMatrix4 lookAt = ELMatrix4MakeLookAt(eyePosition.x,eyePosition.y,eyePosition.z,desPosition.x, desPosition.y, desPosition.z, up.x, up.y, up.z);
     ELMatrix4 finalMatrix = ELMatrix4Multiply(projection, lookAt);

@@ -36,9 +36,9 @@ void ELWorld::enableDefaultCamera(ELFloat aspect) {
     ELVector3 center = {0, 10, 0};
     ELVector3 up = {0, 1, 0};
     ELCamera * defaultCamera = new ELCamera(eye, center, up, 70.0, aspect, 0.1, 1000);
-    defaultCamera->identity = "default";
+    defaultCamera->identity = "main";
     addNode(std::shared_ptr<ELCamera>(defaultCamera));
-    activeCamera("default");
+    activeCamera("main");
 }
 
 void ELWorld::update(ELFloat timeInSecs) {
@@ -54,12 +54,21 @@ void ELWorld::render() {
 }
 
 void ELWorld::renderScene() {
+//    for (int i = 0; i < children.size(); ++i) {
+//        ELLight * light = dynamic_cast<ELLight *>(children.at(i).get());
+//        if (light != NULL && light->isShadowEnabled) {
+//            activeEffect("gen_shadow");
+//            activedEffect->prepare();
+//            activeCamera(light->identity + "-shadow-camera", light->shadowMapGenCamera().get());
+//        }
+//    }
     activeEffect("render_scene");
     activeCamera("main");
     if (viewport.get() != NULL) {
         glViewport((*viewport)->x, (*viewport)->y, (*viewport)->z, (*viewport)->w);
+    } else {
+        glViewport(0,0,fbWidth, fbHeight);
     }
-    
     glClearColor(0.6f, 0.6, 0.6, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -72,7 +81,7 @@ void ELWorld::renderScene() {
     for (int i = 0; i < children.size(); ++i) {
         ELLight * light = dynamic_cast<ELLight *>(children.at(i).get());
         if (light != NULL && light->isShadowEnabled) {
-            GLuint channel = GL_TEXTURE6 + lightIndex;
+            GLuint channel = GL_TEXTURE10 + lightIndex;
             glActiveTexture(channel);
             glBindTexture(GL_TEXTURE_2D, light->shadowTexture);
             snprintf(shadowMapUniformName,512,"shadowMap[%d]",lightIndex);

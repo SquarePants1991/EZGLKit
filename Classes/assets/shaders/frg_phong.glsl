@@ -33,7 +33,8 @@ vec4 renderPass_textureonly() {
 
 vec4 renderPass_shadow_frog_light() {
     float shadow;
-    caculateShadow(shadow);
+    vec4 shadowColor;
+    caculateShadow(shadow, shadowColor);
 
     highp vec4 ambient, diffuse, specular;
     caculateLights(surfaceNormal, surfaceToEyeVec, ambient, diffuse, specular);
