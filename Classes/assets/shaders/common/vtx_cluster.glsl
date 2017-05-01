@@ -12,20 +12,27 @@ VertIN float clusterWeight2;
 VertIN float clusterWeight3;
 
 vec4 processCluster(vec4 positionIn) {
-    mat4 finalMatrix = mat4(1.0);
+    if (clusterCount == 0.0) {
+        return positionIn;
+    }
+    mat4 finalMatrix = mat4(0.0);
+    float totalWeight = 0.0;
+    if (clusterCount > 0.0) {
+        finalMatrix += clusters[int(clusterID0)] * clusterWeight0;
+        totalWeight += clusterWeight0;
+    }
     if (clusterCount > 3.0) {
-        mat4 cluster3 = clusters[int(clusterID3)];
-        finalMatrix = cluster3;
+        finalMatrix += clusters[int(clusterID3)] * clusterWeight3;
+        totalWeight += clusterWeight3;
     }
     if (clusterCount > 2.0) {
-        finalMatrix *= clusters[int(clusterID2)];
+        finalMatrix += clusters[int(clusterID2)] * clusterWeight2;
+        totalWeight += clusterWeight2;
     }
     if (clusterCount > 1.0) {
-        finalMatrix *= clusters[int(clusterID1)];
-    }
-    if (clusterCount > 0.0) {
-        finalMatrix *= clusters[int(clusterID0)];
+        finalMatrix += clusters[int(clusterID1)] * clusterWeight1;
+        totalWeight += clusterWeight1;
     }
     
-    return finalMatrix * positionIn;
+    return finalMatrix * positionIn / totalWeight;
 }

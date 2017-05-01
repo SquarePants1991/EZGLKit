@@ -3,13 +3,13 @@
 //
 
 #include "FGWindow.h"
-#include <stdio.h>
+  #include <stdio.h>
 #include <iostream>
 
-#define WindowWidth 200
-#define WindowHeight 100
+#define WindowWidth 500
+#define WindowHeight 300
 #define WindowPosX 0
-#define WindowPosY 1920 - WindowHeight
+#define WindowPosY 0
 
 FGWindow *fgWindow;
 
@@ -51,9 +51,9 @@ GLFWwindow *initGLFWwindow() {
     }
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
-    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
-    glfwWindowHint(GLFW_SAMPLES, 3);
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
     /* Create a windowed mode window and its OpenGL context */
     GLFWwindow *glfwWindow = glfwCreateWindow(WindowWidth, WindowHeight, "Hello World", NULL, NULL);
@@ -104,6 +104,9 @@ int main(int argc,char **argv) {
     ELAssets::shared()->addSearchPath("/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/FBX/");
     ELAssets::shared()->addSearchPath("/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/FBX/ArmyPilot/");
     GLFWwindow *glfwWindow = initGLFWwindow();
+    if (!glfwWindow) {
+        return -1;
+    }
     fgWindow = new FGWindow(glfwWindow, WindowWidth, WindowHeight);
     fgWindow->run();
     return 1;

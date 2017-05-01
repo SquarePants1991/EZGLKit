@@ -8,7 +8,11 @@
 
 #import "ELTextureImp.h"
 #import <OpenGLES/ES2/glext.h>
+#if Use_EZGLFramework
 #import <EZGLib/EZGL.h>
+#else
+#import <EZGL.h>
+#endif
 
 #import "UIImage+GL.h"
 

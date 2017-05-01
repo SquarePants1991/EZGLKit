@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 2.8)
 project(EZGL CXX)
 set(CMAKE_MACOSX_RPATH 1)
 
-find_package(glfw3 3.2 REQUIRED)
+find_package(glfw3 REQUIRED)
 
 #########################################################
 # FIND OPENGL
@@ -54,7 +54,7 @@ macro(add_exe target prefix)
     add_executable(${target} ${prefix}/main.cpp ${TARGET_SRC})
     target_include_directories(${target} PUBLIC ${PROJECT_SOURCE_DIR}/../../Classes/)
     target_link_libraries(${target} EZGLib ${GLUT_LIBRARY} ${OPENGL_LIBRARIES} lua glfw glad soil wavefront bullet ${FBX_LIBRARY})
-    target_compile_definitions(${target} PRIVATE Platform_OSX=1)
+    target_compile_definitions(${target} PRIVATE Platform_OSX=1 Debug=1)
 endmacro(add_exe)
 
 

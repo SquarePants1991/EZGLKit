@@ -98,7 +98,7 @@ void ELWaterPlane::beginGenReflectionMap() {
     glViewport(0,0,ELConfig::reflectionMapWidth,ELConfig::reflectionMapHeight);
     glBindFramebuffer(GL_FRAMEBUFFER, reflectionFramebuffer);
 #if Platform_OSX
-    glEnable(GL_CLIP_PLANE0);
+//    glEnable(GL_CLIP_PLANE0);
 #else
     glEnable(GL_CLIP_DISTANCE0_APPLE);
 #endif
@@ -109,7 +109,7 @@ void ELWaterPlane::beginGenReflectionMap() {
 void ELWaterPlane::endGenReflectionMap() {
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
 #if Platform_OSX
-    glDisable(GL_CLIP_PLANE0);
+//    glDisable(GL_CLIP_PLANE0);
 #else
     glDisable(GL_CLIP_DISTANCE0_APPLE);
 #endif
@@ -119,7 +119,7 @@ void ELWaterPlane::beginGenRefractionMap() {
     glViewport(0,0,ELConfig::refractionMapWidth,ELConfig::refractionMapHeight);
     glBindFramebuffer(GL_FRAMEBUFFER, refractionFramebuffer);
 #if Platform_OSX
-    glEnable(GL_CLIP_PLANE0);
+//    glEnable(GL_CLIP_PLANE0);
 #else
     glEnable(GL_CLIP_DISTANCE0_APPLE);
 #endif
@@ -130,7 +130,7 @@ void ELWaterPlane::beginGenRefractionMap() {
 void ELWaterPlane::endGenRefractionMap() {
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
 #if Platform_OSX
-    glDisable(GL_CLIP_PLANE0);
+//    glDisable(GL_CLIP_PLANE0);
 #else
     glDisable(GL_CLIP_DISTANCE0_APPLE);
 #endif

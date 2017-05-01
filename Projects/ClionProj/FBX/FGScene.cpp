@@ -41,7 +41,6 @@ FGScene::FGScene(std::shared_ptr<ELWorld> world) {
     createFloor();
     createMonkey();
 
-
     ELGameObject *gameObject = new ELGameObject(std::shared_ptr<ELWorld>(world));
     world->addNode(std::shared_ptr<ELGameObject>(gameObject));
     gameObject->transform->position = ELVector3Make(0, 3, 0);
@@ -55,7 +54,7 @@ FGScene::FGScene(std::shared_ptr<ELWorld> world) {
     ELRigidBody *rigidBody = new ELRigidBody(collisionShape,1.0);
     playerRigidBody = rigidBody;
     rigidBody->collisionGroup = CT_Role;
-    rigidBody->collisionMask = CT_Floor;
+    rigidBody->collisionMask = CT_Floor | CT_Prop2;
     gameObject->addComponent(rigidBody);
 
     rigidBody->setVelocity(ELVector3Make(0, 0, 0));
@@ -92,32 +91,16 @@ void FGScene::createPlane() {
 void FGScene::createMonkey() {
     ELFloat width = 17 * 3;
     ELFloat height = 17 * 3;
-    ELFloat wallHeight = 3.5;
-    ELVector3 floorSize = ELVector3Make(width,0.5,height);
-    GLuint diffuseMap_head,diffuseMap_body,diffuseMap_m4;
-    diffuseMap_head = ELTexture::texture(ELAssets::shared()->findFile("head01.png"))->value;
-    diffuseMap_body = ELTexture::texture(ELAssets::shared()->findFile("body01.png"))->value;
-    diffuseMap_m4 = ELTexture::texture(ELAssets::shared()->findFile("m4tex_2.png"))->value;
-
     ELGameObject *gameObject = new ELGameObject(std::shared_ptr<ELWorld>(world));
     world->addNode(std::shared_ptr<ELGameObject>(gameObject));
     gameObject->transform->position = ELVector3Make(0,3,0);
     gameObject->transform->scale = ELVector3Make(0.1,0.1,0.1);
 
 //    std::vector<ELMeshGeometry *> geometries = ELFBXLoader::loadFromFile(ELAssets::shared()->findFile("Airbus A310.fbx").c_str());
-    std::vector<ELMeshGeometry *> geometries = ELFBXLoader::loadFromFile(ELAssets::shared()->findFile("humanoid.fbx").c_str());
+    std::vector<ELMeshGeometry *> geometries = ELFBXLoader::loadFromFile(ELAssets::shared()->findFile("draw_sword_2_1.fbx").c_str());
     for (int i = 0; i < geometries.size(); ++i) {
         auto animations = geometries.at(i)->animations;
         geometries.at(i)->setAnimation((*animations.begin()).second.name);
-        geometries.at(i)->materials[0].diffuse = ELVector4Make(0.6, 0.0, 0.0, 1.0);
-        geometries.at(i)->materials[0].ambient = ELVector4Make(0.7, 0.7, 0.7, 1.0);
-        geometries.at(i)->materials[0].diffuseMap = diffuseMap_head;
-        geometries.at(i)->materials[1].diffuse = ELVector4Make(0.0, 0.0, 0.0, 1.0);
-        geometries.at(i)->materials[1].ambient = ELVector4Make(0.7, 0.7, 0.7, 1.0);
-        geometries.at(i)->materials[1].diffuseMap = diffuseMap_body;
-        geometries.at(i)->materials[2].diffuse = ELVector4Make(0.0, 0.0, 0.0, 1.0);
-        geometries.at(i)->materials[2].ambient = ELVector4Make(0.7, 0.7, 0.7, 1.0);
-        geometries.at(i)->materials[2].diffuseMap = diffuseMap_m4;
         gameObject->addComponent(geometries.at(i));
     }
 }

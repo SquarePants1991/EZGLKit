@@ -68,10 +68,11 @@ void ELFBXVertexBufferProvider::collectVertex() {
 void ELFBXVertexBufferProvider::updateClusters(FbxTime time) {
     FbxAMatrix globalMatrix = FbxGetNodeGlobalPosition(mesh->GetNode(), time, currentPose, NULL);
     int index = 0;
+    int size = clustersMatrix.size();
     for (auto iter = clusters.begin(); iter != clusters.end(); ++iter) {
         FbxCluster *cluster = *iter;
         FbxAMatrix vertexTransform;
-        computerClusterDeformation(globalMatrix, time, currentPose, mesh, cluster, vertexTransform);
+        computerClusterDeformation(globalMatrix, time, NULL, mesh, cluster, vertexTransform);
         double* matrixData = (double*)vertexTransform;
         ELMatrix4 elMatrix;
         for (int i = 0; i < 16; ++i) {
@@ -165,25 +166,25 @@ void ELFBXVertexBufferProvider::computerLinearDeformation(FbxAMatrix& pGlobalPos
         }
     }
     //Actually deform each vertices here by information stored in lClusterDeformation and lClusterWeight
-    for (int i = 0; i < vertexCount; i++) {
-        FbxVector4 lSrcVertex = vertexArray[i];
-        FbxVector4 &lDstVertex = vertexArray[i];
-        double lWeight = clusterWeight[i];
-
-        // Deform the vertex if there was at least a link with an influence on the vertex,
-        if (lWeight != 0.0) {
-            lDstVertex = clusterDeformation[i].MultT(lSrcVertex);
-            if (clusterMode == FbxCluster::eNormalize) {
-                // In the normalized link mode, a vertex is always totally influenced by the links.
-                lDstVertex /= lWeight;
-            }
-            else if (clusterMode == FbxCluster::eTotalOne) {
-                // In the total 1 link mode, a vertex can be partially influenced by the links.
-                lSrcVertex *= (1.0 - lWeight);
-                lDstVertex += lSrcVertex;
-            }
-        }
-    }
+//    for (int i = 0; i < vertexCount; i++) {
+//        FbxVector4 lSrcVertex = vertexArray[i];
+//        FbxVector4 &lDstVertex = vertexArray[i];
+//        double lWeight = clusterWeight[i];
+//
+//        // Deform the vertex if there was at least a link with an influence on the vertex,
+//        if (lWeight != 0.0) {
+//            lDstVertex = clusterDeformation[i].MultT(lSrcVertex);
+//            if (clusterMode == FbxCluster::eNormalize) {
+//                // In the normalized link mode, a vertex is always totally influenced by the links.
+//                lDstVertex /= lWeight;
+//            }
+//            else if (clusterMode == FbxCluster::eTotalOne) {
+//                // In the total 1 link mode, a vertex can be partially influenced by the links.
+//                lSrcVertex *= (1.0 - lWeight);
+//                lDstVertex += lSrcVertex;
+//            }
+//        }
+//    }
 
     delete [] clusterWeight;
     delete [] clusterDeformation;
@@ -272,9 +273,9 @@ void ELFBXVertexBufferProvider::loadVerticesToVertexBuffer(FbxMesh *mesh, FbxVec
             ELGeometryVertex v1;
             ELGeometryVertex v2;
             ELGeometryVertex v3;
-            FbxLoadVertex(mesh, pVertices, i, 0, v1);
+            FbxLoadVertex(mesh, pVertices, i, 0, v3);
             FbxLoadVertex(mesh, pVertices, i, 1, v2);
-            FbxLoadVertex(mesh, pVertices, i, 2, v3);
+            FbxLoadVertex(mesh, pVertices, i, 2, v1);
             v1.matID = matId;
             v2.matID = matId;
             v3.matID = matId;
@@ -286,14 +287,14 @@ void ELFBXVertexBufferProvider::loadVerticesToVertexBuffer(FbxMesh *mesh, FbxVec
             v1.matID = matId;
             v2.matID = matId;
             v3.matID = matId;
-            FbxLoadVertex(mesh, pVertices, i, 0, v1);
+            FbxLoadVertex(mesh, pVertices, i, 0, v3);
             FbxLoadVertex(mesh, pVertices, i, 1, v2);
-            FbxLoadVertex(mesh, pVertices, i, 2, v3);
+            FbxLoadVertex(mesh, pVertices, i, 2, v1);
             vertexBuffer->append(v1, v2, v3);
             
-            FbxLoadVertex(mesh, pVertices, i, 0, v1);
+            FbxLoadVertex(mesh, pVertices, i, 0, v3);
             FbxLoadVertex(mesh, pVertices, i, 2, v2);
-            FbxLoadVertex(mesh, pVertices, i, 3, v3);
+            FbxLoadVertex(mesh, pVertices, i, 3, v1);
             vertexBuffer->append(v1, v2, v3);
         }
     }

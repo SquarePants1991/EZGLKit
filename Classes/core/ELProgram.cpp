@@ -123,7 +123,7 @@ bool compileShader(GLuint *shader, GLenum type, const GLchar *source) {
     GLint logLength;
     glGetShaderiv(*shader, GL_INFO_LOG_LENGTH, &logLength);
     
-#if Debug
+#if 1
     if (logLength > 0) {
         GLchar *log = (GLchar *)malloc(logLength);
         glGetShaderInfoLog(*shader, logLength, &logLength, log);

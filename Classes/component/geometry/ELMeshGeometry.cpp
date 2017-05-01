@@ -58,6 +58,11 @@ void ELMeshGeometry::fillVertexBuffer(ELGeometryVertexBuffer *vertexBuffer) {
 }
 
 void ELMeshGeometry::effectDidActive(ELEffect * effect) {
-    GLuint clustersLocation = (GLuint)effect->program->uniform((char *)"clusters");
-    glUniformMatrix4fv(clustersLocation, (GLuint)clustersMatrix.size(), false, (GLfloat *)(clustersMatrix.data()));
+    char buffer[255];
+    for (int i = 0; i < clustersMatrix.size(); ++i) {
+        sprintf(buffer, "clusters[%d]", i);
+        GLuint clustersLocation = (GLuint)effect->program->uniform(buffer);
+        glUniformMatrix4fv(clustersLocation, 1, false, (GLfloat *)(clustersMatrix[i].m));
+    }
+    
 }
