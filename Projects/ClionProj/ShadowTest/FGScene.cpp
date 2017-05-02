@@ -24,7 +24,7 @@ void FGScene::mouseLeftButtonClicked() {
     GLuint normalMap = ELTexture::texture(ELAssets::shared()->findFile("water_normal.png"))->value;
     ELVector3 velocity = world->activedCamera->forwardVector();
     velocity = ELVector3MultiplyScalar(velocity, 30);
-    createSphereGameObject(ELVector3Make(2,2,2),world->activedCamera->position(),2.0,diffuseMap,normalMap, true, CT_Prop2, CT_Prop2 | CT_Prop | CT_Floor,velocity);
+    createSphereGameObject(ELVector3Make(2,2,2),world->activedCamera->position(),2.0,diffuseMap,normalMap, true, CT_Prop, CT_Role | CT_Prop | CT_Floor,velocity);
 }
 
 void FGScene::mouseRightButtonClicked() {
@@ -55,14 +55,13 @@ void FGScene::createScene() {
     createPlayer();
 
 
-    createSphereGameObject(ELVector3Make(5,5,5),world->activedCamera->position(),2.0,1,1, true, CT_Prop2, CT_Prop2 | CT_Prop | CT_Floor,ELVector3Make(0,0,0));
-    for (int i = 0; i < 10; ++i) {
-        srand(rand());
-        float x = rand() / (float) RAND_MAX * 6 - 3;
-        float z = rand() / (float) RAND_MAX * 16 - 3;
-        float y = rand() / (float) RAND_MAX * 6 - 3 + 8;
-        float size =  rand() / (float) RAND_MAX * 12 + 3;
-        createCubeGameObject(ELVector3Make(size, size, size), ELVector3Make(x, y, z), 2.0, ELVector4Make(1,0,0,1), -1, true, CT_Prop,
+    createSphereGameObject(ELVector3Make(5,5,5),world->activedCamera->position(),2.0,1,1, true, CT_Prop, CT_Prop2 | CT_Prop | CT_Floor,ELVector3Make(0,0,0));
+    for (int i = 0; i < 360; i += 4) {
+        float x = sin(i / 180.0 * 3.14) * 26;
+        float z = cos(i / 180.0 * 3.14) * 26;
+        float y = rand() / (float) RAND_MAX * 6;
+        float size =  rand() / (float) RAND_MAX * 6 + 3;
+        createCubeGameObject(ELVector3Make(size, size, size), ELVector3Make(x, y, z), 2.0, ELVector4Make(1,0.7,0.56,1), -1, true, CT_Prop,
                              CT_Floor | CT_Prop2 | CT_Prop | CT_Role);
     }
 
@@ -94,7 +93,7 @@ void FGScene::createFloor() {
     ELGameObject *gameObject = new ELGameObject(world);
     world->addNode(retain_ptr(ELGameObject, gameObject));
     gameObject->transform->position = ELVector3Make(0,0,0);
-    ELGeometry *cube = createCubeGameObject(ELVector3Make(width,10,height),ELVector3Make(0,-25,0),0,ELVector4Make(1,1,0,1),-1,false, CT_Floor, CT_Prop2 | CT_Prop | CT_Role);
+    ELGeometry *cube = createCubeGameObject(ELVector3Make(width,10,height),ELVector3Make(0,-25,0),0,ELVector4Make(0.8,0.8,0.6,1),-1,false, CT_Floor, CT_Prop2 | CT_Prop | CT_Role);
     cube->receiveShadow = true;
 }
 
@@ -102,10 +101,10 @@ ELGeometry * FGScene::createCubeGameObject(ELVector3 size,ELVector3 pos,ELFloat 
     ELGameObject *gameObject = new ELGameObject(world);
     world->addNode(retain_ptr(ELGameObject, gameObject));
     gameObject->transform->position = pos;
-    ELCubeGeometry *cube = new ELCubeGeometry(size, true);
+    ELCubeGeometry *cube = new ELCubeGeometry(size, false);
     gameObject->addComponent(cube);
     cube->materials[0].diffuse = diffuseColor;
-    cube->materials[0].ambient = ELVector4Make(0.7, 0.7, 0.7, 1.0);
+    cube->materials[0].ambient = ELVector4Make(0.4, 0.4, 0.4, 1.0);
     cube->materials[0].diffuseMap = -1;
     cube->materials[0].normalMap = 0;
     cube->enableBorder = hasBorder;
@@ -131,7 +130,7 @@ void FGScene::createSphereGameObject(ELVector3 size,ELVector3 pos,ELFloat mass,G
     gameObject->transform->position = pos;
     ELSphereGeometry *cube = new ELSphereGeometry(size.x, 20,20);
     gameObject->addComponent(cube);
-    cube->materials[0].diffuse = ELVector4Make(0.4,0.0,0.0,1.0);
+    cube->materials[0].diffuse = ELVector4Make(0.4,0.8,0.8,1.0);
     cube->materials[0].ambient = ELVector4Make(0.7,0.7,0.7,1.0);
     cube->materials[0].diffuseMap = -1;//ELTexture::texture(ELAssets::shared()->findFile("rock.png"))->value;
     cube->materials[0].normalMap = 0;//ELTexture::texture(ELAssets::shared()->findFile("rock_NRM.png"))->value;
@@ -154,21 +153,21 @@ void FGScene::createTerrain() {
     printf("%s",gameObject->description().c_str());
     world->addNode(retain_ptr(ELGameObject, gameObject));
     gameObject->transform->position = ELVector3Make(0,0,0);
-    ELTerrain *terrain = new ELTerrain(ELVector2Make(500,500),ELAssets::shared()->findFile("island12.png"),50);
+    ELTerrain *terrain = new ELTerrain(ELVector2Make(150,150),ELAssets::shared()->findFile("island12.png"),24);
     gameObject->addComponent(terrain);
     GLuint diffuseMap = ELTexture::texture(ELAssets::shared()->findFile("dirt_01.jpg"))->value;
-//    GLuint normalMap = ELTexture::texture(ELAssets::shared()->findFile("water_normal.png"))->value;
-//    GLuint dudvNormalMap = ELTexture::texture(ELAssets::shared()->findFile("grass_01.jpeg"))->value;
+    GLuint normalMap = ELTexture::texture(ELAssets::shared()->findFile("water_normal.png"))->value;
+    GLuint dudvNormalMap = ELTexture::texture(ELAssets::shared()->findFile("grass_01.jpeg"))->value;
     terrain->receiveShadow = true;
-    terrain->materials[0].ambient = ELVector4Make(0.3,0.3,0.3,1.0);
+    terrain->materials[0].ambient = ELVector4Make(0.1,0.1,0.1,1.0);
     terrain->materials[0].diffuse = ELVector4Make(1.0,0.0,0.0,1.0);
     terrain->materials[0].diffuseMap = diffuseMap;
-    terrain->materials[0].ambientMap = -1;
-    terrain->materials[0].specularMap = 0;
+    terrain->materials[0].ambientMap = normalMap;
+    terrain->materials[0].specularMap = dudvNormalMap;
     gameObject->transform->position = ELVector3Make(0,0,0);
     terrain->genMap();
     std::shared_ptr<ELCollisionShape> collisionShape = retain_ptr_init(ELCollisionShape);
-    collisionShape->asTerrian(terrain->mapData,terrain->mapDataSize,0,50);
+    collisionShape->asTerrian(terrain->mapData,terrain->mapDataSize,0,24);
     ELRigidBody *rigidBody = new ELRigidBody(collisionShape,0);
     rigidBody->collisionGroup = CT_Floor;
     rigidBody->collisionMask = CT_Prop2 | CT_Prop | CT_Role;
@@ -188,7 +187,8 @@ void FGScene::createMonkey() {
     for (int i = 0; i < geometries.size(); ++i) {
         auto animations = geometries.at(i)->animations;
         geometries.at(i)->setAnimation((*animations.begin()).second.name);
-        geometries.at(i)->materials[0].diffuse = ELVector4Make(1.0,0.0,0,1.0);
+        geometries.at(i)->materials[0].diffuse = ELVector4Make(0.7,0.4,0,1.0);
+        geometries.at(i)->materials[0].normalMap = 0;
         gameObject->addComponent(geometries.at(i));
     }
 }

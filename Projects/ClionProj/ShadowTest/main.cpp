@@ -9,7 +9,7 @@
 #define WindowWidth 400
 #define WindowHeight 300
 #define WindowPosX 0
-#define WindowPosY 1920 - WindowHeight
+#define WindowPosY 0//1920 - WindowHeight
 
 FGWindow *fgWindow;
 
