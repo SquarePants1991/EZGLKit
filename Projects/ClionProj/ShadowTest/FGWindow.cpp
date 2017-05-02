@@ -7,7 +7,9 @@
 #include <utils/ELGLState.h>
 #include "FGScene.h"
 
-FGWindow::FGWindow(GLFWwindow *glfwWindow, int width, int height) {
+FGWindow::FGWindow(GLFWwindow *glfwWindow, int width, int height) :
+        lastFpsTime(0)
+{
     this->glfwWindow = glfwWindow;
     initWorld();
 }
@@ -20,7 +22,7 @@ void FGWindow::initWorld() {
 
     world->fbWidth = fbWidth;
     world->fbHeight = fbHeight;
-    world->enableDefaultCamera(fbWidth / (double)fbHeight);
+    world->enableDefaultCamera(fbWidth / (float)fbHeight);
 
     std::string vertexShader = ELFileUtil::stringContentOfShader(ELAssets::shared()->findFile("vtx_phong.glsl").c_str());
     std::string fragShader = ELFileUtil::stringContentOfShader(ELAssets::shared()->findFile("frg_phong.glsl").c_str());

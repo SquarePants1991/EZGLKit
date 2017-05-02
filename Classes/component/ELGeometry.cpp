@@ -16,7 +16,8 @@ ELGeometry::ELGeometry() : vao(-1),
                            borderWidth(0.1),
                            borderColor(ELVector4Make(1.0,1.0,1.0,1.0)),
                            onlyUseColorAttrib(false),
-                           renderType(ELGeometryRenderTypeFrontSide)
+                           renderType(ELGeometryRenderTypeFrontSide),
+                           receiveShadow(false)
 {
     material = ELMaterialDefault;
     for (int i = 0;i < sizeof(materials) / sizeof(ELMaterial); ++i) {
@@ -71,6 +72,7 @@ void ELGeometry::render() {
 
     effectDidActive(defaultEffect);
 
+    glUniform1i(program->uniform("receiveShadow"), receiveShadow ? 1 : 0);
     glUniform3fv(program->uniform("cameraPosition"), 1, (GLfloat *)camera->position().v);
     glUniformMatrix4fv(program->uniform("viewProjection"), 1, 0, (GLfloat *)camera->matrix().m);
     glUniformMatrix4fv(program->uniform("modelMatrix"), 1, 0, (GLfloat *)modelMatrix().m);

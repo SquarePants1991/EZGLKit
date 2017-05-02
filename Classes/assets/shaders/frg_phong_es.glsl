@@ -32,8 +32,10 @@ vec4 renderPass_textureonly() {
 }
 
 vec4 renderPass_shadow_frog_light() {
-    float shadow;
-    caculateShadow(shadow);
+    float shadow = 1.0;
+    vec4 shadowColor;
+    // ES Shadow is not ready
+    // caculateShadow(shadow, shadowColor);
 
     highp vec4 ambient, diffuse, specular;
     caculateLights(surfaceNormal, surfaceToEyeVec, ambient, diffuse, specular);
@@ -44,7 +46,7 @@ vec4 renderPass_shadow_frog_light() {
     }
     
     highp vec4 color = surfaceColor();
-    highp vec4 outputColor = (color * diffuse + color * ambient + color * specular) * shadow;
+    highp vec4 outputColor = (color * diffuse + color * ambient + color * specular);
 
     return caculateColorWithFrog(outputColor);
 }

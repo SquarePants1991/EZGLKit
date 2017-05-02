@@ -6,6 +6,8 @@
 #include "ELFbxUtil.h"
 #include <fbxsdk.h>
 
+
+// TODO: 整理这个烂摊子，GPU Animation已经基本实现。
 ELFBXVertexBufferProvider::ELFBXVertexBufferProvider(FbxScene *scene, FbxMesh *mesh) :
         scene(scene),
         mesh(mesh),

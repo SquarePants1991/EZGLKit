@@ -6,10 +6,10 @@
 #include <stdio.h>
 #include <iostream>
 
-#define WindowWidth 800
-#define WindowHeight 600
+#define WindowWidth 400
+#define WindowHeight 300
 #define WindowPosX 0
-#define WindowPosY 0
+#define WindowPosY 1920 - WindowHeight
 
 FGWindow *fgWindow;
 
@@ -89,7 +89,7 @@ GLFWwindow *initGLFWwindow() {
     glfwSetWindowFocusCallback(glfwWindow,focus_callback);
     glfwSetMouseButtonCallback(glfwWindow,mouse_callback);
     glfwSetCursorPosCallback(glfwWindow, cursor_position_callback);
-    glfwSetInputMode(glfwWindow, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+//    glfwSetInputMode(glfwWindow, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
     return glfwWindow;
 }
 
@@ -106,6 +106,13 @@ int main(int argc,char **argv) {
     ELAssets::shared()->addSearchPath("/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/FPS Game/Textures/");
     ELAssets::shared()->addSearchPath("/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/FPSGame/Textures/");
     ELAssets::shared()->addSearchPath("/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/FPSGame/ArmyPilot/");
+    ELAssets::shared()->addSearchPath("/Users/ocean/Documents/Codes/On Git/EZGLKit/Projects/ClionProj/FBX/");
+    ELAssets::shared()->addSearchPath("/Users/ocean/Documents/Codes/On Git/EZGLKit/Projects/ClionProj/FBX/Textures/");
+    ELAssets::shared()->addSearchPath("/Users/ocean/Documents/Codes/On Git/EZGLKit/Projects/ClionProj/FBX/ArmyPilot/");
+    ELAssets::shared()->addSearchPath("/Users/ocean/Documents/Codes/On Git/EZGLKit/Projects/ClionProj/FBX/ArmyPilot/Tex/");
+    ELAssets::shared()->addSearchPath("/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/FBX/Textures/");
+    ELAssets::shared()->addSearchPath("/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/FBX/");
+    ELAssets::shared()->addSearchPath("/Users/wangyang/Documents/Projects/On Git/EZGLKit/Projects/ClionProj/FBX/ArmyPilot/");
 
 
     GLFWwindow *glfwWindow = initGLFWwindow();

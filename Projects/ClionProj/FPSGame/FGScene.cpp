@@ -220,7 +220,7 @@ void FGScene::createSphereGameObject(ELVector3 size,ELVector3 pos,ELFloat mass,G
     ELGameObject *gameObject = new ELGameObject(world);
     world->addNode(retain_ptr(ELGameObject, gameObject));
     gameObject->transform->position = pos;
-    ELSphereGeometry *cube = new ELSphereGeometry(1, 20,20);
+    ELSphereGeometry *cube = new ELSphereGeometry(size.x, 20,20);
     gameObject->addComponent(cube);
     cube->materials[0].diffuse = ELVector4Make(0.0,0.0,0.0,1.0);
     cube->materials[0].ambient = ELVector4Make(0.7,0.7,0.7,1.0);
@@ -316,6 +316,7 @@ void FGScene::createTerrain() {
     world->addNode(retain_ptr(ELGameObject, gameObject));
     gameObject->transform->position = ELVector3Make(0,0,0);
     ELTerrain *terrain = new ELTerrain(ELVector2Make(500,500),ELAssets::shared()->findFile("island12.png"),50);
+    terrain->receiveShadow = true;
     gameObject->addComponent(terrain);
     GLuint diffuseMap = ELTexture::texture(ELAssets::shared()->findFile("dirt_01.jpg"))->value;
     GLuint normalMap = ELTexture::texture(ELAssets::shared()->findFile("water_normal.png"))->value;

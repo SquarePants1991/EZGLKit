@@ -8,7 +8,9 @@
 #include "FGScene.h"
 #include "lua interface/lua_Interfaces.h"
 
-FGWindow::FGWindow(GLFWwindow *glfwWindow, int width, int height) {
+FGWindow::FGWindow(GLFWwindow *glfwWindow, int width, int height) :
+        lastFpsTime(0)
+{
     this->glfwWindow = glfwWindow;
     initWorld();
 }

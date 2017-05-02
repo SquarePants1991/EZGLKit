@@ -97,7 +97,7 @@ void FGScene::createMonkey() {
     gameObject->transform->scale = ELVector3Make(0.1,0.1,0.1);
 
 //    std::vector<ELMeshGeometry *> geometries = ELFBXLoader::loadFromFile(ELAssets::shared()->findFile("Airbus A310.fbx").c_str());
-    std::vector<ELMeshGeometry *> geometries = ELFBXLoader::loadFromFile(ELAssets::shared()->findFile("draw_sword_2_1.fbx").c_str());
+    std::vector<ELMeshGeometry *> geometries = ELFBXLoader::loadFromFile(ELAssets::shared()->findFile("humanoid.fbx").c_str());
     for (int i = 0; i < geometries.size(); ++i) {
         auto animations = geometries.at(i)->animations;
         geometries.at(i)->setAnimation((*animations.begin()).second.name);
@@ -106,8 +106,8 @@ void FGScene::createMonkey() {
 }
 
 void FGScene::createFloor() {
-    ELFloat width = 10000;
-    ELFloat height = 10000;
+    ELFloat width = 100;
+    ELFloat height = 100;
     ELFloat wallHeight = 3.5;
     ELVector3 floorSize = ELVector3Make(width,-10,height);
     GLuint diffuseMap,normalMap;

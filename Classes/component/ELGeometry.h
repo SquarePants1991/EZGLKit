@@ -66,6 +66,7 @@ public:
     ELVector4 borderColor;
     ELFloat borderWidth;
 
+    bool receiveShadow;
     bool onlyUseColorAttrib;
     static bool resetBorderBeforeUpdate;
 

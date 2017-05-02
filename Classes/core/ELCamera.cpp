@@ -45,10 +45,10 @@ void ELCamera::perspective(ELVector3 eye, ELVector3 lookAt, ELVector3 up, ELFloa
     originEye = eye;
     originLookAt = lookAt;
     originUp = up;
-    fovyRadians = fovyRadians;
-    aspect = aspect;
-    nearZ = nearZ;
-    farZ = farZ;
+    this->fovyRadians = fovyRadians;
+    this->aspect = aspect;
+    this->nearZ = nearZ;
+    this->farZ = farZ;
     isOrtho = false;
 }
 

@@ -54,19 +54,11 @@ void ELWorld::render() {
 }
 
 void ELWorld::renderScene() {
-//    for (int i = 0; i < children.size(); ++i) {
-//        ELLight * light = dynamic_cast<ELLight *>(children.at(i).get());
-//        if (light != NULL && light->isShadowEnabled) {
-//            activeEffect("gen_shadow");
-//            activedEffect->prepare();
-//            activeCamera(light->identity + "-shadow-camera", light->shadowMapGenCamera().get());
-//        }
-//    }
     activeEffect("render_scene");
     activeCamera("main");
     if (viewport.get() != NULL) {
         glViewport((*viewport)->x, (*viewport)->y, (*viewport)->z, (*viewport)->w);
-    } else {
+    } else if (fbWidth > 0 && fbHeight > 0){
         glViewport(0,0,fbWidth, fbHeight);
     }
     glClearColor(0.6f, 0.6, 0.6, 1.0f);
@@ -119,6 +111,7 @@ void ELWorld::activeCamera(std::string cameraName, ELCamera *camera) {
         if (camera != NULL && camera->identity == cameraName) {
             activedCamera = camera;
             cameraFound = true;
+            return;
         }
     }
     if (cameraFound == false && camera != NULL) {
