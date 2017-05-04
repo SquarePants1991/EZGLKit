@@ -22,19 +22,22 @@ vec4 renderPass_border() {
 }
 
 vec4 renderPass_color() {
-    highp vec4 finalColor = tex2D(diffuseMap, fragTexcoord);
+    int matId = int(fragMatID);
+    highp vec4 finalColor = tex2D(materials[matId].diffuseMap, fragTexcoord);
     finalColor = fragColor * finalColor.a;
     return finalColor;
 }
 
 vec4 renderPass_textureonly() {
-    return tex2D(diffuseMap, fragTexcoord);
+    int matId = int(fragMatID);
+    return tex2D(materials[matId].diffuseMap, fragTexcoord);
 }
 
 vec4 renderPass_shadow_frog_light() {
     float shadow;
     vec4 shadowColor;
     caculateShadow(shadow, shadowColor);
+//    return shadowColor;
 
     highp vec4 ambient, diffuse, specular;
     caculateLights(surfaceNormal, surfaceToEyeVec, ambient, diffuse, specular);

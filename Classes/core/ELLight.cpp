@@ -46,8 +46,9 @@ std::shared_ptr<ELCamera> ELLight::shadowMapGenCamera() {
         cameraForShadowMap = retain_ptr_init(ELCamera);
         ELVector3 center = ELVector3Make(0,0,0);
         ELVector3 up = ELVector3Make(0,0,1);
-        cameraForShadowMap = retain_ptr_init_v(ELCamera, position, center,up,60,0.75,0.1,1000);
+        cameraForShadowMap = retain_ptr_init_v(ELCamera, position, center,up,90,1,0.1,1000);
         if (type == ELLightTypeDirection) {
+            cameraForShadowMap->perspective(ELVector3Make(0,0,0), ELVector3MultiplyScalar(position, -1), up, 90, 1, 0.1, 1000);
             cameraForShadowMap->ortho(-100.0, 100.0, 100, -100, -60, 60);
         }
         cameraForShadowMap->identity = this->identity + "-shadow-camera";

@@ -42,8 +42,10 @@ void FGScene::createScene() {
     ELFBXLoader::loadFromFile(ELAssets::shared()->findFile("ArmyPilot.fbx").c_str());
 
     defaultLight = new ELLight();
-    defaultLight->position = ELVector3Make(0,1,1);
-    defaultLight->type = ELLightTypeDirection;
+    defaultLight->position = ELVector3Make(0,100,30);
+    defaultLight->type = ELLightTypePoint;
+//    defaultLight->position = ELVector3Make(0,1,2);
+//    defaultLight->type = ELLightTypeDirection;
     defaultLight->color = ELVector4Make(1.0,1.0,1.0,1.0);
     defaultLight->intensity = 1.0;
     defaultLight->intensityFallOff = 0.0;
@@ -55,7 +57,7 @@ void FGScene::createScene() {
     createPlayer();
 
 
-    createSphereGameObject(ELVector3Make(5,5,5),world->activedCamera->position(),2.0,1,1, true, CT_Prop, CT_Prop2 | CT_Prop | CT_Floor,ELVector3Make(0,0,0));
+    createSphereGameObject(ELVector3Make(5,5,5),world->activedCamera->position(),2.0,1,1, true, CT_Prop, CT_Role | CT_Prop | CT_Floor,ELVector3Make(0,0,0));
     for (int i = 0; i < 360; i += 4) {
         float x = sin(i / 180.0 * 3.14) * 26;
         float z = cos(i / 180.0 * 3.14) * 26;
