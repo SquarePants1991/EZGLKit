@@ -58,7 +58,6 @@ public:
     ELVector3 lookAtPosition();
     
     void setMatrixDirect(float * matrix);
-
     virtual void update(ELFloat timeInSecs);
 private:
     bool isOrtho;

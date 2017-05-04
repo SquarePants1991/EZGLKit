@@ -7,6 +7,7 @@
 #include "../core/ELEffect.h"
 #include "../core/ELGameObject.h"
 #include "../utils/ELGLState.h"
+#include "../utils/ELFrustumTest.h"
 
 bool ELGeometry::resetBorderBeforeUpdate = false;
 
@@ -19,7 +20,6 @@ ELGeometry::ELGeometry() : vao(-1),
                            renderType(ELGeometryRenderTypeFrontSide),
                            receiveShadow(false)
 {
-    material = ELMaterialDefault;
     for (int i = 0;i < sizeof(materials) / sizeof(ELMaterial); ++i) {
         materials[i] = ELMaterialDefault;
     }
@@ -64,11 +64,16 @@ void ELGeometry::render() {
         prepare();
     }
 
+    ELCamera *camera = gameObject()->mainCamera();
+
+    if (isInViewFrustum(camera->matrix(), size, modelMatrix()) == false) {
+        return;
+    }
 
     ELEffect *defaultEffect = effect();
     defaultEffect->prepare();
     ELProgram *program = defaultEffect->program.get();
-    ELCamera *camera = gameObject()->mainCamera();
+    
 
     effectDidActive(defaultEffect);
 

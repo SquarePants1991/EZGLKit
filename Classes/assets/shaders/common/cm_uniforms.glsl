@@ -6,16 +6,10 @@ uniform highp mat3 normalMatrix;
 
 uniform light lights[6];
 uniform mediump int lightNum;
-uniform sampler2D shadowMap[6];
+uniform sampler2D shadowMap[2];
 uniform highp mat4 lightViewProjection[6];
 
-uniform sampler2D ambientMap;
-uniform sampler2D diffuseMap;
-uniform sampler2D normalMap;
-uniform sampler2D specularMap;
-
-uniform material_struct material;
-uniform material_struct materials[3];
+uniform material_struct materials[2];
 
 uniform int renderShadow;
 uniform int renderBorder;

@@ -11,6 +11,8 @@
 		8E30C2861E31E8D600D5AA1D /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E30C2851E31E8D600D5AA1D /* GLKit.framework */; };
 		8E30C2881E31E8DA00D5AA1D /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E30C2871E31E8DA00D5AA1D /* CoreFoundation.framework */; };
 		8E30C28A1E31E8E800D5AA1D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E30C2891E31E8E800D5AA1D /* Foundation.framework */; };
+		8E66C09C1EBB07C400FB20E1 /* ELFrustumTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8E66C09A1EBB07C400FB20E1 /* ELFrustumTest.cpp */; };
+		8E66C09D1EBB07C400FB20E1 /* ELFrustumTest.h in Headers */ = {isa = PBXBuildFile; fileRef = 8E66C09B1EBB07C400FB20E1 /* ELFrustumTest.h */; };
 		D318EFF71EB447BA00524F26 /* btBulletCollisionCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = D318ED761EB447BA00524F26 /* btBulletCollisionCommon.h */; };
 		D318EFF81EB447BA00524F26 /* btBulletDynamicsCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = D318ED771EB447BA00524F26 /* btBulletDynamicsCommon.h */; };
 		D318EFF91EB447BA00524F26 /* btAxisSweep3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D318ED7A1EB447BA00524F26 /* btAxisSweep3.cpp */; };
@@ -574,6 +576,8 @@
 		8E30C2891E31E8E800D5AA1D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8E30C2971E31EFBB00D5AA1D /* libstdc++.6.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.tbd"; path = "usr/lib/libstdc++.6.tbd"; sourceTree = SDKROOT; };
 		8E5B54E61E321D610082AE9F /* libfbxsdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfbxsdk.a; path = "../../../../../../../../../Applications/Autodesk/FBX SDK/2015.1/lib/ios-armv7/debug/libfbxsdk.a"; sourceTree = "<group>"; };
+		8E66C09A1EBB07C400FB20E1 /* ELFrustumTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ELFrustumTest.cpp; sourceTree = "<group>"; };
+		8E66C09B1EBB07C400FB20E1 /* ELFrustumTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELFrustumTest.h; sourceTree = "<group>"; };
 		D318ED761EB447BA00524F26 /* btBulletCollisionCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = btBulletCollisionCommon.h; sourceTree = "<group>"; };
 		D318ED771EB447BA00524F26 /* btBulletDynamicsCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = btBulletDynamicsCommon.h; sourceTree = "<group>"; };
 		D318ED7A1EB447BA00524F26 /* btAxisSweep3.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = btAxisSweep3.cpp; sourceTree = "<group>"; };
@@ -2067,6 +2071,8 @@
 				D318EFF41EB447BA00524F26 /* ELUtil.h */,
 				D318EFF51EB447BA00524F26 /* ELWaveFrontLoader.cpp */,
 				D318EFF61EB447BA00524F26 /* ELWaveFrontLoader.h */,
+				8E66C09A1EBB07C400FB20E1 /* ELFrustumTest.cpp */,
+				8E66C09B1EBB07C400FB20E1 /* ELFrustumTest.h */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -2321,6 +2327,7 @@
 				D318F06A1EB447BA00524F26 /* btHeightfieldTerrainShape.h in Headers */,
 				D318F0C41EB447BA00524F26 /* btGjkEpa2.h in Headers */,
 				D318F10D1EB447BA00524F26 /* btMultiBodyConstraint.h in Headers */,
+				8E66C09D1EBB07C400FB20E1 /* ELFrustumTest.h in Headers */,
 				D318F0D71EB447BA00524F26 /* btSubSimplexConvexCast.h in Headers */,
 				D318F1F81EB447BB00524F26 /* lua_ELNode.h in Headers */,
 				D318F0311EB447BA00524F26 /* btEmptyCollisionAlgorithm.h in Headers */,
@@ -2630,6 +2637,7 @@
 				D318F18A1EB447BB00524F26 /* loadlib.cc in Sources */,
 				D318F05D1EB447BA00524F26 /* btConvexPointCloudShape.cpp in Sources */,
 				D318F1F71EB447BB00524F26 /* lua_ELNode.cpp in Sources */,
+				8E66C09C1EBB07C400FB20E1 /* ELFrustumTest.cpp in Sources */,
 				D318F1EE1EB447BB00524F26 /* ELRenderPass.cpp in Sources */,
 				D318F11D1EB447BA00524F26 /* btMultiBodySliderConstraint.cpp in Sources */,
 				D318F1E61EB447BB00524F26 /* ELPhysicsWorld.cpp in Sources */,

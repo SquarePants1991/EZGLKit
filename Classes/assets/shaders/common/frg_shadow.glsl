@@ -13,7 +13,7 @@ void caculateShadow(out float out_shadow, out vec4 shadowColor) {
        vp = normalize(defaultLight.position);
     }
     float bias = 0.005*tan(acos(dot(fragNormal, -vp)));
-    bias = clamp(bias, 0.0, 0.02);
+    bias = clamp(bias, 0.005, 0.02);
     highp vec4 lightMVPPosition = lightViewProjection[0] * modelMatrix * fragPosition;
     lightMVPPosition = lightMVPPosition / lightMVPPosition.w;
     lightMVPPosition = lightMVPPosition * 0.5 + 0.5;
@@ -23,8 +23,9 @@ void caculateShadow(out float out_shadow, out vec4 shadowColor) {
         out_shadow = 1.0;
         return;
     }
-#ifndef ES
-    vec2 texelSize = 1.0 / textureSize(shadowMap[0], 0);
+//#ifndef ES
+    // 由于OpenGLES2不支持textureSize，所以暂时写死
+    vec2 texelSize = 1.0 / vec2(1024.0, 1024.0);
     int blurSize = 1;
     for(int x = -blurSize; x <= blurSize; ++x)
     {
@@ -35,7 +36,7 @@ void caculateShadow(out float out_shadow, out vec4 shadowColor) {
         }
     }
     shadow /= 9.0;
-#endif
-
+//#endif
+    shadowColor = tex2D(shadowMap[0], lightMVPPosition.xy);
     out_shadow = 1.0 - shadow;
 }

@@ -77,6 +77,8 @@
 		8E53A72E1E45C9C000C790CE /* grass_yellow.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8E53A7281E45C9C000C790CE /* grass_yellow.jpg */; };
 		8E53A72F1E45C9C000C790CE /* grass_yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E53A7291E45C9C000C790CE /* grass_yellow.png */; };
 		8E5B54E91E3445480082AE9F /* libiconv.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E5B54E81E3445480082AE9F /* libiconv.2.tbd */; };
+		8E66C0991EBB01B200FB20E1 /* ShadowViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8E66C0981EBB01B200FB20E1 /* ShadowViewController.mm */; };
+		8E826CF11EBB254100885D87 /* island.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E826CF01EBB254100885D87 /* island.png */; };
 		D34A1BD21EB43A7300F35857 /* libEZGLSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D34A1BCF1EB43A6200F35857 /* libEZGLSDK.a */; };
 /* End PBXBuildFile section */
 
@@ -198,6 +200,9 @@
 		8E53A7281E45C9C000C790CE /* grass_yellow.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = grass_yellow.jpg; sourceTree = "<group>"; };
 		8E53A7291E45C9C000C790CE /* grass_yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grass_yellow.png; sourceTree = "<group>"; };
 		8E5B54E81E3445480082AE9F /* libiconv.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.2.tbd; path = usr/lib/libiconv.2.tbd; sourceTree = SDKROOT; };
+		8E66C0971EBB01B200FB20E1 /* ShadowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShadowViewController.h; sourceTree = "<group>"; };
+		8E66C0981EBB01B200FB20E1 /* ShadowViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ShadowViewController.mm; sourceTree = "<group>"; };
+		8E826CF01EBB254100885D87 /* island.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = island.png; sourceTree = "<group>"; };
 		D34A1BCA1EB43A6200F35857 /* EZGLSDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = EZGLSDK.xcodeproj; path = ../EZGLSDK/EZGLSDK.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -315,6 +320,7 @@
 		8E0F37E41E457FA100F402A8 /* Examples */ = {
 			isa = PBXGroup;
 			children = (
+				8E66C0961EBB018D00FB20E1 /* Shadows */,
 				8E53A70C1E45AB0F00C790CE /* Terrain & Snow */,
 				8E0F38671E45A7D600F402A8 /* Animation Knight */,
 			);
@@ -343,6 +349,7 @@
 		8E0F37EA1E457FA100F402A8 /* Ausfb */ = {
 			isa = PBXGroup;
 			children = (
+				8E826CF01EBB254100885D87 /* island.png */,
 				8E0F37EB1E457FA100F402A8 /* ausfb.fbx */,
 				8E0F37EC1E457FA100F402A8 /* Body 1.tga */,
 				8E0F37ED1E457FA100F402A8 /* Body 2.tga */,
@@ -468,6 +475,15 @@
 				8E53A70E1E45AB0F00C790CE /* TerrainSnowViewController.mm */,
 			);
 			path = "Terrain & Snow";
+			sourceTree = "<group>";
+		};
+		8E66C0961EBB018D00FB20E1 /* Shadows */ = {
+			isa = PBXGroup;
+			children = (
+				8E66C0971EBB01B200FB20E1 /* ShadowViewController.h */,
+				8E66C0981EBB01B200FB20E1 /* ShadowViewController.mm */,
+			);
+			name = Shadows;
 			sourceTree = "<group>";
 		};
 		D34A1BCB1EB43A6200F35857 /* Products */ = {
@@ -652,6 +668,7 @@
 				8E0F380D1E457FA100F402A8 /* Turret 2.tga in Resources */,
 				8E0F380C1E457FA100F402A8 /* Track.tga in Resources */,
 				8E0F38621E459E4800F402A8 /* particle_fire.png in Resources */,
+				8E826CF11EBB254100885D87 /* island.png in Resources */,
 				8E53A7111E45ABA300C790CE /* island.png in Resources */,
 				8E0F380A1E457FA100F402A8 /* Body 1.tga in Resources */,
 				8E53A7161E45B48F00C790CE /* Launch Screen.storyboard in Resources */,
@@ -686,6 +703,7 @@
 				8E0F38011E457FA100F402A8 /* AppDelegate.m in Sources */,
 				8E53A7141E45B47000C790CE /* EZGLViewController.m in Sources */,
 				8E0F38141E457FA100F402A8 /* EZGLBaseViewController.mm in Sources */,
+				8E66C0991EBB01B200FB20E1 /* ShadowViewController.mm in Sources */,
 				8E0F38121E457FA100F402A8 /* ELTextureImp.mm in Sources */,
 				8E53A70F1E45AB0F00C790CE /* TerrainSnowViewController.mm in Sources */,
 				8E53A7191E45B59200C790CE /* ExampleCollector.m in Sources */,

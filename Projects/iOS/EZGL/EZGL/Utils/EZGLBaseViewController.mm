@@ -7,6 +7,7 @@
 //
 
 #import "EZGLBaseViewController.h"
+#import <OpenGLES/ES2/gl.h>
 
 @interface EZGLBaseViewController () <EZGLMoveJoyStickerDelegate> {
     ELWorld *world;
@@ -44,12 +45,12 @@
 
     ELLight *defaultLight = new ELLight();
     defaultLight->position = ELVector3Make(0,1,1);
-    //    defaultLight->type = ELLightTypePoint;
+    defaultLight->type = ELLightTypeDirection;
     defaultLight->color = ELVector4Make(1.0,1.0,1.0,1.0);
     defaultLight->intensity = 1.0;
     defaultLight->intensityFallOff = 0.0;
     defaultLight->identity = "main-light";
-    //    defaultLight->enableShadow();
+    defaultLight->enableShadow();
     world->addNode(retain_ptr(ELLight, defaultLight));
 
     [self setupWorld:world];
@@ -62,6 +63,10 @@
     self.rotateSticker = [[EZGLMoveJoySticker alloc]initWithFrame:CGRectMake(bounds.size.width / 2, 0, bounds.size.width / 2,bounds.size.height)];
     self.rotateSticker.delegate = self;
     [self.view addSubview:self.rotateSticker];
+    
+    GLint MaxTextureUnits;
+    glGetIntegerv(GL_MAX_TEXTURE_IMAGE_UNITS, &MaxTextureUnits);
+    
 }
 
 
@@ -70,8 +75,12 @@
 }
 
 - (void)setupWorld:(ELWorld *)world {
-    world->fbWidth = self.view.frame.size.width;
-    world->fbHeight = self.view.frame.size.height;
+    [(GLKView *)self.view bindDrawable];
+    GLint defaultFBO;
+    glGetIntegerv(GL_FRAMEBUFFER_BINDING, &defaultFBO);
+    world->defaultFBO = defaultFBO;
+    world->fbWidth = self.view.frame.size.width * [UIScreen mainScreen].scale;
+    world->fbHeight = self.view.frame.size.height * [UIScreen mainScreen].scale;
     world->enableDefaultCamera(world->fbWidth / (float)world->fbHeight);
     
     world->physicsWorld->setGravity(ELVector3Make(0, -130, 0));
@@ -93,7 +102,7 @@
     world->addNode(retain_ptr(ELEffect, waterEffect));
 
     //    world->addRenderPass(new ELWaterPlaneRenderPass());
-    //    world->addRenderPass(new ELShadowMapRenderPass());
+    world->addRenderPass(new ELShadowMapRenderPass());
 
     activeEffect->frogColor = ELVector4Make(0.2,0.2,0.2,1.0);
     activeEffect->frogStart = 1380;

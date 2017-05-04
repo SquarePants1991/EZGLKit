@@ -21,6 +21,7 @@ public:
     ELEffect * activedEffect;
     ELPhysicsWorld * physicsWorld;
 
+    GLuint defaultFBO;
     int fbWidth;
     int fbHeight;
 public:

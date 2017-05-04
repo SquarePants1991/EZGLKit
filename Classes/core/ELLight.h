@@ -24,6 +24,7 @@ public:
     ELFloat intensityFallOff;
     bool isShadowEnabled;
     ELInt shadowTexture;
+    ELInt shadowDepthBuffer;
 public:
     ELLight();
     ~ELLight();

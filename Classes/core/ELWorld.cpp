@@ -7,11 +7,14 @@
 #include "ELGameObject.h"
 #include "../utils/ELAssets.h"
 #include "../utils/ELGLState.h"
+#include "../core/ELTexture.h"
 #include "ELRenderPass.h"
 
 #define UseDepthFramebuffer 1
 
-ELWorld::ELWorld() {
+ELWorld::ELWorld() :
+    defaultFBO(0)
+{
     glEnable(GL_DEPTH_TEST);
 
     ELGLState::setup();
@@ -54,6 +57,7 @@ void ELWorld::render() {
 }
 
 void ELWorld::renderScene() {
+    glBindFramebuffer(GL_FRAMEBUFFER, defaultFBO);
     activeEffect("render_scene");
     activeCamera("main");
     if (viewport.get() != NULL) {
@@ -70,10 +74,11 @@ void ELWorld::renderScene() {
     //bind shadow texture to 6 ~ 10
     int lightIndex = 0;
     char shadowMapUniformName[512];
+//    GLuint texture =  ELTexture::texture(ELAssets::shared()->findFile("island.png"))->value;
     for (int i = 0; i < children.size(); ++i) {
         ELLight * light = dynamic_cast<ELLight *>(children.at(i).get());
         if (light != NULL && light->isShadowEnabled) {
-            GLuint channel = GL_TEXTURE10 + lightIndex;
+            GLuint channel = GL_TEXTURE6 + lightIndex;
             glActiveTexture(channel);
             glBindTexture(GL_TEXTURE_2D, light->shadowTexture);
             snprintf(shadowMapUniformName,512,"shadowMap[%d]",lightIndex);

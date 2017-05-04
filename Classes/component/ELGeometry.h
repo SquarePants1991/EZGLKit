@@ -59,7 +59,7 @@ class ELGeometry : public ELComponent {
 public:
     ELVector3 size;
     ELMaterial material;
-    ELMaterial materials[4];
+    ELMaterial materials[2];
     ELGeometryRenderType renderType;
 
     bool enableBorder;
