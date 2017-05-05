@@ -42,10 +42,10 @@ void FGScene::createScene() {
     ELFBXLoader::loadFromFile(ELAssets::shared()->findFile("ArmyPilot.fbx").c_str());
 
     defaultLight = new ELLight();
-    defaultLight->position = ELVector3Make(0,100,30);
-    defaultLight->type = ELLightTypePoint;
-//    defaultLight->position = ELVector3Make(0,1,2);
-//    defaultLight->type = ELLightTypeDirection;
+//    defaultLight->position = ELVector3Make(0,100,30);
+//    defaultLight->type = ELLightTypePoint;
+    defaultLight->position = ELVector3Make(0,1,2);
+    defaultLight->type = ELLightTypeDirection;
     defaultLight->color = ELVector4Make(1.0,1.0,1.0,1.0);
     defaultLight->intensity = 1.0;
     defaultLight->intensityFallOff = 0.0;

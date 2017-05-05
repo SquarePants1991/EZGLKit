@@ -12,7 +12,7 @@ float LinearizeDepth(float depth)
 void caculateShadow(out float out_shadow, out vec4 shadowColor) {
     if (receiveShadow == 0) {
         out_shadow = 1.0;
-        return;
+//        return;
     }
     light defaultLight = lights[0];
 
@@ -59,6 +59,6 @@ void caculateShadow(out float out_shadow, out vec4 shadowColor) {
     }
     shadow /= 9.0;
 //#endif
-    shadowColor = vec4(vec3(depth), 1.0);
+//    shadowColor = vec4(vec3(depth), 1.0);
     out_shadow = 1.0 - shadow;
 }
